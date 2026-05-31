@@ -1,0 +1,28 @@
+---
+/**
+ * TEMPLATE: Help Sub-page 2 page.
+ */
+
+import Page from "../layouts/Page.astro";
+import Steps from "../components/sections/Steps.astro";
+import FAQ from "../components/sections/FAQ.astro";
+import ContactPreview from "../components/sections/ContactPreview.astro";
+import ReadNextHelp from "../components/sections/ReadNextHelp.astro";
+
+import pageData from "../content/pages/after-you-leave.json";
+---
+
+<Page
+  title={pageData.label}
+  eyebrow={pageData.eyebrow}
+  headline={pageData.title}
+  intro={pageData.intro}
+  currentPage="get-help"
+  description={pageData.metaDescription}
+  ogImage={pageData.ogImage}
+>
+  <Steps />
+  <FAQ />
+  <ContactPreview />
+  <ReadNextHelp />
+</Page>

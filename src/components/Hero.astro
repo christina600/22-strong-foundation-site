@@ -1,0 +1,37 @@
+---
+/**
+ * Interior page hero — eyebrow, title, intro, optional action buttons.
+ */
+
+interface Action {
+  label: string;
+  page?: string;
+  href?: string;
+  style?: string;
+}
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  actions?: Action[];
+}
+
+const { eyebrow, title, intro, actions = [] } = Astro.props;
+---
+
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow">{eyebrow}</span>
+    <h1>{title}</h1>
+    <p class="lead">{intro}</p>
+    {actions.length > 0 && (
+      <div class="hero-actions">
+        {actions.map((action) => {
+          const href = action.href || `/${action.page}`;
+          return <a class={action.style || "btn"} href={href}>{action.label}</a>;
+        })}
+      </div>
+    )}
+  </div>
+</section>

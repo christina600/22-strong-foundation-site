@@ -1,0 +1,34 @@
+{
+  "label": "Home",
+  "eyebrow": "Better in 90 — recovery care made accessible",
+  "title": "Get stronger. Move better. Get back on your feet.",
+  "intro": "22 Strong helps provide access to recovery, strength, mobility, and wellness support for veterans, underprivileged youth, and people facing financial barriers.",
+  "actions": [
+    {
+      "label": "How Better in 90 works",
+      "page": "programs",
+      "style": "btn"
+    },
+    {
+      "label": "Ways to give",
+      "page": "donate",
+      "style": "btn-outline"
+    }
+  ],
+  "proofStrip": [
+    {
+      "stat": "100%",
+      "label": "of donations directed to participant care access"
+    },
+    {
+      "stat": "3",
+      "label": "populations served"
+    },
+    {
+      "stat": "0",
+      "label": "paid employees — we operate as a donation vehicle"
+    }
+  ],
+  "metaDescription": "22 Strong Foundation provides no-cost access to recovery, strength, and mobility care for veterans, underprivileged youth, and people facing financial barriers through its Better in 90 program.",
+  "ogImage": "TEMPLATE: Full URL to a sharing image (1200x630px recommended)"
+}

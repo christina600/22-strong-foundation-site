@@ -1,0 +1,37 @@
+---
+/**
+ * Contact Preview — contact cards showing phone, email, address.
+ * Reads from site.json.
+ */
+
+import SectionShell from "../ui/SectionShell.astro";
+import site from "../../content/site.json";
+
+// Only show a field once it holds a real value (no unset TEMPLATE: slot).
+const isSet = (v) => !!v && !String(v).startsWith("TEMPLATE:");
+---
+
+<SectionShell
+  eyebrow="Contact"
+  title="How to reach us."
+>
+  <div class="contact-list">
+    <div class="card">
+      <h3>By phone</h3>
+      <p><strong>{site.phone}</strong></p>
+      <p>Call during business hours and we'll help you understand the program and next steps.</p>
+    </div>
+    {isSet(site.email) && (
+      <div class="card">
+        <h3>By email</h3>
+        <p><strong>{site.email}</strong></p>
+        <p>For general questions about 22 Strong Foundation and how to get involved.</p>
+      </div>
+    )}
+    <div class="card">
+      <h3>Mailing address</h3>
+      <p><strong>{site.address}</strong></p>
+      <p>Program services are delivered through partner facilities across Orange County.</p>
+    </div>
+  </div>
+</SectionShell>

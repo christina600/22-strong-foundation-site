@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Donate",
+    "text": "TEMPLATE: One or two sentences on why donations matter and what they fund.",
+    "page": "donate"
+  },
+  {
+    "title": "Volunteer",
+    "text": "TEMPLATE: One or two sentences describing volunteer opportunities and what roles are available.",
+    "page": "volunteer"
+  },
+  {
+    "title": "TEMPLATE: Training Name",
+    "text": "TEMPLATE: One or two sentences describing any required training or certification for volunteers.",
+    "page": "training"
+  },
+  {
+    "title": "Partner",
+    "text": "TEMPLATE: One or two sentences on how partner organizations can refer or collaborate.",
+    "page": "partner"
+  },
+  {
+    "title": "Give Supplies",
+    "text": "TEMPLATE: One or two sentences on in-kind giving, noting any current needs or guidelines.",
+    "page": "in-kind"
+  },
+  {
+    "title": "Newsletter",
+    "text": "TEMPLATE: One or two sentences on what the newsletter covers and how often it goes out.",
+    "page": "newsletter"
+  }
+]

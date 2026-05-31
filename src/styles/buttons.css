@@ -1,0 +1,75 @@
+/* Buttons — primary, outline, plain, danger, and button rows. */
+
+.btn,
+.btn-outline,
+.btn-danger,
+.btn-plain {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 15px 30px;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1;
+  transition:
+    transform var(--dur-base) var(--ease),
+    background var(--dur-base) var(--ease),
+    border-color var(--dur-base) var(--ease),
+    color var(--dur-base) var(--ease),
+    box-shadow var(--dur-base) var(--ease);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn,
+.btn-donate,
+.btn-danger {
+  color: var(--white);
+  background: var(--burnt-orange);
+  border-color: var(--burnt-orange);
+  box-shadow: 0 6px 16px rgba(217, 96, 31, 0.20), var(--edge-light);
+}
+
+.btn:hover,
+.btn-donate:hover,
+.btn-danger:hover {
+  color: var(--white);
+  background: var(--burnt-orange-hover);
+  border-color: var(--burnt-orange-hover);
+  transform: translateY(var(--lift));
+  box-shadow: var(--shadow-glow), 0 4px 12px rgba(217, 96, 31, 0.22);
+}
+
+.btn-outline,
+.btn-plain {
+  color: var(--charcoal);
+  background: rgba(255, 255, 255, 0.62);
+  border-color: rgba(45, 45, 45, 0.24);
+}
+
+.btn-outline:hover,
+.btn-plain:hover {
+  color: var(--white);
+  background: var(--charcoal);
+  border-color: var(--charcoal);
+  transform: translateY(var(--lift-sm));
+}
+
+.btn:active,
+.btn-outline:active,
+.btn-danger:active,
+.toggle-row button:active {
+  transform: translateY(0) scale(0.985);
+}
+
+.button-row,
+.hero-actions,
+.section-button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}

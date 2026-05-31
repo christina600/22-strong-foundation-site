@@ -1,0 +1,20 @@
+---
+/**
+ * Contact Full — contact cards with phone, email, address.
+ */
+
+import SectionShell from "../ui/SectionShell.astro";
+import site from "../../content/site.json";
+---
+
+<SectionShell
+  eyebrow="Contact details"
+  title="Use the right door for the right need."
+  body="TEMPLATE: Describe how to reach you and which contact method to use for each need."
+>
+  <div class="contact-list">
+    <div class="card"><h3>TEMPLATE: Phone label</h3><p><strong>{site.phone}</strong></p><p>TEMPLATE: Describe who answers and availability.</p></div>
+    <div class="card"><h3>General Email</h3><p><strong>{site.email}</strong></p><p>TEMPLATE: Describe response time and what this channel is best for.</p></div>
+    <div class="card"><h3>Mailing Address</h3><p><strong>{site.address}</strong></p><p>TEMPLATE: Location name. Note if shelter addresses are not published.</p></div>
+  </div>
+</SectionShell>

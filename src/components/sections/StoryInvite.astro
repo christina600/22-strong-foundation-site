@@ -1,0 +1,125 @@
+---
+/**
+ * Story Invite — the inline "give now" moment that follows an emotional story.
+ *
+ * WHY THIS EXISTS — conversion best practice (the #1 donate-click lever):
+ * The strongest place to ask is the instant after a reader FEELS something.
+ * Drop this block in immediately AFTER a story/testimonial/impact section so
+ * the emotional peak resolves into an invitation to give — instead of the
+ * reader scrolling past the feeling toward the next section. Without it, the
+ * most persuasive moment on the page asks for nothing.
+ *
+ * REUSABLE BY DESIGN — this is a library block, not a one-off. Use it after:
+ *   • the homepage Testimonials section (its canonical home),
+ *   • a program page's success story,
+ *   • any narrative beat that earns an ask.
+ * Delete it wherever a page doesn't need one. Existence ≠ always-on.
+ *
+ * DESIGN INTENT — kept intentionally quiet (warm light band, single headline,
+ * one primary ask + one soft secondary). The bold dark Giving Circle card does
+ * the loud monthly pitch elsewhere; this is the gentle hand on the shoulder
+ * right after the story. Two loud asks back-to-back cancel each other out.
+ *
+ * PLUMBING — reuses the site's donation carry-over (same pattern as the Giving
+ * Circle tiers). Pass an `amount` (+ optional `label`) and the primary CTA
+ * lands on /donate with that monthly amount already in hand:
+ *   - cross-page: the link carries ?amount=&label=&#give (read by DonationEmbed
+ *     on load),
+ *   - same-page: the data-give-* attributes let an on-page form prefill too.
+ * Omit the props for a general "Donate now" ask (the homepage default).
+ *
+ * Props:
+ *   amount — monthly $ amount to lead with (optional; digits or "$XX" both ok)
+ *   label  — name of that tier, e.g. "Sustainer" (optional)
+ */
+
+interface Props {
+  amount?: string | number;
+  label?: string;
+}
+
+const { amount, label } = Astro.props;
+
+const giveAmount = amount ? String(amount).replace(/[^0-9]/g, "") : "";
+const donateHref = giveAmount
+  ? `/donate?amount=${giveAmount}${label ? `&label=${encodeURIComponent(label)}` : ""}#give`
+  : "/donate#give";
+---
+
+<section class="section story-invite">
+  <div class="container">
+    <div class="story-invite-card">
+      <span class="eyebrow">Be part of the next recovery</span>
+      <h2 class="story-invite-headline">
+        Your gift opens the door to recovery care for someone who can't access it alone.
+      </h2>
+      <p class="story-invite-body">
+        Every contribution goes directly toward participant care access — helping a
+        veteran, a young person, or someone facing financial barriers get back on their feet.
+      </p>
+      <div class="story-invite-actions">
+        <a
+          class="btn btn-donate"
+          href={donateHref}
+          data-give-amount={giveAmount}
+          data-give-label={label}
+        >Donate now &rarr;</a>
+        <a class="btn-outline" href="/donate#giving-circle">Become a monthly sustainer</a>
+      </div>
+      <p class="story-invite-note">
+        Tax-deductible. Start, change, or cancel anytime.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Warm light band — quiet on purpose. Tokens from styles/tokens.css. */
+  .story-invite {
+    background: linear-gradient(180deg, var(--page) 0%, var(--page-alt) 100%);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .story-invite-card {
+    max-width: 720px;
+    margin-inline: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .story-invite-headline {
+    margin: 0;
+    font-family: var(--serif-display);
+    font-weight: 600;
+    font-size: clamp(1.6rem, 1.1rem + 2.4vw, 2.4rem);
+    line-height: 1.16;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+
+  .story-invite-body {
+    margin: 0;
+    max-width: 56ch;
+    color: var(--muted-strong);
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  .story-invite-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+    margin-top: var(--space-2);
+  }
+
+  .story-invite-note {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+</style>

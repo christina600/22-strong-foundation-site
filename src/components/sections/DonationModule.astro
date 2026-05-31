@@ -1,0 +1,96 @@
+---
+/**
+ * Donation Module — the interactive giving widget.
+ *
+ * Compact donation widget used as a marketing preview (homepage + donate
+ * preview). It entices and routes donors onward; the full secure giving
+ * experience on /donate is handled by DonationEmbed (config-driven platform).
+ */
+
+import site from "../../content/site.json";
+import strings from "../../content/strings/en.json";
+
+interface Props {
+  // "home" = compact hero preview (default); "page" = the donate page's
+  // larger, centered main giving element (no dark headline band — the
+  // section heading sits directly above it).
+  variant?: "home" | "page";
+}
+
+const { variant = "home" } = Astro.props;
+
+const amounts = site.donationAmounts;
+const defaultAmount = amounts[site.defaultAmountIndex] || 100;
+
+// Per-amount impact copy. The script (donation.ts) reads this map from the
+// data attribute below and swaps the impact line as the donor changes amount
+// or frequency. {amount} is replaced live; "default" covers custom amounts.
+const impact = (site as any).donationImpact ?? {};
+const monthlyImpact = impact.monthly ?? {};
+const initialImpactTemplate =
+  monthlyImpact[String(defaultAmount)] ?? monthlyImpact.default ?? "TEMPLATE: Impact description for this gift amount";
+const initialImpactDetail = String(initialImpactTemplate).replace(/\{amount\}/g, Number(defaultAmount).toLocaleString());
+---
+
+<div
+  class:list={["donation-module", variant === "page" ? "donation-page" : "donation-home"]}
+  data-impact-map={JSON.stringify(impact)}
+>
+  {variant !== "page" && (
+    <div class="donation-headline">
+      <span class="eyebrow">Private support</span>
+      <h2>Monthly gifts fund the response that doesn't wait.</h2>
+    </div>
+  )}
+  <div class="card soft donation-card-main">
+    <span class="eyebrow">{strings.donation.giveNow}</span>
+    <div class="toggle-row" role="group" aria-label={strings.donation.giftFrequency}>
+      <button type="button" class="active" data-frequency="monthly" aria-pressed="true">
+        <span class="most-impact-badge">{strings.donation.mostImpact}</span>
+        {strings.donation.monthly}
+      </button>
+      <button type="button" data-frequency="one-time" aria-pressed="false">{strings.donation.oneTime}</button>
+    </div>
+    <div class="amount-grid" aria-label={strings.donation.giftAmountOptions}>
+      {amounts.map((amount, index) => (
+        <button
+          type="button"
+          class={`amount-button ${index === site.defaultAmountIndex ? "active" : ""}`}
+          data-amount={amount}
+          aria-pressed={index === site.defaultAmountIndex ? "true" : "false"}
+        >
+          ${amount}
+        </button>
+      ))}
+    </div>
+    <div class="other-amount-row">
+      <input
+        type="number"
+        inputmode="decimal"
+        min="1"
+        step="any"
+        class="other-amount-input"
+        placeholder={strings.donation.otherAmount}
+        aria-label={strings.donation.customAmountLabel}
+      />
+    </div>
+    <div class="impact-line">
+      <span class="eyebrow">{strings.donation.yourImpact}</span>
+      <strong id="giftSummary">${defaultAmount}/mo</strong>
+      <span id="giftDetail">{initialImpactDetail}</span>
+      <small>Monthly gift. Annual commitment: ${defaultAmount * 12}.</small>
+    </div>
+    <a class="btn btn-donate" href={site.donateUrl} data-donate-base={site.donateUrl} aria-label={strings.donation.continueToCheckout}>
+      {strings.donation.continueToCheckout} &rarr;
+    </a>
+    <p class="donation-footnote">{strings.donation.footnote}</p>
+    <p class="donation-legal">
+      {site.orgName} &middot; {site.taxStatus} &middot; EIN {site.ein} &middot; Tax-deductible.
+      <a href="/financials#donor-rights">{strings.footer.donorBillOfRights}</a>.
+    </p>
+  </div>
+</div>
+
+<script>
+  import "../../scripts/donation.ts";
+</script>

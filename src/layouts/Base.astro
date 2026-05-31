@@ -1,0 +1,110 @@
+---
+/**
+ * Base layout — the HTML skeleton every page inherits.
+ *
+ * Provides: <html>, <head> (with SEO tags, fonts, CSS), <body>,
+ * and skip link. Astro's ClientRouter handles route announcements.
+ *
+ * Props:
+ *   title        — the browser tab title (required)
+ *   description  — meta description for search engines
+ *   ogImage      — social sharing image URL
+ */
+
+import { ClientRouter } from "astro:transitions";
+import site from "../content/site.json";
+import Analytics from "../components/Analytics.astro";
+import strings from "../content/strings/en.json";
+import "../styles/main.css";
+
+// JSON-LD Organization structured data for rich search results
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "NonprofitOrganization",
+  "name": site.orgName,
+  "description": site.descriptor,
+  "url": site.siteUrl,
+  "telephone": site.phone,
+  "email": site.email,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": site.address
+  },
+  "foundingDate": site.foundedYear,
+  "taxID": site.ein,
+  "nonprofitStatus": site.taxStatus,
+  "areaServed": site.serviceArea
+};
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const { title, description, ogImage } = Astro.props;
+const pageTitle = `${title} | ${site.orgName}`;
+const metaDesc = description || site.descriptor;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="no-referrer" />
+
+  <title>{pageTitle}</title>
+  <meta name="description" content={metaDesc} />
+
+  <!-- Social sharing -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={metaDesc} />
+  <meta property="og:type" content="website" />
+  {ogImage && <meta property="og:image" content={ogImage} />}
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href={Astro.url.href} />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" href="/favicon.ico" />
+
+  <!-- Fonts: self-hosted in /fonts/ — no third-party requests -->
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
+
+  <!-- Critical inline style: prevents FOUC on scroll-revealed elements -->
+  <style is:inline>
+    .js .scroll-dynamic { opacity: 0; }
+  </style>
+
+  <meta name="generator" content={Astro.generator} />
+
+  <!-- Organization structured data for rich search results -->
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd).replace(/</g, "\\u003c")} />
+
+  <!-- Smooth page transitions instead of hard reloads -->
+  <ClientRouter />
+
+  <!-- Analytics: only loads if configured in site.json -->
+  <Analytics />
+</head>
+<body>
+  <script is:inline>document.documentElement.classList.add('js');</script>
+
+  <a class="skip-link" href="#main">{strings.nav.skipToContent}</a>
+
+  <slot />
+
+  <!-- Global scripts: nav, scroll reveals, parallax, forms -->
+  <script>
+    import "../scripts/nav.ts";
+    import "../scripts/scroll-reveal.ts";
+    import "../scripts/parallax.ts";
+    import "../scripts/forms.ts";
+    import "../scripts/video-facade.ts";
+  </script>
+</body>
+</html>

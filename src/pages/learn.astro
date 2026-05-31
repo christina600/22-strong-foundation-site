@@ -1,0 +1,24 @@
+---
+/**
+ * Learn page.
+ */
+
+import Page from "../layouts/Page.astro";
+import LearnGrid from "../components/sections/LearnGrid.astro";
+import ReadNextLearn from "../components/sections/ReadNextLearn.astro";
+
+import pageData from "../content/pages/learn.json";
+---
+
+<Page
+  title={pageData.label}
+  eyebrow={pageData.eyebrow}
+  headline={pageData.title}
+  intro={pageData.intro}
+  currentPage="learn"
+  description={pageData.metaDescription}
+  ogImage={pageData.ogImage}
+>
+  <LearnGrid />
+  <ReadNextLearn />
+</Page>

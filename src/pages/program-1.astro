@@ -1,0 +1,18 @@
+---
+/**
+ * TEMPLATE: Program 1 Name page.
+ */
+
+import ProgramPage from "../layouts/ProgramPage.astro";
+import ProgramDetail from "../components/sections/ProgramDetail.astro";
+import Steps from "../components/sections/Steps.astro";
+import ContactPreview from "../components/sections/ContactPreview.astro";
+
+import pageData from "../content/pages/program-1.json";
+---
+
+<ProgramPage slug="program-1" description={pageData.metaDescription} ogImage={pageData.ogImage}>
+  <ProgramDetail slug="program-1" />
+  <Steps />
+  <ContactPreview />
+</ProgramPage>

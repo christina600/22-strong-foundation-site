@@ -1,0 +1,24 @@
+---
+/**
+ * Contact page.
+ */
+
+import Page from "../layouts/Page.astro";
+import ContactFull from "../components/sections/ContactFull.astro";
+import ContactForm from "../components/sections/ContactForm.astro";
+
+import pageData from "../content/pages/contact.json";
+---
+
+<Page
+  title={pageData.label}
+  eyebrow={pageData.eyebrow}
+  headline={pageData.title}
+  intro={pageData.intro}
+  currentPage="contact"
+  description={pageData.metaDescription}
+  ogImage={pageData.ogImage}
+>
+  <ContactFull />
+  <ContactForm />
+</Page>

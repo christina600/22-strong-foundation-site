@@ -1,0 +1,65 @@
+/* Form inputs — text fields, selects, textareas, focus states. */
+
+/* Honeypot field — hidden from humans, catches bots that auto-fill everything. */
+.hp {
+  position: absolute;
+  left: -9999px;
+  height: 0;
+  overflow: hidden;
+}
+
+.other-amount-input,
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid rgba(45, 45, 45, 0.16);
+  border-radius: 8px;
+  color: var(--charcoal);
+  background: rgba(255, 255, 255, 0.78);
+  transition: border-color var(--dur-base) var(--ease), box-shadow var(--dur-base) var(--ease), background var(--dur-base) var(--ease);
+}
+
+.other-amount-input:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: rgba(217, 96, 31, 0.55);
+  background: var(--white);
+  box-shadow: 0 0 0 5px rgba(217, 96, 31, 0.1);
+  outline: 0;
+}
+
+/* Steps layout used in Get Help and program pages. */
+.steps {
+  display: grid;
+  gap: 14px;
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: var(--space-5);
+  padding: var(--space-5);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.step-num {
+  color: var(--olive-drab);
+  font-family: var(--display);
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Programs list container. */
+.programs-list {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.5));
+  box-shadow: var(--shadow-soft), var(--edge-light);
+}

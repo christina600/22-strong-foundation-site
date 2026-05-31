@@ -1,0 +1,26 @@
+[
+  {
+    "q": "TEMPLATE: Common question 1 -- e.g. about eligibility or who you serve",
+    "a": "TEMPLATE: Plain-language answer. Address the concern directly without jargon."
+  },
+  {
+    "q": "TEMPLATE: Common question 2 -- e.g. about confidentiality or privacy",
+    "a": "TEMPLATE: Plain-language answer. Explain what privacy means in your context."
+  },
+  {
+    "q": "TEMPLATE: Common question 3 -- e.g. about readiness or what to expect",
+    "a": "TEMPLATE: Plain-language answer. Reduce uncertainty about reaching out."
+  },
+  {
+    "q": "TEMPLATE: Common question 4 -- e.g. about a specific service or accommodation",
+    "a": "TEMPLATE: Plain-language answer."
+  },
+  {
+    "q": "TEMPLATE: Common question 5 -- e.g. about who is served",
+    "a": "TEMPLATE: Plain-language answer. State your non-discrimination commitment clearly."
+  },
+  {
+    "q": "TEMPLATE: Common question 6 -- e.g. about language access",
+    "a": "TEMPLATE: Plain-language answer. Explain language support available."
+  }
+]

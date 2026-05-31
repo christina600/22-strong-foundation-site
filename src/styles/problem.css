@@ -1,0 +1,686 @@
+/* Problem / theory-of-change section: stat showcase (six display
+   treatments), system gaps, and the turn toward the org's response. */
+
+/* Registered so the ring's conic fill can transition smoothly. */
+@property --p {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+/* Section-scoped tokens — single source of truth for repeated values.
+   Define once here rather than copying literals through the file. */
+.problem-section {
+  --card-bg: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.86),
+    rgba(255, 255, 255, 0.62)
+  );
+  --stat-bar-h: 14px;   /* bar track height */
+  --turn-gap: 3em;      /* gap between chain steps; arrow centers on this */
+}
+
+.problem-section .container > p {
+  max-width: 60ch;
+}
+
+/* ── Stat showcase: a bento grid mixing card sizes. auto-flow: dense so
+   the grid backfills holes when cards are added/removed/reordered from
+   the JSON — the layout stays tight at any count. ── */
+.stat-showcase {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-auto-flow: row dense;
+  gap: var(--space-4);
+  margin-top: var(--space-7);
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card-bg);
+  box-shadow: var(--shadow-soft), var(--edge-light);
+}
+
+/* Span plan: figure | ring | pictograph on row 1; bar | compare on
+   row 2; headline full-width on row 3. */
+.stat-figure     { grid-column: span 2; }
+.stat-ring       { grid-column: span 2; align-items: center; text-align: center; }
+.stat-pictograph { grid-column: span 2; }
+.stat-bar        { grid-column: span 3; justify-content: center; }
+.stat-compare    { grid-column: span 3; }
+.stat-headline   { grid-column: span 6; }
+.stat-outcome    { grid-column: span 6; }
+
+/* Shared label + source type. */
+.stat-card-label {
+  margin: 0;
+  font-family: var(--serif-display);
+  font-optical-sizing: auto;
+  font-size: clamp(16px, 1.4vw, 20px);
+  line-height: 1.32;
+  color: var(--charcoal);
+}
+
+/* Sourcing is evidence, not a footnote — give it a visible rule and
+   enough contrast to read as a citation a skeptic can check. Sources
+   are <a> elements so they can be clicked through to verify; the link
+   style is deliberately quiet (no underline until hover) to keep the
+   card visually clean without hiding the affordance. */
+.stat-card-source {
+  margin: 0;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-strong);
+  text-decoration: none;
+}
+
+a.stat-card-source:hover,
+a.stat-card-source:focus-visible {
+  text-decoration: underline;
+  color: var(--charcoal);
+}
+
+/* Push the figcaption block to the bottom of the card, replicating the
+   old margin-top: auto that lived on .stat-card-source when it was a
+   direct flex child. Row-layout cards (dark field) and the bar label
+   card are exceptions — their figcaption sits inline, not at the base. */
+.stat-card figcaption {
+  margin-top: auto;
+}
+
+.stat-bar figcaption,
+.stat-headline figcaption,
+.stat-outcome figcaption {
+  margin-top: 0;
+}
+
+/* Big number ticks up via count-up.ts. */
+.stat-figure-value {
+  margin: 0;
+}
+
+.stat-figure-value strong {
+  display: block;
+  font-family: var(--display);
+  font-size: clamp(48px, 6vw, 84px);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--field-green);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* ── Ring: conic-gradient donut with a hole punched by a mask. ── */
+.stat-ring-viz {
+  --p: var(--target, 0);
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: clamp(132px, 14vw, 168px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--burnt-orange) calc(var(--p) * 1%),
+    rgba(45, 45, 45, 0.1) 0
+  );
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 16px), #000 calc(100% - 15px));
+          mask: radial-gradient(farthest-side, transparent calc(100% - 16px), #000 calc(100% - 15px));
+}
+
+/* The number sits above the masked ring, so it needs its own layer. */
+.stat-ring-num {
+  position: absolute;
+  -webkit-mask: none;
+          mask: none;
+  font-family: var(--display);
+  font-size: clamp(26px, 3vw, 34px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--field-green);
+  font-variant-numeric: tabular-nums;
+}
+
+/* JS path: start empty, fill to target when the card reveals. */
+.js .stat-card .stat-ring-viz { --p: 0; }
+.js .stat-card.is-visible .stat-ring-viz {
+  --p: var(--target);
+  transition: --p 1200ms var(--ease-reveal);
+}
+
+/* ── Pictograph: "X in Y" with filled / empty marks. ── */
+.stat-pictograph-headline {
+  margin: 0;
+  font-family: var(--serif-display);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 400;
+  color: var(--muted-strong);
+}
+
+.stat-pictograph-headline strong {
+  font-weight: 600;
+  color: var(--field-green);
+}
+
+.stat-pictograph-marks {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.stat-pictograph-marks span {
+  width: clamp(18px, 2vw, 24px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1.5px solid var(--line-strong);
+  background: transparent;
+}
+
+.stat-pictograph-marks span.is-on {
+  border-color: var(--burnt-orange);
+  background: var(--burnt-orange);
+}
+
+/* ── Bar: horizontal track + fill that animates in. ── */
+.stat-bar-label {
+  margin-bottom: var(--space-1);
+}
+
+.stat-bar-track {
+  height: var(--stat-bar-h);
+  border-radius: var(--radius-pill);
+  background: rgba(45, 45, 45, 0.1);
+  overflow: hidden;
+}
+
+.stat-bar-fill {
+  display: block;
+  height: 100%;
+  width: calc(var(--val, 0) * 1%);
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--burnt-orange), var(--sandstone));
+}
+
+.js .stat-card .stat-bar-fill { width: 0; }
+.js .stat-card.is-visible .stat-bar-fill {
+  width: calc(var(--val) * 1%);
+  transition: width 1100ms var(--ease-reveal);
+}
+
+.stat-bar-value {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.stat-bar-value strong {
+  font-family: var(--display);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--field-green);
+}
+
+.stat-bar-value span {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;   /* aligned with other attribution labels */
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── Compare: a delta with a small from → to range. ── */
+.stat-compare-delta {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--display);
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--burnt-orange);
+  line-height: 1;
+}
+
+.stat-arrow {
+  font-size: 0.5em;
+}
+
+.stat-compare-range {
+  margin: 0;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.stat-compare-line {
+  flex: 1;
+  height: 1px;
+  background: var(--line-strong);
+}
+
+/* ── Dark-field cards: headline (charcoal = the problem) and outcome
+   (field-green = the resolution) share layout; only backgrounds differ.
+   Update both together if the row structure ever changes. ── */
+.stat-headline,
+.stat-outcome {
+  flex-direction: row;
+  align-items: center;
+  gap: clamp(24px, 4vw, 56px);
+  border-color: transparent;
+}
+
+.stat-headline { background: var(--charcoal); }
+.stat-outcome  { background: var(--field-green); }
+
+.stat-headline-figure {
+  margin: 0;
+  flex-shrink: 0;
+  font-family: var(--serif-display);
+  font-size: clamp(34px, 4.4vw, 56px);
+  font-weight: 400;
+  line-height: 1.05;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.stat-headline-figure strong {
+  font-weight: 600;
+  color: var(--white);
+}
+
+.stat-headline-text {
+  margin: 0;
+  font-family: var(--serif-display);
+  font-optical-sizing: auto;
+  font-size: clamp(18px, 1.8vw, 24px);
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.86);
+  text-wrap: pretty;
+}
+
+/* ── Outcome stat: the forward turn. ── */
+
+.stat-outcome-value {
+  margin: 0;
+  flex-shrink: 0;
+  align-self: center;
+  font-family: var(--serif-display);
+  font-size: clamp(40px, 5vw, 68px);
+  font-weight: 400;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.stat-outcome-value strong {
+  font-weight: 600;
+  color: var(--white);
+}
+
+/* Eyebrow + sentence + source share the right column. */
+.stat-outcome-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-outcome-eyebrow,
+.stat-outcome-text {
+  margin: 0;
+}
+
+.stat-outcome-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;  /* eyebrow tier: above attribution (0.08) below identifiers (0.16) */
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.stat-outcome-text {
+  margin-top: var(--space-2);
+  font-family: var(--serif-display);
+  font-optical-sizing: auto;
+  font-size: clamp(18px, 1.8vw, 24px);
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.9);
+  text-wrap: pretty;
+}
+
+/* Keep source links legible on both dark-field cards. */
+.stat-headline .stat-card-source,
+.stat-outcome .stat-card-source {
+  margin-top: var(--space-3);
+  border-top-color: rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.stat-headline a.stat-card-source:hover,
+.stat-headline a.stat-card-source:focus-visible,
+.stat-outcome a.stat-card-source:hover,
+.stat-outcome a.stat-card-source:focus-visible {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Benchmark: the comparison that gives the headline number meaning
+   (e.g. "vs. 3 in 10 without support"). Emphasised — it's the contrast
+   a funder reads to judge whether the result is remarkable. */
+.stat-outcome-benchmark {
+  margin: var(--space-2) 0 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* Methodology note: a quiet disclosure on the outcome card that turns
+   a self-reported claim into evidence. Italic + muted-white. */
+.stat-outcome-method {
+  margin: var(--space-2) 0 0;
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.52);
+}
+
+/* ── Human anchor: a direct-voice quote from someone the org serves,
+   so the section closes with the person speaking rather than the org
+   speaking for them. <blockquote> is semantically correct for a
+   quotation; padding: 0 resets browser blockquote defaults. ── */
+.problem-human {
+  max-width: 56ch;
+  margin: clamp(48px, 6vw, 80px) auto 0;
+  padding: 0;
+  text-align: center;
+  font-family: var(--serif-display);
+  font-optical-sizing: auto;
+  font-size: clamp(19px, 2vw, 26px);
+  line-height: 1.4;
+  color: var(--charcoal);
+  text-wrap: balance;
+}
+
+.problem-human p {
+  margin: 0;
+}
+
+/* Attribution line: mono, small, muted — reads as a caption. */
+.problem-human footer {
+  margin-top: var(--space-3);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted-strong);
+}
+
+/* ── Flow connectors: thread the three blocks into one causal system
+   (stats → gaps → response) as a continuous descent. Decorative
+   (aria-hidden); the semantic order already lives in the DOM. ── */
+.problem-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  margin: clamp(16px, 2.5vw, 28px) auto;
+}
+
+.problem-flow-line {
+  width: 2px;
+  height: clamp(28px, 4vw, 44px);
+  background: linear-gradient(180deg, transparent, var(--line-strong));
+}
+
+.problem-flow-chevron {
+  font-size: 18px;
+  line-height: 1;
+  color: var(--burnt-orange);
+}
+
+/* ── System gaps: numbered reasons the problem persists. The flow
+   connector above provides the spacing the old margin-top used to. ── */
+.system-gaps {
+  margin-top: 0;
+}
+
+.system-gaps-title {
+  margin: 0 0 var(--space-5);
+  font-family: var(--serif-display);
+  font-optical-sizing: auto;
+  font-size: clamp(22px, 2.4vw, 32px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--charcoal);
+}
+
+/* auto-fit so 2, 3, or 4 gaps all lay out cleanly without editing CSS
+   (Capricorn: the structure flexes to the org's actual diagnosis).
+   Mobile collapses to one column via responsive.css. */
+.gap-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: gap;
+}
+
+.gap-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 2px solid var(--burnt-orange);
+}
+
+.gap-num {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--burnt-orange);
+}
+
+.gap-body h4 {
+  margin: 0 0 var(--space-2);
+  font-family: var(--serif-display);
+  font-optical-sizing: auto;
+  font-size: clamp(18px, 1.6vw, 22px);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--charcoal);
+}
+
+.gap-body p {
+  margin: 0;
+  color: var(--muted-strong);
+  line-height: 1.55;
+}
+
+/* ── The turn: where the org comes in. Flow connector above provides
+   the top spacing. ── */
+.problem-turn {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.problem-turn-line {
+  margin: 0 0 var(--space-4);
+  font-family: var(--serif-display);
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-size: clamp(26px, 3.4vw, 44px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--charcoal);
+  text-wrap: balance;
+}
+
+/* The if → then → impact chain: three steps reading left to right
+   with arrows between, so the causal logic is legible at a glance.
+   This is the theory-of-change spine a funder looks for. */
+.turn-chain {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--turn-gap);
+  margin: var(--space-6) 0 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+
+/* position: relative lets the ::after arrow escape into the gap. */
+.turn-step {
+  position: relative;
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  border-radius: var(--radius);
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+}
+
+.turn-step-tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--burnt-orange);
+}
+
+.turn-step p {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(16px, 1.4vw, 19px);
+  line-height: 1.5;
+  color: var(--charcoal);
+  text-wrap: pretty;
+}
+
+/* Coda: a one-line acknowledgment of the model's limits. Quiet —
+   italic, muted — so it reads as candor, not a disclaimer. */
+.problem-turn-coda {
+  margin: var(--space-5) 0 0;
+  font-size: 15px;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--muted-strong);
+}
+
+/* Arrow between steps: CSS-driven, no DOM elements. Centered in the
+   gap using left: 100% (right edge of step) + half the gap. */
+.turn-step:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  left: calc(100% + var(--turn-gap) / 2 - 0.45em);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: clamp(18px, 2vw, 22px);
+  color: var(--burnt-orange);
+  pointer-events: none;
+}
+
+/* ── Review-date marker: a quiet caption that makes the section
+   self-governing — staff can see whether the data is due for a
+   refresh. Sits at the very bottom, after the turn. ── */
+.problem-reviewed {
+  margin: clamp(40px, 5vw, 64px) auto 0;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── Scrollytelling: the theory-of-change builds as it scrolls into
+   focus. The if → then → impact chain illuminates left → right so the
+   causal logic assembles in front of the reader instead of arriving all
+   at once — the signature moment of the section. Driven by problem-spine.ts
+   adding .is-active; progressive enhancement (.js only); reduced-motion
+   shows the final state. ── */
+.js .turn-chain .turn-step {
+  opacity: 0.32;
+  filter: saturate(0.3);
+  transform: translateY(10px);
+  transition:
+    opacity var(--dur-slow) var(--ease-reveal),
+    filter var(--dur-slow) var(--ease-reveal),
+    transform var(--dur-slow) var(--ease-reveal);
+}
+
+.js .turn-chain.is-active .turn-step {
+  opacity: 1;
+  filter: none;
+  transform: none;
+}
+
+/* Left → right stagger: each step lights a beat after the one before. */
+.js .turn-chain.is-active .turn-step:nth-child(2) { transition-delay: 170ms; }
+.js .turn-chain.is-active .turn-step:nth-child(3) { transition-delay: 340ms; }
+
+/* The connecting arrows draw in with their downstream step. */
+.js .turn-step:not(:last-child)::after {
+  opacity: 0;
+  transition: opacity var(--dur-base) var(--ease-reveal);
+}
+.js .turn-chain.is-active .turn-step:not(:last-child)::after {
+  opacity: 1;
+}
+.js .turn-chain.is-active .turn-step:nth-child(1)::after { transition-delay: 90ms; }
+.js .turn-chain.is-active .turn-step:nth-child(2)::after { transition-delay: 260ms; }
+
+/* Flow chevrons sit dim until the scroll spine reaches them, then snap
+   to full — threading the descent stat-showcase → gaps → turn. */
+.js .problem-flow-chevron {
+  opacity: 0.3;
+  transform: translateY(-5px);
+  transition:
+    opacity var(--dur-base) var(--ease-reveal),
+    transform var(--dur-base) var(--ease-reveal);
+}
+.js .problem-flow.is-active .problem-flow-chevron {
+  opacity: 1;
+  transform: none;
+}
+
+/* Reduced motion: no fills animate — show final state immediately. */
+@media (prefers-reduced-motion: reduce) {
+  .js .stat-card.is-visible .stat-ring-viz,
+  .js .stat-card.is-visible .stat-bar-fill {
+    transition: none;
+  }
+  .js .stat-card .stat-ring-viz { --p: var(--target); }
+  .js .stat-card .stat-bar-fill { width: calc(var(--val) * 1%); }
+
+  /* Scrollytelling collapses to its resolved state — no build, no dim. */
+  .js .turn-chain .turn-step,
+  .js .turn-step:not(:last-child)::after,
+  .js .problem-flow-chevron {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    transition: none;
+  }
+}

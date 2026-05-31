@@ -1,0 +1,28 @@
+---
+/**
+ * Financial Disclosures page.
+ */
+
+import Page from "../layouts/Page.astro";
+import FinancialDisclosureFull from "../components/sections/FinancialDisclosureFull.astro";
+import FinancialCards from "../components/sections/FinancialCards.astro";
+import ImpactDeep from "../components/sections/ImpactDeep.astro";
+import DonatePreview from "../components/sections/DonatePreview.astro";
+
+import pageData from "../content/pages/financial-disclosures.json";
+---
+
+<Page
+  title={pageData.label}
+  eyebrow={pageData.eyebrow}
+  headline={pageData.title}
+  intro={pageData.intro}
+  currentPage="about"
+  description={pageData.metaDescription}
+  ogImage={pageData.ogImage}
+>
+  <FinancialDisclosureFull />
+  <FinancialCards />
+  <ImpactDeep />
+  <DonatePreview />
+</Page>

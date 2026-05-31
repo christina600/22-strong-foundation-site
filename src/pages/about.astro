@@ -1,0 +1,32 @@
+---
+/**
+ * About page.
+ */
+
+import Page from "../layouts/Page.astro";
+import AboutDeep from "../components/sections/AboutDeep.astro";
+import AboutHistory from "../components/sections/AboutHistory.astro";
+import AboutLeadership from "../components/sections/AboutLeadership.astro";
+import AboutAccountability from "../components/sections/AboutAccountability.astro";
+import ImpactPreview from "../components/sections/ImpactPreview.astro";
+
+import pageData from "../content/pages/about.json";
+---
+
+<Page
+  title={pageData.label}
+  eyebrow={pageData.eyebrow}
+  headline={pageData.title}
+  intro={pageData.intro}
+  currentPage="about"
+  description={pageData.metaDescription}
+  ogImage={pageData.ogImage}
+>
+  <AboutDeep />
+  <div id="history">
+    <AboutHistory />
+  </div>
+  <AboutLeadership />
+  <AboutAccountability />
+  <ImpactPreview />
+</Page>

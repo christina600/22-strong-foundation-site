@@ -1,0 +1,17 @@
+---
+/**
+ * Learn Grid — full learn cards grid.
+ */
+
+import SectionShell from "../ui/SectionShell.astro";
+import CardGrid from "../ui/CardGrid.astro";
+import learnCards from "../../content/learn.json";
+---
+
+<SectionShell
+  eyebrow="Learn hub"
+  title="TEMPLATE: Learn hub headline"
+  body="TEMPLATE: Describe the education content — who it is for and what they will find."
+>
+  <CardGrid items={learnCards} columns="three" />
+</SectionShell>

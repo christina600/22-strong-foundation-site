@@ -1,0 +1,138 @@
+---
+/**
+ * Giving Circle — the monthly membership story (Leo-coded).
+ *
+ * Illustrates WHY someone would want to belong to this named group rather
+ * than just listing prices: a collective-impact spotlight (what members
+ * achieve together), an identity beat (who you become), the tiers (find
+ * your place), and belonging proof (member benefits + a member's voice),
+ * resolving to one proud CTA. All copy lives in giving-circle.json.
+ *
+ * Props:
+ *   showHead — render the eyebrow/title/intro header. Set false on the
+ *              dedicated /giving-circle page, where the page hero already
+ *              carries that introduction (avoids a double hero — Leo's
+ *              "two stars on one stage" blind spot).
+ */
+
+import circle from "../../content/giving-circle.json";
+import site from "../../content/site.json";
+
+interface Props {
+  showHead?: boolean;
+}
+
+const { showHead = true } = Astro.props;
+
+// Join routes to the giving form itself (the act of giving), not just the top
+// of the donate page. #give is the anchor on the DonationEmbed section.
+const joinHref = "/donate#give";
+
+// Carry a chosen monthly amount from each tier into the form. The most-joined
+// tier becomes the default for the headline "Join the Circle" CTA, so that
+// button lands on the form with a sensible monthly amount already in hand.
+const amountOf = (a: string | number) => String(a).replace(/[^0-9]/g, "");
+const featuredTier = circle.tiers.find((t) => t.featured) ?? circle.tiers[0];
+const featuredAmount = amountOf(featuredTier.amount);
+
+// Show the reporting period only once a real value replaces the template
+// placeholder, so the "as of" date never reads as a stub.
+const isSet = (v: unknown) => !!v && !String(v).startsWith("TEMPLATE:");
+const reportingPeriod = isSet(site.reportingPeriod) ? site.reportingPeriod : "";
+---
+
+<section id="giving-circle" class="section giving-circle">
+  <div class="container">
+    {showHead && (
+      <div class="giving-circle-head scroll-dynamic">
+        <span class="eyebrow">{circle.eyebrow}</span>
+        <h2>{circle.title}</h2>
+        <p class="giving-circle-intro">{circle.intro}</p>
+      </div>
+    )}
+
+    {/* Collective impact — the proud, shared achievement (Leo: the spotlight
+        on what the group does together, so the individual feels part of it). */}
+    <div class="giving-circle-impact scroll-dynamic">
+      {circle.hook && <p class="giving-circle-hook">{circle.hook}</p>}
+      <div class="giving-impact-figures">
+        <div class="giving-impact-figure">
+          <span class="giving-impact-number">{circle.impact.amount}</span>
+          <span class="giving-impact-label">{circle.impact.amountLabel}</span>
+        </div>
+        <div class="giving-impact-figure">
+          <span class="giving-impact-number">{circle.impact.members}</span>
+          <span class="giving-impact-label">{circle.impact.membersLabel}</span>
+        </div>
+      </div>
+      <p class="giving-impact-body">{circle.impact.body}</p>
+      {/* Trust: anchor the figures above to a checkable, dated source. */}
+      <p class="giving-impact-verify">
+        {reportingPeriod && <span>Circle figures current as of {reportingPeriod}. </span>}
+        <a href={circle.impact.verifyHref}>{circle.impact.verifyLabel} &rarr;</a>
+      </p>
+    </div>
+
+    {/* Identity — who you become by joining (not features, but belonging). */}
+    <div class="giving-circle-become scroll-dynamic">
+      <span class="giving-become-label">{circle.become.label}</span>
+      <p class="giving-become-body">{circle.become.body}</p>
+    </div>
+
+    {/* Find your place — the tiers as ways in, not a price wall.
+
+        MONTHLY-GIVING BEST PRACTICES — for filling in the [bracketed] slots in
+        giving-circle.json. These double as brainstorming prompts with a client:
+          • Keep monthly amounts low and close together (e.g. 10 / 20 / 35) and feature
+            a middle "anchor" tier — recurring gifts convert on attainable sums, not
+            one-time-sized asks.
+          • Make each tier's line ONE concrete, repeatable outcome ("every month, X").
+            Specific and tangible beats general.
+          • Lead with identity/belonging (the named Circle); back it with collective
+            proof (member count + monthly total).
+          • Benefits = stewardship that lowers churn: regular updates, recognition,
+            insider access, an annual invite.
+          • Always reassure control ("change or pause anytime") — it removes the
+            recurring-commitment fear. */}
+    {circle.tiersTitle && <h3 class="giving-tiers-title">{circle.tiersTitle}</h3>}
+    <div class="giving-circle-tiers">
+      {circle.tiers.map((tier) => (
+        <div class={`giving-tier${tier.featured ? " is-featured" : ""}`}>
+          {tier.featured && circle.featuredBadge && <span class="giving-tier-badge">{circle.featuredBadge}</span>}
+          <span class="giving-tier-amount">{tier.amount}<span class="giving-tier-period">/mo</span></span>
+          <span class="giving-tier-name">{tier.name}</span>
+          <p class="giving-tier-desc">{tier.desc}</p>
+          <ul class="giving-tier-perks">
+            {tier.perks.map((perk) => <li>{perk}</li>)}
+          </ul>
+          <a
+            class="giving-tier-cta"
+            href="/donate#give"
+            data-give-amount={amountOf(tier.amount)}
+            data-give-label={tier.name}
+          >Give {tier.amount}/mo &rarr;</a>
+        </div>
+      ))}
+    </div>
+
+    {/* Belonging — what every member gets + a member's own voice. */}
+    <div class="giving-circle-belong">
+      <div class="giving-benefits scroll-dynamic">
+        <h3 class="giving-benefits-title">{circle.benefits.title}</h3>
+        <ul class="giving-benefits-list">
+          {circle.benefits.items.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+      <figure class="giving-voice scroll-dynamic">
+        <blockquote>{circle.voice.quote}</blockquote>
+        <figcaption>{circle.voice.attribution}</figcaption>
+      </figure>
+    </div>
+
+    {/* One proud, singular call to belong. */}
+    <div class="giving-circle-cta scroll-dynamic">
+      <a class="btn" href={joinHref} data-give-amount={featuredAmount} data-give-label={featuredTier.name}>{circle.cta.label} &rarr;</a>
+      <p class="giving-cta-note">{circle.cta.note}</p>
+    </div>
+  </div>
+</section>

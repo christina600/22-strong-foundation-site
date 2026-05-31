@@ -1,0 +1,24 @@
+---
+/**
+ * FAQ page.
+ */
+
+import Page from "../layouts/Page.astro";
+import FAQ from "../components/sections/FAQ.astro";
+import ContactPreview from "../components/sections/ContactPreview.astro";
+
+import pageData from "../content/pages/faq.json";
+---
+
+<Page
+  title={pageData.label}
+  eyebrow={pageData.eyebrow}
+  headline={pageData.title}
+  intro={pageData.intro}
+  currentPage="get-help"
+  description={pageData.metaDescription}
+  ogImage={pageData.ogImage}
+>
+  <FAQ />
+  <ContactPreview />
+</Page>

@@ -1,0 +1,31 @@
+---
+/**
+ * Section shell — the universal wrapper for content sections.
+ * Replaces the old sectionShell() JS function with a real component.
+ *
+ * Usage:
+ *   <SectionShell eyebrow="Programs" title="Our Services" body="We offer...">
+ *     <div class="grid three">...</div>
+ *   </SectionShell>
+ */
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  body?: string;
+  extraClass?: string;
+  /** Optional anchor id, so other sections can deep-link to this one. */
+  id?: string;
+}
+
+const { eyebrow, title, body, extraClass = "", id } = Astro.props;
+---
+
+<section id={id} class:list={["section", extraClass]}>
+  <div class="container">
+    <span class="eyebrow">{eyebrow}</span>
+    <h2>{title}</h2>
+    {body && <p>{body}</p>}
+    <slot />
+  </div>
+</section>

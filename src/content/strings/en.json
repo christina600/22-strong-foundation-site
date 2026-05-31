@@ -1,0 +1,81 @@
+{
+  "nav": {
+    "skipToContent": "Skip to content",
+    "menu": "Menu",
+    "sectionOverview": "Section overview"
+  },
+  "hero": {
+    "impactSnapshot": "Organization impact snapshot"
+  },
+  "donation": {
+    "giveNow": "Give now",
+    "monthly": "MONTHLY",
+    "oneTime": "ONE-TIME",
+    "mostImpact": "MOST IMPACT",
+    "otherAmount": "Other amount",
+    "customAmountLabel": "Enter a custom donation amount",
+    "yourImpact": "Your impact",
+    "continueToCheckout": "Continue to secure checkout",
+    "footnote": "Takes 60 seconds · Secure & encrypted · Tax-deductible",
+    "donorTrust": "Donor trust",
+    "giftFrequency": "Gift frequency",
+    "monthlyGift": "Monthly gift",
+    "oneTimeGift": "One-time gift",
+    "annualCommitment": "Annual commitment",
+    "giftAmountOptions": "Gift amount options"
+  },
+  "sections": {
+    "seeImpact": "See Impact",
+    "financialDisclosures": "Financial Disclosures",
+    "exploreImpact": "Explore impact",
+    "financialTransparency": "Financial transparency",
+    "readMore": "Read more",
+    "learnMore": "Learn more",
+    "viewAll": "View all",
+    "backToTop": "Back to top",
+    "beforeLaunchChecklist": "Before launch checklist",
+    "reviewNote": "Review note:",
+    "home": "Home"
+  },
+  "forms": {
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "submit": "Submit",
+    "sending": "Sending...",
+    "required": "Required",
+    "newsletterPlaceholder": "Enter your email",
+    "subscribe": "Subscribe",
+    "firstName": "First name",
+    "emailAddress": "Email address",
+    "reasonForContact": "Reason for contact",
+    "submitInquiry": "Submit inquiry"
+  },
+  "footer": {
+    "allRightsReserved": "All rights reserved",
+    "taxDeductible": "Tax-deductible",
+    "donorBillOfRights": "Donor Bill of Rights",
+    "call": "Call",
+    "getHelp": "Get Help",
+    "privacyPolicy": "Privacy Policy",
+    "confidentialityPolicy": "Confidentiality Policy",
+    "accessibility": "Accessibility",
+    "termsOfUse": "Terms of Use",
+    "nonDiscrimination": "Non-Discrimination",
+    "financialDisclosures": "Financial Disclosures"
+  },
+  "accessibility": {
+    "primaryNavigation": "Primary navigation",
+    "mobileNavigation": "Mobile navigation",
+    "goToHomepage": "Go to homepage",
+    "breadcrumb": "Breadcrumb",
+    "currentPage": "Current page",
+    "relatedLegalPages": "Related legal pages",
+    "otherLegalPages": "Other legal and accountability pages"
+  },
+  "safety": {
+    "exitSite": "Exit site",
+    "safetyAlert": "Safety alert"
+  }
+}

@@ -1,0 +1,24 @@
+---
+/**
+ * Safety Planning page.
+ */
+
+import Page from "../layouts/Page.astro";
+import PlanningChecklist from "../components/sections/PlanningChecklist.astro";
+import ContactPreview from "../components/sections/ContactPreview.astro";
+
+import pageData from "../content/pages/safety-planning.json";
+---
+
+<Page
+  title={pageData.label}
+  eyebrow={pageData.eyebrow}
+  headline={pageData.title}
+  intro={pageData.intro}
+  currentPage="get-help"
+  description={pageData.metaDescription}
+  ogImage={pageData.ogImage}
+>
+  <PlanningChecklist />
+  <ContactPreview />
+</Page>

@@ -1,0 +1,48 @@
+---
+/**
+ * Split Pane — 50/50 image + text side by side.
+ * Great for history sections, program details, about pages.
+ *
+ * Props:
+ *   eyebrow     — small label above heading
+ *   title       — the heading
+ *   body        — paragraph text
+ *   imageLabel  — accessible alt text for the image
+ *   imageClass  — CSS class that sets the background-image
+ *   imageRight  — if true, image on the right (default). False = image on left.
+ */
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  body?: string;
+  imageLabel?: string;
+  imageClass?: string;
+  imageRight?: boolean;
+}
+
+const {
+  eyebrow,
+  title,
+  body,
+  imageLabel = "TEMPLATE: Describe the image accessibly.",
+  imageClass = "",
+  imageRight = true,
+} = Astro.props;
+---
+
+<section class:list={["section", "split-pane", { "split-pane-reversed": !imageRight }]}>
+  <div class="container split-pane-grid">
+    <div class="split-pane-text">
+      {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+      <h2>{title}</h2>
+      {body && <p>{body}</p>}
+      <slot />
+    </div>
+    <div
+      class:list={["split-pane-image", imageClass]}
+      role="img"
+      aria-label={imageLabel}
+    ></div>
+  </div>
+</section>

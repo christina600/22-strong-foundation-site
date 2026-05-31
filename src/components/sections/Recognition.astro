@@ -1,0 +1,68 @@
+---
+/**
+ * Recognition — the credibility band. Seals, ratings, awards, press.
+ *
+ * Leo lens: "the decorated achiever." Funders filter by credibility
+ * signals before they read a word of narrative. This is the trophy
+ * shelf the testimonials section deliberately leaves out — kept
+ * separate so warmth (Cancer) and recognition (Leo) don't compete.
+ *
+ * Replace each placeholder mark with a real seal/logo image. Delete
+ * any row you haven't earned yet — an empty badge is worse than none.
+ */
+
+import SectionShell from "../ui/SectionShell.astro";
+import site from "../../content/site.json";
+---
+
+<SectionShell
+  eyebrow="Recognition"
+  title="TEMPLATE: Headline — e.g. 'Independently verified'"
+  body="TEMPLATE: One line — e.g. 'The ratings and seals funders check before they give.'"
+  extraClass="recognition-section"
+>
+  <!-- SEALS / RATINGS — swap each mark for the real badge image. -->
+  <ul class="recognition-grid">
+    <li class="recognition-seal">
+      <div class="recognition-seal-mark" aria-hidden="true">★★★★</div>
+      <p class="recognition-seal-label">TEMPLATE: Rating seal — e.g. 'Charity Navigator, Four-Star'</p>
+      <p class="recognition-seal-meta">TEMPLATE: Detail — e.g. 'Rated 3 years running'</p>
+    </li>
+
+    <li class="recognition-seal">
+      <div class="recognition-seal-mark" aria-hidden="true">✓</div>
+      <p class="recognition-seal-label">TEMPLATE: Transparency seal — e.g. 'Candid Gold Seal'</p>
+      <p class="recognition-seal-meta">TEMPLATE: Year earned</p>
+    </li>
+
+    <li class="recognition-seal">
+      <div class="recognition-seal-mark" aria-hidden="true">◆</div>
+      <p class="recognition-seal-label">TEMPLATE: Accreditation — e.g. 'BBB Accredited Charity'</p>
+      <p class="recognition-seal-meta">TEMPLATE: Detail or member since</p>
+    </li>
+
+    <li class="recognition-seal">
+      <div class="recognition-seal-mark" aria-hidden="true">🏆</div>
+      <p class="recognition-seal-label">TEMPLATE: Award — e.g. 'Nonprofit of the Year'</p>
+      <p class="recognition-seal-meta">TEMPLATE: Awarding body &middot; Year</p>
+    </li>
+  </ul>
+
+  <!-- PRESS — optional. Delete if you have no coverage yet. -->
+  <div class="recognition-press">
+    <span class="section-kicker">As featured in</span>
+    <ul class="recognition-press-logos">
+      <li>TEMPLATE: Outlet</li>
+      <li>TEMPLATE: Outlet</li>
+      <li>TEMPLATE: Outlet</li>
+      <li>TEMPLATE: Outlet</li>
+    </ul>
+  </div>
+
+  <!-- The one giving door (Taurus). Placed after stories + proof, where
+       the reader is warmest — never mid-testimonial. -->
+  <div class="recognition-cta">
+    <p>TEMPLATE: A short line that turns earned trust into action — pick up the credibility the seals just established — e.g. 'The same standards these ratings measure are why your gift goes further here.'</p>
+    <a class="btn btn-donate" href={site.donateUrl}>{site.primaryCtaLabel}</a>
+  </div>
+</SectionShell>

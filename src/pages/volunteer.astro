@@ -1,0 +1,24 @@
+---
+/**
+ * Volunteer page.
+ */
+
+import Page from "../layouts/Page.astro";
+import InvolvementDetail from "../components/sections/InvolvementDetail.astro";
+import ContactPreview from "../components/sections/ContactPreview.astro";
+
+import pageData from "../content/pages/volunteer.json";
+---
+
+<Page
+  title={pageData.label}
+  eyebrow={pageData.eyebrow}
+  headline={pageData.title}
+  intro={pageData.intro}
+  currentPage="get-involved"
+  description={pageData.metaDescription}
+  ogImage={pageData.ogImage}
+>
+  <InvolvementDetail />
+  <ContactPreview />
+</Page>

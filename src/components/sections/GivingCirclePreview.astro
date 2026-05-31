@@ -1,0 +1,54 @@
+---
+/**
+ * Giving Circle Preview — the home-page teaser for monthly giving.
+ *
+ * A compact "spotlight" preview of the full Giving Circle section on
+ * /donate: it echoes that section's dark, burnt-orange treatment in a
+ * single contained card, shows the shared collective-impact proof
+ * (member count + monthly total, pulled from the SAME `impact` data the
+ * donate section renders — so the home and donate figures never drift),
+ * a short invitation, and a CTA that deep-links straight to the Circle
+ * on the donate page (/donate#giving-circle).
+ *
+ * Copy lives in the `teaser` block of giving-circle.json; the proof
+ * numbers come from the shared `impact` block. Styles live alongside the
+ * full section in styles/giving-circle.css (loaded globally via main.css).
+ */
+
+import circle from "../../content/giving-circle.json";
+
+const { teaser, impact } = circle;
+---
+
+<section class="section giving-teaser">
+  <div class="container">
+    <div class="giving-teaser-card">
+      <span class="eyebrow">{teaser.eyebrow}</span>
+      <h2 class="giving-teaser-title">{teaser.title}</h2>
+
+      <div class="giving-teaser-figures">
+        <div class="giving-teaser-figure">
+          <span class="giving-teaser-number">{impact.members}</span>
+          <span class="giving-teaser-figure-label">{teaser.membersLabel}</span>
+        </div>
+        <span class="giving-teaser-divider" aria-hidden="true"></span>
+        <div class="giving-teaser-figure">
+          <span class="giving-teaser-number">{impact.amount}</span>
+          <span class="giving-teaser-figure-label">{teaser.amountLabel}</span>
+        </div>
+      </div>
+
+      {/* Trust: let the numbers above be checked, not just asserted. */}
+      <p class="giving-teaser-source">
+        <a href={teaser.verifyHref}>{teaser.verifyLabel} &rarr;</a>
+      </p>
+
+      <p class="giving-teaser-body">{teaser.body}</p>
+
+      <div class="giving-teaser-cta">
+        <a class="btn" href="/donate#giving-circle">{teaser.linkLabel} &rarr;</a>
+        <p class="giving-teaser-note">{teaser.note}</p>
+      </div>
+    </div>
+  </div>
+</section>

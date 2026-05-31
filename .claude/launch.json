@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "client-22strong",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 4322,
+      "cwd": "/Users/christinatalleda/Developer/Clients/22 Strong Foundation"
+    }
+  ]
+}

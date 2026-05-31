@@ -1,0 +1,172 @@
+---
+/**
+ * Donation Embed — config-driven giving widget for the /donate page.
+ *
+ * Reads `donation` from site.json and renders the correct integration for the
+ * chosen platform. One switch per client, single source of truth:
+ *
+ *   site.json → "donation": {
+ *     "platform": "zeffy" | "givebutter" | "givelively",
+ *     "mode":     "embed" | "link",
+ *     ...per-platform ids + links
+ *   }
+ *
+ * Each platform embeds differently:
+ *   - Zeffy       → responsive <iframe> (embedUrl)
+ *   - Givebutter  → <givebutter-widget> web component + loader script (campaignId)
+ *   - GiveLively  → widget <div> + loader script (widgetId)
+ *
+ * If `mode` is "link", or the platform isn't configured yet, we fall back to a
+ * prominent "Donate securely" button using that platform's hosted link.
+ *
+ * MAXIMIZING MONTHLY DONORS — the highest-leverage settings live in the
+ * platform's OWN dashboard, not here. Before launch, in your giving platform:
+ *   1. Set the form's default frequency to MONTHLY / recurring.
+ *   2. Use lower, closer monthly tiers (e.g. 10 / 20 / 35 / 75) + a custom field
+ *      — separate from one-time tiers. Monthly converts on attainable amounts.
+ *   3. Keep one-time available but visually secondary (never hidden).
+ *   4. Add tangible monthly impact text per tier ("$20/mo funds … every month").
+ * The copy below reinforces those choices with reassurance + trust, tastefully.
+ */
+
+import site from "../../content/site.json";
+
+const d = (site as any).donation ?? {};
+const platform: string = d.platform ?? "zeffy";
+const mode: string = d.mode ?? "embed";
+const cfg = d[platform] ?? {};
+
+// A value is "not set yet" if it's empty or still a TEMPLATE: placeholder.
+const unset = (v: unknown) => !v || String(v).startsWith("TEMPLATE:");
+
+const link: string = !unset(cfg.link) ? cfg.link : site.donateUrl;
+const linkReady = !unset(link);
+
+const zeffyReady = platform === "zeffy" && !unset(cfg.embedUrl);
+const givebutterReady = platform === "givebutter" && !unset(cfg.campaignId);
+const givelivelyReady = platform === "givelively" && !unset(cfg.widgetId);
+const canEmbed = mode === "embed" && (zeffyReady || givebutterReady || givelivelyReady);
+
+const platformLabel: Record<string, string> = {
+  zeffy: "Zeffy",
+  givebutter: "Givebutter",
+  givelively: "GiveLively",
+};
+---
+
+<div class="donation-embed" data-platform={platform}>
+  {/* Reflects a monthly tier chosen up in the Giving Circle. Hidden until a
+      choice arrives (via tier click or an ?amount= link). */}
+  <p class="donation-embed-selected" data-give-hint hidden></p>
+
+  {canEmbed && platform === "zeffy" && (
+    <div class="donation-embed-frame">
+      <iframe
+        title="Secure donation form"
+        src={cfg.embedUrl}
+        loading="lazy"
+        allow="payment"
+        allowtransparency="true"
+      ></iframe>
+    </div>
+  )}
+
+  {canEmbed && platform === "givebutter" && (
+    <div class="donation-embed-widget">
+      <givebutter-widget id={cfg.campaignId}></givebutter-widget>
+      <script is:inline async src={`https://widgets.givebutter.com/latest.umd.cjs?acpid=${cfg.campaignId}`}></script>
+    </div>
+  )}
+
+  {canEmbed && platform === "givelively" && (
+    <div class="donation-embed-widget">
+      <div id="give-lively-widget" class="gl-simple-donation-widget"></div>
+      <script is:inline src={`https://secure.givelively.org/widgets/simple_donation/${cfg.widgetId}.js`}></script>
+    </div>
+  )}
+
+  {!canEmbed && linkReady && (
+    <div class="donation-embed-fallback">
+      <p>Give securely through {platformLabel[platform] || "our giving platform"}.</p>
+      <a class="btn btn-donate" href={link} target="_blank" rel="noopener noreferrer">
+        Donate securely &rarr;
+      </a>
+    </div>
+  )}
+
+  {!canEmbed && !linkReady && (
+    <div class="donation-embed-setup">
+      <p>
+        <strong>Donation platform not connected yet.</strong> In
+        <code>src/content/site.json</code>, set <code>donation.platform</code> and
+        fill in that platform's embed id (or link) to go live.
+      </p>
+    </div>
+  )}
+
+  <p class="donation-embed-reassure">You can change or cancel a monthly gift anytime.</p>
+
+  {platform === "zeffy" && (
+    <p class="donation-embed-note">
+      Zeffy is free for nonprofits, so 100% of your gift reaches us. At checkout you
+      may see an optional tip to Zeffy &mdash; it's optional and can be set to $0.
+    </p>
+  )}
+</div>
+
+<script>
+  /**
+   * Carry a chosen monthly tier into the giving form.
+   *
+   * Tier cards and the "Join the Circle" CTA declare `data-give-amount`
+   * (a dollar number) and `data-give-label`. When one is clicked — or when
+   * the page is opened with an `?amount=` query — that choice is reflected
+   * right at the form, and any hosted donate link is prefilled with the
+   * amount + monthly frequency. A third-party iframe can't be prefilled
+   * cross-origin, so there the visible hint guides the donor to set it.
+   */
+  const FREQUENCY = "monthly";
+
+  function applyAmount(amount: string, label?: string | null) {
+    if (!amount) return;
+    const root = document.querySelector<HTMLElement>(".donation-embed");
+    if (!root) return;
+
+    // 1) Reflect the choice at the form.
+    const hint = root.querySelector<HTMLElement>("[data-give-hint]");
+    if (hint) {
+      hint.textContent = label
+        ? `Selected: ${label} — $${amount}/month. Confirm your gift below.`
+        : `Selected: $${amount}/month. Confirm your gift below.`;
+      hint.hidden = false;
+    }
+
+    // 2) Prefill hosted donate links (platforms that don't read these ignore them).
+    root.querySelectorAll<HTMLAnchorElement>("a[href]").forEach((a) => {
+      try {
+        const url = new URL(a.href, window.location.origin);
+        if (url.protocol === "http:" || url.protocol === "https:") {
+          url.searchParams.set("amount", amount);
+          url.searchParams.set("frequency", FREQUENCY);
+          a.href = url.toString();
+        }
+      } catch {
+        /* leave non-URL hrefs untouched */
+      }
+    });
+  }
+
+  // A tier / CTA anywhere on the page was chosen. The anchor's own href (#give)
+  // still scrolls to the form as usual.
+  document.addEventListener("click", (event) => {
+    const target = event.target as HTMLElement | null;
+    const el = target?.closest<HTMLElement>("[data-give-amount]");
+    if (!el) return;
+    applyAmount(el.dataset.giveAmount ?? "", el.dataset.giveLabel);
+  });
+
+  // Cross-page entry, e.g. /donate?amount=25&label=Sustainer
+  const params = new URLSearchParams(window.location.search);
+  const initial = params.get("amount") ?? params.get("give");
+  if (initial) applyAmount(initial, params.get("label"));
+</script>

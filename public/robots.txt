@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TEMPLATE: Replace with your production URL before launch
+Sitemap: https://www.yourorganization.org/sitemap-index.xml

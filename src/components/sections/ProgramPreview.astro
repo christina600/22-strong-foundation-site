@@ -1,0 +1,20 @@
+---
+/**
+ * Program Preview — programs list with link to full grid.
+ * Reads programs from programs.json.
+ */
+
+import SectionShell from "../ui/SectionShell.astro";
+import ProgramsList from "./ProgramsList.astro";
+---
+
+<SectionShell
+  eyebrow="Programs"
+  title="Better in 90 — a structured path back to function."
+  body="Three phases over 90 days — targeted care, whole-body recovery, and maintenance — with continued support beyond Day 90 for as long as we can provide it."
+>
+  <div class="button-row section-button-row" style="margin-bottom:8px;">
+    <a class="btn-outline" href="/programs">All programs</a>
+  </div>
+  <ProgramsList />
+</SectionShell>

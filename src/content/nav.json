@@ -1,0 +1,31 @@
+[
+  {
+    "label": "Programs",
+    "page": "programs",
+    "children": [
+      { "label": "Phase I — Targeted Care", "page": "program-1", "desc": "Days 1–30: evaluation, treatment, strength & rehab" },
+      { "label": "Phase II — Whole Body Care", "page": "program-emergency", "desc": "Days 31–60: full-body recovery & conditioning" },
+      { "label": "Phase III — Maintenance Care", "page": "program-direct-services", "desc": "Days 61–90 and continued maintenance" }
+    ]
+  },
+  {
+    "label": "About Us",
+    "page": "about",
+    "children": [
+      { "label": "Our History", "page": "about#history", "desc": "How and why we started" },
+      { "label": "Board of Directors", "page": "about#board", "desc": "Who governs the organization" },
+      { "label": "Financials", "page": "financials", "desc": "Filings, accountability, and donor rights" }
+    ]
+  },
+  {
+    "label": "Get Involved",
+    "page": "get-involved",
+    "children": [
+      { "label": "Volunteer", "page": "volunteer", "desc": "Lend your time and skills" },
+      { "label": "Ways to give", "page": "donate", "desc": "Fund participant care access" },
+      { "label": "Newsletter", "page": "newsletter", "desc": "Stay updated on our work" }
+    ]
+  },
+  { "label": "Contact", "page": "contact" },
+  { "label": "Donate", "page": "donate", "cta": true }
+]

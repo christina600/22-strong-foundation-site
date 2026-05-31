@@ -1,0 +1,24 @@
+---
+/**
+ * Terms of Use page.
+ */
+
+import Page from "../layouts/Page.astro";
+import PolicyPlaceholder from "../components/sections/PolicyPlaceholder.astro";
+import ContactPreview from "../components/sections/ContactPreview.astro";
+
+import pageData from "../content/pages/terms.json";
+---
+
+<Page
+  title={pageData.label}
+  eyebrow={pageData.eyebrow}
+  headline={pageData.title}
+  intro={pageData.intro}
+  currentPage="terms"
+  description={pageData.metaDescription}
+  ogImage={pageData.ogImage}
+>
+  <PolicyPlaceholder policyLabel="Terms of Use" />
+  <ContactPreview />
+</Page>

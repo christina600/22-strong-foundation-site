@@ -1,0 +1,82 @@
+{
+  "eyebrow": "Monthly Giving",
+  "title": "Join the [Organization] Circle",
+  "hook": "The steady few who show up every month — so [the people you serve] never face it alone.",
+  "intro": "The [Organization] Circle is our community of monthly donors. Your recurring gift funds [the core programs your mission depends on] — the steady, year-round work that one-time gifts can't sustain. Not just once. Every month.",
+  "become": {
+    "label": "When you join, you become",
+    "body": "one of the reliable few this mission can count on — not a one-time gift, but a standing promise. [The people you serve] know the Circle is there because you are."
+  },
+  "impact": {
+    "amount": "$X,XXX",
+    "amountLabel": "given together each month by Circle members",
+    "members": "XXX",
+    "membersLabel": "members and growing",
+    "body": "Sustained monthly giving lets us staff programs year-round, respond the moment someone reaches out, and plan ahead — the kind of stability one-time gifts can't provide.",
+    "verifyLabel": "See our financial disclosures",
+    "verifyHref": "/financials"
+  },
+  "tiersTitle": "Find your place in the circle",
+  "featuredBadge": "Recommended",
+  "tiers": [
+    {
+      "amount": "$X",
+      "name": "Supporter",
+      "desc": "Every month, covers [one small, concrete need].",
+      "perks": [
+        "Monthly impact update",
+        "Circle member recognition"
+      ],
+      "featured": false
+    },
+    {
+      "amount": "$XX",
+      "name": "Sustainer",
+      "desc": "Each month, sustains [an ongoing outcome for someone you serve].",
+      "perks": [
+        "Monthly impact update",
+        "Behind-the-scenes dispatch",
+        "Annual member gathering invitation"
+      ],
+      "featured": true
+    },
+    {
+      "amount": "$XXX",
+      "name": "Anchor",
+      "desc": "Month after month, anchors [a bigger commitment — a program or a place].",
+      "perks": [
+        "All Sustainer benefits",
+        "Quarterly call with program staff"
+      ],
+      "featured": false
+    }
+  ],
+  "benefits": {
+    "title": "Every Circle member receives",
+    "items": [
+      "A personal welcome from the [Organization] team.",
+      "A monthly dispatch — real stories and updates from inside the work.",
+      "An annual invitation to see your impact in person.",
+      "The knowledge that you are part of what keeps this mission going."
+    ]
+  },
+  "voice": {
+    "quote": "Quote a monthly donor here — in their own words, why they give every month. Specific and personal beats polished.",
+    "attribution": "Member name, Circle member since YYYY"
+  },
+  "cta": {
+    "label": "Join the Circle",
+    "note": "Start, change, or pause your monthly gift anytime."
+  },
+  "teaser": {
+    "eyebrow": "Monthly Giving",
+    "title": "Be one of the people this mission counts on.",
+    "body": "Join the [Organization] Circle — monthly donors who show up every month, not just once.",
+    "membersLabel": "members and growing",
+    "amountLabel": "given together every month",
+    "linkLabel": "Meet the Circle",
+    "note": "Start, change, or pause your monthly gift anytime.",
+    "verifyLabel": "How we verify these numbers",
+    "verifyHref": "/financials"
+  }
+}

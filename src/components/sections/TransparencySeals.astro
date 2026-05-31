@@ -1,0 +1,38 @@
+---
+/**
+ * Transparency Seals — third-party ratings & accountability seals.
+ * Candid (GuideStar), Charity Navigator, BBB Wise Giving, and similar.
+ * Display a seal only once it has actually been earned.
+ */
+
+import SectionShell from "../ui/SectionShell.astro";
+import site from "../../content/site.json";
+---
+
+<SectionShell
+  id="ratings"
+  eyebrow="Ratings & seals"
+  title="TEMPLATE: Independent verification headline."
+  body="TEMPLATE: Third-party ratings let donors verify accountability without taking your word for it. Show a seal only once it has been earned."
+>
+  <div class="grid three">
+    <div class="card">
+      <h3>Candid (GuideStar)</h3>
+      <p>TEMPLATE: Name your Seal of Transparency level (Bronze–Platinum) and link to your Candid profile once live.</p>
+      <span class="tag">TEMPLATE: Seal level</span>
+    </div>
+    <div class="card">
+      <h3>Charity Navigator</h3>
+      <p>TEMPLATE: Add your rating or "rated" status and link to your public profile when available.</p>
+      <span class="tag">TEMPLATE: Rating</span>
+    </div>
+    <div class="card">
+      <h3>BBB Wise Giving Alliance</h3>
+      <p>TEMPLATE: Note accreditation against the 20 Standards for Charity Accountability, if applicable.</p>
+      <span class="tag">TEMPLATE: Status</span>
+    </div>
+  </div>
+  <div class="trust-note">
+    <strong>Verify us:</strong> Look up {site.orgName}, EIN {site.ein}, in any public charity database. TEMPLATE: Add direct profile links before launch.
+  </div>
+</SectionShell>

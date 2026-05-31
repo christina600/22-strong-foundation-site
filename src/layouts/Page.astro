@@ -1,0 +1,56 @@
+---
+/**
+ * Standard page layout — wraps content in Base + Header + Hero + Footer.
+ *
+ * For interior pages (everything except homepage). The homepage uses
+ * Base.astro directly with HeroHome instead of this layout.
+ *
+ * Props:
+ *   title       — page title for browser tab
+ *   eyebrow     — small label above the heading
+ *   headline    — the big h1
+ *   intro       — lead paragraph
+ *   actions     — optional hero CTA buttons
+ *   currentPage — slug for active-nav highlighting
+ *   description — meta description
+ *   ogImage     — social sharing image
+ */
+
+import Base from "./Base.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
+import Footer from "../components/Footer.astro";
+
+interface Action {
+  label: string;
+  page?: string;
+  href?: string;
+  style?: string;
+}
+
+interface Props {
+  title: string;
+  eyebrow: string;
+  headline: string;
+  intro: string;
+  actions?: Action[];
+  currentPage: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const { title, eyebrow, headline, intro, actions, currentPage, description, ogImage } = Astro.props;
+---
+
+<Base title={title} description={description} ogImage={ogImage}>
+  <Header currentPage={currentPage} />
+  <Breadcrumb currentPage={currentPage} label={title} />
+  <Hero eyebrow={eyebrow} title={headline} intro={intro} actions={actions} />
+
+  <main id="main" tabindex="-1">
+    <slot />
+  </main>
+
+  <Footer />
+</Base>

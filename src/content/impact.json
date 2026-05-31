@@ -1,0 +1,10 @@
+[
+  { "number": "TEMPLATE", "label": "TEMPLATE: Key service metric (e.g. individuals served)" },
+  { "number": "TEMPLATE", "label": "TEMPLATE: Capacity metric (e.g. beds or slots)" },
+  { "number": "TEMPLATE", "label": "TEMPLATE: Volume metric (e.g. bed nights or service units)" },
+  { "number": "TEMPLATE", "label": "TEMPLATE: Specialized service count" },
+  { "number": "TEMPLATE", "label": "TEMPLATE: Another specialized service count" },
+  { "number": "TEMPLATE", "label": "TEMPLATE: Contact or call volume" },
+  { "number": "TEMPLATE", "label": "TEMPLATE: Financial efficiency metric (e.g. cents per dollar to programs)" },
+  { "number": "TEMPLATE", "label": "TEMPLATE: Years of service or organizational milestone" }
+]

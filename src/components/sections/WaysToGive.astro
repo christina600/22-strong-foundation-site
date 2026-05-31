@@ -1,0 +1,118 @@
+---
+/**
+ * Ways to Give — every common giving method, grouped so donors find their lane
+ * without hunting. Sits below the monthly-sustainer form on the donate page.
+ * Real org tokens (legal name, EIN, address, email) fill in where a method
+ * genuinely needs them; everything else is cause-neutral TEMPLATE copy.
+ */
+
+import SectionShell from "../ui/SectionShell.astro";
+import site from "../../content/site.json";
+---
+
+<SectionShell
+  id="ways-to-give"
+  eyebrow="Ways to give"
+  title="Find the way that fits you."
+  body="A monthly or one-time gift is the simplest place to start, but it is not the only way to help. Choose the path that works best for you."
+>
+  <div class="grid four">
+    <div class="card">
+      <h3>One-time gift</h3>
+      <p>Prefer to give once? Use the form above and choose a one-time amount.</p>
+      <a class="card-link" href="#give">Give once &rarr;</a>
+    </div>
+    <div class="card">
+      <h3>Text-to-give</h3>
+      <p>Give in seconds from your phone — no app, no account. TEMPLATE: Add your text-to-give keyword and number once your platform is set up (for example, text GIVE to 00000).</p>
+    </div>
+    <div class="card">
+      <h3>Gift by check or mail</h3>
+      <p>Make checks payable to {site.orgName} and mail to:</p>
+      <p>{site.address}</p>
+    </div>
+    <div class="card">
+      <h3>In-kind donation</h3>
+      <p>TEMPLATE: We accept in-kind gifts that match current need, safety, and storage capacity. Email {site.email} before sending items.</p>
+    </div>
+  </div>
+</SectionShell>
+
+<SectionShell
+  eyebrow="Tax-smart giving"
+  title="Make your gift go further."
+  body="Giving non-cash assets can mean a bigger gift to the mission and a better tax outcome for you. Talk to your advisor about what fits your situation."
+>
+  <div class="grid four">
+    <div class="card">
+      <h3>Donor-advised fund (DAF)</h3>
+      <p>Recommend a grant through your donor-advised fund using legal name {site.orgName} and EIN {site.ein}.</p>
+    </div>
+    <div class="card">
+      <h3>Stock &amp; securities</h3>
+      <p>Gifts of appreciated stock can avoid capital-gains tax. TEMPLATE: Add your brokerage name, DTC number, and account number, then notify {site.email} so we can match your gift.</p>
+    </div>
+    <div class="card">
+      <h3>Cryptocurrency</h3>
+      <p>Donating crypto directly can avoid capital-gains tax and is deductible at fair market value. TEMPLATE: Add your crypto giving link or wallet/processor details (for example, The Giving Block).</p>
+    </div>
+    <div class="card">
+      <h3>IRA (QCD)</h3>
+      <p>If you are 70&frac12; or older, a Qualified Charitable Distribution from your IRA can go directly to {site.orgName}, EIN {site.ein}. TEMPLATE: Add transfer instructions.</p>
+    </div>
+  </div>
+</SectionShell>
+
+<SectionShell
+  eyebrow="Workplace giving"
+  title="Multiply your impact at work."
+  body="Many employers will match your gift or let you give straight from your paycheck — an easy way to double what you give."
+>
+  <div class="grid two">
+    <div class="card">
+      <h3>Matching gifts</h3>
+      <p>TEMPLATE: Many employers match employee donations. Check your company's matching program and enter {site.orgName}, EIN {site.ein}.</p>
+    </div>
+    <div class="card">
+      <h3>Workplace &amp; payroll campaigns</h3>
+      <p>TEMPLATE: Give through payroll deduction or a workplace campaign (for example United Way or the CFC). Add your campaign or CFC code here.</p>
+    </div>
+  </div>
+</SectionShell>
+
+<SectionShell
+  eyebrow="Fundraise for us"
+  title="Rally your community."
+  body="Some of the most powerful support comes from people who raise money on our behalf. Turn your milestones and your networks into impact for the mission."
+>
+  <div class="grid two">
+    <div class="card">
+      <h3>Start a fundraiser</h3>
+      <p>Turn a birthday, race, or milestone into support for {site.orgName}. TEMPLATE: Add your peer-to-peer fundraising page link so supporters can launch their own campaign.</p>
+    </div>
+    <div class="card">
+      <h3>Social media fundraisers</h3>
+      <p>Raise money where your community already is. TEMPLATE: Add instructions or links for Facebook and Instagram fundraisers, or your social fundraising tools.</p>
+    </div>
+  </div>
+</SectionShell>
+
+<SectionShell
+  eyebrow="Planned giving"
+  title="Leave a lasting legacy."
+  body="A planned gift costs nothing today and helps secure the mission for the people you will never meet."
+>
+  <div class="grid two">
+    <div class="card">
+      <h3>Bequests &amp; wills</h3>
+      <p>Name {site.orgName} (EIN {site.ein}) in your will or trust. TEMPLATE: Sample bequest language is available on request.</p>
+    </div>
+    <div class="card">
+      <h3>Beneficiary designations</h3>
+      <p>TEMPLATE: Name us as a beneficiary of a retirement account, life-insurance policy, or donor-advised fund.</p>
+    </div>
+  </div>
+  <div class="trust-note">
+    <strong>Where your money goes:</strong> Every gift is backed by public filings and audited financials. Review our <a href="/financials">financials &amp; accountability</a>, or email {site.email} with any giving question.
+  </div>
+</SectionShell>

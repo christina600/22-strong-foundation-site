@@ -1,0 +1,17 @@
+---
+/**
+ * Involvement Grid — ways to help cards.
+ */
+
+import SectionShell from "../ui/SectionShell.astro";
+import CardGrid from "../ui/CardGrid.astro";
+import involvementCards from "../../content/involvement.json";
+---
+
+<SectionShell
+  eyebrow="Ways to help"
+  title="Let supporters choose their capacity."
+  body="TEMPLATE: List the ways people can support your organization."
+>
+  <CardGrid items={involvementCards} columns="three" />
+</SectionShell>

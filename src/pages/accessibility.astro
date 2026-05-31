@@ -1,0 +1,24 @@
+---
+/**
+ * Accessibility page.
+ */
+
+import Page from "../layouts/Page.astro";
+import PolicyPlaceholder from "../components/sections/PolicyPlaceholder.astro";
+import ContactPreview from "../components/sections/ContactPreview.astro";
+
+import pageData from "../content/pages/accessibility.json";
+---
+
+<Page
+  title={pageData.label}
+  eyebrow={pageData.eyebrow}
+  headline={pageData.title}
+  intro={pageData.intro}
+  currentPage="accessibility"
+  description={pageData.metaDescription}
+  ogImage={pageData.ogImage}
+>
+  <PolicyPlaceholder policyLabel="Accessibility" />
+  <ContactPreview />
+</Page>

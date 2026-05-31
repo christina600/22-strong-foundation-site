@@ -1,0 +1,56 @@
+---
+/**
+ * Homepage — the front door.
+ * Uses Base layout directly (not Page layout) because the homepage
+ * has a unique full-bleed hero with a donation widget.
+ */
+
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import HeroHome from "../components/HeroHome.astro";
+import Footer from "../components/Footer.astro";
+
+import DonationModule from "../components/sections/DonationModule.astro";
+import AboutPreview from "../components/sections/AboutPreview.astro";
+import Testimonials from "../components/sections/Testimonials.astro";
+import StoryInvite from "../components/sections/StoryInvite.astro";
+import ProgramPreview from "../components/sections/ProgramPreview.astro";
+import GivingCirclePreview from "../components/sections/GivingCirclePreview.astro";
+import ContactPreview from "../components/sections/ContactPreview.astro";
+
+// Parked until 22 Strong has real, sourced data / earned seals:
+//   - Problem.astro     → needs cited statistics + a documented outcome metric
+//   - Recognition.astro → seals/awards/press the org hasn't earned yet
+// Re-add the imports and the sections below once that content exists.
+
+import homeData from "../content/pages/home.json";
+---
+
+<Base
+  title={homeData.label}
+  description={homeData.metaDescription}
+  ogImage={homeData.ogImage}
+>
+  <Header currentPage="home" />
+
+  <HeroHome
+    eyebrow={homeData.eyebrow}
+    title={homeData.title}
+    intro={homeData.intro}
+    actions={homeData.actions}
+    proofStrip={homeData.proofStrip}
+  >
+    <DonationModule />
+  </HeroHome>
+
+  <main id="main" tabindex="-1">
+    <AboutPreview />
+    <ProgramPreview />
+    <Testimonials />
+    <StoryInvite />
+    <GivingCirclePreview />
+    <ContactPreview />
+  </main>
+
+  <Footer />
+</Base>

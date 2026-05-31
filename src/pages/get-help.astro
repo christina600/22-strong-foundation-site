@@ -1,0 +1,33 @@
+---
+/**
+ * Get Help page — the most important page for people seeking services.
+ * Digital safety alert is placed first (inside GetHelpWelcome component).
+ */
+
+import Page from "../layouts/Page.astro";
+
+import GetHelpWelcome from "../components/sections/GetHelpWelcome.astro";
+import Steps from "../components/sections/Steps.astro";
+import FAQ from "../components/sections/FAQ.astro";
+import ContactPreview from "../components/sections/ContactPreview.astro";
+import ReadNextHelp from "../components/sections/ReadNextHelp.astro";
+
+import pageData from "../content/pages/get-help.json";
+---
+
+<Page
+  title={pageData.label}
+  eyebrow={pageData.eyebrow}
+  headline={pageData.title}
+  intro={pageData.intro}
+  actions={pageData.actions}
+  currentPage="get-help"
+  description={pageData.metaDescription}
+  ogImage={pageData.ogImage}
+>
+  <GetHelpWelcome />
+  <Steps />
+  <FAQ />
+  <ContactPreview />
+  <ReadNextHelp />
+</Page>

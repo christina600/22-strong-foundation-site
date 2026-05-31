@@ -1,0 +1,20 @@
+{
+  "label": "Get Help",
+  "eyebrow": "Get help",
+  "title": "TEMPLATE: Welcoming headline for people seeking help",
+  "intro": "TEMPLATE: How to reach you. Include your main phone number and any urgent-contact instructions.",
+  "actions": [
+    {
+      "label": "Call PHONE",
+      "href": "tel:PHONE",
+      "style": "btn"
+    },
+    {
+      "label": "TEMPLATE: Secondary CTA",
+      "page": "program-emergency",
+      "style": "btn-outline"
+    }
+  ],
+  "metaDescription": "TEMPLATE: How to reach us for help.",
+  "ogImage": ""
+}

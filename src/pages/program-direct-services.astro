@@ -1,0 +1,14 @@
+---
+import ProgramPage from "../layouts/ProgramPage.astro";
+import ProgramDetail from "../components/sections/ProgramDetail.astro";
+import Steps from "../components/sections/Steps.astro";
+import ContactPreview from "../components/sections/ContactPreview.astro";
+
+import pageData from "../content/pages/program-direct-services.json";
+---
+
+<ProgramPage slug="program-direct-services" description={pageData.metaDescription} ogImage={pageData.ogImage}>
+  <ProgramDetail slug="program-direct-services" />
+  <Steps />
+  <ContactPreview />
+</ProgramPage>

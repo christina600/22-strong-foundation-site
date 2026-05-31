@@ -1,0 +1,63 @@
+---
+/**
+ * Site footer — CTA block, link columns, legal strip.
+ * Reads footer.json for structure and site.json for org details.
+ */
+
+import footer from "../content/footer.json";
+import site from "../content/site.json";
+import strings from "../content/strings/en.json";
+
+const phoneDigits = site.phone.replace(/[^0-9]/g, "");
+const currentYear = new Date().getFullYear();
+
+// Hide fields that are still unset TEMPLATE: slots.
+const isSet = (v: unknown) => !!v && !String(v).startsWith("TEMPLATE:");
+---
+
+<footer class="site-footer" id="siteFooter">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <span class="eyebrow">{footer.eyebrow}</span>
+        <h2>{footer.headline}</h2>
+        <p>{footer.body}</p>
+        <div class="button-row">
+          <a class="btn" href={`tel:${phoneDigits}`}>{strings.footer.call} {site.phone}</a>
+          <a class="btn-outline" href="/donate">{site.primaryCtaLabel}</a>
+        </div>
+      </div>
+      <div class="footer-grid">
+        {footer.groups.map((group) => (
+          <div class="footer-group">
+            <strong>[ {group.title} ]</strong>
+            {group.links.map(([label, page]: [string, string]) => (
+              <a href={`/${page}`}>{label}</a>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>
+        &copy; {currentYear} {site.orgName} &middot; {site.taxStatus} &middot;
+        EIN {site.ein} &middot;
+        {isSet(site.stateRegistration) && <>{site.stateRegistration} &middot; </>}
+        Founded {site.foundedYear}
+      </p>
+      <p>
+        {site.address} &middot; {site.phone}.
+        <strong>{footer.locationNote}</strong>
+      </p>
+      <div class="footer-legal">
+        <a href="/privacy">{strings.footer.privacyPolicy}</a>
+        <a href="/confidentiality-policy">{strings.footer.confidentialityPolicy}</a>
+        <a href="/accessibility">{strings.footer.accessibility}</a>
+        <a href="/terms">{strings.footer.termsOfUse}</a>
+        <a href="/non-discrimination">{strings.footer.nonDiscrimination}</a>
+        <a href="/financials#donor-rights">{strings.footer.donorBillOfRights}</a>
+        <a href="/financials">{strings.footer.financialDisclosures}</a>
+      </div>
+    </div>
+  </div>
+</footer>

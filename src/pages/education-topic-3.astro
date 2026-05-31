@@ -1,0 +1,24 @@
+---
+/**
+ * TEMPLATE: Education Topic 3 page.
+ */
+
+import Page from "../layouts/Page.astro";
+import ArticlePlaceholder from "../components/sections/ArticlePlaceholder.astro";
+import ReadNextLearn from "../components/sections/ReadNextLearn.astro";
+
+import pageData from "../content/pages/education-topic-3.json";
+---
+
+<Page
+  title={pageData.label}
+  eyebrow={pageData.eyebrow}
+  headline={pageData.title}
+  intro={pageData.intro}
+  currentPage="learn"
+  description={pageData.metaDescription}
+  ogImage={pageData.ogImage}
+>
+  <ArticlePlaceholder />
+  <ReadNextLearn />
+</Page>

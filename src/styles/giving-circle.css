@@ -1,0 +1,554 @@
+/* Giving Circle — Leo-coded monthly membership stage.
+   Dark warm backdrop with a burnt-orange spotlight, big serif numbers,
+   tiered cards, and a single proud CTA. All class names match
+   GivingCircle.astro exactly. */
+
+/* ---- Section stage ------------------------------------------------- */
+/* Uses .section.giving-circle (specificity 0,0,2,0) so this dark backdrop
+   beats the global .section:nth-of-type(even) zebra-stripe (also 0,0,2,0,
+   but earlier in the cascade). Without this, whenever the Circle lands on an
+   even section index (as it does on /donate) the light stripe wins and the
+   white text becomes near-invisible. */
+.section.giving-circle {
+  position: relative;
+  scroll-margin-top: 80px;
+  background:
+    radial-gradient(ellipse at 50% -8%, rgba(192, 80, 16, 0.42), transparent 56%),
+    linear-gradient(180deg, #251f1a 0%, #2d2320 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+/* Soft spotlight sweep */
+.giving-circle::before {
+  content: "";
+  position: absolute;
+  inset: -30% 10% auto 10%;
+  height: 55%;
+  background: radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.07), transparent 65%);
+  pointer-events: none;
+}
+
+.giving-circle .container {
+  position: relative;
+}
+
+/* Override the default .section h2 color for this dark section */
+.giving-circle h2,
+.giving-circle h3 {
+  color: var(--white);
+}
+
+/* ---- Head ---------------------------------------------------------- */
+.giving-circle-head {
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto var(--space-8);
+}
+
+.giving-circle-head .eyebrow {
+  color: var(--sandstone);
+}
+
+.giving-circle-intro {
+  font-size: clamp(16px, 1.4vw, 19px);
+  line-height: 1.6;
+  color: rgba(247, 242, 232, 0.8);
+  margin: 0;
+}
+
+/* ---- Collective impact --------------------------------------------- */
+.giving-circle-impact {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto var(--space-8);
+  padding: clamp(28px, 4vw, 52px) clamp(20px, 4vw, 56px);
+  border-radius: calc(var(--radius) + 4px);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.giving-circle-hook {
+  font-family: var(--serif-display);
+  font-size: clamp(17px, 1.6vw, 22px);
+  font-style: italic;
+  color: var(--sandstone);
+  margin: 0 0 var(--space-6);
+}
+
+.giving-impact-figures {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-9);
+  margin-bottom: var(--space-5);
+}
+
+.giving-impact-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.giving-impact-number {
+  font-family: var(--serif-display);
+  font-size: clamp(42px, 5.5vw, 68px);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+
+.giving-impact-label {
+  font-size: clamp(13px, 1vw, 15px);
+  color: rgba(247, 242, 232, 0.68);
+  max-width: 18ch;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.giving-impact-body {
+  margin: 0;
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.6;
+  color: rgba(247, 242, 232, 0.76);
+}
+
+/* Trust: a quiet, checkable source under the headline figures. */
+.giving-impact-verify {
+  margin: var(--space-4) 0 0;
+  font-size: 13px;
+  color: rgba(247, 242, 232, 0.55);
+}
+
+.giving-impact-verify a {
+  color: var(--sandstone);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.giving-impact-verify a:hover {
+  color: var(--white);
+}
+
+/* ---- Identity beat ------------------------------------------------- */
+.giving-circle-become {
+  text-align: center;
+  max-width: 54ch;
+  margin: 0 auto var(--space-8);
+  padding: var(--space-6) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.giving-become-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--burnt-orange);
+  margin-bottom: var(--space-3);
+}
+
+.giving-become-body {
+  margin: 0;
+  font-family: var(--serif-display);
+  font-size: clamp(18px, 1.9vw, 27px);
+  line-height: 1.4;
+  color: var(--white);
+}
+
+/* ---- Tiers --------------------------------------------------------- */
+.giving-tiers-title {
+  text-align: center;
+  font-family: var(--serif-display);
+  font-size: clamp(20px, 2.2vw, 30px);
+  margin: 0 0 var(--space-6);
+}
+
+.giving-circle-tiers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.giving-tier {
+  position: relative;
+  padding: var(--space-6);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.giving-tier.is-featured {
+  background: rgba(192, 80, 16, 0.16);
+  border-color: rgba(192, 80, 16, 0.5);
+  box-shadow:
+    0 0 0 1px rgba(192, 80, 16, 0.28),
+    0 20px 50px -18px rgba(192, 80, 16, 0.5);
+}
+
+.giving-tier-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--burnt-orange);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  align-self: flex-start;
+  margin-bottom: var(--space-1);
+}
+
+.giving-tier-amount {
+  display: block;
+  font-family: var(--serif-display);
+  font-size: clamp(34px, 4vw, 50px);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1;
+}
+
+.giving-tier-period {
+  font-size: 0.42em;
+  font-weight: 400;
+  color: rgba(247, 242, 232, 0.58);
+  vertical-align: middle;
+}
+
+.giving-tier-name {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--sandstone);
+}
+
+.giving-tier-desc {
+  margin: 0;
+  font-size: clamp(14px, 1.1vw, 16px);
+  line-height: 1.55;
+  color: rgba(247, 242, 232, 0.78);
+  flex: 1;
+}
+
+.giving-tier-perks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.giving-tier-perks li {
+  padding-left: var(--space-5);
+  position: relative;
+  font-size: clamp(12px, 0.95vw, 14px);
+  color: rgba(247, 242, 232, 0.68);
+  line-height: 1.45;
+}
+
+.giving-tier-perks li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--sandstone);
+  font-weight: 700;
+}
+
+/* Per-tier CTA: carries this tier's monthly amount straight to the form,
+   so choosing a tier and giving are one motion, not two. */
+.giving-tier-cta {
+  margin-top: var(--space-2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  color: var(--white);
+  border: 1px solid rgba(247, 242, 232, 0.32);
+  background: transparent;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.giving-tier-cta:hover {
+  background: rgba(247, 242, 232, 0.08);
+  border-color: rgba(247, 242, 232, 0.6);
+  transform: translateY(-1px);
+}
+
+.giving-tier.is-featured .giving-tier-cta {
+  background: var(--burnt-orange);
+  border-color: var(--burnt-orange);
+}
+
+.giving-tier.is-featured .giving-tier-cta:hover {
+  background: #a8460e;
+  border-color: #a8460e;
+}
+
+/* ---- Belong: benefits + voice ------------------------------------- */
+.giving-circle-belong {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-7);
+  margin-bottom: var(--space-8);
+  align-items: start;
+}
+
+.giving-benefits-title {
+  font-family: var(--serif-display);
+  font-size: clamp(18px, 1.8vw, 24px);
+  margin: 0 0 var(--space-4);
+}
+
+.giving-benefits-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.giving-benefits-list li {
+  padding-left: var(--space-5);
+  position: relative;
+  font-size: clamp(14px, 1.1vw, 16px);
+  line-height: 1.55;
+  color: rgba(247, 242, 232, 0.82);
+}
+
+.giving-benefits-list li::before {
+  content: "◆";
+  position: absolute;
+  left: 0;
+  top: 0.28em;
+  color: var(--burnt-orange);
+  font-size: 0.65em;
+}
+
+.giving-voice {
+  margin: 0;
+  padding: var(--space-6);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-left: 3px solid var(--burnt-orange);
+}
+
+.giving-voice blockquote {
+  margin: 0 0 var(--space-4);
+  font-family: var(--serif-display);
+  font-size: clamp(16px, 1.5vw, 21px);
+  line-height: 1.5;
+  color: var(--white);
+  font-style: italic;
+}
+
+.giving-voice blockquote::before {
+  content: "\201C";
+  font-size: 1.25em;
+  line-height: 0;
+  vertical-align: -0.25em;
+  color: var(--burnt-orange);
+  margin-right: 2px;
+}
+
+.giving-voice figcaption {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sandstone);
+}
+
+/* ---- Final CTA ----------------------------------------------------- */
+.giving-circle-cta {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.giving-cta-note {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(247, 242, 232, 0.52);
+}
+
+/* ---- Responsive ---------------------------------------------------- */
+@media (max-width: 860px) {
+  .giving-circle-tiers {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .giving-circle-belong {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .giving-impact-figures {
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .giving-circle-impact {
+    padding: var(--space-6) var(--space-5);
+  }
+}
+
+/* ---- Home teaser: a spotlight preview of the Circle ---------------- */
+/* Lives on the home page under Programs. Mirrors the section's dark
+   spotlight in one contained card and deep-links to /donate#giving-circle.
+   Numbers are shared with the full section via the `impact` JSON block. */
+.giving-teaser-card {
+  position: relative;
+  overflow: hidden;
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+  padding: clamp(32px, 5vw, 60px) clamp(22px, 5vw, 64px);
+  border-radius: calc(var(--radius) + 6px);
+  background:
+    radial-gradient(ellipse at 50% -20%, rgba(192, 80, 16, 0.40), transparent 60%),
+    linear-gradient(180deg, #251f1a 0%, #2d2320 100%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 30px 70px -34px rgba(0, 0, 0, 0.6);
+}
+
+.giving-teaser-card::before {
+  content: "";
+  position: absolute;
+  inset: -40% 15% auto 15%;
+  height: 60%;
+  background: radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.07), transparent 65%);
+  pointer-events: none;
+}
+
+.giving-teaser-card > * {
+  position: relative;
+}
+
+.giving-teaser .eyebrow {
+  color: var(--sandstone);
+}
+
+.giving-teaser-title {
+  margin: var(--space-2) auto var(--space-6);
+  max-width: 20ch;
+  font-family: var(--serif-display);
+  font-size: clamp(24px, 3vw, 38px);
+  line-height: 1.18;
+  color: var(--white);
+}
+
+.giving-teaser-figures {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(20px, 4vw, 48px);
+  margin-bottom: var(--space-6);
+}
+
+.giving-teaser-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.giving-teaser-number {
+  font-family: var(--serif-display);
+  font-size: clamp(36px, 4.5vw, 56px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--white);
+}
+
+.giving-teaser-figure-label {
+  max-width: 16ch;
+  font-size: clamp(12px, 1vw, 14px);
+  line-height: 1.4;
+  color: rgba(247, 242, 232, 0.66);
+}
+
+.giving-teaser-divider {
+  align-self: stretch;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* Trust: source link sitting with the numbers it backs. */
+.giving-teaser-source {
+  margin: 0 0 var(--space-5);
+  font-size: 12px;
+}
+
+.giving-teaser-source a {
+  color: var(--sandstone);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.giving-teaser-source a:hover {
+  color: var(--white);
+}
+
+.giving-teaser-body {
+  margin: 0 auto var(--space-6);
+  max-width: 46ch;
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.6;
+  color: rgba(247, 242, 232, 0.80);
+}
+
+.giving-teaser-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.giving-teaser-note {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(247, 242, 232, 0.5);
+}
+
+@media (max-width: 520px) {
+  .giving-teaser-figures {
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .giving-teaser-divider {
+    width: 64px;
+    height: 1px;
+    align-self: center;
+  }
+}

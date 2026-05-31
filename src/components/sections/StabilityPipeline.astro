@@ -1,0 +1,39 @@
+---
+/**
+ * Stability Pipeline — the journey spine showing pathway steps.
+ * Reads steps from pathway.json.
+ */
+
+import SectionShell from "../ui/SectionShell.astro";
+import pathwaySteps from "../../content/pathway.json";
+---
+
+<SectionShell
+  eyebrow="The pathway"
+  title="TEMPLATE: Pathway section headline"
+  body="TEMPLATE: One sentence describing how clients move through your service model."
+>
+  <div class="journey" id="journey">
+    <div class="journey-track" aria-hidden="true">
+      <div class="journey-fill" id="journeyFill"></div>
+    </div>
+    <ol class="journey-stations">
+      {pathwaySteps.map((step, i) => (
+        <li class="journey-station" data-station={i}>
+          <div class="journey-node">
+            <span>{String(i + 1).padStart(2, "0")}</span>
+          </div>
+          <div class="journey-station-body">
+            <span class="journey-phase">Stage {String(i + 1).padStart(2, "0")}</span>
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</SectionShell>
+
+<script>
+  import "../../scripts/journey.ts";
+</script>

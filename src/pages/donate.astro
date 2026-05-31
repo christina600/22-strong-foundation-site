@@ -1,0 +1,56 @@
+---
+/**
+ * Donate page — full donation form with donor trust information.
+ */
+
+import Page from "../layouts/Page.astro";
+import SectionShell from "../components/ui/SectionShell.astro";
+import DonationModule from "../components/sections/DonationModule.astro";
+import GivingCircle from "../components/sections/GivingCircle.astro";
+import WaysToGive from "../components/sections/WaysToGive.astro";
+
+import pageData from "../content/pages/donate.json";
+import site from "../content/site.json";
+import circle from "../content/giving-circle.json";
+---
+
+<Page
+  title={pageData.label}
+  eyebrow={pageData.eyebrow}
+  headline={pageData.title}
+  intro={pageData.intro}
+  currentPage="donate"
+  description={pageData.metaDescription}
+  ogImage={pageData.ogImage}
+>
+  <SectionShell
+    id="give"
+    eyebrow="Give monthly"
+    title="Become a monthly sustainer"
+    body="A steady monthly gift is the support we can count on — it funds the work every month, not just once. Choose an amount that fits; you can change or cancel anytime."
+  >
+    <DonationModule variant="page" />
+
+    <div class="donation-proof">
+      <p class="donation-proof-number">
+        <strong>{circle.impact.amount}</strong> {circle.impact.amountLabel}
+        <span class="donation-proof-sep" aria-hidden="true">&middot;</span>
+        <strong>{circle.impact.members}</strong> {circle.impact.membersLabel}
+      </p>
+      <p class="donation-proof-trust">
+        Every gift is backed by public filings and audited financials.
+        <a href="/financials">Review our financials &amp; accountability &rarr;</a>
+      </p>
+      <div class="donation-proof-credentials">
+        <span class="donation-proof-badge">
+          {site.taxStatus} nonprofit &middot; EIN {site.ein} &middot; Tax-deductible
+        </span>
+        <span class="donation-proof-seal">
+          TEMPLATE: Add an earned trust seal here (Candid / Charity Navigator / BBB) once verified.
+        </span>
+      </div>
+    </div>
+  </SectionShell>
+  <GivingCircle />
+  <WaysToGive />
+</Page>

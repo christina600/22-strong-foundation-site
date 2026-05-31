@@ -1,0 +1,132 @@
+---
+/**
+ * Policy Placeholder — per-policy content with before-launch checklist.
+ * Each legal page passes its label as a prop to get the right content.
+ *
+ * Props:
+ *   policyLabel — the page label (e.g. "Privacy Policy", "Terms of Use")
+ */
+
+import SectionShell from "../ui/SectionShell.astro";
+import site from "../../content/site.json";
+import strings from "../../content/strings/en.json";
+
+interface Props {
+  policyLabel: string;
+}
+
+const { policyLabel } = Astro.props;
+
+const policies: Record<string, {
+  eyebrow: string;
+  title: string;
+  body: string;
+  sections: [string, string][];
+  checks: string[];
+}> = {
+  "Privacy Policy": {
+    eyebrow: "Legal - Privacy",
+    title: "Privacy and safety come first.",
+    body: "TEMPLATE: Privacy copy should make clear that website tools are not a crisis channel and that safe contact matters for clients using shared or monitored devices.",
+    sections: [
+      ["Website information", "The site may use basic analytics, form submissions, newsletter signup information, donation records, and email correspondence. The final launch version should name the actual tools used."],
+      ["Safety warning", "TEMPLATE: General contact forms are not for urgent help and may not be confidential. Clients should call the office for immediate support."],
+      ["Retention and requests", `Privacy questions, correction requests, or document questions can route to ${site.email}.`]
+    ],
+    checks: ["Name the tools that collect data before launch", "Do not ask for sensitive details in general forms", "Keep urgent help directed to the phone line"]
+  },
+  "Terms of Use": {
+    eyebrow: "Legal - Terms",
+    title: "Website use, emergency limits, and external links.",
+    body: "Terms should clarify that the website is informational, not an emergency response tool, and that third-party links are provided for convenience.",
+    sections: [
+      ["Emergency limit", "If someone is in immediate danger, they should call 911. The website and general email are not monitored as crisis response channels."],
+      ["External links", "Third-party resources, registry sites, public filing portals, and donation processors should be reviewed and updated regularly."],
+      ["Updates", "Include an effective date, revision date, and contact method before launch."]
+    ],
+    checks: ["State that no attorney-client relationship is created by the site", "State that external links may change", "Use current review dates"]
+  },
+  "Accessibility": {
+    eyebrow: "Legal - Accessibility",
+    title: "Access to information is part of access to safety.",
+    body: "Accessibility copy should commit to readable, navigable, keyboard-friendly information and give visitors a way to report barriers.",
+    sections: [
+      ["Digital access", "The prototype uses semantic headings, keyboard focus states, readable contrast, skip links, and plain navigation."],
+      ["Language access", "Add approved language-access copy and translation process details before launch."],
+      ["Report an issue", `Accessibility barriers can be sent to ${site.email}.`]
+    ],
+    checks: ["Keyboard navigation works", "Focus states are visible", "Images have labels or alt text"]
+  },
+  "Non-Discrimination": {
+    eyebrow: "Legal - Non-discrimination",
+    title: "Services are grounded in dignity and equal access.",
+    body: "TEMPLATE: Explain who you serve and your commitment to equal access.",
+    sections: [
+      ["Who is served", "TEMPLATE: Describe who your organization serves and your service area."],
+      ["Commitment", "TEMPLATE: List your core service access commitments."],
+      ["Questions", `Non-urgent questions can be sent to ${site.email}.`]
+    ],
+    checks: ["Name all-gender access clearly", "Avoid eligibility fog", "Keep client safety at the center"]
+  },
+  "Donor Bill of Rights": {
+    eyebrow: "Donor trust",
+    title: "Donors deserve clear information before and after giving.",
+    body: "This page protects donor trust by making privacy, receipts, restricted gifts, tax information, and accountability links easy to understand.",
+    sections: [
+      ["Privacy", "Donor information should not be sold or traded."],
+      ["Receipts", "Donors should receive tax receipt language that matches the approved giving platform and IRS status."],
+      ["Verification", "Financial disclosures, Form 990 links, audited financial statements, state registration, and donor questions should remain within one click of donation pages."]
+    ],
+    checks: ["Tax status and EIN visible", "Financial disclosures linked", "Donor privacy named", "Restricted gift handling explained"]
+  },
+  "Confidentiality Policy": {
+    eyebrow: "Legal - Confidentiality",
+    title: "TEMPLATE: Confidentiality headline",
+    body: "TEMPLATE: Explain the confidentiality rules that apply to your services, safe contact practices, and the limits staff must disclose at intake.",
+    sections: [
+      ["Safe contact", "TEMPLATE: Describe how staff help clients identify safer ways to communicate."],
+      ["Records", "TEMPLATE: Describe how intake and service records are handled."],
+      ["Limits", "TEMPLATE: Describe any required limits to confidentiality that must be explained at intake."]
+    ],
+    checks: ["Explain safe contact", "Explain release-of-information boundaries", "Avoid collecting sensitive details in general forms"]
+  }
+};
+
+const fallback = {
+  eyebrow: "Policy information",
+  title: "Clear policy pages protect trust.",
+  body: "Policy pages should explain privacy, accessibility, donor rights, and non-discrimination in plain language.",
+  sections: [["Current policy", "Add effective date, revision date, contact method, and final approved language before launch."]] as [string, string][],
+  checks: ["Add review date", "Add owner", "Add contact"]
+};
+
+const item = policies[policyLabel] || fallback;
+---
+
+<SectionShell
+  eyebrow={item.eyebrow}
+  title={item.title}
+  body={item.body}
+>
+  <div class="grid three">
+    {item.sections.map(([heading, text]) => (
+      <div class="card"><h3>{heading}</h3><p>{text}</p></div>
+    ))}
+  </div>
+  <div class="card soft" style="margin-top:16px;">
+    <h3>{strings.sections.beforeLaunchChecklist}</h3>
+    <ul class="check-list">
+      {item.checks.map((check) => <li>{check}</li>)}
+    </ul>
+  </div>
+  <div class="legal-index" aria-label={strings.accessibility.relatedLegalPages}>
+    <a href="/privacy">{strings.footer.privacyPolicy}</a>
+    <a href="/confidentiality-policy">{strings.footer.confidentialityPolicy}</a>
+    <a href="/accessibility">{strings.footer.accessibility}</a>
+    <a href="/terms">{strings.footer.termsOfUse}</a>
+    <a href="/non-discrimination">{strings.footer.nonDiscrimination}</a>
+    <a href="/financials#donor-rights">{strings.footer.donorBillOfRights}</a>
+    <a href="/financials">{strings.footer.financialDisclosures}</a>
+  </div>
+  <div class="trust-note"><strong>{strings.sections.reviewNote}</strong> TEMPLATE: Final legal language should be reviewed by counsel before launch.</div>
+</SectionShell>

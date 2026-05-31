@@ -1,0 +1,58 @@
+{
+  "orgName": "22 Strong Foundation",
+  "brandName": "22 Strong",
+  "tagline": "No-cost recovery care · Since 2023",
+  "descriptor": "22 Strong helps veterans, underprivileged youth, and people facing financial barriers access high-quality recovery care — at no cost.",
+  "phone": "(949) 263-9003",
+  "email": "TEMPLATE: info@22strongfoundation.org",
+  "address": "4120 Birch St, Suite 106, Newport Beach, CA 92660",
+  "taxStatus": "501(c)(3)",
+  "ein": "99-1232582",
+  "stateRegistration": "TEMPLATE: CA SOS filing number",
+  "foundedYear": "2023",
+  "serviceArea": "Orange County & Southern California",
+  "reportingPeriod": "TEMPLATE: FY2024",
+  "donateUrl": "TEMPLATE: https://your-giving-platform.com/donate",
+  "primaryCtaLabel": "DONATE",
+  "donationAmounts": [25, 50, 100, 250, 500, 1000],
+  "defaultAmountIndex": 2,
+  "donationImpact": {
+    "monthly": {
+      "default": "${amount}/mo keeps recovery access open for someone who needs it — every month.",
+      "25": "$25/mo — one recovery session for one participant, every month.",
+      "50": "$50/mo — two targeted care sessions for one participant each month.",
+      "100": "$100/mo — a full month of mobility and strength support for one participant.",
+      "250": "$250/mo — a complete block of integrated care for one participant each month.",
+      "500": "$500/mo — sponsor one participant through their monthly recovery plan.",
+      "1000": "$1,000/mo — help underwrite an entire participant cohort, month after month."
+    },
+    "oneTime": {
+      "default": "A ${amount} gift opens the door to recovery care for someone who couldn't access it alone.",
+      "25": "A $25 gift covers one recovery session for one participant.",
+      "50": "A $50 gift funds two sessions of targeted care.",
+      "100": "A $100 gift supports a month of mobility and strength care for one participant.",
+      "250": "A $250 gift covers a full block of strength and mobility care.",
+      "500": "A $500 gift sponsors one participant through a full recovery cycle.",
+      "1000": "A $1,000 gift helps underwrite an entire participant cohort."
+    }
+  },
+  "donation": {
+    "platform": "TEMPLATE: zeffy",
+    "mode": "embed",
+    "zeffy": {
+      "embedUrl": "TEMPLATE: https://www.zeffy.com/embed/donation-form/your-form-id",
+      "link": "TEMPLATE: https://www.zeffy.com/en-US/donation-form/your-form-id"
+    },
+    "givebutter": {
+      "campaignId": "TEMPLATE: your-givebutter-campaign-id",
+      "link": "TEMPLATE: https://givebutter.com/your-campaign"
+    },
+    "givelively": {
+      "widgetId": "TEMPLATE: your-givelively-org-slug",
+      "link": "TEMPLATE: https://secure.givelively.org/donate/your-org"
+    }
+  },
+  "siteUrl": "TEMPLATE: https://22strongfoundation.org",
+  "analyticsProvider": "",
+  "analyticsId": ""
+}

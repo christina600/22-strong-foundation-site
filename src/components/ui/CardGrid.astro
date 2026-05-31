@@ -1,0 +1,38 @@
+---
+/**
+ * Card Grid — renders an array of card items in a responsive grid.
+ *
+ * Props:
+ *   items   — array of objects with title, text, and optional meta/tag/detail/page
+ *   columns — "two", "three", or "four"
+ */
+
+interface CardItem {
+  title: string;
+  text: string;
+  meta?: string;
+  tag?: string;
+  detail?: string;
+  page?: string;
+}
+
+interface Props {
+  items: CardItem[];
+  columns?: string;
+}
+
+const { items, columns = "three" } = Astro.props;
+---
+
+<div class={`grid ${columns}`}>
+  {items.map((item) => (
+    <article class="card">
+      {item.meta && <span class="eyebrow">{item.meta}</span>}
+      <h3>{item.title}</h3>
+      <p>{item.text}</p>
+      {item.tag && <span class="tag">{item.tag}</span>}
+      {item.detail && <p><strong>{item.detail}</strong></p>}
+      {item.page && <a class="card-link" href={`/${item.page}`}>Read more &rarr;</a>}
+    </article>
+  ))}
+</div>

@@ -1,0 +1,50 @@
+---
+/**
+ * Program Hero — photo-forward hero for individual program pages.
+ *
+ * The photo and title carry the same `transition:name` as the matching
+ * program CARD on the listing, so navigating from the card morphs the
+ * card's photo + title up into this hero (View Transitions).
+ *
+ * Props:
+ *   program — a resolved Program object from src/lib/programs.ts
+ */
+
+import site from "../content/site.json";
+import type { Program } from "../lib/programs";
+
+interface Props {
+  program: Program;
+}
+
+const { program } = Astro.props;
+const phoneDigits = site.phone.replace(/[^0-9]/g, "");
+
+// Virgo (a11y): announce the hero photo only when a real image exists.
+// Placeholder gradients are decorative; hide them from screen readers so
+// the (template) alt prose isn't read aloud.
+const photoA11y = program.image
+  ? { role: "img", "aria-label": program.imageAlt || "" }
+  : { "aria-hidden": "true" };
+---
+
+<section class="program-hero">
+  <div class="container program-hero-inner">
+    <div class="program-hero-text">
+      {program.tag && <span class="eyebrow">{program.tag}</span>}
+      <h1 transition:name={`ptitle-${program.page}`}>{program.title}</h1>
+      <p class="lead">{program.text}</p>
+      {program.hook && <p class="program-hero-hook">{program.hook}</p>}
+      <div class="hero-actions">
+        <a class="btn" href={`tel:${phoneDigits}`}>Call {site.phone}</a>
+        <a class="btn-outline" href="/programs">All programs</a>
+      </div>
+    </div>
+    <span
+      class="program-hero-photo"
+      transition:name={`pphoto-${program.page}`}
+      style={`background-image: ${program.background}`}
+      {...photoA11y}
+    ></span>
+  </div>
+</section>
