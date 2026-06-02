@@ -1,56 +1,371 @@
 ---
 /**
- * Homepage — the front door.
- * Uses Base layout directly (not Page layout) because the homepage
- * has a unique full-bleed hero with a donation widget.
+ * Homepage — the entire site, as one continuous scroll.
+ *
+ * Copy is frozen to the client's approved reference (the "Move better"
+ * PDF). Do not change wording here without the client's sign-off. The only
+ * functional swaps are the two giving cards (<DonationModule />) and the
+ * contact form (forms.ts) — text on both still matches the reference.
+ *
+ * [data-reveal] elements are animated in on scroll by home-reveal.ts;
+ * styling lives in src/styles/home.css (loaded only via HomeBase).
  */
 
-import Base from "../layouts/Base.astro";
-import Header from "../components/Header.astro";
-import HeroHome from "../components/HeroHome.astro";
-import Footer from "../components/Footer.astro";
-
+import HomeBase from "../layouts/HomeBase.astro";
 import DonationModule from "../components/sections/DonationModule.astro";
-import AboutPreview from "../components/sections/AboutPreview.astro";
-import Testimonials from "../components/sections/Testimonials.astro";
-import StoryInvite from "../components/sections/StoryInvite.astro";
-import ProgramPreview from "../components/sections/ProgramPreview.astro";
-import GivingCirclePreview from "../components/sections/GivingCirclePreview.astro";
-import ContactPreview from "../components/sections/ContactPreview.astro";
-
-// Parked until 22 Strong has real, sourced data / earned seals:
-//   - Problem.astro     → needs cited statistics + a documented outcome metric
-//   - Recognition.astro → seals/awards/press the org hasn't earned yet
-// Re-add the imports and the sections below once that content exists.
-
-import homeData from "../content/pages/home.json";
 ---
 
-<Base
-  title={homeData.label}
-  description={homeData.metaDescription}
-  ogImage={homeData.ogImage}
->
-  <Header currentPage="home" />
+<HomeBase title="Move better. Get stronger. Get back on your feet.">
+  <div class="site">
+    <header>
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="#top">22 Strong</a>
+        <div class="nav-actions">
+          <a class="pill primary" href="#donate">Donate</a>
+          <a class="pill" href="#contact">Menu</a>
+        </div>
+        <div></div>
+      </nav>
+    </header>
 
-  <HeroHome
-    eyebrow={homeData.eyebrow}
-    title={homeData.title}
-    intro={homeData.intro}
-    actions={homeData.actions}
-    proofStrip={homeData.proofStrip}
-  >
-    <DonationModule />
-  </HeroHome>
+    <main id="main">
+      <!-- 1. HERO -->
+      <section class="hero" id="top">
+        <div class="hero-inner">
+          <div class="hero-copy" data-reveal>
+            <div class="eyebrow">22 Strong Foundation</div>
+            <h1>Move better. Get stronger. Get back on your feet.</h1>
+            <p class="lead">22 Strong Foundation helps veterans, student athletes, cancer survivors, and others access quality recovery care shaped by sports medicine, physical therapy, chiropractic care, hands-on rehabilitation, and injury recovery work. It is the kind of care that is often out of reach without strong coverage or private-pay money.</p>
+            <a class="pill primary" href="#donate">Donate</a>
+          </div>
 
-  <main id="main" tabindex="-1">
-    <AboutPreview />
-    <ProgramPreview />
-    <Testimonials />
-    <StoryInvite />
-    <GivingCirclePreview />
-    <ContactPreview />
-  </main>
+          <div data-reveal>
+            <DonationModule />
+          </div>
+        </div>
+      </section>
 
-  <Footer />
-</Base>
+      <!-- 2. WHERE THE NAME COMES FROM (history, over a military photo) -->
+      <section class="history" id="history" aria-label="Where the name comes from">
+        <div class="history-inner" data-reveal>
+          <div class="eyebrow">Where the name comes from</div>
+          <h2>Why we&rsquo;re called 22 Strong.</h2>
+          <div class="history-stat">
+            <span class="history-number">22</span>
+            <span class="history-unit">a day</span>
+          </div>
+          <p class="history-lead">was the figure that first sounded the alarm on veteran suicide and gave us our name. The most recent VA data puts the toll at 6,398 veterans in 2023 &mdash; about 17.5 a day. Lower, still staggering, and the reason we keep going.</p>
+          <p class="history-source"><a href="https://news.va.gov/press-room/va-conducts-nations-largest-analysis-of-veteran-suicide/" target="_blank" rel="noopener">U.S. Dept. of Veterans Affairs &mdash; National Analysis of Veteran Suicide</a></p>
+
+          <h3 class="history-subhead">The hard part is getting the right care.</h3>
+          <div class="history-body">
+            <p>The people 22 Strong serves often need more than a basic appointment. Coverage can run out. Private-pay care can be too expensive. That is where people get stuck.</p>
+            <p>Sports medicine-informed recovery care is easier to access when you have strong coverage, private-pay money, or the right connections. 22 Strong exists to make that care more reachable.</p>
+            <p>Injury recovery, chronic pain, and rebuilding strength can continue long after the covered window closes.</p>
+            <p>Many people fall through gaps long before they are fully healed. 22 Strong helps make quality recovery care easier to reach before people are left on their own.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. STRONG CIRCLE -->
+      <section class="strong-circle-section" id="strong-circle">
+        <div class="strong-circle-wrap">
+          <div class="circle-panel" data-reveal>
+            <div>
+              <h2>Join the Strong Circle.</h2>
+              <p class="lead">The Strong Circle is 22 Strong&rsquo;s monthly giving community.</p>
+            </div>
+
+            <div>
+              <div class="circle-number">$22</div>
+              <h3 class="circle-subhead">Monthly gifts help us plan</h3>
+              <p class="circle-copy-tight">One-time gifts help. Monthly gifts give 22 Strong support it can count on.</p>
+
+              <div class="circle-actions">
+                <a class="pill primary" href="#donate">Join for $22/mo</a>
+                <a class="pill" href="#donate">Give another amount</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" data-reveal>
+            <h2 class="circle-card-title">Help 22 Strong reach its current $22,000 goal.</h2>
+            <p>Your gift helps cover sports medicine-informed recovery care for veterans, student athletes, cancer survivors, and others working to get back on their feet.</p>
+
+            <div class="circle-math">
+              <div class="circle-math-row">
+                <span>Monthly giving</span>
+                <strong>$22/mo</strong>
+              </div>
+              <div class="circle-math-row">
+                <span>Current goal</span>
+                <strong>$22,000</strong>
+              </div>
+            </div>
+
+            <div class="mini-list">
+              <div class="mini-item">
+                <h3>Make a one-time gift</h3>
+                <p>Not everyone wants to give monthly. A one-time donation still helps 22 Strong move toward its current $22,000 goal.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. WHO WE SERVE — split by group, each with its own proof.
+           Stat bands and testimonials live with the group they describe.
+           Add new stats/testimonials inside the matching group below. -->
+      <section id="serve">
+        <div class="serve-intro">
+          <h2 data-reveal>Sports medicine-informed care for people rebuilding strength.</h2>
+          <p class="lead" data-reveal>22 Strong supports people who need quality recovery care, especially when basic coverage is not enough and private-pay treatment is out of reach.</p>
+        </div>
+      </section>
+
+      <!-- 5a. VETERANS -->
+      <section class="serve-group" id="serve-veterans">
+        <div class="serve-group-head" data-reveal>
+          <h2>Veterans</h2>
+          <p class="lead">Support for veterans rebuilding strength, mobility, and function after service.</p>
+          <p>Care that respects the long work of recovery after service.</p>
+        </div>
+      </section>
+
+      <aside class="proof-stat" data-reveal>
+        <div class="proof-stat-inner">
+          <div class="proof-stat-number">1 in 3</div>
+          <div class="proof-stat-text">
+            <p>veterans report chronic pain after service. Recovery care is not a luxury when pain is part of daily life.</p>
+          </div>
+        </div>
+      </aside>
+
+      <aside class="proof-stat light" data-reveal>
+        <div class="proof-stat-inner">
+          <div class="proof-stat-number">38%</div>
+          <div class="proof-stat-text">
+            <p>of post-9/11 veterans have not used VA health care since leaving the service.</p>
+            <span class="proof-stat-source"><a href="https://www.publichealth.va.gov/epidemiology/reports/oefoifond/health-care-utilization/" target="_blank" rel="noopener">VA Office of Public Health</a></span>
+          </div>
+        </div>
+      </aside>
+
+      <section class="serve-proof">
+        <div class="testimonial-grid">
+          <article class="testimonial-card" data-reveal>
+            <div>
+              <blockquote>&ldquo;My pain has gone away, my back is feeling better. I have more mobility.&rdquo;</blockquote>
+              <div class="attribution">Lou Hudson &middot; VA referral client</div>
+              <p class="story">Lou first came in through a VA referral for lower back issues. After starting care and adding regular workouts, he said his pain improved, his back felt better, and he had more mobility.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 5b. STUDENT ATHLETES -->
+      <section class="serve-group" id="serve-athletes">
+        <div class="serve-group-head" data-reveal>
+          <h2>Student athletes</h2>
+          <p class="lead">Care for young athletes whose recovery needs more than basic support.</p>
+          <p>Support when basic care is not enough to get back to sport.</p>
+        </div>
+      </section>
+
+      <aside class="proof-stat" data-reveal>
+        <div class="proof-stat-inner">
+          <div class="proof-stat-number">21%</div>
+          <div class="proof-stat-text">
+            <p>of high school sports injuries can end a season.</p>
+          </div>
+        </div>
+      </aside>
+
+      <section class="serve-proof">
+        <div class="quote-wrap">
+          <img class="quote-photo" src="/images/adam-folker-uci.jpg" alt="Adam Folker" width="1200" height="800" loading="lazy" data-reveal />
+
+          <div data-reveal>
+            <blockquote>&ldquo;A major part of my success was the treatments and therapy I received from Dr. Vas.&rdquo;</blockquote>
+            <div class="attribution">Adam Folker &middot; Collegiate &amp; Professional Basketball Player</div>
+            <p class="story">During my sophomore year in college, I had hip surgery that was potentially season-ending and even career-ending. My coaches referred me to Dr. Vas, who was able to take care of me and eventually get me back to playing within a short few weeks.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5c. CANCER SURVIVORS -->
+      <section class="serve-group" id="serve-cancer">
+        <div class="serve-group-head" data-reveal>
+          <h2>Cancer survivors</h2>
+          <p class="lead">Help for survivors rebuilding strength and mobility after treatment.</p>
+          <p>Support for the work of getting stronger after treatment.</p>
+        </div>
+      </section>
+
+      <aside class="proof-stat light" data-reveal>
+        <div class="proof-stat-inner">
+          <div class="proof-stat-number">19M</div>
+          <div class="proof-stat-text">
+            <p>Americans are living as cancer survivors.</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- 5d. OTHERS WHO NEED CARE (carries the general cost-of-care stats) -->
+      <section class="serve-group" id="serve-others">
+        <div class="serve-group-head" data-reveal>
+          <h2>Others who need care</h2>
+          <p class="lead">Support for people who could benefit from this level of recovery care but cannot easily access it on their own.</p>
+          <p>Quality care should not depend on connections, coverage, or private pay.</p>
+        </div>
+      </section>
+
+      <aside class="proof-stat" data-reveal>
+        <div class="proof-stat-inner">
+          <div class="proof-stat-number">$190</div>
+          <div class="proof-stat-text">
+            <p>is the typical cost of one outpatient physical-therapy session for someone paying without insurance.</p>
+            <span class="proof-stat-source"><a href="https://www.cbsnews.com/news/physical-therapy-insurance-coverage-session-limits/" target="_blank" rel="noopener">CBS News / KFF Health News</a></span>
+          </div>
+        </div>
+      </aside>
+
+      <aside class="proof-stat light" data-reveal>
+        <div class="proof-stat-inner">
+          <div class="proof-stat-number">~20</div>
+          <div class="proof-stat-text">
+            <p>visits a year is a common insurance cap on physical therapy &mdash; often less than recovery actually takes.</p>
+            <span class="proof-stat-source"><a href="https://www.cbsnews.com/news/physical-therapy-insurance-coverage-session-limits/" target="_blank" rel="noopener">CBS News / KFF Health News</a></span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- 6. LEADERSHIP -->
+      <section id="leadership">
+        <h2 data-reveal>Built by people who understand recovery.</h2>
+
+        <div class="bios">
+          <article class="card" data-reveal>
+            <div class="bio-head">
+              <img class="portrait" src="/images/dr-vas.jpg" alt="Dr. Vasili &ldquo;Dr. Vas&rdquo; Gatsinaris" width="400" height="560" loading="lazy" />
+              <div>
+                <h3>Dr. Vasili &ldquo;Dr. Vas&rdquo; Gatsinaris, D.C.</h3>
+                <p class="bio-role">Founder</p>
+              </div>
+            </div>
+            <p>Dr. Vas earned his Doctorate of Chiropractic from the Los Angeles College of Chiropractic in 2001 and has more than 25 years of experience helping people recover and rebuild.</p>
+            <p>Over his career, he has worked with everyone from professional athletes to first responders, developing a hands-on, integrative approach focused on restoring mobility and getting people back to life stronger and faster.</p>
+          </article>
+
+          <article class="card" data-reveal>
+            <div class="bio-head">
+              <div class="initials">TM</div>
+              <div>
+                <h3>Travis Mayfield</h3>
+                <p class="bio-role">Co-founder</p>
+              </div>
+            </div>
+            <p>A U.S. military veteran, Travis helped bring 22 Strong together and leads the foundation&rsquo;s mission to make recovery care accessible to those who served and to others working to rebuild.</p>
+            <p>His own path from service informs how 22 Strong shows up for the people it serves: with respect, follow-through, and care that doesn&rsquo;t stop at the first appointment.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 8. DONATE -->
+      <section class="donate-section" id="donate">
+        <div class="donate-wrap">
+          <div>
+            <h2 data-reveal>Help 22 Strong reach its current $22,000 goal.</h2>
+            <p class="lead" data-reveal>Your gift helps cover sports medicine-informed recovery care for veterans, student athletes, cancer survivors, and others working to get back on their feet.</p>
+
+            <div class="goal-panel" aria-label="Fundraising goal preview" data-reveal>
+              <div class="goal-top">
+                <span>Current goal</span>
+                <span>$22,000</span>
+              </div>
+              <div class="goal-bar">
+                <div class="goal-fill"></div>
+              </div>
+              <p class="goal-copy">Give once, or join the Strong Circle with a monthly gift of $22.</p>
+            </div>
+          </div>
+
+          <div data-reveal>
+            <DonationModule />
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. CONTACT -->
+      <section class="contact" id="contact">
+        <div class="split">
+          <div data-reveal>
+            <h2>Contact 22 Strong.</h2>
+            <p>Have a question, want to help, or need to talk through whether this is the right fit? Send a note here. Please do not use this form for emergencies or private medical details.</p>
+          </div>
+
+          <form id="contactFormEl" data-reveal>
+            <div class="hp" aria-hidden="true">
+              <label>Website
+                <input type="text" name="website" tabindex="-1" autocomplete="off" />
+              </label>
+            </div>
+
+            <div class="form-row">
+              <label>Name
+                <input type="text" name="name" required />
+              </label>
+              <label>Email
+                <input type="email" name="email" required />
+              </label>
+            </div>
+
+            <label>Reason for contact
+              <select name="reason">
+                <option>I have a question</option>
+                <option>I want to help or donate</option>
+                <option>I want to partner</option>
+                <option>I am asking about care</option>
+              </select>
+            </label>
+
+            <label>Message
+              <textarea name="message" required></textarea>
+            </label>
+
+            <p class="note">Please do not include private medical details, urgent needs, or anything you would not want sent through a basic web form.</p>
+            <button class="pill primary form-submit" type="submit">Submit inquiry</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- 9. FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <div>
+          <div class="footer-title">22 Strong Foundation</div>
+          <p>&copy; 2026 22 Strong Foundation &middot; 501(c)(3) &middot; EIN 99-1232582</p>
+        </div>
+
+        <div>
+          <div class="footer-title">Explore</div>
+          <div class="links">
+            <a href="#history">Our story</a>
+            <a href="#strong-circle">Strong Circle</a>
+            <a href="#serve">Who we serve</a>
+            <a href="#serve-veterans">Veterans</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-title">Get involved</div>
+          <div class="links">
+            <a href="#donate">Donate</a>
+            <a href="#contact">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</HomeBase>

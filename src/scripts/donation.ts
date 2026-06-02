@@ -1,8 +1,8 @@
 /**
  * Donation widget — amount buttons, frequency toggle, summary update.
  *
- * Uses event delegation on the document so it works for both the
- * hero preview widget and the full donate page module.
+ * Uses event delegation on the document so it works for both donation widgets
+ * on the single-scroll homepage.
  *
  * Event delegation listeners persist across View Transitions
  * (attached once, work on all pages).
@@ -28,8 +28,8 @@ function updateGiftSummary(scope: Element | Document = document, pulse = true) {
   const activeFrequency =
     module.querySelector<HTMLElement>("[data-frequency].active")?.dataset.frequency || "monthly";
 
-  const summary = module.querySelector("#giftSummary");
-  const detail = module.querySelector("#giftDetail");
+  const summary = module.querySelector(".gift-summary");
+  const detail = module.querySelector(".gift-detail");
   const small = module.querySelector(".impact-line small");
   const card = module.querySelector(".donation-card-main");
 

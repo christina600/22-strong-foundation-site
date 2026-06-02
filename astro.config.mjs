@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  // TEMPLATE: Replace with your production URL before launch
-  site: 'https://www.yourorganization.org',
+  // Confirm the production domain before launch.
+  site: 'https://22strongfoundation.org',
   integrations: [sitemap()],
 });

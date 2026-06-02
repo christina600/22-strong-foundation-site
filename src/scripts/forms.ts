@@ -31,8 +31,8 @@ function initForms() {
         return;
       }
 
-      // TODO: Replace with real form handler (Netlify Forms, Formspree, etc.)
-      alert("TEMPLATE: Connect this form to your email or CRM platform before launch.");
+      // Until a form handler is connected, fail gracefully without sending.
+      alert("Thanks for reaching out! Our online form isn't connected just yet, so your message wasn't sent. Please try again soon — the team will get back to you.");
     }
   });
 }

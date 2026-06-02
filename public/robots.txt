@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-# TEMPLATE: Replace with your production URL before launch
-Sitemap: https://www.yourorganization.org/sitemap-index.xml
+# Confirm the production domain before launch.
+Sitemap: https://22strongfoundation.org/sitemap-index.xml

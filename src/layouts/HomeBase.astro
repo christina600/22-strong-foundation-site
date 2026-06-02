@@ -1,0 +1,109 @@
+---
+/**
+ * HomeBase layout — the HTML skeleton for the single-page site.
+ *
+ * Self-contained: provides the full SEO/head/fonts/JSON-LD/Analytics/
+ * ClientRouter setup and loads home.css. This is the site's only layout.
+ *
+ * Scripts: forms.ts (contact form) + home-reveal.ts (scrollytelling).
+ * The `js` class is added inline before paint so the reveal start state
+ * only applies when JS can finish the animation.
+ *
+ * Props:
+ *   title        — the browser tab title (required)
+ *   description  — meta description for search engines
+ *   ogImage      — social sharing image URL
+ */
+
+import { ClientRouter } from "astro:transitions";
+import site from "../content/site.json";
+import Analytics from "../components/Analytics.astro";
+import strings from "../content/strings/en.json";
+import "../styles/home.css";
+
+// JSON-LD Organization structured data for rich search results.
+// Only emit fields that hold real values (skip unset TEMPLATE: slots and
+// the unconfirmed founding year, per client direction).
+const isSet = (v: unknown) => !!v && !String(v).startsWith("TEMPLATE:");
+const jsonLd: Record<string, unknown> = {
+  "@context": "https://schema.org",
+  "@type": "NonprofitOrganization",
+  "name": site.orgName,
+  "description": site.descriptor,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": site.address
+  },
+  "taxID": site.ein,
+  "nonprofitStatus": site.taxStatus,
+  "areaServed": site.serviceArea
+};
+if (isSet(site.siteUrl)) jsonLd.url = site.siteUrl;
+if (isSet(site.email)) jsonLd.email = site.email;
+if (isSet(site.phone)) jsonLd.telephone = site.phone;
+
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const { title, description, ogImage } = Astro.props;
+const pageTitle = `${title} | ${site.orgName}`;
+const metaDesc = description || site.descriptor;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="no-referrer" />
+
+  <title>{pageTitle}</title>
+  <meta name="description" content={metaDesc} />
+
+  <!-- Social sharing -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={metaDesc} />
+  <meta property="og:type" content="website" />
+  {ogImage && <meta property="og:image" content={ogImage} />}
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href={Astro.url.href} />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" href="/favicon.ico" />
+
+  <!-- Fonts: self-hosted in /fonts/ — no third-party requests -->
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin />
+
+  <!-- Gate the scrollytelling start state on JS so non-JS users see all -->
+  <script is:inline>document.documentElement.classList.add('js');</script>
+
+  <meta name="generator" content={Astro.generator} />
+
+  <!-- Organization structured data for rich search results -->
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd).replace(/</g, "\\u003c")} />
+
+  <!-- Smooth page transitions instead of hard reloads -->
+  <ClientRouter />
+
+  <!-- Analytics: only loads if configured in site.json -->
+  <Analytics />
+</head>
+<body>
+  <a class="skip-link" href="#main">{strings.nav.skipToContent}</a>
+
+  <slot />
+
+  <!-- Contact form handler + scrollytelling reveals -->
+  <script>
+    import "../scripts/forms.ts";
+    import "../scripts/home-reveal.ts";
+  </script>
+</body>
+</html>
