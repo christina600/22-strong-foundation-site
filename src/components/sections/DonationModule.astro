@@ -32,7 +32,7 @@ const initialImpactDetail = String(initialImpactTemplate).replace(/\{amount\}/g,
 const isSet = (v: unknown) => !!v && !String(v).startsWith("TEMPLATE:");
 const donateReady = isSet(site.donateUrl);
 const donateHref = donateReady ? site.donateUrl : "#contact";
-const donateLabel = donateReady ? strings.donation.continueToCheckout : "Help fund recovery";
+const donateLabel = donateReady ? strings.donation.continueToCheckout : "Send a giving note";
 ---
 
 <div class="donation-module" data-impact-map={JSON.stringify(impact)}>
@@ -45,6 +45,7 @@ const donateLabel = donateReady ? strings.donation.continueToCheckout : "Help fu
       </button>
       <button type="button" data-frequency="one-time" aria-pressed="false">{strings.donation.oneTime}</button>
     </div>
+    <span class="eyebrow amount-grid-label">Suggested gift amounts</span>
     <div class="amount-grid" role="group" aria-label={strings.donation.giftAmountOptions}>
       {amounts.map((amount, index) => (
         <button
@@ -77,7 +78,7 @@ const donateLabel = donateReady ? strings.donation.continueToCheckout : "Help fu
     <a class="btn btn-donate" href={donateHref} data-donate-base={donateReady ? site.donateUrl : undefined} aria-label={donateLabel}>
       {donateLabel} &rarr;
     </a>
-    <p class="donation-footnote">{donateReady ? strings.donation.footnote : "Online giving is being set up. For now, send a note and the team will follow up with giving details."}</p>
+    {donateReady && <p class="donation-footnote">{strings.donation.footnote}</p>}
     <p class="donation-legal">
       {site.orgName} &middot; {site.taxStatus} &middot; EIN {site.ein} &middot; Tax-deductible.
     </p>

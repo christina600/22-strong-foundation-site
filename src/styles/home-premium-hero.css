@@ -60,9 +60,10 @@
 }
 
 .hero .lead {
-  max-width: 640px;
+  max-width: 520px;
   color: rgba(255, 250, 240, .78);
   line-height: var(--lh-lead);
+  text-wrap: pretty;
 }
 
 .hero-tagline {
@@ -82,6 +83,21 @@
   letter-spacing: 0;
   line-height: 1;
   text-transform: uppercase;
+}
+
+.hero-credit {
+  margin: 12px 0 0;
+  max-width: 48ch;
+  color: rgba(255, 250, 240, .82);
+  font-size: .98rem;
+  line-height: 1.45;
+}
+
+.give-taxline {
+  margin: 10px 0 0;
+  color: rgba(255, 250, 240, .72);
+  font-weight: 700;
+  font-size: .82rem;
 }
 
 .hero .donation-card-main {

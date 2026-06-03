@@ -3,13 +3,13 @@
     "skipToContent": "Skip to content"
   },
   "donation": {
-    "giveNow": "Give care",
+    "giveNow": "Fund recovery care",
     "monthly": "Monthly",
     "oneTime": "One-time",
     "mostImpact": "Most impact",
     "otherAmount": "Other amount",
     "customAmountLabel": "Enter a custom donation amount",
-    "yourImpact": "Your impact",
+    "yourImpact": "Your monthly gift",
     "continueToCheckout": "Continue to secure checkout",
     "footnote": "Takes 60 seconds · Secure & encrypted · Tax-deductible",
     "giftFrequency": "Gift frequency",
