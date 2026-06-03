@@ -4,9 +4,9 @@
   },
   "donation": {
     "giveNow": "Give care",
-    "monthly": "MONTHLY",
-    "oneTime": "ONE-TIME",
-    "mostImpact": "MOST IMPACT",
+    "monthly": "Monthly",
+    "oneTime": "One-time",
+    "mostImpact": "Most impact",
     "otherAmount": "Other amount",
     "customAmountLabel": "Enter a custom donation amount",
     "yourImpact": "Your impact",
