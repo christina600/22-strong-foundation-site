@@ -29,3 +29,12 @@ review-inbox/
 22-strong-*.html
 22-strong-*.pdf
 BUILD-PLAN-*.md
+
+# local raw/demo assets kept out of site checkpoints
+media-originals/
+Stock Photos/
+design-assets/
+IMG_8384.jpeg
+UCI-UCLA.jpeg
+NLW - Luke Hudson - Testimonial.mp4
+Screenshot 2026-06-02 at *.png
