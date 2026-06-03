@@ -1,0 +1,482 @@
+/* Premium scrollytelling system.
+   Adds a chapter rail, active mission states, and sticky story beats so the
+   page reads like a guided recovery mission instead of a flat stack. */
+:root {
+  --story-progress: 0;
+  --story-rail-h: 48px;
+  --story-header-h: 82px;
+  --story-offset: calc(var(--story-header-h) + var(--story-rail-h));
+  --story-active-glow: rgba(185, 85, 36, .22);
+}
+
+.mission-rail {
+  position: fixed;
+  top: var(--story-header-h);
+  right: 0;
+  left: 0;
+  z-index: 45;
+  height: var(--story-rail-h);
+  border-bottom: 1px solid rgba(32, 35, 31, .10);
+  background:
+    linear-gradient(180deg, rgba(248, 244, 235, .86), rgba(241, 235, 222, .70)),
+    var(--camo-field);
+  background-size: auto, 520px 340px;
+  box-shadow: 0 16px 34px rgba(29, 33, 29, .07);
+  backdrop-filter: blur(16px);
+}
+
+.mission-rail-track {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: rgba(32, 35, 31, .10);
+}
+
+.mission-rail-track span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(var(--story-progress));
+  transform-origin: left center;
+  background: linear-gradient(90deg, var(--field-olive), var(--mission-orange));
+}
+
+.mission-rail ol {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  gap: 8px;
+  width: min(var(--max), calc(100% - 48px));
+  height: 100%;
+  margin: 0 auto;
+  padding: 7px 0;
+  list-style: none;
+}
+
+.mission-rail a {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 7px;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 9px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: rgba(32, 35, 31, .62);
+  font-family: var(--ui-face);
+  font-size: .78rem;
+  font-weight: 800;
+  line-height: 1;
+  text-decoration: none;
+  transition:
+    color .2s ease,
+    background .2s ease,
+    border-color .2s ease,
+    transform .2s ease;
+}
+
+.mission-rail span {
+  color: var(--mission-orange);
+  font-size: .72rem;
+}
+
+.mission-rail strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mission-rail a:hover,
+.mission-rail a.is-story-active {
+  color: var(--ink);
+  border-color: rgba(70, 87, 70, .18);
+  background: rgba(255, 253, 247, .76);
+}
+
+.mission-rail a.is-story-active {
+  transform: translateY(-1px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .72) inset,
+    0 10px 24px rgba(29, 33, 29, .09);
+}
+
+[data-story-section] {
+  position: relative;
+}
+
+.story-marker {
+  position: absolute;
+  top: 26px;
+  right: var(--space-page-x);
+  z-index: 3;
+  width: fit-content;
+  max-width: min(44vw, 320px);
+  padding: 8px 11px;
+  border: 1px solid rgba(32, 35, 31, .13);
+  border-radius: 999px;
+  background: rgba(255, 253, 247, .70);
+  color: rgba(32, 35, 31, .68);
+  font: 800 var(--fs-ui-micro)/1 var(--ui-face);
+  letter-spacing: 0;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .62) inset,
+    0 12px 28px rgba(29, 33, 29, .08);
+  backdrop-filter: blur(10px);
+}
+
+.hero .story-marker,
+.serve-group .story-marker,
+.donate-section .story-marker {
+  border-color: rgba(255, 250, 240, .22);
+  background: rgba(17, 22, 16, .38);
+  color: rgba(255, 250, 240, .82);
+}
+
+[data-story-section].is-story-active .story-marker {
+  border-color: rgba(185, 85, 36, .46);
+  box-shadow:
+    0 0 0 1px rgba(185, 85, 36, .16),
+    0 14px 34px var(--story-active-glow);
+}
+
+/* More explicit scrollytelling pacing. */
+html {
+  scroll-padding-top: calc(var(--story-offset) + 18px);
+}
+
+.how-story-copy {
+  max-width: 760px;
+}
+
+.story-kicker {
+  max-width: 43ch;
+  margin: 22px 0 0;
+  color: rgba(32, 35, 31, .70);
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-lead);
+}
+
+.story-beat {
+  position: relative;
+}
+
+@media (min-width: 921px) {
+  .how-it-works {
+    display: grid;
+    grid-template-columns: minmax(300px, .72fr) minmax(0, 1.28fr);
+    column-gap: clamp(46px, 6vw, 84px);
+    align-items: start;
+    padding-block: clamp(132px, 17vh, 182px);
+  }
+
+  .how-story-copy {
+    position: sticky;
+    top: calc(var(--story-offset) + 54px);
+    align-self: start;
+    padding-top: 8px;
+  }
+
+  .how-story-copy h2 {
+    max-width: 11ch;
+    margin-bottom: 0;
+  }
+
+  .how-it-works .steps {
+    position: relative;
+    grid-template-columns: 1fr;
+    gap: clamp(28px, 5vh, 46px);
+    margin-top: 0;
+    padding-left: 34px;
+  }
+
+  .how-it-works .steps::before {
+    content: "";
+    position: absolute;
+    top: 18px;
+    bottom: 18px;
+    left: 0;
+    width: 2px;
+    background:
+      linear-gradient(180deg, var(--mission-orange), rgba(70, 87, 70, .26)),
+      var(--camo-field);
+  }
+
+  .how-it-works .step {
+    min-height: clamp(310px, 44vh, 470px);
+    display: grid;
+    align-content: center;
+    padding: clamp(32px, 4vw, 48px);
+    border-color: rgba(53, 70, 50, .14);
+    background:
+      linear-gradient(180deg, rgba(255, 253, 247, .98), rgba(241, 235, 222, .92)),
+      var(--map-contours);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, .78) inset,
+      0 26px 72px rgba(29, 33, 29, .10);
+    transform: translateY(0);
+    transition:
+      transform .42s cubic-bezier(.22, .61, .36, 1),
+      border-color .42s ease,
+      box-shadow .42s ease;
+  }
+
+  .how-it-works .step::before {
+    content: "";
+    position: absolute;
+    top: 28px;
+    bottom: 28px;
+    left: -35px;
+    width: 2px;
+    background: rgba(185, 85, 36, .26);
+  }
+
+  .how-it-works .step::after {
+    content: "";
+    position: absolute;
+    top: 28px;
+    left: -43px;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(185, 85, 36, .52);
+    border-radius: 50%;
+    background: #fffdf7;
+    box-shadow: 0 0 0 7px rgba(185, 85, 36, .10);
+  }
+
+  .how-it-works .step.is-story-beat-active {
+    transform: translateY(-6px);
+    border-color: rgba(185, 85, 36, .36);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, .82) inset,
+      0 32px 88px rgba(29, 33, 29, .15);
+  }
+
+  .how-it-works .step.is-story-beat-active::after {
+    border-color: var(--mission-orange);
+    background: var(--mission-orange);
+    box-shadow: 0 0 0 8px rgba(185, 85, 36, .16);
+  }
+
+  .how-it-works .funding-covers {
+    grid-column: 1 / -1;
+    margin-top: clamp(60px, 9vh, 96px);
+  }
+
+  .how-it-works .funding-covers.is-story-beat-active {
+    border-color: rgba(185, 85, 36, .34);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, .82) inset,
+      0 28px 78px rgba(29, 33, 29, .13);
+  }
+
+  .how-it-works .how-note {
+    grid-column: 2;
+    margin-left: 34px;
+  }
+
+  .serve-group {
+    min-height: clamp(560px, 74svh, 790px);
+  }
+
+  .serve-detail {
+    min-height: clamp(700px, 96vh, 980px);
+    display: grid;
+    align-items: center;
+  }
+
+  .serve-detail-inner {
+    position: relative;
+  }
+
+  .serve-detail-inner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -28px;
+    width: 2px;
+    background: linear-gradient(180deg, rgba(185, 85, 36, .70), rgba(70, 87, 70, .20));
+  }
+
+  .serve-copy::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: -8px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--mission-orange);
+    box-shadow: 0 0 0 8px rgba(185, 85, 36, .12);
+  }
+
+  .serve-proof {
+    min-height: clamp(540px, 74vh, 820px);
+    display: grid;
+    align-items: center;
+  }
+}
+
+@media (max-width: 920px) {
+  :root {
+    --story-header-h: 70px;
+  }
+
+  html {
+    scroll-padding-top: calc(var(--story-offset) + 16px);
+  }
+
+  .mission-rail {
+    top: var(--story-header-h);
+  }
+
+  .how-it-works .steps {
+    grid-template-columns: 1fr;
+    margin-top: 34px;
+  }
+
+  .story-kicker {
+    max-width: 48ch;
+  }
+}
+
+@media (max-width: 760px) {
+  html {
+    scroll-padding-top: 90px;
+  }
+}
+
+@media (min-width: 921px) {
+  .mission-rail + main {
+    scroll-margin-top: var(--story-offset);
+  }
+
+  .serve-detail-inner,
+  .donate-wrap,
+  .contact .split {
+    align-items: start;
+  }
+
+  .serve-group-head::before {
+    display: none;
+  }
+
+  .serve-copy,
+  .donate-wrap > div:first-child,
+  .contact .split > div:first-child {
+    position: sticky;
+    top: calc(var(--story-offset) + 26px);
+  }
+
+  .serve-stats .proof-stat {
+    transition:
+      transform .42s cubic-bezier(.22, .61, .36, 1),
+      box-shadow .42s ease,
+      border-color .42s ease;
+  }
+
+  .serve-detail:has(+ .serve-proof) .serve-stats .proof-stat:hover,
+  .serve-stats .proof-stat:hover {
+    transform: translateY(-4px);
+    border-color: rgba(185, 85, 36, .38);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, .10) inset,
+      0 24px 70px rgba(29, 33, 29, .18);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) and (min-width: 760px) {
+    .story-marker {
+      animation: story-marker-settle both ease-out;
+      animation-timeline: view();
+      animation-range: entry 0% cover 30%;
+    }
+
+    .serve-detail .proof-stat {
+      animation: story-stat-rise both cubic-bezier(.22, .61, .36, 1);
+      animation-timeline: view();
+      animation-range: entry 8% cover 32%;
+    }
+
+    .serve-copy {
+      animation: story-copy-lock both ease-out;
+      animation-timeline: view();
+      animation-range: entry 0% cover 38%;
+    }
+  }
+}
+
+@keyframes story-marker-settle {
+  from {
+    opacity: .35;
+    transform: translate3d(0, -8px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes story-stat-rise {
+  from {
+    opacity: .78;
+    transform: translate3d(0, 24px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes story-copy-lock {
+  from {
+    filter: saturate(.92);
+  }
+
+  to {
+    filter: saturate(1.04);
+  }
+}
+
+@media (max-width: 1080px) {
+  .mission-rail a {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 2px;
+    padding-inline: 6px;
+    font-size: .72rem;
+  }
+
+  .mission-rail span {
+    font-size: .68rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .mission-rail {
+    display: none;
+  }
+
+  .story-marker {
+    top: 18px;
+    right: 20px;
+    max-width: calc(100% - 40px);
+    font-size: .76rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mission-rail-track span,
+  .mission-rail a,
+  .story-beat,
+  .serve-stats .proof-stat,
+  .story-marker,
+  .serve-copy {
+    animation: none !important;
+    transition: none !important;
+  }
+}

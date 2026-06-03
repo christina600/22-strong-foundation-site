@@ -26,9 +26,15 @@ const TRACKED_SECTIONS = [
 let navListenerAttached = false;
 let activeUpdateQueued = false;
 
+function getVisibleMissionRailHeight() {
+  const rail = document.querySelector<HTMLElement>("[data-mission-rail]");
+  if (!rail || window.getComputedStyle(rail).display === "none") return 0;
+  return Math.ceil(rail.getBoundingClientRect().height || 0);
+}
+
 function getHeaderOffset() {
   const header = document.querySelector("header");
-  return Math.ceil(header?.getBoundingClientRect().height || 0) + 10;
+  return Math.ceil(header?.getBoundingClientRect().height || 0) + getVisibleMissionRailHeight() + 10;
 }
 
 function getHashTarget(hash: string) {
@@ -59,6 +65,8 @@ function updateActiveLinks(hash: string) {
   const activeHash = normaliseActiveHash(hash || "#top");
 
   document.querySelectorAll<HTMLAnchorElement>(ANCHOR_SELECTOR).forEach((link) => {
+    if (link.matches("[data-story-link]")) return;
+
     const linkHash = link.getAttribute("href") || "";
     const isActive = linkMatchesActiveHash(linkHash, activeHash);
 
