@@ -62,6 +62,7 @@
 }
 
 @media (max-width: 560px) {
+  html { scroll-padding-top: 80px; }
   .form-row { grid-template-columns: 1fr; }
   .nav { grid-template-columns: auto 1fr; }
   .nav-links { display: none; }

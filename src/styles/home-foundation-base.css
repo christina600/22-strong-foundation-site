@@ -76,6 +76,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 90px;
   background: var(--paper);
 }
 
@@ -197,9 +198,18 @@ header {
     background .2s ease;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.is-active {
   color: var(--ink);
   background: rgba(255, 253, 248, .78);
+}
+
+.nav a.is-active {
+  cursor: default;
+}
+
+.links a.is-active {
+  color: var(--ink);
 }
 
 .nav-actions {

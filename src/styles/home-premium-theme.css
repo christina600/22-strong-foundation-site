@@ -185,28 +185,6 @@ section {
   padding-bottom: var(--space-section-y);
   padding-left: var(--space-page-x);
   padding-right: var(--space-page-x);
-  /* Matches the section[id] offset above; kept here for any id-less section. */
-  scroll-margin-top: 90px;
-}
-
-@supports (content-visibility: auto) {
-  .how-it-works,
-  .strong-circle-section,
-  #serve,
-  .serve-group,
-  .serve-detail,
-  .serve-proof,
-  #leadership,
-  .featured,
-  .donate-section,
-  .contact {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 760px;
-  }
-
-  .serve-group {
-    contain-intrinsic-size: auto 560px;
-  }
 }
 
 .eyebrow {
