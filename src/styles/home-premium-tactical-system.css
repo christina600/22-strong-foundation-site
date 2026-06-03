@@ -1,6 +1,6 @@
-/* Tactical premium visual system.
-   Adds restrained military motifs: tonal camo, map/grid lines, mission labels,
-   and field-panel surfaces while preserving the warm nonprofit palette. */
+/* Tactical premium material system.
+   Grounded field textures: sand grain, canvas weave, sun-faded field paper,
+   and light scuffs instead of generated camo blobs or decorative map rings. */
 :root {
   --field-black: #111610;
   --field-deep: #1a2318;
@@ -9,25 +9,42 @@
   --field-sage: #7b8464;
   --field-khaki: #d7ccb7;
   --mission-orange: #b95524;
-  --map-line-dark: rgba(32, 35, 31, .075);
-  --map-line-light: rgba(255, 250, 240, .105);
+  --map-line-dark: rgba(32, 35, 31, .055);
+  --map-line-light: rgba(255, 250, 240, .09);
+  --field-sand:
+    radial-gradient(circle at 18% 22%, rgba(74, 61, 42, .14) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 63% 48%, rgba(185, 85, 36, .08) 0 1px, transparent 1.7px),
+    radial-gradient(circle at 36% 78%, rgba(255, 250, 240, .32) 0 1px, transparent 1.5px),
+    linear-gradient(180deg, rgba(248, 244, 235, .72), rgba(221, 207, 181, .24));
+  --field-canvas:
+    repeating-linear-gradient(90deg, rgba(255, 250, 240, .045) 0 1px, transparent 1px 7px),
+    repeating-linear-gradient(0deg, rgba(17, 22, 16, .075) 0 1px, transparent 1px 8px);
+  --field-scuffs:
+    linear-gradient(104deg, transparent 0 24%, rgba(255, 250, 240, .10) 24.5%, transparent 26% 62%, rgba(17, 22, 16, .075) 62.5%, transparent 64%),
+    linear-gradient(16deg, transparent 0 42%, rgba(32, 35, 31, .055) 42.5%, transparent 44%),
+    linear-gradient(180deg, rgba(255, 250, 240, .06), transparent 46%, rgba(17, 22, 16, .08));
+  --field-paper-grain:
+    radial-gradient(circle at 16% 22%, rgba(74, 61, 42, .07) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 74% 68%, rgba(255, 250, 240, .22) 0 1px, transparent 1.6px),
+    repeating-linear-gradient(0deg, rgba(32, 35, 31, .016) 0 1px, transparent 1px 19px);
+  --field-creases:
+    linear-gradient(108deg, transparent 0 34%, rgba(32, 35, 31, .045) 34.2%, transparent 35.4%),
+    linear-gradient(18deg, transparent 0 68%, rgba(255, 250, 240, .14) 68.2%, transparent 69.2%);
   --camo-field:
-    radial-gradient(ellipse at 10% 18%, rgba(123, 132, 100, .30) 0 8%, transparent 9%),
-    radial-gradient(ellipse at 28% 72%, rgba(53, 70, 50, .26) 0 11%, transparent 12%),
-    radial-gradient(ellipse at 68% 26%, rgba(89, 98, 73, .24) 0 10%, transparent 11%),
-    radial-gradient(ellipse at 84% 78%, rgba(185, 85, 36, .10) 0 9%, transparent 10%);
+    var(--field-canvas),
+    var(--field-scuffs),
+    linear-gradient(135deg, rgba(53, 70, 50, .34), rgba(123, 132, 100, .14) 44%, rgba(215, 204, 183, .16));
   --map-contours:
-    radial-gradient(ellipse at 14% 18%, transparent 0 28%, var(--map-line-dark) 29% 30%, transparent 31%),
-    radial-gradient(ellipse at 76% 20%, transparent 0 32%, var(--map-line-dark) 33% 34%, transparent 35%),
-    radial-gradient(ellipse at 55% 82%, transparent 0 34%, var(--map-line-dark) 35% 36%, transparent 37%);
+    var(--field-paper-grain),
+    var(--field-creases);
 }
 
 body {
   background:
-    var(--map-contours),
-    linear-gradient(135deg, rgba(53, 70, 50, .10), transparent 28%),
-    linear-gradient(225deg, rgba(185, 85, 36, .055), transparent 34%),
-    linear-gradient(180deg, #fbf7ee 0%, #f1eadf 48%, #f8f4eb 100%);
+    var(--field-paper-grain),
+    linear-gradient(135deg, rgba(123, 132, 100, .11), transparent 34%),
+    linear-gradient(225deg, rgba(185, 85, 36, .045), transparent 38%),
+    linear-gradient(180deg, #fbf7ee 0%, #efe4d3 52%, #f8f4eb 100%);
 }
 
 body::after {
@@ -36,11 +53,12 @@ body::after {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: .28;
+  opacity: .20;
   background-image:
-    repeating-linear-gradient(90deg, transparent 0 89px, rgba(32, 35, 31, .055) 90px),
-    repeating-linear-gradient(0deg, transparent 0 89px, rgba(32, 35, 31, .038) 90px);
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .50), transparent 62%);
+    var(--field-sand),
+    repeating-linear-gradient(90deg, rgba(53, 70, 50, .018) 0 1px, transparent 1px 18px);
+  background-size: 132px 118px, 132px 118px, 132px 118px, auto, 22px 22px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .40), transparent 68%);
 }
 
 header {
@@ -96,8 +114,9 @@ header {
   opacity: .76;
   background:
     linear-gradient(180deg, transparent 0%, rgba(17, 22, 16, .18) 58%, rgba(17, 22, 16, .72) 100%),
-    repeating-linear-gradient(90deg, transparent 0 74px, var(--map-line-light) 75px),
-    repeating-linear-gradient(0deg, transparent 0 74px, rgba(255, 250, 240, .055) 75px);
+    var(--field-sand),
+    var(--field-canvas);
+  background-blend-mode: normal, soft-light, overlay;
 }
 
 .hero-copy .eyebrow,
@@ -206,10 +225,10 @@ form,
   pointer-events: none;
   opacity: .74;
   background:
-    var(--camo-field),
-    repeating-linear-gradient(90deg, transparent 0 82px, rgba(255, 250, 240, .08) 83px),
-    repeating-linear-gradient(0deg, transparent 0 82px, rgba(255, 250, 240, .045) 83px);
-  background-size: 520px 340px, auto, auto;
+    var(--field-canvas),
+    var(--field-scuffs),
+    var(--field-sand);
+  background-size: 26px 26px, 26px 26px, auto, auto, auto, 140px 124px, 140px 124px, 140px 124px, auto;
   mix-blend-mode: soft-light;
 }
 
@@ -259,7 +278,7 @@ form,
 .serve-stats .proof-stat,
 .proof-stat {
   background:
-    radial-gradient(circle at 12% 8%, rgba(185, 85, 36, .18), transparent 32%),
+    linear-gradient(118deg, rgba(185, 85, 36, .16), transparent 36%),
     var(--camo-field),
     linear-gradient(135deg, #141a13 0%, #2f3b2a 100%);
   background-blend-mode: normal, soft-light, normal;
@@ -336,7 +355,7 @@ form,
 
 .strong-circle-modal-card {
   background:
-    radial-gradient(circle at 82% -10%, rgba(185, 85, 36, .16), transparent 42%),
+    linear-gradient(122deg, rgba(185, 85, 36, .12), transparent 42%),
     var(--map-contours),
     linear-gradient(180deg, rgba(255, 253, 247, .99), rgba(246, 240, 229, .97));
 }
@@ -358,9 +377,10 @@ form,
 
 .donate-section::before {
   background:
-    repeating-linear-gradient(90deg, transparent 0 96px, rgba(255, 250, 240, .07) 97px),
-    repeating-linear-gradient(0deg, transparent 0 96px, rgba(255, 250, 240, .045) 97px),
+    var(--field-scuffs),
+    var(--field-sand),
     linear-gradient(115deg, rgba(185, 85, 36, .20), transparent 46%);
+  background-size: auto, auto, auto, 148px 132px, 148px 132px, 148px 132px, auto, auto;
 }
 
 .goal-panel {
@@ -392,7 +412,7 @@ form,
 
 footer {
   background:
-    radial-gradient(circle at 12% 0%, rgba(185, 85, 36, .13), transparent 34%),
+    linear-gradient(135deg, rgba(185, 85, 36, .13), transparent 38%),
     var(--camo-field),
     linear-gradient(180deg, #20281e, #111610);
   background-blend-mode: normal, soft-light, normal;
@@ -404,10 +424,11 @@ footer {
   }
 
   .hero::after {
-    opacity: .44;
+    opacity: .42;
     background:
       linear-gradient(180deg, transparent 0%, rgba(17, 22, 16, .16) 56%, rgba(17, 22, 16, .68) 100%),
-      repeating-linear-gradient(90deg, transparent 0 68px, rgba(255, 250, 240, .065) 69px);
+      var(--field-sand),
+      var(--field-canvas);
   }
 
   .serve-group-head::before {

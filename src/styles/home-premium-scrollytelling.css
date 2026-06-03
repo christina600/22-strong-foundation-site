@@ -18,9 +18,10 @@
   height: var(--story-rail-h);
   border-bottom: 1px solid rgba(32, 35, 31, .10);
   background:
-    linear-gradient(180deg, rgba(248, 244, 235, .86), rgba(241, 235, 222, .70)),
-    var(--camo-field);
-  background-size: auto, 520px 340px;
+    linear-gradient(180deg, rgba(248, 244, 235, .88), rgba(234, 224, 206, .72)),
+    var(--field-sand),
+    var(--field-canvas);
+  background-size: auto, 132px 118px, 132px 118px, 132px 118px, auto, 22px 22px, 22px 22px;
   box-shadow: 0 16px 34px rgba(29, 33, 29, .07);
   backdrop-filter: blur(16px);
 }
@@ -199,7 +200,7 @@ html {
     width: 2px;
     background:
       linear-gradient(180deg, var(--mission-orange), rgba(70, 87, 70, .26)),
-      var(--camo-field);
+      var(--field-canvas);
   }
 
   .how-it-works .step {
