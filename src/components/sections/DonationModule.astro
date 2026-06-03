@@ -24,7 +24,7 @@ const formatAmount = (amount: number) => Number(amount).toLocaleString();
 const impact = site.donationImpact as DonationImpactMap;
 const monthlyImpact = impact.monthly ?? {};
 const initialImpactTemplate =
-  monthlyImpact[String(defaultAmount)] ?? monthlyImpact.default ?? "Your gift helps someone keep going when coverage stops short.";
+  monthlyImpact[String(defaultAmount)] ?? monthlyImpact.default ?? "Your gift helps turn a stalled recovery plan into real appointments.";
 const initialImpactDetail = String(initialImpactTemplate).replace(/\{amount\}/g, Number(defaultAmount).toLocaleString());
 
 // The online giving platform is pending. Until donateUrl is configured, route

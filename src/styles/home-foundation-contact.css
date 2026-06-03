@@ -49,6 +49,32 @@ textarea {
   resize: vertical;
 }
 
+.contact-paths {
+  display: grid;
+  gap: 14px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact-paths li {
+  display: grid;
+  gap: 4px;
+  padding-left: 16px;
+  border-left: 2px solid rgba(185, 85, 36, .42);
+}
+
+.contact-paths strong {
+  color: var(--ink);
+  font-size: var(--fs-copy-small);
+}
+
+.contact-paths span {
+  color: var(--muted);
+  font-size: var(--fs-copy-fine);
+  line-height: var(--lh-lead);
+}
+
 .note {
   color: var(--muted);
   font-size: var(--fs-copy-fine);

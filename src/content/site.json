@@ -1,6 +1,6 @@
 {
   "orgName": "22 Strong Foundation",
-  "descriptor": "22 Strong Foundation helps veterans, student athletes, cancer survivors, and others access the recovery care they need when coverage or private-pay resources fall short.",
+  "descriptor": "22 Strong Foundation helps donors fund recovery care for veterans, student athletes, cancer survivors, and neighbors when cost, coverage, timing, or access threatens the next appointment.",
   "phone": "",
   "email": "TEMPLATE: info@22strongfoundation.org",
   "address": "4120 Birch St, Suite 106, Newport Beach, CA 92660",
@@ -8,15 +8,27 @@
   "ein": "99-1232582",
   "serviceArea": "Orange County & Southern California",
   "donateUrl": "TEMPLATE: https://your-giving-platform.com/donate",
-  "donationAmounts": [22, 100, 250, 1000],
+  "donationAmounts": [
+    22,
+    100,
+    250,
+    1000
+  ],
   "defaultAmountIndex": 0,
   "donationImpact": {
     "monthly": {
-      "22": "$22 a month helps someone keep going when coverage stops short.",
-      "default": "Monthly gifts help us say yes more often."
+      "22": "$22 a month helps create a reliable base for future recovery appointments.",
+      "100": "$100 a month helps keep care moving when a recovery plan is at risk of stopping too soon.",
+      "250": "$250 a month helps fund multiple hands-on recovery sessions across the year.",
+      "1000": "$1,000 a month can anchor a full care plan for someone rebuilding strength and mobility.",
+      "default": "Monthly gifts help 22 Strong plan care before a recovery gap turns into a stopped plan."
     },
     "oneTime": {
-      "default": "Your gift helps someone keep going when coverage stops short."
+      "22": "$22 helps move someone one step closer to care.",
+      "100": "$100 helps offset the cost of a hands-on recovery session.",
+      "250": "$250 helps carry someone through several recovery touchpoints.",
+      "1000": "$1,000 can move a full care plan within reach.",
+      "default": "Your gift helps turn a stalled recovery plan into real appointments."
     }
   },
   "donation": {
