@@ -1,0 +1,420 @@
+/* Tactical premium visual system.
+   Adds restrained military motifs: tonal camo, map/grid lines, mission labels,
+   and field-panel surfaces while preserving the warm nonprofit palette. */
+:root {
+  --field-black: #111610;
+  --field-deep: #1a2318;
+  --field-green: #354632;
+  --field-olive: #596249;
+  --field-sage: #7b8464;
+  --field-khaki: #d7ccb7;
+  --mission-orange: #b95524;
+  --map-line-dark: rgba(32, 35, 31, .075);
+  --map-line-light: rgba(255, 250, 240, .105);
+  --camo-field:
+    radial-gradient(ellipse at 10% 18%, rgba(123, 132, 100, .30) 0 8%, transparent 9%),
+    radial-gradient(ellipse at 28% 72%, rgba(53, 70, 50, .26) 0 11%, transparent 12%),
+    radial-gradient(ellipse at 68% 26%, rgba(89, 98, 73, .24) 0 10%, transparent 11%),
+    radial-gradient(ellipse at 84% 78%, rgba(185, 85, 36, .10) 0 9%, transparent 10%);
+  --map-contours:
+    radial-gradient(ellipse at 14% 18%, transparent 0 28%, var(--map-line-dark) 29% 30%, transparent 31%),
+    radial-gradient(ellipse at 76% 20%, transparent 0 32%, var(--map-line-dark) 33% 34%, transparent 35%),
+    radial-gradient(ellipse at 55% 82%, transparent 0 34%, var(--map-line-dark) 35% 36%, transparent 37%);
+}
+
+body {
+  background:
+    var(--map-contours),
+    linear-gradient(135deg, rgba(53, 70, 50, .10), transparent 28%),
+    linear-gradient(225deg, rgba(185, 85, 36, .055), transparent 34%),
+    linear-gradient(180deg, #fbf7ee 0%, #f1eadf 48%, #f8f4eb 100%);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .28;
+  background-image:
+    repeating-linear-gradient(90deg, transparent 0 89px, rgba(32, 35, 31, .055) 90px),
+    repeating-linear-gradient(0deg, transparent 0 89px, rgba(32, 35, 31, .038) 90px);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .50), transparent 62%);
+}
+
+header {
+  background:
+    linear-gradient(180deg, rgba(248, 244, 235, .92), rgba(240, 234, 222, .84)),
+    var(--camo-field);
+}
+
+.nav {
+  position: relative;
+}
+
+.nav::after {
+  content: "";
+  position: absolute;
+  right: var(--space-page-x);
+  bottom: 12px;
+  left: var(--space-page-x);
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(70, 87, 70, .26), rgba(185, 85, 36, .34), transparent);
+}
+
+.brand::after {
+  background: linear-gradient(90deg, var(--mission-orange), var(--field-olive), transparent);
+}
+
+.nav-links,
+.nav-actions .pill:not(.primary) {
+  background:
+    linear-gradient(180deg, rgba(255, 253, 247, .76), rgba(242, 236, 223, .64)),
+    var(--camo-field);
+  background-size: auto, 420px 260px;
+}
+
+.hero {
+  background: var(--field-black);
+}
+
+.hero::before {
+  background:
+    linear-gradient(90deg, rgba(12, 17, 12, .96) 0%, rgba(18, 24, 17, .88) 38%, rgba(18, 24, 17, .36) 76%, rgba(18, 24, 17, .14) 100%),
+    linear-gradient(180deg, rgba(18, 24, 17, .10), rgba(18, 24, 17, .64)),
+    var(--camo-field),
+    url("/images/stock-veteran-brotherhood.webp") center right / cover no-repeat;
+  background-blend-mode: normal, normal, soft-light, normal;
+  filter: saturate(.9) contrast(1.12);
+}
+
+.hero::after {
+  inset: 0;
+  height: auto;
+  opacity: .76;
+  background:
+    linear-gradient(180deg, transparent 0%, rgba(17, 22, 16, .18) 58%, rgba(17, 22, 16, .72) 100%),
+    repeating-linear-gradient(90deg, transparent 0 74px, var(--map-line-light) 75px),
+    repeating-linear-gradient(0deg, transparent 0 74px, rgba(255, 250, 240, .055) 75px);
+}
+
+.hero-copy .eyebrow,
+.donation-card-main .eyebrow,
+.featured-kicker span,
+.footer-title {
+  color: var(--field-olive);
+}
+
+.hero-copy .eyebrow {
+  width: fit-content;
+  padding: 7px 11px;
+  border: 1px solid rgba(255, 250, 240, .18);
+  border-radius: 999px;
+  background: rgba(255, 250, 240, .07);
+  color: rgba(255, 250, 240, .86);
+}
+
+.hero-copy .eyebrow::before {
+  background: linear-gradient(90deg, var(--mission-orange), rgba(255, 250, 240, .30));
+}
+
+.hero h1 {
+  text-shadow:
+    0 1px 0 rgba(255, 250, 240, .08),
+    0 28px 72px rgba(0, 0, 0, .54);
+}
+
+.hero-tagline {
+  border-color: rgba(255, 250, 240, .28);
+  background:
+    linear-gradient(180deg, rgba(255, 250, 240, .10), rgba(255, 250, 240, .045)),
+    linear-gradient(90deg, rgba(185, 85, 36, .20), transparent);
+}
+
+.donation-card-main {
+  border-color: rgba(53, 70, 50, .20);
+  background:
+    linear-gradient(180deg, rgba(255, 253, 247, .97), rgba(244, 238, 226, .94)),
+    var(--map-contours);
+}
+
+.donation-card-main::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  pointer-events: none;
+  border: 1px solid rgba(53, 70, 50, .12);
+  border-radius: calc(var(--radius) - 2px);
+}
+
+.toggle-row {
+  background:
+    linear-gradient(180deg, rgba(223, 216, 199, .94), rgba(236, 229, 216, .82)),
+    var(--camo-field);
+  background-size: auto, 360px 220px;
+}
+
+.toggle-row button.active,
+.amount-button.active,
+.goal-fill {
+  background:
+    linear-gradient(180deg, #c96934, var(--mission-orange) 58%, #88401f);
+}
+
+.amount-button {
+  border-color: rgba(53, 70, 50, .16);
+}
+
+.impact-line {
+  background:
+    linear-gradient(180deg, rgba(70, 87, 70, .13), rgba(185, 85, 36, .08)),
+    var(--map-contours);
+}
+
+.impact-snapshot,
+.strong-circle-section,
+#leadership {
+  background:
+    var(--map-contours),
+    linear-gradient(180deg, rgba(255, 253, 247, .82), rgba(238, 231, 216, .78));
+}
+
+.impact-snapshot-item,
+.step,
+.card,
+.testimonial-card,
+form,
+.goal-panel,
+.mini-item {
+  position: relative;
+  border-color: rgba(53, 70, 50, .16);
+}
+
+.impact-snapshot-item::before,
+.step::before,
+.mini-item::before {
+  background: linear-gradient(180deg, var(--field-olive), var(--mission-orange));
+}
+
+.serve-group::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .74;
+  background:
+    var(--camo-field),
+    repeating-linear-gradient(90deg, transparent 0 82px, rgba(255, 250, 240, .08) 83px),
+    repeating-linear-gradient(0deg, transparent 0 82px, rgba(255, 250, 240, .045) 83px);
+  background-size: 520px 340px, auto, auto;
+  mix-blend-mode: soft-light;
+}
+
+.serve-group::after {
+  border-color: rgba(255, 250, 240, .30);
+  box-shadow:
+    0 0 0 1px rgba(17, 22, 16, .22),
+    inset 0 0 0 1px rgba(17, 22, 16, .20);
+}
+
+.serve-group-head::before {
+  width: fit-content;
+  margin-bottom: 12px;
+  padding: 7px 10px;
+  border: 1px solid rgba(255, 250, 240, .24);
+  border-radius: 999px;
+  background: rgba(17, 22, 16, .34);
+  color: rgba(255, 250, 240, .82);
+  font: 800 var(--fs-ui-micro)/1 var(--ui-face);
+}
+
+#serve-veterans .serve-group-head::before { content: "Care path 01"; }
+#serve-athletes .serve-group-head::before { content: "Care path 02"; }
+#serve-cancer .serve-group-head::before { content: "Care path 03"; }
+#serve-others .serve-group-head::before { content: "Care path 04"; }
+
+.serve-group-head h2::after {
+  content: "";
+  display: block;
+  width: min(180px, 52%);
+  height: 4px;
+  margin-top: 16px;
+  background: linear-gradient(90deg, var(--mission-orange), rgba(255, 250, 240, .26), transparent);
+}
+
+.serve-detail {
+  background:
+    var(--map-contours),
+    linear-gradient(180deg, rgba(255, 253, 247, .98), rgba(241, 235, 222, .90)),
+    linear-gradient(90deg, rgba(70, 87, 70, .08), transparent 42%, rgba(185, 85, 36, .055));
+}
+
+.serve-copy {
+  border-left-color: rgba(185, 85, 36, .62);
+}
+
+.serve-stats .proof-stat,
+.proof-stat {
+  background:
+    radial-gradient(circle at 12% 8%, rgba(185, 85, 36, .18), transparent 32%),
+    var(--camo-field),
+    linear-gradient(135deg, #141a13 0%, #2f3b2a 100%);
+  background-blend-mode: normal, soft-light, normal;
+}
+
+.serve-stats .proof-stat.light,
+.proof-stat.light {
+  background:
+    var(--map-contours),
+    linear-gradient(180deg, rgba(255, 253, 247, .99), rgba(239, 233, 220, .96));
+}
+
+.proof-stat::before {
+  border-color: rgba(255, 250, 240, .20);
+}
+
+.serve-stats .proof-stat::after {
+  content: "";
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 38px;
+  height: 38px;
+  pointer-events: none;
+  border-top: 2px solid rgba(185, 85, 36, .62);
+  border-right: 2px solid rgba(185, 85, 36, .62);
+}
+
+.proof-stat-number {
+  color: #fff7eb;
+}
+
+.proof-stat.light .proof-stat-number,
+.serve-stats .proof-stat.light .proof-stat-number {
+  color: #8f3e1c;
+}
+
+.strong-circle-section {
+  background:
+    var(--map-contours),
+    linear-gradient(180deg, rgba(248, 244, 235, .96), rgba(225, 218, 202, .86));
+}
+
+.circle-panel {
+  border-color: rgba(255, 250, 240, .20);
+  background:
+    linear-gradient(150deg, rgba(17, 22, 16, .96) 0%, rgba(28, 38, 26, .88) 54%, rgba(28, 38, 26, .70) 100%),
+    var(--camo-field),
+    url("/images/stock-hands-care.webp") center / cover no-repeat;
+  background-blend-mode: normal, soft-light, normal;
+}
+
+.circle-panel::before {
+  border-color: rgba(255, 250, 240, .20);
+  box-shadow: inset 0 0 0 1px rgba(17, 22, 16, .28);
+}
+
+.circle-number {
+  width: fit-content;
+  padding: 16px 24px 12px;
+  border: 1px solid rgba(255, 250, 240, .24);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255, 250, 240, .09), rgba(255, 250, 240, .035)),
+    linear-gradient(90deg, rgba(185, 85, 36, .18), transparent);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .12),
+    0 24px 62px rgba(0, 0, 0, .24);
+}
+
+.circle-math-row {
+  border-bottom-style: dashed;
+}
+
+.strong-circle-modal-card {
+  background:
+    radial-gradient(circle at 82% -10%, rgba(185, 85, 36, .16), transparent 42%),
+    var(--map-contours),
+    linear-gradient(180deg, rgba(255, 253, 247, .99), rgba(246, 240, 229, .97));
+}
+
+.modal-commitment,
+.modal-proof-grid {
+  background:
+    linear-gradient(180deg, rgba(255, 253, 247, .82), rgba(242, 236, 223, .62)),
+    var(--map-contours);
+}
+
+.donate-section {
+  background:
+    linear-gradient(135deg, rgba(17, 22, 16, .97), rgba(45, 58, 38, .94)),
+    var(--camo-field),
+    url("/images/stock-veteran-brotherhood.webp") center / cover no-repeat;
+  background-blend-mode: normal, soft-light, normal;
+}
+
+.donate-section::before {
+  background:
+    repeating-linear-gradient(90deg, transparent 0 96px, rgba(255, 250, 240, .07) 97px),
+    repeating-linear-gradient(0deg, transparent 0 96px, rgba(255, 250, 240, .045) 97px),
+    linear-gradient(115deg, rgba(185, 85, 36, .20), transparent 46%);
+}
+
+.goal-panel {
+  border-color: rgba(255, 250, 240, .30);
+  background:
+    linear-gradient(180deg, rgba(17, 22, 16, .44), rgba(17, 22, 16, .24)),
+    var(--camo-field);
+  background-size: auto, 420px 260px;
+}
+
+.contact {
+  background:
+    linear-gradient(90deg, rgba(248, 244, 235, .99) 0%, rgba(248, 244, 235, .92) 47%, rgba(248, 244, 235, .70) 100%),
+    var(--map-contours),
+    url("/images/stock-hands-care.webp") center right / cover no-repeat;
+}
+
+.contact form::after {
+  content: "";
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  width: 44px;
+  height: 44px;
+  pointer-events: none;
+  border-right: 2px solid rgba(70, 87, 70, .28);
+  border-bottom: 2px solid rgba(70, 87, 70, .28);
+}
+
+footer {
+  background:
+    radial-gradient(circle at 12% 0%, rgba(185, 85, 36, .13), transparent 34%),
+    var(--camo-field),
+    linear-gradient(180deg, #20281e, #111610);
+  background-blend-mode: normal, soft-light, normal;
+}
+
+@media (max-width: 720px) {
+  body::after {
+    opacity: .18;
+  }
+
+  .hero::after {
+    opacity: .44;
+    background:
+      linear-gradient(180deg, transparent 0%, rgba(17, 22, 16, .16) 56%, rgba(17, 22, 16, .68) 100%),
+      repeating-linear-gradient(90deg, transparent 0 68px, rgba(255, 250, 240, .065) 69px);
+  }
+
+  .serve-group-head::before {
+    font-size: .78rem;
+  }
+
+  .circle-number {
+    padding: 13px 18px 10px;
+  }
+}
