@@ -1,22 +1,56 @@
 /**
- * Homepage scrollytelling — reveals [data-reveal] elements as they scroll
- * into view, staggering siblings so rows of cards cascade in.
+ * Homepage scrollytelling and reveal behavior.
  *
- * Self-contained (the homepage uses home.css, not the global animation
- * stack). Respects prefers-reduced-motion. Re-inits on every View
- * Transition navigation. Includes a safety net so nothing stays hidden.
+ * Self-contained for the homepage and respects reduced-motion preferences.
  */
 
+const REVEAL_SELECTOR = "[data-reveal]";
+const HIDDEN_REVEAL_SELECTOR = `${REVEAL_SELECTOR}:not(.is-visible)`;
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-let cleanupStoryMotion: (() => void) | undefined;
+let hashRevealListenerAttached = false;
 
 function reveal(el: Element) {
   el.classList.add("is-visible");
 }
 
+function revealHidden() {
+  document.querySelectorAll(HIDDEN_REVEAL_SELECTOR).forEach(reveal);
+}
+
+function revealVisible(targets: HTMLElement[]) {
+  targets.forEach((el) => {
+    if (el.classList.contains("is-visible")) return;
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.98 && rect.bottom > -32) {
+      reveal(el);
+    }
+  });
+}
+
+function scheduleVisibleReveal(targets: HTMLElement[]) {
+  window.requestAnimationFrame(() => revealVisible(targets));
+  window.setTimeout(() => revealVisible(targets), 180);
+  window.setTimeout(() => revealVisible(targets), 700);
+}
+
+function ensureHashRevealListener() {
+  if (hashRevealListenerAttached) return;
+  hashRevealListenerAttached = true;
+
+  window.addEventListener("hashchange", () => {
+    scheduleVisibleReveal(Array.from(document.querySelectorAll<HTMLElement>(REVEAL_SELECTOR)));
+  });
+}
+
 function initHomeReveal() {
-  const targets = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
+  const targets = Array.from(document.querySelectorAll<HTMLElement>(REVEAL_SELECTOR));
   if (!targets.length) return;
+
+  if (window.location.hash) {
+    targets.forEach(reveal);
+    ensureHashRevealListener();
+    return;
+  }
 
   // Stagger by sibling order within each parent, so grids cascade.
   const groupCounts = new Map<Node, number>();
@@ -26,11 +60,10 @@ function initHomeReveal() {
     if (!parent) return;
     const order = groupCounts.get(parent) || 0;
     groupCounts.set(parent, order + 1);
-    const delay = Math.min(order * 90, 360);
+    const delay = Math.min(order * 65, 260);
     el.style.setProperty("--reveal-delay", `${delay}ms`);
   });
 
-  // No-motion / no-observer: show everything immediately.
   if (prefersReducedMotion.matches || !("IntersectionObserver" in window)) {
     targets.forEach(reveal);
     return;
@@ -59,66 +92,19 @@ function initHomeReveal() {
     }
   });
 
-  // Safety net: never leave content stuck hidden.
-  window.setTimeout(() => {
-    document.querySelectorAll("[data-reveal]:not(.is-visible)").forEach(reveal);
-  }, 4500);
+  scheduleVisibleReveal(targets);
+  ensureHashRevealListener();
+  window.setTimeout(revealHidden, 4500);
 }
 
-function initStoryMotion() {
-  cleanupStoryMotion?.();
-  cleanupStoryMotion = undefined;
+prefersReducedMotion.addEventListener?.("change", revealHidden);
 
-  if (prefersReducedMotion.matches) return;
-
-  const panels = Array.from(
-    document.querySelectorAll<HTMLElement>(
-      "#serve-veterans, #serve-athletes, #serve-cancer, #serve-veterans + .proof-stat, #serve-athletes + .proof-stat, .quote-wrap"
-    )
-  );
-  if (!panels.length) return;
-
-  let frame = 0;
-
-  const update = () => {
-    frame = 0;
-    const viewportCenter = window.innerHeight / 2;
-    const viewportRange = Math.max(window.innerHeight, 1);
-
-    panels.forEach((panel) => {
-      const rect = panel.getBoundingClientRect();
-      const panelCenter = rect.top + rect.height / 2;
-      const delta = Math.max(-1, Math.min(1, (panelCenter - viewportCenter) / viewportRange));
-      const isQuote = panel.classList.contains("quote-wrap");
-
-      panel.style.setProperty("--story-text-y", `${(-delta * (isQuote ? 14 : 18)).toFixed(2)}px`);
-      panel.style.setProperty("--story-media-y", `${(delta * (isQuote ? 18 : 24)).toFixed(2)}px`);
-      panel.style.setProperty("--story-frame-y", `${(delta * 8).toFixed(2)}px`);
-    });
-  };
-
-  const schedule = () => {
-    if (frame) return;
-    frame = window.requestAnimationFrame(update);
-  };
-
-  update();
-  window.addEventListener("scroll", schedule, { passive: true });
-  window.addEventListener("resize", schedule);
-
-  cleanupStoryMotion = () => {
-    if (frame) window.cancelAnimationFrame(frame);
-    window.removeEventListener("scroll", schedule);
-    window.removeEventListener("resize", schedule);
-  };
-}
-
-prefersReducedMotion.addEventListener?.("change", () => {
-  document.querySelectorAll("[data-reveal]:not(.is-visible)").forEach(reveal);
-  initStoryMotion();
-});
-
-document.addEventListener("astro:page-load", () => {
+function initHomePageMotion() {
   initHomeReveal();
-  initStoryMotion();
-});
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initHomePageMotion, { once: true });
+} else {
+  window.requestAnimationFrame(initHomePageMotion);
+}

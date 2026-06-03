@@ -1,28 +1,22 @@
 {
   "orgName": "22 Strong Foundation",
-  "brandName": "22 Strong",
-  "tagline": "Back to strong. Back to life.",
-  "descriptor": "22 Strong Foundation gives veterans, underprivileged youth, and cancer survivors in Orange County access to Better in 90 — a 90-day, one-to-one recovery program, at no cost to eligible participants.",
+  "descriptor": "22 Strong Foundation helps veterans, student athletes, cancer survivors, and others access the recovery care they need when coverage or private-pay resources fall short.",
   "phone": "",
   "email": "TEMPLATE: info@22strongfoundation.org",
   "address": "4120 Birch St, Suite 106, Newport Beach, CA 92660",
   "taxStatus": "501(c)(3)",
   "ein": "99-1232582",
-  "stateRegistration": "TEMPLATE: CA SOS filing number",
-  "foundedYear": "2023",
   "serviceArea": "Orange County & Southern California",
-  "reportingPeriod": "TEMPLATE: FY2024",
   "donateUrl": "TEMPLATE: https://your-giving-platform.com/donate",
-  "primaryCtaLabel": "DONATE",
-  "donationAmounts": [22, 44, 88, 150],
+  "donationAmounts": [22, 100, 250, 1000],
   "defaultAmountIndex": 0,
   "donationImpact": {
     "monthly": {
-      "22": "$22 a month — one for the 22 — helps keep recovery care free for the veterans, young athletes, and cancer survivors we serve.",
-      "default": "Your monthly gift helps keep recovery care free for the people we serve — every month."
+      "22": "$22 a month helps someone keep going when coverage stops short.",
+      "default": "Monthly gifts help us say yes more often."
     },
     "oneTime": {
-      "default": "Your gift helps make recovery care accessible to people who need it."
+      "default": "Your gift helps someone keep going when coverage stops short."
     }
   },
   "donation": {

@@ -1,0 +1,69 @@
+/* Foundation responsive overrides. */
+@media (max-width: 920px) {
+  .hero-inner,
+  .split,
+  .quote-wrap,
+  .donate-wrap,
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .bios,
+  .strong-circle-wrap,
+  .proof-stat-inner {
+    grid-template-columns: 1fr;
+  }
+
+  /* Stacked stat bands: dividing rule moves from the side to the top. */
+  .proof-stat-text {
+    padding-left: 0;
+    padding-top: 22px;
+    border-left: 0;
+    border-top: 2px solid rgba(255,255,255,.22);
+  }
+
+  .proof-stat.light .proof-stat-text {
+    border-top-color: rgba(37,35,33,.18);
+    border-left-color: transparent;
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .nav {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 12px;
+  }
+
+  .nav-links a {
+    min-height: 32px;
+    padding-inline: 10px;
+    font-size: var(--fs-ui-micro);
+  }
+
+  .nav-actions {
+    justify-self: end;
+  }
+}
+
+@media (max-width: 720px) {
+  .nav-links {
+    justify-self: stretch;
+  }
+
+  .nav-links a[href="#strong-circle"] {
+    display: none;
+  }
+
+  .nav-actions .pill:not(.primary) {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .form-row { grid-template-columns: 1fr; }
+  .nav { grid-template-columns: auto 1fr; }
+  .nav-links { display: none; }
+  .amount-grid { grid-template-columns: repeat(2, 1fr); }
+}

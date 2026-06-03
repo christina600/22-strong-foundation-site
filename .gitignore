@@ -26,3 +26,6 @@ pnpm-debug.log*
 # generated review/feedback artifacts (regenerable; kept on disk only)
 review-exports/
 review-inbox/
+22-strong-*.html
+22-strong-*.pdf
+BUILD-PLAN-*.md

@@ -1,0 +1,372 @@
+/* ============================================================
+   Homepage foundation styles. Imported first by home.css so later
+   motion and premium layers can refine the same page safely.
+   ============================================================ */
+
+:root {
+  --ink: #252321;
+  --muted: #696660;
+  --soft: #f7f1e6;
+  --paper: #fbf7ee;
+  --card: #fffdf8;
+  --line: rgba(37, 35, 33, .14);
+  --orange: #c94f0f;
+  --orange-dark: #9f3908;
+  --olive: #51523a;
+  --brown: #2f231d;
+  --brown-2: #4b2918;
+  --shadow: 0 24px 70px rgba(47, 35, 29, .12);
+  --radius: 8px;
+  --max: 1160px;
+  --display-face: "DIN Condensed", "DIN Alternate", "Helvetica Neue Condensed Black",
+    "HelveticaNeue-CondensedBold", "Arial Narrow", "Aptos Narrow", Impact,
+    ui-sans-serif, system-ui, sans-serif;
+  --number-face: var(--display-face);
+  --space-page-x: 24px;
+  --space-section-y: 104px;
+  --space-section-y-tight: 72px;
+  --space-section-y-roomy: 116px;
+  --space-card: 32px;
+  --space-card-compact: 22px;
+  --space-card-roomy: 40px;
+  --space-grid-gap: 28px;
+  --space-layout-gap: 58px;
+  --space-story-y: 88px;
+  --space-hero-top: 96px;
+  --space-hero-bottom: 64px;
+  --space-hero-gap: 64px;
+  --lh-hero: .94;
+  --lh-title: .96;
+  --lh-heading: 1.08;
+  --lh-lead: 1.55;
+  --lh-copy: 1.62;
+  --lh-tight: 1.2;
+  --fs-hero: 5.9rem;
+  --fs-title: 4.15rem;
+  --fs-lead: 1.16rem;
+  --fs-body: 1rem;
+  --fs-body-lg: 1.05rem;
+  --fs-serve-title: 5.4rem;
+  --fs-serve-lead: 1.9rem;
+  --fs-stat-major: 7.4rem;
+  --fs-stat-card: 3.7rem;
+  --fs-proof-copy: 1.42rem;
+  --fs-quote: 3.15rem;
+  --fs-featured-line: 2.15rem;
+  --fs-circle-number: 6.1rem;
+  --fs-circle-card-title: 3.1rem;
+  --fs-modal-title: 3.35rem;
+  --fs-modal-amount: 2.45rem;
+  --fs-brand: 1.03rem;
+  --fs-brand-mobile: .78rem;
+  --fs-ui: .82rem;
+  --fs-ui-small: .78rem;
+  --fs-ui-micro: .7rem;
+  --fs-ui-tiny: .56rem;
+  --fs-copy-small: .96rem;
+  --fs-copy-fine: .9rem;
+  --fs-gift-summary: 1.8rem;
+  --fs-gift-summary-compact: 1.55rem;
+  --fs-initials: 2.4rem;
+  --fs-testimonial-card: 2.35rem;
+  --fs-modal-close: 1.4rem;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  background: var(--paper);
+}
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background:
+    linear-gradient(135deg, rgba(81, 82, 58, .10) 0%, transparent 32%),
+    linear-gradient(225deg, rgba(201, 79, 15, .05) 0%, transparent 34%),
+    linear-gradient(180deg, #fbf7ee 0%, #f7f1e6 52%, #fbf7ee 100%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(37,35,33,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,35,33,.025) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,.08));
+  z-index: 0;
+}
+
+/* Accessibility skip link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+}
+.skip-link:focus {
+  left: 12px;
+  top: 12px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: var(--ink);
+  color: #fff;
+  text-decoration: none;
+}
+
+.site {
+  position: relative;
+  z-index: 1;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: 70px;
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(18px);
+  background: rgba(251, 247, 238, .88);
+}
+
+.nav {
+  max-width: var(--max);
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 20px;
+}
+
+.brand {
+  font-family: var(--display-face);
+  font-weight: 850;
+  font-stretch: condensed;
+  letter-spacing: 0;
+  font-size: var(--fs-brand);
+  color: var(--ink);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  min-width: 0;
+  gap: 4px;
+  padding: 4px;
+  overflow-x: auto;
+  border: 1px solid rgba(37, 35, 33, .10);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .52);
+  box-shadow: 0 8px 22px rgba(37, 35, 33, .06);
+  scrollbar-width: none;
+}
+
+.nav-links::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-links a {
+  font-family: var(--display-face);
+  font-stretch: condensed;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  color: rgba(37, 35, 33, .66);
+  font-size: var(--fs-ui-micro);
+  font-weight: 850;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition:
+    color .2s ease,
+    background .2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--ink);
+  background: rgba(255, 253, 248, .78);
+}
+
+.nav-actions {
+  justify-self: end;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.pill {
+  font-family: var(--display-face);
+  font-stretch: condensed;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 22px;
+  border-radius: 999px;
+  font-weight: 850;
+  font-size: var(--fs-ui-small);
+  letter-spacing: 0;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.7);
+  box-shadow: 0 6px 18px rgba(37,35,33,.08);
+  transition:
+    transform .22s ease,
+    border-color .22s ease,
+    background .22s ease,
+    box-shadow .22s ease;
+}
+
+.pill.primary {
+  color: #fff;
+  border-color: rgba(201, 79, 15, .42);
+  background: linear-gradient(180deg, #dc651d, var(--orange));
+  box-shadow: 0 10px 28px rgba(201,79,15,.28);
+}
+
+.pill:hover {
+  transform: translateY(-1px);
+}
+
+.nav-actions .pill:not(.primary) {
+  color: rgba(37, 35, 33, .68);
+  border-color: rgba(37, 35, 33, .12);
+  background: rgba(255, 253, 247, .48);
+  box-shadow: none;
+}
+
+.nav-actions .pill.primary {
+  min-width: 112px;
+  box-shadow:
+    0 12px 30px rgba(201, 79, 15, .30),
+    0 0 0 1px rgba(255, 255, 255, .20) inset;
+}
+
+main { overflow: hidden; }
+
+section {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: var(--space-section-y) var(--space-page-x);
+}
+
+/* Offset anchor jumps so a section heading clears the sticky header
+   (82px at desktop, 70px on mobile) instead of hiding 12px beneath it.
+   section[id] already matches every anchor target, so the individual ids
+   that used to be listed here were redundant. */
+section[id] {
+  scroll-margin-top: 90px;
+}
+
+.eyebrow {
+  font-family: var(--display-face);
+  font-stretch: condensed;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  margin: 0 0 18px;
+  font-size: var(--fs-ui-micro);
+  font-weight: 850;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--olive);
+}
+
+.eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: var(--orange);
+}
+
+h1, h2, h3, p { margin-top: 0; }
+
+h1 {
+  font-family: var(--display-face);
+  font-stretch: condensed;
+  font-weight: 900;
+  max-width: 670px;
+  font-size: var(--fs-hero);
+  line-height: var(--lh-hero);
+  letter-spacing: 0;
+  margin-bottom: 24px;
+  text-wrap: balance;
+}
+
+h2 {
+  font-family: var(--display-face);
+  font-stretch: condensed;
+  font-weight: 900;
+  max-width: 760px;
+  font-size: var(--fs-title);
+  line-height: var(--lh-title);
+  letter-spacing: 0;
+  margin-bottom: 24px;
+  text-wrap: balance;
+}
+
+h3 {
+  font-family: var(--display-face);
+  font-stretch: condensed;
+  font-weight: 900;
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-heading);
+  letter-spacing: 0;
+  margin-bottom: 12px;
+}
+
+p {
+  color: var(--muted);
+  font-size: var(--fs-body);
+  line-height: var(--lh-copy);
+}
+
+.lead {
+  max-width: 610px;
+  font-size: var(--fs-lead);
+  line-height: var(--lh-lead);
+}
+
+.hero {
+  max-width: none;
+  min-height: calc(100vh - 70px);
+  padding: 0;
+  display: grid;
+  place-items: stretch;
+  background:
+    linear-gradient(90deg, rgba(251,247,238,.95) 0%, rgba(251,247,238,.76) 42%, rgba(251,247,238,.32) 100%),
+    linear-gradient(180deg, rgba(255,255,255,.28), rgba(255,255,255,0)),
+    linear-gradient(135deg, #efe7db, #cfc6b6);
+  border-bottom: 1px solid var(--line);
+}
+
+.hero-inner {
+  width: min(var(--max), 100%);
+  margin: 0 auto;
+  padding: var(--space-hero-top) var(--space-page-x) var(--space-hero-bottom);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: var(--space-hero-gap);
+  align-items: center;
+}
+
+.hero-copy {
+  padding-top: 24px;
+}

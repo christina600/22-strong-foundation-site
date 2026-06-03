@@ -9,16 +9,22 @@
 import site from "../../content/site.json";
 import strings from "../../content/strings/en.json";
 
+type DonationImpactMap = {
+  monthly?: Record<string, string>;
+  oneTime?: Record<string, string>;
+};
+
 const amounts = site.donationAmounts;
 const defaultAmount = amounts[site.defaultAmountIndex] || 100;
+const formatAmount = (amount: number) => Number(amount).toLocaleString();
 
 // Per-amount impact copy. The script (donation.ts) reads this map from the
 // data attribute below and swaps the impact line as the donor changes amount
 // or frequency. {amount} is replaced live; "default" covers custom amounts.
-const impact = (site as any).donationImpact ?? {};
+const impact = site.donationImpact as DonationImpactMap;
 const monthlyImpact = impact.monthly ?? {};
 const initialImpactTemplate =
-  monthlyImpact[String(defaultAmount)] ?? monthlyImpact.default ?? "Your gift helps make recovery care accessible to people who need it.";
+  monthlyImpact[String(defaultAmount)] ?? monthlyImpact.default ?? "Your gift helps someone keep going when coverage stops short.";
 const initialImpactDetail = String(initialImpactTemplate).replace(/\{amount\}/g, Number(defaultAmount).toLocaleString());
 
 // The online giving platform is pending. Until donateUrl is configured, route
@@ -26,7 +32,7 @@ const initialImpactDetail = String(initialImpactTemplate).replace(/\{amount\}/g,
 const isSet = (v: unknown) => !!v && !String(v).startsWith("TEMPLATE:");
 const donateReady = isSet(site.donateUrl);
 const donateHref = donateReady ? site.donateUrl : "#contact";
-const donateLabel = donateReady ? strings.donation.continueToCheckout : "Give today";
+const donateLabel = donateReady ? strings.donation.continueToCheckout : "Help fund recovery";
 ---
 
 <div class="donation-module" data-impact-map={JSON.stringify(impact)}>
@@ -47,7 +53,7 @@ const donateLabel = donateReady ? strings.donation.continueToCheckout : "Give to
           data-amount={amount}
           aria-pressed={index === site.defaultAmountIndex ? "true" : "false"}
         >
-          ${amount}
+          ${formatAmount(amount)}
         </button>
       ))}
     </div>
@@ -64,14 +70,14 @@ const donateLabel = donateReady ? strings.donation.continueToCheckout : "Give to
     </div>
     <div class="impact-line" aria-live="polite">
       <span class="eyebrow">{strings.donation.yourImpact}</span>
-      <strong class="gift-summary">${defaultAmount}/mo</strong>
+      <strong class="gift-summary">${formatAmount(defaultAmount)}/mo</strong>
       <span class="gift-detail">{initialImpactDetail}</span>
-      <small>Monthly gift. Annual commitment: ${defaultAmount * 12}.</small>
+      <small>Monthly gift. Annual commitment: ${formatAmount(defaultAmount * 12)}.</small>
     </div>
     <a class="btn btn-donate" href={donateHref} data-donate-base={donateReady ? site.donateUrl : undefined} aria-label={donateLabel}>
       {donateLabel} &rarr;
     </a>
-    <p class="donation-footnote">{donateReady ? strings.donation.footnote : "Online giving is being set up. For now, use the donation form or send a note through the contact form."}</p>
+    <p class="donation-footnote">{donateReady ? strings.donation.footnote : "Online giving is being set up. For now, send a note and the team will follow up with giving details."}</p>
     <p class="donation-legal">
       {site.orgName} &middot; {site.taxStatus} &middot; EIN {site.ein} &middot; Tax-deductible.
     </p>

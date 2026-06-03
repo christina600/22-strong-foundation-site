@@ -1,0 +1,116 @@
+/* Premium mobile responsive refinements. */
+@media (max-width: 560px) {
+  :root {
+    --space-page-x: 20px;
+    --space-section-y: 70px;
+    --space-section-y-tight: 54px;
+    --space-section-y-roomy: 78px;
+    --space-card: 22px;
+    --space-card-compact: 20px;
+    --space-card-roomy: 26px;
+    --space-grid-gap: 20px;
+    --space-layout-gap: 34px;
+    --space-story-y: 24px;
+    --space-hero-top: 68px;
+    --space-hero-bottom: 44px;
+    --space-hero-gap: 34px;
+    --lh-lead: 1.5;
+    --lh-copy: 1.58;
+    --fs-hero: 3.35rem;
+    --fs-title: 2.65rem;
+    --fs-lead: 1rem;
+    --fs-body-lg: 1rem;
+    --fs-serve-title: 3.25rem;
+    --fs-serve-lead: 1.18rem;
+    --fs-stat-major: 3.45rem;
+    --fs-stat-card: 2.75rem;
+    --fs-proof-copy: 1rem;
+    --fs-quote: 2.1rem;
+    --fs-featured-line: 1.75rem;
+    --fs-circle-number: 4.1rem;
+    --fs-circle-card-title: 2.25rem;
+    --fs-modal-title: 2.45rem;
+    --fs-modal-amount: 2.05rem;
+  }
+
+  .nav {
+    padding-inline: 18px;
+  }
+
+  .nav-actions {
+    gap: 8px;
+  }
+
+  .brand {
+    font-size: var(--fs-brand-mobile);
+    letter-spacing: 0;
+  }
+
+  .pill {
+    min-height: 42px;
+    padding-inline: 14px;
+    font-size: var(--fs-ui-micro);
+  }
+
+  .lead {
+    line-height: var(--lh-lead);
+  }
+
+  .hero-inner,
+  .donate-wrap,
+  .strong-circle-wrap,
+  .quote-wrap,
+  .contact .split {
+    gap: var(--space-layout-gap);
+  }
+
+  .donation-card-main,
+  form,
+  .card,
+  .testimonial-card {
+    padding: var(--space-card);
+  }
+
+  #leadership .card {
+    padding: var(--space-card);
+  }
+
+  .portrait,
+  .initials {
+    width: 96px;
+    height: 96px;
+  }
+
+  .featured-sheet {
+    padding: var(--space-card);
+  }
+
+  .proof-stat-number {
+    white-space: normal;
+  }
+
+  .footer-inner {
+    gap: 30px;
+  }
+
+  .donate-section {
+    padding-block: var(--space-section-y-roomy) var(--space-section-y-tight);
+  }
+
+  .goal-panel {
+    padding: var(--space-card-compact);
+  }
+
+
+  .contact .split > div:first-child {
+    padding-block: 22px;
+  }
+
+  .contact .split > div:first-child p {
+    font-size: var(--fs-body);
+  }
+
+  .contact form {
+    padding: var(--space-card);
+  }
+}

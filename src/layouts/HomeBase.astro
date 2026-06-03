@@ -2,8 +2,8 @@
 /**
  * HomeBase layout — the HTML skeleton for the single-page site.
  *
- * Self-contained: provides the full SEO/head/fonts/JSON-LD/Analytics/
- * ClientRouter setup and loads home.css. This is the site's only layout.
+ * Self-contained: provides the full SEO/head/fonts/JSON-LD/Analytics
+ * setup and loads home.css. This is the site's only layout.
  *
  * Scripts: forms.ts (contact form) + home-reveal.ts (scrollytelling).
  * The `js` class is added inline before paint so the reveal start state
@@ -15,7 +15,6 @@
  *   ogImage      — social sharing image URL
  */
 
-import { ClientRouter } from "astro:transitions";
 import site from "../content/site.json";
 import Analytics from "../components/Analytics.astro";
 import strings from "../content/strings/en.json";
@@ -67,8 +66,13 @@ const metaDesc = description || site.descriptor;
   <meta property="og:title" content={title} />
   <meta property="og:description" content={metaDesc} />
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content={site.orgName} />
+  <meta property="og:url" content={Astro.url.href} />
+  <meta property="og:locale" content="en_US" />
   {ogImage && <meta property="og:image" content={ogImage} />}
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={metaDesc} />
 
   <!-- Canonical URL -->
   <link rel="canonical" href={Astro.url.href} />
@@ -77,10 +81,6 @@ const metaDesc = description || site.descriptor;
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" href="/favicon.ico" />
 
-  <!-- Fonts: self-hosted in /fonts/ — no third-party requests -->
-  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin />
-
   <!-- Gate the scrollytelling start state on JS so non-JS users see all -->
   <script is:inline>document.documentElement.classList.add('js');</script>
 
@@ -88,9 +88,6 @@ const metaDesc = description || site.descriptor;
 
   <!-- Organization structured data for rich search results -->
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd).replace(/</g, "\\u003c")} />
-
-  <!-- Smooth page transitions instead of hard reloads -->
-  <ClientRouter />
 
   <!-- Analytics: only loads if configured in site.json -->
   <Analytics />

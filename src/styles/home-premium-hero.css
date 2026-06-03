@@ -1,0 +1,127 @@
+/* Premium hero refinements. */
+.hero {
+  position: relative;
+  min-height: calc(94svh - 82px);
+  overflow: hidden;
+  background: #141713;
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(20, 23, 19, .94) 0%, rgba(20, 23, 19, .82) 43%, rgba(20, 23, 19, .26) 78%, rgba(20, 23, 19, .08) 100%),
+    linear-gradient(180deg, rgba(20, 23, 19, .06), rgba(20, 23, 19, .48)),
+    url("/images/stock-veteran-brotherhood.webp") center right / cover no-repeat;
+  transform: scale(1.012);
+  filter: saturate(.96) contrast(1.04);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 28%;
+  background: linear-gradient(180deg, transparent, rgba(20, 23, 19, .62));
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  padding: var(--space-hero-top) var(--space-page-x) var(--space-hero-bottom);
+  grid-template-columns: minmax(0, 1fr) minmax(322px, 390px);
+  gap: var(--space-hero-gap);
+  align-items: end;
+}
+
+.hero-copy {
+  max-width: 760px;
+  padding-top: 0;
+}
+
+/* Cream eyebrow is for the hero copy only — scoped so it does not bleed onto
+   the donation card eyebrow ("GIVE NOW"), which sits on a light card. */
+.hero-copy .eyebrow {
+  color: rgba(242, 236, 223, .84);
+}
+
+.hero h1 {
+  max-width: 700px;
+  margin-bottom: 22px;
+  color: #fffaf0;
+  font-size: var(--fs-hero);
+  line-height: var(--lh-hero);
+  letter-spacing: 0;
+  text-wrap: balance;
+  text-shadow: 0 18px 50px rgba(0, 0, 0, .34);
+}
+
+.hero .lead {
+  max-width: 640px;
+  color: rgba(255, 250, 240, .78);
+  line-height: var(--lh-lead);
+}
+
+.hero-tagline {
+  display: inline-flex;
+  width: fit-content;
+  margin: 4px 12px 26px 0;
+  padding: 9px 13px;
+  border: 1px solid rgba(255, 250, 240, .22);
+  border-radius: 999px;
+  background: rgba(255, 250, 240, .07);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08);
+  color: rgba(255, 250, 240, .86);
+  font-family: var(--display-face);
+  font-size: var(--fs-ui-small);
+  font-stretch: condensed;
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.hero .donation-card-main {
+  padding: 18px;
+  gap: 12px;
+  background: rgba(255, 253, 247, .94);
+  border-color: rgba(255, 255, 255, .62);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .86) inset,
+    0 28px 70px rgba(0, 0, 0, .22),
+    0 60px 120px rgba(0, 0, 0, .12);
+  backdrop-filter: blur(10px);
+}
+
+.hero .toggle-row button,
+.hero .amount-button {
+  min-height: 40px;
+}
+
+.hero .other-amount-input {
+  min-height: 42px;
+}
+
+.hero .impact-line {
+  padding: 15px 16px 15px 20px;
+}
+
+.hero .impact-line strong {
+  font-size: var(--fs-gift-summary-compact);
+}
+
+.hero .btn-donate {
+  min-height: 44px;
+}
+
+.hero .donation-footnote {
+  font-size: var(--fs-ui-micro);
+  line-height: 1.32;
+}
+
+.hero .donation-legal {
+  display: none;
+}

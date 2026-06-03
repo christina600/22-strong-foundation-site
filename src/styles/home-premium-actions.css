@@ -1,0 +1,301 @@
+/* Premium leadership, donation, contact, and footer refinements. */
+#leadership {
+  position: relative;
+  width: 100vw;
+  max-width: none;
+  margin: 0 calc(50% - 50vw);
+  padding-inline: var(--space-page-x);
+  background:
+    linear-gradient(180deg, rgba(255, 253, 247, .72), rgba(242, 236, 223, .78)),
+    linear-gradient(90deg, rgba(70, 87, 70, .08), transparent 34%, rgba(185, 85, 36, .08));
+  border-block: 1px solid rgba(32, 35, 31, .10);
+}
+
+#leadership > h2 {
+  max-width: 780px;
+  margin-inline: auto;
+  margin-bottom: 46px;
+}
+
+.bios {
+  max-width: var(--max);
+  margin-inline: auto;
+  gap: var(--space-grid-gap);
+  align-items: stretch;
+}
+
+.bio-head {
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(32, 35, 31, .12);
+}
+
+.portrait,
+.initials {
+  width: 108px;
+  height: 108px;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .72) inset,
+    0 18px 38px rgba(29, 33, 29, .12);
+}
+
+.initials {
+  background:
+    linear-gradient(135deg, #465746, #2d372d);
+  color: #f2ecdf;
+}
+
+#leadership .card {
+  position: relative;
+  overflow: hidden;
+  padding: 30px;
+}
+
+#leadership .card p {
+  max-width: 58ch;
+  font-size: var(--fs-copy-small);
+  line-height: 1.58;
+}
+
+#leadership .card p + p {
+  margin-top: 12px;
+}
+
+#leadership .card p:last-child {
+  margin-bottom: 0;
+}
+
+#leadership .card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: linear-gradient(90deg, var(--olive), rgba(185, 85, 36, .72), transparent);
+}
+
+.donate-section {
+  position: relative;
+  background:
+    linear-gradient(135deg, rgba(23, 27, 23, .96), rgba(48, 55, 41, .94)),
+    url("/images/stock-veteran-brotherhood.webp") center / cover no-repeat;
+  border-top: 1px solid rgba(255, 255, 255, .10);
+  border-bottom: 1px solid rgba(255, 255, 255, .10);
+}
+
+.donate-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(255, 250, 240, .05), transparent 24%, rgba(255, 250, 240, .05)),
+    linear-gradient(115deg, rgba(185, 85, 36, .18), transparent 46%);
+}
+
+.donate-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+.donate-wrap {
+  max-width: 1080px;
+}
+
+.donate-section .donation-card-main {
+  color: var(--ink);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .72) inset,
+    0 28px 76px rgba(0, 0, 0, .20),
+    0 58px 118px rgba(0, 0, 0, .14);
+}
+
+.donate-section .donation-card-main p,
+.donate-section .donation-card-main .gift-detail,
+.donate-section .donation-card-main small,
+.donate-section .donation-card-main .donation-footnote,
+.donate-section .donation-card-main .donation-legal {
+  color: var(--muted);
+}
+
+.donate-section .donation-card-main strong,
+.donate-section .donation-card-main .amount-button,
+.donate-section .donation-card-main .toggle-row button {
+  color: var(--ink);
+}
+
+.donate-section .donation-card-main .toggle-row button.active,
+.donate-section .donation-card-main .amount-button.active,
+.donate-section .donation-card-main .btn-donate {
+  color: #fff;
+}
+
+.goal-panel {
+  background: rgba(255, 255, 255, .10);
+  border-color: rgba(255, 255, 255, .18);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .16) inset,
+    0 32px 82px rgba(0, 0, 0, .20);
+  backdrop-filter: blur(6px);
+}
+
+.amount-button:hover,
+.toggle-row button:hover {
+  border-color: rgba(185, 85, 36, .34);
+}
+
+.contact {
+  position: relative;
+  isolation: isolate;
+  max-width: none;
+  padding-block: var(--space-section-y-roomy);
+  background:
+    linear-gradient(90deg, rgba(248, 244, 235, .99) 0%, rgba(248, 244, 235, .90) 46%, rgba(248, 244, 235, .66) 100%),
+    linear-gradient(180deg, rgba(255, 253, 247, .34), rgba(185, 85, 36, .05)),
+    url("/images/stock-hands-care.webp") center right / cover no-repeat;
+  border-top: 1px solid rgba(32, 35, 31, .08);
+  box-shadow: inset 0 1px 0 rgba(255, 250, 240, .72);
+}
+
+.contact::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(255, 253, 247, .68), transparent 30%, rgba(255, 253, 247, .12));
+}
+
+.contact .split {
+  max-width: 1120px;
+  margin: 0 auto;
+  grid-template-columns: minmax(300px, .84fr) minmax(420px, 1fr);
+  align-items: center;
+  gap: 42px;
+}
+
+.contact .split > div:first-child {
+  align-self: center;
+  max-width: 520px;
+  padding-block: 30px;
+  border-block: 1px solid rgba(32, 35, 31, .12);
+}
+
+.contact .split > div:first-child h2 {
+  max-width: 12.5ch;
+  margin-bottom: 22px;
+}
+
+.contact .split > div:first-child p {
+  max-width: 44ch;
+  color: rgba(32, 35, 31, .72);
+  font-size: var(--fs-body-lg);
+}
+
+form {
+  margin-top: 0;
+}
+
+.contact form {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-card-roomy);
+  background:
+    linear-gradient(180deg, rgba(255, 253, 247, .98), rgba(248, 244, 235, .92));
+  border-color: rgba(32, 35, 31, .14);
+  box-shadow: var(--shadow-panel);
+  backdrop-filter: blur(8px);
+}
+
+.contact form::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: linear-gradient(90deg, var(--orange), rgba(70, 87, 70, .78), transparent);
+}
+
+input,
+select,
+textarea {
+  background: rgba(255, 253, 247, .92);
+  border-color: rgba(32, 35, 31, .16);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .82) inset;
+  transition:
+    border-color .18s ease,
+    box-shadow .18s ease,
+    background-color .18s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: rgba(185, 85, 36, .55);
+  background: #fffdf7;
+  box-shadow:
+    0 0 0 4px rgba(185, 85, 36, .12),
+    0 1px 0 rgba(255, 255, 255, .90) inset;
+}
+
+/* Keyboard focus ring — shared by every interactive element, links
+   included (footer + stat citations previously fell back to the faint
+   browser default). Solid --orange (#b95524) clears WCAG 2.4.11's 3:1
+   non-text contrast on light panels (~4.8:1) and the dark footer
+   (~3.8:1); the previous .28-opacity orange was only ~1.25:1. */
+input:focus,
+select:focus,
+textarea:focus,
+a:focus-visible,
+.pill:focus-visible,
+.btn-donate:focus-visible,
+.amount-button:focus-visible,
+.toggle-row button:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+}
+
+footer {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(185, 85, 36, .12), transparent 34%),
+    linear-gradient(180deg, #20251f, #141713);
+  border-top-color: rgba(255, 255, 255, .10);
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 250, 240, .22), transparent);
+}
+
+.footer-inner,
+.footer-inner p,
+.links a {
+  color: rgba(255, 250, 240, .62);
+}
+
+.footer-title {
+  color: #fff7eb;
+}
+
+.footer-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.links a {
+  width: fit-content;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: color .18s ease, border-color .18s ease;
+}
+
+.links a:hover {
+  color: #fff7eb;
+  border-color: rgba(255, 250, 240, .34);
+}

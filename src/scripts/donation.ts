@@ -1,20 +1,40 @@
 /**
- * Donation widget — amount buttons, frequency toggle, summary update.
+ * Donation widget controls.
  *
- * Uses event delegation on the document so it works for both donation widgets
- * on the single-scroll homepage.
- *
- * Event delegation listeners persist across View Transitions
- * (attached once, work on all pages).
+ * Document-level listeners support each donation module on the homepage.
  */
 
 let donationListenerAttached = false;
+
+const ACTIVE_CLASS = "active";
+const UPDATING_CLASS = "is-updating";
+const AMOUNT_SELECTOR = "[data-amount]";
+const FREQUENCY_SELECTOR = "[data-frequency]";
+
+function formatGiftAmount(amount: string | number) {
+  return Number(amount).toLocaleString();
+}
+
+function setActiveOption(scope: Element | Document, selector: string, activeOption: Element) {
+  scope.querySelectorAll(selector).forEach((option) => {
+    const isActive = option === activeOption;
+    option.classList.toggle(ACTIVE_CLASS, isActive);
+    option.setAttribute("aria-pressed", String(isActive));
+  });
+}
+
+function clearActiveOptions(scope: Element | Document, selector: string) {
+  scope.querySelectorAll(selector).forEach((option) => {
+    option.classList.remove(ACTIVE_CLASS);
+    option.setAttribute("aria-pressed", "false");
+  });
+}
 
 function getGiftAmount(module: Element): string {
   const custom = module.querySelector<HTMLInputElement>(".other-amount-input")?.value || "";
   const customNumber = Number(custom.replace(/[^0-9.]/g, ""));
   if (customNumber > 0) return String(Math.round(customNumber));
-  return module.querySelector<HTMLElement>("[data-amount].active")?.dataset.amount || "100";
+  return module.querySelector<HTMLElement>(`${AMOUNT_SELECTOR}.${ACTIVE_CLASS}`)?.dataset.amount || "100";
 }
 
 function updateGiftSummary(scope: Element | Document = document, pulse = true) {
@@ -26,7 +46,7 @@ function updateGiftSummary(scope: Element | Document = document, pulse = true) {
 
   const activeAmount = getGiftAmount(module as Element);
   const activeFrequency =
-    module.querySelector<HTMLElement>("[data-frequency].active")?.dataset.frequency || "monthly";
+    module.querySelector<HTMLElement>(`${FREQUENCY_SELECTOR}.${ACTIVE_CLASS}`)?.dataset.frequency || "monthly";
 
   const summary = module.querySelector(".gift-summary");
   const detail = module.querySelector(".gift-detail");
@@ -34,9 +54,10 @@ function updateGiftSummary(scope: Element | Document = document, pulse = true) {
   const card = module.querySelector(".donation-card-main");
 
   if (summary) {
+    const formattedAmount = formatGiftAmount(activeAmount);
     summary.textContent = activeFrequency === "monthly"
-      ? `$${activeAmount}/mo`
-      : `$${activeAmount}`;
+      ? `$${formattedAmount}/mo`
+      : `$${formattedAmount}`;
   }
   if (detail) {
     // Pull the per-amount impact copy embedded by DonationModule.astro and
@@ -53,7 +74,7 @@ function updateGiftSummary(scope: Element | Document = document, pulse = true) {
           .replace(/\{annual\}/g, annual);
         if (text) detail.textContent = text; // keep server-rendered line if map is empty
       } catch {
-        /* malformed map — leave the existing line untouched */
+        /* Malformed impact map: leave the existing line untouched. */
       }
     }
   }
@@ -64,9 +85,6 @@ function updateGiftSummary(scope: Element | Document = document, pulse = true) {
       : "One-time gift.";
   }
 
-  // Carry the chosen amount + frequency onto the "continue" link so the donor
-  // lands on the giving platform with their selection prefilled. Only build a
-  // param'd URL from a real http(s) base — TEMPLATE placeholders are left as-is.
   const donateBtn = module.querySelector<HTMLAnchorElement>(".btn-donate");
   if (donateBtn) {
     const base = donateBtn.dataset.donateBase || donateBtn.getAttribute("href") || "";
@@ -77,12 +95,11 @@ function updateGiftSummary(scope: Element | Document = document, pulse = true) {
     }
   }
 
-  // Quick visual pulse on update
   if (pulse && card) {
-    card.classList.remove("is-updating");
+    card.classList.remove(UPDATING_CLASS);
     requestAnimationFrame(() => {
-      card.classList.add("is-updating");
-      setTimeout(() => card.classList.remove("is-updating"), 450);
+      card.classList.add(UPDATING_CLASS);
+      setTimeout(() => card.classList.remove(UPDATING_CLASS), 450);
     });
   }
 }
@@ -91,19 +108,15 @@ function initDonation() {
   if (donationListenerAttached) return;
   donationListenerAttached = true;
 
-  // Amount button clicks
   document.addEventListener("click", (event) => {
-    const amountButton = (event.target as HTMLElement).closest("[data-amount]");
-    const frequencyButton = (event.target as HTMLElement).closest("[data-frequency]");
+    if (!(event.target instanceof HTMLElement)) return;
+
+    const amountButton = event.target.closest(AMOUNT_SELECTOR);
+    const frequencyButton = event.target.closest(FREQUENCY_SELECTOR);
 
     if (amountButton) {
       const module = amountButton.closest(".donation-module") || document;
-      module.querySelectorAll("[data-amount]").forEach(btn => {
-        btn.classList.remove("active");
-        btn.setAttribute("aria-pressed", "false");
-      });
-      amountButton.classList.add("active");
-      amountButton.setAttribute("aria-pressed", "true");
+      setActiveOption(module, AMOUNT_SELECTOR, amountButton);
       const otherAmount = module.querySelector<HTMLInputElement>(".other-amount-input");
       if (otherAmount) otherAmount.value = "";
       updateGiftSummary(module as Element);
@@ -111,32 +124,29 @@ function initDonation() {
 
     if (frequencyButton) {
       const module = frequencyButton.closest(".donation-module") || document;
-      module.querySelectorAll("[data-frequency]").forEach(btn => {
-        btn.classList.remove("active");
-        btn.setAttribute("aria-pressed", "false");
-      });
-      frequencyButton.classList.add("active");
-      frequencyButton.setAttribute("aria-pressed", "true");
+      setActiveOption(module, FREQUENCY_SELECTOR, frequencyButton);
       updateGiftSummary(module as Element);
     }
   });
 
-  // Custom amount input
   document.addEventListener("input", (event) => {
-    const input = (event.target as HTMLElement).closest(".other-amount-input");
+    if (!(event.target instanceof HTMLElement)) return;
+
+    const input = event.target.closest(".other-amount-input");
     if (!input) return;
     const module = input.closest(".donation-module") || document;
-    module.querySelectorAll("[data-amount]").forEach(btn => {
-      btn.classList.remove("active");
-      btn.setAttribute("aria-pressed", "false");
-    });
+    clearActiveOptions(module, AMOUNT_SELECTOR);
     updateGiftSummary(module as Element);
   });
 }
 
-// Run on initial load and every View Transition navigation
-document.addEventListener("astro:page-load", () => {
+function initDonationPage() {
   initDonation();
-  // Sync each module's continue link with its default selection (no pulse).
   document.querySelectorAll(".donation-module").forEach((mod) => updateGiftSummary(mod, false));
-});
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initDonationPage, { once: true });
+} else {
+  initDonationPage();
+}

@@ -1,0 +1,107 @@
+/* Premium card and donation-widget refinements. */
+.card,
+.donation-card-main,
+.testimonial-card,
+form,
+.goal-panel,
+.mini-item,
+.circle-panel,
+.quote-photo,
+.portrait,
+.initials {
+  border-radius: var(--radius);
+}
+
+.card,
+.testimonial-card,
+form {
+  background:
+    linear-gradient(180deg, var(--surface-card), var(--surface-card-soft));
+  border-color: var(--surface-line);
+  box-shadow: var(--shadow-soft);
+}
+
+.donation-card-main {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-card-compact);
+  gap: 16px;
+  background:
+    linear-gradient(180deg, var(--surface-card), var(--surface-card-soft));
+  border-color: var(--surface-line);
+  box-shadow: var(--shadow-panel);
+}
+
+.donation-card-main::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: linear-gradient(90deg, var(--olive), rgba(185, 85, 36, .78), rgba(255, 253, 247, 0));
+}
+
+.donation-card-main .eyebrow {
+  letter-spacing: 0;
+}
+
+.toggle-row {
+  padding: 4px;
+  background: #ece5d8;
+  border-color: rgba(32, 35, 31, .12);
+  border-radius: 8px;
+}
+
+.toggle-row button,
+.amount-button,
+.other-amount-input,
+input,
+select,
+textarea {
+  border-radius: 7px;
+}
+
+.toggle-row button.active,
+.amount-button.active,
+.goal-fill {
+  background: linear-gradient(180deg, #c9632d, var(--orange));
+}
+
+.amount-button {
+  min-height: 48px;
+  background: rgba(255, 255, 255, .82);
+  transition:
+    border-color .18s ease,
+    transform .18s ease,
+    box-shadow .18s ease;
+}
+
+.amount-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(29, 33, 29, .08);
+}
+
+.impact-line {
+  position: relative;
+  padding: var(--space-card-compact);
+  background:
+    linear-gradient(180deg, rgba(70, 87, 70, .10), rgba(185, 85, 36, .08));
+  border-color: rgba(32, 35, 31, .12);
+}
+
+.impact-line::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 18px;
+  bottom: 18px;
+  width: 3px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--olive), var(--orange));
+}
+
+.impact-line strong {
+  font-family: var(--display-face);
+  font-stretch: condensed;
+  font-weight: 900;
+  letter-spacing: 0;
+}

@@ -3,11 +3,8 @@
 
 /*
   # Only allow scripts/styles/fonts from your own domain.
-  # 'unsafe-inline' is needed because Astro inlines small scripts
-  # and View Transitions use inline styles.
-  # frame-src allows the YouTube testimonial embed (privacy-friendly
-  # youtube-nocookie domain). If you remove the video, you can drop it.
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src https://www.youtube-nocookie.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+  # 'unsafe-inline' is needed because Astro inlines small scripts.
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
 
   # Prevent browsers from guessing file types (MIME sniffing).
   X-Content-Type-Options: nosniff

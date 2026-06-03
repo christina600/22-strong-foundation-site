@@ -1,0 +1,22 @@
+/* Premium compact-phone responsive refinements. */
+@media (max-width: 380px) {
+  :root {
+    --space-page-x: 18px;
+    --fs-hero: 3rem;
+    --fs-title: 2.35rem;
+    --fs-serve-title: 2.95rem;
+    --fs-modal-title: 2.25rem;
+  }
+
+  .nav {
+    padding-inline: 14px;
+  }
+
+  .nav-actions {
+    gap: 6px;
+  }
+
+  .nav-actions .pill {
+    padding-inline: 10px;
+  }
+}

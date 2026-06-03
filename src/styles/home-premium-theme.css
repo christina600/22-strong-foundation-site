@@ -1,0 +1,237 @@
+/* ============================================================
+   Premium refresh
+   Later visual refinement layer for the one-page homepage.
+   ============================================================ */
+
+:root {
+  --ink: #20231f;
+  --muted: #60665e;
+  --soft: #f2ecdf;
+  --paper: #f8f4eb;
+  --card: #fffdf7;
+  --line: rgba(32, 35, 31, .14);
+  --orange: #b95524;
+  --orange-dark: #863a1a;
+  --olive: #465746;
+  --brown: #1d211d;
+  --brown-2: #303729;
+  --shadow:
+    0 2px 2px rgba(29, 33, 29, .04),
+    0 18px 44px rgba(29, 33, 29, .12),
+    0 46px 90px rgba(29, 33, 29, .10);
+  --shadow-soft:
+    0 1px 0 rgba(255, 255, 255, .78) inset,
+    0 16px 42px rgba(29, 33, 29, .10);
+  --shadow-panel:
+    0 1px 0 rgba(255, 255, 255, .82) inset,
+    0 22px 58px rgba(29, 33, 29, .13),
+    0 54px 110px rgba(29, 33, 29, .09);
+  --surface-card: rgba(255, 253, 247, .96);
+  --surface-card-soft: rgba(248, 244, 235, .92);
+  --surface-line: rgba(32, 35, 31, .12);
+  --radius: 8px;
+  --max: 1180px;
+  --display-face: "DIN Condensed", "DIN Alternate", "Helvetica Neue Condensed Black",
+    "HelveticaNeue-CondensedBold", "Arial Narrow", "Aptos Narrow", Impact,
+    ui-sans-serif, system-ui, sans-serif;
+  --number-face: var(--display-face);
+  --space-page-x: 24px;
+  --space-section-y: 108px;
+  --space-section-y-tight: 76px;
+  --space-section-y-roomy: 122px;
+  --space-card: 32px;
+  --space-card-compact: 22px;
+  --space-card-roomy: 40px;
+  --space-grid-gap: 28px;
+  --space-layout-gap: 58px;
+  --space-story-y: 88px;
+  --space-hero-top: 96px;
+  --space-hero-bottom: 64px;
+  --space-hero-gap: 64px;
+  --lh-hero: .94;
+  --lh-title: .96;
+  --lh-heading: 1.08;
+  --lh-lead: 1.55;
+  --lh-copy: 1.62;
+  --lh-tight: 1.2;
+  --fs-hero: 6rem;
+  --fs-title: 4.35rem;
+  --fs-lead: 1.16rem;
+  --fs-body: 1rem;
+  --fs-body-lg: 1.05rem;
+  --fs-serve-title: 5.7rem;
+  --fs-serve-lead: 1.95rem;
+  --fs-stat-major: 7.8rem;
+  --fs-stat-card: 3.7rem;
+  --fs-proof-copy: 1.42rem;
+  --fs-quote: 3.15rem;
+  --fs-featured-line: 2.15rem;
+  --fs-circle-number: 6.1rem;
+  --fs-circle-card-title: 3.05rem;
+  --fs-modal-title: 3.3rem;
+  --fs-modal-amount: 2.45rem;
+  --fs-brand: 1.03rem;
+  --fs-brand-mobile: .78rem;
+  --fs-ui: .82rem;
+  --fs-ui-small: .78rem;
+  --fs-ui-micro: .7rem;
+  --fs-ui-tiny: .56rem;
+  --fs-copy-small: .96rem;
+  --fs-copy-fine: .9rem;
+  --fs-gift-summary: 1.8rem;
+  --fs-gift-summary-compact: 1.55rem;
+  --fs-initials: 2.4rem;
+  --fs-testimonial-card: 2.35rem;
+  --fs-modal-close: 1.4rem;
+}
+
+html {
+  background: var(--paper);
+}
+
+body {
+  color: var(--ink);
+  background:
+    linear-gradient(180deg, #faf7f0 0%, #eee8dc 48%, #f8f4eb 100%);
+  text-rendering: optimizeLegibility;
+}
+
+body::before {
+  opacity: .42;
+  background-image:
+    linear-gradient(rgba(32, 35, 31, .025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(32, 35, 31, .018) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .22), transparent 72%);
+}
+
+header {
+  height: 82px;
+  background: rgba(248, 244, 235, .84);
+  border-bottom: 1px solid rgba(32, 35, 31, .12);
+  box-shadow: 0 10px 28px rgba(29, 33, 29, .05);
+}
+
+.nav {
+  padding-inline: var(--space-page-x);
+}
+
+.brand {
+  width: fit-content;
+  font-size: var(--fs-brand);
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.brand::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  margin-top: 4px;
+  background: linear-gradient(90deg, var(--orange), transparent);
+}
+
+.nav-links {
+  background: rgba(255, 253, 247, .60);
+  border-color: rgba(32, 35, 31, .10);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .58) inset,
+    0 14px 34px rgba(29, 33, 29, .07);
+}
+
+.nav-links a {
+  color: rgba(32, 35, 31, .58);
+  letter-spacing: 0;
+}
+
+.nav-links a:hover {
+  color: var(--ink);
+  background: rgba(242, 236, 223, .78);
+}
+
+.pill,
+.btn-donate {
+  min-height: 46px;
+  border-radius: 999px;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .72) inset,
+    0 14px 34px rgba(29, 33, 29, .10);
+  transition:
+    transform .22s ease,
+    box-shadow .22s ease,
+    background-color .22s ease;
+}
+
+.pill:hover,
+.btn-donate:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .72) inset,
+    0 18px 42px rgba(29, 33, 29, .16);
+}
+
+.pill.primary,
+.btn-donate {
+  background: linear-gradient(180deg, #cf6a32 0%, var(--orange) 58%, #984017 100%);
+  border-color: rgba(255, 255, 255, .18);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .28) inset,
+    0 18px 42px rgba(185, 85, 36, .30);
+}
+
+section {
+  padding-top: var(--space-section-y);
+  padding-bottom: var(--space-section-y);
+  padding-left: var(--space-page-x);
+  padding-right: var(--space-page-x);
+  /* Matches the section[id] offset above; kept here for any id-less section. */
+  scroll-margin-top: 90px;
+}
+
+.eyebrow {
+  color: var(--olive);
+  font-size: var(--fs-ui-micro);
+  letter-spacing: 0;
+}
+
+.eyebrow::before {
+  width: 34px;
+  background: linear-gradient(90deg, var(--orange), rgba(185, 85, 36, .15));
+}
+
+h1,
+h2,
+h3 {
+  color: var(--ink);
+}
+
+h1 {
+  max-width: 720px;
+  font-size: var(--fs-hero);
+  line-height: var(--lh-hero);
+  letter-spacing: 0;
+}
+
+h2 {
+  font-family: var(--display-face);
+  font-stretch: condensed;
+  font-weight: 900;
+  font-size: var(--fs-title);
+  line-height: var(--lh-title);
+  letter-spacing: 0;
+}
+
+h3 {
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+p {
+  color: var(--muted);
+}
+
+.lead {
+  font-size: var(--fs-lead);
+  line-height: var(--lh-lead);
+}

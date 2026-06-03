@@ -1,0 +1,91 @@
+/* Foundation contact form section. */
+.contact {
+  padding-top: var(--space-section-y-roomy);
+  padding-bottom: var(--space-section-y-roomy);
+}
+
+form {
+  margin-top: 34px;
+  background: rgba(255,253,248,.88);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-card);
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 18px;
+}
+
+.form-submit {
+  justify-self: start;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+label {
+  display: grid;
+  gap: 8px;
+  font-size: var(--fs-ui);
+  color: var(--ink);
+  font-weight: 650;
+}
+
+input, select, textarea {
+  width: 100%;
+  border: 1px solid rgba(37,35,33,.18);
+  background: #fff;
+  border-radius: 8px;
+  min-height: 48px;
+  padding: 12px 14px;
+  font: inherit;
+  color: var(--ink);
+}
+
+textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.note {
+  color: var(--muted);
+  font-size: var(--fs-copy-fine);
+  margin: -4px 0 0;
+}
+
+.form-status {
+  margin: 0;
+  padding: 14px 16px;
+  border: 1px solid rgba(185, 85, 36, .24);
+  border-radius: 8px;
+  background: rgba(185, 85, 36, .08);
+  color: var(--muted);
+  font-size: var(--fs-copy-fine);
+  line-height: var(--lh-lead);
+}
+
+.form-status[hidden] {
+  display: none;
+}
+
+/* Honeypot: clipped instead of positioned offscreen so QA sees no overflow. */
+.hp {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+footer {
+  border-top: 1px solid var(--line);
+  background: rgba(235, 224, 204, .75);
+  padding: 56px 24px;
+}

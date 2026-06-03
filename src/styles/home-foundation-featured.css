@@ -1,0 +1,123 @@
+/* Foundation press-feature ("As featured in") — a framed editorial credential. */
+.featured {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-section-y-tight) var(--space-page-x);
+  border-top: 1px solid var(--line);
+  background:
+    radial-gradient(120% 88% at 50% -8%, rgba(185, 85, 36, .10), transparent 58%),
+    linear-gradient(180deg, #fff 0%, #f6f0e4 100%);
+}
+
+.featured-inner {
+  position: relative;
+  z-index: 1;
+  width: min(var(--max), 100%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+}
+
+/* "AS FEATURED IN" — centered prestige label with flanking rules. */
+.featured-kicker {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0;
+  color: var(--olive);
+  font-family: var(--display-face);
+  font-stretch: condensed;
+  font-weight: 760;
+  font-size: var(--fs-ui-micro);
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.featured-kicker::before,
+.featured-kicker::after {
+  content: "";
+  width: 64px;
+  height: 1px;
+  background: rgba(70, 87, 70, .42);
+}
+
+/* The floating tear-sheet. Pure white so the logo's white field sits flush. */
+.featured-sheet {
+  position: relative;
+  overflow: hidden;
+  width: min(540px, 100%);
+  margin: 2px 0 0;
+  padding: 30px 36px;
+  background: #fff;
+  border: 1px solid rgba(32, 35, 31, .10);
+  border-radius: var(--radius);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .9) inset,
+    0 3px 12px rgba(36, 33, 28, .07),
+    0 24px 58px rgba(36, 33, 28, .13);
+}
+
+.featured-sheet::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: linear-gradient(90deg, var(--olive), var(--orange), rgba(255, 253, 247, 0));
+}
+
+.featured-logo-img {
+  display: block;
+  width: min(380px, 100%);
+  height: auto;
+  margin: 0 auto;
+}
+
+.featured-issue {
+  margin: 18px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid rgba(32, 35, 31, .10);
+  color: var(--muted);
+  font-family: var(--display-face);
+  font-stretch: condensed;
+  font-weight: 760;
+  font-size: var(--fs-ui);
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+/* The editorial statement — display scale carries the impact. */
+.featured-line {
+  max-width: 20ch;
+  margin: 4px 0 0;
+  color: var(--ink);
+  font-family: var(--display-face);
+  font-stretch: condensed;
+  font-weight: 850;
+  font-size: var(--fs-featured-line);
+  line-height: 1.08;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+.featured-link {
+  margin-top: 6px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid rgba(185, 85, 36, .42);
+  color: var(--orange-dark);
+  font-family: var(--display-face);
+  font-stretch: condensed;
+  font-weight: 760;
+  font-size: var(--fs-ui);
+  letter-spacing: 0;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color .2s ease, border-color .2s ease;
+}
+
+.featured-link:hover {
+  color: var(--orange);
+  border-color: var(--orange);
+}

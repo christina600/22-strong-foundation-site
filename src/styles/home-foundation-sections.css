@@ -1,0 +1,9 @@
+/* Foundation lower-page sections split by cascade order. */
+@import "./home-foundation-how.css";
+@import "./home-foundation-stats.css";
+@import "./home-foundation-leadership.css";
+@import "./home-foundation-featured.css";
+@import "./home-foundation-fundraising.css";
+@import "./home-foundation-circle.css";
+@import "./home-foundation-contact.css";
+@import "./home-foundation-footer.css";

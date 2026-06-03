@@ -1,0 +1,127 @@
+/* Foundation Strong Circle section. */
+.strong-circle-section {
+  max-width: none;
+  padding: var(--space-section-y-roomy) var(--space-page-x);
+  background:
+    linear-gradient(115deg, rgba(201,79,15,.08), transparent 38%),
+    linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.02));
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.strong-circle-wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: var(--space-layout-gap);
+  align-items: stretch;
+}
+
+.circle-panel {
+  min-height: 520px;
+  border-radius: 8px;
+  padding: var(--space-card-roomy);
+  background: linear-gradient(135deg, var(--brown), #1f1714);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.circle-panel h2 {
+  color: #fff;
+}
+
+.circle-panel p {
+  color: rgba(255,255,255,.74);
+}
+
+.circle-number {
+  font-family: var(--number-face);
+  font-stretch: condensed;
+  font-weight: 900;
+  font-size: var(--fs-circle-number);
+  line-height: var(--lh-hero);
+  letter-spacing: 0;
+  color: #fff;
+  margin: 34px 0 16px;
+}
+
+.circle-subhead {
+  color: #fff;
+  margin: 30px 0 10px;
+}
+
+.circle-copy-tight {
+  margin-bottom: 0;
+}
+
+.circle-card-title {
+  font-size: var(--fs-circle-card-title);
+}
+
+.circle-math {
+  display: grid;
+  gap: 14px;
+}
+
+.circle-math-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255,255,255,.14);
+  color: rgba(255,255,255,.78);
+  font-size: var(--fs-copy-small);
+}
+
+.circle-math-row strong {
+  color: #fff;
+  font-size: var(--fs-lead);
+  letter-spacing: 0;
+}
+
+.circle-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.mini-list {
+  display: grid;
+  gap: 16px;
+  margin-top: 34px;
+}
+
+.mini-item {
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255,253,248,.72);
+}
+
+.mini-item h3 {
+  margin-bottom: 6px;
+}
+
+.mini-item p {
+  margin: 0;
+  font-size: var(--fs-copy-small);
+  line-height: var(--lh-lead);
+}
+
+/* The .card in the Strong Circle uses a light background, so the
+   math rows need dark text — the white values above target the dark
+   .circle-panel only. */
+.strong-circle-wrap > .card .circle-math-row {
+  color: var(--muted);
+  border-bottom-color: var(--line);
+}
+
+.strong-circle-wrap > .card .circle-math-row strong {
+  color: var(--ink);
+}
