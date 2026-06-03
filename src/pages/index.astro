@@ -202,10 +202,34 @@ import DonationModule from "../components/sections/DonationModule.astro";
         <div class="testimonial-grid">
           <article class="testimonial-card" data-reveal>
             <div>
-              <video class="testimonial-video" controls preload="none" playsinline poster="/images/luke-poster.jpg">
-                <source src="/video/luke-hudson-testimonial.mp4" type="video/mp4" />
-                <a href="/video/luke-hudson-testimonial.mp4">Watch Luke&rsquo;s testimonial</a>.
-              </video>
+              <div class="testimonial-video-shell" data-lazy-video>
+                <button
+                  class="testimonial-video-trigger"
+                  type="button"
+                  data-lazy-video-trigger
+                  data-video-src="/video/luke-hudson-testimonial.mp4"
+                  data-video-poster="/images/luke-poster.jpg"
+                  aria-label="Play Luke Hudson testimonial video"
+                >
+                  <img
+                    class="testimonial-video-poster"
+                    src="/images/luke-poster.jpg"
+                    alt=""
+                    width="1080"
+                    height="1920"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                  />
+                  <span class="testimonial-play-button" aria-hidden="true"></span>
+                </button>
+                <noscript>
+                  <video class="testimonial-video" controls preload="none" playsinline poster="/images/luke-poster.jpg">
+                    <source src="/video/luke-hudson-testimonial.mp4" type="video/mp4" />
+                    <a href="/video/luke-hudson-testimonial.mp4">Watch Luke&rsquo;s testimonial</a>.
+                  </video>
+                </noscript>
+              </div>
               <div class="attribution">Luke Hudson &middot; Veteran, VA referral</div>
               <p class="story">Luke shares why access to hands-on recovery care matters after service.</p>
             </div>
@@ -243,7 +267,7 @@ import DonationModule from "../components/sections/DonationModule.astro";
 
       <section class="serve-proof">
         <div class="quote-wrap">
-          <img class="quote-photo" src="/images/adam-folker-uci.webp" alt="Adam Folker" width="1200" height="800" loading="lazy" decoding="async" data-reveal />
+          <img class="quote-photo" src="/images/adam-folker-uci.webp" alt="Adam Folker" width="1200" height="800" loading="lazy" decoding="async" fetchpriority="low" data-reveal />
 
           <div data-reveal>
             <blockquote>&ldquo;A major part of my success was the treatments and therapy I received from Dr. Vas.&rdquo;</blockquote>
@@ -326,7 +350,7 @@ import DonationModule from "../components/sections/DonationModule.astro";
         <div class="bios">
           <article class="card" data-reveal>
             <div class="bio-head">
-              <img class="portrait" src="/images/dr-vas.webp" alt="Dr. Vasili &ldquo;Dr. Vas&rdquo; Gatsinaris" width="400" height="560" loading="lazy" decoding="async" />
+              <img class="portrait" src="/images/dr-vas.webp" alt="Dr. Vasili &ldquo;Dr. Vas&rdquo; Gatsinaris" width="400" height="560" loading="lazy" decoding="async" fetchpriority="low" />
               <div>
                 <h3>Dr. Vasili &ldquo;Dr. Vas&rdquo; Gatsinaris, D.C.</h3>
                 <p class="bio-role">Founder</p>
@@ -365,6 +389,7 @@ import DonationModule from "../components/sections/DonationModule.astro";
               height="224"
               loading="lazy"
               decoding="async"
+              fetchpriority="low"
             />
             <figcaption class="featured-issue">Winter 2022 Issue</figcaption>
           </figure>
@@ -479,5 +504,6 @@ import DonationModule from "../components/sections/DonationModule.astro";
 
   <script>
     import "../scripts/strong-circle-modal.ts";
+    import "../scripts/lazy-video.ts";
   </script>
 </HomeBase>

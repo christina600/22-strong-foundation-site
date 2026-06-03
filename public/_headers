@@ -21,3 +21,12 @@
 
   # Don't send the full page URL when visitors click links to other sites.
   Referrer-Policy: no-referrer
+
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/video/*
+  Cache-Control: public, max-age=31536000, immutable
