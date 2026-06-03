@@ -6,6 +6,8 @@
  * page has skipped ahead through image-heavy sections.
  */
 
+import { getHeaderOffset } from "./layout-metrics";
+
 const ACTIVE_CLASS = "is-active";
 const ANCHOR_SELECTOR = 'a[href^="#"]';
 const TRACKED_SECTIONS = [
@@ -25,17 +27,6 @@ const TRACKED_SECTIONS = [
 
 let navListenerAttached = false;
 let activeUpdateQueued = false;
-
-function getVisibleMissionRailHeight() {
-  const rail = document.querySelector<HTMLElement>("[data-mission-rail]");
-  if (!rail || rail.closest("header") || window.getComputedStyle(rail).display === "none") return 0;
-  return Math.ceil(rail.getBoundingClientRect().height || 0);
-}
-
-function getHeaderOffset() {
-  const header = document.querySelector("header");
-  return Math.ceil(header?.getBoundingClientRect().height || 0) + getVisibleMissionRailHeight() + 10;
-}
 
 function getHashTarget(hash: string) {
   if (!hash.startsWith("#") || hash.length < 2) return null;

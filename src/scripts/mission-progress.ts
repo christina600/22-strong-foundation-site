@@ -6,7 +6,8 @@
  * anchor behavior remains simple.
  */
 
-const RAIL_SELECTOR = "[data-mission-rail]";
+import { getHeaderOffset, MISSION_RAIL_SELECTOR } from "./layout-metrics";
+
 const STORY_LINK_SELECTOR = "[data-story-link]";
 const STORY_SECTION_SELECTOR = "[data-story-section]";
 const STORY_BEAT_SELECTOR = "[data-story-beat]";
@@ -15,17 +16,6 @@ const ACTIVE_BEAT_CLASS = "is-story-beat-active";
 
 let missionProgressAttached = false;
 let progressQueued = false;
-
-function getVisibleMissionRailHeight() {
-  const rail = document.querySelector<HTMLElement>(RAIL_SELECTOR);
-  if (!rail || rail.closest("header") || window.getComputedStyle(rail).display === "none") return 0;
-  return Math.ceil(rail.getBoundingClientRect().height || 0);
-}
-
-function getHeaderOffset() {
-  const header = document.querySelector("header");
-  return Math.ceil(header?.getBoundingClientRect().height || 0) + getVisibleMissionRailHeight() + 10;
-}
 
 function getTargetFromLink(link: HTMLAnchorElement) {
   const href = link.getAttribute("href") || "";
@@ -40,7 +30,7 @@ function setStoryProgress() {
 }
 
 function setActiveStory() {
-  const rail = document.querySelector<HTMLElement>(RAIL_SELECTOR);
+  const rail = document.querySelector<HTMLElement>(MISSION_RAIL_SELECTOR);
   if (!rail) return;
 
   const links = Array.from(rail.querySelectorAll<HTMLAnchorElement>(STORY_LINK_SELECTOR));
@@ -103,7 +93,7 @@ function queueMissionProgress() {
 }
 
 function initMissionProgress() {
-  if (missionProgressAttached || !document.querySelector(RAIL_SELECTOR)) return;
+  if (missionProgressAttached || !document.querySelector(MISSION_RAIL_SELECTOR)) return;
   missionProgressAttached = true;
 
   window.addEventListener("scroll", queueMissionProgress, { passive: true });
