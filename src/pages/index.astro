@@ -15,12 +15,12 @@ import DonationModule from "../components/sections/DonationModule.astro";
     <header>
       <nav class="nav" aria-label="Main navigation">
         <a class="brand" href="#top">22 Strong Foundation</a>
-        <div class="nav-links" aria-label="Section navigation">
+        <div class="nav-links" role="group" aria-label="Section navigation">
           <a href="#how-it-works">How it works</a>
           <a href="#serve">Who we serve</a>
           <a href="#strong-circle">Strong Circle</a>
         </div>
-        <div class="nav-actions">
+        <div class="nav-actions" role="group" aria-label="Primary actions">
           <a class="pill primary" href="#donate">Donate</a>
           <a class="pill" href="#contact">Contact</a>
         </div>
@@ -46,20 +46,20 @@ import DonationModule from "../components/sections/DonationModule.astro";
       </section>
 
       <section class="impact-snapshot" aria-label="22 Strong impact snapshot">
-        <div class="impact-snapshot-inner" data-reveal>
-          <div class="impact-snapshot-item">
+        <div class="impact-snapshot-inner" role="list" data-reveal>
+          <div class="impact-snapshot-item" role="listitem">
             <strong>150+</strong>
             <span>recovery sessions funded since 2024</span>
           </div>
-          <div class="impact-snapshot-item">
+          <div class="impact-snapshot-item" role="listitem">
             <strong>18</strong>
             <span>people supported across Orange County</span>
           </div>
-          <div class="impact-snapshot-item">
+          <div class="impact-snapshot-item" role="listitem">
             <strong>$22K</strong>
             <span>current goal for the next wave of care</span>
           </div>
-          <div class="impact-snapshot-item">
+          <div class="impact-snapshot-item" role="listitem">
             <strong>Veteran-led</strong>
             <span>built by people who understand recovery</span>
           </div>
@@ -71,18 +71,18 @@ import DonationModule from "../components/sections/DonationModule.astro";
         <div class="eyebrow" data-reveal>How 22 Strong works</div>
         <h2 data-reveal>A recovery gap appears.<br />22 Strong helps close it.</h2>
 
-        <div class="steps">
-          <div class="step" data-reveal>
+        <div class="steps" role="list">
+          <div class="step" role="listitem" data-reveal>
             <span class="step-number">1</span>
             <h3>A need is identified</h3>
             <p>A person seeking care, provider, VA contact, coach, or community partner flags a recovery plan at risk of stopping too soon.</p>
           </div>
-          <div class="step" data-reveal>
+          <div class="step" role="listitem" data-reveal>
             <span class="step-number">2</span>
             <h3>We verify the gap</h3>
             <p>22 Strong reviews what is needed, what is available, and where cost, coverage, or connections are blocking the next appointment.</p>
           </div>
-          <div class="step" data-reveal>
+          <div class="step" role="listitem" data-reveal>
             <span class="step-number">3</span>
             <h3>Donor funds become care</h3>
             <p>Gifts cover recovery sessions directly &mdash; chiropractic, physical therapy, hands-on soft-tissue care, and integrative support at no cost to the person receiving care.</p>
@@ -129,7 +129,7 @@ import DonationModule from "../components/sections/DonationModule.astro";
               <h3 class="circle-subhead">A steady $22 helps us say yes faster</h3>
               <p class="circle-copy-tight">One-time gifts open the door. Monthly gifts create the reliable base behind the next appointment.</p>
 
-              <div class="circle-actions">
+              <div class="circle-actions" role="group" aria-label="Strong Circle giving options">
                 <button class="pill primary strong-circle-trigger" type="button" data-strong-circle-open>Join the Strong Circle</button>
                 <a class="pill" href="#donate">Give once</a>
               </div>
@@ -140,19 +140,19 @@ import DonationModule from "../components/sections/DonationModule.astro";
             <h2 class="circle-card-title">Build the monthly base behind future recovery plans.</h2>
             <p>Recurring gifts help 22 Strong plan ahead for people referred by providers, coaches, veterans, and community partners.</p>
 
-            <div class="circle-math">
-              <div class="circle-math-row">
+            <div class="circle-math" role="list" aria-label="Strong Circle giving numbers">
+              <div class="circle-math-row" role="listitem">
                 <span>Monthly giving</span>
                 <strong>$22/mo</strong>
               </div>
-              <div class="circle-math-row">
+              <div class="circle-math-row" role="listitem">
                 <span>Current goal</span>
                 <strong>$22,000</strong>
               </div>
             </div>
 
-            <div class="mini-list">
-              <div class="mini-item">
+            <div class="mini-list" role="list">
+              <div class="mini-item" role="listitem">
                 <h3>Make care predictable</h3>
                 <p>A monthly gift gives the foundation a steadier way to fund care beyond the first appointment.</p>
               </div>
@@ -161,14 +161,14 @@ import DonationModule from "../components/sections/DonationModule.astro";
         </div>
       </section>
 
-      <dialog class="strong-circle-modal" aria-labelledby="strong-circle-modal-title" aria-describedby="strong-circle-modal-description">
+      <dialog class="strong-circle-modal" aria-modal="true" aria-labelledby="strong-circle-modal-title" aria-describedby="strong-circle-modal-description">
         <div class="strong-circle-modal-card">
           <button class="modal-close" type="button" data-strong-circle-close aria-label="Close Strong Circle popup">&times;</button>
           <span class="eyebrow">Monthly giving circle</span>
           <h2 id="strong-circle-modal-title">Join the Strong Circle.</h2>
 
           <div class="modal-commitment">
-            <div class="modal-amount" aria-label="$22 per month">
+            <div class="modal-amount" role="group" aria-label="$22 per month">
               <span class="modal-amount-value">$22</span>
               <span class="modal-amount-period">/month</span>
             </div>
@@ -176,18 +176,18 @@ import DonationModule from "../components/sections/DonationModule.astro";
             <p class="lead" id="strong-circle-modal-description">A steady monthly gift gives 22 Strong a reliable base for appointments, follow-through, and urgent care gaps before someone has to ask twice.</p>
           </div>
 
-          <div class="modal-proof-grid" aria-label="Strong Circle benefits">
-            <div>
+          <ul class="modal-proof-grid" aria-label="Strong Circle benefits">
+            <li>
               <span>Steady support</span>
               <strong>Funds care beyond intake and the first visit.</strong>
-            </div>
-            <div>
+            </li>
+            <li>
               <span>Simple commitment</span>
               <strong>$264 across the year.</strong>
-            </div>
-          </div>
+            </li>
+          </ul>
 
-          <div class="modal-actions">
+          <div class="modal-actions" role="group" aria-label="Strong Circle donation choices">
             <a class="pill primary" href="#donate" data-strong-circle-join>Start $22/month &rarr;</a>
             <a class="pill" href="#donate" data-strong-circle-close>Give once instead</a>
           </div>
@@ -218,8 +218,8 @@ import DonationModule from "../components/sections/DonationModule.astro";
             <p>Support that respects the long work of recovery and helps keep care moving when benefits, timing, or access are not enough.</p>
           </div>
 
-          <div class="serve-stats">
-            <aside class="proof-stat" data-reveal>
+          <div class="serve-stats" role="list">
+            <aside class="proof-stat" role="listitem" data-reveal>
               <div class="proof-stat-inner">
                 <div class="proof-stat-number">1 in 3</div>
                 <div class="proof-stat-text">
@@ -229,7 +229,7 @@ import DonationModule from "../components/sections/DonationModule.astro";
               </div>
             </aside>
 
-            <aside class="proof-stat light" data-reveal>
+            <aside class="proof-stat light" role="listitem" data-reveal>
               <div class="proof-stat-inner">
                 <div class="proof-stat-number">38%</div>
                 <div class="proof-stat-text">
@@ -295,8 +295,8 @@ import DonationModule from "../components/sections/DonationModule.astro";
             <p>Support for families facing a season-ending injury, limited coverage, or care that stops before the athlete is ready.</p>
           </div>
 
-          <div class="serve-stats one-up">
-            <aside class="proof-stat" data-reveal>
+          <div class="serve-stats one-up" role="list">
+            <aside class="proof-stat" role="listitem" data-reveal>
               <div class="proof-stat-inner">
                 <div class="proof-stat-number">21%</div>
                 <div class="proof-stat-text">
@@ -335,8 +335,8 @@ import DonationModule from "../components/sections/DonationModule.astro";
             <p class="support-note">22 Strong is expanding this pathway for survivors in the recovery phase: after treatment has ended, when rebuilding strength, movement, and confidence becomes the next hard work.</p>
           </div>
 
-          <div class="serve-stats one-up">
-            <aside class="proof-stat light" data-reveal>
+          <div class="serve-stats one-up" role="list">
+            <aside class="proof-stat light" role="listitem" data-reveal>
               <div class="proof-stat-inner">
                 <div class="proof-stat-number">nearly 19M</div>
                 <div class="proof-stat-text">
@@ -363,8 +363,8 @@ import DonationModule from "../components/sections/DonationModule.astro";
             <p>This pathway is for neighbors whose care plan is clear, but the next appointment depends on coverage, connection, or the ability to pay privately.</p>
           </div>
 
-          <div class="serve-stats">
-            <aside class="proof-stat" data-reveal>
+          <div class="serve-stats" role="list">
+            <aside class="proof-stat" role="listitem" data-reveal>
               <div class="proof-stat-inner">
                 <div class="proof-stat-number">$190</div>
                 <div class="proof-stat-text">
@@ -374,7 +374,7 @@ import DonationModule from "../components/sections/DonationModule.astro";
               </div>
             </aside>
 
-            <aside class="proof-stat light" data-reveal>
+            <aside class="proof-stat light" role="listitem" data-reveal>
               <div class="proof-stat-inner">
                 <div class="proof-stat-number">20 visits</div>
                 <div class="proof-stat-text">
@@ -451,7 +451,7 @@ import DonationModule from "../components/sections/DonationModule.astro";
             <p class="lead" data-reveal>Every gift helps turn a stalled recovery plan into appointments someone can actually reach.</p>
             <p class="outcomes" data-reveal>Since 2024, donor support has funded over 150 recovery sessions for 18 people across Orange County.</p>
 
-            <div class="goal-panel" aria-label="Fundraising goal preview" data-reveal>
+            <div class="goal-panel" role="group" aria-label="Fundraising goal" data-reveal>
               <div class="goal-top">
                 <span>Current goal</span>
                 <span>$22,000</span>
@@ -504,10 +504,10 @@ import DonationModule from "../components/sections/DonationModule.astro";
 
             <div class="form-row">
               <label>Name
-                <input type="text" name="name" required />
+                <input type="text" name="name" autocomplete="name" required />
               </label>
               <label>Email
-                <input type="email" name="email" required />
+                <input type="email" name="email" autocomplete="email" required />
               </label>
             </div>
 

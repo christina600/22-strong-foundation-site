@@ -45,7 +45,7 @@ const donateLabel = donateReady ? strings.donation.continueToCheckout : "Help fu
       </button>
       <button type="button" data-frequency="one-time" aria-pressed="false">{strings.donation.oneTime}</button>
     </div>
-    <div class="amount-grid" aria-label={strings.donation.giftAmountOptions}>
+    <div class="amount-grid" role="group" aria-label={strings.donation.giftAmountOptions}>
       {amounts.map((amount, index) => (
         <button
           type="button"
@@ -68,7 +68,7 @@ const donateLabel = donateReady ? strings.donation.continueToCheckout : "Help fu
         aria-label={strings.donation.customAmountLabel}
       />
     </div>
-    <div class="impact-line" aria-live="polite">
+    <div class="impact-line" role="status" aria-live="polite" aria-atomic="true">
       <span class="eyebrow">{strings.donation.yourImpact}</span>
       <strong class="gift-summary">${formatAmount(defaultAmount)}/mo</strong>
       <span class="gift-detail">{initialImpactDetail}</span>

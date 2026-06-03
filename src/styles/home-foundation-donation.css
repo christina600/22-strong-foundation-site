@@ -1,6 +1,6 @@
 /* Foundation donation card and shared card primitives. */
 /* ── Donation widget (functional <DonationModule />) styled to match the
-   card preview. Keeps the live toggle / amounts / impact behaviour. ── */
+   live card layout. Keeps the toggle / amounts / impact behaviour. ── */
 .donation-module { display: block; }
 
 .donation-card-main {

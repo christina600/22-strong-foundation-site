@@ -1,5 +1,5 @@
 /**
- * Contact form preview handling.
+ * Contact form pending-handler state.
  *
  * Until a live handler is configured, submissions are intercepted and shown as
  * inline status messages.
@@ -9,7 +9,7 @@ let formListenerAttached = false;
 
 const CONTACT_FORM_ID = "contactFormEl";
 const NOT_CONNECTED_MESSAGE =
-  "Thanks for checking in. This preview form is not connected yet, so your message was not sent.";
+  "Thanks for checking in. This form is not connected yet, so your message was not sent.";
 
 function setStatus(form: HTMLFormElement, message: string) {
   const status = form.querySelector<HTMLElement>(".form-status");

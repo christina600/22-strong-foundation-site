@@ -230,20 +230,22 @@
 .modal-proof-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin-top: 18px;
+  margin: 18px 0 0;
+  padding: 0;
   overflow: hidden;
+  list-style: none;
   border: 1px solid rgba(32, 35, 31, .12);
   border-radius: var(--radius);
   background: rgba(255, 253, 247, .54);
 }
 
-.modal-proof-grid > div {
+.modal-proof-grid > li {
   display: grid;
   gap: 7px;
   padding: 16px;
 }
 
-.modal-proof-grid > div + div {
+.modal-proof-grid > li + li {
   border-left: 1px solid rgba(32, 35, 31, .10);
 }
 
@@ -331,7 +333,7 @@
     padding-inline: 10px;
   }
 
-  .modal-proof-grid > div + div {
+  .modal-proof-grid > li + li {
     border-left: 0;
     border-top: 1px solid rgba(32, 35, 31, .10);
   }
