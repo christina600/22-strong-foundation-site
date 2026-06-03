@@ -28,7 +28,7 @@ let activeUpdateQueued = false;
 
 function getVisibleMissionRailHeight() {
   const rail = document.querySelector<HTMLElement>("[data-mission-rail]");
-  if (!rail || window.getComputedStyle(rail).display === "none") return 0;
+  if (!rail || rail.closest("header") || window.getComputedStyle(rail).display === "none") return 0;
   return Math.ceil(rail.getBoundingClientRect().height || 0);
 }
 
@@ -65,7 +65,7 @@ function updateActiveLinks(hash: string) {
   const activeHash = normaliseActiveHash(hash || "#top");
 
   document.querySelectorAll<HTMLAnchorElement>(ANCHOR_SELECTOR).forEach((link) => {
-    if (link.matches("[data-story-link]")) return;
+    if (link.matches("[data-story-link], .brand")) return;
 
     const linkHash = link.getAttribute("href") || "";
     const isActive = linkMatchesActiveHash(linkHash, activeHash);

@@ -5,31 +5,45 @@
   --story-progress: 0;
   --story-rail-h: 48px;
   --story-header-h: 82px;
-  --story-offset: calc(var(--story-header-h) + var(--story-rail-h));
+  --story-offset: var(--story-header-h);
   --story-active-glow: rgba(185, 85, 36, .22);
 }
 
+.mission-header {
+  height: var(--story-header-h);
+}
+
+.mission-nav {
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: clamp(14px, 2vw, 24px);
+}
+
+.mission-nav::after {
+  display: none;
+}
+
 .mission-rail {
-  position: fixed;
-  top: var(--story-header-h);
-  right: 0;
-  left: 0;
-  z-index: 45;
+  position: relative;
+  z-index: 1;
+  min-width: 0;
   height: var(--story-rail-h);
-  border-bottom: 1px solid rgba(32, 35, 31, .10);
+  border: 1px solid rgba(32, 35, 31, .10);
+  border-radius: 999px;
   background:
     linear-gradient(180deg, rgba(248, 244, 235, .88), rgba(234, 224, 206, .72)),
     var(--field-sand),
     var(--field-canvas);
   background-size: auto, 132px 118px, 132px 118px, 132px 118px, auto, 22px 22px, 22px 22px;
-  box-shadow: 0 16px 34px rgba(29, 33, 29, .07);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .62) inset,
+    0 16px 34px rgba(29, 33, 29, .07);
   backdrop-filter: blur(16px);
 }
 
 .mission-rail-track {
   position: absolute;
   right: 0;
-  bottom: 0;
+  bottom: 4px;
   left: 0;
   height: 2px;
   background: rgba(32, 35, 31, .10);
@@ -48,10 +62,10 @@
   display: grid;
   grid-template-columns: repeat(9, minmax(0, 1fr));
   gap: 8px;
-  width: min(var(--max), calc(100% - 48px));
+  width: 100%;
   height: 100%;
-  margin: 0 auto;
-  padding: 7px 0;
+  margin: 0;
+  padding: 6px;
   list-style: none;
 }
 
@@ -61,7 +75,7 @@
   gap: 7px;
   align-items: center;
   min-height: 34px;
-  padding: 0 9px;
+  padding: 0 8px;
   border: 1px solid transparent;
   border-radius: 999px;
   color: rgba(32, 35, 31, .62);
@@ -321,15 +335,45 @@ html {
 
 @media (max-width: 920px) {
   :root {
-    --story-header-h: 70px;
+    --story-header-h: 98px;
   }
 
   html {
     scroll-padding-top: calc(var(--story-offset) + 16px);
   }
 
+  .mission-nav {
+    grid-template-columns: 1fr;
+    align-content: center;
+    gap: 6px;
+    padding-block: 8px;
+  }
+
+  .mission-nav .brand {
+    justify-self: center;
+    font-size: .88rem;
+  }
+
   .mission-rail {
-    top: var(--story-header-h);
+    width: 100%;
+    height: 42px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .mission-rail::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mission-rail ol {
+    grid-template-columns: repeat(9, minmax(74px, 1fr));
+    min-width: 760px;
+    gap: 6px;
+    padding: 5px;
+  }
+
+  .mission-rail a {
+    min-height: 30px;
   }
 
   .how-it-works .steps {
@@ -344,15 +388,11 @@ html {
 
 @media (max-width: 760px) {
   html {
-    scroll-padding-top: 90px;
+    scroll-padding-top: calc(var(--story-header-h) + 14px);
   }
 }
 
 @media (min-width: 921px) {
-  .mission-rail + main {
-    scroll-margin-top: var(--story-offset);
-  }
-
   .serve-detail-inner,
   .donate-wrap,
   .contact .split {
@@ -458,10 +498,6 @@ html {
 }
 
 @media (max-width: 760px) {
-  .mission-rail {
-    display: none;
-  }
-
   .story-marker {
     top: 18px;
     right: 20px;

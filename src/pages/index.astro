@@ -12,35 +12,26 @@ import DonationModule from "../components/sections/DonationModule.astro";
 
 <HomeBase title="Fund recovery care when the system stops short.">
   <div class="site">
-    <header>
-      <nav class="nav" aria-label="Main navigation">
+    <header class="mission-header">
+      <nav class="nav mission-nav" aria-label="Main navigation">
         <a class="brand" href="#top">22 Strong Foundation</a>
-        <div class="nav-links" role="group" aria-label="Section navigation">
-          <a href="#how-it-works">How it works</a>
-          <a href="#serve">Who we serve</a>
-          <a href="#strong-circle">Strong Circle</a>
-        </div>
-        <div class="nav-actions" role="group" aria-label="Primary actions">
-          <a class="pill primary" href="#donate">Donate</a>
-          <a class="pill" href="#contact">Contact</a>
+
+        <div class="mission-rail" data-mission-rail aria-label="Mission progress">
+          <div class="mission-rail-track" aria-hidden="true"><span></span></div>
+          <ol>
+            <li><a href="#top" data-story-link><span>01</span><strong>Brief</strong></a></li>
+            <li><a href="#how-it-works" data-story-link><span>02</span><strong>Gap</strong></a></li>
+            <li><a href="#strong-circle" data-story-link><span>03</span><strong>Circle</strong></a></li>
+            <li><a href="#serve-veterans" data-story-link><span>04</span><strong>Veterans</strong></a></li>
+            <li><a href="#serve-athletes" data-story-link><span>05</span><strong>Athletes</strong></a></li>
+            <li><a href="#serve-cancer" data-story-link><span>06</span><strong>Survivors</strong></a></li>
+            <li><a href="#serve-others" data-story-link><span>07</span><strong>Access</strong></a></li>
+            <li><a href="#donate" data-story-link><span>08</span><strong>Fund</strong></a></li>
+            <li><a href="#contact" data-story-link><span>09</span><strong>Act</strong></a></li>
+          </ol>
         </div>
       </nav>
     </header>
-
-    <aside class="mission-rail" data-mission-rail aria-label="Mission progress">
-      <div class="mission-rail-track" aria-hidden="true"><span></span></div>
-      <ol>
-        <li><a href="#top" data-story-link><span>01</span><strong>Brief</strong></a></li>
-        <li><a href="#how-it-works" data-story-link><span>02</span><strong>Gap</strong></a></li>
-        <li><a href="#strong-circle" data-story-link><span>03</span><strong>Circle</strong></a></li>
-        <li><a href="#serve-veterans" data-story-link><span>04</span><strong>Veterans</strong></a></li>
-        <li><a href="#serve-athletes" data-story-link><span>05</span><strong>Athletes</strong></a></li>
-        <li><a href="#serve-cancer" data-story-link><span>06</span><strong>Survivors</strong></a></li>
-        <li><a href="#serve-others" data-story-link><span>07</span><strong>Access</strong></a></li>
-        <li><a href="#donate" data-story-link><span>08</span><strong>Fund</strong></a></li>
-        <li><a href="#contact" data-story-link><span>09</span><strong>Act</strong></a></li>
-      </ol>
-    </aside>
 
     <main id="main">
       <!-- 1. HERO -->

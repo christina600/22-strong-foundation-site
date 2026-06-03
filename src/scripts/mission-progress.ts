@@ -18,7 +18,7 @@ let progressQueued = false;
 
 function getVisibleMissionRailHeight() {
   const rail = document.querySelector<HTMLElement>(RAIL_SELECTOR);
-  if (!rail || window.getComputedStyle(rail).display === "none") return 0;
+  if (!rail || rail.closest("header") || window.getComputedStyle(rail).display === "none") return 0;
   return Math.ceil(rail.getBoundingClientRect().height || 0);
 }
 
