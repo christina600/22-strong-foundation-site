@@ -50,6 +50,11 @@ interface Props {
 const { title, description, ogImage } = Astro.props;
 const pageTitle = `${title} | ${site.orgName}`;
 const metaDesc = description || site.descriptor;
+
+// Social-share image: prop override, else the site default. Resolved to an
+// absolute URL because social scrapers reject relative paths.
+const ogImagePath = ogImage || site.ogImage;
+const ogImageUrl = isSet(ogImagePath) ? new URL(ogImagePath, Astro.site ?? Astro.url).href : undefined;
 ---
 
 <!DOCTYPE html>
@@ -69,10 +74,12 @@ const metaDesc = description || site.descriptor;
   <meta property="og:site_name" content={site.orgName} />
   <meta property="og:url" content={Astro.url.href} />
   <meta property="og:locale" content="en_US" />
-  {ogImage && <meta property="og:image" content={ogImage} />}
+  {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+  {ogImageUrl && <meta property="og:image:alt" content={site.orgName} />}
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={metaDesc} />
+  {ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
 
   <!-- Canonical URL -->
   <link rel="canonical" href={Astro.url.href} />

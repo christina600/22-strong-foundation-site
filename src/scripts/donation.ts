@@ -51,6 +51,7 @@ function updateGiftSummary(scope: Element | Document = document, pulse = true) {
   const summary = module.querySelector(".gift-summary");
   const detail = module.querySelector(".gift-detail");
   const small = module.querySelector(".impact-line small");
+  const eyebrow = module.querySelector<HTMLElement>(".impact-line .eyebrow");
   const card = module.querySelector(".donation-card-main");
 
   if (summary) {
@@ -83,6 +84,11 @@ function updateGiftSummary(scope: Element | Document = document, pulse = true) {
     small.textContent = activeFrequency === "monthly"
       ? `Monthly gift. Annual commitment: $${annual.toLocaleString()}.`
       : "One-time gift.";
+  }
+  if (eyebrow) {
+    // Swap the impact-line label so one-time mode never reads "monthly".
+    const label = activeFrequency === "monthly" ? eyebrow.dataset.labelMonthly : eyebrow.dataset.labelOnetime;
+    if (label) eyebrow.textContent = label;
   }
 
   const donateBtn = module.querySelector<HTMLAnchorElement>(".btn-donate");

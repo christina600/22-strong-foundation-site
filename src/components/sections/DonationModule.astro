@@ -70,7 +70,7 @@ const donateLabel = donateReady ? strings.donation.continueToCheckout : "Send a 
       />
     </div>
     <div class="impact-line" role="status" aria-live="polite" aria-atomic="true">
-      <span class="eyebrow">{strings.donation.yourImpact}</span>
+      <span class="eyebrow" data-label-monthly={strings.donation.yourImpact} data-label-onetime={strings.donation.yourImpactOneTime}>{strings.donation.yourImpact}</span>
       <strong class="gift-summary">${formatAmount(defaultAmount)}/mo</strong>
       <span class="gift-detail">{initialImpactDetail}</span>
       <small>Monthly gift. Annual commitment: ${formatAmount(defaultAmount * 12)}.</small>
