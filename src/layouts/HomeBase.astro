@@ -12,7 +12,6 @@
  * Props:
  *   title        — the browser tab title (required)
  *   description  — meta description for search engines
- *   ogImage      — social sharing image URL
  */
 
 import site from "../content/site.json";
@@ -44,17 +43,11 @@ if (isSet(site.phone)) jsonLd.telephone = site.phone;
 interface Props {
   title: string;
   description?: string;
-  ogImage?: string;
 }
 
-const { title, description, ogImage } = Astro.props;
+const { title, description } = Astro.props;
 const pageTitle = `${title} | ${site.orgName}`;
 const metaDesc = description || site.descriptor;
-
-// Social-share image: prop override, else the site default. Resolved to an
-// absolute URL because social scrapers reject relative paths.
-const ogImagePath = ogImage || site.ogImage;
-const ogImageUrl = isSet(ogImagePath) ? new URL(ogImagePath, Astro.site ?? Astro.url).href : undefined;
 ---
 
 <!DOCTYPE html>
@@ -74,12 +67,6 @@ const ogImageUrl = isSet(ogImagePath) ? new URL(ogImagePath, Astro.site ?? Astro
   <meta property="og:site_name" content={site.orgName} />
   <meta property="og:url" content={Astro.url.href} />
   <meta property="og:locale" content="en_US" />
-  {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
-  {ogImageUrl && <meta property="og:image:alt" content={site.orgName} />}
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={title} />
-  <meta name="twitter:description" content={metaDesc} />
-  {ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
 
   <!-- Canonical URL -->
   <link rel="canonical" href={Astro.url.href} />

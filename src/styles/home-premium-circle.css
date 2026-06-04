@@ -99,9 +99,11 @@
 
 .strong-circle-modal::backdrop {
   background: rgba(15, 18, 15, 0);
+  -webkit-backdrop-filter: blur(0);
   backdrop-filter: blur(0);
   transition:
     background .38s ease,
+    -webkit-backdrop-filter .38s ease,
     backdrop-filter .38s ease,
     overlay .38s allow-discrete,
     display .38s allow-discrete;
@@ -109,12 +111,14 @@
 
 .strong-circle-modal[open]::backdrop {
   background: rgba(15, 18, 15, .62);
+  -webkit-backdrop-filter: blur(7px);
   backdrop-filter: blur(7px);
 }
 
 @starting-style {
   .strong-circle-modal[open]::backdrop {
     background: rgba(15, 18, 15, 0);
+    -webkit-backdrop-filter: blur(0);
     backdrop-filter: blur(0);
   }
 }

@@ -131,6 +131,7 @@ header {
   z-index: 50;
   height: 70px;
   border-bottom: 1px solid var(--line);
+  -webkit-backdrop-filter: blur(18px);
   backdrop-filter: blur(18px);
   background: rgba(251, 247, 238, .88);
 }
