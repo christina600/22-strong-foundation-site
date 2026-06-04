@@ -1,50 +1,48 @@
-/* Early donor proof and "How 22 Strong works" mechanism section. */
-.impact-snapshot {
+/* Credibility strip (verified, non-numeric facts) and the "How 22 Strong
+   works" mechanism section. The strip carries no counts or dollar figures,
+   so nothing in it can read as an unverified impact claim. */
+.credibility-strip {
   max-width: none;
   margin: 0 calc(50% - 50vw);
-  padding: 34px var(--space-page-x);
+  padding: 20px var(--space-page-x);
   background: rgba(255, 253, 247, .94);
   border-bottom: 1px solid rgba(37, 35, 33, .12);
 }
 
-.impact-snapshot-inner {
+.credibility-strip-inner {
   width: min(var(--max), 100%);
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0;
-  border: 1px solid rgba(37, 35, 33, .12);
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: rgba(248, 244, 235, .58);
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px 36px;
 }
 
-.impact-snapshot-item {
-  display: grid;
-  gap: 8px;
-  min-height: 132px;
-  padding: 24px;
-  align-content: center;
-}
-
-.impact-snapshot-item + .impact-snapshot-item {
-  border-left: 1px solid rgba(37, 35, 33, .12);
-}
-
-.impact-snapshot-item strong {
+.credibility-strip-item {
+  position: relative;
+  color: var(--ink);
   font-family: var(--display-face);
   font-stretch: condensed;
-  font-size: clamp(2.2rem, 4vw, 3.4rem);
-  line-height: .94;
+  font-weight: 760;
+  font-size: var(--fs-ui);
   letter-spacing: 0;
-  color: var(--ink);
 }
 
-.impact-snapshot-item span {
-  max-width: 18ch;
-  color: var(--muted);
-  font-size: var(--fs-copy-small);
-  line-height: var(--lh-lead);
+/* Terracotta dot between facts — shown only on wide screens (all four on one
+   line), so a wrapped row never trails a dangling separator. */
+.credibility-strip-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  margin-top: -2px;
+  border-radius: 50%;
+  background: var(--orange);
 }
 
 /* "How 22 Strong works" — 3-step mechanism section. */
@@ -152,20 +150,19 @@
   line-height: var(--lh-copy);
 }
 
+/* Below ~860px the four facts wrap; hide the dots so a wrapped row never
+   trails a dangling separator, and lean on gap for separation instead. */
+@media (max-width: 860px) {
+  .credibility-strip-item:not(:last-child)::after {
+    display: none;
+  }
+
+  .credibility-strip-inner {
+    gap: 10px 24px;
+  }
+}
+
 @media (max-width: 920px) {
-  .impact-snapshot-inner {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .impact-snapshot-item:nth-child(3) {
-    border-left: 0;
-    border-top: 1px solid rgba(37, 35, 33, .12);
-  }
-
-  .impact-snapshot-item:nth-child(4) {
-    border-top: 1px solid rgba(37, 35, 33, .12);
-  }
-
   .funding-covers {
     grid-template-columns: 1fr;
     gap: 26px;
@@ -173,23 +170,11 @@
 }
 
 @media (max-width: 560px) {
-  .impact-snapshot {
-    padding-block: 24px;
+  .credibility-strip {
+    padding-block: 16px;
   }
 
-  .impact-snapshot-inner {
-    grid-template-columns: 1fr;
-  }
-
-  .impact-snapshot-item {
-    min-height: auto;
-    padding: 20px;
-  }
-
-  .impact-snapshot-item + .impact-snapshot-item,
-  .impact-snapshot-item:nth-child(3),
-  .impact-snapshot-item:nth-child(4) {
-    border-left: 0;
-    border-top: 1px solid rgba(37, 35, 33, .12);
+  .credibility-strip-item {
+    font-size: var(--fs-ui-small);
   }
 }

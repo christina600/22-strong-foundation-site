@@ -1,4 +1,4 @@
-/* Foundation press-feature ("As featured in") — a framed editorial credential. */
+/* Foundation press-feature — a framed editorial credential. */
 .featured {
   position: relative;
   overflow: hidden;
@@ -19,29 +19,6 @@
   align-items: center;
   text-align: center;
   gap: 14px;
-}
-
-/* "AS FEATURED IN" — centered prestige label with flanking rules. */
-.featured-kicker {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin: 0;
-  color: var(--olive);
-  font-family: var(--display-face);
-  font-stretch: condensed;
-  font-weight: 760;
-  font-size: var(--fs-ui-micro);
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.featured-kicker::before,
-.featured-kicker::after {
-  content: "";
-  width: 64px;
-  height: 1px;
-  background: rgba(70, 87, 70, .42);
 }
 
 /* The floating tear-sheet. Pure white so the logo's white field sits flush. */
@@ -100,6 +77,14 @@
   line-height: 1.08;
   letter-spacing: 0;
   text-wrap: balance;
+}
+
+.featured-subline {
+  max-width: 42ch;
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: var(--fs-copy-small);
+  line-height: 1.55;
 }
 
 .featured-link {

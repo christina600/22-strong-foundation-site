@@ -121,7 +121,6 @@ header {
 
 .hero-copy .eyebrow,
 .donation-card-main .eyebrow,
-.featured-kicker span,
 .footer-title {
   color: var(--field-olive);
 }
@@ -192,7 +191,6 @@ header {
     var(--map-contours);
 }
 
-.impact-snapshot,
 .strong-circle-section,
 #leadership {
   background:
@@ -200,7 +198,6 @@ header {
     linear-gradient(180deg, rgba(255, 253, 247, .82), rgba(238, 231, 216, .78));
 }
 
-.impact-snapshot-item,
 .step,
 .card,
 .testimonial-card,
@@ -211,7 +208,6 @@ form,
   border-color: rgba(53, 70, 50, .16);
 }
 
-.impact-snapshot-item::before,
 .step::before,
 .mini-item::before {
   background: linear-gradient(180deg, var(--field-olive), var(--mission-orange));

@@ -1,158 +1,8 @@
-/* Premium scrollytelling system.
-   Adds a chapter rail, active mission states, and sticky story beats so the
-   page reads like a guided recovery mission instead of a flat stack. */
+/* Sticky section pacing and story-beat layout for the single-page scroll.
+   (The earlier chapter-rail / active-mission-state layer has been removed.) */
 :root {
-  --story-progress: 0;
-  --story-rail-h: 48px;
   --story-header-h: 82px;
   --story-offset: var(--story-header-h);
-  --story-active-glow: rgba(185, 85, 36, .22);
-}
-
-.mission-header {
-  height: var(--story-header-h);
-}
-
-.mission-nav {
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: clamp(14px, 2vw, 24px);
-}
-
-.mission-nav::after {
-  display: none;
-}
-
-.mission-rail {
-  position: relative;
-  z-index: 1;
-  min-width: 0;
-  height: var(--story-rail-h);
-  border: 1px solid rgba(32, 35, 31, .10);
-  border-radius: 999px;
-  background:
-    linear-gradient(180deg, rgba(248, 244, 235, .88), rgba(234, 224, 206, .72)),
-    var(--field-sand),
-    var(--field-canvas);
-  background-size: auto, 132px 118px, 132px 118px, 132px 118px, auto, 22px 22px, 22px 22px;
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, .62) inset,
-    0 16px 34px rgba(29, 33, 29, .07);
-  backdrop-filter: blur(16px);
-}
-
-.mission-rail-track {
-  position: absolute;
-  right: 0;
-  bottom: 4px;
-  left: 0;
-  height: 2px;
-  background: rgba(32, 35, 31, .10);
-}
-
-.mission-rail-track span {
-  display: block;
-  width: 100%;
-  height: 100%;
-  transform: scaleX(var(--story-progress));
-  transform-origin: left center;
-  background: linear-gradient(90deg, var(--field-olive), var(--mission-orange));
-}
-
-.mission-rail ol {
-  display: grid;
-  grid-template-columns: repeat(9, minmax(0, 1fr));
-  gap: 8px;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 6px;
-  list-style: none;
-}
-
-.mission-rail a {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 7px;
-  align-items: center;
-  min-height: 34px;
-  padding: 0 8px;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  color: rgba(32, 35, 31, .62);
-  font-family: var(--ui-face);
-  font-size: .78rem;
-  font-weight: 800;
-  line-height: 1;
-  text-decoration: none;
-  transition:
-    color .2s ease,
-    background .2s ease,
-    border-color .2s ease,
-    transform .2s ease;
-}
-
-.mission-rail span {
-  color: var(--mission-orange);
-  font-size: .72rem;
-}
-
-.mission-rail strong {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.mission-rail a:hover,
-.mission-rail a.is-story-active {
-  color: var(--ink);
-  border-color: rgba(70, 87, 70, .18);
-  background: rgba(255, 253, 247, .76);
-}
-
-.mission-rail a.is-story-active {
-  transform: translateY(-1px);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, .72) inset,
-    0 10px 24px rgba(29, 33, 29, .09);
-}
-
-[data-story-section] {
-  position: relative;
-}
-
-.story-marker {
-  position: absolute;
-  top: 26px;
-  right: var(--space-page-x);
-  z-index: 3;
-  width: fit-content;
-  max-width: min(44vw, 320px);
-  padding: 8px 11px;
-  border: 1px solid rgba(32, 35, 31, .13);
-  border-radius: 999px;
-  background: rgba(255, 253, 247, .70);
-  color: rgba(32, 35, 31, .68);
-  font: 800 var(--fs-ui-micro)/1 var(--ui-face);
-  letter-spacing: 0;
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, .62) inset,
-    0 12px 28px rgba(29, 33, 29, .08);
-  backdrop-filter: blur(10px);
-}
-
-.hero .story-marker,
-.serve-group .story-marker,
-.donate-section .story-marker {
-  border-color: rgba(255, 250, 240, .22);
-  background: rgba(17, 22, 16, .38);
-  color: rgba(255, 250, 240, .82);
-}
-
-[data-story-section].is-story-active .story-marker {
-  border-color: rgba(185, 85, 36, .46);
-  box-shadow:
-    0 0 0 1px rgba(185, 85, 36, .16),
-    0 14px 34px var(--story-active-glow);
 }
 
 /* More explicit scrollytelling pacing. */
@@ -259,30 +109,9 @@ html {
     box-shadow: 0 0 0 7px rgba(185, 85, 36, .10);
   }
 
-  .how-it-works .step.is-story-beat-active {
-    transform: translateY(-6px);
-    border-color: rgba(185, 85, 36, .36);
-    box-shadow:
-      0 1px 0 rgba(255, 255, 255, .82) inset,
-      0 32px 88px rgba(29, 33, 29, .15);
-  }
-
-  .how-it-works .step.is-story-beat-active::after {
-    border-color: var(--mission-orange);
-    background: var(--mission-orange);
-    box-shadow: 0 0 0 8px rgba(185, 85, 36, .16);
-  }
-
   .how-it-works .funding-covers {
     grid-column: 1 / -1;
     margin-top: clamp(60px, 9vh, 96px);
-  }
-
-  .how-it-works .funding-covers.is-story-beat-active {
-    border-color: rgba(185, 85, 36, .34);
-    box-shadow:
-      0 1px 0 rgba(255, 255, 255, .82) inset,
-      0 28px 78px rgba(29, 33, 29, .13);
   }
 
   .how-it-works .how-note {
@@ -342,40 +171,6 @@ html {
     scroll-padding-top: calc(var(--story-offset) + 16px);
   }
 
-  .mission-nav {
-    grid-template-columns: 1fr;
-    align-content: center;
-    gap: 6px;
-    padding-block: 8px;
-  }
-
-  .mission-nav .brand {
-    justify-self: center;
-    font-size: .88rem;
-  }
-
-  .mission-rail {
-    width: 100%;
-    height: 42px;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-
-  .mission-rail::-webkit-scrollbar {
-    display: none;
-  }
-
-  .mission-rail ol {
-    grid-template-columns: repeat(9, minmax(74px, 1fr));
-    min-width: 760px;
-    gap: 6px;
-    padding: 5px;
-  }
-
-  .mission-rail a {
-    min-height: 30px;
-  }
-
   .how-it-works .steps {
     grid-template-columns: 1fr;
     margin-top: 34px;
@@ -429,12 +224,6 @@ html {
 
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) and (min-width: 760px) {
-    .story-marker {
-      animation: story-marker-settle both ease-out;
-      animation-timeline: view();
-      animation-range: entry 0% cover 30%;
-    }
-
     .serve-detail .proof-stat {
       animation: story-stat-rise both cubic-bezier(.22, .61, .36, 1);
       animation-timeline: view();
@@ -446,18 +235,6 @@ html {
       animation-timeline: view();
       animation-range: entry 0% cover 38%;
     }
-  }
-}
-
-@keyframes story-marker-settle {
-  from {
-    opacity: .35;
-    transform: translate3d(0, -8px, 0);
-  }
-
-  to {
-    opacity: 1;
-    transform: none;
   }
 }
 
@@ -483,35 +260,9 @@ html {
   }
 }
 
-@media (max-width: 1080px) {
-  .mission-rail a {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    gap: 2px;
-    padding-inline: 6px;
-    font-size: .72rem;
-  }
-
-  .mission-rail span {
-    font-size: .68rem;
-  }
-}
-
-@media (max-width: 760px) {
-  .story-marker {
-    top: 18px;
-    right: 20px;
-    max-width: calc(100% - 40px);
-    font-size: .76rem;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .mission-rail-track span,
-  .mission-rail a,
   .story-beat,
   .serve-stats .proof-stat,
-  .story-marker,
   .serve-copy {
     animation: none !important;
     transition: none !important;
