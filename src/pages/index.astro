@@ -8,6 +8,7 @@
 
 import HomeBase from "../layouts/HomeBase.astro";
 import DonationModule from "../components/sections/DonationModule.astro";
+import home from "../content/home.json";
 ---
 
 <HomeBase title="Fund recovery care when the system stops short.">
@@ -156,25 +157,17 @@ import DonationModule from "../components/sections/DonationModule.astro";
           </div>
 
           <div class="serve-stats" role="list">
-            <aside class="proof-stat" role="listitem" data-reveal>
-              <div class="proof-stat-inner">
-                <div class="proof-stat-number">1 in 3</div>
-                <div class="proof-stat-text">
-                  <p>veterans report chronic pain after service. When pain is part of daily life, recovery care should not be treated as optional.</p>
-                  <span class="proof-stat-source"><a href="https://www.cdc.gov/mmwr/volumes/69/wr/mm6947a6.htm" target="_blank" rel="noopener">CDC &mdash; National Health Interview Survey</a></span>
+            {home.stats.veterans.map((stat) => (
+              <aside class={`proof-stat${stat.light ? " light" : ""}`} role="listitem" data-reveal>
+                <div class="proof-stat-inner">
+                  <div class="proof-stat-number">{stat.number}</div>
+                  <div class="proof-stat-text">
+                    <p>{stat.text}</p>
+                    <span class="proof-stat-source"><a href={stat.url} target="_blank" rel="noopener">{stat.source}</a></span>
+                  </div>
                 </div>
-              </div>
-            </aside>
-
-            <aside class="proof-stat light" role="listitem" data-reveal>
-              <div class="proof-stat-inner">
-                <div class="proof-stat-number">38%</div>
-                <div class="proof-stat-text">
-                  <p>of post-9/11 veterans have not used VA health care since leaving the service.</p>
-                  <span class="proof-stat-source"><a href="https://www.publichealth.va.gov/epidemiology/reports/oefoifond/health-care-utilization/" target="_blank" rel="noopener">VA Office of Public Health</a></span>
-                </div>
-              </div>
-            </aside>
+              </aside>
+            ))}
           </div>
         </div>
       </section>
@@ -211,8 +204,8 @@ import DonationModule from "../components/sections/DonationModule.astro";
                   </video>
                 </noscript>
               </div>
-              <div class="attribution">Luke Hudson &middot; Veteran, VA referral</div>
-              <p class="story">Luke shares why access to hands-on recovery care matters after service.</p>
+              <div class="attribution">{home.testimonials.luke.attribution}</div>
+              <p class="story">{home.testimonials.luke.story}</p>
             </div>
           </article>
         </div>
@@ -232,15 +225,17 @@ import DonationModule from "../components/sections/DonationModule.astro";
           </div>
 
           <div class="serve-stats one-up" role="list">
-            <aside class="proof-stat" role="listitem" data-reveal>
-              <div class="proof-stat-inner">
-                <div class="proof-stat-number">21%</div>
-                <div class="proof-stat-text">
-                  <p>of high school sports injuries can end a season. The right recovery support can protect more than a roster spot.</p>
-                  <span class="proof-stat-source"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2267335/" target="_blank" rel="noopener">Journal of Athletic Training</a></span>
+            {home.stats.athletes.map((stat) => (
+              <aside class={`proof-stat${stat.light ? " light" : ""}`} role="listitem" data-reveal>
+                <div class="proof-stat-inner">
+                  <div class="proof-stat-number">{stat.number}</div>
+                  <div class="proof-stat-text">
+                    <p>{stat.text}</p>
+                    <span class="proof-stat-source"><a href={stat.url} target="_blank" rel="noopener">{stat.source}</a></span>
+                  </div>
                 </div>
-              </div>
-            </aside>
+              </aside>
+            ))}
           </div>
         </div>
       </section>
@@ -250,9 +245,9 @@ import DonationModule from "../components/sections/DonationModule.astro";
           <img class="quote-photo" src="/images/adam-folker-uci.webp" alt="Adam Folker" width="1200" height="800" loading="lazy" decoding="async" fetchpriority="low" data-reveal />
 
           <div data-reveal>
-            <blockquote>&ldquo;A major part of my success was the treatments and therapy I received from Dr. Vas.&rdquo;</blockquote>
-            <div class="attribution">Adam Folker &middot; Collegiate &amp; Professional Basketball Player</div>
-            <p class="story">During my sophomore year in college, I had hip surgery that was potentially season-ending and even career-ending. My coaches referred me to Dr. Vas, who was able to take care of me and eventually get me back to playing within a short few weeks. That season I ended up winning hustle player of the year award. Throughout my career, I saw Dr. Vas on various occasions for injuries that came up, along with maintenance and preventive care. I was able to play competitively at the top level.</p>
+            <blockquote>{home.testimonials.adam.quote}</blockquote>
+            <div class="attribution">{home.testimonials.adam.attribution}</div>
+            <p class="story">{home.testimonials.adam.story}</p>
           </div>
         </div>
       </section>
@@ -271,15 +266,17 @@ import DonationModule from "../components/sections/DonationModule.astro";
           </div>
 
           <div class="serve-stats one-up" role="list">
-            <aside class="proof-stat light" role="listitem" data-reveal>
-              <div class="proof-stat-inner">
-                <div class="proof-stat-number">nearly 19M</div>
-                <div class="proof-stat-text">
-                  <p>Americans are living as cancer survivors. For many, treatment ending is only the start of rebuilding strength.</p>
-                  <span class="proof-stat-source"><a href="https://www.cancer.org/research/cancer-facts-statistics/survivor-facts-figures.html" target="_blank" rel="noopener">American Cancer Society</a></span>
+            {home.stats.cancer.map((stat) => (
+              <aside class={`proof-stat${stat.light ? " light" : ""}`} role="listitem" data-reveal>
+                <div class="proof-stat-inner">
+                  <div class="proof-stat-number">{stat.number}</div>
+                  <div class="proof-stat-text">
+                    <p>{stat.text}</p>
+                    <span class="proof-stat-source"><a href={stat.url} target="_blank" rel="noopener">{stat.source}</a></span>
+                  </div>
                 </div>
-              </div>
-            </aside>
+              </aside>
+            ))}
           </div>
         </div>
       </section>
@@ -298,25 +295,17 @@ import DonationModule from "../components/sections/DonationModule.astro";
           </div>
 
           <div class="serve-stats" role="list">
-            <aside class="proof-stat" role="listitem" data-reveal>
-              <div class="proof-stat-inner">
-                <div class="proof-stat-number">$190</div>
-                <div class="proof-stat-text">
-                  <p>is the typical cost of one outpatient physical-therapy session for someone paying without insurance.</p>
-                  <span class="proof-stat-source"><a href="https://www.cbsnews.com/news/physical-therapy-insurance-coverage-session-limits/" target="_blank" rel="noopener">CBS News / KFF Health News</a></span>
+            {home.stats.others.map((stat) => (
+              <aside class={`proof-stat${stat.light ? " light" : ""}`} role="listitem" data-reveal>
+                <div class="proof-stat-inner">
+                  <div class="proof-stat-number">{stat.number}</div>
+                  <div class="proof-stat-text">
+                    <p>{stat.text}</p>
+                    <span class="proof-stat-source"><a href={stat.url} target="_blank" rel="noopener">{stat.source}</a></span>
+                  </div>
                 </div>
-              </div>
-            </aside>
-
-            <aside class="proof-stat light" role="listitem" data-reveal>
-              <div class="proof-stat-inner">
-                <div class="proof-stat-number">20 visits</div>
-                <div class="proof-stat-text">
-                  <p>a year is a common insurance cap on physical therapy &mdash; often less than recovery actually takes.</p>
-                  <span class="proof-stat-source"><a href="https://www.cbsnews.com/news/physical-therapy-insurance-coverage-session-limits/" target="_blank" rel="noopener">CBS News / KFF Health News</a></span>
-                </div>
-              </div>
-            </aside>
+              </aside>
+            ))}
           </div>
         </div>
       </section>
@@ -404,30 +393,20 @@ import DonationModule from "../components/sections/DonationModule.astro";
         <h2 data-reveal>Built by people who understand recovery.</h2>
 
         <div class="bios">
-          <article class="card" data-reveal>
-            <div class="bio-head">
-              <img class="portrait" src="/images/dr-vas.webp" alt="Dr. Vasili &ldquo;Dr. Vas&rdquo; Gatsinaris" width="400" height="560" loading="lazy" decoding="async" fetchpriority="low" />
-              <div>
-                <h3>Dr. Vasili &ldquo;Dr. Vas&rdquo; Gatsinaris, D.C.</h3>
-                <p class="bio-role">Founder</p>
+          {home.leadership.map((person) => (
+            <article class="card" data-reveal>
+              <div class="bio-head">
+                {person.portrait
+                  ? <img class="portrait" src={person.portrait} alt={person.portraitAlt} width="400" height="560" loading="lazy" decoding="async" fetchpriority="low" />
+                  : <div class="initials">{person.initials}</div>}
+                <div>
+                  <h3>{person.name}</h3>
+                  <p class="bio-role">{person.role}</p>
+                </div>
               </div>
-            </div>
-            <p>Dr. Vas earned his Doctorate of Chiropractic from the Los Angeles College of Chiropractic in 2001 and has more than 25 years of experience helping people recover and rebuild.</p>
-            <p>Over his career, he has worked with everyone from professional athletes to first responders, developing a hands-on, integrative approach focused on restoring mobility and getting people back to life stronger and faster.</p>
-            <p>He is co-owner of Next Level Fitness &amp; Wellness Center in Newport Beach, a full-service wellness facility offering chiropractic, physical and massage therapy, and nutrition &mdash; the same integrative recovery care 22 Strong helps fund.</p>
-          </article>
-
-          <article class="card" data-reveal>
-            <div class="bio-head">
-              <div class="initials">TM</div>
-              <div>
-                <h3>Travis Mayfield</h3>
-                <p class="bio-role">Co-founder</p>
-              </div>
-            </div>
-            <p>A Purple Heart Army veteran who served with the 101st Airborne, Travis is Co-Owner and President of Next Level Fitness &amp; Wellness Center. He helped bring 22 Strong together and leads its mission to make recovery care accessible to those who served and to others working to rebuild.</p>
-            <p>His own path from service informs how 22 Strong shows up for the people it serves: with respect, follow-through, and care that doesn&rsquo;t stop at the first appointment.</p>
-          </article>
+              {person.paragraphs.map((para) => <p>{para}</p>)}
+            </article>
+          ))}
         </div>
       </section>
 

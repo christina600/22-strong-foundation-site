@@ -1,0 +1,87 @@
+{
+  "stats": {
+    "veterans": [
+      {
+        "number": "1 in 3",
+        "text": "veterans report chronic pain after service. When pain is part of daily life, recovery care should not be treated as optional.",
+        "source": "CDC — National Health Interview Survey",
+        "url": "https://www.cdc.gov/mmwr/volumes/69/wr/mm6947a6.htm",
+        "light": false
+      },
+      {
+        "number": "38%",
+        "text": "of post-9/11 veterans have not used VA health care since leaving the service.",
+        "source": "VA Office of Public Health",
+        "url": "https://www.publichealth.va.gov/epidemiology/reports/oefoifond/health-care-utilization/",
+        "light": true
+      }
+    ],
+    "athletes": [
+      {
+        "number": "21%",
+        "text": "of high school sports injuries can end a season. The right recovery support can protect more than a roster spot.",
+        "source": "Journal of Athletic Training",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2267335/",
+        "light": false
+      }
+    ],
+    "cancer": [
+      {
+        "number": "nearly 19M",
+        "text": "Americans are living as cancer survivors. For many, treatment ending is only the start of rebuilding strength.",
+        "source": "American Cancer Society",
+        "url": "https://www.cancer.org/research/cancer-facts-statistics/survivor-facts-figures.html",
+        "light": true
+      }
+    ],
+    "others": [
+      {
+        "number": "$190",
+        "text": "is the typical cost of one outpatient physical-therapy session for someone paying without insurance.",
+        "source": "CBS News / KFF Health News",
+        "url": "https://www.cbsnews.com/news/physical-therapy-insurance-coverage-session-limits/",
+        "light": false
+      },
+      {
+        "number": "20 visits",
+        "text": "a year is a common insurance cap on physical therapy — often less than recovery actually takes.",
+        "source": "CBS News / KFF Health News",
+        "url": "https://www.cbsnews.com/news/physical-therapy-insurance-coverage-session-limits/",
+        "light": true
+      }
+    ]
+  },
+  "testimonials": {
+    "luke": {
+      "attribution": "Luke Hudson · Veteran, VA referral",
+      "story": "Luke shares why access to hands-on recovery care matters after service."
+    },
+    "adam": {
+      "quote": "“A major part of my success was the treatments and therapy I received from Dr. Vas.”",
+      "attribution": "Adam Folker · Collegiate & Professional Basketball Player",
+      "story": "During my sophomore year in college, I had hip surgery that was potentially season-ending and even career-ending. My coaches referred me to Dr. Vas, who was able to take care of me and eventually get me back to playing within a short few weeks. That season I ended up winning hustle player of the year award. Throughout my career, I saw Dr. Vas on various occasions for injuries that came up, along with maintenance and preventive care. I was able to play competitively at the top level."
+    }
+  },
+  "leadership": [
+    {
+      "name": "Dr. Vasili “Dr. Vas” Gatsinaris, D.C.",
+      "role": "Founder",
+      "portrait": "/images/dr-vas.webp",
+      "portraitAlt": "Dr. Vasili “Dr. Vas” Gatsinaris",
+      "paragraphs": [
+        "Dr. Vas earned his Doctorate of Chiropractic from the Los Angeles College of Chiropractic in 2001 and has more than 25 years of experience helping people recover and rebuild.",
+        "Over his career, he has worked with everyone from professional athletes to first responders, developing a hands-on, integrative approach focused on restoring mobility and getting people back to life stronger and faster.",
+        "He is co-owner of Next Level Fitness & Wellness Center in Newport Beach, a full-service wellness facility offering chiropractic, physical and massage therapy, and nutrition — the same integrative recovery care 22 Strong helps fund."
+      ]
+    },
+    {
+      "name": "Travis Mayfield",
+      "role": "Co-founder",
+      "initials": "TM",
+      "paragraphs": [
+        "A Purple Heart Army veteran who served with the 101st Airborne, Travis is Co-Owner and President of Next Level Fitness & Wellness Center. He helped bring 22 Strong together and leads its mission to make recovery care accessible to those who served and to others working to rebuild.",
+        "His own path from service informs how 22 Strong shows up for the people it serves: with respect, follow-through, and care that doesn’t stop at the first appointment."
+      ]
+    }
+  ]
+}
