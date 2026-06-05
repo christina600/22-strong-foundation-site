@@ -34,12 +34,12 @@ import home from "../content/home.json";
       <section class="hero" id="top">
         <div class="hero-inner">
           <div class="hero-copy" data-reveal>
-            <h1>Move better.<br />Get stronger.<br />Get back on your feet.</h1>
-            <p class="lead">22 Strong Foundation helps veterans, student athletes, cancer survivors, and others access hands-on recovery care when insurance, cost, or other barriers get in the way.</p>
-            <p class="hero-tagline">Veteran-founded &bull; Clinic-based &bull; Orange County</p>
-            <p class="hero-credit">Care is delivered through a local Orange County clinic for people who need help recovering from pain, injury, or physical setbacks.</p>
-            <a class="pill primary" href="#donate" style="margin-top:18px;">Help fund recovery</a>
-            <p class="give-taxline">Your gift is tax-deductible &middot; 501(c)(3)</p>
+            <h1>{home.hero.headline.map((line, i) => <Fragment>{i > 0 && <br />}{line}</Fragment>)}</h1>
+            <p class="lead">{home.hero.lead}</p>
+            <p class="hero-tagline">{home.hero.tagline}</p>
+            <p class="hero-credit">{home.hero.credit}</p>
+            <a class="pill primary" href="#donate" style="margin-top:18px;">{home.hero.ctaLabel}</a>
+            <p class="give-taxline">{home.hero.taxline}</p>
           </div>
 
           <div data-reveal>
@@ -52,10 +52,7 @@ import home from "../content/home.json";
            dollar figures, so nothing here reads as an unverified impact claim. -->
       <section class="credibility-strip" aria-label="About 22 Strong Foundation">
         <ul class="credibility-strip-inner" data-reveal>
-          <li class="credibility-strip-item">501(c)(3) nonprofit</li>
-          <li class="credibility-strip-item">Orange County based</li>
-          <li class="credibility-strip-item">Veteran-founded</li>
-          <li class="credibility-strip-item">Clinic-based recovery care</li>
+          {home.credibility.map((fact) => <li class="credibility-strip-item">{fact}</li>)}
         </ul>
       </section>
 
@@ -314,41 +311,39 @@ import home from "../content/home.json";
       <section class="strong-circle-section" id="strong-circle">        <div class="strong-circle-wrap">
           <div class="circle-panel" data-reveal>
             <div>
-              <h2>Monthly support that keeps care moving.</h2>
-              <p class="lead">The Strong Circle is the monthly giving community that helps 22 Strong plan care before a recovery gap turns into a stopped plan.</p>
+              <h2>{home.strongCircle.heading}</h2>
+              <p class="lead">{home.strongCircle.lead}</p>
             </div>
 
             <div>
-              <div class="circle-number">$22</div>
-              <h3 class="circle-subhead">A steady $22 helps us say yes faster</h3>
-              <p class="circle-copy-tight">One-time gifts open the door. Monthly gifts create the reliable base behind the next appointment.</p>
+              <div class="circle-number">{home.strongCircle.amount}</div>
+              <h3 class="circle-subhead">{home.strongCircle.subhead}</h3>
+              <p class="circle-copy-tight">{home.strongCircle.copy}</p>
 
               <div class="circle-actions" role="group" aria-label="Strong Circle giving options">
-                <button class="pill primary strong-circle-trigger" type="button" data-strong-circle-open>Join the Strong Circle</button>
-                <a class="pill" href="#donate">Give once</a>
+                <button class="pill primary strong-circle-trigger" type="button" data-strong-circle-open>{home.strongCircle.joinLabel}</button>
+                <a class="pill" href="#donate">{home.strongCircle.giveOnceLabel}</a>
               </div>
             </div>
           </div>
 
           <div class="card" data-reveal>
-            <h2 class="circle-card-title">Build the monthly base behind future recovery plans.</h2>
-            <p>Recurring gifts help 22 Strong plan ahead for people referred by providers, coaches, veterans, and community partners.</p>
+            <h2 class="circle-card-title">{home.strongCircle.cardTitle}</h2>
+            <p>{home.strongCircle.cardBody}</p>
 
             <div class="circle-math" role="list" aria-label="Strong Circle giving numbers">
-              <div class="circle-math-row" role="listitem">
-                <span>Monthly giving</span>
-                <strong>$22/mo</strong>
-              </div>
-              <div class="circle-math-row" role="listitem">
-                <span>Current goal</span>
-                <strong>$22,000</strong>
-              </div>
+              {home.strongCircle.mathRows.map((row) => (
+                <div class="circle-math-row" role="listitem">
+                  <span>{row.label}</span>
+                  <strong>{row.value}</strong>
+                </div>
+              ))}
             </div>
 
             <div class="mini-list" role="list">
               <div class="mini-item" role="listitem">
-                <h3>Make care predictable</h3>
-                <p>A monthly gift gives the foundation a steadier way to fund care beyond the first appointment.</p>
+                <h3>{home.strongCircle.miniTitle}</h3>
+                <p>{home.strongCircle.miniBody}</p>
               </div>
             </div>
           </div>
@@ -358,32 +353,30 @@ import home from "../content/home.json";
       <dialog class="strong-circle-modal" aria-modal="true" aria-labelledby="strong-circle-modal-title" aria-describedby="strong-circle-modal-description">
         <div class="strong-circle-modal-card">
           <button class="modal-close" type="button" data-strong-circle-close aria-label="Close Strong Circle popup">&times;</button>
-          <span class="eyebrow">Monthly giving circle</span>
-          <h2 id="strong-circle-modal-title">Join the Strong Circle.</h2>
+          <span class="eyebrow">{home.strongCircle.modal.eyebrow}</span>
+          <h2 id="strong-circle-modal-title">{home.strongCircle.modal.heading}</h2>
 
           <div class="modal-commitment">
             <div class="modal-amount" role="group" aria-label="$22 per month">
-              <span class="modal-amount-value">$22</span>
-              <span class="modal-amount-period">/month</span>
+              <span class="modal-amount-value">{home.strongCircle.modal.amountValue}</span>
+              <span class="modal-amount-period">{home.strongCircle.modal.amountPeriod}</span>
             </div>
 
-            <p class="lead" id="strong-circle-modal-description">A steady monthly gift gives 22 Strong a reliable base for appointments, follow-through, and urgent care gaps before someone has to ask twice.</p>
+            <p class="lead" id="strong-circle-modal-description">{home.strongCircle.modal.lead}</p>
           </div>
 
           <ul class="modal-proof-grid" aria-label="Strong Circle benefits">
-            <li>
-              <span>Steady support</span>
-              <strong>Funds care beyond intake and the first visit.</strong>
-            </li>
-            <li>
-              <span>Simple commitment</span>
-              <strong>$264 across the year.</strong>
-            </li>
+            {home.strongCircle.modal.proof.map((item) => (
+              <li>
+                <span>{item.label}</span>
+                <strong>{item.value}</strong>
+              </li>
+            ))}
           </ul>
 
           <div class="modal-actions" role="group" aria-label="Strong Circle donation choices">
-            <a class="pill primary" href="#donate" data-strong-circle-join>Start $22/month &rarr;</a>
-            <a class="pill" href="#donate" data-strong-circle-close>Give once instead</a>
+            <a class="pill primary" href="#donate" data-strong-circle-join>{home.strongCircle.modal.joinLabel}</a>
+            <a class="pill" href="#donate" data-strong-circle-close>{home.strongCircle.modal.giveOnceLabel}</a>
           </div>
         </div>
       </dialog>
@@ -413,14 +406,14 @@ import home from "../content/home.json";
       <!-- 7. DONATE -->
       <section class="donate-section" id="donate">        <div class="donate-wrap">
           <div>
-            <h2 data-reveal>Fund the next $22,000 in recovery care.</h2>
-            <p class="lead" data-reveal>Every gift helps turn a stalled recovery plan into appointments someone can actually reach.</p>
-            <p class="outcomes" data-reveal>Since 2024, donor support has funded over 150 recovery sessions for 18 people across Orange County.</p>
+            <h2 data-reveal>{home.donate.heading}</h2>
+            <p class="lead" data-reveal>{home.donate.lead}</p>
+            <p class="outcomes" data-reveal>{home.donate.outcomes}</p>
 
             <div class="goal-panel" role="group" aria-label="Fundraising goal" data-reveal>
               <div class="goal-top">
-                <span>Current goal</span>
-                <span>$22,000</span>
+                <span>{home.donate.goalLabel}</span>
+                <span>{home.donate.goalAmount}</span>
               </div>
               {/* Decorative bar: the 22% fill is a brand motif, not real
                   fundraising progress, so it's hidden from assistive tech to
@@ -428,7 +421,7 @@ import home from "../content/home.json";
               <div class="goal-bar" aria-hidden="true">
                 <div class="goal-fill"></div>
               </div>
-              <p class="goal-copy">$22,000 covers roughly 115 recovery sessions &mdash; enough to help 10&ndash;15 people stay with a complete care plan.</p>
+              <p class="goal-copy">{home.donate.goalCopy}</p>
             </div>
           </div>
 

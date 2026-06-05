@@ -1,4 +1,18 @@
 {
+  "hero": {
+    "headline": ["Move better.", "Get stronger.", "Get back on your feet."],
+    "lead": "22 Strong Foundation helps veterans, student athletes, cancer survivors, and others access hands-on recovery care when insurance, cost, or other barriers get in the way.",
+    "tagline": "Veteran-founded • Clinic-based • Orange County",
+    "credit": "Care is delivered through a local Orange County clinic for people who need help recovering from pain, injury, or physical setbacks.",
+    "ctaLabel": "Help fund recovery",
+    "taxline": "Your gift is tax-deductible · 501(c)(3)"
+  },
+  "credibility": [
+    "501(c)(3) nonprofit",
+    "Orange County based",
+    "Veteran-founded",
+    "Clinic-based recovery care"
+  ],
   "stats": {
     "veterans": [
       {
@@ -62,6 +76,36 @@
       "story": "During my sophomore year in college, I had hip surgery that was potentially season-ending and even career-ending. My coaches referred me to Dr. Vas, who was able to take care of me and eventually get me back to playing within a short few weeks. That season I ended up winning hustle player of the year award. Throughout my career, I saw Dr. Vas on various occasions for injuries that came up, along with maintenance and preventive care. I was able to play competitively at the top level."
     }
   },
+  "strongCircle": {
+    "heading": "Monthly support that keeps care moving.",
+    "lead": "The Strong Circle is the monthly giving community that helps 22 Strong plan care before a recovery gap turns into a stopped plan.",
+    "amount": "$22",
+    "subhead": "A steady $22 helps us say yes faster",
+    "copy": "One-time gifts open the door. Monthly gifts create the reliable base behind the next appointment.",
+    "joinLabel": "Join the Strong Circle",
+    "giveOnceLabel": "Give once",
+    "cardTitle": "Build the monthly base behind future recovery plans.",
+    "cardBody": "Recurring gifts help 22 Strong plan ahead for people referred by providers, coaches, veterans, and community partners.",
+    "mathRows": [
+      { "label": "Monthly giving", "value": "$22/mo" },
+      { "label": "Current goal", "value": "$22,000" }
+    ],
+    "miniTitle": "Make care predictable",
+    "miniBody": "A monthly gift gives the foundation a steadier way to fund care beyond the first appointment.",
+    "modal": {
+      "eyebrow": "Monthly giving circle",
+      "heading": "Join the Strong Circle.",
+      "amountValue": "$22",
+      "amountPeriod": "/month",
+      "lead": "A steady monthly gift gives 22 Strong a reliable base for appointments, follow-through, and urgent care gaps before someone has to ask twice.",
+      "proof": [
+        { "label": "Steady support", "value": "Funds care beyond intake and the first visit." },
+        { "label": "Simple commitment", "value": "$264 across the year." }
+      ],
+      "joinLabel": "Start $22/month →",
+      "giveOnceLabel": "Give once instead"
+    }
+  },
   "leadership": [
     {
       "name": "Dr. Vasili “Dr. Vas” Gatsinaris, D.C.",
@@ -83,5 +127,13 @@
         "His own path from service informs how 22 Strong shows up for the people it serves: with respect, follow-through, and care that doesn’t stop at the first appointment."
       ]
     }
-  ]
+  ],
+  "donate": {
+    "heading": "Fund the next $22,000 in recovery care.",
+    "lead": "Every gift helps turn a stalled recovery plan into appointments someone can actually reach.",
+    "outcomes": "Since 2024, donor support has funded over 150 recovery sessions for 18 people across Orange County.",
+    "goalLabel": "Current goal",
+    "goalAmount": "$22,000",
+    "goalCopy": "$22,000 covers roughly 115 recovery sessions — enough to help 10–15 people stay with a complete care plan."
+  }
 }
