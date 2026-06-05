@@ -7,7 +7,7 @@
   "taxStatus": "501(c)(3)",
   "ein": "99-1232582",
   "serviceArea": "Orange County & Southern California",
-  "donateUrl": "TEMPLATE: https://your-giving-platform.com/donate",
+  "donateUrl": "TEMPLATE: https://givebutter.com/your-campaign",
   "donationAmounts": [
     22,
     100,
@@ -29,22 +29,6 @@
       "250": "$250 helps carry someone through several recovery touchpoints.",
       "1000": "$1,000 can move a full care plan within reach.",
       "default": "Your gift helps turn a stalled recovery plan into real appointments."
-    }
-  },
-  "donation": {
-    "platform": "TEMPLATE: zeffy",
-    "mode": "embed",
-    "zeffy": {
-      "embedUrl": "TEMPLATE: https://www.zeffy.com/embed/donation-form/your-form-id",
-      "link": "TEMPLATE: https://www.zeffy.com/en-US/donation-form/your-form-id"
-    },
-    "givebutter": {
-      "campaignId": "TEMPLATE: your-givebutter-campaign-id",
-      "link": "TEMPLATE: https://givebutter.com/your-campaign"
-    },
-    "givelively": {
-      "widgetId": "TEMPLATE: your-givelively-org-slug",
-      "link": "TEMPLATE: https://secure.givelively.org/donate/your-org"
     }
   },
   "siteUrl": "https://22strongfoundation.org",
