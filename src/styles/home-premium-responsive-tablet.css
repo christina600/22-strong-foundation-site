@@ -64,7 +64,6 @@
 
   #serve-veterans,
   #serve-athletes,
-  #serve-cancer,
   #serve-others {
     min-height: min(600px, calc(82svh - 70px));
     padding-block: var(--space-story-y);
@@ -87,13 +86,6 @@
       var(--serve-image, none) 68% top / cover no-repeat;
   }
 
-  #serve-cancer {
-    background:
-      linear-gradient(180deg, rgba(12, 16, 13, .03) 0%, rgba(12, 16, 13, .16) 38%, rgba(12, 16, 13, .92) 78%, rgba(12, 16, 13, .96) 100%),
-      linear-gradient(90deg, rgba(12, 16, 13, .20) 0%, rgba(12, 16, 13, .16) 44%, rgba(12, 16, 13, .58) 100%),
-      var(--serve-image, none) 42% top / cover no-repeat;
-  }
-
   #serve-others {
     min-height: min(560px, calc(78svh - 70px));
     background:
@@ -104,7 +96,6 @@
 
   #serve-veterans .serve-group-head,
   #serve-athletes .serve-group-head,
-  #serve-cancer .serve-group-head,
   #serve-others .serve-group-head {
     grid-template-columns: 1fr;
     gap: 10px;
@@ -115,24 +106,18 @@
     justify-items: end;
   }
 
-  #serve-cancer .serve-group-head {
-    justify-items: end;
-  }
-
   #serve-veterans .serve-group-head > * {
     width: min(100%, 34ch);
   }
 
   #serve-veterans .serve-group-head > *,
   #serve-athletes .serve-group-head > *,
-  #serve-cancer .serve-group-head > *,
   #serve-others .serve-group-head > * {
     grid-column: auto;
   }
 
   #serve-veterans .serve-group-head h2,
   #serve-athletes .serve-group-head h2,
-  #serve-cancer .serve-group-head h2,
   #serve-others .serve-group-head h2 {
     max-width: 7.6ch;
     font-size: var(--fs-serve-title);

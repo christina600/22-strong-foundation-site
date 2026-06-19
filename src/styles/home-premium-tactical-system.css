@@ -248,8 +248,7 @@ form,
 
 #serve-veterans .serve-group-head::before { content: "Care path 01"; }
 #serve-athletes .serve-group-head::before { content: "Care path 02"; }
-#serve-cancer .serve-group-head::before { content: "Care path 03"; }
-#serve-others .serve-group-head::before { content: "Care path 04"; }
+#serve-others .serve-group-head::before { content: "Care path 03"; }
 
 .serve-group-head h2::after {
   content: "";

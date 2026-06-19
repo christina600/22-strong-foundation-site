@@ -17,7 +17,6 @@ const TRACKED_SECTIONS = [
   "serve",
   "serve-veterans",
   "serve-athletes",
-  "serve-cancer",
   "serve-others",
   "leadership",
   "featured",

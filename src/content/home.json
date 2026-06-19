@@ -1,7 +1,7 @@
 {
   "hero": {
     "headline": ["Move better.", "Get stronger.", "Get back on your feet."],
-    "lead": "22 Strong Foundation helps veterans, student athletes, cancer survivors, and others access hands-on recovery care when insurance, cost, or other barriers get in the way.",
+    "lead": "22 Strong Foundation helps veterans, student athletes, and others access hands-on recovery care when insurance, cost, or other barriers get in the way.",
     "tagline": "Veteran-founded • Clinic-based • Orange County",
     "credit": "Care is delivered through a local Orange County clinic for people who need help recovering from pain, injury, or physical setbacks.",
     "ctaLabel": "Help fund recovery",
@@ -37,15 +37,6 @@
         "source": "Journal of Athletic Training",
         "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2267335/",
         "light": false
-      }
-    ],
-    "cancer": [
-      {
-        "number": "nearly 19M",
-        "text": "Americans are living as cancer survivors. For many, treatment ending is only the start of rebuilding strength.",
-        "source": "American Cancer Society",
-        "url": "https://www.cancer.org/research/cancer-facts-statistics/survivor-facts-figures.html",
-        "light": true
       }
     ],
     "others": [
@@ -115,7 +106,7 @@
       "paragraphs": [
         "Dr. Vas earned his Doctorate of Chiropractic from the Los Angeles College of Chiropractic in 2001 and has more than 25 years of experience helping people recover and rebuild.",
         "Over his career, he has worked with everyone from professional athletes to first responders, developing a hands-on, integrative approach focused on restoring mobility and getting people back to life stronger and faster.",
-        "He is co-owner of Next Level Fitness & Wellness Center in Newport Beach, a full-service wellness facility offering chiropractic, physical and massage therapy, and nutrition — the same integrative recovery care 22 Strong helps fund."
+        "He is co-owner of Next Level Fitness & Wellness Center in Newport Beach, a full-service wellness facility offering chiropractic, physical therapy, massage therapy, and nutrition — the same recovery care 22 Strong helps fund."
       ]
     },
     {

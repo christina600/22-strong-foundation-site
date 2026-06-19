@@ -66,18 +66,18 @@ import home from "../content/home.json";
         <div class="steps" role="list" aria-label="22 Strong care funding path">
           <div class="step story-beat" role="listitem" data-reveal>
             <span class="step-number">1</span>
-            <h3>A need is identified</h3>
-            <p>A person seeking care, provider, VA contact, coach, or community partner flags a recovery plan at risk of stopping too soon.</p>
+            <h3>Referral or request</h3>
+            <p>Referrals come from the VA, veteran networks, coaches, school counselors, and local community organizations.</p>
           </div>
           <div class="step story-beat" role="listitem" data-reveal>
             <span class="step-number">2</span>
-            <h3>We verify the gap</h3>
-            <p>22 Strong reviews what is needed, what is available, and where cost, coverage, or connections are blocking the next appointment.</p>
+            <h3>We evaluate the gap</h3>
+            <p>22 Strong reviews the situation. If coverage has run out, private care is out of reach, or the right connections aren&rsquo;t there &mdash; we step in.</p>
           </div>
           <div class="step story-beat" role="listitem" data-reveal>
             <span class="step-number">3</span>
-            <h3>Donor funds become care</h3>
-            <p>Gifts cover recovery sessions directly &mdash; chiropractic, physical therapy, hands-on soft-tissue care, and integrative support at no cost to the person receiving care.</p>
+            <h3>Care is funded</h3>
+            <p>Gifts cover recovery sessions directly &mdash; chiropractic, physical therapy, and massage therapy &mdash; at no cost to the person receiving care.</p>
           </div>
         </div>
 
@@ -91,7 +91,7 @@ import home from "../content/home.json";
           <ul>
             <li>
               <strong>Hands-on recovery sessions</strong>
-              <span>Chiropractic, physical therapy, soft-tissue care, and integrative support.</span>
+              <span>Chiropractic, physical therapy, and massage therapy.</span>
             </li>
             <li>
               <strong>Follow-through after the first visit</strong>
@@ -99,12 +99,12 @@ import home from "../content/home.json";
             </li>
             <li>
               <strong>Provider and partner referrals</strong>
-              <span>A path for veterans, families, survivors, and neighbors who are already trying to get well.</span>
+              <span>A path for veterans, families, and neighbors who are already trying to get well.</span>
             </li>
           </ul>
         </div>
 
-        <p class="how-note" data-reveal>Care is currently provided through Next Level Fitness &amp; Wellness Center in Newport Beach &mdash; a private facility with chiropractic, physical therapy, hands-on soft-tissue and myofascial therapy, rehabilitation, and recovery tools like muscle stimulation and compression therapy. As donor support grows, 22 Strong can expand toward a network of vetted providers across Southern California.</p>
+        <p class="how-note" data-reveal>Care is currently provided through Next Level Fitness &amp; Wellness Center in Newport Beach &mdash; high-level sports medicine including chiropractic, physical therapy, and massage therapy, plus Fascial Integrative Treatment (FIT). It treats injuries like rotator cuff, knee, neck, lower back, hip, ankle/foot, and wrist/elbow pain. As donor support grows, 22 Strong can expand toward a network of vetted providers across Southern California.</p>
       </section>
 
       <!-- 3. FEATURED — U.S. VETERANS MAGAZINE -->
@@ -245,35 +245,6 @@ import home from "../content/home.json";
             <blockquote>{home.testimonials.adam.quote}</blockquote>
             <div class="attribution">{home.testimonials.adam.attribution}</div>
             <p class="story">{home.testimonials.adam.story}</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- 4c. CANCER SURVIVORS -->
-      <section class="serve-group" id="serve-cancer">        <div class="serve-group-head" data-reveal>
-          <h2>Cancer survivors</h2>
-        </div>
-      </section>
-
-      <section class="serve-detail" aria-label="Cancer survivor recovery support">
-        <div class="serve-detail-inner">
-          <div class="serve-copy" data-reveal>
-            <p class="lead">Support for survivors rebuilding strength and mobility after treatment.</p>
-            <p class="support-note">22 Strong is expanding this pathway for survivors in the recovery phase: after treatment has ended, when rebuilding strength, movement, and confidence becomes the next hard work.</p>
-          </div>
-
-          <div class="serve-stats one-up" role="list">
-            {home.stats.cancer.map((stat) => (
-              <aside class={`proof-stat${stat.light ? " light" : ""}`} role="listitem" data-reveal>
-                <div class="proof-stat-inner">
-                  <div class="proof-stat-number">{stat.number}</div>
-                  <div class="proof-stat-text">
-                    <p>{stat.text}</p>
-                    <span class="proof-stat-source"><a href={stat.url} target="_blank" rel="noopener">{stat.source}</a></span>
-                  </div>
-                </div>
-              </aside>
-            ))}
           </div>
         </div>
       </section>
