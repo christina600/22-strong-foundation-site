@@ -142,3 +142,26 @@
 .hero .donation-legal {
   display: none;
 }
+
+/* Hero CTA spacing — moved off an inline style so it stays in the cached stylesheet. */
+.hero-copy .pill.primary {
+  margin-top: 18px;
+}
+
+/* Short viewports (most laptops, landscape phones): keep the whole hero — headline,
+   supporting copy, and CTA — above the fold without scrolling. Per Dr. Vas's note #1.
+   Tall screens keep the larger, more dramatic display size. */
+@media (max-height: 720px) {
+  /* Drive everything through the existing hero tokens so the width-based breakpoints
+     (mobile/compact) can still take over on small phones via normal cascade order,
+     instead of being overridden by hardcoded values. */
+  :root {
+    --fs-hero: 3.6rem;
+    --space-hero-top: 40px;
+    --space-hero-bottom: 32px;
+  }
+
+  .hero {
+    min-height: 0;
+  }
+}

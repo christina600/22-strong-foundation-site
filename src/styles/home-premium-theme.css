@@ -45,8 +45,8 @@
   --space-grid-gap: 28px;
   --space-layout-gap: 58px;
   --space-story-y: 88px;
-  --space-hero-top: 96px;
-  --space-hero-bottom: 64px;
+  --space-hero-top: 56px;
+  --space-hero-bottom: 48px;
   --space-hero-gap: 64px;
   --lh-hero: .94;
   --lh-title: .96;
@@ -54,7 +54,7 @@
   --lh-lead: 1.55;
   --lh-copy: 1.62;
   --lh-tight: 1.2;
-  --fs-hero: 6rem;
+  --fs-hero: 4.5rem;
   --fs-title: 4.35rem;
   --fs-lead: 1.16rem;
   --fs-body: 1rem;
