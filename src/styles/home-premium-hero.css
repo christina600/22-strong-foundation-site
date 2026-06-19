@@ -89,15 +89,15 @@
   margin: 12px 0 0;
   max-width: 48ch;
   color: rgba(255, 250, 240, .82);
-  font-size: .98rem;
-  line-height: 1.45;
+  font-size: var(--fs-copy-small);
+  line-height: var(--lh-lead);
 }
 
 .give-taxline {
   margin: 10px 0 0;
   color: rgba(255, 250, 240, .72);
   font-weight: 700;
-  font-size: .82rem;
+  font-size: var(--fs-ui-small);
 }
 
 .hero .donation-card-main {

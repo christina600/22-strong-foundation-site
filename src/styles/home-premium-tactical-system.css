@@ -427,7 +427,7 @@ footer {
   }
 
   .serve-group-head::before {
-    font-size: .78rem;
+    font-size: var(--fs-ui-micro);
   }
 
   .circle-number {

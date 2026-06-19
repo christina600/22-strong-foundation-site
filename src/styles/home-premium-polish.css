@@ -1,0 +1,256 @@
+/* Final premium polish layer: visual refinement only, no content changes. */
+:root {
+  --polish-line: rgba(32, 35, 31, .13);
+  --polish-line-light: rgba(255, 250, 240, .22);
+  --polish-glow: 0 1px 0 rgba(255, 255, 255, .78) inset;
+  --polish-shadow-sm: 0 10px 28px rgba(29, 33, 29, .08);
+  --polish-shadow-md: 0 18px 46px rgba(29, 33, 29, .10), 0 1px 0 rgba(255, 255, 255, .72) inset;
+  --polish-shadow-lg: 0 26px 76px rgba(29, 33, 29, .14), 0 1px 0 rgba(255, 255, 255, .78) inset;
+  --polish-shadow-dark: 0 28px 88px rgba(0, 0, 0, .26), 0 1px 0 rgba(255, 255, 255, .22) inset;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+header {
+  border-bottom-color: rgba(32, 35, 31, .10);
+  box-shadow: 0 14px 34px rgba(29, 33, 29, .08);
+}
+
+.nav-links,
+.nav-actions .pill,
+.brand::after,
+.credibility-strip,
+.card,
+.step,
+.testimonial-card,
+.donation-card-main,
+form,
+.goal-panel,
+.circle-panel,
+.featured-sheet {
+  -webkit-backdrop-filter: saturate(1.08) blur(10px);
+  backdrop-filter: saturate(1.08) blur(10px);
+}
+
+.credibility-strip {
+  padding-block: 24px;
+  background:
+    linear-gradient(180deg, rgba(255, 253, 247, .98), rgba(242, 236, 223, .86)),
+    var(--map-contours);
+  border-block: 1px solid rgba(32, 35, 31, .10);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .82) inset,
+    0 14px 34px rgba(29, 33, 29, .06);
+}
+
+.credibility-strip-inner {
+  gap: 14px clamp(24px, 3vw, 44px);
+}
+
+.credibility-strip-item {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 5px 2px;
+  color: rgba(32, 35, 31, .88);
+}
+
+.credibility-strip-item:not(:last-child)::after {
+  right: calc(clamp(24px, 3vw, 44px) / -2);
+  width: 6px;
+  height: 6px;
+  background: linear-gradient(180deg, #cf6a32, var(--mission-orange));
+  box-shadow: 0 0 0 4px rgba(185, 85, 36, .10);
+}
+
+.hero::before {
+  filter: saturate(.94) contrast(1.14) brightness(.96);
+}
+
+.hero-copy {
+  filter: drop-shadow(0 22px 50px rgba(0, 0, 0, .22));
+}
+
+.hero h1 {
+  text-shadow:
+    0 1px 0 rgba(255, 250, 240, .10),
+    0 20px 62px rgba(0, 0, 0, .56);
+}
+
+.hero-tagline,
+.hero-copy .eyebrow {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .14) inset,
+    0 14px 32px rgba(0, 0, 0, .20);
+}
+
+.pill,
+.btn-donate,
+.amount-button,
+.toggle-row button {
+  transition:
+    transform .22s ease,
+    border-color .22s ease,
+    background-color .22s ease,
+    box-shadow .22s ease,
+    color .22s ease;
+}
+
+.pill:hover,
+.btn-donate:hover,
+.amount-button:hover,
+.toggle-row button:hover {
+  transform: translateY(-2px);
+}
+
+.pill:focus-visible,
+.btn-donate:focus-visible,
+.amount-button:focus-visible,
+.toggle-row button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.featured-link:focus-visible,
+.proof-stat-source a:focus-visible,
+.links a:focus-visible {
+  outline: 3px solid rgba(185, 85, 36, .34);
+  outline-offset: 3px;
+}
+
+.card,
+.step,
+.testimonial-card,
+form,
+.featured-sheet {
+  border-color: var(--polish-line);
+  box-shadow: var(--polish-shadow-md);
+}
+
+.card,
+.step,
+.testimonial-card,
+form {
+  background:
+    linear-gradient(180deg, rgba(255, 253, 247, .98), rgba(244, 238, 226, .90)),
+    var(--map-contours);
+}
+
+.donation-card-main,
+.circle-panel,
+.goal-panel {
+  box-shadow: var(--polish-shadow-lg);
+}
+
+.hero .donation-card-main {
+  box-shadow: var(--polish-shadow-dark);
+}
+
+.step-number,
+.testimonial-play-button,
+.goal-fill,
+.toggle-row button.active,
+.amount-button.active,
+.pill.primary,
+.btn-donate {
+  background:
+    linear-gradient(180deg, #d6793e 0%, var(--mission-orange) 58%, #833b1e 100%);
+}
+
+.impact-line,
+.goal-panel,
+.circle-math,
+.modal-proof-grid li {
+  border-color: rgba(32, 35, 31, .14);
+  box-shadow: var(--polish-glow);
+}
+
+.story-kicker,
+.hero-credit,
+.give-taxline,
+.goal-copy,
+.donation-legal,
+.donation-footnote,
+.proof-stat-source,
+.attribution {
+  text-wrap: pretty;
+}
+
+@media (min-width: 921px) {
+  .how-it-works .step {
+    min-height: clamp(260px, 34vh, 390px);
+  }
+
+  .how-it-works .steps {
+    gap: clamp(24px, 4vh, 38px);
+  }
+
+  .serve-detail {
+    min-height: clamp(620px, 84vh, 900px);
+  }
+}
+
+.funding-covers,
+.quote-wrap::before,
+.strong-circle-section,
+#leadership,
+.contact {
+  border-color: rgba(32, 35, 31, .10);
+}
+
+.proof-stat {
+  box-shadow:
+    0 1px 0 rgba(255, 250, 240, .08) inset,
+    0 32px 82px rgba(17, 22, 16, .18);
+}
+
+.proof-stat.light {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .82) inset,
+    0 24px 64px rgba(29, 33, 29, .08);
+}
+
+.serve-stats .proof-stat {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .10) inset,
+    0 18px 48px rgba(29, 33, 29, .12);
+}
+
+.quote-photo,
+.portrait,
+.initials {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .72) inset,
+    0 22px 54px rgba(29, 33, 29, .14);
+}
+
+footer {
+  box-shadow: 0 -1px 0 rgba(255, 250, 240, .08) inset;
+}
+
+@media (max-width: 560px) {
+  .credibility-strip {
+    padding-block: 22px;
+  }
+
+  .credibility-strip-inner {
+    justify-content: flex-start;
+  }
+
+  .credibility-strip-item {
+    width: 100%;
+    justify-content: space-between;
+    padding-block: 9px;
+    border-bottom: 1px solid rgba(32, 35, 31, .10);
+  }
+
+  .credibility-strip-item:last-child {
+    border-bottom: 0;
+  }
+
+  .credibility-strip-item:not(:last-child)::after {
+    display: none;
+  }
+}

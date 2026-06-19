@@ -4,13 +4,20 @@
 :root {
   --muted: #4f554d;
   --ui-face: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --fs-ui: .95rem;
-  --fs-ui-small: .9rem;
-  --fs-ui-micro: .82rem;
-  --fs-ui-tiny: .78rem;
-  --fs-copy-small: 1rem;
-  --fs-copy-fine: .95rem;
-  --fs-brand-mobile: .95rem;
+  --lh-lead: 1.58;
+  --lh-copy: 1.68;
+  --fs-lead: 1.42rem;
+  --fs-body: 1.2rem;
+  --fs-body-lg: 1.28rem;
+  --fs-proof-copy: 1.58rem;
+  --fs-ui: 1.06rem;
+  --fs-ui-small: 1.06rem;
+  --fs-ui-micro: 1rem;
+  --fs-ui-tiny: 1rem;
+  --fs-meta: 1.2rem;
+  --fs-copy-small: 1.2rem;
+  --fs-copy-fine: 1.12rem;
+  --fs-brand-mobile: 1.04rem;
 }
 
 .nav-links a,
@@ -19,9 +26,16 @@
 .toggle-row button,
 .amount-button,
 .hero-tagline,
+.credibility-strip-item,
+.eyebrow,
 .donation-card-main .eyebrow,
 .most-impact-badge,
+.featured-issue,
+.featured-link,
+.attribution,
 .proof-stat-source,
+.goal-top,
+.outcomes,
 .modal-proof-grid span,
 .footer-title,
 label {
@@ -32,7 +46,15 @@ label {
 
 .nav-links a,
 .pill,
-.btn-donate {
+.btn-donate,
+.eyebrow,
+.featured-issue,
+.featured-link,
+.attribution,
+.goal-top,
+.outcomes,
+.proof-stat-source,
+.footer-title {
   text-transform: none;
 }
 
@@ -40,7 +62,7 @@ label {
   min-height: 38px;
   padding-inline: 16px;
   color: rgba(32, 35, 31, .72);
-  font-size: var(--fs-ui-small);
+  font-size: var(--fs-ui);
   font-weight: 800;
 }
 
@@ -50,14 +72,14 @@ label {
 
 .pill,
 .btn-donate {
-  font-size: var(--fs-ui-small);
+  font-size: var(--fs-ui);
   font-weight: 800;
 }
 
 .hero-tagline {
   padding: 10px 14px;
   color: rgba(255, 250, 240, .92);
-  font-size: var(--fs-ui-small);
+  font-size: var(--fs-meta);
   line-height: 1.2;
   text-transform: none;
 }
@@ -66,9 +88,23 @@ label {
   color: rgba(255, 250, 240, .86);
 }
 
+.credibility-strip-item,
+.eyebrow,
+.featured-issue,
+.featured-link,
+.attribution,
+.goal-top,
+.outcomes,
+.proof-stat-source,
+.footer-title {
+  font-size: var(--fs-meta);
+  font-weight: 800;
+  line-height: 1.32;
+}
+
 .donation-card-main .eyebrow {
-  font-size: var(--fs-ui-small);
-  line-height: 1.25;
+  font-size: var(--fs-meta);
+  line-height: 1.28;
   text-transform: none;
 }
 
@@ -96,11 +132,11 @@ label {
 input,
 select,
 textarea {
-  font: 400 1rem/1.45 var(--ui-face);
+  font: 400 var(--fs-body)/1.5 var(--ui-face);
 }
 
 label {
-  font-size: var(--fs-ui-small);
+  font-size: var(--fs-ui);
   line-height: 1.4;
 }
 
@@ -126,7 +162,7 @@ footer p,
 
 .contact-paths span,
 .note {
-  font-size: var(--fs-copy-fine);
+  font-size: var(--fs-copy-small);
 }
 
 .proof-stat p,
@@ -137,8 +173,8 @@ footer p,
 .proof-stat-source,
 .serve-stats .proof-stat-source {
   color: rgba(255, 250, 240, .76);
-  font-size: var(--fs-ui-micro);
-  line-height: 1.4;
+  font-size: var(--fs-ui);
+  line-height: 1.45;
 }
 
 .proof-stat-source {
@@ -178,31 +214,66 @@ footer p,
 }
 
 @media (max-width: 920px) {
+  :root {
+    --lh-lead: 1.56;
+    --lh-copy: 1.64;
+    --fs-lead: 1.28rem;
+    --fs-body: 1.14rem;
+    --fs-body-lg: 1.18rem;
+    --fs-serve-lead: 1.5rem;
+    --fs-proof-copy: 1.28rem;
+    --fs-ui: 1.04rem;
+    --fs-ui-small: 1.04rem;
+    --fs-ui-micro: 1rem;
+    --fs-ui-tiny: 1rem;
+    --fs-meta: 1.14rem;
+    --fs-copy-small: 1.14rem;
+    --fs-copy-fine: 1.08rem;
+  }
+
   .nav-links a {
     min-height: 36px;
     padding-inline: 12px;
-    font-size: var(--fs-ui-micro);
+    font-size: var(--fs-ui);
   }
 }
 
 @media (max-width: 560px) {
+  :root {
+    --lh-lead: 1.56;
+    --lh-copy: 1.64;
+    --fs-lead: 1.24rem;
+    --fs-body: 1.12rem;
+    --fs-body-lg: 1.16rem;
+    --fs-serve-lead: 1.42rem;
+    --fs-proof-copy: 1.22rem;
+    --fs-ui: 1.02rem;
+    --fs-ui-small: 1.02rem;
+    --fs-ui-micro: 1rem;
+    --fs-ui-tiny: 1rem;
+    --fs-meta: 1.1rem;
+    --fs-copy-small: 1.12rem;
+    --fs-copy-fine: 1.08rem;
+    --fs-brand-mobile: 1.04rem;
+  }
+
   .brand {
     font-size: var(--fs-brand-mobile);
   }
 
   .pill,
   .btn-donate {
-    min-height: 44px;
-    font-size: var(--fs-ui-small);
+    min-height: 46px;
+    font-size: var(--fs-ui);
   }
 
   .hero-tagline {
-    font-size: var(--fs-ui-micro);
+    font-size: var(--fs-meta);
   }
 
   .donation-footnote,
   .donation-legal,
   .impact-line small {
-    font-size: .8rem;
+    font-size: var(--fs-ui-micro);
   }
 }
