@@ -67,6 +67,40 @@
       "story": "During my sophomore year in college, I had hip surgery that was potentially season-ending and even career-ending. My coaches referred me to Dr. Vas, who was able to take care of me and eventually get me back to playing within a short few weeks. That season I ended up winning hustle player of the year award. Throughout my career, I saw Dr. Vas on various occasions for injuries that came up, along with maintenance and preventive care. I was able to play competitively at the top level."
     }
   },
+  "veteranVoices": [
+    {
+      "name": "Tom Boscamp",
+      "title": "U.S. Army Veteran · Veteran Services Coordinator · OCVMFC Steering Committee · NAVPA Board Member",
+      "quote": "I am a 65 year old Veteran who needs to be active since I am on the go taking care of Veterans in the Community. I have degenerative disk disease and Spinal Stenosis as well as radiculopathy. The VA treatments are far and few between as they do not have enough chiropractors, massage therapists, and Physical therapy specialists. Thankfully Dr. Vas has filled that void and with his treatments it has allowed me to continue being active. I have even lost 15 pounds! I can’t say enough how good Next Level Wellness is! Also their commitment to serving Veterans is “Next Level”!",
+      "photo": "/images/tom-boscamp.jpg",
+      "photoAlt": "Tom Boscamp",
+      "initials": "TB"
+    },
+    {
+      "name": "CSM (Ret.) Ramon Rodriguez",
+      "title": "U.S. Army Special Forces · Vietnam War · 3 Silver Stars · 5 Purple Hearts · Ranger Hall of Fame",
+      "quote": "",
+      "photo": "",
+      "photoAlt": "Ramon Rodriguez",
+      "initials": "RR"
+    },
+    {
+      "name": "SGT Mark Miller",
+      "title": "U.S. Army · 101st Airborne Division · Vietnam War · Bronze Star with “V” Device",
+      "quote": "",
+      "photo": "",
+      "photoAlt": "Mark Miller",
+      "initials": "MM"
+    },
+    {
+      "name": "John Baca",
+      "title": "U.S. Army · Vietnam War · Medal of Honor Recipient",
+      "quote": "",
+      "photo": "",
+      "photoAlt": "John Baca",
+      "initials": "JB"
+    }
+  ],
   "strongCircle": {
     "heading": "Monthly support that keeps care moving.",
     "lead": "The Strong Circle is the monthly giving community that helps 22 Strong plan care before a recovery gap turns into a stopped plan.",

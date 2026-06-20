@@ -1,0 +1,181 @@
+.veteran-voices {
+  padding-block: clamp(64px, 9vh, 112px);
+  background: var(--paper, #f8f4eb);
+  border-block: 1px solid rgba(32, 35, 31, .10);
+}
+
+.vv-head {
+  max-width: 1120px;
+  margin: 0 auto clamp(26px, 4vh, 40px);
+  padding-inline: var(--space-page-x, 28px);
+}
+
+.vv-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--display-face);
+  font-weight: 800;
+  font-stretch: condensed;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  font-size: .82rem;
+  color: var(--mission-orange, #b95524);
+}
+
+.vv-eyebrow::before {
+  content: "";
+  width: 26px;
+  height: 2px;
+  background: var(--mission-orange, #b95524);
+  border-radius: 2px;
+}
+
+.vv-title {
+  margin: 14px 0 0;
+  max-width: 18ch;
+  font-family: var(--display-face);
+  font-weight: 800;
+  font-stretch: condensed;
+  font-size: clamp(2.1rem, 4vw, 3.3rem);
+  line-height: .98;
+  color: var(--ink, #20231f);
+}
+
+.vv-grid {
+  display: grid;
+  gap: 22px;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-inline: var(--space-page-x, 28px);
+}
+
+.vv-card {
+  display: grid;
+  grid-template-columns: minmax(230px, 300px) 1fr;
+  overflow: hidden;
+  background: #fffdf7;
+  border: 1px solid rgba(32, 35, 31, .12);
+  border-radius: 18px;
+  box-shadow:
+    0 22px 54px rgba(29, 33, 29, .14),
+    0 1px 0 rgba(255, 255, 255, .72) inset;
+}
+
+.vv-photo {
+  background: #e8ddc8;
+}
+
+.vv-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 28%;
+}
+
+.vv-photo-ph {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 100%;
+  min-height: 240px;
+  background: linear-gradient(180deg, #ece1cb, #ddcfb0);
+}
+
+.vv-photo-ph span {
+  font-family: var(--display-face);
+  font-weight: 800;
+  font-stretch: condensed;
+  font-size: 3.4rem;
+  line-height: 1;
+  letter-spacing: .02em;
+  color: rgba(122, 58, 26, .5);
+}
+
+.vv-photo-ph small {
+  font-family: var(--ui-face);
+  font-size: .7rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(60, 50, 35, .5);
+}
+
+.vv-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(24px, 3vw, 34px) clamp(26px, 3vw, 38px);
+}
+
+.vv-quote {
+  margin: 0 0 18px;
+  font-family: var(--ui-face);
+  font-size: clamp(1rem, 1.1vw, 1.12rem);
+  line-height: 1.58;
+  color: #2c2a27;
+}
+
+.vv-quote::before,
+.vv-soon::before {
+  content: "\201C";
+  display: block;
+  margin-bottom: 8px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  font-size: 3.2rem;
+  line-height: .4;
+  color: var(--mission-orange, #b95524);
+}
+
+.vv-soon {
+  margin: 0 0 18px;
+  font-family: var(--ui-face);
+  font-style: italic;
+  font-size: .98rem;
+  color: rgba(60, 55, 48, .55);
+}
+
+.vv-soon::before {
+  color: rgba(185, 85, 36, .35);
+}
+
+.vv-name {
+  padding-top: 16px;
+  border-top: 1px solid rgba(32, 35, 31, .12);
+  font-family: var(--display-face);
+  font-weight: 800;
+  font-stretch: condensed;
+  font-size: clamp(1.4rem, 2vw, 1.7rem);
+  line-height: 1.05;
+  color: var(--ink, #20231f);
+}
+
+.vv-creds {
+  margin-top: 7px;
+  font-family: var(--ui-face);
+  font-size: .8rem;
+  line-height: 1.5;
+  color: #5f5e5a;
+}
+
+.vv-dot {
+  color: var(--mission-orange, #b95524);
+  font-weight: 700;
+}
+
+@media (max-width: 720px) {
+  .vv-card {
+    grid-template-columns: 1fr;
+  }
+
+  .vv-photo img,
+  .vv-photo-ph {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    min-height: 0;
+  }
+}

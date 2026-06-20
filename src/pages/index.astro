@@ -208,6 +208,32 @@ import home from "../content/home.json";
         </div>
       </section>
 
+      <!-- VETERAN VOICES (repeatable: add entries to home.veteranVoices) -->
+      <section class="veteran-voices" id="veteran-voices" aria-label="Veteran voices">
+        <div class="vv-head" data-reveal>
+          <span class="vv-eyebrow">Veteran Voices</span>
+          <h2 class="vv-title">Served by those who served.</h2>
+        </div>
+        <div class="vv-grid">
+          {home.veteranVoices.map((v) => (
+            <article class="vv-card" data-reveal>
+              <div class="vv-photo">
+                {v.photo
+                  ? <img src={v.photo} alt={v.photoAlt} width="800" height="800" loading="lazy" decoding="async" />
+                  : <div class="vv-photo-ph"><span>{v.initials}</span><small>Photo coming soon</small></div>}
+              </div>
+              <div class="vv-body">
+                {v.quote
+                  ? <blockquote class="vv-quote">{v.quote}</blockquote>
+                  : <p class="vv-soon">Testimonial coming soon</p>}
+                <div class="vv-name">{v.name}</div>
+                <div class="vv-creds">{v.title.split(" · ").map((part, i) => (<Fragment>{i > 0 && <span class="vv-dot"> · </span>}{part}</Fragment>))}</div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <!-- 4b. LOW INCOME YOUTH -->
       <section class="serve-group" id="serve-athletes">        <div class="serve-group-head" data-reveal>
           <h2>Low income youth</h2>
