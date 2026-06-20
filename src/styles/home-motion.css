@@ -29,8 +29,7 @@
   transform: translate3d(0, 24px, 0) scale(.99);
 }
 
-.js .quote-photo[data-reveal],
-.js .testimonial-card[data-reveal] {
+.js .quote-photo[data-reveal] {
   transform: translate3d(0, 22px, 0) scale(1.012);
 }
 
@@ -66,7 +65,6 @@
   .js .how-story-copy[data-reveal],
   .js .serve-copy[data-reveal],
   .js .quote-photo[data-reveal],
-  .js .testimonial-card[data-reveal],
   .js .proof-stat[data-reveal] .proof-stat-number,
   .js .proof-stat[data-reveal].is-visible .proof-stat-number {
     opacity: 1 !important;
@@ -81,6 +79,15 @@
 }
 
 @media (prefers-reduced-motion: no-preference) and (max-width: 720px) {
+  .js [data-reveal],
+  .js .hero-copy[data-reveal],
+  .js .how-story-copy[data-reveal],
+  .js .serve-copy[data-reveal],
+  .js .quote-photo[data-reveal] {
+    transform: translate3d(0, 12px, 0) scale(.997);
+    transition-duration: .48s, .58s;
+  }
+
   .js .proof-stat[data-reveal] .proof-stat-number {
     transform: translate3d(0, 14px, 0) scale(.98);
   }

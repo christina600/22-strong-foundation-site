@@ -11,6 +11,17 @@
     "Veteran-founded",
     "Clinic-based recovery care"
   ],
+  "press": {
+    "publications": [
+      {
+        "name": "U.S. Veterans Magazine",
+        "logo": "/images/logo-usvm.jpg",
+        "logoAlt": "U.S. Veterans Magazine",
+        "url": "https://digital.usveteransmagazine.com/US-Veterans-Magazine-Winter-2022/0/",
+        "ariaLabel": "Read the U.S. Veterans Magazine feature"
+      }
+    ]
+  },
   "stats": {
     "veterans": [
       {

@@ -7,11 +7,25 @@
     0 -1px 0 rgba(32, 35, 31, .08) inset;
 }
 
+.veteran-voices--with-video {
+  margin-top: 0;
+  padding: 0;
+  background: transparent;
+  border-block-start: 0;
+  border-block-end: 0;
+  box-shadow: none;
+}
+
 .vv-head {
   position: relative;
   max-width: 1120px;
   margin: 0 auto clamp(26px, 4vh, 40px);
   padding-inline: var(--space-page-x, 28px);
+}
+
+.veteran-voices--with-video .vv-head,
+.veteran-voices--with-video .vv-grid {
+  padding-inline: 0;
 }
 
 .vv-eyebrow {
@@ -68,6 +82,38 @@
 
 .vv-card.is-pending {
   box-shadow: var(--shadow-soft);
+}
+
+.vv-card--video {
+  grid-template-columns: minmax(230px, 340px) 1fr;
+}
+
+.vv-video-media {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  min-height: 100%;
+  padding: clamp(18px, 2.5vw, 28px);
+  background:
+    linear-gradient(135deg, rgba(70, 87, 70, .18), rgba(185, 85, 36, .08)),
+    #171b17;
+}
+
+.vv-card--video .testimonial-video-shell {
+  height: min(64vh, 560px);
+  margin: 0;
+  box-shadow: 0 18px 44px rgba(29, 33, 29, .20);
+}
+
+.vv-card--video .attribution {
+  margin-top: 0;
+  color: var(--mission-orange, #b95524);
+}
+
+.vv-card--video .story {
+  max-width: 46ch;
+  margin-top: 16px;
+  color: rgba(32, 35, 31, .82);
 }
 
 .vv-photo {
@@ -205,6 +251,10 @@
 
 @media (max-width: 720px) {
   .vv-card {
+    grid-template-columns: 1fr;
+  }
+
+  .vv-card--video {
     grid-template-columns: 1fr;
   }
 

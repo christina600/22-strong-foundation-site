@@ -106,26 +106,34 @@ import home from "../content/home.json";
         <p class="how-note" data-reveal>Care is currently provided through Next Level Fitness &amp; Wellness Center in Newport Beach &mdash; high-level sports medicine, including Fascial Integrative Treatment (FIT). It treats injuries like rotator cuff, knee, neck, lower back, hip, ankle/foot, and wrist/elbow pain. As donor support grows, 22 Strong can expand toward a network of vetted providers across Southern California.</p>
       </section>
 
-      <!-- 3. FEATURED — U.S. VETERANS MAGAZINE -->
-      <section class="featured" id="featured" aria-label="Press feature">
+      <!-- 3. AS FEATURED IN -->
+      <section class="featured" id="featured" aria-labelledby="featured-title">
         <div class="featured-inner" data-reveal>
-          <figure class="featured-sheet">
-            <img
-              class="featured-logo-img"
-              src="/images/logo-usvm.jpg"
-              alt="U.S. Veterans Magazine"
-              width="760"
-              height="194"
-              loading="lazy"
-              decoding="async"
-              fetchpriority="low"
-            />
-            <figcaption class="featured-issue">Winter 2022 Issue</figcaption>
-          </figure>
-
-          <p class="featured-line">The wellness partnership behind 22&nbsp;Strong</p>
-          <p class="featured-subline">A U.S. Veterans Magazine feature on the partnership that helped shape 22&nbsp;Strong&rsquo;s work.</p>
-          <a class="featured-link" href="https://digital.usveteransmagazine.com/US-Veterans-Magazine-Winter-2022/0/" target="_blank" rel="noopener noreferrer">Read the feature &rarr;</a>
+          <h2 class="featured-title" id="featured-title">As Featured In</h2>
+          <ul class="featured-publications" aria-label="Featured publications">
+            {home.press.publications.map((publication) => (
+              <li>
+                <a
+                  class="featured-sheet"
+                  href={publication.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={publication.ariaLabel}
+                >
+                  <img
+                    class="featured-logo-img"
+                    src={publication.logo}
+                    alt={publication.logoAlt}
+                    width="760"
+                    height="194"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                  />
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
@@ -169,42 +177,68 @@ import home from "../content/home.json";
         </div>
       </section>
 
-      <section class="serve-proof">
-        <div class="testimonial-grid">
-          <article class="testimonial-card" data-reveal>
-            <div>
-              <div class="testimonial-video-shell" data-lazy-video>
-                <button
-                  class="testimonial-video-trigger"
-                  type="button"
-                  data-lazy-video-trigger
-                  data-video-src="/video/luke-hudson-testimonial.mp4"
-                  data-video-poster="/images/luke-poster.jpg"
-                  aria-label="Play Luke Hudson testimonial video"
-                >
-                  <img
-                    class="testimonial-video-poster"
-                    src="/images/luke-poster.jpg"
-                    alt=""
-                    width="540"
-                    height="960"
-                    loading="lazy"
-                    decoding="async"
-                    fetchpriority="low"
-                  />
-                  <span class="testimonial-play-button" aria-hidden="true"></span>
-                </button>
-                <noscript>
-                  <video class="testimonial-video" controls preload="none" playsinline poster="/images/luke-poster.jpg">
-                    <source src="/video/luke-hudson-testimonial.mp4" type="video/mp4" />
-                    <a href="/video/luke-hudson-testimonial.mp4">Watch Luke&rsquo;s testimonial</a>.
-                  </video>
-                </noscript>
+      <section class="serve-proof veteran-proof">
+        <!-- VETERAN VOICES (repeatable: add entries to home.veteranVoices) -->
+        <div class="veteran-voices veteran-voices--with-video" id="veteran-voices" aria-label="Veteran voices">
+          <div class="vv-head" data-reveal>
+            <span class="vv-eyebrow">Veteran Voices</span>
+            <h2 class="vv-title">Served by those who served.</h2>
+          </div>
+          <div class="vv-grid">
+            <article class="vv-card vv-card--video" data-reveal>
+              <div class="vv-video-media">
+                <div class="testimonial-video-shell" data-lazy-video data-lazy-video-autoplay>
+                  <button
+                    class="testimonial-video-trigger"
+                    type="button"
+                    data-lazy-video-trigger
+                    data-video-src="/video/luke-hudson-testimonial.mp4"
+                    data-video-poster="/images/luke-poster.jpg"
+                    aria-label="Play Luke Hudson testimonial video"
+                  >
+                    <img
+                      class="testimonial-video-poster"
+                      src="/images/luke-poster.jpg"
+                      alt=""
+                      width="540"
+                      height="960"
+                      loading="lazy"
+                      decoding="async"
+                      fetchpriority="low"
+                    />
+                    <span class="testimonial-play-button" aria-hidden="true"></span>
+                  </button>
+                  <noscript>
+                    <video class="testimonial-video" controls preload="none" playsinline poster="/images/luke-poster.jpg">
+                      <source src="/video/luke-hudson-testimonial.mp4" type="video/mp4" />
+                      <a href="/video/luke-hudson-testimonial.mp4">Watch Luke&rsquo;s testimonial</a>.
+                    </video>
+                  </noscript>
+                </div>
               </div>
-              <div class="attribution">{home.testimonials.luke.attribution}</div>
-              <p class="story">{home.testimonials.luke.story}</p>
-            </div>
-          </article>
+              <div class="vv-body">
+                <div class="attribution">{home.testimonials.luke.attribution}</div>
+                <p class="story">{home.testimonials.luke.story}</p>
+              </div>
+            </article>
+
+            {home.veteranVoices.map((v) => (
+              <article class={`vv-card${(!v.photo || !v.quote) ? " is-pending" : ""}`} data-reveal>
+                <div class="vv-photo">
+                  {v.photo
+                    ? <img src={v.photo} alt={v.photoAlt} width="800" height="800" loading="lazy" decoding="async" />
+                    : <div class="vv-photo-ph"><span>{v.initials}</span><small>Photo coming soon</small></div>}
+                </div>
+                <div class="vv-body">
+                  {v.quote
+                    ? <blockquote class="vv-quote">{v.quote}</blockquote>
+                    : <p class="vv-soon">Testimonial coming soon</p>}
+                  <div class="vv-name">{v.name}</div>
+                  <div class="vv-creds">{v.title.split(" · ").map((part, i) => (<Fragment>{i > 0 && <span class="vv-dot"> · </span>}{part}</Fragment>))}</div>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -277,32 +311,6 @@ import home from "../content/home.json";
               </aside>
             ))}
           </div>
-        </div>
-      </section>
-
-      <!-- VETERAN VOICES (repeatable: add entries to home.veteranVoices) -->
-      <section class="veteran-voices" id="veteran-voices" aria-label="Veteran voices">
-        <div class="vv-head" data-reveal>
-          <span class="vv-eyebrow">Veteran Voices</span>
-          <h2 class="vv-title">Served by those who served.</h2>
-        </div>
-        <div class="vv-grid">
-          {home.veteranVoices.map((v) => (
-            <article class={`vv-card${(!v.photo || !v.quote) ? " is-pending" : ""}`} data-reveal>
-              <div class="vv-photo">
-                {v.photo
-                  ? <img src={v.photo} alt={v.photoAlt} width="800" height="800" loading="lazy" decoding="async" />
-                  : <div class="vv-photo-ph"><span>{v.initials}</span><small>Photo coming soon</small></div>}
-              </div>
-              <div class="vv-body">
-                {v.quote
-                  ? <blockquote class="vv-quote">{v.quote}</blockquote>
-                  : <p class="vv-soon">Testimonial coming soon</p>}
-                <div class="vv-name">{v.name}</div>
-                <div class="vv-creds">{v.title.split(" · ").map((part, i) => (<Fragment>{i > 0 && <span class="vv-dot"> · </span>}{part}</Fragment>))}</div>
-              </div>
-            </article>
-          ))}
         </div>
       </section>
 

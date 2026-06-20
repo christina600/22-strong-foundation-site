@@ -1,0 +1,228 @@
+/* Open editorial stats presentation. This sits last so the evidence stats can
+   be judged without card framing, while leaving the rest of the premium layer intact. */
+.serve-stats {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  align-items: start;
+  max-width: 800px;
+}
+
+.serve-stats.one-up {
+  max-width: 800px;
+}
+
+.serve-stats .proof-stat,
+.serve-stats .proof-stat.light {
+  position: relative;
+  min-height: 0;
+  margin: 0;
+  padding: clamp(36px, 5vw, 68px) 0;
+  overflow: visible;
+  color: var(--ink);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.serve-stats .proof-stat + .proof-stat {
+  border-top: 1px solid rgba(32, 35, 31, .14);
+}
+
+.serve-stats .proof-stat::before,
+.serve-stats .proof-stat.light::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: clamp(72px, 10vw, 120px);
+  height: 2px;
+  border: 0;
+  background: linear-gradient(90deg, var(--mission-orange), rgba(185, 85, 36, .12));
+}
+
+.serve-stats .proof-stat::after,
+.serve-stats .proof-stat.light::after {
+  content: none;
+}
+
+.serve-stats .proof-stat-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: clamp(14px, 2vw, 22px);
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.serve-stats .proof-stat-inner::before {
+  content: none;
+}
+
+.serve-stats .proof-stat-number,
+.serve-stats .proof-stat.light .proof-stat-number {
+  width: auto;
+  max-width: 100%;
+  padding: 0;
+  color: var(--orange-dark);
+  border: 0;
+  font-size: clamp(4.25rem, 8vw, 7rem);
+  line-height: .88;
+  text-shadow: none;
+  white-space: normal;
+}
+
+.serve-stats .proof-stat-text,
+.serve-stats .proof-stat.light .proof-stat-text {
+  display: grid;
+  gap: clamp(14px, 1.7vw, 18px);
+  max-width: min(100%, 58ch);
+  padding: 0;
+  border: 0;
+}
+
+.serve-stats .proof-stat p,
+.serve-stats .proof-stat.light p {
+  max-width: 46ch;
+  margin: 0;
+  color: rgba(32, 35, 31, .84);
+  font-size: clamp(1.18rem, 1.45vw, 1.38rem);
+  line-height: 1.6;
+}
+
+.serve-stats .proof-stat-source,
+.serve-stats .proof-stat.light .proof-stat-source {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: auto;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  color: rgba(32, 35, 31, .66);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font-size: var(--fs-ui);
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.serve-stats .proof-stat-source::before,
+.serve-stats .proof-stat.light .proof-stat-source::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(185, 85, 36, .74);
+}
+
+.serve-stats .proof-stat-source a,
+.serve-stats .proof-stat.light .proof-stat-source a {
+  color: inherit;
+  text-decoration-color: rgba(185, 85, 36, .48);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.serve-stats .proof-stat:hover,
+.serve-stats .proof-stat:focus-within {
+  border-color: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+.serve-stats .proof-stat:hover .proof-stat-number,
+.serve-stats .proof-stat:focus-within .proof-stat-number {
+  transform: none;
+}
+
+.serve-stats .proof-stat-source a:hover,
+.serve-stats .proof-stat-source a:focus-visible,
+.serve-stats .proof-stat.light .proof-stat-source a:hover,
+.serve-stats .proof-stat.light .proof-stat-source a:focus-visible {
+  color: var(--orange-dark);
+  text-decoration-color: rgba(134, 58, 26, .70);
+}
+
+@media (min-width: 760px) {
+  .serve-stats {
+    max-width: 860px;
+  }
+
+  .serve-stats.one-up {
+    max-width: 860px;
+  }
+
+  .serve-stats .proof-stat,
+  .serve-stats .proof-stat.light {
+    padding-block: clamp(42px, 6vw, 78px);
+  }
+
+  .serve-stats .proof-stat-inner {
+    display: grid;
+    grid-template-columns: minmax(150px, max-content) minmax(0, 1fr);
+    column-gap: clamp(28px, 4.5vw, 64px);
+    row-gap: 12px;
+    align-items: start;
+  }
+
+  .serve-stats .proof-stat-number,
+  .serve-stats .proof-stat.light .proof-stat-number {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    align-self: start;
+    margin-top: -.08em;
+  }
+
+  .serve-stats .proof-stat-text,
+  .serve-stats .proof-stat.light .proof-stat-text {
+    grid-column: 2;
+    align-self: start;
+    max-width: min(100%, 40rem);
+    padding-top: .34rem;
+  }
+
+  .serve-stats .proof-stat:nth-child(even) {
+    padding-left: clamp(38px, 8vw, 104px);
+  }
+
+  .serve-stats .proof-stat:nth-child(even)::before {
+    left: clamp(38px, 8vw, 104px);
+  }
+
+  .serve-stats .proof-stat:nth-child(even) .proof-stat-inner {
+    grid-template-columns: minmax(0, 1fr) minmax(150px, max-content);
+  }
+
+  .serve-stats .proof-stat:nth-child(even) .proof-stat-number {
+    grid-column: 2;
+    justify-self: end;
+    text-align: right;
+  }
+
+  .serve-stats .proof-stat:nth-child(even) .proof-stat-text {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    justify-self: end;
+  }
+}
+
+@media (max-width: 720px) {
+  .serve-stats .proof-stat,
+  .serve-stats .proof-stat.light {
+    padding-block: 30px;
+  }
+
+  .serve-stats .proof-stat-number,
+  .serve-stats .proof-stat.light .proof-stat-number {
+    font-size: clamp(3.55rem, 17vw, 5.2rem);
+  }
+
+  .serve-stats .proof-stat-source,
+  .serve-stats .proof-stat.light .proof-stat-source {
+    align-items: flex-start;
+  }
+}

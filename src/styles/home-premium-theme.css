@@ -60,10 +60,8 @@
   --fs-serve-title: 5.7rem;
   --fs-serve-lead: 1.95rem;
   --fs-stat-major: 7.8rem;
-  --fs-stat-card: 3.7rem;
   --fs-proof-copy: 1.42rem;
   --fs-quote: 3.15rem;
-  --fs-featured-line: 2.15rem;
   --fs-circle-number: 6.1rem;
   --fs-circle-card-title: 3.05rem;
   --fs-modal-title: 3.3rem;
@@ -79,7 +77,6 @@
   --fs-gift-summary: 1.8rem;
   --fs-gift-summary-compact: 1.55rem;
   --fs-initials: 2.4rem;
-  --fs-testimonial-card: 2.35rem;
   --fs-modal-close: 1.4rem;
 }
 
@@ -126,7 +123,6 @@ textarea {
 .serve-copy,
 .serve-stats,
 .step,
-.testimonial-card,
 form {
   min-width: 0;
 }
@@ -138,6 +134,56 @@ body::before {
     linear-gradient(90deg, rgba(32, 35, 31, .018) 1px, transparent 1px);
   background-size: 56px 56px;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .22), transparent 72%);
+}
+
+@media (min-width: 1180px) {
+  .site::before,
+  .site::after {
+    content: "";
+    position: fixed;
+    top: 112px;
+    bottom: 34px;
+    left: max(18px, calc(50vw - (var(--max) / 2) - 54px));
+    width: 2px;
+    pointer-events: none;
+    z-index: 38;
+  }
+
+  .site::before {
+    background:
+      linear-gradient(180deg, rgba(185, 85, 36, .42), rgba(70, 87, 70, .18), rgba(32, 35, 31, .08)),
+      rgba(255, 253, 247, .42);
+    box-shadow: 0 0 0 1px rgba(255, 253, 247, .38);
+  }
+
+  .site::after {
+    background: linear-gradient(180deg, var(--mission-orange), rgba(185, 85, 36, .32));
+    transform-origin: top;
+    transform: scaleY(.16);
+    box-shadow:
+      0 0 0 1px rgba(185, 85, 36, .14),
+      0 12px 28px rgba(185, 85, 36, .16);
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) and (min-width: 1180px) {
+    .site::after {
+      animation: recovery-path-progress linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0% 100%;
+    }
+  }
+}
+
+@keyframes recovery-path-progress {
+  from {
+    transform: scaleY(.08);
+  }
+
+  to {
+    transform: scaleY(1);
+  }
 }
 
 header {
@@ -176,6 +222,7 @@ header {
 }
 
 .nav-links a {
+  position: relative;
   color: rgba(32, 35, 31, .78);
   letter-spacing: 0;
 }
@@ -183,6 +230,29 @@ header {
 .nav-links a:hover {
   color: var(--ink);
   background: rgba(242, 236, 223, .78);
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  left: 10px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--mission-orange), rgba(70, 87, 70, .72));
+  opacity: 0;
+  transform: scaleX(.35);
+  transform-origin: left;
+  transition:
+    opacity .22s ease,
+    transform .26s cubic-bezier(.22, .61, .36, 1);
+}
+
+.nav-links a.is-active::after,
+.nav-links a:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
 }
 
 .pill,

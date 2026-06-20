@@ -38,9 +38,31 @@
 }
 
 .hero-copy {
+  position: relative;
   max-width: 760px;
   padding-top: 0;
   filter: drop-shadow(0 16px 38px rgba(0, 0, 0, .18));
+}
+
+.hero-copy::before {
+  content: "22";
+  position: absolute;
+  right: min(-12vw, -70px);
+  bottom: -42px;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 250, 240, .16);
+  font-family: var(--display-face);
+  font-size: clamp(9rem, 18vw, 18rem);
+  font-stretch: condensed;
+  font-weight: 900;
+  line-height: .72;
+  opacity: .72;
+  pointer-events: none;
+}
+
+.hero-copy > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* Cream eyebrow is for the hero copy only — scoped so it does not bleed onto
@@ -143,5 +165,14 @@
 
   .hero {
     min-height: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .hero-copy::before {
+    right: -18px;
+    bottom: -18px;
+    font-size: clamp(6.8rem, 28vw, 9rem);
+    opacity: .42;
   }
 }

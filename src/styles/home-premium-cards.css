@@ -1,7 +1,6 @@
 /* Premium card and donation-widget refinements. */
 .card,
 .donation-card-main,
-.testimonial-card,
 form,
 .goal-panel,
 .mini-item,
@@ -13,7 +12,6 @@ form,
 }
 
 .card,
-.testimonial-card,
 form {
   background:
     linear-gradient(180deg, var(--surface-card), var(--surface-card-soft));

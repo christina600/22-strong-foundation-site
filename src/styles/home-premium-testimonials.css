@@ -42,16 +42,11 @@ blockquote {
   letter-spacing: 0;
 }
 
-.quote-wrap .story,
-.testimonial-card .story {
+.quote-wrap .story {
   font-size: var(--fs-copy-small);
   line-height: var(--lh-copy);
 }
 
 .attribution {
   text-wrap: pretty;
-}
-
-.testimonial-card {
-  border-top: 3px solid rgba(185, 85, 36, .72);
 }

@@ -134,6 +134,9 @@
   gap: 5px;
   padding-bottom: 16px;
   border-bottom: 1px solid rgba(37, 35, 33, .12);
+  transition:
+    padding-left .22s ease,
+    border-color .22s ease;
 }
 
 .funding-covers li:last-child {
@@ -150,6 +153,28 @@
   font-size: var(--fs-copy-small);
   line-height: var(--lh-lead);
   text-wrap: pretty;
+}
+
+.funding-covers li:hover,
+.funding-covers li:focus-within {
+  padding-left: 10px;
+  border-bottom-color: rgba(185, 85, 36, .30);
+}
+
+.funding-covers li:hover strong,
+.funding-covers li:focus-within strong {
+  color: var(--orange-dark);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .funding-covers li {
+    transition: none;
+  }
+
+  .funding-covers li:hover,
+  .funding-covers li:focus-within {
+    padding-left: 0;
+  }
 }
 
 .how-note {

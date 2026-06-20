@@ -29,6 +29,22 @@
   pointer-events: none;
 }
 
+.circle-panel::after {
+  content: "22";
+  position: absolute;
+  right: -12px;
+  bottom: -34px;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 250, 240, .18);
+  font-family: var(--display-face);
+  font-size: clamp(9rem, 16vw, 15rem);
+  font-stretch: condensed;
+  font-weight: 900;
+  line-height: .72;
+  opacity: .66;
+  pointer-events: none;
+}
+
 .circle-panel > * {
   position: relative;
   z-index: 1;

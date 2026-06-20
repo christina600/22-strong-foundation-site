@@ -23,10 +23,8 @@
     --fs-serve-title: 3.25rem;
     --fs-serve-lead: 1.18rem;
     --fs-stat-major: 3.45rem;
-    --fs-stat-card: 2.75rem;
     --fs-proof-copy: 1rem;
     --fs-quote: 2.1rem;
-    --fs-featured-line: 1.75rem;
     --fs-circle-number: 4.1rem;
     --fs-circle-card-title: 2.25rem;
     --fs-modal-title: 2.45rem;
@@ -77,8 +75,7 @@
 
   .donation-card-main,
   form,
-  .card,
-  .testimonial-card {
+  .card {
     padding: var(--space-card);
   }
 
@@ -88,8 +85,8 @@
 
   .portrait,
   .initials {
-    width: 96px;
-    height: 96px;
+    width: 118px;
+    height: 148px;
   }
 
   .featured-sheet {

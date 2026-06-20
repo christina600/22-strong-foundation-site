@@ -11,13 +11,20 @@ import { getEventElement } from "./dom-target";
 let lazyVideoListenerAttached = false;
 
 const TRIGGER_SELECTOR = "[data-lazy-video-trigger]";
+const SHELL_SELECTOR = "[data-lazy-video]";
+const AUTOPLAY_SELECTOR = "[data-lazy-video-autoplay]";
 
-function buildVideo(trigger: HTMLElement) {
+type BuildVideoOptions = {
+  focus?: boolean;
+  muted?: boolean;
+};
+
+function buildVideo(trigger: HTMLElement, options: BuildVideoOptions = {}) {
   const src = trigger.dataset.videoSrc;
-  if (!src) return;
+  if (!src) return null;
 
-  const shell = trigger.closest<HTMLElement>("[data-lazy-video]");
-  if (!shell) return;
+  const shell = trigger.closest<HTMLElement>(SHELL_SELECTOR);
+  if (!shell) return null;
 
   const video = document.createElement("video");
   video.className = "testimonial-video";
@@ -25,6 +32,7 @@ function buildVideo(trigger: HTMLElement) {
   video.playsInline = true;
   video.preload = "metadata";
   video.autoplay = true;
+  video.muted = Boolean(options.muted);
   video.tabIndex = -1;
 
   const poster = trigger.dataset.videoPoster;
@@ -41,10 +49,42 @@ function buildVideo(trigger: HTMLElement) {
   video.append(fallback);
 
   shell.replaceChildren(video);
-  video.focus({ preventScroll: true });
+  if (options.focus) video.focus({ preventScroll: true });
   void video.play().catch(() => {
-    // Autoplay can be blocked even after a click in some browsers; controls remain visible.
+    // Autoplay can still be blocked in some browsers; controls remain visible.
   });
+
+  return video;
+}
+
+function initViewportAutoplay() {
+  if (!("IntersectionObserver" in window)) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const autoplayShells = document.querySelectorAll<HTMLElement>(AUTOPLAY_SELECTOR);
+  if (!autoplayShells.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting || entry.intersectionRatio < .45) return;
+
+        const shell = entry.target as HTMLElement;
+        observer.unobserve(shell);
+
+        const trigger = shell.querySelector<HTMLElement>(TRIGGER_SELECTOR);
+        if (!trigger) return;
+
+        buildVideo(trigger, { muted: true });
+      });
+    },
+    {
+      rootMargin: "0px 0px -12% 0px",
+      threshold: [.45, .6]
+    }
+  );
+
+  autoplayShells.forEach((shell) => observer.observe(shell));
 }
 
 function initLazyVideos() {
@@ -58,8 +98,10 @@ function initLazyVideos() {
     const trigger = target.closest<HTMLElement>(TRIGGER_SELECTOR);
     if (!trigger) return;
 
-    buildVideo(trigger);
+    buildVideo(trigger, { focus: true });
   });
+
+  initViewportAutoplay();
 }
 
 if (document.readyState === "loading") {

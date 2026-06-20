@@ -186,7 +186,6 @@ header {
 
 .step,
 .card,
-.testimonial-card,
 form,
 .goal-panel,
 .mini-item {
@@ -207,10 +206,12 @@ form,
   pointer-events: none;
   opacity: .74;
   background:
+    repeating-linear-gradient(90deg, transparent 0 42px, rgba(255, 250, 240, .10) 42px 43px, transparent 43px 88px),
+    linear-gradient(90deg, transparent, rgba(185, 85, 36, .14), transparent),
     var(--field-canvas),
     var(--field-scuffs),
     var(--field-sand);
-  background-size: 26px 26px, 26px 26px, auto, auto, auto, 140px 124px, 140px 124px, 140px 124px, auto;
+  background-size: auto, auto, 26px 26px, 26px 26px, auto, auto, auto, 140px 124px, 140px 124px, 140px 124px, auto;
   mix-blend-mode: soft-light;
 }
 
