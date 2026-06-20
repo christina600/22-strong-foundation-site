@@ -138,13 +138,6 @@ header {
     0 28px 72px rgba(0, 0, 0, .54);
 }
 
-.hero-tagline {
-  border-color: rgba(255, 250, 240, .28);
-  background:
-    linear-gradient(180deg, rgba(255, 250, 240, .10), rgba(255, 250, 240, .045)),
-    linear-gradient(90deg, rgba(185, 85, 36, .20), transparent);
-}
-
 .donation-card-main {
   border-color: rgba(53, 70, 50, .20);
   background:

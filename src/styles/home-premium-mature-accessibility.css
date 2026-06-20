@@ -33,7 +33,6 @@ body::after {
 .btn-donate,
 .toggle-row button,
 .amount-button,
-.hero-tagline,
 .credibility-strip-item,
 .eyebrow,
 .donation-card-main .eyebrow,
@@ -88,14 +87,6 @@ blockquote {
 .btn-donate {
   font-size: var(--fs-ui);
   font-weight: 800;
-}
-
-.hero-tagline {
-  padding: 10px 14px;
-  color: rgba(255, 250, 240, .96);
-  font-size: var(--fs-meta);
-  line-height: 1.2;
-  text-transform: none;
 }
 
 .hero .lead {
@@ -181,7 +172,6 @@ footer p,
   line-height: 1.58;
 }
 
-.hero-credit,
 .give-taxline {
   color: rgba(255, 250, 240, .88);
 }
@@ -302,10 +292,6 @@ footer p,
   .btn-donate {
     min-height: 46px;
     font-size: var(--fs-ui);
-  }
-
-  .hero-tagline {
-    font-size: var(--fs-meta);
   }
 
   .donation-footnote,

@@ -72,36 +72,6 @@
   text-wrap: pretty;
 }
 
-.hero-tagline {
-  display: inline-flex;
-  width: fit-content;
-  margin: 4px 12px 26px 0;
-  padding: 9px 13px;
-  border: 1px solid rgba(255, 250, 240, .22);
-  border-radius: 999px;
-  background: rgba(255, 250, 240, .07);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, .10) inset,
-    0 8px 22px rgba(0, 0, 0, .16);
-  color: rgba(255, 250, 240, .86);
-  font-family: var(--display-face);
-  font-size: var(--fs-ui-small);
-  font-stretch: condensed;
-  font-weight: 900;
-  letter-spacing: 0;
-  line-height: 1;
-  text-transform: uppercase;
-}
-
-.hero-credit {
-  margin: 12px 0 0;
-  max-width: 48ch;
-  color: rgba(255, 250, 240, .88);
-  font-size: var(--fs-copy-small);
-  line-height: var(--lh-lead);
-  text-wrap: pretty;
-}
-
 .give-taxline {
   margin: 10px 0 0;
   color: rgba(255, 250, 240, .86);
