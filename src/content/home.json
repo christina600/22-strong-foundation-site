@@ -1,7 +1,7 @@
 {
   "hero": {
     "headline": ["Move better.", "Get stronger.", "Get back on your feet."],
-    "lead": "22 Strong Foundation helps veterans, student athletes, and others access hands-on recovery care when insurance, cost, or other barriers get in the way.",
+    "lead": "22 Strong Foundation helps veterans, low income youth, and others access hands-on recovery care when insurance, cost, or other barriers get in the way.",
     "tagline": "Veteran-founded • Clinic-based • Orange County",
     "credit": "Care is delivered through a local Orange County clinic for people who need help recovering from pain, injury, or physical setbacks.",
     "ctaLabel": "Help fund recovery",
@@ -111,11 +111,11 @@
     },
     {
       "name": "Travis Mayfield",
-      "role": "Co-founder",
+      "role": "Co-Founder & President",
       "initials": "TM",
       "paragraphs": [
-        "A Purple Heart Army veteran who served with the 101st Airborne, Travis is Co-Owner and President of Next Level Fitness & Wellness Center. He helped bring 22 Strong together and leads its mission to make recovery care accessible to those who served and to others working to rebuild.",
-        "His own path from service informs how 22 Strong shows up for the people it serves: with respect, follow-through, and care that doesn’t stop at the first appointment."
+        "A Purple Heart recipient who served as a Sergeant with the U.S. Army’s 101st Airborne Division in Vietnam, Travis is Co-Owner and President of Next Level Fitness & Wellness Center. His own long road back from war is the inspiration behind 22 Strong’s model. He helped found the foundation and leads its mission to make recovery care accessible to those who served and to others rebuilding their lives.",
+        "His service and community work have been recognized by the California State Senate and Assembly, the U.S. House of Representatives, and Orange County."
       ]
     }
   ],
