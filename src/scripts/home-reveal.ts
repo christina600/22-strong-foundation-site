@@ -6,6 +6,8 @@
 
 const REVEAL_SELECTOR = "[data-reveal]";
 const HIDDEN_REVEAL_SELECTOR = `${REVEAL_SELECTOR}:not(.is-visible)`;
+const VISIBLE_REVEAL_DELAYS = [180, 700];
+const REVEAL_FALLBACK_DELAY = 4500;
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 let hashRevealListenerAttached = false;
 
@@ -29,8 +31,9 @@ function revealVisible(targets: HTMLElement[]) {
 
 function scheduleVisibleReveal(targets: HTMLElement[]) {
   window.requestAnimationFrame(() => revealVisible(targets));
-  window.setTimeout(() => revealVisible(targets), 180);
-  window.setTimeout(() => revealVisible(targets), 700);
+  VISIBLE_REVEAL_DELAYS.forEach((delay) => {
+    window.setTimeout(() => revealVisible(targets), delay);
+  });
 }
 
 function ensureHashRevealListener() {
@@ -94,7 +97,7 @@ function initHomeReveal() {
 
   scheduleVisibleReveal(targets);
   ensureHashRevealListener();
-  window.setTimeout(revealHidden, 4500);
+  window.setTimeout(revealHidden, REVEAL_FALLBACK_DELAY);
 }
 
 prefersReducedMotion.addEventListener?.("change", revealHidden);

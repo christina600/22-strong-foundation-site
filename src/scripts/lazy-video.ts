@@ -6,6 +6,8 @@
  * work during initial page load.
  */
 
+import { getEventElement } from "./dom-target";
+
 let lazyVideoListenerAttached = false;
 
 const TRIGGER_SELECTOR = "[data-lazy-video-trigger]";
@@ -50,8 +52,10 @@ function initLazyVideos() {
   lazyVideoListenerAttached = true;
 
   document.addEventListener("click", (event) => {
-    if (!(event.target instanceof HTMLElement)) return;
-    const trigger = event.target.closest<HTMLElement>(TRIGGER_SELECTOR);
+    const target = getEventElement(event.target);
+    if (!target) return;
+
+    const trigger = target.closest<HTMLElement>(TRIGGER_SELECTOR);
     if (!trigger) return;
 
     buildVideo(trigger);

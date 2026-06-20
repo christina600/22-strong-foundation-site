@@ -12,11 +12,11 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(20, 23, 19, .94) 0%, rgba(20, 23, 19, .82) 43%, rgba(20, 23, 19, .26) 78%, rgba(20, 23, 19, .08) 100%),
-    linear-gradient(180deg, rgba(20, 23, 19, .06), rgba(20, 23, 19, .48)),
+    linear-gradient(90deg, rgba(20, 23, 19, .96) 0%, rgba(20, 23, 19, .86) 43%, rgba(20, 23, 19, .32) 78%, rgba(20, 23, 19, .12) 100%),
+    linear-gradient(180deg, rgba(20, 23, 19, .08), rgba(20, 23, 19, .52)),
     url("/images/stock-veteran-brotherhood.webp") center right / cover no-repeat;
   transform: scale(1.012);
-  filter: saturate(.96) contrast(1.04);
+  filter: saturate(.94) contrast(1.14) brightness(.96);
 }
 
 .hero::after {
@@ -40,12 +40,16 @@
 .hero-copy {
   max-width: 760px;
   padding-top: 0;
+  filter: drop-shadow(0 16px 38px rgba(0, 0, 0, .18));
 }
 
 /* Cream eyebrow is for the hero copy only — scoped so it does not bleed onto
    the donation card eyebrow ("GIVE NOW"), which sits on a light card. */
 .hero-copy .eyebrow {
   color: rgba(242, 236, 223, .84);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .10) inset,
+    0 8px 22px rgba(0, 0, 0, .16);
 }
 
 .hero h1 {
@@ -56,12 +60,14 @@
   line-height: var(--lh-hero);
   letter-spacing: 0;
   text-wrap: balance;
-  text-shadow: 0 18px 50px rgba(0, 0, 0, .34);
+  text-shadow:
+    0 1px 0 rgba(255, 250, 240, .10),
+    0 14px 44px rgba(0, 0, 0, .46);
 }
 
 .hero .lead {
   max-width: 520px;
-  color: rgba(255, 250, 240, .78);
+  color: rgba(255, 250, 240, .86);
   line-height: var(--lh-lead);
   text-wrap: pretty;
 }
@@ -74,7 +80,9 @@
   border: 1px solid rgba(255, 250, 240, .22);
   border-radius: 999px;
   background: rgba(255, 250, 240, .07);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .10) inset,
+    0 8px 22px rgba(0, 0, 0, .16);
   color: rgba(255, 250, 240, .86);
   font-family: var(--display-face);
   font-size: var(--fs-ui-small);
@@ -88,29 +96,31 @@
 .hero-credit {
   margin: 12px 0 0;
   max-width: 48ch;
-  color: rgba(255, 250, 240, .82);
+  color: rgba(255, 250, 240, .88);
   font-size: var(--fs-copy-small);
   line-height: var(--lh-lead);
+  text-wrap: pretty;
 }
 
 .give-taxline {
   margin: 10px 0 0;
-  color: rgba(255, 250, 240, .72);
+  color: rgba(255, 250, 240, .86);
   font-weight: 700;
   font-size: var(--fs-ui-small);
+  text-wrap: pretty;
 }
 
 .hero .donation-card-main {
   padding: 18px;
   gap: 12px;
-  background: rgba(255, 253, 247, .94);
+  background: rgba(255, 253, 247, .97);
   border-color: rgba(255, 255, 255, .62);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, .86) inset,
-    0 28px 70px rgba(0, 0, 0, .22),
-    0 60px 120px rgba(0, 0, 0, .12);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+    0 22px 56px rgba(0, 0, 0, .20),
+    0 42px 84px rgba(0, 0, 0, .10);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
 }
 
 .hero .toggle-row button,

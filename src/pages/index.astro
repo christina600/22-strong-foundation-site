@@ -57,7 +57,8 @@ import home from "../content/home.json";
       </section>
 
       <!-- 2. HOW 22 STRONG WORKS -->
-      <section class="how-it-works" id="how-it-works">        <div class="how-story-copy" data-reveal>
+      <section class="how-it-works" id="how-it-works">
+        <div class="how-story-copy" data-reveal>
           <div class="eyebrow">How 22 Strong works</div>
           <h2>A recovery gap appears.<br />22 Strong helps close it.</h2>
           <p class="story-kicker">The story is not complicated: someone has a real recovery plan, the next appointment becomes uncertain, and donor funding keeps the care moving.</p>
@@ -126,7 +127,7 @@ import home from "../content/home.json";
 
           <p class="featured-line">The wellness partnership behind 22&nbsp;Strong</p>
           <p class="featured-subline">A U.S. Veterans Magazine feature on the partnership that helped shape 22&nbsp;Strong&rsquo;s work.</p>
-          <a class="featured-link" href="https://digital.usveteransmagazine.com/US-Veterans-Magazine-Winter-2022/0/" target="_blank" rel="noopener">Read the feature &rarr;</a>
+          <a class="featured-link" href="https://digital.usveteransmagazine.com/US-Veterans-Magazine-Winter-2022/0/" target="_blank" rel="noopener noreferrer">Read the feature &rarr;</a>
         </div>
       </section>
 
@@ -141,7 +142,8 @@ import home from "../content/home.json";
       </section>
 
       <!-- 4a. VETERANS -->
-      <section class="serve-group" id="serve-veterans">        <div class="serve-group-head" data-reveal>
+      <section class="serve-group" id="serve-veterans">
+        <div class="serve-group-head" data-reveal>
           <h2>Veterans</h2>
         </div>
       </section>
@@ -160,7 +162,7 @@ import home from "../content/home.json";
                   <div class="proof-stat-number">{stat.number}</div>
                   <div class="proof-stat-text">
                     <p>{stat.text}</p>
-                    <span class="proof-stat-source"><a href={stat.url} target="_blank" rel="noopener">{stat.source}</a></span>
+                    <span class="proof-stat-source"><a href={stat.url} target="_blank" rel="noopener noreferrer">{stat.source}</a></span>
                   </div>
                 </div>
               </aside>
@@ -209,7 +211,8 @@ import home from "../content/home.json";
       </section>
 
       <!-- 4b. LOW INCOME YOUTH -->
-      <section class="serve-group" id="serve-athletes">        <div class="serve-group-head" data-reveal>
+      <section class="serve-group" id="serve-athletes">
+        <div class="serve-group-head" data-reveal>
           <h2>Low income youth</h2>
         </div>
       </section>
@@ -228,7 +231,7 @@ import home from "../content/home.json";
                   <div class="proof-stat-number">{stat.number}</div>
                   <div class="proof-stat-text">
                     <p>{stat.text}</p>
-                    <span class="proof-stat-source"><a href={stat.url} target="_blank" rel="noopener">{stat.source}</a></span>
+                    <span class="proof-stat-source"><a href={stat.url} target="_blank" rel="noopener noreferrer">{stat.source}</a></span>
                   </div>
                 </div>
               </aside>
@@ -250,7 +253,8 @@ import home from "../content/home.json";
       </section>
 
       <!-- 4d. OTHERS WHO NEED CARE (carries the general cost-of-care stats) -->
-      <section class="serve-group" id="serve-others">        <div class="serve-group-head" data-reveal>
+      <section class="serve-group" id="serve-others">
+        <div class="serve-group-head" data-reveal>
           <h2>Others who need care</h2>
         </div>
       </section>
@@ -269,7 +273,7 @@ import home from "../content/home.json";
                   <div class="proof-stat-number">{stat.number}</div>
                   <div class="proof-stat-text">
                     <p>{stat.text}</p>
-                    <span class="proof-stat-source"><a href={stat.url} target="_blank" rel="noopener">{stat.source}</a></span>
+                    <span class="proof-stat-source"><a href={stat.url} target="_blank" rel="noopener noreferrer">{stat.source}</a></span>
                   </div>
                 </div>
               </aside>
@@ -286,7 +290,7 @@ import home from "../content/home.json";
         </div>
         <div class="vv-grid">
           {home.veteranVoices.map((v) => (
-            <article class="vv-card" data-reveal>
+            <article class={`vv-card${(!v.photo || !v.quote) ? " is-pending" : ""}`} data-reveal>
               <div class="vv-photo">
                 {v.photo
                   ? <img src={v.photo} alt={v.photoAlt} width="800" height="800" loading="lazy" decoding="async" />
@@ -305,7 +309,8 @@ import home from "../content/home.json";
       </section>
 
       <!-- 5. STRONG CIRCLE -->
-      <section class="strong-circle-section" id="strong-circle">        <div class="strong-circle-wrap">
+      <section class="strong-circle-section" id="strong-circle">
+        <div class="strong-circle-wrap">
           <div class="circle-panel" data-reveal>
             <div>
               <h2>{home.strongCircle.heading}</h2>
@@ -401,7 +406,8 @@ import home from "../content/home.json";
       </section>
 
       <!-- 7. DONATE -->
-      <section class="donate-section" id="donate">        <div class="donate-wrap">
+      <section class="donate-section" id="donate">
+        <div class="donate-wrap">
           <div>
             <h2 data-reveal>{home.donate.heading}</h2>
             <p class="lead" data-reveal>{home.donate.lead}</p>
@@ -429,7 +435,8 @@ import home from "../content/home.json";
       </section>
 
       <!-- 8. CONTACT -->
-      <section class="contact" id="contact">        <div class="split">
+      <section class="contact" id="contact">
+        <div class="split">
           <div data-reveal>
             <h2>Start the right conversation with 22 Strong.</h2>
             <p>Use this form to give, refer someone, explore a partnership, or ask about care. Please do not use it for emergencies or private medical details.</p>
@@ -516,8 +523,4 @@ import home from "../content/home.json";
     </footer>
   </div>
 
-  <script>
-    import "../scripts/strong-circle-modal.ts";
-    import "../scripts/lazy-video.ts";
-  </script>
 </HomeBase>

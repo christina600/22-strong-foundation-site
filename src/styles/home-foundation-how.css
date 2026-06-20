@@ -4,9 +4,12 @@
 .credibility-strip {
   max-width: none;
   margin: 0 calc(50% - 50vw);
-  padding: 20px var(--space-page-x);
-  background: rgba(255, 253, 247, .94);
-  border-bottom: 1px solid rgba(37, 35, 33, .12);
+  padding: 24px var(--space-page-x);
+  background: linear-gradient(180deg, rgba(255, 253, 247, .98), rgba(242, 236, 223, .90));
+  border-block: 1px solid rgba(32, 35, 31, .10);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .74) inset,
+    0 8px 24px rgba(29, 33, 29, .04);
 }
 
 .credibility-strip-inner {
@@ -18,12 +21,16 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 12px 36px;
+  gap: 14px clamp(24px, 3vw, 44px);
 }
 
 .credibility-strip-item {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 5px 2px;
   position: relative;
-  color: var(--ink);
+  color: rgba(32, 35, 31, .88);
   font-family: var(--display-face);
   font-stretch: condensed;
   font-weight: 760;
@@ -36,13 +43,14 @@
 .credibility-strip-item:not(:last-child)::after {
   content: "";
   position: absolute;
-  right: -20px;
+  right: calc(clamp(24px, 3vw, 44px) / -2);
   top: 50%;
-  width: 5px;
-  height: 5px;
-  margin-top: -2px;
+  width: 6px;
+  height: 6px;
+  margin-top: -3px;
   border-radius: 50%;
-  background: var(--orange);
+  background: linear-gradient(180deg, #cf6a32, var(--mission-orange));
+  box-shadow: 0 0 0 4px rgba(185, 85, 36, .10);
 }
 
 /* "How 22 Strong works" — 3-step mechanism section. */
@@ -72,7 +80,7 @@
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: var(--orange);
+  background: var(--action-gradient);
   color: #fff;
   font-weight: 850;
   font-size: var(--fs-body);
@@ -96,7 +104,7 @@
   align-items: start;
   margin-top: 42px;
   padding: var(--space-card-roomy);
-  border: 1px solid rgba(37, 35, 33, .12);
+  border: 1px solid rgba(32, 35, 31, .10);
   border-radius: var(--radius);
   background: rgba(255, 253, 248, .82);
   box-shadow: 0 18px 60px rgba(47, 35, 29, .08);
@@ -141,6 +149,7 @@
   color: var(--muted);
   font-size: var(--fs-copy-small);
   line-height: var(--lh-lead);
+  text-wrap: pretty;
 }
 
 .how-note {
@@ -171,10 +180,25 @@
 
 @media (max-width: 560px) {
   .credibility-strip {
-    padding-block: 16px;
+    padding-block: 22px;
+  }
+
+  .credibility-strip-inner {
+    justify-content: flex-start;
   }
 
   .credibility-strip-item {
-    font-size: var(--fs-ui-small);
+    width: 100%;
+    justify-content: space-between;
+    padding-block: 9px;
+    border-bottom: 1px solid rgba(32, 35, 31, .10);
+  }
+
+  .credibility-strip-item:last-child {
+    border-bottom: 0;
+  }
+
+  .credibility-strip-item:not(:last-child)::after {
+    display: none;
   }
 }

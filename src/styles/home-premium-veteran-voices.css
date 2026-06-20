@@ -1,10 +1,14 @@
 .veteran-voices {
   padding-block: clamp(64px, 9vh, 112px);
-  background: var(--paper, #f8f4eb);
+  background: linear-gradient(180deg, rgba(255, 253, 247, .96), rgba(240, 234, 222, .90));
   border-block: 1px solid rgba(32, 35, 31, .10);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .72) inset,
+    0 -1px 0 rgba(32, 35, 31, .08) inset;
 }
 
 .vv-head {
+  position: relative;
   max-width: 1120px;
   margin: 0 auto clamp(26px, 4vh, 40px);
   padding-inline: var(--space-page-x, 28px);
@@ -13,13 +17,14 @@
 .vv-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  font-family: var(--display-face);
+  gap: 12px;
+  font-family: var(--ui-face);
   font-weight: 800;
-  font-stretch: condensed;
-  text-transform: uppercase;
-  letter-spacing: .16em;
-  font-size: .82rem;
+  font-stretch: normal;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: var(--fs-meta, 1rem);
+  line-height: 1.32;
   color: var(--mission-orange, #b95524);
 }
 
@@ -33,18 +38,19 @@
 
 .vv-title {
   margin: 14px 0 0;
-  max-width: 18ch;
+  max-width: 16ch;
   font-family: var(--display-face);
   font-weight: 800;
   font-stretch: condensed;
   font-size: clamp(2.1rem, 4vw, 3.3rem);
   line-height: .98;
   color: var(--ink, #20231f);
+  text-wrap: balance;
 }
 
 .vv-grid {
   display: grid;
-  gap: 22px;
+  gap: clamp(18px, 3vw, 30px);
   max-width: 1120px;
   margin: 0 auto;
   padding-inline: var(--space-page-x, 28px);
@@ -54,16 +60,32 @@
   display: grid;
   grid-template-columns: minmax(230px, 300px) 1fr;
   overflow: hidden;
-  background: #fffdf7;
-  border: 1px solid rgba(32, 35, 31, .12);
-  border-radius: 18px;
-  box-shadow:
-    0 22px 54px rgba(29, 33, 29, .14),
-    0 1px 0 rgba(255, 255, 255, .72) inset;
+  background: linear-gradient(180deg, rgba(255, 253, 247, .98), rgba(244, 238, 226, .94));
+  border: 1px solid rgba(32, 35, 31, .11);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-panel);
+}
+
+.vv-card.is-pending {
+  box-shadow: var(--shadow-soft);
 }
 
 .vv-photo {
-  background: #e8ddc8;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgba(70, 87, 70, .14), rgba(185, 85, 36, .09)),
+    #e8ddc8;
+}
+
+.vv-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, .18),
+    inset -20px 0 36px rgba(29, 33, 29, .08);
 }
 
 .vv-photo img {
@@ -72,6 +94,7 @@
   height: 100%;
   object-fit: cover;
   object-position: 50% 28%;
+  filter: saturate(.98) contrast(1.04);
 }
 
 .vv-photo-ph {
@@ -82,7 +105,15 @@
   gap: 8px;
   height: 100%;
   min-height: 240px;
-  background: linear-gradient(180deg, #ece1cb, #ddcfb0);
+  background:
+    linear-gradient(135deg, rgba(70, 87, 70, .12), rgba(185, 85, 36, .08)),
+    linear-gradient(180deg, #ece1cb, #ddcfb0);
+}
+
+.vv-card.is-pending .vv-photo {
+  background:
+    linear-gradient(135deg, rgba(70, 87, 70, .12), rgba(185, 85, 36, .08)),
+    #e8ddc8;
 }
 
 .vv-photo-ph span {
@@ -92,37 +123,41 @@
   font-size: 3.4rem;
   line-height: 1;
   letter-spacing: .02em;
-  color: rgba(122, 58, 26, .5);
+  color: rgba(122, 58, 26, .38);
 }
 
 .vv-photo-ph small {
   font-family: var(--ui-face);
-  font-size: .7rem;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: rgba(60, 50, 35, .5);
+  font-stretch: normal;
+  font-size: var(--fs-ui, .82rem);
+  line-height: 1.35;
+  letter-spacing: 0;
+  text-transform: none;
+  color: rgba(60, 50, 35, .68);
 }
 
 .vv-body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 0;
   padding: clamp(24px, 3vw, 34px) clamp(26px, 3vw, 38px);
 }
 
 .vv-quote {
   margin: 0 0 18px;
   font-family: var(--ui-face);
-  font-size: clamp(1rem, 1.1vw, 1.12rem);
-  line-height: 1.58;
-  color: #2c2a27;
+  max-width: 62ch;
+  font-size: var(--fs-copy-small, 1rem);
+  line-height: var(--lh-copy, 1.62);
+  color: rgba(32, 35, 31, .88);
+  text-wrap: pretty;
 }
 
-.vv-quote::before,
-.vv-soon::before {
+.vv-quote::before {
   content: "\201C";
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   font-family: Georgia, "Times New Roman", serif;
   font-weight: 700;
   font-size: 3.2rem;
@@ -133,13 +168,11 @@
 .vv-soon {
   margin: 0 0 18px;
   font-family: var(--ui-face);
-  font-style: italic;
-  font-size: .98rem;
-  color: rgba(60, 55, 48, .55);
-}
-
-.vv-soon::before {
-  color: rgba(185, 85, 36, .35);
+  font-style: normal;
+  font-size: var(--fs-copy-small, 1rem);
+  line-height: var(--lh-copy, 1.62);
+  color: rgba(32, 35, 31, .72);
+  text-wrap: pretty;
 }
 
 .vv-name {
@@ -156,9 +189,13 @@
 .vv-creds {
   margin-top: 7px;
   font-family: var(--ui-face);
-  font-size: .8rem;
-  line-height: 1.5;
-  color: #5f5e5a;
+  font-stretch: normal;
+  max-width: 64ch;
+  font-size: var(--fs-ui, .82rem);
+  line-height: 1.58;
+  letter-spacing: 0;
+  text-transform: none;
+  color: rgba(32, 35, 31, .76);
 }
 
 .vv-dot {

@@ -6,20 +6,24 @@
  * page has skipped ahead through image-heavy sections.
  */
 
+import { getEventElement } from "./dom-target";
 import { getHeaderOffset } from "./layout-metrics";
 
 const ACTIVE_CLASS = "is-active";
 const ANCHOR_SELECTOR = 'a[href^="#"]';
+const ACTIVE_LINK_SELECTOR = 'header nav a[href^="#"], footer .links a[href^="#"]';
+const HASH_SYNC_DELAYS = [220, 900];
 const TRACKED_SECTIONS = [
   "top",
   "how-it-works",
-  "strong-circle",
+  "featured",
   "serve",
   "serve-veterans",
   "serve-athletes",
   "serve-others",
+  "veteran-voices",
+  "strong-circle",
   "leadership",
-  "featured",
   "donate",
   "contact"
 ];
@@ -54,8 +58,8 @@ function linkMatchesActiveHash(linkHash: string, activeHash: string) {
 function updateActiveLinks(hash: string) {
   const activeHash = normaliseActiveHash(hash || "#top");
 
-  document.querySelectorAll<HTMLAnchorElement>(ANCHOR_SELECTOR).forEach((link) => {
-    if (link.matches("[data-story-link], .brand")) return;
+  document.querySelectorAll<HTMLAnchorElement>(ACTIVE_LINK_SELECTOR).forEach((link) => {
+    if (link.classList.contains("brand")) return;
 
     const linkHash = link.getAttribute("href") || "";
     const isActive = linkMatchesActiveHash(linkHash, activeHash);
@@ -133,7 +137,10 @@ function handleAnchorClick(event: MouseEvent) {
     return;
   }
 
-  const link = (event.target as HTMLElement | null)?.closest<HTMLAnchorElement>(ANCHOR_SELECTOR);
+  const target = getEventElement(event.target);
+  if (!target) return;
+
+  const link = target.closest<HTMLAnchorElement>(ANCHOR_SELECTOR);
   const hash = link?.getAttribute("href");
   if (!hash || !getHashTarget(hash)) return;
 
@@ -169,8 +176,9 @@ function initNavigation() {
 
   if (window.location.hash) {
     window.requestAnimationFrame(() => syncHashNavigation("auto"));
-    window.setTimeout(() => syncHashNavigation("auto"), 220);
-    window.setTimeout(() => syncHashNavigation("auto"), 900);
+    HASH_SYNC_DELAYS.forEach((delay) => {
+      window.setTimeout(() => syncHashNavigation("auto"), delay);
+    });
   } else {
     updateActiveLinks("#top");
   }

@@ -1,262 +1,71 @@
-# Nonprofit Website Template
+# 22 Strong Foundation Site
 
-A professional, accessible, static website template built for nonprofits. Outputs pure HTML — no server required. Deploy to Netlify, Vercel, or any static host.
+Static Astro site for 22 Strong Foundation. The site builds to plain HTML, CSS, and JavaScript in `dist/` and can be deployed to any static host.
 
-Built with [Astro](https://astro.build), a static site generator that turns `.astro` files into fast, SEO-friendly HTML pages.
-
----
-
-## Quick Start
+## Commands
 
 ```sh
-# 1. Install dependencies (run once, or after pulling updates)
 npm install
-
-# 2. Start the local dev server
 npm run dev
+npm run check-templates
+npm run build
 ```
 
-Open **http://localhost:4321** in your browser. Changes to files will hot-reload instantly.
-
----
+`npm run dev` starts the local Astro server. If port `4321` is already in use, Astro will choose the next open port.
 
 ## Project Structure
 
-```
-nonprofit-template/
-├── public/                 Static files copied as-is (fonts, images, favicon)
-│   ├── fonts/              Self-hosted Inter + JetBrains Mono
-│   ├── favicon.svg
-│   └── robots.txt
-│
-├── src/
-│   ├── content/            Editable JSON data (the main place you'll work)
-│   │   ├── site.json       Org name, phone, EIN, donate URL, tagline
-│   │   ├── nav.json        Navigation menu structure
-│   │   ├── footer.json     Footer headline, body, link groups
-│   │   ├── programs.json   Program list (name, description, tags)
-│   │   ├── impact.json     Impact metric numbers and labels
-│   │   ├── pathway.json    Service pathway steps
-│   │   ├── faqs.json       FAQ questions and answers
-│   │   ├── strings/en.json UI labels (buttons, form fields, nav text)
-│   │   └── pages/          One JSON file per page (title, intro, sections)
-│   │
-│   ├── pages/              One .astro file = one URL on the live site
-│   │   ├── index.astro     Homepage (yoursite.org/)
-│   │   ├── donate.astro    Donation page (yoursite.org/donate)
-│   │   ├── get-help.astro  Get Help page (yoursite.org/get-help)
-│   │   └── ...             48 pages total
-│   │
-│   ├── layouts/            HTML skeletons inherited by every page
-│   │   ├── Base.astro      <html>, <head>, fonts, SEO tags, analytics
-│   │   └── Page.astro      Base + Header + Hero + content slot + Footer
-│   │
-│   ├── components/         Reusable building blocks
-│   │   ├── Header.astro    Top navigation bar
-│   │   ├── Footer.astro    Bottom footer with links and legal
-│   │   ├── Hero.astro      Interior page hero banner
-│   │   ├── HeroHome.astro  Homepage hero with donation widget
-│   │   ├── Analytics.astro Loads GA4/Plausible if configured
-│   │   ├── sections/       Content sections (~30 components)
-│   │   └── ui/             Small UI pieces (SectionShell, cards, etc.)
-│   │
-│   ├── styles/             All CSS, split by concern
-│   │   ├── tokens.css      Design tokens (colors, spacing, fonts, shadows)
-│   │   ├── base.css        Reset and body defaults
-│   │   ├── header.css      Navigation bar styles
-│   │   ├── hero.css        Hero section styles
-│   │   ├── sections.css    Cards, grids, generic sections
-│   │   ├── donation.css    Donation widget styles
-│   │   ├── responsive.css  Tablet + mobile breakpoints
-│   │   └── ...             17 files total
-│   │
-│   └── scripts/            Client-side JavaScript (minimal)
-│       ├── donation.ts     Amount buttons, frequency toggle
-│       ├── scroll-reveal.ts Fade-in animations on scroll
-│       ├── nav.ts          Mobile menu toggle
-│       ├── parallax.ts     Subtle parallax + scroll progress bar
-│       ├── count-up.ts     Number count-up animation
-│       ├── journey.ts      Service pathway scroll tracking
-│       └── forms.ts        Form validation and submission
-│
-├── astro.config.mjs        Astro configuration (site URL, sitemap)
-└── package.json            Dependencies and npm scripts
+```text
+public/                         Static images, videos, fonts, favicon, robots.txt
+src/content/home.json            Homepage copy, stats, testimonials, and section data
+src/content/site.json            Organization config, donation amounts, URLs, analytics flags
+src/content/strings/en.json      Reused interface labels
+src/components/Analytics.astro   Optional GA4/Plausible script loader
+src/components/sections/         Homepage section components
+src/layouts/HomeBase.astro       HTML shell, metadata, styles, and homepage scripts
+src/pages/index.astro            Single-page homepage
+src/scripts/dom-target.ts        Shared delegated-event target normalizer
+src/scripts/events.ts            Shared browser event names
+src/scripts/                     Donation, nav, form, modal, reveal, and video behavior
+src/styles/                      Foundation styles plus premium visual layers
+src/utils/config.ts              Shared guard for optional config values
+scripts/check-templates.mjs      Build guard for unfinished TEMPLATE: content
 ```
 
----
+## Content And Config
 
-## How to Edit Content
+Most editable site content lives in `src/content/home.json`.
 
-All content lives in `src/content/` as JSON files. Open them in any text editor.
+Operational settings live in `src/content/site.json`:
 
-### Edit org info (name, phone, EIN, etc.)
+- `donateUrl`: leave empty until the secure giving platform is ready. The donation button routes to contact while this is blank.
+- `donationAmounts` and `defaultAmountIndex`: control the suggested gift buttons.
+- `donationImpact`: controls the impact line shown in the donation module.
+- `analyticsProvider` and `analyticsId`: leave empty to keep analytics disabled. Supported providers are `ga4` and `plausible`.
+- `siteUrl`: used for canonical metadata and sitemap output.
 
-Open `src/content/site.json` and change any value:
+Run `npm run check-templates` before publishing. It fails if any content JSON value still starts with `TEMPLATE:`.
 
-```json
-{
-  "orgName": "Your Organization Name",
-  "phone": "(555) 555-1234",
-  "ein": "XX-XXXXXXX",
-  "donateUrl": "https://your-giving-platform.com/donate"
-}
+## Styling Notes
+
+The CSS is layered intentionally:
+
+- `home-foundation*.css`: base layout, section structure, and non-premium defaults.
+- `home-premium*.css`: polished visual layer, accessibility refinements, and responsive adjustments.
+- `home-motion.css`: reveal and reduced-motion behavior.
+
+Keep new visual changes close to the section they affect, and prefer existing custom properties in `home-premium-theme.css` before adding new values.
+
+The old one-off `home-premium-polish.css` layer has been retired. Premium refinements should live in the relevant section file or in the existing premium accessibility/responsive layers.
+
+## Verification
+
+Before handing off changes, run:
+
+```sh
+npm run check-templates
+npm run build
+git diff --check
 ```
 
-### Edit navigation
-
-Open `src/content/nav.json`. Each item has a `label` (what visitors see) and a `page` (which page it links to). Items with `children` create dropdown menus.
-
-### Edit page content
-
-Each page's text is controlled by its JSON file in `src/content/pages/`. For example, `src/content/pages/about.json` controls the About page's headline, intro text, and section content.
-
-### Edit UI labels (buttons, form fields)
-
-Open `src/content/strings/en.json`. This file contains every button label, form field name, and navigation string. If you ever add another language, you'd create a parallel file (e.g., `es.json`).
-
----
-
-## How to Add a New Page
-
-1. **Create the JSON data file:**
-   Copy an existing file in `src/content/pages/` and rename it (e.g., `new-program.json`). Edit the title, intro, and sections.
-
-2. **Create the Astro page file:**
-   Copy a similar page from `src/pages/` and rename it (e.g., `new-program.astro`). Update the import to point to your new JSON file.
-
-3. **Add it to navigation (optional):**
-   Open `src/content/nav.json` and add an entry pointing to your new page.
-
-The page is live immediately at `yoursite.org/new-program`.
-
-### How to Remove a Page
-
-1. Delete the `.astro` file from `src/pages/`
-2. Delete the matching `.json` file from `src/content/pages/`
-3. Remove the entry from `src/content/nav.json`
-
----
-
-## How to Add Programs
-
-Open `src/content/programs.json` and add a new object to the array:
-
-```json
-{
-  "name": "New Program Name",
-  "slug": "new-program",
-  "desc": "Brief description of the program.",
-  "tags": ["Category"],
-  "featured": false
-}
-```
-
-If you want a dedicated page for it, follow the "Add a New Page" steps above.
-
----
-
-## How to Update Impact Metrics
-
-Open `src/content/impact.json`:
-
-```json
-[
-  { "number": "2,400+", "label": "People served annually" },
-  { "number": "96%", "label": "Client satisfaction rate" }
-]
-```
-
-The numbers animate on scroll automatically.
-
----
-
-## Design Tokens (Colors, Spacing)
-
-All colors, spacing, shadows, and fonts are defined in `src/styles/tokens.css`. Change a value there and it updates everywhere:
-
-```css
-:root {
-  --burnt-orange: #d9601f;   /* Primary accent color */
-  --charcoal: #2d2d2d;       /* Main text color */
-  --page: #fbf8f0;           /* Page background */
-  --space-4: 16px;           /* Standard spacing unit */
-}
-```
-
----
-
-## Analytics
-
-To enable analytics, edit `src/content/site.json`:
-
-```json
-{
-  "analyticsProvider": "plausible",
-  "analyticsId": "yoursite.org"
-}
-```
-
-Supported providers: `"ga4"` (Google Analytics 4) or `"plausible"`. Leave empty to disable analytics entirely — no tracking scripts will load.
-
----
-
-## Deployment
-
-### Netlify
-
-1. Push your code to a GitHub repository
-2. Log in to [Netlify](https://netlify.com) and click "Add new site" > "Import an existing project"
-3. Connect your GitHub repo
-4. Build settings are auto-detected. If not:
-   - **Build command:** `npm run build`
-   - **Publish directory:** `dist`
-5. Click "Deploy site"
-
-Netlify will rebuild automatically every time you push changes.
-
-### Vercel
-
-1. Push your code to GitHub
-2. Log in to [Vercel](https://vercel.com) and click "Add New Project"
-3. Import your repo — Vercel auto-detects Astro
-4. Click "Deploy"
-
-### Any Static Host
-
-Run `npm run build` locally. The `dist/` folder contains your complete website as static HTML files. Upload that folder to any web server.
-
----
-
-## Commands Reference
-
-| Command             | What it does                                    |
-| :------------------ | :---------------------------------------------- |
-| `npm install`       | Install dependencies (run once after cloning)   |
-| `npm run dev`       | Start local dev server at localhost:4321        |
-| `npm run build`     | Build production site to `./dist/`              |
-| `npm run preview`   | Preview the built site locally before deploying |
-
----
-
-## TEMPLATE Placeholders
-
-Throughout the content JSON files, you'll see text starting with `TEMPLATE:`. These are placeholders that need to be replaced with your organization's real content before launch. Search for `TEMPLATE` across the project to find them all.
-
----
-
-## Accessibility
-
-This template includes:
-- Semantic HTML headings and landmarks
-- Keyboard navigation with visible focus states
-- Skip-to-content link
-- Screen reader announcements for page transitions
-- `prefers-reduced-motion` support (disables all animation)
-- Print stylesheet
-
----
-
-## Learn More
-
-- [Astro Documentation](https://docs.astro.build)
-- [Astro Tutorial (official)](https://docs.astro.build/en/tutorial/0-introduction/)
+For visual work, also verify the local preview on desktop and mobile widths.

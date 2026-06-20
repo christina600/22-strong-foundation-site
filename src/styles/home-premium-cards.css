@@ -63,19 +63,26 @@ textarea {
 .toggle-row button.active,
 .amount-button.active,
 .goal-fill {
-  background: linear-gradient(180deg, #c9632d, var(--orange));
+  background: var(--action-gradient);
 }
 
+.toggle-row button,
 .amount-button {
   min-height: 48px;
-  background: rgba(255, 255, 255, .82);
   transition:
     border-color .18s ease,
     transform .18s ease,
+    background-color .18s ease,
+    color .18s ease,
     box-shadow .18s ease;
 }
 
-.amount-button:hover {
+.amount-button {
+  background: rgba(255, 255, 255, .82);
+}
+
+.amount-button:hover,
+.toggle-row button:hover {
   transform: translateY(-1px);
   box-shadow: 0 10px 24px rgba(29, 33, 29, .08);
 }
@@ -85,7 +92,8 @@ textarea {
   padding: var(--space-card-compact);
   background:
     linear-gradient(180deg, rgba(70, 87, 70, .10), rgba(185, 85, 36, .08));
-  border-color: rgba(32, 35, 31, .12);
+  border-color: rgba(32, 35, 31, .14);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .68) inset;
 }
 
 .impact-line::before {

@@ -5,6 +5,8 @@
  * inline status messages.
  */
 
+import { getEventElement } from "./dom-target";
+
 let formListenerAttached = false;
 
 const CONTACT_FORM_ID = "contactFormEl";
@@ -43,8 +45,10 @@ function initForms() {
   });
 
   document.addEventListener("input", (event) => {
-    if (!(event.target instanceof HTMLElement)) return;
-    const form = event.target.closest<HTMLFormElement>(`#${CONTACT_FORM_ID}`);
+    const target = getEventElement(event.target);
+    if (!target) return;
+
+    const form = target.closest<HTMLFormElement>(`#${CONTACT_FORM_ID}`);
     if (form) hideStatus(form);
   });
 }

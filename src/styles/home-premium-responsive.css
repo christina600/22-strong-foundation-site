@@ -2,3 +2,15 @@
 @import "./home-premium-responsive-tablet.css";
 @import "./home-premium-responsive-mobile.css";
 @import "./home-premium-responsive-compact.css";
+
+@media (prefers-reduced-transparency: reduce) {
+  header,
+  .hero .donation-card-main,
+  .goal-panel,
+  .contact form,
+  .strong-circle-modal::backdrop,
+  .strong-circle-modal[open]::backdrop {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}

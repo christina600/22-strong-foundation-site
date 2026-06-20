@@ -8,14 +8,16 @@
 
 import site from "../../content/site.json";
 import strings from "../../content/strings/en.json";
+import { isConfigured } from "../../utils/config";
 
 type DonationImpactMap = {
   monthly?: Record<string, string>;
   oneTime?: Record<string, string>;
 };
 
-const amounts = site.donationAmounts;
-const defaultAmount = amounts[site.defaultAmountIndex] || 100;
+const amounts = site.donationAmounts.length ? site.donationAmounts : [22, 100, 250, 1000];
+const defaultAmountIndex = Math.min(Math.max(site.defaultAmountIndex, 0), amounts.length - 1);
+const defaultAmount = amounts[defaultAmountIndex] ?? 100;
 const formatAmount = (amount: number) => Number(amount).toLocaleString();
 
 // Per-amount impact copy. The script (donation.ts) reads this map from the
@@ -29,14 +31,13 @@ const initialImpactDetail = String(initialImpactTemplate).replace(/\{amount\}/g,
 
 // The online giving platform is pending. Until donateUrl is configured, route
 // the give button to the contact section rather than emitting a broken link.
-const isSet = (v: unknown) => !!v && !String(v).startsWith("TEMPLATE:");
-const donateReady = isSet(site.donateUrl);
+const donateReady = isConfigured(site.donateUrl);
 const donateHref = donateReady ? site.donateUrl : "#contact";
 const donateLabel = donateReady ? strings.donation.continueToCheckout : "Send a giving note";
 ---
 
-<div class="donation-module" data-impact-map={JSON.stringify(impact)}>
-  <div class="card soft donation-card-main">
+<div class="donation-module" data-impact-map={JSON.stringify(impact)} data-default-amount={defaultAmount}>
+  <div class="card donation-card-main">
     <span class="eyebrow">{strings.donation.giveNow}</span>
     <div class="toggle-row" role="group" aria-label={strings.donation.giftFrequency}>
       <button type="button" class="active" data-frequency="monthly" aria-pressed="true">
@@ -50,9 +51,9 @@ const donateLabel = donateReady ? strings.donation.continueToCheckout : "Send a 
       {amounts.map((amount, index) => (
         <button
           type="button"
-          class={`amount-button ${index === site.defaultAmountIndex ? "active" : ""}`}
+          class={`amount-button ${index === defaultAmountIndex ? "active" : ""}`}
           data-amount={amount}
-          aria-pressed={index === site.defaultAmountIndex ? "true" : "false"}
+          aria-pressed={index === defaultAmountIndex ? "true" : "false"}
         >
           ${formatAmount(amount)}
         </button>
@@ -75,7 +76,7 @@ const donateLabel = donateReady ? strings.donation.continueToCheckout : "Send a 
       <span class="gift-detail">{initialImpactDetail}</span>
       <small>Monthly gift. Annual commitment: ${formatAmount(defaultAmount * 12)}.</small>
     </div>
-    <a class="btn btn-donate" href={donateHref} data-donate-base={donateReady ? site.donateUrl : undefined} aria-label={donateLabel}>
+    <a class="btn-donate" href={donateHref} data-donate-base={donateReady ? site.donateUrl : undefined} aria-label={donateLabel}>
       {donateLabel} &rarr;
     </a>
     {donateReady && <p class="donation-footnote">{strings.donation.footnote}</p>}
@@ -84,7 +85,3 @@ const donateLabel = donateReady ? strings.donation.continueToCheckout : "Send a 
     </p>
   </div>
 </div>
-
-<script>
-  import "../../scripts/donation.ts";
-</script>

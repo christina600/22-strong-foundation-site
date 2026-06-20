@@ -3,14 +3,8 @@
    and light scuffs instead of generated camo blobs or decorative map rings. */
 :root {
   --field-black: #111610;
-  --field-deep: #1a2318;
-  --field-green: #354632;
   --field-olive: #596249;
-  --field-sage: #7b8464;
-  --field-khaki: #d7ccb7;
   --mission-orange: #b95524;
-  --map-line-dark: rgba(32, 35, 31, .055);
-  --map-line-light: rgba(255, 250, 240, .09);
   --field-sand:
     radial-gradient(circle at 18% 22%, rgba(74, 61, 42, .14) 0 1px, transparent 1.6px),
     radial-gradient(circle at 63% 48%, rgba(185, 85, 36, .08) 0 1px, transparent 1.7px),
@@ -100,8 +94,8 @@ header {
 
 .hero::before {
   background:
-    linear-gradient(90deg, rgba(12, 17, 12, .96) 0%, rgba(18, 24, 17, .88) 38%, rgba(18, 24, 17, .36) 76%, rgba(18, 24, 17, .14) 100%),
-    linear-gradient(180deg, rgba(18, 24, 17, .10), rgba(18, 24, 17, .64)),
+    linear-gradient(90deg, rgba(12, 17, 12, .97) 0%, rgba(18, 24, 17, .9) 38%, rgba(18, 24, 17, .42) 76%, rgba(18, 24, 17, .18) 100%),
+    linear-gradient(180deg, rgba(18, 24, 17, .12), rgba(18, 24, 17, .68)),
     var(--camo-field),
     url("/images/stock-veteran-brotherhood.webp") center right / cover no-repeat;
   background-blend-mode: normal, normal, soft-light, normal;
@@ -177,8 +171,7 @@ header {
 .toggle-row button.active,
 .amount-button.active,
 .goal-fill {
-  background:
-    linear-gradient(180deg, #c96934, var(--mission-orange) 58%, #88401f);
+  background: var(--action-gradient);
 }
 
 .amount-button {
@@ -379,9 +372,9 @@ form,
 }
 
 .goal-panel {
-  border-color: rgba(255, 250, 240, .30);
+  border-color: rgba(255, 250, 240, .36);
   background:
-    linear-gradient(180deg, rgba(17, 22, 16, .44), rgba(17, 22, 16, .24)),
+    linear-gradient(180deg, rgba(17, 22, 16, .52), rgba(17, 22, 16, .34)),
     var(--camo-field);
   background-size: auto, 420px 260px;
 }

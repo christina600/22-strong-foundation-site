@@ -9,7 +9,9 @@
     radial-gradient(circle at 18% 12%, rgba(185, 85, 36, .18), transparent 34%),
     linear-gradient(135deg, #171b17 0%, #283024 100%);
   border-block: 1px solid rgba(255, 250, 240, .10);
-  box-shadow: inset 0 1px 0 rgba(255, 250, 240, .06);
+  box-shadow:
+    0 1px 0 rgba(255, 250, 240, .07) inset,
+    0 20px 52px rgba(17, 22, 16, .14);
 }
 
 .proof-stat::before {
@@ -44,7 +46,7 @@
 
 .proof-stat p {
   max-width: 34ch;
-  color: rgba(255, 250, 240, .86);
+  color: rgba(255, 250, 240, .9);
   font-size: var(--fs-proof-copy);
   line-height: var(--lh-lead);
   letter-spacing: 0;
@@ -58,9 +60,10 @@
   border: 1px solid rgba(255, 250, 240, .18);
   border-radius: 999px;
   background: rgba(255, 250, 240, .06);
-  color: rgba(255, 250, 240, .58);
+  color: rgba(255, 250, 240, .74);
   line-height: 1;
   text-decoration: none;
+  text-wrap: pretty;
 }
 
 .proof-stat-source a {
@@ -73,8 +76,8 @@
     linear-gradient(180deg, rgba(255, 253, 247, .98), rgba(240, 234, 222, .94));
   border-block: 1px solid rgba(32, 35, 31, .12);
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, .72) inset,
-    0 34px 80px rgba(29, 33, 29, .08) inset;
+    0 1px 0 rgba(255, 255, 255, .76) inset,
+    0 14px 38px rgba(29, 33, 29, .06);
 }
 
 .proof-stat.light::before {
@@ -92,28 +95,32 @@
 }
 
 .proof-stat.light p {
-  color: rgba(32, 35, 31, .76);
+  color: rgba(32, 35, 31, .82);
 }
 
 .proof-stat.light .proof-stat-source {
   border-color: rgba(32, 35, 31, .14);
   background: rgba(255, 253, 247, .60);
-  color: rgba(32, 35, 31, .52);
+  color: rgba(32, 35, 31, .74);
 }
 
 .serve-stats .proof-stat {
   width: auto;
   min-height: auto;
   margin: 0;
-  padding: var(--space-card);
+  padding: clamp(26px, 3vw, 38px);
   overflow: hidden;
-  border: 1px solid rgba(32, 35, 31, .12);
+  border: 1px solid rgba(32, 35, 31, .14);
   border-radius: var(--radius);
   background:
-    linear-gradient(180deg, rgba(34, 42, 32, .96), rgba(23, 28, 23, .96));
+    linear-gradient(90deg, rgba(255, 250, 240, .07) 0 1px, transparent 1px 100%),
+    linear-gradient(180deg, rgba(34, 42, 32, .97), rgba(23, 28, 23, .98));
+  background-size:
+    42px 100%,
+    auto;
   box-shadow:
     0 1px 0 rgba(255, 255, 255, .08) inset,
-    0 18px 54px rgba(29, 33, 29, .10);
+    0 12px 32px rgba(29, 33, 29, .09);
 }
 
 .serve-stats .proof-stat::before {
@@ -121,59 +128,82 @@
   border-color: rgba(255, 250, 240, .12);
 }
 
+.serve-stats .proof-stat::after {
+  content: "";
+  position: absolute;
+  right: clamp(26px, 3vw, 38px);
+  bottom: clamp(22px, 2.6vw, 32px);
+  left: clamp(26px, 3vw, 38px);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(185, 85, 36, .70), rgba(255, 250, 240, .12), transparent);
+  pointer-events: none;
+}
+
 .serve-stats .proof-stat-inner {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-card-compact);
+  grid-template-columns: minmax(96px, .44fr) minmax(0, 1fr);
+  gap: clamp(22px, 3vw, 34px);
   max-width: none;
   margin: 0;
+  align-items: end;
 }
 
 .serve-stats .proof-stat-number {
-  max-width: 6.5ch;
+  max-width: none;
   color: #fff7eb;
-  font-size: var(--fs-stat-card);
-  line-height: .96;
+  font-size: clamp(var(--fs-stat-card), 8vw, 6.9rem);
+  line-height: .82;
   white-space: normal;
 }
 
 .serve-stats .proof-stat-text {
   max-width: none;
-  padding: var(--space-card-compact) 0 0;
-  border-left: 0;
-  border-top: 1px solid rgba(255, 250, 240, .20);
+  padding: 0 0 32px clamp(22px, 3vw, 34px);
+  border-top: 0;
+  border-left: 1px solid rgba(255, 250, 240, .24);
 }
 
 .serve-stats .proof-stat p {
-  max-width: 32ch;
-  color: rgba(255, 250, 240, .82);
-  font-size: var(--fs-body);
+  max-width: 36ch;
+  color: rgba(255, 250, 240, .9);
+  font-size: clamp(1.06rem, 1.25vw, 1.26rem);
   line-height: var(--lh-lead);
   letter-spacing: 0;
 }
 
 .serve-stats .proof-stat-source {
-  margin-top: 18px;
-  padding: 0;
+  display: block;
+  width: fit-content;
+  margin-top: 22px;
+  padding: 10px 0 0;
   border: 0;
+  border-top: 1px solid rgba(255, 250, 240, .22);
   border-radius: 0;
   background: transparent;
-  color: rgba(255, 250, 240, .56);
+  color: rgba(255, 250, 240, .74);
   font-size: var(--fs-ui-micro);
   line-height: 1.35;
 }
 
 .serve-stats .proof-stat.light {
   background:
+    linear-gradient(90deg, rgba(185, 85, 36, .06) 0 1px, transparent 1px 100%),
     linear-gradient(180deg, rgba(255, 253, 247, .99), rgba(244, 238, 226, .96));
+  background-size:
+    42px 100%,
+    auto;
   border-color: rgba(32, 35, 31, .16);
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, .82) inset,
-    0 18px 48px rgba(29, 33, 29, .10);
+    0 1px 0 rgba(255, 255, 255, .76) inset,
+    0 14px 38px rgba(29, 33, 29, .06);
 }
 
 .serve-stats .proof-stat.light::before {
   border-color: rgba(32, 35, 31, .16);
+}
+
+.serve-stats .proof-stat.light::after {
+  background: linear-gradient(90deg, rgba(185, 85, 36, .48), rgba(32, 35, 31, .12), transparent);
 }
 
 .serve-stats .proof-stat.light .proof-stat-number {
@@ -181,13 +211,36 @@
 }
 
 .serve-stats .proof-stat.light .proof-stat-text {
-  border-top-color: rgba(32, 35, 31, .18);
+  border-left-color: rgba(32, 35, 31, .20);
 }
 
 .serve-stats .proof-stat.light p {
-  color: rgba(32, 35, 31, .82);
+  color: rgba(32, 35, 31, .86);
 }
 
 .serve-stats .proof-stat.light .proof-stat-source {
-  color: rgba(32, 35, 31, .60);
+  color: rgba(32, 35, 31, .7);
+  border-top-color: rgba(32, 35, 31, .18);
+}
+
+@media (max-width: 720px) {
+  .serve-stats .proof-stat-inner {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .serve-stats .proof-stat-number {
+    font-size: clamp(3.7rem, 18vw, 5.4rem);
+  }
+
+  .serve-stats .proof-stat-text {
+    padding: 18px 0 30px;
+    border-top: 1px solid rgba(255, 250, 240, .20);
+    border-left: 0;
+  }
+
+  .serve-stats .proof-stat.light .proof-stat-text {
+    border-top-color: rgba(32, 35, 31, .18);
+    border-left: 0;
+  }
 }

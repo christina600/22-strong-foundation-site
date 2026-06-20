@@ -19,4 +19,12 @@
   .nav-actions .pill {
     padding-inline: 10px;
   }
+
+  .modal-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-actions .pill {
+    min-height: 44px;
+  }
 }

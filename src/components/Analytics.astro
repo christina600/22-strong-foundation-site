@@ -11,9 +11,10 @@
  */
 
 import site from "../content/site.json";
+import { isConfigured } from "../utils/config";
 
-const provider = site.analyticsProvider?.toLowerCase() || "";
-const id = site.analyticsId || "";
+const provider = isConfigured(site.analyticsProvider) ? site.analyticsProvider.toLowerCase() : "";
+const id = isConfigured(site.analyticsId) ? site.analyticsId : "";
 const enabled = provider && id;
 ---
 

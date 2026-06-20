@@ -27,8 +27,9 @@
   max-width: 560px;
   padding: 22px;
   border-radius: 8px;
-  border: 1px solid rgba(255,255,255,.14);
+  border: 1px solid rgba(32, 35, 31, .14);
   background: rgba(255,255,255,.07);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .68) inset;
 }
 
 .goal-top {
@@ -53,13 +54,14 @@
 
 .goal-copy {
   margin: 0;
+  text-wrap: pretty;
 }
 
 .goal-fill {
   width: 22%;
   height: 100%;
   border-radius: inherit;
-  background: var(--orange);
+  background: var(--action-gradient);
 }
 
 .outcomes {

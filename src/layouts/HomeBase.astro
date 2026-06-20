@@ -5,7 +5,9 @@
  * Self-contained: provides the full SEO/head/fonts/JSON-LD/Analytics
  * setup and loads home.css. This is the site's only layout.
  *
- * Scripts: forms.ts (contact form) + home-reveal.ts (scrollytelling).
+ * Homepage scripts: donation.ts (giving widget), forms.ts (contact form),
+ * site-navigation.ts (anchor handling), home-reveal.ts (scrollytelling),
+ * strong-circle-modal.ts, and lazy-video.ts.
  * The `js` class is added inline before paint so the reveal start state
  * only applies when JS can finish the animation.
  *
@@ -17,12 +19,11 @@
 import site from "../content/site.json";
 import Analytics from "../components/Analytics.astro";
 import strings from "../content/strings/en.json";
+import { isConfigured } from "../utils/config";
 import "../styles/home.css";
 
 // JSON-LD Organization structured data for rich search results.
-// Only emit fields that hold real values (skip unset TEMPLATE: slots and
-// the unconfirmed founding year, per client direction).
-const isSet = (v: unknown) => !!v && !String(v).startsWith("TEMPLATE:");
+// Only emit fields that hold real values.
 const jsonLd: Record<string, unknown> = {
   "@context": "https://schema.org",
   "@type": "NonprofitOrganization",
@@ -36,9 +37,9 @@ const jsonLd: Record<string, unknown> = {
   "nonprofitStatus": site.taxStatus,
   "areaServed": site.serviceArea
 };
-if (isSet(site.siteUrl)) jsonLd.url = site.siteUrl;
-if (isSet(site.email)) jsonLd.email = site.email;
-if (isSet(site.phone)) jsonLd.telephone = site.phone;
+if (isConfigured(site.siteUrl)) jsonLd.url = site.siteUrl;
+if (isConfigured(site.email)) jsonLd.email = site.email;
+if (isConfigured(site.phone)) jsonLd.telephone = site.phone;
 
 interface Props {
   title: string;
@@ -91,11 +92,14 @@ const metaDesc = description || site.descriptor;
 
   <slot />
 
-  <!-- Contact form handler, navigation, and scrollytelling reveals -->
+  <!-- Homepage interaction scripts -->
   <script>
+    import "../scripts/donation.ts";
     import "../scripts/forms.ts";
     import "../scripts/site-navigation.ts";
     import "../scripts/home-reveal.ts";
+    import "../scripts/strong-circle-modal.ts";
+    import "../scripts/lazy-video.ts";
   </script>
 </body>
 </html>

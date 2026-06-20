@@ -6,6 +6,9 @@
  * option preset. It never opens on its own.
  */
 
+import { getEventElement } from "./dom-target";
+import { DONATION_PRESET_EVENT } from "./events";
+
 let strongCircleListenerAttached = false;
 let lastModalTrigger: HTMLElement | null = null;
 let restoreFocusAfterClose = true;
@@ -60,13 +63,15 @@ function openModal(modal: HTMLDialogElement, trigger: HTMLElement) {
 }
 
 function presetStrongCircleGift() {
-  document.querySelectorAll<HTMLElement>(".donation-module").forEach((module) => {
-    const monthly = module.querySelector<HTMLButtonElement>('[data-frequency="monthly"]');
-    const amount = module.querySelector<HTMLButtonElement>('[data-amount="22"]');
+  document.dispatchEvent(
+    new CustomEvent(DONATION_PRESET_EVENT, {
+      detail: { frequency: "monthly", amount: "22" },
+    }),
+  );
+}
 
-    monthly?.click();
-    amount?.click();
-  });
+function getClickedModal(target: HTMLElement) {
+  return target.closest<HTMLDialogElement>(".strong-circle-modal");
 }
 
 function initStrongCircleModal() {
@@ -74,26 +79,30 @@ function initStrongCircleModal() {
   strongCircleListenerAttached = true;
 
   document.addEventListener("click", (event) => {
-    if (!(event.target instanceof HTMLElement)) return;
+    const target = getEventElement(event.target);
+    if (!target) return;
 
-    const modal = document.querySelector<HTMLDialogElement>(".strong-circle-modal");
-    if (!modal) return;
-
-    const openTrigger = event.target.closest<HTMLElement>(OPEN_SELECTOR);
+    const openTrigger = target.closest<HTMLElement>(OPEN_SELECTOR);
     if (openTrigger) {
+      const modal = document.querySelector<HTMLDialogElement>(".strong-circle-modal");
+      if (!modal) return;
+
       event.preventDefault();
       openModal(modal, openTrigger);
       return;
     }
 
-    if (event.target.closest(JOIN_SELECTOR)) {
+    const modal = getClickedModal(target);
+    if (!modal) return;
+
+    if (target.closest(JOIN_SELECTOR)) {
       presetStrongCircleGift();
       closeModal(modal, false);
       return;
     }
 
-    const closeTrigger = event.target.closest<HTMLElement>(CLOSE_SELECTOR);
-    if (closeTrigger || event.target === modal) {
+    const closeTrigger = target.closest<HTMLElement>(CLOSE_SELECTOR);
+    if (closeTrigger || target === modal) {
       closeModal(modal, closeTrigger?.tagName === "A" ? false : true);
     }
   });

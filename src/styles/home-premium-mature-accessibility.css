@@ -2,10 +2,10 @@
    Keeps the premium display scale while making small UI, form, source,
    and supporting copy easier to read for older donors. */
 :root {
-  --muted: #4f554d;
+  --muted: #464c45;
   --ui-face: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --lh-lead: 1.58;
-  --lh-copy: 1.68;
+  --lh-lead: 1.6;
+  --lh-copy: 1.7;
   --fs-lead: 1.42rem;
   --fs-body: 1.2rem;
   --fs-body-lg: 1.28rem;
@@ -18,6 +18,14 @@
   --fs-copy-small: 1.2rem;
   --fs-copy-fine: 1.12rem;
   --fs-brand-mobile: 1.04rem;
+}
+
+body::before {
+  opacity: .34;
+}
+
+body::after {
+  opacity: .16;
 }
 
 .nav-links a,
@@ -44,6 +52,12 @@ label {
   letter-spacing: 0;
 }
 
+p,
+li,
+blockquote {
+  text-wrap: pretty;
+}
+
 .nav-links a,
 .pill,
 .btn-donate,
@@ -61,7 +75,7 @@ label {
 .nav-links a {
   min-height: 38px;
   padding-inline: 16px;
-  color: rgba(32, 35, 31, .72);
+  color: rgba(32, 35, 31, .82);
   font-size: var(--fs-ui);
   font-weight: 800;
 }
@@ -78,14 +92,14 @@ label {
 
 .hero-tagline {
   padding: 10px 14px;
-  color: rgba(255, 250, 240, .92);
+  color: rgba(255, 250, 240, .96);
   font-size: var(--fs-meta);
   line-height: 1.2;
   text-transform: none;
 }
 
 .hero .lead {
-  color: rgba(255, 250, 240, .86);
+  color: rgba(255, 250, 240, .9);
 }
 
 .credibility-strip-item,
@@ -153,6 +167,29 @@ footer p,
   line-height: 1.58;
 }
 
+.how-note,
+.story-kicker,
+.serve-copy p:not(.lead),
+.contact .split > div:first-child p,
+.contact-paths span,
+.vv-creds {
+  color: rgba(32, 35, 31, .78);
+}
+
+.strong-circle-modal .lead {
+  color: rgba(32, 35, 31, .8);
+  line-height: 1.58;
+}
+
+.hero-credit,
+.give-taxline {
+  color: rgba(255, 250, 240, .88);
+}
+
+.circle-panel p {
+  color: rgba(255, 250, 240, .88);
+}
+
 .impact-line small,
 .donation-footnote,
 .donation-legal {
@@ -172,7 +209,7 @@ footer p,
 
 .proof-stat-source,
 .serve-stats .proof-stat-source {
-  color: rgba(255, 250, 240, .76);
+  color: rgba(255, 250, 240, .84);
   font-size: var(--fs-ui);
   line-height: 1.45;
 }
@@ -188,24 +225,24 @@ footer p,
 
 .proof-stat.light .proof-stat-source,
 .serve-stats .proof-stat.light .proof-stat-source {
-  color: rgba(32, 35, 31, .68);
+  color: rgba(32, 35, 31, .74);
 }
 
 .donate-section .lead,
 .donate-section .outcomes,
 .goal-copy {
-  color: rgba(255, 250, 240, .88);
+  color: rgba(255, 250, 240, .92);
 }
 
 .goal-panel {
-  background: rgba(20, 23, 19, .32);
-  border-color: rgba(255, 250, 240, .26);
+  background: rgba(20, 23, 19, .38);
+  border-color: rgba(255, 250, 240, .32);
 }
 
 .footer-inner,
 .footer-inner p,
 .links a {
-  color: rgba(255, 250, 240, .78);
+  color: rgba(255, 250, 240, .84);
 }
 
 .links a:hover,
@@ -215,8 +252,8 @@ footer p,
 
 @media (max-width: 920px) {
   :root {
-    --lh-lead: 1.56;
-    --lh-copy: 1.64;
+    --lh-lead: 1.58;
+    --lh-copy: 1.66;
     --fs-lead: 1.28rem;
     --fs-body: 1.14rem;
     --fs-body-lg: 1.18rem;
@@ -240,8 +277,8 @@ footer p,
 
 @media (max-width: 560px) {
   :root {
-    --lh-lead: 1.56;
-    --lh-copy: 1.64;
+    --lh-lead: 1.58;
+    --lh-copy: 1.66;
     --fs-lead: 1.24rem;
     --fs-body: 1.12rem;
     --fs-body-lg: 1.16rem;

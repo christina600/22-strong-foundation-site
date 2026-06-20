@@ -15,7 +15,7 @@
   content: "";
   position: absolute;
   inset: calc(var(--space-card-compact) * -1);
-  border: 1px solid rgba(37, 35, 33, .10);
+  border: 1px solid rgba(32, 35, 31, .10);
   pointer-events: none;
 }
 
@@ -46,6 +46,10 @@ blockquote {
 .testimonial-card .story {
   font-size: var(--fs-copy-small);
   line-height: var(--lh-copy);
+}
+
+.attribution {
+  text-wrap: pretty;
 }
 
 .testimonial-card {
