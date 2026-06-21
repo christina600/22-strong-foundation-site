@@ -14,14 +14,20 @@
   "mission": {
     "eyebrow": "Mission",
     "heading": "Specialized recovery care for people whose next appointment is at risk.",
-    "lead": "22 Strong focuses on people with a real recovery need and a practical access gap: cost, coverage, timing, or the right connection to care."
+    "lead": "A veteran or young athlete can have a real injury, a referral, and a care plan, and still lose progress when the next appointment is not covered, delayed, or out of reach. That is the gap 22 Strong exists to close.",
+    "needParagraphs": [
+      "Typical referrals arrive at the same pressure point: progress has started, but cost, coverage limits, timing, or the lack of the right connection puts the next visit at risk.",
+      "So far in 2026, 22 Strong has funded over 200 recovery sessions for [NUMBER OF PEOPLE SERVED] people, and referrals continue to increase as providers, veterans, coaches, and community partners identify more people whose recovery is stalled by cost or coverage.",
+      "With an average care plan cost of [AVERAGE COST PER CARE PLAN], current donor funding cannot meet every request. 22 Strong receives referrals, verifies the access gap, and pays for recovery sessions directly so care can continue before progress is lost."
+    ]
   },
   "story": {
     "eyebrow": "Story",
+    "heading": "The gap kept showing up in the treatment room.",
     "paragraphs": [
-      "22 Strong began at Next Level Wellness, a sports-medicine center in Newport Beach co-owned by Travis Mayfield and Dr. Vasili “Dr. Vas” Gatsinaris. For years they treated athletes and professionals — and the veterans who couldn’t find this care anywhere else.",
-      "Travis is a Purple Heart veteran of the 101st Airborne in Vietnam. His own long road back is the model the foundation runs on: veterans serving veterans, and care measured by recovery — not by what someone can pay.",
-      "They built 22 Strong to remove the barrier that stops recovery before it starts: cost. It funds hands-on care for veterans and low income youth, so no one is denied the chance to heal because of financial hardship."
+      "22 Strong began inside Next Level Wellness, a sports-medicine center in Newport Beach co-owned by Travis Mayfield and Dr. Vasili “Dr. Vas” Gatsinaris. In the treatment room, they saw the same problem repeat: the care was working, but access to the next visit was not guaranteed.",
+      "Travis, a Purple Heart veteran of the 101st Airborne in Vietnam, knew what a long recovery can demand. Dr. Vas had built a hands-on practice around restoring mobility and function. Together, they saw that high-level recovery care should not depend on whether someone can afford one more appointment.",
+      "They built 22 Strong to turn that lesson into a funding path: veterans serving veterans, providers and community partners making referrals, and donor dollars paying for care when coverage or cash would stop the plan."
     ]
   },
   "press": {
@@ -78,14 +84,55 @@
       }
     ]
   },
+  "audiences": [
+    {
+      "id": "serve-veterans",
+      "heading": "Veterans",
+      "detailAriaLabel": "Veteran recovery support",
+      "lead": "Care funding for veterans rebuilding strength, mobility, and function after service.",
+      "body": "Support that respects the long work of recovery and helps keep care moving when benefits, timing, or access are not enough.",
+      "statsKey": "veterans",
+      "proofClass": "veteran-proof",
+      "voicesId": "veteran-voices",
+      "voicesAriaLabel": "Veteran voices",
+      "video": {
+        "src": "/video/luke-hudson-testimonial.mp4",
+        "poster": "/images/luke-poster.jpg",
+        "triggerLabel": "Play Luke Hudson testimonial video",
+        "fallbackLabel": "Watch Luke's testimonial",
+        "testimonialKey": "luke"
+      },
+      "voicesKey": "veteranVoices"
+    },
+    {
+      "id": "serve-athletes",
+      "heading": "Low income youth",
+      "detailAriaLabel": "Low income youth recovery support",
+      "lead": "Recovery support for young athletes whose families can't cover the care it takes to get back after an injury.",
+      "body": "Support for families facing a season-ending injury, limited coverage, or care that stops before recovery is done.",
+      "statsKey": "athletes",
+      "statsClass": "one-up",
+      "voicesAriaLabel": "Low income youth testimonials",
+      "voices": [
+        {
+          "name": "Adam Folker",
+          "testimonialKey": "adam",
+          "photo": "/images/adam-folker-uci.webp",
+          "photoAlt": "Adam Folker",
+          "imageWidth": 1200,
+          "imageHeight": 800
+        }
+      ]
+    }
+  ],
   "testimonials": {
     "luke": {
       "attribution": "Luke Hudson · Veteran, VA referral",
       "story": "Luke shares why access to hands-on recovery care matters after service."
     },
     "adam": {
-      "quote": "“A major part of my success was the treatments and therapy I received from Dr. Vas.”",
-      "attribution": "Adam Folker · Collegiate & Professional Basketball Player",
+      "quote": "A major part of my success was the treatments and therapy I received from Dr. Vas.",
+      "attribution": "Collegiate & Professional Basketball Player",
       "story": "During my sophomore year in college, I had hip surgery that was potentially season-ending and even career-ending. My coaches referred me to Dr. Vas, who was able to take care of me and eventually get me back to playing within a short few weeks. That season I ended up winning hustle player of the year award. Throughout my career, I saw Dr. Vas on various occasions for injuries that came up, along with maintenance and preventive care. I was able to play competitively at the top level."
     }
   },
@@ -151,6 +198,49 @@
       "giveOnceLabel": "Give once instead"
     }
   },
+  "howItWorks": {
+    "eyebrow": "How 22 Strong works",
+    "heading": ["A recovery gap appears.", "22 Strong helps close it."],
+    "kicker": "The story is not complicated: someone has a real recovery plan, the next appointment becomes uncertain, and donor funding keeps the care moving.",
+    "stepsAriaLabel": "22 Strong care funding path",
+    "steps": [
+      {
+        "number": "1",
+        "heading": "Referral or request",
+        "body": "Referrals come from the VA, veteran networks, coaches, school counselors, and local community organizations."
+      },
+      {
+        "number": "2",
+        "heading": "We evaluate the gap",
+        "body": "22 Strong reviews the situation. If coverage has run out, private care is out of reach, or the right connections aren’t there — we step in."
+      },
+      {
+        "number": "3",
+        "heading": "Care is funded",
+        "body": "Gifts cover recovery sessions directly, at no cost to the person receiving care."
+      }
+    ],
+    "funding": {
+      "eyebrow": "What gifts cover",
+      "heading": "Appointments, not abstractions.",
+      "body": "Funding supports practical recovery care for people with a clear need and a real access gap.",
+      "items": [
+        {
+          "heading": "Hands-on recovery sessions",
+          "body": "Chiropractic, physical therapy, and massage therapy."
+        },
+        {
+          "heading": "Follow-through after the first visit",
+          "body": "Help staying with care long enough for recovery to keep moving."
+        },
+        {
+          "heading": "Provider and partner referrals",
+          "body": "A path for veterans, families, and neighbors who are already trying to get well."
+        }
+      ]
+    },
+    "note": "Care is currently provided through Next Level Fitness & Wellness Center in Newport Beach — high-level sports medicine, including Fascial Integrative Treatment (FIT). It treats injuries like rotator cuff, knee, neck, lower back, hip, ankle/foot, and wrist/elbow pain. As donor support grows, 22 Strong can expand toward a network of vetted providers across Southern California."
+  },
   "leadership": [
     {
       "name": "Dr. Vasili “Dr. Vas” Gatsinaris, D.C.",
@@ -178,9 +268,61 @@
   "donate": {
     "heading": "Fund the next $22,000 in recovery care.",
     "lead": "Every gift helps turn a stalled recovery plan into appointments someone can actually reach.",
-    "outcomes": "In 2026, 22 Strong has funded over 200 recovery sessions for 45 people across Orange County.",
+    "outcomes": "In 2026, 22 Strong has funded over 200 recovery sessions for [NUMBER OF PEOPLE SERVED] people across Orange County.",
     "goalLabel": "Current goal",
     "goalAmount": "$22,000",
     "goalCopy": "$22,000 funds around 100 recovery sessions — keeping care within reach for the people who need it most."
+  },
+  "contact": {
+    "heading": "Start the right conversation with 22 Strong.",
+    "body": "Use this form to give, refer someone, explore a partnership, or ask about care. Please do not use it for emergencies or private medical details.",
+    "pathsAriaLabel": "Ways to contact 22 Strong",
+    "paths": [
+      {
+        "heading": "Give or sponsor care",
+        "body": "Help fund sessions for someone whose plan is at risk."
+      },
+      {
+        "heading": "Refer someone",
+        "body": "Start a conversation for a veteran or a young person."
+      },
+      {
+        "heading": "Partner with us",
+        "body": "Connect providers, community groups, and recovery resources."
+      }
+    ],
+    "honeypotLabel": "Website",
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "reasonLabel": "Reason for contact",
+    "reasons": [
+      "I want to give or sponsor care",
+      "I want to refer someone for care",
+      "I want to partner with 22 Strong",
+      "I have a general question"
+    ],
+    "messageLabel": "Message",
+    "note": "Please do not include private medical details, urgent needs, or anything you would not want sent through a basic web form.",
+    "submitLabel": "Send message"
+  },
+  "footer": {
+    "sections": [
+      {
+        "title": "Explore",
+        "links": [
+          { "label": "How it works", "href": "#how-it-works" },
+          { "label": "Strong Circle", "href": "#strong-circle" },
+          { "label": "Who we serve", "href": "#serve" },
+          { "label": "Veterans", "href": "#serve-veterans" }
+        ]
+      },
+      {
+        "title": "Get involved",
+        "links": [
+          { "label": "Donate", "href": "#donate" },
+          { "label": "Get in touch", "href": "#contact" }
+        ]
+      }
+    ]
   }
 }

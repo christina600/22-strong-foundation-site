@@ -54,7 +54,6 @@
   .hero-inner > *,
   .donate-wrap > *,
   .strong-circle-wrap > *,
-  .quote-wrap > *,
   .contact .split > *,
   .serve-detail-inner > * {
     min-width: 0;
@@ -70,8 +69,7 @@
   }
 
   #serve-veterans,
-  #serve-athletes,
-  #serve-others {
+  #serve-athletes {
     min-height: min(600px, calc(82svh - 70px));
     padding-block: var(--space-story-y);
     background:
@@ -93,17 +91,8 @@
       var(--serve-image, none) 68% top / cover no-repeat;
   }
 
-  #serve-others {
-    min-height: min(560px, calc(78svh - 70px));
-    background:
-      linear-gradient(180deg, rgba(12, 16, 13, .06) 0%, rgba(12, 16, 13, .18) 38%, rgba(12, 16, 13, .92) 78%, rgba(12, 16, 13, .96) 100%),
-      linear-gradient(90deg, rgba(12, 16, 13, .64) 0%, rgba(12, 16, 13, .30) 54%, rgba(12, 16, 13, .06) 100%),
-      var(--serve-image, none) 54% top / cover no-repeat;
-  }
-
   #serve-veterans .serve-group-head,
-  #serve-athletes .serve-group-head,
-  #serve-others .serve-group-head {
+  #serve-athletes .serve-group-head {
     grid-template-columns: 1fr;
     gap: 10px;
     align-content: end;
@@ -118,14 +107,12 @@
   }
 
   #serve-veterans .serve-group-head > *,
-  #serve-athletes .serve-group-head > *,
-  #serve-others .serve-group-head > * {
+  #serve-athletes .serve-group-head > * {
     grid-column: auto;
   }
 
   #serve-veterans .serve-group-head h2,
-  #serve-athletes .serve-group-head h2,
-  #serve-others .serve-group-head h2 {
+  #serve-athletes .serve-group-head h2 {
     max-width: 7.6ch;
     font-size: var(--fs-serve-title);
     line-height: var(--lh-hero);
@@ -182,42 +169,6 @@
     max-width: none;
     margin-top: 30px;
   }
-
-  .quote-wrap {
-    max-width: 680px;
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-
-  .quote-wrap::before {
-    inset: -14px;
-  }
-
-  .quote-photo {
-    justify-self: center;
-    width: min(100%, 560px);
-  }
-
-  .quote-wrap > div {
-    padding-left: 0;
-    border-left: 0;
-    border-top: 1px solid rgba(37, 35, 33, .16);
-    padding-top: 24px;
-  }
-
-  .quote-wrap blockquote {
-    font-size: var(--fs-quote);
-    line-height: 1.04;
-  }
-
-  .quote-wrap .attribution {
-    margin-top: 18px;
-  }
-
-  .quote-wrap .story {
-    margin-top: 20px;
-  }
-
 
   .contact .split {
     grid-template-columns: 1fr;

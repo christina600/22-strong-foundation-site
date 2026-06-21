@@ -1,0 +1,13 @@
+---
+interface Props {
+  facts: string[];
+}
+
+const { facts } = Astro.props;
+---
+
+<section class="credibility-strip story-proofline" aria-label="About 22 Strong Foundation">
+  <ul class="credibility-strip-inner" data-reveal>
+    {facts.map((fact) => <li class="credibility-strip-item">{fact}</li>)}
+  </ul>
+</section>

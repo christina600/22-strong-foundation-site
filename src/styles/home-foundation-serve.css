@@ -20,27 +20,6 @@
   padding: var(--space-section-y-tight) var(--space-page-x) var(--space-section-y);
 }
 
-.quote-wrap {
-  max-width: 960px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: minmax(320px, 1.05fr) minmax(0, .95fr);
-  gap: var(--space-layout-gap);
-  align-items: center;
-}
-
-.quote-photo {
-  width: 100%;
-  height: auto;
-  aspect-ratio: auto;
-  border-radius: 8px;
-  object-fit: contain;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  border: 1px solid rgba(255,255,255,.7);
-  background: linear-gradient(135deg, #c6c0b4, #ebe3d7);
-}
-
 blockquote {
   margin: 0;
   font-family: var(--display-face);

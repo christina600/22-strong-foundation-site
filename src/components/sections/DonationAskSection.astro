@@ -1,0 +1,44 @@
+---
+import DonationModule from "./DonationModule.astro";
+
+interface DonateContent {
+  heading: string;
+  lead: string;
+  outcomes: string;
+  goalLabel: string;
+  goalAmount: string;
+  goalCopy: string;
+}
+
+interface Props {
+  chapter?: string;
+  donate: DonateContent;
+}
+
+const { chapter, donate } = Astro.props;
+---
+
+<section class="donate-section story-ask" id="donate" data-chapter={chapter}>
+  <div class="donate-wrap">
+    <div>
+      <h2 data-reveal>{donate.heading}</h2>
+      <p class="lead" data-reveal>{donate.lead}</p>
+      <p class="outcomes" data-reveal>{donate.outcomes}</p>
+
+      <div class="goal-panel" role="group" aria-label="Fundraising goal" data-reveal>
+        <div class="goal-top">
+          <span>{donate.goalLabel}</span>
+          <span>{donate.goalAmount}</span>
+        </div>
+        <div class="goal-bar" aria-hidden="true">
+          <div class="goal-fill"></div>
+        </div>
+        <p class="goal-copy">{donate.goalCopy}</p>
+      </div>
+    </div>
+
+    <div data-reveal>
+      <DonationModule />
+    </div>
+  </div>
+</section>

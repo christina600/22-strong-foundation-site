@@ -1,0 +1,81 @@
+---
+import type { PersonVoiceContent, VideoVoiceContent } from "../../utils/home-story";
+
+interface Props {
+  video?: VideoVoiceContent;
+  voice?: PersonVoiceContent;
+}
+
+const { video, voice } = Astro.props;
+const titleParts = voice?.title ? voice.title.split(" · ") : [];
+const isPending = voice && (!voice.photo || !voice.quote);
+const initials = voice?.initials ?? voice?.name
+  .split(/\s+/)
+  .filter(Boolean)
+  .slice(0, 2)
+  .map((part) => part[0])
+  .join("");
+const imageWidth = voice?.imageWidth ?? 800;
+const imageHeight = voice?.imageHeight ?? 800;
+---
+
+{video && (
+  <article class="vv-card vv-card--video" data-reveal>
+    <div class="vv-video-media">
+      <div class="testimonial-video-shell" data-lazy-video data-lazy-video-autoplay>
+        <button
+          class="testimonial-video-trigger"
+          type="button"
+          data-lazy-video-trigger
+          data-video-src={video.src}
+          data-video-poster={video.poster}
+          aria-label={video.triggerLabel}
+        >
+          <img
+            class="testimonial-video-poster"
+            src={video.poster}
+            alt={video.posterAlt ?? ""}
+            width="540"
+            height="960"
+            loading="lazy"
+            decoding="async"
+            fetchpriority="low"
+          />
+          <span class="testimonial-play-button" aria-hidden="true"></span>
+        </button>
+        <noscript>
+          <video class="testimonial-video" controls preload="none" playsinline poster={video.poster}>
+            <source src={video.src} type="video/mp4" />
+            <a href={video.src}>{video.fallbackLabel}</a>.
+          </video>
+        </noscript>
+      </div>
+    </div>
+    <div class="vv-body">
+      {video.attribution && <div class="attribution">{video.attribution}</div>}
+      {video.story && <p class="story">{video.story}</p>}
+    </div>
+  </article>
+)}
+
+{voice && (
+  <article class={`vv-card${isPending ? " is-pending" : ""}`} data-reveal>
+    <div class="vv-photo">
+      {voice.photo
+        ? <img src={voice.photo} alt={voice.photoAlt ?? voice.name} width={imageWidth} height={imageHeight} loading="lazy" decoding="async" />
+        : <div class="vv-photo-ph"><span>{initials}</span><small>Photo coming soon</small></div>}
+    </div>
+    <div class="vv-body">
+      {voice.quote
+        ? <blockquote class="vv-quote">{voice.quote}</blockquote>
+        : <p class="vv-soon">Testimonial coming soon</p>}
+      <div class="vv-name">{voice.name}</div>
+      {titleParts.length > 0 && (
+        <div class="vv-creds">
+          {titleParts.map((part, i) => <Fragment>{i > 0 && <span class="vv-dot"> · </span>}{part}</Fragment>)}
+        </div>
+      )}
+      {voice.story && <p class="vv-story">{voice.story}</p>}
+    </div>
+  </article>
+)}

@@ -1,14 +1,27 @@
 ---
 /**
- * Homepage — the entire site, as one continuous scroll.
+ * Homepage — the site as one continuous recovery story.
  *
- * [data-reveal] elements are animated in on scroll by home-reveal.ts;
- * styling lives in src/styles/home.css (loaded only via HomeBase).
+ * Each component below has a single editorial job:
+ * conflict, proof, origin, audience stakes, care path, donor action.
  */
 
 import HomeBase from "../layouts/HomeBase.astro";
-import DonationModule from "../components/sections/DonationModule.astro";
+import AudienceSection from "../components/sections/AudienceSection.astro";
+import ContactSection from "../components/sections/ContactSection.astro";
+import CredibilityStrip from "../components/sections/CredibilityStrip.astro";
+import DonationAskSection from "../components/sections/DonationAskSection.astro";
+import FeaturedPublications from "../components/sections/FeaturedPublications.astro";
+import HeroSection from "../components/sections/HeroSection.astro";
+import LeadershipSection from "../components/sections/LeadershipSection.astro";
+import NarrativeScene from "../components/sections/NarrativeScene.astro";
+import ServicePathSection from "../components/sections/ServicePathSection.astro";
+import SiteFooter from "../components/sections/SiteFooter.astro";
+import StrongCircleSection from "../components/sections/StrongCircleSection.astro";
 import home from "../content/home.json";
+import { buildAudienceGroups } from "../utils/home-story";
+
+const audienceGroups = buildAudienceGroups(home);
 ---
 
 <HomeBase title="Fund recovery care when the system stops short.">
@@ -30,500 +43,37 @@ import home from "../content/home.json";
     </header>
 
     <main id="main">
-      <!-- 1. HERO -->
-      <section class="hero" id="top">
-        <div class="hero-inner">
-          <div class="hero-copy" data-reveal>
-            <h1>{home.hero.headline.map((line, i) => <Fragment>{i > 0 && <br />}{line}</Fragment>)}</h1>
-            <p class="lead">{home.hero.lead}</p>
-            <a class="pill primary" href="#donate">{home.hero.ctaLabel}</a>
-            <p class="give-taxline">{home.hero.taxline}</p>
-          </div>
+      <HeroSection hero={home.hero} />
+      <CredibilityStrip facts={home.credibility} />
 
-          <div data-reveal>
-            <DonationModule />
-          </div>
-        </div>
-      </section>
+      <NarrativeScene
+        chapter="01"
+        id="about"
+        eyebrow={home.mission.eyebrow}
+        heading={home.mission.heading}
+        lead={home.mission.lead}
+        evidenceStats={home.stats.others}
+        evidenceAriaLabel="Evidence of the recovery access gap"
+        needParagraphs={home.mission.needParagraphs}
+      />
 
-      <!-- Credibility strip — verified, non-numeric facts only. No counts or
-           dollar figures, so nothing here reads as an unverified impact claim. -->
-      <section class="credibility-strip" aria-label="About 22 Strong Foundation">
-        <ul class="credibility-strip-inner" data-reveal>
-          {home.credibility.map((fact) => <li class="credibility-strip-item">{fact}</li>)}
-        </ul>
-      </section>
+      <NarrativeScene
+        chapter="02"
+        id="story"
+        eyebrow={home.story.eyebrow}
+        heading={home.story.heading}
+        paragraphs={home.story.paragraphs}
+      />
 
-      <!-- 2. MISSION -->
-      <section class="about-section" id="about">
-        <div class="about-inner">
-          <div class="about-intro" data-reveal>
-            <span class="eyebrow">{home.mission.eyebrow}</span>
-            <h2>{home.mission.heading}</h2>
-            <p class="lead">{home.mission.lead}</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- 3. STORY -->
-      <section class="about-section" id="story">
-        <div class="about-inner">
-          <div class="about-intro" data-reveal>
-            <span class="eyebrow">{home.story.eyebrow}</span>
-          </div>
-          <div class="about-story" data-reveal>
-            {home.story.paragraphs.map((para) => <p>{para}</p>)}
-          </div>
-        </div>
-      </section>
-
-      <!-- 3. WHO WE SERVE — split by group, each with its own proof.
-           Stat bands and testimonials live with the group they describe.
-           Add new stats/testimonials inside the matching group below. -->
-      <section id="serve">
-        <div class="serve-intro">
-          <h2 data-reveal>Who we serve</h2>
-        </div>
-      </section>
-
-      <!-- 4a. VETERANS -->
-      <section class="serve-group" id="serve-veterans">
-        <div class="serve-group-head" data-reveal>
-          <h2>Veterans</h2>
-        </div>
-      </section>
-
-      <section class="serve-detail" aria-label="Veteran recovery support">
-        <div class="serve-detail-inner">
-          <div class="serve-copy" data-reveal>
-            <p class="lead">Care funding for veterans rebuilding strength, mobility, and function after service.</p>
-            <p>Support that respects the long work of recovery and helps keep care moving when benefits, timing, or access are not enough.</p>
-          </div>
-
-          <div class="serve-stats" role="list">
-            {home.stats.veterans.map((stat) => (
-              <aside class={`proof-stat${stat.light ? " light" : ""}`} role="listitem" data-reveal>
-                <div class="proof-stat-inner">
-                  <div class="proof-stat-number">{stat.number}</div>
-                  <div class="proof-stat-text">
-                    <p>{stat.text}</p>
-                    <span class="proof-stat-source"><a href={stat.url} target="_blank" rel="noopener noreferrer">{stat.source}</a></span>
-                  </div>
-                </div>
-              </aside>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section class="serve-proof veteran-proof">
-        <!-- VETERAN VOICES (repeatable: add entries to home.veteranVoices) -->
-        <div class="veteran-voices veteran-voices--with-video" id="veteran-voices" aria-label="Veteran voices">
-          <div class="vv-head" data-reveal>
-            <span class="vv-eyebrow">Testimonials</span>
-          </div>
-          <div class="vv-grid">
-            <article class="vv-card vv-card--video" data-reveal>
-              <div class="vv-video-media">
-                <div class="testimonial-video-shell" data-lazy-video data-lazy-video-autoplay>
-                  <button
-                    class="testimonial-video-trigger"
-                    type="button"
-                    data-lazy-video-trigger
-                    data-video-src="/video/luke-hudson-testimonial.mp4"
-                    data-video-poster="/images/luke-poster.jpg"
-                    aria-label="Play Luke Hudson testimonial video"
-                  >
-                    <img
-                      class="testimonial-video-poster"
-                      src="/images/luke-poster.jpg"
-                      alt=""
-                      width="540"
-                      height="960"
-                      loading="lazy"
-                      decoding="async"
-                      fetchpriority="low"
-                    />
-                    <span class="testimonial-play-button" aria-hidden="true"></span>
-                  </button>
-                  <noscript>
-                    <video class="testimonial-video" controls preload="none" playsinline poster="/images/luke-poster.jpg">
-                      <source src="/video/luke-hudson-testimonial.mp4" type="video/mp4" />
-                      <a href="/video/luke-hudson-testimonial.mp4">Watch Luke&rsquo;s testimonial</a>.
-                    </video>
-                  </noscript>
-                </div>
-              </div>
-              <div class="vv-body">
-                <div class="attribution">{home.testimonials.luke.attribution}</div>
-                <p class="story">{home.testimonials.luke.story}</p>
-              </div>
-            </article>
-
-            {home.veteranVoices.map((v) => (
-              <article class={`vv-card${(!v.photo || !v.quote) ? " is-pending" : ""}`} data-reveal>
-                <div class="vv-photo">
-                  {v.photo
-                    ? <img src={v.photo} alt={v.photoAlt} width="800" height="800" loading="lazy" decoding="async" />
-                    : <div class="vv-photo-ph"><span>{v.initials}</span><small>Photo coming soon</small></div>}
-                </div>
-                <div class="vv-body">
-                  {v.quote
-                    ? <blockquote class="vv-quote">{v.quote}</blockquote>
-                    : <p class="vv-soon">Testimonial coming soon</p>}
-                  <div class="vv-name">{v.name}</div>
-                  <div class="vv-creds">{v.title.split(" · ").map((part, i) => (<Fragment>{i > 0 && <span class="vv-dot"> · </span>}{part}</Fragment>))}</div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <!-- 4b. LOW INCOME YOUTH -->
-      <section class="serve-group" id="serve-athletes">
-        <div class="serve-group-head" data-reveal>
-          <h2>Low income youth</h2>
-        </div>
-      </section>
-
-      <section class="serve-detail" aria-label="Low income youth recovery support">
-        <div class="serve-detail-inner">
-          <div class="serve-copy" data-reveal>
-            <p class="lead">Recovery support for young athletes whose families can&rsquo;t cover the care it takes to get back after an injury.</p>
-            <p>Support for families facing a season-ending injury, limited coverage, or care that stops before recovery is done.</p>
-          </div>
-
-          <div class="serve-stats one-up" role="list">
-            {home.stats.athletes.map((stat) => (
-              <aside class={`proof-stat${stat.light ? " light" : ""}`} role="listitem" data-reveal>
-                <div class="proof-stat-inner">
-                  <div class="proof-stat-number">{stat.number}</div>
-                  <div class="proof-stat-text">
-                    <p>{stat.text}</p>
-                    <span class="proof-stat-source"><a href={stat.url} target="_blank" rel="noopener noreferrer">{stat.source}</a></span>
-                  </div>
-                </div>
-              </aside>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section class="serve-proof">
-        <!-- Youth testimonial — same card treatment as the veteran block above -->
-        <div class="veteran-voices" aria-label="Low income youth testimonials">
-          <div class="vv-head" data-reveal>
-            <span class="vv-eyebrow">Testimonials</span>
-          </div>
-          <div class="vv-grid">
-            <article class="vv-card" data-reveal>
-              <div class="vv-photo">
-                <img src="/images/adam-folker-uci.webp" alt="Adam Folker" width="1200" height="800" loading="lazy" decoding="async" />
-              </div>
-              <div class="vv-body">
-                <blockquote class="vv-quote">{home.testimonials.adam.story}</blockquote>
-                <div class="vv-name">Adam Folker</div>
-                <div class="vv-creds">Collegiate &amp; Professional Basketball Player</div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      {/* "Others who need care" section removed per Christina (2026-06-20).
-          PARKED for reuse elsewhere in the narrative:
-          - Keep verbiage: "A funding path for people referred by trusted providers and partners when recovery is stalled by access or cost."
-          - Stats remain in home.json `stats.others` ($190 PT session, 20-visit cap) — not rendered yet, ready to place. */}
-
-      <!-- 4. HOW 22 STRONG WORKS -->
-      <section class="how-it-works" id="how-it-works">
-        <div class="how-story-copy" data-reveal>
-          <div class="eyebrow">How 22 Strong works</div>
-          <h2>A recovery gap appears.<br />22 Strong helps close it.</h2>
-          <p class="story-kicker">The story is not complicated: someone has a real recovery plan, the next appointment becomes uncertain, and donor funding keeps the care moving.</p>
-        </div>
-
-        <div class="steps" role="list" aria-label="22 Strong care funding path">
-          <div class="step story-beat" role="listitem" data-reveal>
-            <span class="step-number">1</span>
-            <h3>Referral or request</h3>
-            <p>Referrals come from the VA, veteran networks, coaches, school counselors, and local community organizations.</p>
-          </div>
-          <div class="step story-beat" role="listitem" data-reveal>
-            <span class="step-number">2</span>
-            <h3>We evaluate the gap</h3>
-            <p>22 Strong reviews the situation. If coverage has run out, private care is out of reach, or the right connections aren&rsquo;t there &mdash; we step in.</p>
-          </div>
-          <div class="step story-beat" role="listitem" data-reveal>
-            <span class="step-number">3</span>
-            <h3>Care is funded</h3>
-            <p>Gifts cover recovery sessions directly, at no cost to the person receiving care.</p>
-          </div>
-        </div>
-
-        <div class="funding-covers story-beat" data-reveal>
-          <div>
-            <span class="eyebrow">What gifts cover</span>
-            <h3>Appointments, not abstractions.</h3>
-            <p>Funding supports practical recovery care for people with a clear need and a real access gap.</p>
-          </div>
-
-          <ul>
-            <li>
-              <strong>Hands-on recovery sessions</strong>
-              <span>Chiropractic, physical therapy, and massage therapy.</span>
-            </li>
-            <li>
-              <strong>Follow-through after the first visit</strong>
-              <span>Help staying with care long enough for recovery to keep moving.</span>
-            </li>
-            <li>
-              <strong>Provider and partner referrals</strong>
-              <span>A path for veterans, families, and neighbors who are already trying to get well.</span>
-            </li>
-          </ul>
-        </div>
-
-        <p class="how-note" data-reveal>Care is currently provided through Next Level Fitness &amp; Wellness Center in Newport Beach &mdash; high-level sports medicine, including Fascial Integrative Treatment (FIT). It treats injuries like rotator cuff, knee, neck, lower back, hip, ankle/foot, and wrist/elbow pain. As donor support grows, 22 Strong can expand toward a network of vetted providers across Southern California.</p>
-      </section>
-
-      <!-- 5. AS FEATURED IN -->
-      <section class="featured" id="featured" aria-labelledby="featured-title">
-        <div class="featured-inner" data-reveal>
-          <h2 class="featured-title" id="featured-title">As Featured In</h2>
-          <ul class="featured-publications" aria-label="Featured publications">
-            {home.press.publications.map((publication) => (
-              <li>
-                <a
-                  class="featured-sheet"
-                  href={publication.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={publication.ariaLabel}
-                >
-                  <img
-                    class="featured-logo-img"
-                    src={publication.logo}
-                    alt={publication.logoAlt}
-                    width="760"
-                    height="194"
-                    loading="lazy"
-                    decoding="async"
-                    fetchpriority="low"
-                  />
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <!-- 6. LEADERSHIP -->
-      <section id="leadership">
-        <h2 data-reveal>Built by people who understand recovery.</h2>
-
-        <div class="bios">
-          {home.leadership.map((person) => (
-            <article class="card" data-reveal>
-              <div class="bio-head">
-                {person.portrait
-                  ? <img class="portrait" src={person.portrait} alt={person.portraitAlt} width="400" height="560" loading="lazy" decoding="async" fetchpriority="low" />
-                  : <div class="initials">{person.initials}</div>}
-                <div>
-                  <h3>{person.name}</h3>
-                  <p class="bio-role">{person.role}</p>
-                </div>
-              </div>
-              {person.paragraphs.map((para) => <p>{para}</p>)}
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <!-- 7. STRONG CIRCLE -->
-      <section class="strong-circle-section" id="strong-circle">
-        <div class="strong-circle-wrap">
-          <div class="circle-panel" data-reveal>
-            <div>
-              <h2>{home.strongCircle.heading}</h2>
-              <p class="lead">{home.strongCircle.lead}</p>
-            </div>
-
-            <div>
-              <div class="circle-number">{home.strongCircle.amount}</div>
-              <h3 class="circle-subhead">{home.strongCircle.subhead}</h3>
-
-              <div class="circle-actions" role="group" aria-label="Strong Circle giving options">
-                <button class="pill primary strong-circle-trigger" type="button" data-strong-circle-open>{home.strongCircle.joinLabel}</button>
-                <a class="pill" href="#donate">{home.strongCircle.giveOnceLabel}</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="card" data-reveal>
-            <h2 class="circle-card-title">{home.strongCircle.cardTitle}</h2>
-            <p>{home.strongCircle.cardBody}</p>
-
-            <div class="circle-math" role="list" aria-label="Strong Circle giving numbers">
-              {home.strongCircle.mathRows.map((row) => (
-                <div class="circle-math-row" role="listitem">
-                  <span>{row.label}</span>
-                  <strong>{row.value}</strong>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <dialog class="strong-circle-modal" aria-modal="true" aria-labelledby="strong-circle-modal-title" aria-describedby="strong-circle-modal-description">
-        <div class="strong-circle-modal-card">
-          <button class="modal-close" type="button" data-strong-circle-close aria-label="Close Strong Circle popup">&times;</button>
-          <span class="eyebrow">{home.strongCircle.modal.eyebrow}</span>
-          <h2 id="strong-circle-modal-title">{home.strongCircle.modal.heading}</h2>
-
-          <div class="modal-commitment">
-            <div class="modal-amount" role="group" aria-label="$22 per month">
-              <span class="modal-amount-value">{home.strongCircle.modal.amountValue}</span>
-              <span class="modal-amount-period">{home.strongCircle.modal.amountPeriod}</span>
-            </div>
-
-            <p class="lead" id="strong-circle-modal-description">{home.strongCircle.modal.lead}</p>
-          </div>
-
-          <ul class="modal-proof-grid" aria-label="Strong Circle benefits">
-            {home.strongCircle.modal.proof.map((item) => (
-              <li>
-                <span>{item.label}</span>
-                <strong>{item.value}</strong>
-              </li>
-            ))}
-          </ul>
-
-          <div class="modal-actions" role="group" aria-label="Strong Circle donation choices">
-            <a class="pill primary" href="#donate" data-strong-circle-join>{home.strongCircle.modal.joinLabel}</a>
-            <a class="pill" href="#donate" data-strong-circle-close>{home.strongCircle.modal.giveOnceLabel}</a>
-          </div>
-        </div>
-      </dialog>
-
-      <!-- 8. DONATE -->
-      <section class="donate-section" id="donate">
-        <div class="donate-wrap">
-          <div>
-            <h2 data-reveal>{home.donate.heading}</h2>
-            <p class="lead" data-reveal>{home.donate.lead}</p>
-            <p class="outcomes" data-reveal>{home.donate.outcomes}</p>
-
-            <div class="goal-panel" role="group" aria-label="Fundraising goal" data-reveal>
-              <div class="goal-top">
-                <span>{home.donate.goalLabel}</span>
-                <span>{home.donate.goalAmount}</span>
-              </div>
-              {/* Decorative bar: the 22% fill is a brand motif, not real
-                  fundraising progress, so it's hidden from assistive tech to
-                  avoid announcing a fabricated "% of goal" value. */}
-              <div class="goal-bar" aria-hidden="true">
-                <div class="goal-fill"></div>
-              </div>
-              <p class="goal-copy">{home.donate.goalCopy}</p>
-            </div>
-          </div>
-
-          <div data-reveal>
-            <DonationModule />
-          </div>
-        </div>
-      </section>
-
-      <!-- 9. CONTACT -->
-      <section class="contact" id="contact">
-        <div class="split">
-          <div data-reveal>
-            <h2>Start the right conversation with 22 Strong.</h2>
-            <p>Use this form to give, refer someone, explore a partnership, or ask about care. Please do not use it for emergencies or private medical details.</p>
-
-            <ul class="contact-paths" aria-label="Ways to contact 22 Strong">
-              <li>
-                <strong>Give or sponsor care</strong>
-                <span>Help fund sessions for someone whose plan is at risk.</span>
-              </li>
-              <li>
-                <strong>Refer someone</strong>
-                <span>Start a conversation for a veteran or a young person.</span>
-              </li>
-              <li>
-                <strong>Partner with us</strong>
-                <span>Connect providers, community groups, and recovery resources.</span>
-              </li>
-            </ul>
-          </div>
-
-          <form id="contactFormEl" aria-describedby="contact-form-note contact-form-status" data-reveal>
-            <div class="hp" aria-hidden="true">
-              <label>Website
-                <input type="text" name="website" tabindex="-1" autocomplete="off" />
-              </label>
-            </div>
-
-            <div class="form-row">
-              <label>Name
-                <input type="text" name="name" autocomplete="name" required />
-              </label>
-              <label>Email
-                <input type="email" name="email" autocomplete="email" required />
-              </label>
-            </div>
-
-            <label>Reason for contact
-              <select name="reason">
-                <option>I want to give or sponsor care</option>
-                <option>I want to refer someone for care</option>
-                <option>I want to partner with 22 Strong</option>
-                <option>I have a general question</option>
-              </select>
-            </label>
-
-            <label>Message
-              <textarea name="message" required></textarea>
-            </label>
-
-            <p class="note" id="contact-form-note">Please do not include private medical details, urgent needs, or anything you would not want sent through a basic web form.</p>
-            <p class="form-status" id="contact-form-status" role="status" aria-live="polite" hidden></p>
-            <button class="pill primary form-submit" type="submit">Send message</button>
-          </form>
-        </div>
-      </section>
+      <AudienceSection chapter="03" introTitle="Who we serve" groups={audienceGroups} />
+      <ServicePathSection chapter="04" content={home.howItWorks} />
+      <FeaturedPublications chapter="05" publications={home.press.publications} />
+      <LeadershipSection people={home.leadership} />
+      <StrongCircleSection chapter="06" strongCircle={home.strongCircle} />
+      <DonationAskSection chapter="07" donate={home.donate} />
+      <ContactSection contact={home.contact} />
     </main>
 
-    <!-- 10. FOOTER -->
-    <footer>
-      <div class="footer-inner">
-        <div>
-          <div class="footer-title">22 Strong Foundation</div>
-          <p>&copy; 2026 22 Strong Foundation &middot; 501(c)(3) &middot; <span class="nowrap">EIN 99-1232582</span></p>
-        </div>
-
-        <div>
-          <div class="footer-title">Explore</div>
-          <div class="links">
-            <a href="#how-it-works">How it works</a>
-            <a href="#strong-circle">Strong Circle</a>
-            <a href="#serve">Who we serve</a>
-            <a href="#serve-veterans">Veterans</a>
-          </div>
-        </div>
-
-        <div>
-          <div class="footer-title">Get involved</div>
-          <div class="links">
-            <a href="#donate">Donate</a>
-            <a href="#contact">Get in touch</a>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <SiteFooter footer={home.footer} />
   </div>
-
 </HomeBase>

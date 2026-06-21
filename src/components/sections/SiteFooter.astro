@@ -1,0 +1,37 @@
+---
+import site from "../../content/site.json";
+
+interface FooterSection {
+  title: string;
+  links: Array<{
+    label: string;
+    href: string;
+  }>;
+}
+
+interface Props {
+  footer: {
+    sections: FooterSection[];
+  };
+}
+
+const { footer } = Astro.props;
+---
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-title">{site.orgName}</div>
+      <p>&copy; 2026 {site.orgName} &middot; {site.taxStatus} &middot; <span class="nowrap">EIN {site.ein}</span></p>
+    </div>
+
+    {footer.sections.map((section) => (
+      <div>
+        <div class="footer-title">{section.title}</div>
+        <div class="links">
+          {section.links.map((link) => <a href={link.href}>{link.label}</a>)}
+        </div>
+      </div>
+    ))}
+  </div>
+</footer>

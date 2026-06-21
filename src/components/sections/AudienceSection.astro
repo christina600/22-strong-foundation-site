@@ -1,0 +1,67 @@
+---
+import type { AudienceGroupContent } from "../../utils/home-story";
+import EvidenceStat from "./EvidenceStat.astro";
+import VoiceCard from "./VoiceCard.astro";
+
+interface Props {
+  chapter?: string;
+  introTitle: string;
+  groups: AudienceGroupContent[];
+}
+
+const { chapter, introTitle, groups } = Astro.props;
+const preparedGroups = groups.map((group) => ({
+  ...group,
+  hasStats: group.stats.length > 0,
+  hasVoices: Boolean(group.video) || group.voices.length > 0
+}));
+---
+
+<section class="story-serve-intro" id="serve" data-chapter={chapter}>
+  <div class="serve-intro">
+    <h2 data-reveal>{introTitle}</h2>
+  </div>
+</section>
+
+{preparedGroups.map((group) => (
+  <>
+    <section class="serve-group story-audience-gate" id={group.id}>
+      <div class="serve-group-head" data-reveal>
+        <h2>{group.heading}</h2>
+      </div>
+    </section>
+
+    <section class="serve-detail story-audience-detail" aria-label={group.detailAriaLabel}>
+      <div class="serve-detail-inner">
+        <div class="serve-copy" data-reveal>
+          <p class="lead">{group.lead}</p>
+          <p>{group.body}</p>
+        </div>
+
+        {group.hasStats && (
+          <div class={`serve-stats${group.statsClass ? ` ${group.statsClass}` : ""}`} role="list">
+            {group.stats.map((stat) => <EvidenceStat stat={stat} variant="proof" reveal />)}
+          </div>
+        )}
+      </div>
+    </section>
+
+    {group.hasVoices && (
+      <section class={`serve-proof story-audience-proof${group.proofClass ? ` ${group.proofClass}` : ""}`}>
+        <div
+          class={`veteran-voices${group.video ? " veteran-voices--with-video" : ""}`}
+          id={group.voicesId}
+          aria-label={group.voicesAriaLabel}
+        >
+          <div class="vv-head" data-reveal>
+            <span class="vv-eyebrow">Testimonials</span>
+          </div>
+          <div class="vv-grid">
+            {group.video && <VoiceCard video={group.video} />}
+            {group.voices.map((voice) => <VoiceCard voice={voice} />)}
+          </div>
+        </div>
+      </section>
+    )}
+  </>
+))}

@@ -79,20 +79,8 @@
     var(--serve-image, none) 62% center / cover no-repeat;
 }
 
-#serve-others {
-  --serve-image: url("/images/stock-hands-care.webp");
-  background:
-    linear-gradient(90deg, rgba(12, 16, 13, .84) 0%, rgba(12, 16, 13, .62) 38%, rgba(12, 16, 13, .14) 78%),
-    linear-gradient(180deg, rgba(12, 16, 13, .04) 0%, rgba(12, 16, 13, .18) 44%, rgba(12, 16, 13, .88) 100%),
-    var(--serve-image, none) 54% center / cover no-repeat;
-}
-
 #serve-athletes .serve-group-head h2 {
   max-width: 7.2ch;
-}
-
-#serve-others .serve-group-head h2 {
-  max-width: 8ch;
 }
 
 .serve-detail {

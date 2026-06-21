@@ -1,0 +1,76 @@
+---
+interface ContactPath {
+  heading: string;
+  body: string;
+}
+
+interface ContactContent {
+  heading: string;
+  body: string;
+  pathsAriaLabel: string;
+  paths: ContactPath[];
+  honeypotLabel: string;
+  nameLabel: string;
+  emailLabel: string;
+  reasonLabel: string;
+  reasons: string[];
+  messageLabel: string;
+  note: string;
+  submitLabel: string;
+}
+
+interface Props {
+  contact: ContactContent;
+}
+
+const { contact } = Astro.props;
+---
+
+<section class="contact story-contact" id="contact">
+  <div class="split">
+    <div data-reveal>
+      <h2>{contact.heading}</h2>
+      <p>{contact.body}</p>
+
+      <ul class="contact-paths" aria-label={contact.pathsAriaLabel}>
+        {contact.paths.map((path) => (
+          <li>
+            <strong>{path.heading}</strong>
+            <span>{path.body}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <form id="contactFormEl" aria-describedby="contact-form-note contact-form-status" data-reveal>
+      <div class="hp" aria-hidden="true">
+        <label>{contact.honeypotLabel}
+          <input type="text" name="website" tabindex="-1" autocomplete="off" />
+        </label>
+      </div>
+
+      <div class="form-row">
+        <label>{contact.nameLabel}
+          <input type="text" name="name" autocomplete="name" required />
+        </label>
+        <label>{contact.emailLabel}
+          <input type="email" name="email" autocomplete="email" required />
+        </label>
+      </div>
+
+      <label>{contact.reasonLabel}
+        <select name="reason">
+          {contact.reasons.map((reason) => <option>{reason}</option>)}
+        </select>
+      </label>
+
+      <label>{contact.messageLabel}
+        <textarea name="message" required></textarea>
+      </label>
+
+      <p class="note" id="contact-form-note">{contact.note}</p>
+      <p class="form-status" id="contact-form-status" role="status" aria-live="polite" hidden></p>
+      <button class="pill primary form-submit" type="submit">{contact.submitLabel}</button>
+    </form>
+  </div>
+</section>

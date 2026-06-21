@@ -1,0 +1,39 @@
+---
+import type { EvidenceStatContent } from "../../utils/home-story";
+
+interface Props {
+  stat: EvidenceStatContent;
+  variant?: "about" | "proof";
+  reveal?: boolean;
+}
+
+const { stat, variant = "proof", reveal = false } = Astro.props;
+const revealAttrs = reveal ? { "data-reveal": "" } : {};
+const className = variant === "about"
+  ? `about-evidence-stat${stat.light ? " is-light" : ""}`
+  : `proof-stat${stat.light ? " light" : ""}`;
+---
+
+{variant === "about" ? (
+  <aside class={className} role="listitem" {...revealAttrs}>
+    <div class="about-evidence-number">{stat.number}</div>
+    <div class="about-evidence-copy">
+      <p>{stat.text}</p>
+      <span class="about-evidence-source">
+        <a href={stat.url} target="_blank" rel="noopener noreferrer">{stat.source}</a>
+      </span>
+    </div>
+  </aside>
+) : (
+  <aside class={className} role="listitem" {...revealAttrs}>
+    <div class="proof-stat-inner">
+      <div class="proof-stat-number">{stat.number}</div>
+      <div class="proof-stat-text">
+        <p>{stat.text}</p>
+        <span class="proof-stat-source">
+          <a href={stat.url} target="_blank" rel="noopener noreferrer">{stat.source}</a>
+        </span>
+      </div>
+    </div>
+  </aside>
+)}

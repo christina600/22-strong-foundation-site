@@ -2,7 +2,6 @@
 @media (max-width: 920px) {
   .hero-inner,
   .split,
-  .quote-wrap,
   .donate-wrap,
   .footer-inner {
     grid-template-columns: 1fr;

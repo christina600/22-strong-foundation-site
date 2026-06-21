@@ -1,0 +1,71 @@
+---
+interface ServiceStep {
+  number: string;
+  heading: string;
+  body: string;
+}
+
+interface FundingItem {
+  heading: string;
+  body: string;
+}
+
+interface ServicePathContent {
+  eyebrow: string;
+  heading: string[];
+  kicker: string;
+  stepsAriaLabel: string;
+  steps: ServiceStep[];
+  funding: {
+    eyebrow: string;
+    heading: string;
+    body: string;
+    items: FundingItem[];
+  };
+  note: string;
+}
+
+interface Props {
+  chapter?: string;
+  content: ServicePathContent;
+}
+
+const { chapter, content } = Astro.props;
+---
+
+<section class="how-it-works story-path" id="how-it-works" data-chapter={chapter}>
+  <div class="how-story-copy" data-reveal>
+    <div class="eyebrow">{content.eyebrow}</div>
+    <h2>{content.heading.map((line, i) => <Fragment>{i > 0 && <br />}{line}</Fragment>)}</h2>
+    <p class="story-kicker">{content.kicker}</p>
+  </div>
+
+  <div class="steps" role="list" aria-label={content.stepsAriaLabel}>
+    {content.steps.map((step) => (
+      <div class="step story-beat" role="listitem" data-reveal>
+        <span class="step-number">{step.number}</span>
+        <h3>{step.heading}</h3>
+        <p>{step.body}</p>
+      </div>
+    ))}
+  </div>
+
+  <div class="funding-covers story-beat" data-reveal>
+    <div>
+      <span class="eyebrow">{content.funding.eyebrow}</span>
+      <h3>{content.funding.heading}</h3>
+      <p>{content.funding.body}</p>
+    </div>
+
+    <ul>
+      {content.funding.items.map((item) => (
+        <li>
+          <strong>{item.heading}</strong>
+          <span>{item.body}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <p class="how-note" data-reveal>{content.note}</p>
+</section>

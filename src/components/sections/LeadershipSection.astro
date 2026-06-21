@@ -1,0 +1,37 @@
+---
+interface Leader {
+  name: string;
+  role: string;
+  portrait?: string;
+  portraitAlt?: string;
+  initials?: string;
+  paragraphs: string[];
+}
+
+interface Props {
+  people: Leader[];
+}
+
+const { people } = Astro.props;
+---
+
+<section class="story-leadership" id="leadership">
+  <h2 data-reveal>Built by people who understand recovery.</h2>
+
+  <div class="bios">
+    {people.map((person) => (
+      <article class="card" data-reveal>
+        <div class="bio-head">
+          {person.portrait
+            ? <img class="portrait" src={person.portrait} alt={person.portraitAlt ?? person.name} width="400" height="560" loading="lazy" decoding="async" fetchpriority="low" />
+            : <div class="initials">{person.initials}</div>}
+          <div>
+            <h3>{person.name}</h3>
+            <p class="bio-role">{person.role}</p>
+          </div>
+        </div>
+        {person.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+      </article>
+    ))}
+  </div>
+</section>

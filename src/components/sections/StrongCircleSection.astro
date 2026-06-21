@@ -1,0 +1,96 @@
+---
+interface StrongCircleContent {
+  heading: string;
+  lead: string;
+  amount: string;
+  subhead: string;
+  joinLabel: string;
+  giveOnceLabel: string;
+  cardTitle: string;
+  cardBody: string;
+  mathRows: Array<{ label: string; value: string }>;
+  modal: {
+    eyebrow: string;
+    heading: string;
+    amountValue: string;
+    amountPeriod: string;
+    lead: string;
+    proof: Array<{ label: string; value: string }>;
+    joinLabel: string;
+    giveOnceLabel: string;
+  };
+}
+
+interface Props {
+  chapter?: string;
+  strongCircle: StrongCircleContent;
+}
+
+const { chapter, strongCircle } = Astro.props;
+---
+
+<section class="strong-circle-section story-commitment" id="strong-circle" data-chapter={chapter}>
+  <div class="strong-circle-wrap">
+    <div class="circle-panel" data-reveal>
+      <div>
+        <h2>{strongCircle.heading}</h2>
+        <p class="lead">{strongCircle.lead}</p>
+      </div>
+
+      <div>
+        <div class="circle-number">{strongCircle.amount}</div>
+        <h3 class="circle-subhead">{strongCircle.subhead}</h3>
+
+        <div class="circle-actions" role="group" aria-label="Strong Circle giving options">
+          <button class="pill primary strong-circle-trigger" type="button" data-strong-circle-open>{strongCircle.joinLabel}</button>
+          <a class="pill" href="#donate">{strongCircle.giveOnceLabel}</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" data-reveal>
+      <h2 class="circle-card-title">{strongCircle.cardTitle}</h2>
+      <p>{strongCircle.cardBody}</p>
+
+      <div class="circle-math" role="list" aria-label="Strong Circle giving numbers">
+        {strongCircle.mathRows.map((row) => (
+          <div class="circle-math-row" role="listitem">
+            <span>{row.label}</span>
+            <strong>{row.value}</strong>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<dialog class="strong-circle-modal" aria-modal="true" aria-labelledby="strong-circle-modal-title" aria-describedby="strong-circle-modal-description">
+  <div class="strong-circle-modal-card">
+    <button class="modal-close" type="button" data-strong-circle-close aria-label="Close Strong Circle popup">&times;</button>
+    <span class="eyebrow">{strongCircle.modal.eyebrow}</span>
+    <h2 id="strong-circle-modal-title">{strongCircle.modal.heading}</h2>
+
+    <div class="modal-commitment">
+      <div class="modal-amount" role="group" aria-label="$22 per month">
+        <span class="modal-amount-value">{strongCircle.modal.amountValue}</span>
+        <span class="modal-amount-period">{strongCircle.modal.amountPeriod}</span>
+      </div>
+
+      <p class="lead" id="strong-circle-modal-description">{strongCircle.modal.lead}</p>
+    </div>
+
+    <ul class="modal-proof-grid" aria-label="Strong Circle benefits">
+      {strongCircle.modal.proof.map((item) => (
+        <li>
+          <span>{item.label}</span>
+          <strong>{item.value}</strong>
+        </li>
+      ))}
+    </ul>
+
+    <div class="modal-actions" role="group" aria-label="Strong Circle donation choices">
+      <a class="pill primary" href="#donate" data-strong-circle-join>{strongCircle.modal.joinLabel}</a>
+      <a class="pill" href="#donate" data-strong-circle-close>{strongCircle.modal.giveOnceLabel}</a>
+    </div>
+  </div>
+</dialog>

@@ -3,48 +3,12 @@
   background: linear-gradient(180deg, rgba(248, 244, 235, .30), rgba(248, 244, 235, .74));
 }
 
-.quote-wrap {
-  position: relative;
-  max-width: 1080px;
-  grid-template-columns: minmax(420px, 1.04fr) minmax(0, .96fr);
-  gap: var(--space-layout-gap);
-  align-items: center;
-}
-
-.quote-wrap::before {
-  content: "";
-  position: absolute;
-  inset: calc(var(--space-card-compact) * -1);
-  border: 1px solid rgba(32, 35, 31, .10);
-  pointer-events: none;
-}
-
-.quote-photo {
-  aspect-ratio: auto;
-  height: auto;
-  object-fit: contain;
-  border-color: rgba(255, 253, 247, .78);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, .72) inset,
-    0 26px 70px rgba(29, 33, 29, .14);
-}
-
-.quote-wrap > div {
-  padding-left: var(--space-card-compact);
-  border-left: 1px solid rgba(37, 35, 33, .16);
-}
-
 blockquote {
   max-width: 13ch;
   color: var(--ink);
   font-size: var(--fs-quote);
   line-height: var(--lh-heading);
   letter-spacing: 0;
-}
-
-.quote-wrap .story {
-  font-size: var(--fs-copy-small);
-  line-height: var(--lh-copy);
 }
 
 .attribution {

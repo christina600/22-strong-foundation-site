@@ -50,18 +50,6 @@
   border-radius: 2px;
 }
 
-.vv-title {
-  margin: 14px 0 0;
-  max-width: 16ch;
-  font-family: var(--display-face);
-  font-weight: 800;
-  font-stretch: condensed;
-  font-size: clamp(2.1rem, 4vw, 3.3rem);
-  line-height: .98;
-  color: var(--ink, #20231f);
-  text-wrap: balance;
-}
-
 .vv-grid {
   display: grid;
   gap: clamp(18px, 3vw, 30px);
@@ -209,6 +197,15 @@
   font-size: 3.2rem;
   line-height: .4;
   color: var(--mission-orange, #b95524);
+}
+
+.vv-story {
+  max-width: 60ch;
+  margin: 18px 0 0;
+  color: rgba(32, 35, 31, .78);
+  font-size: var(--fs-copy-small, 1rem);
+  line-height: var(--lh-copy, 1.62);
+  text-wrap: pretty;
 }
 
 .vv-soon {

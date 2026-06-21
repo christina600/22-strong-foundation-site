@@ -1,0 +1,45 @@
+---
+interface Publication {
+  logo: string;
+  logoAlt: string;
+  url: string;
+  ariaLabel: string;
+}
+
+interface Props {
+  chapter?: string;
+  publications: Publication[];
+}
+
+const { chapter, publications } = Astro.props;
+---
+
+<section class="featured story-press" id="featured" aria-labelledby="featured-title" data-chapter={chapter}>
+  <div class="featured-inner" data-reveal>
+    <h2 class="featured-title" id="featured-title">As Featured In</h2>
+    <ul class="featured-publications" aria-label="Featured publications">
+      {publications.map((publication) => (
+        <li>
+          <a
+            class="featured-sheet"
+            href={publication.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={publication.ariaLabel}
+          >
+            <img
+              class="featured-logo-img"
+              src={publication.logo}
+              alt={publication.logoAlt}
+              width="760"
+              height="194"
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+            />
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
