@@ -11,10 +11,13 @@
     "Veteran-founded",
     "Clinic-based recovery care"
   ],
-  "about": {
-    "eyebrow": "Who we are",
+  "mission": {
+    "eyebrow": "Mission",
     "heading": "Specialized recovery care for people whose next appointment is at risk.",
-    "lead": "22 Strong focuses on people with a real recovery need and a practical access gap: cost, coverage, timing, or the right connection to care.",
+    "lead": "22 Strong focuses on people with a real recovery need and a practical access gap: cost, coverage, timing, or the right connection to care."
+  },
+  "story": {
+    "eyebrow": "Story",
     "paragraphs": [
       "22 Strong began at Next Level Wellness, a sports-medicine center in Newport Beach co-owned by Travis Mayfield and Dr. Vasili “Dr. Vas” Gatsinaris. For years they treated athletes and professionals — and the veterans who couldn’t find this care anywhere else.",
       "Travis is a Purple Heart veteran of the 101st Airborne in Vietnam. His own long road back is the model the foundation runs on: veterans serving veterans, and care measured by recovery — not by what someone can pay.",

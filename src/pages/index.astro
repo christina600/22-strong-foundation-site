@@ -54,16 +54,25 @@ import home from "../content/home.json";
         </ul>
       </section>
 
-      <!-- 2. WHO WE ARE -->
+      <!-- 2. MISSION -->
       <section class="about-section" id="about">
         <div class="about-inner">
           <div class="about-intro" data-reveal>
-            <span class="eyebrow">{home.about.eyebrow}</span>
-            <h2>{home.about.heading}</h2>
-            <p class="lead">{home.about.lead}</p>
+            <span class="eyebrow">{home.mission.eyebrow}</span>
+            <h2>{home.mission.heading}</h2>
+            <p class="lead">{home.mission.lead}</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. STORY -->
+      <section class="about-section" id="story">
+        <div class="about-inner">
+          <div class="about-intro" data-reveal>
+            <span class="eyebrow">{home.story.eyebrow}</span>
           </div>
           <div class="about-story" data-reveal>
-            {home.about.paragraphs.map((para) => <p>{para}</p>)}
+            {home.story.paragraphs.map((para) => <p>{para}</p>)}
           </div>
         </div>
       </section>

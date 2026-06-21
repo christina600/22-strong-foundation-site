@@ -16,6 +16,7 @@ const HASH_SYNC_DELAYS = [220, 900];
 const TRACKED_SECTIONS = [
   "top",
   "about",
+  "story",
   "serve",
   "serve-veterans",
   "veteran-voices",
@@ -47,6 +48,7 @@ function revealTargetArea(target: Element) {
 }
 
 function normaliseActiveHash(hash: string) {
+  if (hash === "#story") return "#about";
   return hash.startsWith("#serve-") ? "#serve" : hash;
 }
 
