@@ -13,6 +13,7 @@ import { fileURLToPath } from "url";
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const rootDir = join(__dirname, "..");
 const homePath = join(rootDir, "src", "content", "home.json");
+const pagePath = join(rootDir, "src", "pages", "index.astro");
 const publicDir = join(rootDir, "public");
 const home = JSON.parse(readFileSync(homePath, "utf8"));
 const errors = [];
@@ -142,6 +143,29 @@ function validateFooter() {
   }
 }
 
+function validateStoryChapters() {
+  const page = readFileSync(pagePath, "utf8");
+  const chapters = [...page.matchAll(/chapter="(\d{2})"/g)].map((match) => match[1]);
+  const seen = new Set();
+
+  if (chapters.length === 0) {
+    addError("No homepage story chapters found in index.astro.");
+    return;
+  }
+
+  for (const chapter of chapters) {
+    if (seen.has(chapter)) addError(`Duplicate homepage story chapter: ${chapter}`);
+    seen.add(chapter);
+  }
+
+  chapters.forEach((chapter, index) => {
+    const expected = String(index + 1).padStart(2, "0");
+    if (chapter !== expected) {
+      addError(`Homepage story chapter ${chapter} is out of sequence; expected ${expected}.`);
+    }
+  });
+}
+
 function validateLocalAssets(value, path = "home") {
   if (typeof value === "string") {
     if (isLocalAssetPath(value)) {
@@ -173,6 +197,7 @@ validateAudiences();
 validateServicePath();
 validateContact();
 validateFooter();
+validateStoryChapters();
 validateLocalAssets(home);
 
 console.log("Checking homepage content references...\n");

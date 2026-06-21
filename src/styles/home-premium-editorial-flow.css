@@ -409,8 +409,8 @@ main {
   .story-ask[data-chapter]::after {
     top: 18px;
     right: var(--space-page-x);
-    font-size: clamp(4rem, 16vw, 6.4rem);
-    opacity: .58;
+    font-size: clamp(3.5rem, 11vw, 5.2rem);
+    opacity: .42;
   }
 }
 
@@ -446,6 +446,16 @@ main {
   .story-press[data-chapter]::after,
   .story-commitment[data-chapter]::after,
   .story-ask[data-chapter]::after {
-    display: none;
+    display: block;
+    top: 18px;
+    right: var(--space-page-x);
+    color: rgba(185, 85, 36, .68);
+    -webkit-text-stroke: 0;
+    font-family: var(--ui-face, ui-sans-serif, system-ui, sans-serif);
+    font-stretch: normal;
+    font-size: .86rem;
+    font-weight: 900;
+    line-height: 1;
+    opacity: 1;
   }
 }
