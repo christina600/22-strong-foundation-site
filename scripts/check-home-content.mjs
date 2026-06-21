@@ -193,11 +193,24 @@ function isLocalAssetPath(value) {
     && /\.[a-z0-9]+$/i.test(value);
 }
 
+// Guard against fill-in placeholders (e.g. [NUMBER OF PEOPLE SERVED]) shipping live.
+function validatePlaceholders(value, path = "home") {
+  if (typeof value === "string") {
+    const matches = value.match(/\[[A-Z][A-Z ]{3,}\]/g);
+    if (matches) for (const m of matches) addError(`Unfilled placeholder ${m} in ${path}`);
+  } else if (Array.isArray(value)) {
+    value.forEach((item, i) => validatePlaceholders(item, `${path}[${i}]`));
+  } else if (value && typeof value === "object") {
+    for (const [key, child] of Object.entries(value)) validatePlaceholders(child, `${path}.${key}`);
+  }
+}
+
 validateAudiences();
 validateServicePath();
 validateContact();
 validateFooter();
 validateStoryChapters();
+validatePlaceholders(home);
 validateLocalAssets(home);
 
 console.log("Checking homepage content references...\n");
