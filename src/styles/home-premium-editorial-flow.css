@@ -91,9 +91,7 @@ main {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background:
-    linear-gradient(90deg, transparent 0 calc(50% - 1px), rgba(185, 85, 36, .08) calc(50% - 1px) calc(50% + 1px), transparent calc(50% + 1px)),
-    linear-gradient(180deg, rgba(255, 253, 247, .62), rgba(244, 238, 226, .20));
+  background: linear-gradient(180deg, rgba(255, 253, 247, .62), rgba(244, 238, 226, .20));
 }
 
 .narrative-scene .about-inner {
@@ -115,7 +113,7 @@ main {
 }
 
 .narrative-scene--about {
-  padding-block: clamp(104px, 13vw, 168px);
+  padding-block: clamp(88px, 10vw, 132px);
   background: var(--story-warm-band);
 }
 
@@ -137,14 +135,14 @@ main {
 
 .narrative-scene--about .about-evidence {
   grid-template-columns: 1fr;
-  gap: clamp(30px, 5vw, 52px);
+  gap: clamp(24px, 4vw, 42px);
   margin-top: 0;
   padding-top: 0;
   border-top: 0;
 }
 
 .narrative-scene--about .about-evidence-stat {
-  padding-bottom: clamp(30px, 5vw, 48px);
+  padding-bottom: clamp(24px, 4vw, 38px);
   border-bottom: 1px solid var(--story-rule-soft);
 }
 
@@ -153,18 +151,25 @@ main {
   border-bottom: 0;
 }
 
+.narrative-scene--about .about-evidence-number {
+  font-size: clamp(4.6rem, 7vw, 6.4rem);
+}
+
+.narrative-scene--about .about-evidence-copy p {
+  max-width: 38ch;
+  font-size: clamp(1.1rem, 1.35vw, 1.24rem);
+  line-height: 1.58;
+}
+
 .narrative-scene--about .about-need {
   grid-column: 1 / -1;
-  width: min(100%, 820px);
-  margin: clamp(12px, 2vw, 28px) auto 0;
-  padding: clamp(26px, 4vw, 38px) clamp(26px, 5vw, 58px);
-  border: 1px solid rgba(32, 35, 31, .12);
+  width: min(100%, 760px);
+  margin: clamp(8px, 1.5vw, 18px) auto 0;
+  padding: clamp(8px, 1.8vw, 18px) 0 clamp(4px, 1vw, 10px) clamp(24px, 4vw, 36px);
+  border: 0;
   border-left: 3px solid rgba(185, 85, 36, .58);
-  background:
-    linear-gradient(180deg, rgba(255, 253, 247, .78), rgba(244, 238, 226, .54));
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, .74) inset,
-    0 18px 48px rgba(47, 35, 29, .07);
+  background: transparent;
+  box-shadow: none;
 }
 
 .narrative-scene--about .about-need p {
@@ -173,7 +178,7 @@ main {
 }
 
 .narrative-scene--story {
-  padding-block: clamp(104px, 13vw, 164px);
+  padding-block: clamp(76px, 9vw, 116px) clamp(54px, 6vw, 78px);
   background: var(--story-quiet-band);
 }
 
@@ -229,9 +234,10 @@ main {
   position: relative;
   max-width: none;
   margin: 0;
-  padding-block: clamp(94px, 12vw, 150px);
+  padding-block: clamp(54px, 7vw, 86px);
   background:
-    linear-gradient(180deg, rgba(255, 253, 247, .94), rgba(238, 231, 217, .74));
+    linear-gradient(180deg, rgba(255, 253, 247, .96), rgba(241, 234, 220, .86));
+  border-top: 1px solid rgba(32, 35, 31, .10);
 }
 
 .story-serve-intro .serve-intro {
@@ -241,7 +247,8 @@ main {
 
 .story-serve-intro h2 {
   position: relative;
-  max-width: 9ch;
+  max-width: 8.6ch;
+  margin-bottom: 0;
 }
 
 .story-serve-intro h2::after {
@@ -249,100 +256,208 @@ main {
   display: block;
   width: clamp(86px, 12vw, 150px);
   height: 2px;
-  margin-top: clamp(22px, 3vw, 34px);
+  margin-top: clamp(16px, 2vw, 24px);
   background: linear-gradient(90deg, var(--story-rule), rgba(185, 85, 36, 0));
 }
 
-.story-audience-gate {
-  border-top: 0;
-}
-
-.story-audience-gate + .story-audience-detail {
-  border-top: 0;
-}
-
-.story-audience-detail {
+.audience-chapter {
+  --audience-image: none;
   position: relative;
-  padding-block: clamp(102px, 13vw, 166px);
+  isolation: isolate;
+  max-width: none;
+  margin: 0;
+  padding: clamp(76px, 9vw, 118px) var(--space-page-x);
+  overflow: hidden;
+  border-top: 1px solid rgba(32, 35, 31, .10);
+  background:
+    linear-gradient(90deg, rgba(255, 253, 247, .97) 0%, rgba(255, 253, 247, .90) 48%, rgba(241, 234, 220, .84) 100%),
+    linear-gradient(180deg, rgba(255, 253, 247, .98), rgba(239, 232, 218, .82));
 }
 
-.story-audience-detail::before {
+.audience-chapter::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 50%;
-  width: 1px;
-  height: clamp(48px, 7vw, 88px);
-  background: linear-gradient(180deg, rgba(185, 85, 36, .48), rgba(185, 85, 36, 0));
-  transform: translateX(-50%);
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background: var(--audience-image) center / cover no-repeat;
+  filter: grayscale(.15) saturate(.82);
+  opacity: .14;
 }
 
-.story-audience-detail .serve-copy {
-  padding-left: clamp(22px, 3vw, 34px);
+.audience-chapter::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(185, 85, 36, .18) 0 3px, transparent 3px 100%) max(var(--space-page-x), calc((100vw - var(--max)) / 2)) 0 / 3px 100% no-repeat,
+    linear-gradient(180deg, rgba(255, 253, 247, .58), rgba(255, 253, 247, .24));
 }
 
-.story-audience-detail .serve-copy .lead {
-  font-size: clamp(2.05rem, 3.8vw, 3.4rem);
-  line-height: .98;
+.audience-chapter#serve-veterans {
+  --audience-image: url("/images/stock-veteran-section-21-9.webp");
 }
 
-.story-audience-detail .serve-stats {
-  max-width: 920px;
+.audience-chapter#serve-athletes {
+  --audience-image: url("/images/stock-student-athlete-section-21-9.webp");
 }
 
-.story-audience-detail .serve-stats .proof-stat:first-child {
-  padding-top: 0;
+.audience-chapter-inner,
+.audience-voices {
+  width: min(var(--max), 100%);
+  margin-inline: auto;
 }
 
-.story-audience-proof {
-  padding-block: clamp(80px, 11vw, 136px);
+.audience-chapter-inner {
+  display: grid;
+  grid-template-columns: minmax(280px, .78fr) minmax(0, 1.22fr);
+  gap: clamp(42px, 6vw, 84px);
+  align-items: center;
 }
 
-.veteran-proof .veteran-voices--with-video .vv-grid {
+.audience-copy {
+  display: grid;
+  gap: clamp(22px, 3vw, 34px);
+  max-width: 590px;
+  padding-left: clamp(24px, 3vw, 36px);
+  border-left: 3px solid rgba(185, 85, 36, .54);
+}
+
+.audience-kicker {
+  width: fit-content;
+  color: var(--mission-orange, #b95524);
+  font-family: var(--ui-face, ui-sans-serif, system-ui, sans-serif);
+  font-size: var(--fs-meta, 1rem);
+  font-weight: 850;
+  line-height: 1.2;
+}
+
+.audience-copy .lead {
+  max-width: 13ch;
+  margin-bottom: clamp(16px, 2vw, 22px);
+  color: var(--ink);
+  font-size: clamp(2.35rem, 4.1vw, 4rem);
+  line-height: 1.02;
+}
+
+.audience-copy p:not(.lead) {
+  max-width: 40ch;
+  margin: 0;
+  color: rgba(32, 35, 31, .78);
+  font-size: clamp(1.08rem, 1.4vw, 1.26rem);
+  line-height: 1.62;
+}
+
+.audience-chapter .serve-stats {
+  display: grid;
+  gap: clamp(22px, 3vw, 34px);
+  max-width: 760px;
+}
+
+.audience-chapter .serve-stats .proof-stat,
+.audience-chapter .serve-stats .proof-stat.light {
+  padding: 0;
+}
+
+.audience-chapter .serve-stats .proof-stat + .proof-stat {
+  padding-top: clamp(22px, 3vw, 34px);
+}
+
+.audience-chapter .serve-stats .proof-stat-inner {
+  display: grid;
+  grid-template-columns: minmax(130px, max-content) minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 54px);
   align-items: start;
+}
+
+.audience-chapter .serve-stats .proof-stat-number,
+.audience-chapter .serve-stats .proof-stat.light .proof-stat-number {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  color: var(--orange-dark);
+  font-size: clamp(4.1rem, 7vw, 6.5rem);
+  line-height: .88;
+  text-align: left;
+}
+
+.audience-chapter .serve-stats.one-up .proof-stat-number {
+  font-size: clamp(3.8rem, 6.5vw, 5.8rem);
+}
+
+.audience-chapter .serve-stats .proof-stat-text,
+.audience-chapter .serve-stats .proof-stat.light .proof-stat-text {
+  grid-column: 2;
+  display: grid;
+  gap: clamp(14px, 1.5vw, 18px);
+  max-width: 43rem;
+  padding-top: .38rem;
+}
+
+.audience-chapter .serve-stats .proof-stat p,
+.audience-chapter .serve-stats .proof-stat.light p {
+  max-width: 44ch;
+  font-size: clamp(1.12rem, 1.35vw, 1.28rem);
+  line-height: 1.56;
+}
+
+.audience-chapter .serve-stats .proof-stat:nth-child(even) {
+  padding-left: clamp(42px, 8vw, 110px);
+}
+
+.audience-chapter .serve-stats .proof-stat:nth-child(even)::before {
+  left: clamp(42px, 8vw, 110px);
+}
+
+.audience-voices {
+  margin-top: clamp(52px, 7vw, 88px);
+}
+
+.audience-voices .veteran-voices {
+  padding-block: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.audience-voices .vv-head {
+  padding-inline: 0;
+}
+
+.audience-voices .vv-grid {
+  padding-inline: 0;
 }
 
 @media (min-width: 980px) {
   .veteran-proof .veteran-voices--with-video .vv-grid {
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: clamp(22px, 3vw, 34px);
+    gap: clamp(24px, 3vw, 38px);
+    align-items: start;
   }
 
   .veteran-proof .vv-card--video {
-    grid-column: 1 / span 5;
+    grid-column: 1 / span 4;
     grid-template-columns: 1fr;
-    position: sticky;
-    top: calc(var(--story-offset, 82px) + 34px);
   }
 
-  .veteran-proof .vv-card:not(.vv-card--video) {
-    grid-column: 6 / -1;
+  .veteran-proof .vv-card--with-photo {
+    grid-column: 5 / -1;
+    grid-template-columns: minmax(240px, .43fr) minmax(0, .57fr);
   }
 
-  .veteran-proof .vv-card:not(.vv-card--video):nth-child(2) {
-    margin-top: clamp(58px, 8vw, 112px);
-  }
-
-  .veteran-proof .vv-card.is-pending {
+  .veteran-proof .vv-card--text-only {
     grid-column: span 4;
-    min-height: 100%;
+  }
+
+  .veteran-proof .vv-card--text-only .vv-body {
+    min-height: clamp(260px, 22vw, 330px);
   }
 }
 
-.story-audience-proof:not(.veteran-proof) .veteran-voices {
-  background:
-    linear-gradient(180deg, rgba(255, 253, 247, .98), rgba(244, 238, 226, .84));
-}
-
-.story-audience-proof:not(.veteran-proof) .vv-grid {
+.story-audience-chapter:not(.veteran-proof) .vv-grid {
   max-width: 1040px;
-}
-
-.story-audience-proof:not(.veteran-proof) .vv-card {
-  border-radius: 0;
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, .72) inset,
-    0 22px 58px rgba(47, 35, 29, .10);
+  grid-template-columns: 1fr;
 }
 
 .story-path {
@@ -387,6 +502,10 @@ main {
     grid-template-columns: 1fr;
   }
 
+  .audience-chapter-inner {
+    grid-template-columns: 1fr;
+  }
+
   .narrative-scene--about .about-intro,
   .narrative-scene--story .about-intro {
     position: relative;
@@ -399,6 +518,10 @@ main {
 
   .narrative-scene--story .about-intro h2 {
     max-width: 12ch;
+  }
+
+  .audience-copy .lead {
+    max-width: 16ch;
   }
 
   .narrative-scene[data-chapter]::after,
@@ -415,17 +538,24 @@ main {
 }
 
 @media (max-width: 720px) {
-  .story-proofline::after,
-  .story-audience-detail::before {
+  .story-proofline::after {
     display: none;
   }
 
   .narrative-scene--about,
   .narrative-scene--story,
-  .story-serve-intro,
-  .story-audience-detail,
-  .story-audience-proof {
+  .story-serve-intro {
     padding-block: clamp(72px, 16vw, 96px);
+  }
+
+  .audience-chapter {
+    padding-block: 58px;
+  }
+
+  .audience-chapter::after {
+    background:
+      linear-gradient(90deg, rgba(185, 85, 36, .16) 0 2px, transparent 2px 100%) var(--space-page-x) 0 / 2px 100% no-repeat,
+      linear-gradient(180deg, rgba(255, 253, 247, .68), rgba(255, 253, 247, .28));
   }
 
   .narrative-scene--about .about-need {
@@ -436,8 +566,46 @@ main {
     padding-left: 20px;
   }
 
-  .story-audience-detail .serve-copy .lead {
-    font-size: clamp(1.85rem, 9vw, 2.7rem);
+  .audience-copy {
+    padding-left: 20px;
+  }
+
+  .audience-copy .lead {
+    max-width: 14ch;
+    font-size: clamp(2rem, 10vw, 2.9rem);
+  }
+
+  .audience-chapter .serve-stats .proof-stat-inner,
+  .audience-chapter .serve-stats .proof-stat:nth-child(even) .proof-stat-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .audience-chapter .serve-stats .proof-stat:nth-child(even) {
+    padding-left: 0;
+  }
+
+  .audience-chapter .serve-stats .proof-stat:nth-child(even)::before {
+    left: 0;
+  }
+
+  .audience-chapter .serve-stats .proof-stat-number,
+  .audience-chapter .serve-stats .proof-stat.light .proof-stat-number,
+  .audience-chapter .serve-stats.one-up .proof-stat-number {
+    grid-column: 1;
+    grid-row: auto;
+    font-size: clamp(3.35rem, 18vw, 5.2rem);
+  }
+
+  .audience-chapter .serve-stats .proof-stat-text,
+  .audience-chapter .serve-stats .proof-stat.light .proof-stat-text {
+    grid-column: 1;
+    padding-top: 0;
+  }
+
+  .story-serve-intro {
+    padding-block: 48px;
   }
 
   .narrative-scene[data-chapter]::after,

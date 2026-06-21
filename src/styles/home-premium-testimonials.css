@@ -1,7 +1,4 @@
 /* Premium testimonial refinements. */
-.serve-proof {
-  background: linear-gradient(180deg, rgba(248, 244, 235, .30), rgba(248, 244, 235, .74));
-}
 
 blockquote {
   max-width: 13ch;

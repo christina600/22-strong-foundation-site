@@ -158,47 +158,6 @@ html {
     margin-left: 34px;
   }
 
-  .serve-group {
-    min-height: clamp(560px, 74svh, 790px);
-  }
-
-  .serve-detail {
-    min-height: clamp(560px, 76vh, 800px);
-    display: grid;
-    align-items: center;
-  }
-
-  .serve-detail-inner {
-    position: relative;
-  }
-
-  .serve-detail-inner::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: -28px;
-    width: 2px;
-    background: linear-gradient(180deg, rgba(185, 85, 36, .70), rgba(70, 87, 70, .20));
-  }
-
-  .serve-copy::before {
-    content: "";
-    position: absolute;
-    top: 4px;
-    left: -8px;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: var(--mission-orange);
-    box-shadow: 0 0 0 8px rgba(185, 85, 36, .12);
-  }
-
-  .serve-proof {
-    min-height: clamp(540px, 74vh, 820px);
-    display: grid;
-    align-items: center;
-  }
 }
 
 @media (max-width: 920px) {
@@ -227,17 +186,12 @@ html {
 }
 
 @media (min-width: 921px) {
-  .serve-detail-inner,
   .donate-wrap,
   .contact .split {
     align-items: start;
   }
 
-  .serve-group-head::before {
-    display: none;
-  }
-
-  .serve-copy,
+  .audience-copy,
   .donate-wrap > div:first-child,
   .contact .split > div:first-child {
     position: sticky;
@@ -268,13 +222,13 @@ html {
       animation-range: entry 6% cover 48%;
     }
 
-    .serve-detail .proof-stat {
+    .audience-chapter .serve-stats .proof-stat {
       animation: story-stat-rise both cubic-bezier(.22, .61, .36, 1);
       animation-timeline: view();
       animation-range: entry 8% cover 32%;
     }
 
-    .serve-copy {
+    .audience-copy {
       animation: story-copy-lock both ease-out;
       animation-timeline: view();
       animation-range: entry 0% cover 38%;
@@ -317,7 +271,7 @@ html {
 @media (prefers-reduced-motion: reduce) {
   .story-beat,
   .serve-stats .proof-stat,
-  .serve-copy,
+  .audience-copy,
   .how-it-works .steps::before {
     animation: none !important;
     transition: none !important;

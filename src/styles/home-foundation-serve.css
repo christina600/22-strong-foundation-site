@@ -1,24 +1,4 @@
-/* Foundation serve and testimonial sections. */
-/* Per-group "Who we serve" photo headers are followed by their own
-   detail, stat, and testimonial sections. */
-.serve-group {
-  max-width: none;
-  margin: 0;
-  padding: var(--space-story-y) var(--space-page-x) var(--space-section-y-tight);
-}
-
-.serve-group-head {
-  max-width: var(--max);
-  margin: 0 auto;
-}
-.serve-group-head h2 {
-  margin-bottom: 20px;
-}
-.serve-proof {
-  max-width: none;
-  margin: 0;
-  padding: var(--space-section-y-tight) var(--space-page-x) var(--space-section-y);
-}
+/* Foundation testimonial styles. */
 
 blockquote {
   margin: 0;

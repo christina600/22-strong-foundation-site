@@ -8,7 +8,16 @@ interface Props {
 
 const { video, voice } = Astro.props;
 const titleParts = voice?.title ? voice.title.split(" · ") : [];
-const isPending = voice && (!voice.photo || !voice.quote);
+const hasPhoto = Boolean(voice?.photo);
+const hasQuote = Boolean(voice?.quote);
+const isPending = voice && !hasQuote;
+const showPhotoPanel = hasPhoto || isPending;
+const voiceCardClass = [
+  "vv-card",
+  hasPhoto ? "vv-card--with-photo" : "vv-card--text-only",
+  voice?.sample ? "is-sample" : "",
+  isPending ? "is-pending" : ""
+].filter(Boolean).join(" ");
 const initials = voice?.initials ?? voice?.name
   .split(/\s+/)
   .filter(Boolean)
@@ -59,12 +68,14 @@ const imageHeight = voice?.imageHeight ?? 800;
 )}
 
 {voice && (
-  <article class={`vv-card${isPending ? " is-pending" : ""}`} data-reveal>
-    <div class="vv-photo">
-      {voice.photo
-        ? <img src={voice.photo} alt={voice.photoAlt ?? voice.name} width={imageWidth} height={imageHeight} loading="lazy" decoding="async" />
-        : <div class="vv-photo-ph"><span>{initials}</span><small>Photo coming soon</small></div>}
-    </div>
+  <article class={voiceCardClass} data-reveal>
+    {showPhotoPanel && (
+      <div class="vv-photo">
+        {voice.photo
+          ? <img src={voice.photo} alt={voice.photoAlt ?? voice.name} width={imageWidth} height={imageHeight} loading="lazy" decoding="async" />
+          : <div class="vv-photo-ph"><span>{initials}</span><small>Photo coming soon</small></div>}
+      </div>
+    )}
     <div class="vv-body">
       {voice.sample && <span class="vv-sample">Sample testimonial</span>}
       {voice.quote

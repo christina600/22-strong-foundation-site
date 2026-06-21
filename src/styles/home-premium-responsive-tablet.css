@@ -54,8 +54,7 @@
   .hero-inner > *,
   .donate-wrap > *,
   .strong-circle-wrap > *,
-  .contact .split > *,
-  .serve-detail-inner > * {
+  .contact .split > * {
     min-width: 0;
   }
 
@@ -68,57 +67,6 @@
     width: min(100%, 440px);
   }
 
-  #serve-veterans,
-  #serve-athletes {
-    min-height: min(600px, calc(82svh - 70px));
-    padding-block: var(--space-story-y);
-    background:
-      linear-gradient(180deg, rgba(12, 16, 13, .04) 0%, rgba(12, 16, 13, .16) 34%, rgba(12, 16, 13, .88) 72%, rgba(12, 16, 13, .97) 100%),
-      var(--serve-image, none) center top / cover no-repeat;
-  }
-
-  #serve-veterans {
-    background:
-      linear-gradient(180deg, rgba(12, 16, 13, .08) 0%, rgba(12, 16, 13, .18) 34%, rgba(12, 16, 13, .88) 72%, rgba(12, 16, 13, .97) 100%),
-      linear-gradient(90deg, rgba(12, 16, 13, .04) 0%, rgba(12, 16, 13, .14) 46%, rgba(12, 16, 13, .68) 100%),
-      var(--serve-image, none) 25% top / cover no-repeat;
-  }
-
-  #serve-athletes {
-    background:
-      linear-gradient(180deg, rgba(12, 16, 13, .06) 0%, rgba(12, 16, 13, .18) 38%, rgba(12, 16, 13, .92) 78%, rgba(12, 16, 13, .96) 100%),
-      linear-gradient(90deg, rgba(12, 16, 13, .62) 0%, rgba(12, 16, 13, .28) 54%, rgba(12, 16, 13, .06) 100%),
-      var(--serve-image, none) 68% top / cover no-repeat;
-  }
-
-  #serve-veterans .serve-group-head,
-  #serve-athletes .serve-group-head {
-    grid-template-columns: 1fr;
-    gap: 10px;
-    align-content: end;
-  }
-
-  #serve-veterans .serve-group-head {
-    justify-items: end;
-  }
-
-  #serve-veterans .serve-group-head > * {
-    width: min(100%, 34ch);
-  }
-
-  #serve-veterans .serve-group-head > *,
-  #serve-athletes .serve-group-head > * {
-    grid-column: auto;
-  }
-
-  #serve-veterans .serve-group-head h2,
-  #serve-athletes .serve-group-head h2 {
-    max-width: 7.6ch;
-    font-size: var(--fs-serve-title);
-    line-height: var(--lh-hero);
-  }
-
-  .serve-group::after,
   .circle-panel::before {
     inset: 18px;
   }

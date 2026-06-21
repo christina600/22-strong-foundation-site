@@ -25,7 +25,7 @@
 
 .js .hero-copy[data-reveal],
 .js .how-story-copy[data-reveal],
-.js .serve-copy[data-reveal] {
+.js .audience-copy[data-reveal] {
   transform: translate3d(0, 24px, 0) scale(.99);
 }
 
@@ -59,7 +59,7 @@
   .js [data-reveal].is-visible,
   .js .hero-copy[data-reveal],
   .js .how-story-copy[data-reveal],
-  .js .serve-copy[data-reveal],
+  .js .audience-copy[data-reveal],
   .js .proof-stat[data-reveal] .proof-stat-number,
   .js .proof-stat[data-reveal].is-visible .proof-stat-number {
     opacity: 1 !important;
@@ -77,7 +77,7 @@
   .js [data-reveal],
   .js .hero-copy[data-reveal],
   .js .how-story-copy[data-reveal],
-  .js .serve-copy[data-reveal] {
+  .js .audience-copy[data-reveal] {
     transform: translate3d(0, 12px, 0) scale(.997);
     transition-duration: .48s, .58s;
   }

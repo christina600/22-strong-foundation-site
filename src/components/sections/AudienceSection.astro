@@ -24,30 +24,29 @@ const preparedGroups = groups.map((group) => ({
 </section>
 
 {preparedGroups.map((group) => (
-  <>
-    <section class="serve-group story-audience-gate" id={group.id}>
-      <div class="serve-group-head" data-reveal>
-        <h2>{group.heading}</h2>
-      </div>
-    </section>
-
-    <section class="serve-detail story-audience-detail" aria-label={group.detailAriaLabel}>
-      <div class="serve-detail-inner">
-        <div class="serve-copy" data-reveal>
+  <section
+    class={`audience-chapter story-audience-chapter${group.proofClass ? ` ${group.proofClass}` : ""}`}
+    id={group.id}
+    aria-label={group.detailAriaLabel}
+  >
+    <div class="audience-chapter-inner">
+      <div class="audience-copy" data-reveal>
+        <span class="audience-kicker">{group.heading}</span>
+        <div>
           <p class="lead">{group.lead}</p>
           <p>{group.body}</p>
         </div>
-
-        {group.hasStats && (
-          <div class={`serve-stats${group.statsClass ? ` ${group.statsClass}` : ""}`} role="list">
-            {group.stats.map((stat) => <EvidenceStat stat={stat} variant="proof" reveal />)}
-          </div>
-        )}
       </div>
-    </section>
+
+      {group.hasStats && (
+        <div class={`serve-stats${group.statsClass ? ` ${group.statsClass}` : ""}`} role="list">
+          {group.stats.map((stat) => <EvidenceStat stat={stat} variant="proof" reveal />)}
+        </div>
+      )}
+    </div>
 
     {group.hasVoices && (
-      <section class={`serve-proof story-audience-proof${group.proofClass ? ` ${group.proofClass}` : ""}`}>
+      <div class="audience-voices">
         <div
           class={`veteran-voices${group.video ? " veteran-voices--with-video" : ""}`}
           id={group.voicesId}
@@ -61,7 +60,7 @@ const preparedGroups = groups.map((group) => ({
             {group.voices.map((voice) => <VoiceCard voice={voice} />)}
           </div>
         </div>
-      </section>
+      </div>
     )}
-  </>
+  </section>
 ))}

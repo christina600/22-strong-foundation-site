@@ -196,63 +196,6 @@ form,
   background: linear-gradient(180deg, var(--field-olive), var(--mission-orange));
 }
 
-.serve-group::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  opacity: .74;
-  background:
-    repeating-linear-gradient(90deg, transparent 0 42px, rgba(255, 250, 240, .10) 42px 43px, transparent 43px 88px),
-    linear-gradient(90deg, transparent, rgba(185, 85, 36, .14), transparent),
-    var(--field-canvas),
-    var(--field-scuffs),
-    var(--field-sand);
-  background-size: auto, auto, 26px 26px, 26px 26px, auto, auto, auto, 140px 124px, 140px 124px, 140px 124px, auto;
-  mix-blend-mode: soft-light;
-}
-
-.serve-group::after {
-  border-color: rgba(255, 250, 240, .30);
-  box-shadow:
-    0 0 0 1px rgba(17, 22, 16, .22),
-    inset 0 0 0 1px rgba(17, 22, 16, .20);
-}
-
-.serve-group-head::before {
-  width: fit-content;
-  margin-bottom: 12px;
-  padding: 7px 10px;
-  border: 1px solid rgba(255, 250, 240, .24);
-  border-radius: 999px;
-  background: rgba(17, 22, 16, .34);
-  color: rgba(255, 250, 240, .82);
-  font: 800 var(--fs-ui-micro)/1 var(--ui-face);
-}
-
-#serve-veterans .serve-group-head::before { content: "Care path 01"; }
-#serve-athletes .serve-group-head::before { content: "Care path 02"; }
-.serve-group-head h2::after {
-  content: "";
-  display: block;
-  width: min(180px, 52%);
-  height: 4px;
-  margin-top: 16px;
-  background: linear-gradient(90deg, var(--mission-orange), rgba(255, 250, 240, .26), transparent);
-}
-
-.serve-detail {
-  background:
-    var(--map-contours),
-    linear-gradient(180deg, rgba(255, 253, 247, .98), rgba(241, 235, 222, .90)),
-    linear-gradient(90deg, rgba(70, 87, 70, .08), transparent 42%, rgba(185, 85, 36, .055));
-}
-
-.serve-copy {
-  border-left-color: rgba(185, 85, 36, .62);
-}
-
 .serve-stats .proof-stat,
 .proof-stat {
   background:
@@ -407,10 +350,6 @@ footer {
       linear-gradient(180deg, transparent 0%, rgba(17, 22, 16, .16) 56%, rgba(17, 22, 16, .68) 100%),
       var(--field-sand),
       var(--field-canvas);
-  }
-
-  .serve-group-head::before {
-    font-size: var(--fs-ui-micro);
   }
 
   .circle-number {
