@@ -1,0 +1,34 @@
+/* "Who we are" — foundation styling for the #about origin-story section. */
+.about-section {
+  position: relative;
+  padding: var(--space-section-y, 88px) var(--space-page-x, 28px);
+  border-top: 1px solid var(--line, rgba(32, 35, 31, .1));
+  background: linear-gradient(180deg, rgba(255, 253, 247, .62), rgba(248, 244, 235, .20));
+}
+
+.about-inner {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.about-intro {
+  max-width: 720px;
+}
+
+.about-intro h2 {
+  margin: 14px 0 16px;
+}
+
+.about-story {
+  margin-top: clamp(22px, 3vw, 34px);
+  display: grid;
+  gap: 16px;
+  max-width: 64ch;
+}
+
+.about-story p {
+  margin: 0;
+  line-height: var(--lh-copy, 1.62);
+  color: rgba(32, 35, 31, .82);
+  text-wrap: pretty;
+}

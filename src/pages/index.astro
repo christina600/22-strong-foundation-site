@@ -17,7 +17,7 @@ import home from "../content/home.json";
       <nav class="nav" aria-label="Main navigation">
         <a class="brand" href="#top">22 Strong Foundation</a>
         <div class="nav-links" aria-label="Section navigation">
-          <a href="#leadership">About</a>
+          <a href="#about">About</a>
           <a href="#how-it-works">How it works</a>
           <a href="#serve">Who we serve</a>
           <a href="#strong-circle">Strong Circle</a>
@@ -137,13 +137,26 @@ import home from "../content/home.json";
         </div>
       </section>
 
+      <!-- WHO WE ARE -->
+      <section class="about-section" id="about">
+        <div class="about-inner">
+          <div class="about-intro" data-reveal>
+            <span class="eyebrow">{home.about.eyebrow}</span>
+            <h2>{home.about.heading}</h2>
+            <p class="lead">{home.about.lead}</p>
+          </div>
+          <div class="about-story" data-reveal>
+            {home.about.paragraphs.map((para) => <p>{para}</p>)}
+          </div>
+        </div>
+      </section>
+
       <!-- 4. WHO WE SERVE — split by group, each with its own proof.
            Stat bands and testimonials live with the group they describe.
            Add new stats/testimonials inside the matching group below. -->
       <section id="serve">
         <div class="serve-intro">
-          <h2 data-reveal>Specialized recovery care for people whose next appointment is at risk.</h2>
-          <p class="lead" data-reveal>22 Strong focuses on people with a real recovery need and a practical access gap: cost, coverage, timing, or the right connection to care.</p>
+          <h2 data-reveal>Who we serve</h2>
         </div>
       </section>
 

@@ -17,6 +17,7 @@ const TRACKED_SECTIONS = [
   "top",
   "how-it-works",
   "featured",
+  "about",
   "serve",
   "serve-veterans",
   "veteran-voices",
