@@ -16,6 +16,7 @@ export interface PersonVoiceContent {
   name: string;
   title?: string;
   quote?: string;
+  sample?: boolean;
   story?: string;
   photo?: string;
   photoAlt?: string;

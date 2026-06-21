@@ -178,6 +178,21 @@
   padding: clamp(24px, 3vw, 34px) clamp(26px, 3vw, 38px);
 }
 
+.vv-sample {
+  align-self: flex-start;
+  margin-bottom: 14px;
+  padding: 4px 10px;
+  border: 1px solid rgba(185, 85, 36, .38);
+  border-radius: 999px;
+  background: rgba(185, 85, 36, .08);
+  color: var(--mission-orange, #b95524);
+  font-family: var(--ui-face);
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
 .vv-quote {
   margin: 0 0 18px;
   font-family: var(--ui-face);

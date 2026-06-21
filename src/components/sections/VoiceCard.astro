@@ -66,6 +66,7 @@ const imageHeight = voice?.imageHeight ?? 800;
         : <div class="vv-photo-ph"><span>{initials}</span><small>Photo coming soon</small></div>}
     </div>
     <div class="vv-body">
+      {voice.sample && <span class="vv-sample">Sample testimonial</span>}
       {voice.quote
         ? <blockquote class="vv-quote">{voice.quote}</blockquote>
         : <p class="vv-soon">Testimonial coming soon</p>}

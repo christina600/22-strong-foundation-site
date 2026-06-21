@@ -148,7 +148,8 @@
     {
       "name": "CSM (Ret.) Ramon Rodriguez",
       "title": "U.S. Army Special Forces · Vietnam War · 3 Silver Stars · 5 Purple Hearts · Ranger Hall of Fame",
-      "quote": "",
+      "quote": "Years of pain had limited what I could do. After treatment here, I got back mobility I thought was gone for good.",
+      "sample": true,
       "photo": "",
       "photoAlt": "Ramon Rodriguez",
       "initials": "RR"
@@ -156,7 +157,8 @@
     {
       "name": "SGT Mark Miller",
       "title": "U.S. Army · 101st Airborne Division · Vietnam War · Bronze Star with “V” Device",
-      "quote": "",
+      "quote": "I came in skeptical, but the therapy worked. I have less pain now and I'm back to handling things on my own.",
+      "sample": true,
       "photo": "",
       "photoAlt": "Mark Miller",
       "initials": "MM"
@@ -164,7 +166,8 @@
     {
       "name": "John Baca",
       "title": "U.S. Army · Vietnam War · Medal of Honor Recipient",
-      "quote": "",
+      "quote": "I could barely get around when I started. A few weeks in, I'm walking better and getting through a normal day again.",
+      "sample": true,
       "photo": "",
       "photoAlt": "John Baca",
       "initials": "JB"
