@@ -187,14 +187,12 @@ header {
 .step,
 .card,
 form,
-.goal-panel,
-.mini-item {
+.goal-panel {
   position: relative;
   border-color: rgba(53, 70, 50, .16);
 }
 
-.step::before,
-.mini-item::before {
+.step::before {
   background: linear-gradient(180deg, var(--field-olive), var(--mission-orange));
 }
 

@@ -112,28 +112,26 @@
   ],
   "strongCircle": {
     "heading": "Monthly support that keeps care moving.",
-    "lead": "The Strong Circle is the monthly giving community that helps 22 Strong plan care before a recovery gap turns into a stopped plan.",
+    "lead": "The Strong Circle is the monthly giving community that funds care before a recovery gap becomes a stopped plan.",
     "amount": "$22",
     "subhead": "A steady $22 helps us say yes faster",
-    "copy": "One-time gifts open the door. Monthly gifts create the reliable base behind the next appointment.",
     "joinLabel": "Join the Strong Circle",
     "giveOnceLabel": "Give once",
-    "cardTitle": "Build the monthly base behind future recovery plans.",
+    "cardTitle": "What a monthly gift makes possible.",
     "cardBody": "Recurring gifts help 22 Strong plan ahead for people referred by providers, coaches, veterans, and community partners.",
     "mathRows": [
       { "label": "Monthly giving", "value": "$22/mo" },
+      { "label": "Across a year", "value": "$264" },
       { "label": "Current goal", "value": "$22,000" }
     ],
-    "miniTitle": "Make care predictable",
-    "miniBody": "A monthly gift gives the foundation a steadier way to fund care beyond the first appointment.",
     "modal": {
       "eyebrow": "Monthly giving circle",
       "heading": "Join the Strong Circle.",
       "amountValue": "$22",
       "amountPeriod": "/month",
-      "lead": "A steady monthly gift gives 22 Strong a reliable base for appointments, follow-through, and urgent care gaps before someone has to ask twice.",
+      "lead": "A steady monthly gift gives 22 Strong a reliable base for appointments and follow-through — not just the first visit.",
       "proof": [
-        { "label": "Steady support", "value": "Funds care beyond intake and the first visit." },
+        { "label": "Steady support", "value": "Funds care beyond the first visit." },
         { "label": "Simple commitment", "value": "$264 across the year." }
       ],
       "joinLabel": "Start $22/month →",

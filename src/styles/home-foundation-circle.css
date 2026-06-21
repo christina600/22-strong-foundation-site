@@ -55,10 +55,6 @@
   margin: 30px 0 10px;
 }
 
-.circle-copy-tight {
-  margin-bottom: 0;
-}
-
 .circle-card-title {
   font-size: var(--fs-circle-card-title);
 }
@@ -93,27 +89,10 @@
   margin-top: 34px;
 }
 
-.mini-list {
-  display: grid;
-  gap: 16px;
-  margin-top: 34px;
-}
-
-.mini-item {
-  padding: 20px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: rgba(255,253,248,.72);
-}
-
-.mini-item h3 {
-  margin-bottom: 6px;
-}
-
-.mini-item p {
-  margin: 0;
-  font-size: var(--fs-copy-small);
-  line-height: var(--lh-lead);
+/* The right card holds less than the dark panel, so let it size to its
+   content and top-align instead of stretching into empty space. */
+.strong-circle-wrap > .card {
+  align-self: start;
 }
 
 /* The .card in the Strong Circle uses a light background, so the
