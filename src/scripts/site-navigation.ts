@@ -15,15 +15,15 @@ const ACTIVE_LINK_SELECTOR = 'header nav a[href^="#"], footer .links a[href^="#"
 const HASH_SYNC_DELAYS = [220, 900];
 const TRACKED_SECTIONS = [
   "top",
-  "how-it-works",
-  "featured",
   "about",
   "serve",
   "serve-veterans",
   "veteran-voices",
   "serve-athletes",
-  "strong-circle",
+  "how-it-works",
+  "featured",
   "leadership",
+  "strong-circle",
   "donate",
   "contact"
 ];

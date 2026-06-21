@@ -18,8 +18,8 @@ import home from "../content/home.json";
         <a class="brand" href="#top">22 Strong Foundation</a>
         <div class="nav-links" aria-label="Section navigation">
           <a href="#about">About</a>
-          <a href="#how-it-works">How it works</a>
           <a href="#serve">Who we serve</a>
+          <a href="#how-it-works">How it works</a>
           <a href="#strong-circle">Strong Circle</a>
         </div>
         <div class="nav-actions">
@@ -54,90 +54,7 @@ import home from "../content/home.json";
         </ul>
       </section>
 
-      <!-- 2. HOW 22 STRONG WORKS -->
-      <section class="how-it-works" id="how-it-works">
-        <div class="how-story-copy" data-reveal>
-          <div class="eyebrow">How 22 Strong works</div>
-          <h2>A recovery gap appears.<br />22 Strong helps close it.</h2>
-          <p class="story-kicker">The story is not complicated: someone has a real recovery plan, the next appointment becomes uncertain, and donor funding keeps the care moving.</p>
-        </div>
-
-        <div class="steps" role="list" aria-label="22 Strong care funding path">
-          <div class="step story-beat" role="listitem" data-reveal>
-            <span class="step-number">1</span>
-            <h3>Referral or request</h3>
-            <p>Referrals come from the VA, veteran networks, coaches, school counselors, and local community organizations.</p>
-          </div>
-          <div class="step story-beat" role="listitem" data-reveal>
-            <span class="step-number">2</span>
-            <h3>We evaluate the gap</h3>
-            <p>22 Strong reviews the situation. If coverage has run out, private care is out of reach, or the right connections aren&rsquo;t there &mdash; we step in.</p>
-          </div>
-          <div class="step story-beat" role="listitem" data-reveal>
-            <span class="step-number">3</span>
-            <h3>Care is funded</h3>
-            <p>Gifts cover recovery sessions directly, at no cost to the person receiving care.</p>
-          </div>
-        </div>
-
-        <div class="funding-covers story-beat" data-reveal>
-          <div>
-            <span class="eyebrow">What gifts cover</span>
-            <h3>Appointments, not abstractions.</h3>
-            <p>Funding supports practical recovery care for people with a clear need and a real access gap.</p>
-          </div>
-
-          <ul>
-            <li>
-              <strong>Hands-on recovery sessions</strong>
-              <span>Chiropractic, physical therapy, and massage therapy.</span>
-            </li>
-            <li>
-              <strong>Follow-through after the first visit</strong>
-              <span>Help staying with care long enough for recovery to keep moving.</span>
-            </li>
-            <li>
-              <strong>Provider and partner referrals</strong>
-              <span>A path for veterans, families, and neighbors who are already trying to get well.</span>
-            </li>
-          </ul>
-        </div>
-
-        <p class="how-note" data-reveal>Care is currently provided through Next Level Fitness &amp; Wellness Center in Newport Beach &mdash; high-level sports medicine, including Fascial Integrative Treatment (FIT). It treats injuries like rotator cuff, knee, neck, lower back, hip, ankle/foot, and wrist/elbow pain. As donor support grows, 22 Strong can expand toward a network of vetted providers across Southern California.</p>
-      </section>
-
-      <!-- 3. AS FEATURED IN -->
-      <section class="featured" id="featured" aria-labelledby="featured-title">
-        <div class="featured-inner" data-reveal>
-          <h2 class="featured-title" id="featured-title">As Featured In</h2>
-          <ul class="featured-publications" aria-label="Featured publications">
-            {home.press.publications.map((publication) => (
-              <li>
-                <a
-                  class="featured-sheet"
-                  href={publication.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={publication.ariaLabel}
-                >
-                  <img
-                    class="featured-logo-img"
-                    src={publication.logo}
-                    alt={publication.logoAlt}
-                    width="760"
-                    height="194"
-                    loading="lazy"
-                    decoding="async"
-                    fetchpriority="low"
-                  />
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <!-- WHO WE ARE -->
+      <!-- 2. WHO WE ARE -->
       <section class="about-section" id="about">
         <div class="about-inner">
           <div class="about-intro" data-reveal>
@@ -151,7 +68,7 @@ import home from "../content/home.json";
         </div>
       </section>
 
-      <!-- 4. WHO WE SERVE — split by group, each with its own proof.
+      <!-- 3. WHO WE SERVE — split by group, each with its own proof.
            Stat bands and testimonials live with the group they describe.
            Add new stats/testimonials inside the matching group below. -->
       <section id="serve">
@@ -310,7 +227,112 @@ import home from "../content/home.json";
           - Keep verbiage: "A funding path for people referred by trusted providers and partners when recovery is stalled by access or cost."
           - Stats remain in home.json `stats.others` ($190 PT session, 20-visit cap) — not rendered yet, ready to place. */}
 
-      <!-- 5. STRONG CIRCLE -->
+      <!-- 4. HOW 22 STRONG WORKS -->
+      <section class="how-it-works" id="how-it-works">
+        <div class="how-story-copy" data-reveal>
+          <div class="eyebrow">How 22 Strong works</div>
+          <h2>A recovery gap appears.<br />22 Strong helps close it.</h2>
+          <p class="story-kicker">The story is not complicated: someone has a real recovery plan, the next appointment becomes uncertain, and donor funding keeps the care moving.</p>
+        </div>
+
+        <div class="steps" role="list" aria-label="22 Strong care funding path">
+          <div class="step story-beat" role="listitem" data-reveal>
+            <span class="step-number">1</span>
+            <h3>Referral or request</h3>
+            <p>Referrals come from the VA, veteran networks, coaches, school counselors, and local community organizations.</p>
+          </div>
+          <div class="step story-beat" role="listitem" data-reveal>
+            <span class="step-number">2</span>
+            <h3>We evaluate the gap</h3>
+            <p>22 Strong reviews the situation. If coverage has run out, private care is out of reach, or the right connections aren&rsquo;t there &mdash; we step in.</p>
+          </div>
+          <div class="step story-beat" role="listitem" data-reveal>
+            <span class="step-number">3</span>
+            <h3>Care is funded</h3>
+            <p>Gifts cover recovery sessions directly, at no cost to the person receiving care.</p>
+          </div>
+        </div>
+
+        <div class="funding-covers story-beat" data-reveal>
+          <div>
+            <span class="eyebrow">What gifts cover</span>
+            <h3>Appointments, not abstractions.</h3>
+            <p>Funding supports practical recovery care for people with a clear need and a real access gap.</p>
+          </div>
+
+          <ul>
+            <li>
+              <strong>Hands-on recovery sessions</strong>
+              <span>Chiropractic, physical therapy, and massage therapy.</span>
+            </li>
+            <li>
+              <strong>Follow-through after the first visit</strong>
+              <span>Help staying with care long enough for recovery to keep moving.</span>
+            </li>
+            <li>
+              <strong>Provider and partner referrals</strong>
+              <span>A path for veterans, families, and neighbors who are already trying to get well.</span>
+            </li>
+          </ul>
+        </div>
+
+        <p class="how-note" data-reveal>Care is currently provided through Next Level Fitness &amp; Wellness Center in Newport Beach &mdash; high-level sports medicine, including Fascial Integrative Treatment (FIT). It treats injuries like rotator cuff, knee, neck, lower back, hip, ankle/foot, and wrist/elbow pain. As donor support grows, 22 Strong can expand toward a network of vetted providers across Southern California.</p>
+      </section>
+
+      <!-- 5. AS FEATURED IN -->
+      <section class="featured" id="featured" aria-labelledby="featured-title">
+        <div class="featured-inner" data-reveal>
+          <h2 class="featured-title" id="featured-title">As Featured In</h2>
+          <ul class="featured-publications" aria-label="Featured publications">
+            {home.press.publications.map((publication) => (
+              <li>
+                <a
+                  class="featured-sheet"
+                  href={publication.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={publication.ariaLabel}
+                >
+                  <img
+                    class="featured-logo-img"
+                    src={publication.logo}
+                    alt={publication.logoAlt}
+                    width="760"
+                    height="194"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                  />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6. LEADERSHIP -->
+      <section id="leadership">
+        <h2 data-reveal>Built by people who understand recovery.</h2>
+
+        <div class="bios">
+          {home.leadership.map((person) => (
+            <article class="card" data-reveal>
+              <div class="bio-head">
+                {person.portrait
+                  ? <img class="portrait" src={person.portrait} alt={person.portraitAlt} width="400" height="560" loading="lazy" decoding="async" fetchpriority="low" />
+                  : <div class="initials">{person.initials}</div>}
+                <div>
+                  <h3>{person.name}</h3>
+                  <p class="bio-role">{person.role}</p>
+                </div>
+              </div>
+              {person.paragraphs.map((para) => <p>{para}</p>)}
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <!-- 7. STRONG CIRCLE -->
       <section class="strong-circle-section" id="strong-circle">
         <div class="strong-circle-wrap">
           <div class="circle-panel" data-reveal>
@@ -377,29 +399,7 @@ import home from "../content/home.json";
         </div>
       </dialog>
 
-      <!-- 6. LEADERSHIP -->
-      <section id="leadership">
-        <h2 data-reveal>Built by people who understand recovery.</h2>
-
-        <div class="bios">
-          {home.leadership.map((person) => (
-            <article class="card" data-reveal>
-              <div class="bio-head">
-                {person.portrait
-                  ? <img class="portrait" src={person.portrait} alt={person.portraitAlt} width="400" height="560" loading="lazy" decoding="async" fetchpriority="low" />
-                  : <div class="initials">{person.initials}</div>}
-                <div>
-                  <h3>{person.name}</h3>
-                  <p class="bio-role">{person.role}</p>
-                </div>
-              </div>
-              {person.paragraphs.map((para) => <p>{para}</p>)}
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <!-- 7. DONATE -->
+      <!-- 8. DONATE -->
       <section class="donate-section" id="donate">
         <div class="donate-wrap">
           <div>
@@ -428,7 +428,7 @@ import home from "../content/home.json";
         </div>
       </section>
 
-      <!-- 8. CONTACT -->
+      <!-- 9. CONTACT -->
       <section class="contact" id="contact">
         <div class="split">
           <div data-reveal>
@@ -488,7 +488,7 @@ import home from "../content/home.json";
       </section>
     </main>
 
-    <!-- 9. FOOTER -->
+    <!-- 10. FOOTER -->
     <footer>
       <div class="footer-inner">
         <div>
