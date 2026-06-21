@@ -21,7 +21,6 @@ const TRACKED_SECTIONS = [
   "serve-veterans",
   "veteran-voices",
   "serve-athletes",
-  "serve-others",
   "strong-circle",
   "leadership",
   "donate",

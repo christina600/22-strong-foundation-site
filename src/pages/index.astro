@@ -181,8 +181,7 @@ import home from "../content/home.json";
         <!-- VETERAN VOICES (repeatable: add entries to home.veteranVoices) -->
         <div class="veteran-voices veteran-voices--with-video" id="veteran-voices" aria-label="Veteran voices">
           <div class="vv-head" data-reveal>
-            <span class="vv-eyebrow">Veteran Voices</span>
-            <h2 class="vv-title">Served by those who served.</h2>
+            <span class="vv-eyebrow">Testimonials</span>
           </div>
           <div class="vv-grid">
             <article class="vv-card vv-card--video" data-reveal>
@@ -273,46 +272,30 @@ import home from "../content/home.json";
       </section>
 
       <section class="serve-proof">
-        <div class="quote-wrap">
-          <img class="quote-photo" src="/images/adam-folker-uci.webp" alt="Adam Folker" width="1200" height="800" loading="lazy" decoding="async" fetchpriority="low" data-reveal />
-
-          <div data-reveal>
-            <blockquote>{home.testimonials.adam.quote}</blockquote>
-            <div class="attribution">{home.testimonials.adam.attribution}</div>
-            <p class="story">{home.testimonials.adam.story}</p>
+        <!-- Youth testimonial — same card treatment as the veteran block above -->
+        <div class="veteran-voices" aria-label="Low income youth testimonials">
+          <div class="vv-head" data-reveal>
+            <span class="vv-eyebrow">Testimonials</span>
+          </div>
+          <div class="vv-grid">
+            <article class="vv-card" data-reveal>
+              <div class="vv-photo">
+                <img src="/images/adam-folker-uci.webp" alt="Adam Folker" width="1200" height="800" loading="lazy" decoding="async" />
+              </div>
+              <div class="vv-body">
+                <blockquote class="vv-quote">{home.testimonials.adam.story}</blockquote>
+                <div class="vv-name">Adam Folker</div>
+                <div class="vv-creds">Collegiate &amp; Professional Basketball Player</div>
+              </div>
+            </article>
           </div>
         </div>
       </section>
 
-      <!-- 4d. OTHERS WHO NEED CARE (carries the general cost-of-care stats) -->
-      <section class="serve-group" id="serve-others">
-        <div class="serve-group-head" data-reveal>
-          <h2>Others who need care</h2>
-        </div>
-      </section>
-
-      <section class="serve-detail" aria-label="Recovery support for others who need care">
-        <div class="serve-detail-inner">
-          <div class="serve-copy" data-reveal>
-            <p class="lead">A funding path for people referred by trusted providers and partners when recovery is stalled by access or cost.</p>
-            <p>This pathway is for neighbors whose care plan is clear, but the next appointment depends on coverage, connection, or the ability to pay privately.</p>
-          </div>
-
-          <div class="serve-stats" role="list">
-            {home.stats.others.map((stat) => (
-              <aside class={`proof-stat${stat.light ? " light" : ""}`} role="listitem" data-reveal>
-                <div class="proof-stat-inner">
-                  <div class="proof-stat-number">{stat.number}</div>
-                  <div class="proof-stat-text">
-                    <p>{stat.text}</p>
-                    <span class="proof-stat-source"><a href={stat.url} target="_blank" rel="noopener noreferrer">{stat.source}</a></span>
-                  </div>
-                </div>
-              </aside>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* "Others who need care" section removed per Christina (2026-06-20).
+          PARKED for reuse elsewhere in the narrative:
+          - Keep verbiage: "A funding path for people referred by trusted providers and partners when recovery is stalled by access or cost."
+          - Stats remain in home.json `stats.others` ($190 PT session, 20-visit cap) — not rendered yet, ready to place. */}
 
       <!-- 5. STRONG CIRCLE -->
       <section class="strong-circle-section" id="strong-circle">
