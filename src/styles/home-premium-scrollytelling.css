@@ -191,26 +191,21 @@ html {
     align-items: start;
   }
 
-  .audience-copy,
   .donate-wrap > div:first-child,
   .contact .split > div:first-child {
     position: sticky;
     top: calc(var(--story-offset) + 26px);
   }
 
-  .serve-stats .proof-stat {
+  .audience-stat {
     transition:
       transform .42s cubic-bezier(.22, .61, .36, 1),
       box-shadow .42s ease,
       border-color .42s ease;
   }
 
-  .serve-stats .proof-stat:hover {
-    transform: translateY(-4px);
-    border-color: rgba(185, 85, 36, .38);
-    box-shadow:
-      0 1px 0 rgba(255, 255, 255, .08) inset,
-      0 18px 52px rgba(29, 33, 29, .14);
+  .audience-stat:hover {
+    transform: translateY(-3px);
   }
 }
 
@@ -222,7 +217,7 @@ html {
       animation-range: entry 6% cover 48%;
     }
 
-    .audience-chapter .serve-stats .proof-stat {
+    .audience-chapter .audience-stat {
       animation: story-stat-rise both cubic-bezier(.22, .61, .36, 1);
       animation-timeline: view();
       animation-range: entry 8% cover 32%;
@@ -270,7 +265,7 @@ html {
 
 @media (prefers-reduced-motion: reduce) {
   .story-beat,
-  .serve-stats .proof-stat,
+  .audience-stat,
   .audience-copy,
   .how-it-works .steps::before {
     animation: none !important;

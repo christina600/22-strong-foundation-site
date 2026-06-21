@@ -186,13 +186,11 @@ footer p,
   font-size: var(--fs-copy-small);
 }
 
-.proof-stat p,
-.serve-stats .proof-stat p {
+.proof-stat p {
   color: rgba(255, 250, 240, .92);
 }
 
-.proof-stat-source,
-.serve-stats .proof-stat-source {
+.proof-stat-source {
   color: rgba(255, 250, 240, .84);
   font-size: var(--fs-ui);
   line-height: 1.45;
@@ -202,13 +200,11 @@ footer p,
   text-transform: none;
 }
 
-.proof-stat.light p,
-.serve-stats .proof-stat.light p {
+.proof-stat.light p {
   color: rgba(32, 35, 31, .88);
 }
 
-.proof-stat.light .proof-stat-source,
-.serve-stats .proof-stat.light .proof-stat-source {
+.proof-stat.light .proof-stat-source {
   color: rgba(32, 35, 31, .74);
 }
 

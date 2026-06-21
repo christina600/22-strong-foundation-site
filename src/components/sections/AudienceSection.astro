@@ -39,8 +39,8 @@ const preparedGroups = groups.map((group) => ({
       </div>
 
       {group.hasStats && (
-        <div class={`serve-stats${group.statsClass ? ` ${group.statsClass}` : ""}`} role="list">
-          {group.stats.map((stat) => <EvidenceStat stat={stat} variant="proof" reveal />)}
+        <div class={`audience-stats${group.statsClass ? ` ${group.statsClass}` : ""}`} role="list">
+          {group.stats.map((stat) => <EvidenceStat stat={stat} variant="audience" reveal />)}
         </div>
       )}
     </div>
