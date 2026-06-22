@@ -10,15 +10,16 @@
 .hero::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(90deg, rgba(11, 16, 11, .95) 0%, rgba(14, 19, 13, .88) 30%, rgba(16, 22, 15, .58) 52%, rgba(18, 24, 17, .2) 74%, rgba(18, 24, 17, .03) 100%),
-    linear-gradient(180deg, rgba(18, 24, 17, .08), rgba(18, 24, 17, .5)),
-    var(--camo-field, transparent),
-    url("/images/hero-battle-ropes.webp") center right / cover no-repeat;
-  background-blend-mode: normal, normal, soft-light, normal;
-  transform: scale(1.012);
-  filter: saturate(1.02) contrast(1.08);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(56%, 860px);
+  background: url("/images/hero-battle-ropes.webp") center center / cover no-repeat;
+  /* Photo sits on the right, balancing the text; its left edge dissolves into
+     the dark field so the crop never reads as a hard cut-off. */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, .5) 26%, #000 54%);
+  mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, .5) 26%, #000 54%);
+  filter: saturate(1.04) contrast(1.06);
 }
 
 .hero::after {
@@ -48,7 +49,7 @@
   position: relative;
   display: grid;
   gap: clamp(28px, 5vh, 52px);
-  width: min(980px, 100%);
+  width: min(880px, 62%);
   max-width: none;
   padding-top: clamp(14px, 4vh, 42px);
   filter: drop-shadow(0 16px 38px rgba(0, 0, 0, .18));
@@ -117,7 +118,7 @@
   max-width: 850px;
   margin: 0;
   color: #fffaf0;
-  font-size: clamp(4.4rem, 9vw, 9.2rem);
+  font-size: clamp(3.7rem, 6.2vw, 7.2rem);
   line-height: var(--lh-hero);
   letter-spacing: 0;
   text-wrap: balance;

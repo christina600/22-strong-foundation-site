@@ -38,6 +38,10 @@
   }
 
   .hero::before {
+    inset: 0;
+    width: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
     background:
       linear-gradient(180deg, rgba(20, 23, 19, .94) 0%, rgba(20, 23, 19, .78) 56%, rgba(20, 23, 19, .38) 100%),
       url("/images/hero-battle-ropes.webp") center / cover no-repeat;
@@ -48,6 +52,10 @@
     padding-top: var(--space-hero-top);
     padding-bottom: var(--space-hero-bottom);
     align-items: start;
+  }
+
+  .hero-copy {
+    width: 100%;
   }
 
   .hero-inner > *,
