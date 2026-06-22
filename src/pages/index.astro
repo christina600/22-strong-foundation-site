@@ -26,7 +26,7 @@ import home from "../content/home.json";
 import { buildAudienceGroups } from "../utils/home-story";
 
 const audienceGroups = buildAudienceGroups(home);
-const [costStat, capStat] = home.stats.others;
+const [costStat, capStat, debtStat] = home.stats.others;
 ---
 
 <HomeBase title="Fund recovery care when the system stops short.">
@@ -61,7 +61,7 @@ const [costStat, capStat] = home.stats.others;
         eyebrow={home.mission.eyebrow}
         heading={home.mission.heading}
         lead={home.mission.lead}
-        evidenceStats={[costStat]}
+        evidenceStats={[costStat, debtStat]}
         evidenceAriaLabel="Evidence of the recovery access gap"
         needParagraphs={home.mission.needParagraphs}
         paragraphs={home.story.paragraphs}
