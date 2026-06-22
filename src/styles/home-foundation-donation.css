@@ -59,11 +59,10 @@
   background: var(--orange);
 }
 
-.most-impact-badge {
-  font-size: var(--fs-ui-tiny);
-  letter-spacing: 0;
-  text-transform: uppercase;
-  opacity: .85;
+/* Two amount ladders share the widget; show only the active frequency's. */
+.donation-module[data-frequency="one-time"] .amount-grid[data-grid="monthly"],
+.donation-module[data-frequency="monthly"] .amount-grid[data-grid="one-time"] {
+  display: none;
 }
 
 .amount-grid {

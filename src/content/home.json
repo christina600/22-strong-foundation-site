@@ -184,8 +184,7 @@
     "cardBody": "Recurring gifts help 22 Strong plan ahead for people referred by providers, coaches, veterans, and community partners.",
     "mathRows": [
       { "label": "Monthly giving", "value": "$22/mo" },
-      { "label": "Across a year", "value": "$264" },
-      { "label": "Current goal", "value": "$22,000" }
+      { "label": "Across a year", "value": "$264" }
     ],
     "modal": {
       "eyebrow": "Monthly giving circle",
@@ -269,7 +268,7 @@
     }
   ],
   "donate": {
-    "heading": "Fund the next $22,000 in recovery care.",
+    "heading": "Fund the next recovery appointment.",
     "lead": "Every gift helps turn a stalled recovery plan into appointments someone can actually reach.",
     "outcomes": "In 2026, 22 Strong has funded over 200 recovery sessions for 45 people across Orange County.",
     "goalLabel": "Current goal",

@@ -56,13 +56,25 @@ function parseCustomAmount(value: string) {
   return Number.isFinite(amount) && amount > 0 ? amount : 0;
 }
 
-function getDefaultAmount(module: HTMLElement) {
-  return module.dataset.defaultAmount || DEFAULT_AMOUNT;
+function getActiveFrequency(module: HTMLElement) {
+  return module.querySelector<HTMLElement>(`${FREQUENCY_SELECTOR}.${ACTIVE_CLASS}`)?.dataset.frequency
+    || module.dataset.frequency
+    || "one-time";
+}
+
+function getActiveGrid(module: HTMLElement) {
+  return module.querySelector<HTMLElement>(`.amount-grid[data-grid="${getActiveFrequency(module)}"]`);
+}
+
+function getDefaultAmount(module: HTMLElement, frequency = getActiveFrequency(module)) {
+  return (frequency === "monthly" ? module.dataset.defaultMonthly : module.dataset.defaultOnetime) || DEFAULT_AMOUNT;
 }
 
 function getDefaultAmountOption(module: HTMLElement) {
+  const grid = getActiveGrid(module);
+  if (!grid) return null;
   const defaultAmount = getDefaultAmount(module);
-  const options = Array.from(module.querySelectorAll<HTMLElement>(AMOUNT_SELECTOR));
+  const options = Array.from(grid.querySelectorAll<HTMLElement>(AMOUNT_SELECTOR));
   return options.find((option) => option.dataset.amount === defaultAmount) || options[0];
 }
 
@@ -75,7 +87,8 @@ function getGiftAmount(module: HTMLElement): string {
   const custom = module.querySelector<HTMLInputElement>(".other-amount-input")?.value || "";
   const customNumber = parseCustomAmount(custom);
   if (customNumber > 0) return String(customNumber);
-  return module.querySelector<HTMLElement>(`${AMOUNT_SELECTOR}.${ACTIVE_CLASS}`)?.dataset.amount || getDefaultAmount(module);
+  const grid = getActiveGrid(module);
+  return grid?.querySelector<HTMLElement>(`${AMOUNT_SELECTOR}.${ACTIVE_CLASS}`)?.dataset.amount || getDefaultAmount(module);
 }
 
 function getPresetDetail(detail: unknown): DonationPresetDetail {
@@ -92,12 +105,14 @@ function applyDonationPreset(module: HTMLElement, detail: DonationPresetDetail) 
   if (detail.frequency) {
     const frequency = findDataOption(module, FREQUENCY_SELECTOR, "frequency", detail.frequency);
     if (frequency) setActiveOption(module, FREQUENCY_SELECTOR, frequency);
+    module.dataset.frequency = detail.frequency;
   }
 
   if (detail.amount) {
-    const amount = findDataOption(module, AMOUNT_SELECTOR, "amount", detail.amount);
-    if (amount) {
-      setActiveOption(module, AMOUNT_SELECTOR, amount);
+    const grid = getActiveGrid(module);
+    const amount = grid?.querySelector<HTMLElement>(`${AMOUNT_SELECTOR}[data-amount="${detail.amount}"]`);
+    if (grid && amount) {
+      setActiveOption(grid, AMOUNT_SELECTOR, amount);
       const otherAmount = module.querySelector<HTMLInputElement>(".other-amount-input");
       if (otherAmount) otherAmount.value = "";
     }
@@ -134,8 +149,7 @@ function getImpactTemplate(map: DonationImpactMap, frequency: string, amount: st
 
 function updateGiftSummary(module: HTMLElement, pulse = true) {
   const activeAmount = getGiftAmount(module);
-  const activeFrequency =
-    module.querySelector<HTMLElement>(`${FREQUENCY_SELECTOR}.${ACTIVE_CLASS}`)?.dataset.frequency || "monthly";
+  const activeFrequency = getActiveFrequency(module);
 
   const summary = module.querySelector(".gift-summary");
   const detail = module.querySelector(".gift-detail");
@@ -204,8 +218,9 @@ function initDonation() {
 
     if (amountButton) {
       const module = amountButton.closest<HTMLElement>(MODULE_SELECTOR);
-      if (!module) return;
-      setActiveOption(module, AMOUNT_SELECTOR, amountButton);
+      const grid = amountButton.closest<HTMLElement>(".amount-grid");
+      if (!module || !grid) return;
+      setActiveOption(grid, AMOUNT_SELECTOR, amountButton);
       const otherAmount = module.querySelector<HTMLInputElement>(".other-amount-input");
       if (otherAmount) otherAmount.value = "";
       updateGiftSummary(module);
@@ -215,6 +230,9 @@ function initDonation() {
       const module = frequencyButton.closest<HTMLElement>(MODULE_SELECTOR);
       if (!module) return;
       setActiveOption(module, FREQUENCY_SELECTOR, frequencyButton);
+      module.dataset.frequency = frequencyButton.dataset.frequency || "one-time";
+      const otherAmount = module.querySelector<HTMLInputElement>(".other-amount-input");
+      if (otherAmount) otherAmount.value = "";
       updateGiftSummary(module);
     }
   });
@@ -230,8 +248,9 @@ function initDonation() {
     if (parseCustomAmount(input.value) > 0) {
       clearActiveOptions(module, AMOUNT_SELECTOR);
     } else {
+      const grid = getActiveGrid(module);
       const defaultOption = getDefaultAmountOption(module);
-      if (defaultOption) setActiveOption(module, AMOUNT_SELECTOR, defaultOption);
+      if (grid && defaultOption) setActiveOption(grid, AMOUNT_SELECTOR, defaultOption);
     }
     updateGiftSummary(module);
   });
