@@ -1,7 +1,6 @@
 ---
 import type { AudienceGroupContent } from "../../utils/home-story";
 import EvidenceStat from "./EvidenceStat.astro";
-import VoiceCard from "./VoiceCard.astro";
 
 interface Props {
   chapter?: string;
@@ -14,21 +13,6 @@ const preparedGroups = groups.map((group) => ({
   ...group,
   hasStats: group.stats.length > 0
 }));
-const testimonialCards = preparedGroups.flatMap((group) => [
-  ...(group.video ? [{
-    id: `${group.id}-video`,
-    type: "video" as const,
-    video: group.video
-  }] : []),
-  ...group.voices.map((voice, index) => ({
-    id: `${group.id}-voice-${index}`,
-    type: "voice" as const,
-    voice
-  }))
-]);
-const testimonialGroups = preparedGroups.filter((group) => Boolean(group.video) || group.voices.length > 0);
-const testimonialReelId = testimonialGroups.find((group) => group.voicesId)?.voicesId ?? "testimonials";
-const testimonialAriaLabel = testimonialGroups.map((group) => group.voicesAriaLabel).join(" and ") || "Recovery testimonials";
 ---
 
 <section class="story-serve-intro" id="serve" data-chapter={chapter}>
@@ -60,48 +44,3 @@ const testimonialAriaLabel = testimonialGroups.map((group) => group.voicesAriaLa
     </div>
   </section>
 ))}
-
-{testimonialCards.length > 0 && (
-  <section class="audience-voices audience-voices--combined" id={testimonialReelId} aria-label={testimonialAriaLabel}>
-    <div class="veteran-voices veteran-voices--with-video testimonial-reel" data-testimonial-reel>
-      <div class="testimonial-reel-shell">
-        <div
-          class="vv-grid testimonial-reel-track"
-          data-testimonial-reel-track
-          tabindex="0"
-          aria-label={testimonialAriaLabel}
-        >
-          {testimonialCards.map((card, index) => (
-            <div class="testimonial-reel-slide" data-testimonial-slide data-slide-index={index}>
-              {card.type === "video" ? <VoiceCard video={card.video} /> : <VoiceCard voice={card.voice} />}
-            </div>
-          ))}
-        </div>
-
-        <div class="testimonial-reel-chrome" aria-label="Testimonial controls">
-          <button class="testimonial-reel-button" type="button" data-testimonial-prev aria-label="Previous testimonial">
-            <span aria-hidden="true">&larr;</span>
-          </button>
-          <div class="testimonial-reel-dots" aria-label="Testimonial slide position">
-            {testimonialCards.map((_, index) => (
-              <button
-                class="testimonial-reel-dot"
-                type="button"
-                data-testimonial-dot
-                data-slide-index={index}
-                aria-label={`Go to testimonial ${index + 1}`}
-              />
-            ))}
-          </div>
-          <button class="testimonial-reel-button" type="button" data-testimonial-next aria-label="Next testimonial">
-            <span aria-hidden="true">&rarr;</span>
-          </button>
-        </div>
-
-        <p class="testimonial-reel-prompt" data-video-end-prompt aria-live="polite" hidden>
-          Video complete. Use the arrows or scroll for the next testimonial.
-        </p>
-      </div>
-    </div>
-  </section>
-)}

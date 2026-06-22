@@ -19,6 +19,7 @@ import NarrativeScene from "../components/sections/NarrativeScene.astro";
 import ServicePathSection from "../components/sections/ServicePathSection.astro";
 import SiteFooter from "../components/sections/SiteFooter.astro";
 import StrongCircleSection from "../components/sections/StrongCircleSection.astro";
+import TestimonialsSection from "../components/sections/TestimonialsSection.astro";
 import home from "../content/home.json";
 import { buildAudienceGroups } from "../utils/home-story";
 
@@ -47,8 +48,10 @@ const audienceGroups = buildAudienceGroups(home);
       <HeroSection hero={home.hero} />
       <CredibilityStrip facts={home.credibility} lead={home.hero.lead} />
 
+      <AudienceSection chapter="01" introTitle="Who we serve" groups={audienceGroups} />
+
       <NarrativeScene
-        chapter="01"
+        chapter="02"
         id="about"
         eyebrow={home.mission.eyebrow}
         heading={home.mission.heading}
@@ -59,15 +62,15 @@ const audienceGroups = buildAudienceGroups(home);
       />
 
       <NarrativeScene
-        chapter="02"
+        chapter="03"
         id="story"
         eyebrow={home.story.eyebrow}
         heading={home.story.heading}
         paragraphs={home.story.paragraphs}
       />
 
-      <AudienceSection chapter="03" introTitle="Who we serve" groups={audienceGroups} />
       <ServicePathSection chapter="04" content={home.howItWorks} />
+      <TestimonialsSection groups={audienceGroups} />
       <FeaturedPublications chapter="05" publications={home.press.publications} />
       <LeadershipSection people={home.leadership} />
       <StrongCircleSection chapter="06" strongCircle={home.strongCircle} />
