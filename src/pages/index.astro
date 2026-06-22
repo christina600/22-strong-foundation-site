@@ -17,6 +17,7 @@ import HeroSection from "../components/sections/HeroSection.astro";
 import LeadershipSection from "../components/sections/LeadershipSection.astro";
 import NarrativeScene from "../components/sections/NarrativeScene.astro";
 import ServicePathSection from "../components/sections/ServicePathSection.astro";
+import StatBeat from "../components/sections/StatBeat.astro";
 import SiteFooter from "../components/sections/SiteFooter.astro";
 import StrongCircleSection from "../components/sections/StrongCircleSection.astro";
 import TestimonialsSection from "../components/sections/TestimonialsSection.astro";
@@ -24,6 +25,7 @@ import home from "../content/home.json";
 import { buildAudienceGroups } from "../utils/home-story";
 
 const audienceGroups = buildAudienceGroups(home);
+const [costStat, capStat] = home.stats.others;
 ---
 
 <HomeBase title="Fund recovery care when the system stops short.">
@@ -48,6 +50,8 @@ const audienceGroups = buildAudienceGroups(home);
       <HeroSection hero={home.hero} />
       <CredibilityStrip facts={home.credibility} lead={home.hero.lead} />
 
+      <StatBeat stat={capStat} />
+
       <AudienceSection chapter="01" introTitle="Who we serve" groups={audienceGroups} />
 
       <NarrativeScene
@@ -56,25 +60,18 @@ const audienceGroups = buildAudienceGroups(home);
         eyebrow={home.mission.eyebrow}
         heading={home.mission.heading}
         lead={home.mission.lead}
-        evidenceStats={home.stats.others}
+        evidenceStats={[costStat]}
         evidenceAriaLabel="Evidence of the recovery access gap"
         needParagraphs={home.mission.needParagraphs}
-      />
-
-      <NarrativeScene
-        chapter="03"
-        id="story"
-        eyebrow={home.story.eyebrow}
-        heading={home.story.heading}
         paragraphs={home.story.paragraphs}
       />
 
-      <ServicePathSection chapter="04" content={home.howItWorks} />
+      <ServicePathSection chapter="03" content={home.howItWorks} />
       <TestimonialsSection groups={audienceGroups} />
-      <FeaturedPublications chapter="05" publications={home.press.publications} />
+      <FeaturedPublications chapter="04" publications={home.press.publications} />
       <LeadershipSection people={home.leadership} />
-      <StrongCircleSection chapter="06" strongCircle={home.strongCircle} />
-      <DonationAskSection chapter="07" donate={home.donate} />
+      <StrongCircleSection chapter="05" strongCircle={home.strongCircle} />
+      <DonationAskSection chapter="06" donate={home.donate} />
       <ContactSection contact={home.contact} />
     </main>
 

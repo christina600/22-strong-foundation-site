@@ -1,0 +1,21 @@
+---
+import type { EvidenceStatContent } from "./EvidenceStat.astro";
+
+interface Props {
+  stat: EvidenceStatContent;
+}
+
+const { stat } = Astro.props;
+---
+
+<section class="stat-beat" aria-label="Recovery access statistic">
+  <div class="stat-beat-inner" data-reveal>
+    <p class="stat-beat-number">{stat.number}</p>
+    <div class="stat-beat-body">
+      <p class="stat-beat-text">{stat.text}</p>
+      {stat.source && (stat.url
+        ? <a class="stat-beat-source" href={stat.url} target="_blank" rel="noopener noreferrer">{stat.source}</a>
+        : <span class="stat-beat-source">{stat.source}</span>)}
+    </div>
+  </div>
+</section>

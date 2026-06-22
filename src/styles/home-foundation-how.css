@@ -64,6 +64,65 @@
     0 30px 64px rgba(29, 33, 29, .2);
 }
 
+/* Stat beat — a single punchy access statistic between the mission and audience. */
+.stat-beat {
+  padding: clamp(52px, 8vw, 104px) var(--space-page-x);
+  border-block: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255, 253, 247, .6), rgba(244, 238, 226, .32));
+}
+
+.stat-beat-inner {
+  width: min(var(--max), 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(28px, 5vw, 72px);
+}
+
+.stat-beat-number {
+  margin: 0;
+  font-family: var(--number-face);
+  font-weight: 800;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  line-height: .9;
+  letter-spacing: -0.02em;
+  color: var(--orange);
+  white-space: nowrap;
+}
+
+.stat-beat-body {
+  display: grid;
+  gap: 10px;
+}
+
+.stat-beat-text {
+  margin: 0;
+  max-width: 34ch;
+  font-size: clamp(1.2rem, 2vw, 1.7rem);
+  font-weight: 500;
+  line-height: 1.32;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.stat-beat-source {
+  font-size: var(--fs-ui-small);
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.stat-beat-source:hover {
+  color: var(--orange);
+}
+
+@media (max-width: 720px) {
+  .stat-beat-inner {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
 .credibility-strip-item {
   display: inline-flex;
   align-items: center;
