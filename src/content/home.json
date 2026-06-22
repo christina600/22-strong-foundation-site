@@ -61,7 +61,7 @@
     "athletes": [
       {
         "number": "21%",
-        "text": "of high school sports injuries can end a season. The right recovery support can protect more than a roster spot.",
+        "text": "of high school sports injuries can end a season — and the care to fully recover is often more than a stretched family can cover.",
         "source": "Journal of Athletic Training",
         "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2267335/",
         "light": false
@@ -108,8 +108,8 @@
       "id": "serve-athletes",
       "heading": "Low income youth",
       "detailAriaLabel": "Low income youth recovery support",
-      "lead": "Recovery support for young athletes whose families can't cover the care it takes to get back after an injury.",
-      "body": "Support for families facing a season-ending injury, limited coverage, or care that stops before recovery is done.",
+      "lead": "Recovery care for young people whose families can't cover what it takes to heal after an injury or setback.",
+      "body": "When insurance runs out or care costs more than a family can carry, a young person's recovery can stall. 22 Strong keeps it moving — for student-athletes and other young people who need hands-on care to get back.",
       "statsKey": "athletes",
       "statsClass": "one-up",
       "voicesAriaLabel": "Low income youth testimonials",
