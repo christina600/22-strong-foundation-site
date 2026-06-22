@@ -12,13 +12,13 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(12, 17, 12, .97) 0%, rgba(18, 24, 17, .9) 38%, rgba(18, 24, 17, .42) 76%, rgba(18, 24, 17, .18) 100%),
-    linear-gradient(180deg, rgba(18, 24, 17, .12), rgba(18, 24, 17, .68)),
+    linear-gradient(90deg, rgba(11, 16, 11, .95) 0%, rgba(14, 19, 13, .88) 30%, rgba(16, 22, 15, .58) 52%, rgba(18, 24, 17, .2) 74%, rgba(18, 24, 17, .03) 100%),
+    linear-gradient(180deg, rgba(18, 24, 17, .08), rgba(18, 24, 17, .5)),
     var(--camo-field, transparent),
     url("/images/hero-battle-ropes.webp") center right / cover no-repeat;
   background-blend-mode: normal, normal, soft-light, normal;
   transform: scale(1.012);
-  filter: saturate(.9) contrast(1.12);
+  filter: saturate(1.02) contrast(1.08);
 }
 
 .hero::after {
@@ -26,9 +26,9 @@
   position: absolute;
   inset: 0;
   height: auto;
-  opacity: .76;
+  opacity: .4;
   background:
-    linear-gradient(180deg, transparent 0%, rgba(17, 22, 16, .18) 58%, rgba(17, 22, 16, .72) 100%),
+    linear-gradient(180deg, transparent 0%, rgba(17, 22, 16, .14) 58%, rgba(17, 22, 16, .6) 100%),
     var(--field-sand, transparent),
     var(--field-canvas, transparent);
   background-blend-mode: normal, soft-light, overlay;
@@ -63,9 +63,9 @@
   display: grid;
   align-content: center;
   justify-items: start;
-  width: clamp(132px, 15vw, 190px);
+  width: clamp(180px, 19vw, 268px);
   aspect-ratio: 1;
-  padding: clamp(16px, 1.8vw, 22px);
+  padding: clamp(20px, 2.2vw, 30px);
   background:
     linear-gradient(135deg, rgba(255, 250, 240, .08), transparent 36%),
     #050605;
@@ -88,13 +88,13 @@
 }
 
 .hero-mark-22 {
-  font-size: clamp(3.6rem, 6vw, 5.45rem);
+  font-size: clamp(4.9rem, 8vw, 7.4rem);
   line-height: .68;
 }
 
 .hero-mark-strong {
   margin-top: .15em;
-  font-size: clamp(1.65rem, 2.7vw, 2.42rem);
+  font-size: clamp(2.2rem, 3.6vw, 3.3rem);
   line-height: .78;
 }
 
@@ -106,7 +106,7 @@
 }
 
 .hero-mark-foundation {
-  font-size: clamp(.78rem, 1.2vw, 1.05rem);
+  font-size: clamp(1rem, 1.5vw, 1.4rem);
   line-height: .9;
   color: rgba(255, 250, 240, .88);
 }
@@ -122,8 +122,8 @@
   letter-spacing: 0;
   text-wrap: balance;
   text-shadow:
-    0 1px 0 rgba(255, 250, 240, .08),
-    0 28px 72px rgba(0, 0, 0, .54);
+    0 2px 14px rgba(0, 0, 0, .58),
+    0 22px 60px rgba(0, 0, 0, .5);
 }
 
 .hero-headline-line {
