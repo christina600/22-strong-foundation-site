@@ -83,9 +83,9 @@
   position: relative;
   padding: clamp(20px, 3vw, 26px);
   border-radius: var(--radius, 14px);
-  background: linear-gradient(180deg, var(--surface-card, #fffdf7), var(--surface-card-soft, #f4eee2));
-  border: 1px solid var(--surface-line, rgba(32, 35, 31, .14));
-  box-shadow: var(--shadow-panel, 0 18px 50px rgba(0, 0, 0, .22));
+  background: linear-gradient(160deg, var(--teal-deep), var(--teal-ink));
+  border: 1px solid rgba(255, 250, 240, .18);
+  box-shadow: 0 22px 56px rgba(9, 63, 67, .42);
 }
 .giving-invite-close {
   position: absolute;
@@ -96,7 +96,7 @@
   cursor: pointer;
   font-size: 1.4rem;
   line-height: 1;
-  color: rgba(32, 35, 31, .5);
+  color: rgba(255, 250, 240, .6);
 }
 .giving-invite-heading {
   margin: 0 0 8px;
@@ -106,15 +106,27 @@
   font-weight: 800;
   font-size: 1.4rem;
   line-height: 1.1;
-  color: var(--ink, #20231f);
+  color: #fff;
 }
 .giving-invite-body {
   margin: 0 0 16px;
   font-size: var(--fs-copy-small, .95rem);
   line-height: var(--lh-copy, 1.55);
-  color: rgba(32, 35, 31, .8);
+  color: rgba(255, 250, 240, .86);
 }
 .giving-invite-actions { display: grid; gap: 10px; }
+
+.giving-invite .pill.primary {
+  background: #fffdf7;
+  color: var(--teal-ink);
+  border-color: #fffdf7;
+}
+
+.giving-invite .pill:not(.primary) {
+  background: rgba(255, 250, 240, .08);
+  color: rgba(255, 250, 240, .92);
+  border-color: rgba(255, 250, 240, .4);
+}
 .giving-invite-not-now {
   margin-top: 12px;
   width: 100%;
@@ -122,7 +134,7 @@
   background: transparent;
   cursor: pointer;
   font-size: var(--fs-ui, .85rem);
-  color: rgba(32, 35, 31, .55);
+  color: rgba(255, 250, 240, .62);
   text-align: center;
 }
 @media (max-width: 560px) {
