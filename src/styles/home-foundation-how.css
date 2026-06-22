@@ -41,11 +41,12 @@
 
 .recovery-feature-text {
   margin: 0;
-  max-width: 24ch;
+  max-width: 18ch;
   color: var(--ink);
-  font-size: clamp(1.5rem, 2.3vw, 2.05rem);
-  line-height: 1.42;
-  letter-spacing: -0.01em;
+  font-size: clamp(1.85rem, 3vw, 2.85rem);
+  font-weight: 600;
+  line-height: 1.26;
+  letter-spacing: -0.015em;
   text-wrap: pretty;
 }
 
