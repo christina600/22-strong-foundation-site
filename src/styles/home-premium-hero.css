@@ -81,7 +81,7 @@
 .hero-mark-foundation {
   display: block;
   color: #fffaf0;
-  font-family: var(--display-face);
+  font-family: var(--logo-face);
   font-stretch: condensed;
   font-weight: 900;
   letter-spacing: 0;
