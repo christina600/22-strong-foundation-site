@@ -104,10 +104,6 @@
   z-index: 1;
 }
 
-.donate-wrap {
-  max-width: 1080px;
-}
-
 .donate-section .donation-card-main {
   color: var(--ink);
   box-shadow:
@@ -178,7 +174,7 @@
 }
 
 .contact .split {
-  max-width: 1120px;
+  max-width: var(--max);
   margin: 0 auto;
   grid-template-columns: minmax(300px, .84fr) minmax(420px, 1fr);
   align-items: center;

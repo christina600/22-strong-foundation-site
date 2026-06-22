@@ -125,7 +125,7 @@ main {
   column-gap: clamp(44px, 4.5vw, 72px);
   row-gap: clamp(24px, 3.5vw, 42px);
   align-items: start;
-  width: min(1120px, 100%);
+  width: min(var(--max), 100%);
 }
 
 .narrative-scene--about .about-intro {
