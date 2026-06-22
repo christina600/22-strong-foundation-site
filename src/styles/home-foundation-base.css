@@ -14,6 +14,10 @@
   --olive: #51523a;
   --brown: #2f231d;
   --brown-2: #4b2918;
+  /* Teal — the Strong Circle campaign color (pops against the warm palette). */
+  --teal: #1c8c87;
+  --teal-deep: #0e5a5c;
+  --teal-ink: #093f43;
   --shadow: 0 24px 70px rgba(47, 35, 29, .12);
   --radius: 8px;
   --max: 1180px;
