@@ -187,10 +187,9 @@ body::before {
 header {
   height: 82px;
   background:
-    linear-gradient(180deg, rgba(248, 244, 235, .92), rgba(240, 234, 222, .84)),
-    var(--camo-field, rgba(248, 244, 235, .84));
-  border-bottom: 1px solid rgba(32, 35, 31, .12);
-  box-shadow: 0 8px 22px rgba(29, 33, 29, .06);
+    linear-gradient(180deg, rgba(10, 11, 10, .94), rgba(5, 6, 5, .92));
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .28);
 }
 
 .nav {
@@ -226,32 +225,24 @@ header {
 }
 
 .nav-links {
-  background:
-    linear-gradient(180deg, rgba(255, 253, 247, .76), rgba(242, 236, 223, .64)),
-    var(--camo-field, rgba(255, 253, 247, .60));
-  background-size: auto, 420px 260px;
-  border-color: rgba(32, 35, 31, .10);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, .58) inset,
-    0 14px 34px rgba(29, 33, 29, .07);
+  background: rgba(255, 255, 255, .05);
+  border-color: rgba(255, 255, 255, .12);
+  box-shadow: none;
 }
 
 .nav-actions .pill:not(.primary) {
-  background:
-    linear-gradient(180deg, rgba(255, 253, 247, .76), rgba(242, 236, 223, .64)),
-    var(--camo-field, rgba(255, 253, 247, .48));
-  background-size: auto, 420px 260px;
+  background: rgba(255, 255, 255, .06);
 }
 
 .nav-links a {
   position: relative;
-  color: rgba(32, 35, 31, .78);
+  color: rgba(255, 255, 255, .78);
   letter-spacing: 0;
 }
 
 .nav-links a:hover {
-  color: var(--ink);
-  background: rgba(242, 236, 223, .78);
+  color: #fff;
+  background: rgba(255, 255, 255, .08);
 }
 
 .nav-links a::after {
@@ -280,7 +271,7 @@ header {
 .pill,
 .btn-donate {
   min-height: 46px;
-  border-radius: 999px;
+  border-radius: 8px;
   box-shadow:
     0 1px 0 rgba(255, 255, 255, .72) inset,
     0 14px 34px rgba(29, 33, 29, .10);

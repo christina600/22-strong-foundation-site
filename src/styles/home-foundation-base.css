@@ -128,10 +128,10 @@ header {
   top: 0;
   z-index: 50;
   height: 70px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  background: rgba(251, 247, 238, .88);
+  background: rgba(5, 6, 5, .92);
 }
 
 .nav {
@@ -151,7 +151,7 @@ header {
   font-stretch: condensed;
   letter-spacing: 0;
   font-size: var(--fs-brand);
-  color: var(--ink);
+  color: #fffaf0;
   text-decoration: none;
   text-transform: uppercase;
 }
@@ -226,7 +226,7 @@ header {
   justify-content: center;
   min-height: 46px;
   padding: 0 22px;
-  border-radius: 999px;
+  border-radius: 8px;
   font-weight: 800;
   font-size: var(--fs-ui);
   letter-spacing: 0;
@@ -255,9 +255,9 @@ header {
 }
 
 .nav-actions .pill:not(.primary) {
-  color: rgba(37, 35, 33, .78);
-  border-color: rgba(37, 35, 33, .12);
-  background: rgba(255, 253, 247, .48);
+  color: rgba(255, 255, 255, .82);
+  border-color: rgba(255, 255, 255, .22);
+  background: rgba(255, 255, 255, .06);
   box-shadow: none;
 }
 
