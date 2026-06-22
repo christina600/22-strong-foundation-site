@@ -11,6 +11,7 @@ import AudienceSection from "../components/sections/AudienceSection.astro";
 import ContactSection from "../components/sections/ContactSection.astro";
 import CredibilityStrip from "../components/sections/CredibilityStrip.astro";
 import DonationAskSection from "../components/sections/DonationAskSection.astro";
+import GivingInvite from "../components/sections/GivingInvite.astro";
 import FeaturedPublications from "../components/sections/FeaturedPublications.astro";
 import HeroSection from "../components/sections/HeroSection.astro";
 import LeadershipSection from "../components/sections/LeadershipSection.astro";
@@ -75,5 +76,6 @@ const audienceGroups = buildAudienceGroups(home);
     </main>
 
     <SiteFooter footer={home.footer} />
+    <GivingInvite />
   </div>
 </HomeBase>

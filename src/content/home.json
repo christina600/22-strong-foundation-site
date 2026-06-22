@@ -275,6 +275,14 @@
     "goalAmount": "$22,000",
     "goalCopy": "$22,000 funds around 100 recovery sessions — keeping care within reach for the people who need it most."
   },
+  "givingInvite": {
+    "ariaLabel": "Join the Strong Circle",
+    "heading": "Keep care moving every month.",
+    "body": "Join the Strong Circle for $22/month and help 22 Strong say yes before a recovery plan stops.",
+    "joinLabel": "Join for $22/month",
+    "giveOnceLabel": "Give once instead",
+    "dismissLabel": "Not now"
+  },
   "contact": {
     "heading": "Start the right conversation with 22 Strong.",
     "body": "Use this form to give, refer someone, explore a partnership, or ask about care. Please do not use it for emergencies or private medical details.",
