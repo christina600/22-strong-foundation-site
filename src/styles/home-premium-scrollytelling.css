@@ -32,106 +32,9 @@ html {
   overflow: hidden;
 }
 
-.how-it-works::before {
-  content: "22";
-  position: absolute;
-  right: max(24px, calc((100vw - var(--max)) / 2));
-  top: 52px;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(185, 85, 36, .12);
-  font-family: var(--display-face);
-  font-size: clamp(8rem, 15vw, 15rem);
-  font-stretch: condensed;
-  font-weight: 900;
-  line-height: .75;
-  pointer-events: none;
-}
-
 @media (min-width: 921px) {
-  .how-it-works {
-    display: grid;
-    grid-template-columns: minmax(300px, .72fr) minmax(0, 1.28fr);
-    column-gap: clamp(46px, 6vw, 84px);
-    align-items: start;
-    padding-block: clamp(132px, 17vh, 182px);
-  }
-
-  .how-story-copy {
-    position: sticky;
-    top: calc(var(--story-offset) + 54px);
-    align-self: start;
-    padding-top: 8px;
-  }
-
-  .how-story-copy h2 {
-    max-width: 11ch;
-    margin-bottom: 0;
-  }
-
   .how-it-works .steps {
-    position: relative;
-    grid-template-columns: 1fr;
-    gap: clamp(22px, 3vh, 32px);
-    margin-top: 0;
-    padding-left: 34px;
-  }
-
-  .how-it-works .steps::before {
-    content: "";
-    position: absolute;
-    top: 18px;
-    bottom: 18px;
-    left: 0;
-    width: 2px;
-    background:
-      linear-gradient(180deg, var(--mission-orange), rgba(70, 87, 70, .26)),
-      var(--field-canvas);
-    transform-origin: top;
-  }
-
-  .how-it-works .step {
-    min-height: clamp(240px, 30vh, 340px);
-    display: grid;
-    align-content: center;
-    padding: clamp(32px, 4vw, 48px);
-    border-color: rgba(53, 70, 50, .14);
-    background:
-      linear-gradient(180deg, rgba(255, 253, 247, .98), rgba(241, 235, 222, .92)),
-      var(--map-contours);
-    box-shadow: var(--shadow-soft);
-    transform: translateY(0);
-    transition:
-      transform .42s cubic-bezier(.22, .61, .36, 1),
-      border-color .42s ease,
-      box-shadow .42s ease,
-      background-color .42s ease;
-  }
-
-  .how-it-works .step::before {
-    content: "";
-    position: absolute;
-    top: 28px;
-    bottom: 28px;
-    left: -35px;
-    width: 2px;
-    background: rgba(185, 85, 36, .26);
-  }
-
-  .how-it-works .step::after {
-    content: "";
-    position: absolute;
-    top: 28px;
-    left: -43px;
-    width: 18px;
-    height: 18px;
-    border: 2px solid rgba(185, 85, 36, .52);
-    border-radius: 50%;
-    background: #fffdf7;
-    box-shadow: 0 0 0 7px rgba(185, 85, 36, .10);
-    transition:
-      border-color .42s ease,
-      box-shadow .42s ease,
-      transform .42s cubic-bezier(.22, .61, .36, 1);
+    margin-top: clamp(44px, 5vh, 64px);
   }
 
   .how-it-works .step:hover {
@@ -141,23 +44,6 @@ html {
       0 1px 0 rgba(255, 255, 255, .72) inset,
       0 20px 62px rgba(47, 35, 29, .12);
   }
-
-  .how-it-works .step:hover::after {
-    transform: scale(1.18);
-    border-color: rgba(185, 85, 36, .78);
-    box-shadow: 0 0 0 10px rgba(185, 85, 36, .13);
-  }
-
-  .how-it-works .funding-covers {
-    grid-column: 1 / -1;
-    margin-top: clamp(60px, 9vh, 96px);
-  }
-
-  .how-it-works .how-note {
-    grid-column: 2;
-    margin-left: 34px;
-  }
-
 }
 
 @media (max-width: 920px) {
