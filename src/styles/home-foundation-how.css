@@ -24,14 +24,43 @@
   gap: 14px clamp(24px, 3vw, 44px);
 }
 
-.credibility-lead {
-  max-width: 760px;
-  margin: clamp(18px, 2.5vw, 28px) auto 0;
-  color: rgba(32, 35, 31, .78);
-  font-size: clamp(1.12rem, 1.45vw, 1.32rem);
-  line-height: 1.58;
-  text-align: center;
+/* Recovery approach — the credibility lead lifted out of the strip into a
+   text-left / photo-right feature, mirroring the source the photo came from. */
+.recovery-feature {
+  padding: clamp(56px, 8vw, 108px) var(--space-page-x);
+}
+
+.recovery-feature-inner {
+  width: min(var(--max), 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.04fr);
+  align-items: center;
+  gap: clamp(36px, 6vw, 96px);
+}
+
+.recovery-feature-text {
+  margin: 0;
+  max-width: 24ch;
+  color: var(--ink);
+  font-size: clamp(1.5rem, 2.3vw, 2.05rem);
+  line-height: 1.42;
+  letter-spacing: -0.01em;
   text-wrap: pretty;
+}
+
+.recovery-feature-figure {
+  margin: 0;
+}
+
+.recovery-feature-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .5),
+    0 30px 64px rgba(29, 33, 29, .2);
 }
 
 .credibility-strip-item {
@@ -211,6 +240,15 @@
     grid-template-columns: 1fr;
     gap: 26px;
   }
+
+  .recovery-feature-inner {
+    grid-template-columns: 1fr;
+    gap: clamp(26px, 6vw, 38px);
+  }
+
+  .recovery-feature-text {
+    max-width: 42ch;
+  }
 }
 
 @media (max-width: 560px) {
@@ -220,11 +258,6 @@
 
   .credibility-strip-inner {
     justify-content: flex-start;
-  }
-
-  .credibility-lead {
-    margin-top: 18px;
-    text-align: left;
   }
 
   .credibility-strip-item {

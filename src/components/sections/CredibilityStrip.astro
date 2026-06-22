@@ -11,5 +11,22 @@ const { facts, lead } = Astro.props;
   <ul class="credibility-strip-inner" data-reveal>
     {facts.map((fact) => <li class="credibility-strip-item">{fact}</li>)}
   </ul>
-  {lead && <p class="credibility-lead" data-reveal>{lead}</p>}
 </section>
+
+{lead && (
+  <section class="recovery-feature" aria-label="Our recovery approach">
+    <div class="recovery-feature-inner" data-reveal>
+      <p class="recovery-feature-text">{lead}</p>
+      <figure class="recovery-feature-figure">
+        <img
+          src="/images/dumbbells-recovery.jpg"
+          alt="An athlete lifting a dumbbell from the rack during a strength session"
+          width="1002"
+          height="904"
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+    </div>
+  </section>
+)}
