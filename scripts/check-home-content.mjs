@@ -80,18 +80,22 @@ function validateServicePath() {
     }
   }
 
-  if (!servicePath.funding) {
-    addError("howItWorks.funding is missing.");
+}
+
+function validateDonateCovers() {
+  const covers = home.donate?.covers;
+  if (!covers) {
+    addError("donate.covers is missing.");
     return;
   }
 
-  if (!Array.isArray(servicePath.funding.items) || servicePath.funding.items.length === 0) {
-    addError("howItWorks.funding.items must include at least one item.");
+  if (!Array.isArray(covers.items) || covers.items.length === 0) {
+    addError("donate.covers.items must include at least one item.");
   }
 
-  for (const [index, item] of (servicePath.funding.items ?? []).entries()) {
+  for (const [index, item] of (covers.items ?? []).entries()) {
     if (!item.heading || !item.body) {
-      addError(`howItWorks.funding.items[${index}] must include heading and body.`);
+      addError(`donate.covers.items[${index}] must include heading and body.`);
     }
   }
 }
@@ -207,6 +211,7 @@ function validatePlaceholders(value, path = "home") {
 
 validateAudiences();
 validateServicePath();
+validateDonateCovers();
 validateContact();
 validateFooter();
 validateStoryChapters();

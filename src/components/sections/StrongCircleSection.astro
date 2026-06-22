@@ -8,7 +8,7 @@ interface StrongCircleContent {
   giveOnceLabel: string;
   cardTitle: string;
   cardBody: string;
-  mathRows: Array<{ label: string; value: string }>;
+  points: Array<{ label: string; text: string }>;
   modal: {
     eyebrow: string;
     heading: string;
@@ -52,14 +52,14 @@ const { chapter, strongCircle } = Astro.props;
       <h2 class="circle-card-title">{strongCircle.cardTitle}</h2>
       <p>{strongCircle.cardBody}</p>
 
-      <div class="circle-math" role="list" aria-label="Strong Circle giving numbers">
-        {strongCircle.mathRows.map((row) => (
-          <div class="circle-math-row" role="listitem">
-            <span>{row.label}</span>
-            <strong>{row.value}</strong>
-          </div>
+      <ul class="circle-points" aria-label="What monthly membership means">
+        {strongCircle.points.map((point) => (
+          <li>
+            <strong>{point.label}</strong>
+            <span>{point.text}</span>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   </div>
 </section>

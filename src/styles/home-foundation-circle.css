@@ -59,27 +59,35 @@
   font-size: var(--fs-circle-card-title);
 }
 
-.circle-math {
+.circle-points {
   display: grid;
   gap: 14px;
-  border-color: rgba(32, 35, 31, .14);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, .68) inset;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
 }
 
-.circle-math-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 18px 0;
-  border-bottom: 1px solid rgba(255,255,255,.14);
-  color: rgba(255,255,255,.78);
+.circle-points li {
+  display: grid;
+  gap: 4px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.circle-points li:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.circle-points strong {
+  color: var(--ink);
+}
+
+.circle-points span {
+  color: var(--muted);
   font-size: var(--fs-copy-small);
-}
-
-.circle-math-row strong {
-  color: #fff;
-  font-size: var(--fs-lead);
-  letter-spacing: 0;
+  line-height: var(--lh-lead);
+  text-wrap: pretty;
 }
 
 .circle-actions {
@@ -95,14 +103,3 @@
   align-self: start;
 }
 
-/* The .card in the Strong Circle uses a light background, so the
-   math rows need dark text — the white values above target the dark
-   .circle-panel only. */
-.strong-circle-wrap > .card .circle-math-row {
-  color: var(--muted);
-  border-bottom-color: var(--line);
-}
-
-.strong-circle-wrap > .card .circle-math-row strong {
-  color: var(--ink);
-}

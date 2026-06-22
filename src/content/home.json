@@ -174,17 +174,18 @@
     }
   ],
   "strongCircle": {
-    "heading": "Monthly support that keeps care moving.",
-    "lead": "The Strong Circle is the monthly giving community that funds care before a recovery gap becomes a stopped plan.",
+    "heading": "The Strong Circle keeps care going.",
+    "lead": "Monthly members give 22 Strong something a one-time gift can't: the certainty to say yes to the next person, without waiting on the next fundraiser.",
     "amount": "$22",
-    "subhead": "A steady $22 helps us say yes faster",
+    "subhead": "A steady $22 a month.",
     "joinLabel": "Join the Strong Circle",
     "giveOnceLabel": "Give once",
-    "cardTitle": "What a monthly gift makes possible.",
-    "cardBody": "Recurring gifts help 22 Strong plan ahead for people referred by providers, coaches, veterans, and community partners.",
-    "mathRows": [
-      { "label": "Monthly giving", "value": "$22/mo" },
-      { "label": "Across a year", "value": "$264" }
+    "cardTitle": "Why members give monthly.",
+    "cardBody": "Recovery rarely fits in one visit. Steady support lets us commit to the whole plan, not just the first appointment.",
+    "points": [
+      { "label": "Continuity", "text": "Care that keeps going after the first visit." },
+      { "label": "Reliability", "text": "A steady base we can plan real recovery around." },
+      { "label": "Community", "text": "Veterans and neighbors funding recovery together." }
     ],
     "modal": {
       "eyebrow": "Monthly giving circle",
@@ -218,29 +219,10 @@
       },
       {
         "number": "3",
-        "heading": "Care is funded",
-        "body": "Gifts cover recovery sessions directly, at no cost to the person receiving care."
+        "heading": "Care is provided",
+        "body": "Recovery sessions are provided directly, at no cost to the person receiving care."
       }
     ],
-    "funding": {
-      "eyebrow": "What gifts cover",
-      "heading": "Appointments, not abstractions.",
-      "body": "Funding supports practical recovery care for people with a clear need and a real access gap.",
-      "items": [
-        {
-          "heading": "Hands-on recovery sessions",
-          "body": "Chiropractic, physical therapy, and massage therapy."
-        },
-        {
-          "heading": "Follow-through after the first visit",
-          "body": "Help staying with care long enough for recovery to keep moving."
-        },
-        {
-          "heading": "Provider and partner referrals",
-          "body": "A path for veterans, families, and neighbors who are already trying to get well."
-        }
-      ]
-    },
     "note": "Care is currently provided through Next Level Fitness & Wellness Center in Newport Beach — high-level sports medicine, including Fascial Integrative Treatment (FIT). It treats injuries like rotator cuff, knee, neck, lower back, hip, ankle/foot, and wrist/elbow pain. As donor support grows, 22 Strong can expand toward a network of vetted providers across Southern California."
   },
   "leadership": [
@@ -273,7 +255,15 @@
     "outcomes": "In 2026, 22 Strong has funded over 200 recovery sessions for 45 people across Orange County.",
     "goalLabel": "Current goal",
     "goalAmount": "$22,000",
-    "goalCopy": "$22,000 funds around 100 recovery sessions — keeping care within reach for the people who need it most."
+    "goalCopy": "$22,000 funds around 100 recovery sessions — keeping care within reach for the people who need it most.",
+    "covers": {
+      "eyebrow": "What your gift covers",
+      "items": [
+        { "heading": "Hands-on recovery sessions", "body": "Chiropractic, physical therapy, and massage therapy." },
+        { "heading": "Follow-through after the first visit", "body": "Help staying with care long enough for recovery to keep moving." },
+        { "heading": "Provider and partner referrals", "body": "A path for veterans, families, and neighbors already trying to get well." }
+      ]
+    }
   },
   "givingInvite": {
     "ariaLabel": "Join the Strong Circle",

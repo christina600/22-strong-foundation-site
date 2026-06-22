@@ -8,6 +8,10 @@ interface DonateContent {
   goalLabel: string;
   goalAmount: string;
   goalCopy: string;
+  covers: {
+    eyebrow: string;
+    items: Array<{ heading: string; body: string }>;
+  };
 }
 
 interface Props {
@@ -40,5 +44,17 @@ const { chapter, donate } = Astro.props;
     <div data-reveal>
       <DonationModule />
     </div>
+  </div>
+
+  <div class="donate-covers" data-reveal>
+    <span class="eyebrow">{donate.covers.eyebrow}</span>
+    <ul class="donate-covers-grid">
+      {donate.covers.items.map((item) => (
+        <li>
+          <strong>{item.heading}</strong>
+          <span>{item.body}</span>
+        </li>
+      ))}
+    </ul>
   </div>
 </section>

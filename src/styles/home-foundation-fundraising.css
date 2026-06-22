@@ -71,3 +71,51 @@
   letter-spacing: 0;
   text-transform: uppercase;
 }
+
+/* "What your gift covers" — the funding detail, relocated here from the
+   How-it-works section and styled for the dark donate field. */
+.donate-covers {
+  max-width: var(--max);
+  margin: clamp(40px, 5vw, 64px) auto 0;
+  padding-top: clamp(28px, 3.4vw, 40px);
+  border-top: 1px solid rgba(255, 255, 255, .16);
+}
+
+.donate-covers .eyebrow {
+  color: rgba(255, 250, 240, .82);
+}
+
+.donate-covers-grid {
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 2.8vw, 40px);
+}
+
+.donate-covers-grid li {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+}
+
+.donate-covers-grid strong {
+  color: #fff;
+  font-size: var(--fs-lead);
+  letter-spacing: 0;
+}
+
+.donate-covers-grid span {
+  color: rgba(255, 255, 255, .74);
+  font-size: var(--fs-copy-small);
+  line-height: var(--lh-lead);
+  text-wrap: pretty;
+}
+
+@media (max-width: 640px) {
+  .donate-covers-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
