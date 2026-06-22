@@ -15,7 +15,7 @@ const { hero } = Astro.props;
 
 <section class="hero" id="top">
   <div class="hero-inner">
-    <div class="hero-copy" data-reveal>
+    <div class="hero-copy">
       <div class="hero-mark" aria-label="22 Strong Foundation">
         <span class="hero-mark-22">22</span>
         <span class="hero-mark-strong">Strong</span>
@@ -25,10 +25,6 @@ const { hero } = Astro.props;
       <h1 class="hero-headline">
         {hero.headline.map((line) => <span class="hero-headline-line">{line}</span>)}
       </h1>
-      <div class="hero-actions">
-        <a class="pill primary" href="#donate">{hero.ctaLabel}</a>
-        <p class="give-taxline">{hero.taxline}</p>
-      </div>
     </div>
   </div>
 </section>
