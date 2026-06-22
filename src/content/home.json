@@ -146,38 +146,38 @@
       "initials": "TB"
     },
     {
-      "name": "CSM (Ret.) Ramon Rodriguez",
-      "title": "U.S. Army Special Forces · Vietnam War · 3 Silver Stars · 5 Purple Hearts · Ranger Hall of Fame",
+      "name": "U.S. military veteran",
+      "title": "",
       "quote": "Years of pain had limited what I could do. After treatment here, I got back mobility I thought was gone for good.",
       "sample": true,
       "photo": "",
-      "photoAlt": "Ramon Rodriguez",
-      "initials": "RR"
+      "photoAlt": "Sample testimonial",
+      "initials": ""
     },
     {
-      "name": "SGT Mark Miller",
-      "title": "U.S. Army · 101st Airborne Division · Vietnam War · Bronze Star with “V” Device",
+      "name": "U.S. military veteran",
+      "title": "",
       "quote": "I came in skeptical, but the therapy worked. I have less pain now and I'm back to handling things on my own.",
       "sample": true,
       "photo": "",
-      "photoAlt": "Mark Miller",
-      "initials": "MM"
+      "photoAlt": "Sample testimonial",
+      "initials": ""
     },
     {
-      "name": "John Baca",
-      "title": "U.S. Army · Vietnam War · Medal of Honor Recipient",
+      "name": "U.S. military veteran",
+      "title": "",
       "quote": "I could barely get around when I started. A few weeks in, I'm walking better and getting through a normal day again.",
       "sample": true,
       "photo": "",
-      "photoAlt": "John Baca",
-      "initials": "JB"
+      "photoAlt": "Sample testimonial",
+      "initials": ""
     }
   ],
   "strongCircle": {
     "heading": "The Strong Circle keeps care going.",
     "lead": "Monthly members give 22 Strong something a one-time gift can't: the certainty to say yes to the next person, without waiting on the next fundraiser.",
     "amount": "$22",
-    "subhead": "A steady $22 a month.",
+    "subhead": "Every month. Cancel anytime.",
     "joinLabel": "Join the Strong Circle",
     "giveOnceLabel": "Give once",
     "cardTitle": "Why members give monthly.",

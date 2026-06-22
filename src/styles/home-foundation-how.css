@@ -123,6 +123,38 @@
   }
 }
 
+/* Section CTA — sprinkled conversion prompts between sections. */
+.section-cta {
+  width: min(var(--max), 100%);
+  margin: 0 auto;
+  padding: clamp(30px, 4vw, 52px) var(--space-page-x);
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.section-cta-text {
+  margin: 0;
+  max-width: 30ch;
+  font-size: clamp(1.25rem, 2vw, 1.7rem);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.section-cta-btn.pill.primary {
+  min-width: 220px;
+}
+
+/* Teal variant for Strong Circle CTAs — beats the global orange .pill.primary. */
+.section-cta--teal .section-cta-btn.pill.primary {
+  background: linear-gradient(180deg, var(--teal), var(--teal-deep));
+  border-color: rgba(255, 250, 240, .26);
+  box-shadow: 0 14px 32px rgba(9, 63, 67, .3);
+}
+
 .credibility-strip-item {
   display: inline-flex;
   align-items: center;

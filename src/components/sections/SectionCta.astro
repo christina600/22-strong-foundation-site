@@ -1,0 +1,15 @@
+---
+interface Props {
+  text?: string;
+  label: string;
+  href: string;
+  variant?: "orange" | "teal";
+}
+
+const { text, label, href, variant = "orange" } = Astro.props;
+---
+
+<div class={`section-cta section-cta--${variant}`} data-reveal>
+  {text && <p class="section-cta-text">{text}</p>}
+  <a class="pill primary section-cta-btn" href={href}>{label}</a>
+</div>

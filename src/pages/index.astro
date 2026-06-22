@@ -17,6 +17,7 @@ import HeroSection from "../components/sections/HeroSection.astro";
 import LeadershipSection from "../components/sections/LeadershipSection.astro";
 import NarrativeScene from "../components/sections/NarrativeScene.astro";
 import ServicePathSection from "../components/sections/ServicePathSection.astro";
+import SectionCta from "../components/sections/SectionCta.astro";
 import StatBeat from "../components/sections/StatBeat.astro";
 import SiteFooter from "../components/sections/SiteFooter.astro";
 import StrongCircleSection from "../components/sections/StrongCircleSection.astro";
@@ -66,8 +67,16 @@ const [costStat, capStat] = home.stats.others;
         paragraphs={home.story.paragraphs}
       />
 
+      <SectionCta text="Care shouldn't stop because the next visit isn't covered." label="Help fund recovery" href="#donate" />
+
       <ServicePathSection chapter="03" content={home.howItWorks} />
+
+      <SectionCta text="Keep care going every month." label="Join the Strong Circle" href="#strong-circle" variant="teal" />
+
       <TestimonialsSection groups={audienceGroups} />
+
+      <SectionCta label="Help fund recovery" href="#donate" />
+
       <FeaturedPublications chapter="04" publications={home.press.publications} />
       <LeadershipSection people={home.leadership} />
       <StrongCircleSection chapter="05" strongCircle={home.strongCircle} />
