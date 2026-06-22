@@ -61,6 +61,7 @@ const imageHeight = voice?.imageHeight ?? 800;
       </div>
     </div>
     <div class="vv-body">
+      <span class="vv-card-eyebrow">Testimonial</span>
       {video.attribution && <div class="attribution">{video.attribution}</div>}
       {video.story && <p class="story">{video.story}</p>}
     </div>
@@ -77,7 +78,7 @@ const imageHeight = voice?.imageHeight ?? 800;
       </div>
     )}
     <div class="vv-body">
-      {voice.sample && <span class="vv-sample">Sample testimonial</span>}
+      <span class="vv-card-eyebrow">{voice.sample ? "Sample testimonial" : "Testimonial"}</span>
       {voice.quote
         ? <blockquote class="vv-quote">{voice.quote}</blockquote>
         : <p class="vv-soon">Testimonial coming soon</p>}

@@ -1,6 +1,4 @@
 ---
-import DonationModule from "./DonationModule.astro";
-
 interface HeroContent {
   headline: string[];
   lead: string;
@@ -18,14 +16,19 @@ const { hero } = Astro.props;
 <section class="hero" id="top">
   <div class="hero-inner">
     <div class="hero-copy" data-reveal>
-      <h1>{hero.headline.map((line, i) => <Fragment>{i > 0 && <br />}{line}</Fragment>)}</h1>
-      <p class="lead">{hero.lead}</p>
-      <a class="pill primary" href="#donate">{hero.ctaLabel}</a>
-      <p class="give-taxline">{hero.taxline}</p>
-    </div>
-
-    <div data-reveal>
-      <DonationModule />
+      <div class="hero-mark" aria-label="22 Strong Foundation">
+        <span class="hero-mark-22">22</span>
+        <span class="hero-mark-strong">Strong</span>
+        <span class="hero-mark-rule" aria-hidden="true"></span>
+        <span class="hero-mark-foundation">Foundation</span>
+      </div>
+      <h1 class="hero-headline">
+        {hero.headline.map((line) => <span class="hero-headline-line">{line}</span>)}
+      </h1>
+      <div class="hero-actions">
+        <a class="pill primary" href="#donate">{hero.ctaLabel}</a>
+        <p class="give-taxline">{hero.taxline}</p>
+      </div>
     </div>
   </div>
 </section>

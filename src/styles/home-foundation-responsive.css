@@ -8,22 +8,8 @@
   }
 
   .bios,
-  .strong-circle-wrap,
-  .proof-stat-inner {
+  .strong-circle-wrap {
     grid-template-columns: 1fr;
-  }
-
-  /* Stacked stat bands: dividing rule moves from the side to the top. */
-  .proof-stat-text {
-    padding-left: 0;
-    padding-top: 22px;
-    border-left: 0;
-    border-top: 2px solid rgba(255,255,255,.22);
-  }
-
-  .proof-stat.light .proof-stat-text {
-    border-top-color: rgba(37,35,33,.18);
-    border-left-color: transparent;
   }
 
   .steps {

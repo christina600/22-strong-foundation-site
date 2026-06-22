@@ -13,6 +13,8 @@ let lazyVideoListenerAttached = false;
 const TRIGGER_SELECTOR = "[data-lazy-video-trigger]";
 const SHELL_SELECTOR = "[data-lazy-video]";
 const AUTOPLAY_SELECTOR = "[data-lazy-video-autoplay]";
+const TESTIMONIAL_REEL_SELECTOR = "[data-testimonial-reel]";
+const VIDEO_END_PROMPT_SELECTOR = "[data-video-end-prompt]";
 
 type BuildVideoOptions = {
   focus?: boolean;
@@ -49,6 +51,16 @@ function buildVideo(trigger: HTMLElement, options: BuildVideoOptions = {}) {
   video.append(fallback);
 
   shell.replaceChildren(video);
+  video.addEventListener("ended", () => {
+    const reel = video.closest<HTMLElement>(TESTIMONIAL_REEL_SELECTOR);
+    if (!reel) return;
+
+    reel.classList.add("is-video-complete");
+    const prompt = reel.querySelector<HTMLElement>(VIDEO_END_PROMPT_SELECTOR);
+    prompt?.removeAttribute("hidden");
+    reel.dispatchEvent(new CustomEvent("testimonial-video-ended", { bubbles: true }));
+  }, { once: true });
+
   if (options.focus) video.focus({ preventScroll: true });
   void video.play().catch(() => {
     // Autoplay can still be blocked in some browsers; controls remain visible.

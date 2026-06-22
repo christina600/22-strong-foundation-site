@@ -22,7 +22,6 @@
     --fs-serve-title: 4.1rem;
     --fs-serve-lead: 1.3rem;
     --fs-stat-major: 4.8rem;
-    --fs-proof-copy: 1.12rem;
     --fs-quote: 2.45rem;
     --fs-circle-number: 4.9rem;
     --fs-circle-card-title: 2.7rem;
@@ -41,7 +40,7 @@
   .hero::before {
     background:
       linear-gradient(180deg, rgba(20, 23, 19, .94) 0%, rgba(20, 23, 19, .78) 56%, rgba(20, 23, 19, .38) 100%),
-      url("/images/stock-veteran-brotherhood.webp") center / cover no-repeat;
+      url("/images/hero-battle-ropes.webp") center / cover no-repeat;
   }
 
   .hero-inner {
@@ -60,45 +59,10 @@
 
   .hero h1 {
     max-width: 720px;
-    font-size: var(--fs-hero);
-  }
-
-  .hero .donation-module {
-    width: min(100%, 440px);
   }
 
   .circle-panel::before {
     inset: 18px;
-  }
-
-  .proof-stat {
-    min-height: auto;
-    padding-block: var(--space-section-y);
-  }
-
-  .proof-stat::before {
-    inset: 18px;
-  }
-
-  .proof-stat-inner {
-    grid-template-columns: 1fr;
-    gap: 22px;
-  }
-
-  .proof-stat-number {
-    font-size: var(--fs-stat-major);
-    white-space: normal;
-  }
-
-  .proof-stat-text {
-    max-width: 40rem;
-    padding: 22px 0 0;
-    border-left: 0;
-    border-top: 1px solid rgba(255, 250, 240, .24);
-  }
-
-  .proof-stat.light .proof-stat-text {
-    border-top-color: rgba(32, 35, 31, .18);
   }
 
   .circle-panel {

@@ -24,6 +24,16 @@
   gap: 14px clamp(24px, 3vw, 44px);
 }
 
+.credibility-lead {
+  max-width: 760px;
+  margin: clamp(18px, 2.5vw, 28px) auto 0;
+  color: rgba(32, 35, 31, .78);
+  font-size: clamp(1.12rem, 1.45vw, 1.32rem);
+  line-height: 1.58;
+  text-align: center;
+  text-wrap: pretty;
+}
+
 .credibility-strip-item {
   display: inline-flex;
   align-items: center;
@@ -210,6 +220,11 @@
 
   .credibility-strip-inner {
     justify-content: flex-start;
+  }
+
+  .credibility-lead {
+    margin-top: 18px;
+    text-align: left;
   }
 
   .credibility-strip-item {

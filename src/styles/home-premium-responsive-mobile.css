@@ -23,7 +23,6 @@
     --fs-serve-title: 3.25rem;
     --fs-serve-lead: 1.18rem;
     --fs-stat-major: 3.45rem;
-    --fs-proof-copy: 1rem;
     --fs-quote: 2.1rem;
     --fs-circle-number: 4.1rem;
     --fs-circle-card-title: 2.25rem;
@@ -90,10 +89,6 @@
 
   .featured-sheet {
     padding: var(--space-card);
-  }
-
-  .proof-stat-number {
-    white-space: normal;
   }
 
   .footer-inner {

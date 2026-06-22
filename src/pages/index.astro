@@ -44,7 +44,7 @@ const audienceGroups = buildAudienceGroups(home);
 
     <main id="main">
       <HeroSection hero={home.hero} />
-      <CredibilityStrip facts={home.credibility} />
+      <CredibilityStrip facts={home.credibility} lead={home.hero.lead} />
 
       <NarrativeScene
         chapter="01"

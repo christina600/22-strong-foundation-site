@@ -60,7 +60,6 @@
   --fs-serve-title: 5.7rem;
   --fs-serve-lead: 1.95rem;
   --fs-stat-major: 7.8rem;
-  --fs-proof-copy: 1.42rem;
   --fs-quote: 3.15rem;
   --fs-circle-number: 6.1rem;
   --fs-circle-card-title: 3.05rem;
@@ -118,7 +117,6 @@ textarea {
 .donation-module,
 .featured-sheet,
 .goal-panel,
-.proof-stat,
 .audience-copy,
 .audience-stats,
 .step,
@@ -187,13 +185,27 @@ body::before {
 
 header {
   height: 82px;
-  background: rgba(248, 244, 235, .84);
+  background:
+    linear-gradient(180deg, rgba(248, 244, 235, .92), rgba(240, 234, 222, .84)),
+    var(--camo-field, rgba(248, 244, 235, .84));
   border-bottom: 1px solid rgba(32, 35, 31, .12);
   box-shadow: 0 8px 22px rgba(29, 33, 29, .06);
 }
 
 .nav {
+  position: relative;
   padding-inline: var(--space-page-x);
+}
+
+.nav::after {
+  content: "";
+  position: absolute;
+  right: var(--space-page-x);
+  bottom: 12px;
+  left: var(--space-page-x);
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(70, 87, 70, .26), rgba(185, 85, 36, .34), transparent);
 }
 
 .brand {
@@ -209,15 +221,25 @@ header {
   width: 100%;
   height: 2px;
   margin-top: 4px;
-  background: linear-gradient(90deg, var(--orange), transparent);
+  background: linear-gradient(90deg, var(--mission-orange, var(--orange)), var(--field-olive, var(--olive)), transparent);
 }
 
 .nav-links {
-  background: rgba(255, 253, 247, .60);
+  background:
+    linear-gradient(180deg, rgba(255, 253, 247, .76), rgba(242, 236, 223, .64)),
+    var(--camo-field, rgba(255, 253, 247, .60));
+  background-size: auto, 420px 260px;
   border-color: rgba(32, 35, 31, .10);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, .58) inset,
     0 14px 34px rgba(29, 33, 29, .07);
+}
+
+.nav-actions .pill:not(.primary) {
+  background:
+    linear-gradient(180deg, rgba(255, 253, 247, .76), rgba(242, 236, 223, .64)),
+    var(--camo-field, rgba(255, 253, 247, .48));
+  background-size: auto, 420px 260px;
 }
 
 .nav-links a {

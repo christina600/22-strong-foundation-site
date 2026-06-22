@@ -5,7 +5,6 @@
 
 @media (prefers-reduced-transparency: reduce) {
   header,
-  .hero .donation-card-main,
   .goal-panel,
   .contact form,
   .strong-circle-modal::backdrop,

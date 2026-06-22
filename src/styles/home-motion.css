@@ -31,7 +31,6 @@
 
 /* Stat bands get a bolder entrance: the figure slides in from the side
    after the band itself settles. */
-.js .proof-stat[data-reveal] .proof-stat-number,
 .js .audience-stat[data-reveal] .audience-stat-number {
   opacity: 0;
   transform: translate3d(-34px, 0, 0) scale(.96);
@@ -40,7 +39,6 @@
     transform .92s var(--ease-story) .12s;
 }
 
-.js .proof-stat[data-reveal].is-visible .proof-stat-number,
 .js .audience-stat[data-reveal].is-visible .audience-stat-number {
   opacity: 1;
   transform: none;
@@ -62,8 +60,6 @@
   .js .hero-copy[data-reveal],
   .js .how-story-copy[data-reveal],
   .js .audience-copy[data-reveal],
-  .js .proof-stat[data-reveal] .proof-stat-number,
-  .js .proof-stat[data-reveal].is-visible .proof-stat-number,
   .js .audience-stat[data-reveal] .audience-stat-number,
   .js .audience-stat[data-reveal].is-visible .audience-stat-number {
     opacity: 1 !important;
@@ -86,7 +82,6 @@
     transition-duration: .48s, .58s;
   }
 
-  .js .proof-stat[data-reveal] .proof-stat-number,
   .js .audience-stat[data-reveal] .audience-stat-number {
     transform: translate3d(0, 14px, 0) scale(.98);
   }

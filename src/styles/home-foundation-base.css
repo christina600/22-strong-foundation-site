@@ -48,7 +48,6 @@
   --fs-serve-title: 5.4rem;
   --fs-serve-lead: 1.9rem;
   --fs-stat-major: 7.4rem;
-  --fs-proof-copy: 1.42rem;
   --fs-quote: 3.15rem;
   --fs-circle-number: 6.1rem;
   --fs-circle-card-title: 3.1rem;
@@ -145,7 +144,7 @@ header {
 
 .brand {
   font-family: var(--display-face);
-  font-weight: 850;
+  font-weight: 900;
   font-stretch: condensed;
   letter-spacing: 0;
   font-size: var(--fs-brand);
@@ -175,20 +174,20 @@ header {
 }
 
 .nav-links a {
-  font-family: var(--display-face);
-  font-stretch: condensed;
+  font-family: var(--ui-face, ui-sans-serif, system-ui, sans-serif);
+  font-stretch: normal;
   flex: 0 0 auto;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 34px;
-  padding: 0 14px;
+  min-height: 38px;
+  padding: 0 16px;
   border-radius: 999px;
-  color: rgba(37, 35, 33, .78);
-  font-size: var(--fs-ui-micro);
-  font-weight: 850;
+  color: rgba(32, 35, 31, .82);
+  font-size: var(--fs-ui);
+  font-weight: 800;
   letter-spacing: 0;
-  text-transform: uppercase;
+  text-transform: none;
   text-decoration: none;
   transition:
     color .2s ease,
@@ -217,18 +216,18 @@ header {
 }
 
 .pill {
-  font-family: var(--display-face);
-  font-stretch: condensed;
+  font-family: var(--ui-face, ui-sans-serif, system-ui, sans-serif);
+  font-stretch: normal;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 42px;
+  min-height: 46px;
   padding: 0 22px;
   border-radius: 999px;
-  font-weight: 850;
-  font-size: var(--fs-ui-small);
+  font-weight: 800;
+  font-size: var(--fs-ui);
   letter-spacing: 0;
-  text-transform: uppercase;
+  text-transform: none;
   text-decoration: none;
   color: var(--ink);
   border: 1px solid var(--line);

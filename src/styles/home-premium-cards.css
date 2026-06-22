@@ -23,8 +23,9 @@ form {
   padding: var(--space-card-compact);
   gap: 16px;
   background:
-    linear-gradient(180deg, var(--surface-card), var(--surface-card-soft));
-  border-color: var(--surface-line);
+    linear-gradient(180deg, rgba(255, 253, 247, .97), rgba(244, 238, 226, .94)),
+    var(--map-contours, transparent);
+  border-color: rgba(53, 70, 50, .20);
   box-shadow: var(--shadow-panel);
 }
 
@@ -36,13 +37,25 @@ form {
   background: linear-gradient(90deg, var(--olive), rgba(185, 85, 36, .78), rgba(255, 253, 247, 0));
 }
 
+.donation-card-main::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  pointer-events: none;
+  border: 1px solid rgba(53, 70, 50, .12);
+  border-radius: calc(var(--radius) - 2px);
+}
+
 .donation-card-main .eyebrow {
   letter-spacing: 0;
 }
 
 .toggle-row {
   padding: 4px;
-  background: #ece5d8;
+  background:
+    linear-gradient(180deg, rgba(223, 216, 199, .94), rgba(236, 229, 216, .82)),
+    var(--camo-field, #ece5d8);
+  background-size: auto, 360px 220px;
   border-color: rgba(32, 35, 31, .12);
   border-radius: 8px;
 }
@@ -75,6 +88,7 @@ textarea {
 
 .amount-button {
   background: rgba(255, 255, 255, .82);
+  border-color: rgba(53, 70, 50, .16);
 }
 
 .amount-button:hover,
@@ -87,7 +101,8 @@ textarea {
   position: relative;
   padding: var(--space-card-compact);
   background:
-    linear-gradient(180deg, rgba(70, 87, 70, .10), rgba(185, 85, 36, .08));
+    linear-gradient(180deg, rgba(70, 87, 70, .13), rgba(185, 85, 36, .08)),
+    var(--map-contours, transparent);
   border-color: rgba(32, 35, 31, .14);
   box-shadow: 0 1px 0 rgba(255, 255, 255, .68) inset;
 }

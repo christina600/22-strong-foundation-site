@@ -1,6 +1,6 @@
 /* Foundation testimonial styles. */
 
-blockquote {
+.vv-quote {
   margin: 0;
   font-family: var(--display-face);
   font-stretch: condensed;

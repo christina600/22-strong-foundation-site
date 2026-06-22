@@ -3,31 +3,15 @@ import type { EvidenceStatContent } from "../../utils/home-story";
 
 interface Props {
   stat: EvidenceStatContent;
-  variant?: "about" | "audience" | "proof";
+  variant: "about" | "audience";
   reveal?: boolean;
 }
 
-const { stat, variant = "proof", reveal = false } = Astro.props;
+const { stat, variant, reveal = false } = Astro.props;
 const revealAttrs = reveal ? { "data-reveal": "" } : {};
-const isAudience = variant === "audience";
 const className = variant === "about"
   ? `about-evidence-stat${stat.light ? " is-light" : ""}`
-  : isAudience
-    ? `audience-stat${stat.light ? " is-light" : ""}`
-    : `proof-stat${stat.light ? " light" : ""}`;
-const proofClasses = isAudience
-  ? {
-      inner: "audience-stat-inner",
-      number: "audience-stat-number",
-      text: "audience-stat-text",
-      source: "audience-stat-source"
-    }
-  : {
-      inner: "proof-stat-inner",
-      number: "proof-stat-number",
-      text: "proof-stat-text",
-      source: "proof-stat-source"
-    };
+  : `audience-stat${stat.light ? " is-light" : ""}`;
 ---
 
 {variant === "about" ? (
@@ -42,11 +26,11 @@ const proofClasses = isAudience
   </aside>
 ) : (
   <aside class={className} role="listitem" {...revealAttrs}>
-    <div class={proofClasses.inner}>
-      <div class={proofClasses.number}>{stat.number}</div>
-      <div class={proofClasses.text}>
+    <div class="audience-stat-inner">
+      <div class="audience-stat-number">{stat.number}</div>
+      <div class="audience-stat-text">
         <p>{stat.text}</p>
-        <span class={proofClasses.source}>
+        <span class="audience-stat-source">
           <a href={stat.url} target="_blank" rel="noopener noreferrer">{stat.source}</a>
         </span>
       </div>

@@ -9,7 +9,6 @@
   --fs-lead: 1.42rem;
   --fs-body: 1.2rem;
   --fs-body-lg: 1.28rem;
-  --fs-proof-copy: 1.58rem;
   --fs-ui: 1.06rem;
   --fs-ui-small: 1.06rem;
   --fs-ui-micro: 1rem;
@@ -28,8 +27,6 @@ body::after {
   opacity: .16;
 }
 
-.nav-links a,
-.pill,
 .btn-donate,
 .toggle-row button,
 .amount-button,
@@ -38,7 +35,6 @@ body::after {
 .donation-card-main .eyebrow,
 .most-impact-badge,
 .attribution,
-.proof-stat-source,
 .goal-top,
 .outcomes,
 .modal-proof-grid span,
@@ -51,42 +47,26 @@ label {
 
 p,
 li,
-blockquote {
+.vv-quote {
   text-wrap: pretty;
 }
 
-.nav-links a,
-.pill,
 .btn-donate,
 .eyebrow,
 .attribution,
 .goal-top,
 .outcomes,
-.proof-stat-source,
 .footer-title {
   text-transform: none;
-}
-
-.nav-links a {
-  min-height: 38px;
-  padding-inline: 16px;
-  color: rgba(32, 35, 31, .82);
-  font-size: var(--fs-ui);
-  font-weight: 800;
 }
 
 .nav-actions .pill.primary {
   min-width: 118px;
 }
 
-.pill,
 .btn-donate {
   font-size: var(--fs-ui);
   font-weight: 800;
-}
-
-.hero .lead {
-  color: rgba(255, 250, 240, .9);
 }
 
 .credibility-strip-item,
@@ -94,7 +74,6 @@ blockquote {
 .attribution,
 .goal-top,
 .outcomes,
-.proof-stat-source,
 .footer-title {
   font-size: var(--fs-meta);
   font-weight: 800;
@@ -186,37 +165,10 @@ footer p,
   font-size: var(--fs-copy-small);
 }
 
-.proof-stat p {
-  color: rgba(255, 250, 240, .92);
-}
-
-.proof-stat-source {
-  color: rgba(255, 250, 240, .84);
-  font-size: var(--fs-ui);
-  line-height: 1.45;
-}
-
-.proof-stat-source {
-  text-transform: none;
-}
-
-.proof-stat.light p {
-  color: rgba(32, 35, 31, .88);
-}
-
-.proof-stat.light .proof-stat-source {
-  color: rgba(32, 35, 31, .74);
-}
-
 .donate-section .lead,
 .donate-section .outcomes,
 .goal-copy {
   color: rgba(255, 250, 240, .92);
-}
-
-.goal-panel {
-  background: rgba(20, 23, 19, .38);
-  border-color: rgba(255, 250, 240, .32);
 }
 
 .footer-inner,
@@ -238,7 +190,6 @@ footer p,
     --fs-body: 1.14rem;
     --fs-body-lg: 1.18rem;
     --fs-serve-lead: 1.5rem;
-    --fs-proof-copy: 1.28rem;
     --fs-ui: 1.04rem;
     --fs-ui-small: 1.04rem;
     --fs-ui-micro: 1rem;
@@ -263,7 +214,6 @@ footer p,
     --fs-body: 1.12rem;
     --fs-body-lg: 1.16rem;
     --fs-serve-lead: 1.42rem;
-    --fs-proof-copy: 1.22rem;
     --fs-ui: 1.02rem;
     --fs-ui-small: 1.02rem;
     --fs-ui-micro: 1rem;

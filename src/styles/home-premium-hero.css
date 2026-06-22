@@ -1,9 +1,9 @@
 /* Premium hero refinements. */
 .hero {
   position: relative;
-  min-height: calc(94svh - 82px);
+  min-height: calc(92svh - 82px);
   overflow: hidden;
-  background: #141713;
+  background: var(--field-black, #141713);
   border-bottom: 1px solid rgba(255, 255, 255, .1);
 }
 
@@ -12,19 +12,26 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(20, 23, 19, .96) 0%, rgba(20, 23, 19, .86) 43%, rgba(20, 23, 19, .32) 78%, rgba(20, 23, 19, .12) 100%),
-    linear-gradient(180deg, rgba(20, 23, 19, .08), rgba(20, 23, 19, .52)),
-    url("/images/stock-veteran-brotherhood.webp") center right / cover no-repeat;
+    linear-gradient(90deg, rgba(12, 17, 12, .97) 0%, rgba(18, 24, 17, .9) 38%, rgba(18, 24, 17, .42) 76%, rgba(18, 24, 17, .18) 100%),
+    linear-gradient(180deg, rgba(18, 24, 17, .12), rgba(18, 24, 17, .68)),
+    var(--camo-field, transparent),
+    url("/images/hero-battle-ropes.webp") center right / cover no-repeat;
+  background-blend-mode: normal, normal, soft-light, normal;
   transform: scale(1.012);
-  filter: saturate(.94) contrast(1.14) brightness(.96);
+  filter: saturate(.9) contrast(1.12);
 }
 
 .hero::after {
   content: "";
   position: absolute;
-  inset: auto 0 0;
-  height: 28%;
-  background: linear-gradient(180deg, transparent, rgba(20, 23, 19, .62));
+  inset: 0;
+  height: auto;
+  opacity: .76;
+  background:
+    linear-gradient(180deg, transparent 0%, rgba(17, 22, 16, .18) 58%, rgba(17, 22, 16, .72) 100%),
+    var(--field-sand, transparent),
+    var(--field-canvas, transparent);
+  background-blend-mode: normal, soft-light, overlay;
   pointer-events: none;
 }
 
@@ -32,32 +39,19 @@
   position: relative;
   z-index: 1;
   padding: var(--space-hero-top) var(--space-page-x) var(--space-hero-bottom);
-  grid-template-columns: minmax(0, 1fr) minmax(322px, 390px);
-  gap: var(--space-hero-gap);
-  align-items: end;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
 }
 
 .hero-copy {
   position: relative;
-  max-width: 760px;
-  padding-top: 0;
+  display: grid;
+  gap: clamp(28px, 5vh, 52px);
+  width: min(980px, 100%);
+  max-width: none;
+  padding-top: clamp(14px, 4vh, 42px);
   filter: drop-shadow(0 16px 38px rgba(0, 0, 0, .18));
-}
-
-.hero-copy::before {
-  content: "22";
-  position: absolute;
-  right: min(-12vw, -70px);
-  bottom: -42px;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 250, 240, .16);
-  font-family: var(--display-face);
-  font-size: clamp(9rem, 18vw, 18rem);
-  font-stretch: condensed;
-  font-weight: 900;
-  line-height: .72;
-  opacity: .72;
-  pointer-events: none;
 }
 
 .hero-copy > * {
@@ -65,89 +59,164 @@
   z-index: 1;
 }
 
-/* Cream eyebrow is for the hero copy only — scoped so it does not bleed onto
-   the donation card eyebrow ("GIVE NOW"), which sits on a light card. */
-.hero-copy .eyebrow {
-  color: rgba(242, 236, 223, .84);
+.hero-mark {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  width: clamp(132px, 15vw, 190px);
+  aspect-ratio: 1;
+  padding: clamp(16px, 1.8vw, 22px);
+  background:
+    linear-gradient(135deg, rgba(255, 250, 240, .08), transparent 36%),
+    #050605;
+  border: 1px solid rgba(255, 250, 240, .18);
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, .10) inset,
-    0 8px 22px rgba(0, 0, 0, .16);
+    0 24px 68px rgba(0, 0, 0, .38),
+    0 1px 0 rgba(255, 255, 255, .16) inset;
+}
+
+.hero-mark-22,
+.hero-mark-strong,
+.hero-mark-foundation {
+  display: block;
+  color: #fffaf0;
+  font-family: var(--display-face);
+  font-stretch: condensed;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.hero-mark-22 {
+  font-size: clamp(3.6rem, 6vw, 5.45rem);
+  line-height: .68;
+}
+
+.hero-mark-strong {
+  margin-top: .15em;
+  font-size: clamp(1.65rem, 2.7vw, 2.42rem);
+  line-height: .78;
+}
+
+.hero-mark-rule {
+  width: 72%;
+  height: clamp(5px, .52vw, 8px);
+  margin: clamp(9px, 1vw, 13px) 0 clamp(8px, 1vw, 12px);
+  background: var(--mission-orange, #b95524);
+}
+
+.hero-mark-foundation {
+  font-size: clamp(.78rem, 1.2vw, 1.05rem);
+  line-height: .9;
+  color: rgba(255, 250, 240, .88);
 }
 
 .hero h1 {
-  max-width: 700px;
-  margin-bottom: 22px;
+  display: grid;
+  gap: clamp(4px, .7vw, 8px);
+  max-width: 850px;
+  margin: 0;
   color: #fffaf0;
-  font-size: var(--fs-hero);
+  font-size: clamp(4.4rem, 9vw, 9.2rem);
   line-height: var(--lh-hero);
   letter-spacing: 0;
   text-wrap: balance;
   text-shadow:
-    0 1px 0 rgba(255, 250, 240, .10),
-    0 14px 44px rgba(0, 0, 0, .46);
+    0 1px 0 rgba(255, 250, 240, .08),
+    0 28px 72px rgba(0, 0, 0, .54);
 }
 
-.hero .lead {
-  max-width: 520px;
-  color: rgba(255, 250, 240, .86);
-  line-height: var(--lh-lead);
-  text-wrap: pretty;
+.hero-headline-line {
+  position: relative;
+  display: block;
+  width: fit-content;
+  overflow: hidden;
+  padding-right: .08em;
+}
+
+.hero-headline-line::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: .03em;
+  width: 100%;
+  height: .055em;
+  background: linear-gradient(90deg, var(--mission-orange, #b95524), rgba(255, 250, 240, .16));
+  transform: scaleX(.18);
+  transform-origin: left;
+  opacity: .78;
+}
+
+.hero-headline-line:nth-child(2) {
+  margin-left: clamp(28px, 6vw, 84px);
+}
+
+.hero-headline-line:nth-child(3) {
+  margin-left: clamp(10px, 2vw, 30px);
+}
+
+.js .hero-headline-line {
+  animation: hero-line-rise .82s cubic-bezier(.19, .72, .2, 1) both;
+}
+
+.js .hero-headline-line::after {
+  animation: hero-line-rule 1.15s cubic-bezier(.19, .72, .2, 1) both;
+}
+
+.js .hero-headline-line:nth-child(2) {
+  animation-delay: .08s;
+}
+
+.js .hero-headline-line:nth-child(2)::after {
+  animation-delay: .18s;
+}
+
+.js .hero-headline-line:nth-child(3) {
+  animation-delay: .16s;
+}
+
+.js .hero-headline-line:nth-child(3)::after {
+  animation-delay: .28s;
+}
+
+@keyframes hero-line-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, .34em, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hero-line-rule {
+  from {
+    transform: scaleX(.08);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 18px;
 }
 
 .give-taxline {
-  margin: 10px 0 0;
+  margin: 0;
   color: rgba(255, 250, 240, .86);
   font-weight: 700;
   font-size: var(--fs-ui-small);
   text-wrap: pretty;
 }
 
-.hero .donation-card-main {
-  padding: 18px;
-  gap: 12px;
-  background: rgba(255, 253, 247, .97);
-  border-color: rgba(255, 255, 255, .62);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, .86) inset,
-    0 22px 56px rgba(0, 0, 0, .20),
-    0 42px 84px rgba(0, 0, 0, .10);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-}
-
-.hero .toggle-row button,
-.hero .amount-button {
-  min-height: 40px;
-}
-
-.hero .other-amount-input {
-  min-height: 42px;
-}
-
-.hero .impact-line {
-  padding: 15px 16px 15px 20px;
-}
-
-.hero .impact-line strong {
-  font-size: var(--fs-gift-summary-compact);
-}
-
-.hero .btn-donate {
-  min-height: 44px;
-}
-
-.hero .donation-footnote {
-  font-size: var(--fs-ui-micro);
-  line-height: 1.32;
-}
-
-.hero .donation-legal {
-  display: none;
-}
-
 /* Hero CTA spacing — moved off an inline style so it stays in the cached stylesheet. */
 .hero-copy .pill.primary {
-  margin-top: 18px;
+  margin-top: 0;
 }
 
 /* Short viewports (most laptops, landscape phones): keep the whole hero — headline,
@@ -169,10 +238,36 @@
 }
 
 @media (max-width: 720px) {
-  .hero-copy::before {
-    right: -18px;
-    bottom: -18px;
-    font-size: clamp(6.8rem, 28vw, 9rem);
+  .hero::after {
     opacity: .42;
+    background:
+      linear-gradient(180deg, transparent 0%, rgba(17, 22, 16, .16) 56%, rgba(17, 22, 16, .68) 100%),
+      var(--field-sand, transparent),
+      var(--field-canvas, transparent);
+  }
+
+  .hero-copy {
+    gap: 26px;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.35rem, 18vw, 5.2rem);
+  }
+
+  .hero-headline-line:nth-child(2),
+  .hero-headline-line:nth-child(3) {
+    margin-left: 0;
+  }
+
+  .hero-actions {
+    display: grid;
+    justify-items: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .hero-headline-line,
+  .js .hero-headline-line::after {
+    animation: none;
   }
 }
