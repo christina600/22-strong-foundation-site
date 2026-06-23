@@ -93,7 +93,9 @@
 .hero-mark-strong {
   margin-top: .12em;
   font-size: clamp(2.6rem, 4.3vw, 3.9rem);
-  letter-spacing: .02em;
+  /* Negative tracking pulls STRONG in to match the 22 / rule / FOUNDATION
+     widths — the logo reads as one stacked column of equal width. */
+  letter-spacing: -.01em;
   line-height: .82;
 }
 
