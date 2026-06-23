@@ -18,7 +18,7 @@
   --action-shadow:
     inset 0 1px 0 rgba(255, 255, 255, .20),
     0 1px 1px rgba(31, 20, 12, .22),
-    0 4px 10px rgba(31, 20, 12, .14);
+    0 6px 16px rgba(31, 20, 12, .17);
   --action-shadow-hover:
     inset 0 1px 0 rgba(255, 255, 255, .24),
     0 2px 4px rgba(31, 20, 12, .20),
@@ -281,6 +281,24 @@ header {
 .pill:focus-visible {
   outline: 2px solid var(--ink);
   outline-offset: 2px;
+}
+
+/* Forward affordance on the primary CTAs — a glyph that nudges right on
+   hover. Decorative (empty alt text); suppressed on the compact nav button. */
+.pill.primary::after,
+.btn-donate::after {
+  content: "→" / "";
+  margin-left: .55em;
+  transition: transform .2s ease;
+}
+
+.pill.primary:hover::after,
+.btn-donate:hover::after {
+  transform: translateX(3px);
+}
+
+.nav-actions .pill.primary::after {
+  content: none;
 }
 
 .nav-actions .pill:not(.primary) {

@@ -287,6 +287,9 @@ header {
   background: var(--action-gradient);
   border-color: transparent;
   box-shadow: var(--action-shadow);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: var(--fs-ui-small, .92rem);
 }
 
 section {
