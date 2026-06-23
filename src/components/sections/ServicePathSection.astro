@@ -1,6 +1,18 @@
 ---
+interface ProviderLink {
+  label: string;
+  href: string;
+}
+
 interface ServiceStep {
   number: string;
+  heading: string;
+  body: string;
+  note?: string;
+  provider?: ProviderLink;
+}
+
+interface ServiceOutcome {
   heading: string;
   body: string;
 }
@@ -11,7 +23,7 @@ interface ServicePathContent {
   kicker: string;
   stepsAriaLabel: string;
   steps: ServiceStep[];
-  note: string;
+  outcome?: ServiceOutcome;
 }
 
 interface Props {
@@ -20,6 +32,13 @@ interface Props {
 }
 
 const { chapter, content } = Astro.props;
+
+// Split a step note on the "{provider}" token so the venue name renders as a
+// link inline within the sentence.
+const splitNote = (note: string) => {
+  const [before, after = ""] = note.split("{provider}");
+  return { before, after };
+};
 ---
 
 <section class="how-it-works story-path" id="how-it-works" data-chapter={chapter}>
@@ -29,15 +48,32 @@ const { chapter, content } = Astro.props;
     <p class="story-kicker">{content.kicker}</p>
   </div>
 
-  <div class="steps" role="list" aria-label={content.stepsAriaLabel}>
+  <ol class="steps steps--path" aria-label={content.stepsAriaLabel}>
     {content.steps.map((step) => (
-      <div class="step story-beat" role="listitem" data-reveal>
-        <span class="step-number">{step.number}</span>
-        <h3>{step.heading}</h3>
-        <p>{step.body}</p>
-      </div>
+      <li class="step story-beat" data-reveal>
+        <span class="step-number" aria-hidden="true">{step.number}</span>
+        <div class="step-body">
+          <h3>{step.heading}</h3>
+          <p>{step.body}</p>
+          {step.note && (
+            <p class="step-note">
+              {step.provider
+                ? <Fragment>{splitNote(step.note).before}<a href={step.provider.href} target="_blank" rel="noopener noreferrer">{step.provider.label}</a>{splitNote(step.note).after}</Fragment>
+                : step.note}
+            </p>
+          )}
+        </div>
+      </li>
     ))}
-  </div>
 
-  <p class="how-note" data-reveal>{content.note}</p>
+    {content.outcome && (
+      <li class="step step--outcome" data-reveal>
+        <span class="step-number step-number--outcome" aria-hidden="true"></span>
+        <div class="step-body">
+          <h3>{content.outcome.heading}</h3>
+          <p>{content.outcome.body}</p>
+        </div>
+      </li>
+    )}
+  </ol>
 </section>

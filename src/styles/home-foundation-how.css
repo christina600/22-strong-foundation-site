@@ -189,22 +189,44 @@
   padding-bottom: var(--space-section-y);
 }
 
-.steps {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-grid-gap);
-  margin-top: 44px;
+/* Theory-of-change path: a single vertical spine that the three steps hang
+   off, ending in the outcome the funding produces. */
+.steps--path {
+  position: relative;
+  list-style: none;
+  margin: 44px 0 0;
+  padding: 0;
+  max-width: 760px;
+}
+
+/* The spine. Sits behind the number nodes; the scrollytelling layer grows it
+   on scroll (story-line-grow). */
+.steps--path::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 6px;
+  bottom: 26px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--orange-dark), rgba(185, 85, 36, .35));
+  transform-origin: top center;
 }
 
 .step {
-  padding: var(--space-card);
-  border-radius: var(--radius);
-  background: rgba(255, 253, 248, .88);
-  border: 1px solid var(--line);
-  box-shadow: 0 18px 60px rgba(47, 35, 29, .08);
+  position: relative;
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  column-gap: 22px;
+  padding: 0 0 34px;
+}
+
+.step:last-child {
+  padding-bottom: 0;
 }
 
 .step-number {
+  position: relative;
+  z-index: 1;
   display: grid;
   place-items: center;
   width: 42px;
@@ -214,11 +236,29 @@
   color: #fff;
   font-weight: 850;
   font-size: var(--fs-body);
-  margin-bottom: 20px;
+}
+
+/* The outcome node closes the path — a solid, calmer marker with a check. */
+.step-number--outcome {
+  background: var(--ink);
+}
+
+.step-number--outcome::after {
+  content: "";
+  width: 7px;
+  height: 12px;
+  margin-top: -2px;
+  border: solid #fff;
+  border-width: 0 2.5px 2.5px 0;
+  transform: rotate(45deg);
+}
+
+.step--outcome h3 {
+  color: var(--orange-dark);
 }
 
 .step h3 {
-  margin-bottom: 10px;
+  margin: 8px 0 8px;
 }
 
 .step p {
@@ -227,11 +267,17 @@
   line-height: var(--lh-lead);
 }
 
-.how-note {
-  margin-top: 32px;
-  max-width: 680px;
-  font-size: var(--fs-copy-small);
+.step-note {
+  margin-top: 12px;
+  max-width: 52ch;
+  font-size: var(--fs-copy-fine);
   line-height: var(--lh-copy);
+  color: var(--muted);
+}
+
+.step-note a {
+  color: var(--orange-dark);
+  text-underline-offset: 3px;
 }
 
 /* Below ~860px the four facts wrap; hide the dots so a wrapped row never

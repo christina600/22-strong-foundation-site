@@ -225,10 +225,15 @@
       {
         "number": "3",
         "heading": "Care is provided",
-        "body": "Recovery sessions are provided directly, at no cost to the person receiving care."
+        "body": "Recovery sessions are provided directly, at no cost to the person receiving care.",
+        "note": "Care is currently provided through {provider} in Newport Beach — high-level sports medicine, including Fascial Integrative Treatment (FIT) for rotator cuff, knee, neck, lower back, hip, ankle/foot, and wrist/elbow injuries.",
+        "provider": { "label": "Next Level Fitness & Wellness Center", "href": "https://www.nextlevelwellnesscenter.com" }
       }
     ],
-    "note": "Care is currently provided through Next Level Fitness & Wellness Center in Newport Beach — high-level sports medicine, including Fascial Integrative Treatment (FIT). It treats injuries like rotator cuff, knee, neck, lower back, hip, ankle/foot, and wrist/elbow pain."
+    "outcome": {
+      "heading": "Care doesn’t stop.",
+      "body": "The gap closes, and recovery keeps moving — visit after visit."
+    }
   },
   "leadership": [
     {

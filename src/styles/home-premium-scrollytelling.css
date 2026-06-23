@@ -36,14 +36,6 @@ html {
   .how-it-works .steps {
     margin-top: clamp(44px, 5vh, 64px);
   }
-
-  .how-it-works .step:hover {
-    transform: translateY(-4px);
-    border-color: rgba(185, 85, 36, .30);
-    box-shadow:
-      0 1px 0 rgba(255, 255, 255, .72) inset,
-      0 20px 62px rgba(47, 35, 29, .12);
-  }
 }
 
 @media (max-width: 920px) {
