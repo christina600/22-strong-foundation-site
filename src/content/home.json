@@ -181,32 +181,22 @@
     }
   ],
   "strongCircle": {
-    "heading": "The Strong Circle keeps care going.",
-    "lead": "Monthly members give 22 Strong something a one-time gift can't: the certainty to say yes to the next person, without waiting on the next fundraiser.",
-    "amount": "$22",
-    "subhead": "Every month. Cancel anytime.",
-    "joinLabel": "Join the Strong Circle",
-    "giveOnceLabel": "Give once",
-    "cardTitle": "Why members give monthly.",
-    "cardBody": "Recovery rarely fits in one visit. Steady support lets us commit to the whole plan, not just the first appointment.",
+    "heading": "Join the 22 Strong Circle.",
+    "lead": "A monthly membership for people who want recovery to keep going — so 22 Strong can say yes to the next veteran or young person without waiting on the next fundraiser.",
+    "tiersLabel": "Become a monthly member",
+    "tiers": [
+      { "amount": "$22", "note": "" },
+      { "amount": "$50", "note": "" },
+      { "amount": "$100", "note": "" },
+      { "amount": "$190", "note": "one recovery session" }
+    ],
+    "joinLabel": "Become a member",
+    "footnote": "Monthly · cancel anytime · every dollar funds recovery care.",
     "points": [
       { "label": "Continuity", "text": "Care that keeps going after the first visit." },
       { "label": "Reliability", "text": "A steady base we can plan real recovery around." },
       { "label": "Community", "text": "Veterans and neighbors funding recovery together." }
-    ],
-    "modal": {
-      "eyebrow": "Monthly giving circle",
-      "heading": "Join the Strong Circle.",
-      "amountValue": "$22",
-      "amountPeriod": "/month",
-      "lead": "A steady monthly gift gives 22 Strong a reliable base for appointments and follow-through — not just the first visit.",
-      "proof": [
-        { "label": "Steady support", "value": "Funds care beyond the first visit." },
-        { "label": "Simple commitment", "value": "$264 across the year." }
-      ],
-      "joinLabel": "Start $22/month →",
-      "giveOnceLabel": "Give once instead"
-    }
+    ]
   },
   "howItWorks": {
     "eyebrow": "How 22 Strong works",
@@ -257,8 +247,8 @@
     }
   ],
   "donate": {
-    "heading": "Fund the next recovery appointment.",
-    "lead": "Every gift helps turn a stalled recovery plan into appointments someone can actually reach.",
+    "heading": "Donate today.",
+    "lead": "A one-time gift goes straight to the next recovery appointment someone can't otherwise reach.",
     "outcomes": "In 2026, 22 Strong has funded over 200 recovery sessions for 45 people across Orange County.",
     "goalLabel": "Current goal",
     "goalAmount": "$22,000",
@@ -273,10 +263,10 @@
     }
   },
   "givingInvite": {
-    "ariaLabel": "Join the Strong Circle",
-    "heading": "Keep care moving every month.",
-    "body": "Join the Strong Circle for $22/month and help 22 Strong say yes before a recovery plan stops.",
-    "joinLabel": "Join for $22/month",
+    "ariaLabel": "Join the 22 Strong Circle",
+    "heading": "Keep care going every month.",
+    "body": "Become a monthly member of the 22 Strong Circle and help 22 Strong say yes before a recovery plan stops.",
+    "joinLabel": "Become a member",
     "giveOnceLabel": "Give once instead",
     "dismissLabel": "Not now"
   },

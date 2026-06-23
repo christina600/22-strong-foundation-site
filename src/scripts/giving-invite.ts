@@ -8,19 +8,9 @@
  * monthly $22; "Give once" presets it to one-time.
  */
 
-import { DONATION_PRESET_EVENT } from "./events";
-
 const INVITE_SELECTOR = "[data-giving-invite]";
 const STORAGE_KEY = "givingInviteSeen";
 const VISIBLE_CLASS = "is-visible";
-
-function presetGift(frequency: string, amount?: string) {
-  document.dispatchEvent(
-    new CustomEvent(DONATION_PRESET_EVENT, {
-      detail: amount ? { frequency, amount } : { frequency },
-    }),
-  );
-}
 
 function initGivingInvite() {
   const invite = document.querySelector<HTMLElement>(INVITE_SELECTOR);
@@ -79,13 +69,8 @@ function initGivingInvite() {
   invite.querySelectorAll<HTMLElement>("[data-giving-invite-dismiss]").forEach((el) => {
     el.addEventListener("click", hide);
   });
-  invite.querySelector<HTMLElement>("[data-giving-invite-join]")?.addEventListener("click", () => {
-    presetGift("monthly", "22");
-    hide();
-  });
-  invite.querySelector<HTMLElement>("[data-giving-invite-once]")?.addEventListener("click", () => {
-    presetGift("one-time");
-    hide();
+  invite.querySelectorAll<HTMLElement>("[data-giving-invite-join], [data-giving-invite-once]").forEach((el) => {
+    el.addEventListener("click", hide);
   });
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && !invite.hidden) hide();

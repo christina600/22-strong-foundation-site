@@ -29,7 +29,7 @@
 .circle-panel {
   position: relative;
   overflow: hidden;
-  min-height: 560px;
+  min-height: 360px;
   background:
     linear-gradient(150deg, rgba(11, 74, 77, .96) 0%, rgba(9, 63, 67, .90) 54%, rgba(9, 63, 67, .74) 100%),
     var(--camo-field, transparent),

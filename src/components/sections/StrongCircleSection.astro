@@ -2,23 +2,11 @@
 interface StrongCircleContent {
   heading: string;
   lead: string;
-  amount: string;
-  subhead: string;
+  tiersLabel: string;
+  tiers: Array<{ amount: string; note: string }>;
   joinLabel: string;
-  giveOnceLabel: string;
-  cardTitle: string;
-  cardBody: string;
+  footnote: string;
   points: Array<{ label: string; text: string }>;
-  modal: {
-    eyebrow: string;
-    heading: string;
-    amountValue: string;
-    amountPeriod: string;
-    lead: string;
-    proof: Array<{ label: string; value: string }>;
-    joinLabel: string;
-    giveOnceLabel: string;
-  };
 }
 
 interface Props {
@@ -30,67 +18,35 @@ const { chapter, strongCircle } = Astro.props;
 ---
 
 <section class="strong-circle-section story-commitment" id="strong-circle" data-chapter={chapter}>
-  <div class="strong-circle-wrap">
-    <div class="circle-panel" data-reveal>
-      <div>
+  <div class="strong-circle-wrap" data-reveal>
+    <div class="circle-panel">
+      <div class="circle-intro">
         <h2>{strongCircle.heading}</h2>
         <p class="lead">{strongCircle.lead}</p>
+
+        <ul class="circle-points" aria-label="What membership means">
+          {strongCircle.points.map((point) => (
+            <li>
+              <strong>{point.label}</strong>
+              <span>{point.text}</span>
+            </li>
+          ))}
+        </ul>
       </div>
 
-      <div>
-        <div class="circle-number">{strongCircle.amount}</div>
-        <h3 class="circle-subhead">{strongCircle.subhead}</h3>
-
-        <div class="circle-actions" role="group" aria-label="Strong Circle giving options">
-          <button class="pill primary strong-circle-trigger" type="button" data-strong-circle-open>{strongCircle.joinLabel}</button>
-          <a class="pill" href="#donate">{strongCircle.giveOnceLabel}</a>
+      <div class="circle-join">
+        <span class="circle-tiers-label">{strongCircle.tiersLabel}</span>
+        <div class="circle-tiers" role="group" aria-label="Suggested monthly amounts">
+          {strongCircle.tiers.map((tier) => (
+            <a class="circle-tier" href="#contact">
+              <span class="circle-tier-amount">{tier.amount}<small>/mo</small></span>
+              {tier.note && <span class="circle-tier-note">{tier.note}</span>}
+            </a>
+          ))}
         </div>
+        <a class="pill primary strong-circle-trigger" href="#contact">{strongCircle.joinLabel}</a>
+        <p class="circle-footnote">{strongCircle.footnote}</p>
       </div>
-    </div>
-
-    <div class="card" data-reveal>
-      <h2 class="circle-card-title">{strongCircle.cardTitle}</h2>
-      <p>{strongCircle.cardBody}</p>
-
-      <ul class="circle-points" aria-label="What monthly membership means">
-        {strongCircle.points.map((point) => (
-          <li>
-            <strong>{point.label}</strong>
-            <span>{point.text}</span>
-          </li>
-        ))}
-      </ul>
     </div>
   </div>
 </section>
-
-<dialog class="strong-circle-modal" aria-modal="true" aria-labelledby="strong-circle-modal-title" aria-describedby="strong-circle-modal-description">
-  <div class="strong-circle-modal-card">
-    <button class="modal-close" type="button" data-strong-circle-close aria-label="Close Strong Circle popup">&times;</button>
-    <span class="eyebrow">{strongCircle.modal.eyebrow}</span>
-    <h2 id="strong-circle-modal-title">{strongCircle.modal.heading}</h2>
-
-    <div class="modal-commitment">
-      <div class="modal-amount" role="group" aria-label="$22 per month">
-        <span class="modal-amount-value">{strongCircle.modal.amountValue}</span>
-        <span class="modal-amount-period">{strongCircle.modal.amountPeriod}</span>
-      </div>
-
-      <p class="lead" id="strong-circle-modal-description">{strongCircle.modal.lead}</p>
-    </div>
-
-    <ul class="modal-proof-grid" aria-label="Strong Circle benefits">
-      {strongCircle.modal.proof.map((item) => (
-        <li>
-          <span>{item.label}</span>
-          <strong>{item.value}</strong>
-        </li>
-      ))}
-    </ul>
-
-    <div class="modal-actions" role="group" aria-label="Strong Circle donation choices">
-      <a class="pill primary" href="#donate" data-strong-circle-join>{strongCircle.modal.joinLabel}</a>
-      <a class="pill" href="#donate" data-strong-circle-close>{strongCircle.modal.giveOnceLabel}</a>
-    </div>
-  </div>
-</dialog>
