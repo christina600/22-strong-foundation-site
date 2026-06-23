@@ -34,7 +34,15 @@ const [costStat, capStat, debtStat] = home.stats.others;
     <header>
       <nav class="nav" aria-label="Main navigation">
         <a class="brand" href="#top">22 Strong Foundation</a>
-        <div class="nav-links" aria-label="Section navigation">
+        <button 
+          class="nav-toggle" 
+          aria-expanded="false" 
+          aria-controls="nav-menu"
+          aria-label="Toggle navigation menu"
+        >
+          <span class="nav-toggle-icon" aria-hidden="true"></span>
+        </button>
+        <div class="nav-links" id="nav-menu" aria-label="Section navigation">
           <a href="#about">About</a>
           <a href="#serve">Who we serve</a>
           <a href="#how-it-works">How it works</a>
