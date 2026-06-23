@@ -358,8 +358,6 @@ main {
   display: grid;
   gap: clamp(18px, 2.5vw, 28px);
   max-width: 560px;
-  padding-left: clamp(22px, 2.7vw, 32px);
-  border-left: 3px solid rgba(185, 85, 36, .54);
 }
 
 .audience-kicker {
