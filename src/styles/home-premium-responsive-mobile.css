@@ -24,10 +24,6 @@
     --fs-serve-lead: 1.18rem;
     --fs-stat-major: 3.45rem;
     --fs-quote: 2.1rem;
-    --fs-circle-number: 4.1rem;
-    --fs-circle-card-title: 2.25rem;
-    --fs-modal-title: 2.45rem;
-    --fs-modal-amount: 2.05rem;
   }
 
   .nav {
@@ -63,8 +59,6 @@
   .donation-module,
   .goal-panel,
   .impact-line,
-  .modal-actions,
-  .strong-circle-modal-card,
   .vv-card {
     width: 100%;
     max-width: 100%;

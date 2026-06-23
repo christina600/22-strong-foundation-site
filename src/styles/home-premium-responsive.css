@@ -6,9 +6,7 @@
 @media (prefers-reduced-transparency: reduce) {
   header,
   .goal-panel,
-  .contact form,
-  .strong-circle-modal::backdrop,
-  .strong-circle-modal[open]::backdrop {
+  .contact form {
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
   }

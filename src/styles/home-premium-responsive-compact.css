@@ -5,7 +5,6 @@
     --fs-hero: 3rem;
     --fs-title: 2.35rem;
     --fs-serve-title: 2.95rem;
-    --fs-modal-title: 2.25rem;
   }
 
   .nav {
@@ -18,13 +17,5 @@
 
   .nav-actions .pill {
     padding-inline: 10px;
-  }
-
-  .modal-actions {
-    grid-template-columns: 1fr;
-  }
-
-  .modal-actions .pill {
-    min-height: 44px;
   }
 }
