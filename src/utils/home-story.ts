@@ -23,6 +23,7 @@ export interface PersonVoiceContent {
   initials?: string;
   imageWidth?: number;
   imageHeight?: number;
+  imagePosition?: string;
   testimonialKey?: string;
 }
 

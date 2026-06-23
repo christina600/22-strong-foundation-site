@@ -125,9 +125,10 @@
           "name": "Adam Folker",
           "testimonialKey": "adam",
           "photo": "/images/adam-folker-uci.webp",
-          "photoAlt": "Adam Folker",
+          "photoAlt": "Adam Folker driving to the basket for UC Irvine",
           "imageWidth": 1200,
-          "imageHeight": 800
+          "imageHeight": 800,
+          "imagePosition": "32% center"
         }
       ]
     }
