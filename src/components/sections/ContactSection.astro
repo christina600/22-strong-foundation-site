@@ -30,13 +30,16 @@ const { contact } = Astro.props;
   <div class="split">
     <div data-reveal>
       <h2>{contact.heading}</h2>
-      <p>{contact.body}</p>
+      {contact.body && <p>{contact.body}</p>}
 
       <ul class="contact-paths" aria-label={contact.pathsAriaLabel}>
         {contact.paths.map((path) => (
           <li>
-            <strong>{path.heading}</strong>
-            <span>{path.body}</span>
+            <span class="contact-path-check" aria-hidden="true"></span>
+            <div class="contact-path-text">
+              <strong>{path.heading}</strong>
+              <span>{path.body}</span>
+            </div>
           </li>
         ))}
       </ul>

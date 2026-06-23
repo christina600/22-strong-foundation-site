@@ -9,9 +9,12 @@ interface Props {
 
 const { stat, variant, reveal = false } = Astro.props;
 const revealAttrs = reveal ? { "data-reveal": "" } : {};
+// Long/multi-word numbers (e.g. "4.6 million") overflow the narrow side
+// column, so stack them above their copy instead of beside it.
+const isStacked = variant === "audience" && /\s/.test(stat.number.trim());
 const className = variant === "about"
   ? `about-evidence-stat${stat.light ? " is-light" : ""}`
-  : `audience-stat${stat.light ? " is-light" : ""}`;
+  : `audience-stat${stat.light ? " is-light" : ""}${isStacked ? " is-stacked" : ""}`;
 ---
 
 {variant === "about" ? (

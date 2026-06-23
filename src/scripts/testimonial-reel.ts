@@ -19,6 +19,28 @@ function getActiveIndex(track: HTMLElement, slides: HTMLElement[]) {
   return activeIndex;
 }
 
+// Gentle eased scroll — softer than the browser's default smooth. Snap is
+// turned off mid-animation so the mandatory snap doesn't fight the per-frame
+// scroll, then restored so it still rests cleanly on a slide.
+function smoothScrollTo(track: HTMLElement, to: number, duration: number) {
+  const start = track.scrollLeft;
+  const change = to - start;
+  if (Math.abs(change) < 1) return;
+  track.style.scrollSnapType = "none";
+  const startTime = performance.now();
+  const ease = (t: number) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
+  const step = (now: number) => {
+    const p = Math.min(1, (now - startTime) / duration);
+    track.scrollLeft = start + change * ease(p);
+    if (p < 1) {
+      requestAnimationFrame(step);
+    } else {
+      track.style.scrollSnapType = "";
+    }
+  };
+  requestAnimationFrame(step);
+}
+
 function initTestimonialReels() {
   const reels = document.querySelectorAll<HTMLElement>(REEL_SELECTOR);
   if (!reels.length) return;
@@ -58,10 +80,12 @@ function initTestimonialReels() {
       const target = slides[Math.max(0, Math.min(index, slides.length - 1))];
       if (!target) return;
 
-      track.scrollTo({
-        left: target.offsetLeft - track.offsetLeft,
-        behavior: prefersReducedMotion ? "auto" : "smooth"
-      });
+      const left = target.offsetLeft - track.offsetLeft;
+      if (prefersReducedMotion) {
+        track.scrollLeft = left;
+      } else {
+        smoothScrollTo(track, left, 850);
+      }
       setActive(index);
     };
 
@@ -97,7 +121,7 @@ function initTestimonialReels() {
         // Loop continuously: after the last testimonial, wrap back to the start.
         const nextIndex = activeIndex >= slides.length - 1 ? 0 : activeIndex + 1;
         goTo(nextIndex);
-      }, 6500);
+      }, 8000);
     };
 
     previous?.addEventListener("click", stopAuto);

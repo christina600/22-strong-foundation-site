@@ -439,6 +439,22 @@ main {
   font-size: clamp(3.45rem, 5.6vw, 5.1rem);
 }
 
+/* Long numbers ("4.6 million") get their own full-width row above the copy. */
+.audience-chapter .audience-stats .audience-stat.is-stacked .audience-stat-inner {
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: clamp(10px, 1.4vw, 16px);
+}
+
+.audience-chapter .audience-stats .audience-stat.is-stacked .audience-stat-number {
+  grid-column: 1;
+  grid-row: auto;
+  text-align: left;
+}
+
+.audience-chapter .audience-stats .audience-stat.is-stacked .audience-stat-text {
+  grid-column: 1;
+}
+
 .audience-chapter .audience-stats .audience-stat-text,
 .audience-chapter .audience-stats .audience-stat.is-light .audience-stat-text {
   grid-column: 2;

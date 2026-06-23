@@ -65,6 +65,13 @@
         "source": "Georgetown University Center for Children and Families",
         "url": "https://ccf.georgetown.edu/2025/09/12/progress-for-children-is-eroding-as-child-uninsured-rate-spikes-to-highest-level-in-decade/",
         "light": false
+      },
+      {
+        "number": "21%",
+        "text": "of high school sports injuries can end a season — and sometimes a career. The right recovery support protects more than a roster spot.",
+        "source": "Journal of Athletic Training",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2267335/",
+        "light": true
       }
     ],
     "others": [
@@ -272,8 +279,8 @@
     "dismissLabel": "Not now"
   },
   "contact": {
-    "heading": "Start the right conversation with 22 Strong.",
-    "body": "Use this form to give, refer someone, explore a partnership, or ask about care. Please do not use it for emergencies or private medical details.",
+    "heading": "Get in touch.",
+    "body": "",
     "pathsAriaLabel": "Ways to contact 22 Strong",
     "paths": [
       {
@@ -300,7 +307,7 @@
       "I have a general question"
     ],
     "messageLabel": "Message",
-    "note": "Please do not include private medical details, urgent needs, or anything you would not want sent through a basic web form.",
+    "note": "Please don't include private medical details or urgent needs.",
     "submitLabel": "Send message"
   },
   "footer": {
