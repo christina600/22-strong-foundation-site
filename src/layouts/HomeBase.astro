@@ -76,6 +76,10 @@ const metaDesc = description || site.descriptor;
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" href="/favicon.ico" />
 
+  <!-- Preload hero background image — CSS url() can't be natively lazy,
+       so this hint lets the browser start the fetch early with high priority. -->
+  <link rel="preload" as="image" href="/images/hero-battle-ropes.webp" fetchpriority="high" />
+
   <!-- Gate the scrollytelling start state on JS so non-JS users see all -->
   <script is:inline>document.documentElement.classList.add('js');</script>
 

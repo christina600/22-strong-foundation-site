@@ -1,4 +1,7 @@
 ---
+import { Image } from "astro:assets";
+import { getImageByPath } from "../../assets/images";
+
 interface Leader {
   name: string;
   role: string;
@@ -23,7 +26,12 @@ const { people } = Astro.props;
       <article class="card" data-reveal>
         <div class="bio-head">
           {person.portrait
-            ? <img class="portrait" src={person.portrait} alt={person.portraitAlt ?? person.name} width="400" height="560" loading="lazy" decoding="async" fetchpriority="low" />
+            ? (() => {
+                const asset = getImageByPath(person.portrait);
+                return asset
+                  ? <Image class="portrait" src={asset} alt={person.portraitAlt ?? person.name} width={400} height={560} loading="lazy" decoding="async" fetchpriority="low" sizes="(max-width: 560px) 30vw, (max-width: 920px) 25vw, 120px" widths={[120, 240, 400]} />
+                  : <img class="portrait" src={person.portrait} alt={person.portraitAlt ?? person.name} width="400" height="560" loading="lazy" decoding="async" fetchpriority="low" />;
+              })()
             : <div class="initials">{person.initials}</div>}
           <div>
             <h3>{person.name}</h3>

@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import type { PersonVoiceContent, VideoVoiceContent } from "../../utils/home-story";
+import { getImageByPath } from "../../assets/images";
 
 interface Props {
   video?: VideoVoiceContent;
@@ -73,7 +75,12 @@ const imageHeight = voice?.imageHeight ?? 800;
     {showPhotoPanel && (
       <div class="vv-photo">
         {voice.photo
-          ? <img src={voice.photo} alt={voice.photoAlt ?? voice.name} width={imageWidth} height={imageHeight} loading="lazy" decoding="async" style={voice.imagePosition ? `object-position: ${voice.imagePosition};` : undefined} />
+          ? (() => {
+              const asset = getImageByPath(voice.photo);
+              return asset
+                ? <Image src={asset} alt={voice.photoAlt ?? voice.name} width={imageWidth} height={imageHeight} loading="lazy" decoding="async" sizes="(max-width: 560px) 80vw, (max-width: 920px) 40vw, 320px" widths={[320, 480, 800]} style={voice.imagePosition ? `object-position: ${voice.imagePosition};` : undefined} />
+                : <img src={voice.photo} alt={voice.photoAlt ?? voice.name} width={imageWidth} height={imageHeight} loading="lazy" decoding="async" style={voice.imagePosition ? `object-position: ${voice.imagePosition};` : undefined} />;
+            })()
           : <div class="vv-photo-ph"><span>{initials}</span><small>Photo coming soon</small></div>}
       </div>
     )}

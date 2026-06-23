@@ -19,8 +19,8 @@
 
 .portrait,
 .initials {
-  width: 120px;
-  height: 120px;
+  width: 180px;
+  height: 180px;
   border-radius: 8px;
   flex: 0 0 auto;
   background: linear-gradient(135deg, #d8d1c4, #f5efe5);

@@ -92,6 +92,43 @@ html {
   background: var(--paper);
 }
 
+/* Respect reduced motion for scroll */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Selection color */
+::selection {
+  background: var(--teal);
+  color: var(--paper);
+}
+
+/* Cross-platform: refined link styling */
+a {
+  text-decoration: underline dotted;
+  text-decoration-color: var(--teal);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color .2s ease;
+}
+
+a:hover {
+  text-decoration-color: var(--orange);
+}
+
+/* Footer gradient separator */
+footer {
+  border-top: 2px solid transparent;
+  border-image: linear-gradient(
+    90deg,
+    var(--teal) 0%,
+    var(--orange) 50%,
+    var(--teal) 100%
+  ) 1;
+}
+
 body {
   margin: 0;
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;

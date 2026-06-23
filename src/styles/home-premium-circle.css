@@ -31,7 +31,6 @@
 
 .circle-panel {
   position: relative;
-  overflow: hidden;
   min-height: 360px;
   background:
     linear-gradient(150deg, rgba(11, 74, 77, .96) 0%, rgba(9, 63, 67, .90) 54%, rgba(9, 63, 67, .74) 100%),
@@ -39,6 +38,14 @@
     url("/images/stock-hands-care.webp") center / cover no-repeat;
   background-blend-mode: normal, soft-light, normal;
   border-color: rgba(255, 250, 240, .20);
+}
+
+/* Desktop: clip the background gradient and hero image to the rounded border.
+   Mobile: leave overflow visible so the 2×2 tier grid isn't truncated. */
+@media (min-width: 561px) {
+  .circle-panel {
+    overflow: hidden;
+  }
 }
 
 .circle-panel::before {
