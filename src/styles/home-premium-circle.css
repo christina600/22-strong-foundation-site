@@ -17,6 +17,11 @@
 
 .strong-circle-trigger.pill.primary:hover {
   background: var(--teal-deep);
+  box-shadow: var(--action-shadow-hover);
+}
+
+.strong-circle-trigger.pill.primary:active {
+  box-shadow: var(--action-shadow-active);
 }
 
 .strong-circle-wrap {

@@ -13,8 +13,19 @@
   /* Primary action fill — now flat (name kept; it feeds buttons, active
      amount toggles, goal-fill bars, and small number badges). */
   --action-gradient: var(--orange);
-  /* Shared button shadow — a tight, neutral lift, not a colored glow. */
-  --action-shadow: 0 2px 6px rgba(40, 28, 18, .16);
+  /* Shared button shadow — layered neutral depth (tight contact + soft
+     ambient) plus a 1px top highlight for a crisp, physical edge. */
+  --action-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .20),
+    0 1px 1px rgba(31, 20, 12, .22),
+    0 4px 10px rgba(31, 20, 12, .14);
+  --action-shadow-hover:
+    inset 0 1px 0 rgba(255, 255, 255, .24),
+    0 2px 4px rgba(31, 20, 12, .20),
+    0 8px 20px rgba(31, 20, 12, .18);
+  --action-shadow-active:
+    inset 0 2px 4px rgba(31, 20, 12, .30),
+    0 1px 1px rgba(31, 20, 12, .10);
   --olive: #51523a;
   --brown: #2f231d;
   --brown-2: #4b2918;
@@ -227,12 +238,12 @@ header {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 46px;
-  padding: 0 22px;
+  min-height: 48px;
+  padding: 0 26px;
   border-radius: 6px;
-  font-weight: 800;
+  font-weight: 700;
   font-size: var(--fs-ui);
-  letter-spacing: 0;
+  letter-spacing: .01em;
   text-transform: none;
   text-decoration: none;
   color: var(--ink);
@@ -259,10 +270,17 @@ header {
 
 .pill.primary:hover {
   background: var(--orange-dark);
+  box-shadow: var(--action-shadow-hover);
 }
 
-.pill:active {
+.pill.primary:active {
   transform: translateY(0);
+  box-shadow: var(--action-shadow-active);
+}
+
+.pill:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
 }
 
 .nav-actions .pill:not(.primary) {

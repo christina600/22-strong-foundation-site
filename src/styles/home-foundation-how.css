@@ -157,6 +157,11 @@
 
 .section-cta--teal .section-cta-btn.pill.primary:hover {
   background: var(--teal-deep);
+  box-shadow: var(--action-shadow-hover);
+}
+
+.section-cta--teal .section-cta-btn.pill.primary:active {
+  box-shadow: var(--action-shadow-active);
 }
 
 .credibility-strip-item {

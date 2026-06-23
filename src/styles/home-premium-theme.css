@@ -265,7 +265,7 @@ header {
 
 .pill,
 .btn-donate {
-  min-height: 46px;
+  min-height: 48px;
   border-radius: 6px;
   box-shadow: var(--action-shadow);
   transition:
