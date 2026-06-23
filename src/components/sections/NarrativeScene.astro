@@ -1,12 +1,23 @@
 ---
 import EvidenceStat, { type EvidenceStatContent } from "./EvidenceStat.astro";
 
+interface ImpactFigure {
+  number: string;
+  label: string;
+}
+
+interface ImpactBand {
+  label?: string;
+  figures: ImpactFigure[];
+}
+
 interface Props {
   chapter?: string;
   id: string;
-  eyebrow: string;
+  eyebrow?: string;
   heading?: string;
   lead?: string;
+  impact?: ImpactBand;
   paragraphs?: string[];
   evidenceStats?: EvidenceStatContent[];
   evidenceAriaLabel?: string;
@@ -19,6 +30,7 @@ const {
   eyebrow,
   heading,
   lead,
+  impact,
   paragraphs = [],
   evidenceStats = [],
   evidenceAriaLabel = "Supporting evidence",
@@ -29,10 +41,24 @@ const {
 <section class={`about-section narrative-scene narrative-scene--${id}`} id={id} data-chapter={chapter}>
   <div class="about-inner">
     <div class="about-intro" data-reveal>
-      <span class="eyebrow">{eyebrow}</span>
+      {eyebrow && <span class="eyebrow">{eyebrow}</span>}
       {heading && <h2>{heading}</h2>}
       {lead && <p class="lead">{lead}</p>}
     </div>
+
+    {impact && impact.figures.length > 0 && (
+      <div class="about-impact" data-reveal>
+        {impact.label && <span class="about-impact-label">{impact.label}</span>}
+        <dl class="about-impact-figures">
+          {impact.figures.map((figure) => (
+            <div class="about-impact-figure">
+              <dt class="about-impact-number">{figure.number}</dt>
+              <dd class="about-impact-text">{figure.label}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    )}
 
     {evidenceStats.length > 0 && (
       <div class="about-evidence" role="list" aria-label={evidenceAriaLabel} data-reveal>
