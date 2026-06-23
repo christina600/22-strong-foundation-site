@@ -10,7 +10,11 @@
   --line: rgba(37, 35, 33, .14);
   --orange: #c94f0f;
   --orange-dark: #9f3908;
-  --action-gradient: linear-gradient(180deg, #dc651d, var(--orange));
+  /* Primary action fill — now flat (name kept; it feeds buttons, active
+     amount toggles, goal-fill bars, and small number badges). */
+  --action-gradient: var(--orange);
+  /* Shared button shadow — a tight, neutral lift, not a colored glow. */
+  --action-shadow: 0 2px 6px rgba(40, 28, 18, .16);
   --olive: #51523a;
   --brown: #2f231d;
   --brown-2: #4b2918;
@@ -225,7 +229,7 @@ header {
   justify-content: center;
   min-height: 46px;
   padding: 0 22px;
-  border-radius: 8px;
+  border-radius: 6px;
   font-weight: 800;
   font-size: var(--fs-ui);
   letter-spacing: 0;
@@ -244,13 +248,21 @@ header {
 
 .pill.primary {
   color: #fff;
-  border-color: rgba(201, 79, 15, .42);
+  border-color: transparent;
   background: var(--action-gradient);
-  box-shadow: 0 10px 28px rgba(201,79,15,.28);
+  box-shadow: var(--action-shadow);
 }
 
 .pill:hover {
   transform: translateY(-1px);
+}
+
+.pill.primary:hover {
+  background: var(--orange-dark);
+}
+
+.pill:active {
+  transform: translateY(0);
 }
 
 .nav-actions .pill:not(.primary) {
@@ -262,9 +274,7 @@ header {
 
 .nav-actions .pill.primary {
   min-width: 112px;
-  box-shadow:
-    0 12px 30px rgba(201, 79, 15, .30),
-    0 0 0 1px rgba(255, 255, 255, .20) inset;
+  box-shadow: var(--action-shadow);
 }
 
 main {

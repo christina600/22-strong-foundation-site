@@ -10,7 +10,7 @@
   --line: rgba(32, 35, 31, .14);
   --orange: #b95524;
   --orange-dark: #863a1a;
-  --action-gradient: linear-gradient(180deg, #d6793e 0%, var(--mission-orange, var(--orange)) 58%, #833b1e 100%);
+  --action-gradient: var(--orange); /* flat fill — see base.css */
   --olive: #465746;
   --brown: #1d211d;
   --brown-2: #303729;
@@ -266,10 +266,8 @@ header {
 .pill,
 .btn-donate {
   min-height: 46px;
-  border-radius: 8px;
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, .72) inset,
-    0 14px 34px rgba(29, 33, 29, .10);
+  border-radius: 6px;
+  box-shadow: var(--action-shadow);
   transition:
     transform .22s ease,
     box-shadow .22s ease,
@@ -287,10 +285,8 @@ header {
 .pill.primary,
 .btn-donate {
   background: var(--action-gradient);
-  border-color: rgba(255, 255, 255, .18);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, .28) inset,
-    0 18px 42px rgba(185, 85, 36, .30);
+  border-color: transparent;
+  box-shadow: var(--action-shadow);
 }
 
 section {

@@ -150,9 +150,13 @@
 
 /* Teal variant for Strong Circle CTAs — beats the global orange .pill.primary. */
 .section-cta--teal .section-cta-btn.pill.primary {
-  background: linear-gradient(180deg, var(--teal), var(--teal-deep));
-  border-color: rgba(255, 250, 240, .26);
-  box-shadow: 0 14px 32px rgba(9, 63, 67, .3);
+  background: var(--teal);
+  border-color: transparent;
+  box-shadow: var(--action-shadow);
+}
+
+.section-cta--teal .section-cta-btn.pill.primary:hover {
+  background: var(--teal-deep);
 }
 
 .credibility-strip-item {

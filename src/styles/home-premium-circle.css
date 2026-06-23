@@ -10,13 +10,13 @@
 /* Strong Circle is the teal campaign — its Join buttons go teal, not orange.
    Specificity must beat .pill.primary (the global orange action gradient). */
 .strong-circle-trigger.pill.primary {
-  background: linear-gradient(180deg, var(--teal), var(--teal-deep));
-  border-color: rgba(255, 250, 240, .26);
-  box-shadow: 0 14px 32px rgba(9, 63, 67, .32);
+  background: var(--teal);
+  border-color: transparent;
+  box-shadow: var(--action-shadow);
 }
 
 .strong-circle-trigger.pill.primary:hover {
-  box-shadow: 0 12px 30px rgba(9, 63, 67, .4);
+  background: var(--teal-deep);
 }
 
 .strong-circle-wrap {
