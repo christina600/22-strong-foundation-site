@@ -345,3 +345,237 @@ p {
   font-size: var(--fs-lead);
   line-height: var(--lh-lead);
 }
+
+/* Premium hero refinements. */
+.hero {
+  position: relative;
+  min-height: calc(92svh - 82px);
+  overflow: hidden;
+  background: var(--field-black, #141713);
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(56%, 860px);
+  background: url("/images/hero-battle-ropes.webp") center center / cover no-repeat;
+  /* Photo sits on the right, balancing the text; its left edge dissolves into
+     the dark field so the crop never reads as a hard cut-off. */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, .5) 26%, #000 54%);
+  mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, .5) 26%, #000 54%);
+  filter: saturate(1.04) contrast(1.06);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  height: auto;
+  opacity: .4;
+  background:
+    linear-gradient(180deg, transparent 0%, rgba(17, 22, 16, .14) 58%, rgba(17, 22, 16, .6) 100%),
+    var(--field-sand, transparent),
+    var(--field-canvas, transparent);
+  background-blend-mode: normal, soft-light, overlay;
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  padding: var(--space-hero-top) var(--space-page-x) var(--space-hero-bottom);
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+}
+
+.hero-copy {
+  position: relative;
+  display: grid;
+  gap: clamp(28px, 5vh, 52px);
+  width: min(880px, 62%);
+  max-width: none;
+  padding-top: clamp(14px, 4vh, 42px);
+  filter: drop-shadow(0 16px 38px rgba(0, 0, 0, .18));
+}
+
+.hero-copy > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-mark {
+  position: relative;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  text-align: center;
+  width: clamp(206px, 21vw, 304px);
+  aspect-ratio: 1 / 1.18;
+  padding: clamp(30px, 3.2vw, 42px) clamp(22px, 2.4vw, 32px) clamp(24px, 2.6vw, 34px);
+  background: #2b2a27;
+  box-shadow: 0 24px 68px rgba(0, 0, 0, .4);
+}
+
+.hero-mark-22,
+.hero-mark-strong,
+.hero-mark-foundation {
+  display: block;
+  color: #fffaf0;
+  font-family: var(--logo-face);
+  font-stretch: condensed;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.hero-mark-22 {
+  font-size: clamp(6.6rem, 14vw, 12.8rem);
+  line-height: .72;
+}
+
+.hero-mark-strong {
+  margin-top: .12em;
+  font-size: clamp(2.6rem, 4.3vw, 3.9rem);
+  /* Negative tracking pulls STRONG in to match the 22 / rule / FOUNDATION
+     widths — the logo reads as one stacked column of equal width. */
+  letter-spacing: -.01em;
+  line-height: .82;
+}
+
+.hero-mark-rule {
+  width: 64%;
+  height: clamp(7px, .7vw, 11px);
+  margin: clamp(10px, 1.1vw, 14px) 0 clamp(9px, 1vw, 13px);
+  background: var(--mission-orange, #b95524);
+}
+
+.hero-mark-foundation {
+  font-size: clamp(.95rem, 1.4vw, 1.3rem);
+  line-height: .9;
+  letter-spacing: .34em;
+  text-indent: .34em;
+  color: rgba(255, 250, 240, .92);
+}
+
+.hero h1 {
+  display: grid;
+  gap: clamp(4px, .7vw, 8px);
+  max-width: 850px;
+  margin: 0;
+  color: #fffaf0;
+  font-size: clamp(2.6rem, 4.5vw, 4.5rem);
+  line-height: var(--lh-hero);
+  letter-spacing: 0;
+  text-wrap: balance;
+  text-shadow:
+    0 2px 14px rgba(0, 0, 0, .58),
+    0 22px 60px rgba(0, 0, 0, .5);
+}
+
+.hero-headline-line {
+  position: relative;
+  display: block;
+  width: fit-content;
+  overflow: hidden;
+  padding-right: .08em;
+}
+
+/* Kinetic entrance: the logo rises first, then each headline line slides up
+   in sequence (Move better → Get stronger → Get back on your feet). */
+.js .hero-mark {
+  animation: hero-mark-rise .82s cubic-bezier(.19, .72, .2, 1) both;
+}
+
+.js .hero-headline-line {
+  animation: hero-line-rise .8s cubic-bezier(.19, .72, .2, 1) both;
+  animation-delay: .34s;
+}
+
+.js .hero-headline-line:nth-child(2) {
+  animation-delay: .54s;
+}
+
+.js .hero-headline-line:nth-child(3) {
+  animation-delay: .74s;
+}
+
+@keyframes hero-line-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, .58em, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hero-mark-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Short viewports (most laptops, landscape phones): keep the whole hero — headline,
+   supporting copy, and CTA — above the fold without scrolling. Per Dr. Vas's note #1.
+   Tall screens keep the larger, more dramatic display size. */
+@media (max-height: 720px) {
+  /* Drive everything through the existing hero tokens so the width-based breakpoints
+     (mobile/compact) can still take over on small phones via normal cascade order,
+     instead of being overridden by hardcoded values. */
+  :root {
+    --fs-hero: 3.6rem;
+    --space-hero-top: 40px;
+    --space-hero-bottom: 32px;
+  }
+
+  .hero {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .hero::after {
+    opacity: .42;
+    background:
+      linear-gradient(180deg, transparent 0%, rgba(17, 22, 16, .16) 56%, rgba(17, 22, 16, .68) 100%),
+      var(--field-sand, transparent),
+      var(--field-canvas, transparent);
+  }
+
+  .hero-copy {
+    gap: 26px;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.35rem, 18vw, 5.2rem);
+  }
+
+  .hero-headline-line:nth-child(2),
+  .hero-headline-line:nth-child(3) {
+    margin-left: 0;
+  }
+
+  .hero-actions {
+    display: grid;
+    justify-items: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .hero-headline-line,
+  .js .hero-headline-line::after,
+  .js .hero-mark {
+    animation: none;
+  }
+}

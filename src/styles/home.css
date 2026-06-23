@@ -1,4 +1,16 @@
-/* Homepage styles are split by cascade order for maintainability. */
-@import "./home-foundation.css";
+/* Base: variables, resets, typography, grid, responsive breakpoints */
+@import "./home-base.css";
+/* Sections: how-we-help, leadership, featured, fundraising, circle, donation */
+@import "./home-sections.css";
+/* Contact form + footer */
+@import "./home-foundation-contact.css";
+/* Scroll reveal animations */
 @import "./home-motion.css";
-@import "./home-premium.css";
+/* Premium: theme variables, hero */
+@import "./home-premium-theme.css";
+/* Premium: cards, circle campaigns, voices, action buttons */
+@import "./home-premium-components.css";
+/* Premium: editorial flow, scrollytelling, tactical layout, accessibility */
+@import "./home-premium-layout.css";
+/* Premium responsive overrides */
+@import "./home-premium-responsive.css";

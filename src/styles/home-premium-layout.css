@@ -728,3 +728,468 @@ main {
     opacity: 1;
   }
 }
+
+/* Sticky section pacing and story-beat layout for the single-page scroll.
+   (The earlier chapter-rail / active-mission-state layer has been removed.) */
+:root {
+  --story-header-h: 82px;
+  --story-offset: var(--story-header-h);
+}
+
+/* More explicit scrollytelling pacing. */
+html {
+  scroll-padding-top: calc(var(--story-offset) + 18px);
+}
+
+.how-story-copy {
+  max-width: 760px;
+}
+
+.story-kicker {
+  max-width: 43ch;
+  margin: 22px 0 0;
+  color: rgba(32, 35, 31, .70);
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-lead);
+  text-wrap: pretty;
+}
+
+.story-beat {
+  position: relative;
+}
+
+.how-it-works {
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 921px) {
+  .how-it-works .steps {
+    margin-top: clamp(44px, 5vh, 64px);
+  }
+}
+
+@media (max-width: 920px) {
+  :root {
+    --story-header-h: 98px;
+  }
+
+  html {
+    scroll-padding-top: calc(var(--story-offset) + 16px);
+  }
+
+  .how-it-works .steps {
+    grid-template-columns: 1fr;
+    margin-top: 34px;
+  }
+
+  .story-kicker {
+    max-width: 48ch;
+  }
+}
+
+@media (max-width: 760px) {
+  html {
+    scroll-padding-top: calc(var(--story-header-h) + 14px);
+  }
+}
+
+@media (min-width: 921px) {
+  .donate-wrap,
+  .contact .split {
+    align-items: start;
+  }
+
+  .donate-wrap > div:first-child,
+  .contact .split > div:first-child {
+    position: sticky;
+    top: calc(var(--story-offset) + 26px);
+  }
+
+  .audience-stat {
+    transition:
+      transform .42s cubic-bezier(.22, .61, .36, 1),
+      box-shadow .42s ease,
+      border-color .42s ease;
+  }
+
+  .audience-stat:hover {
+    transform: translateY(-3px);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) and (min-width: 760px) {
+    .how-it-works .steps::before {
+      animation: story-line-grow both ease-out;
+      animation-timeline: view();
+      animation-range: entry 6% cover 48%;
+    }
+
+    .audience-chapter .audience-stat {
+      animation: story-stat-rise both cubic-bezier(.22, .61, .36, 1);
+      animation-timeline: view();
+      animation-range: entry 8% cover 32%;
+    }
+
+    .audience-copy {
+      animation: story-copy-lock both ease-out;
+      animation-timeline: view();
+      animation-range: entry 0% cover 38%;
+    }
+  }
+}
+
+@keyframes story-line-grow {
+  from {
+    transform: scaleY(.12);
+  }
+
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes story-stat-rise {
+  from {
+    opacity: .78;
+    transform: translate3d(0, 24px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes story-copy-lock {
+  from {
+    filter: saturate(.92);
+  }
+
+  to {
+    filter: saturate(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-beat,
+  .audience-stat,
+  .audience-copy,
+  .how-it-works .steps::before {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Tactical premium material system.
+   Grounded field textures: sand grain, canvas weave, sun-faded field paper,
+   and light scuffs instead of generated camo blobs or decorative map rings. */
+:root {
+  --field-black: #111610;
+  --field-olive: #596249;
+  --mission-orange: #b95524;
+  --field-sand:
+    radial-gradient(circle at 18% 22%, rgba(74, 61, 42, .14) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 63% 48%, rgba(185, 85, 36, .08) 0 1px, transparent 1.7px),
+    radial-gradient(circle at 36% 78%, rgba(255, 250, 240, .32) 0 1px, transparent 1.5px),
+    linear-gradient(180deg, rgba(248, 244, 235, .72), rgba(221, 207, 181, .24));
+  --field-canvas:
+    repeating-linear-gradient(90deg, rgba(255, 250, 240, .045) 0 1px, transparent 1px 7px),
+    repeating-linear-gradient(0deg, rgba(17, 22, 16, .075) 0 1px, transparent 1px 8px);
+  --field-scuffs:
+    linear-gradient(104deg, transparent 0 24%, rgba(255, 250, 240, .10) 24.5%, transparent 26% 62%, rgba(17, 22, 16, .075) 62.5%, transparent 64%),
+    linear-gradient(16deg, transparent 0 42%, rgba(32, 35, 31, .055) 42.5%, transparent 44%),
+    linear-gradient(180deg, rgba(255, 250, 240, .06), transparent 46%, rgba(17, 22, 16, .08));
+  --field-paper-grain:
+    radial-gradient(circle at 16% 22%, rgba(74, 61, 42, .07) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 74% 68%, rgba(255, 250, 240, .22) 0 1px, transparent 1.6px),
+    repeating-linear-gradient(0deg, rgba(32, 35, 31, .016) 0 1px, transparent 1px 19px);
+  --field-creases:
+    linear-gradient(108deg, transparent 0 34%, rgba(32, 35, 31, .045) 34.2%, transparent 35.4%),
+    linear-gradient(18deg, transparent 0 68%, rgba(255, 250, 240, .14) 68.2%, transparent 69.2%);
+  --camo-field:
+    var(--field-canvas),
+    var(--field-scuffs),
+    linear-gradient(135deg, rgba(53, 70, 50, .34), rgba(123, 132, 100, .14) 44%, rgba(215, 204, 183, .16));
+  --map-contours:
+    var(--field-paper-grain),
+    var(--field-creases);
+}
+
+body {
+  background:
+    var(--field-paper-grain),
+    linear-gradient(135deg, rgba(123, 132, 100, .11), transparent 34%),
+    linear-gradient(225deg, rgba(185, 85, 36, .045), transparent 38%),
+    linear-gradient(180deg, #fbf7ee 0%, #efe4d3 52%, #f8f4eb 100%);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .20;
+  background-image:
+    var(--field-sand),
+    repeating-linear-gradient(90deg, rgba(53, 70, 50, .018) 0 1px, transparent 1px 18px);
+  background-size: 132px 118px, 132px 118px, 132px 118px, auto, 22px 22px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .40), transparent 68%);
+}
+
+.step,
+.card,
+form {
+  position: relative;
+  border-color: rgba(53, 70, 50, .16);
+}
+
+.step::before {
+  background: linear-gradient(180deg, var(--field-olive), var(--mission-orange));
+}
+
+@media (max-width: 720px) {
+  body::after {
+    opacity: .18;
+  }
+}
+
+/* Mature-eyes accessibility polish.
+   Keeps the premium display scale while making small UI, form, source,
+   and supporting copy easier to read for older donors. */
+:root {
+  --muted: #464c45;
+  --ui-face: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --lh-lead: 1.6;
+  --lh-copy: 1.7;
+  --fs-lead: 1.42rem;
+  --fs-body: 1.2rem;
+  --fs-body-lg: 1.28rem;
+  --fs-ui: 1.06rem;
+  --fs-ui-small: 1.06rem;
+  --fs-ui-micro: 1rem;
+  --fs-ui-tiny: 1rem;
+  --fs-meta: 1.2rem;
+  --fs-copy-small: 1.2rem;
+  --fs-copy-fine: 1.12rem;
+  --fs-brand-mobile: 1.04rem;
+}
+
+body::before {
+  opacity: .34;
+}
+
+body::after {
+  opacity: .16;
+}
+
+.btn-donate,
+.toggle-row button,
+.amount-button,
+.credibility-strip-item,
+.eyebrow,
+.donation-card-main .eyebrow,
+.most-impact-badge,
+.attribution,
+.goal-top,
+.outcomes,
+.modal-proof-grid span,
+.footer-title,
+label {
+  font-family: var(--ui-face);
+  font-stretch: normal;
+  letter-spacing: 0;
+}
+
+p,
+li,
+.vv-quote {
+  text-wrap: pretty;
+}
+
+.btn-donate,
+.eyebrow,
+.attribution,
+.goal-top,
+.outcomes,
+.footer-title {
+  text-transform: none;
+}
+
+.nav-actions .pill.primary {
+  min-width: 118px;
+}
+
+.btn-donate {
+  font-size: var(--fs-ui);
+  font-weight: 800;
+}
+
+.credibility-strip-item,
+.eyebrow,
+.attribution,
+.goal-top,
+.outcomes,
+.footer-title {
+  font-size: var(--fs-meta);
+  font-weight: 800;
+  line-height: 1.32;
+}
+
+.donation-card-main .eyebrow {
+  font-size: var(--fs-meta);
+  line-height: 1.28;
+  text-transform: none;
+}
+
+.toggle-row button,
+.amount-button {
+  min-height: 48px;
+  font-size: var(--fs-ui);
+  line-height: 1.2;
+}
+
+.hero .toggle-row button,
+.hero .amount-button,
+.hero .other-amount-input,
+.hero .btn-donate {
+  min-height: 46px;
+}
+
+.most-impact-badge {
+  font-size: var(--fs-ui-tiny);
+  line-height: 1.2;
+  text-transform: none;
+}
+
+.other-amount-input,
+input,
+select,
+textarea {
+  font: 400 var(--fs-body)/1.5 var(--ui-face);
+}
+
+label {
+  font-size: var(--fs-ui);
+  line-height: 1.4;
+}
+
+.gift-detail,
+.step p,
+.funding-covers span,
+.story,
+#leadership .card p,
+.contact-paths span,
+.note,
+footer p,
+.links a {
+  font-size: var(--fs-copy-small);
+  line-height: 1.58;
+}
+
+.how-note,
+.story-kicker,
+.audience-copy p:not(.lead),
+.contact .split > div:first-child p,
+.contact-paths span,
+.vv-creds {
+  color: rgba(32, 35, 31, .78);
+}
+
+.give-taxline {
+  color: rgba(255, 250, 240, .88);
+}
+
+.circle-panel p {
+  color: rgba(255, 250, 240, .88);
+}
+
+.impact-line small,
+.donation-footnote,
+.donation-legal {
+  font-size: var(--fs-ui-micro);
+  line-height: 1.5;
+}
+
+.contact-paths span,
+.note {
+  font-size: var(--fs-copy-small);
+}
+
+.donate-section .lead,
+.donate-section .outcomes,
+.goal-copy {
+  color: rgba(255, 250, 240, .92);
+}
+
+.footer-inner,
+.footer-inner p,
+.links a {
+  color: rgba(255, 250, 240, .84);
+}
+
+.links a:hover,
+.links a.is-active {
+  color: #fff7eb;
+}
+
+@media (max-width: 920px) {
+  :root {
+    --lh-lead: 1.58;
+    --lh-copy: 1.66;
+    --fs-lead: 1.28rem;
+    --fs-body: 1.14rem;
+    --fs-body-lg: 1.18rem;
+    --fs-serve-lead: 1.5rem;
+    --fs-ui: 1.04rem;
+    --fs-ui-small: 1.04rem;
+    --fs-ui-micro: 1rem;
+    --fs-ui-tiny: 1rem;
+    --fs-meta: 1.14rem;
+    --fs-copy-small: 1.14rem;
+    --fs-copy-fine: 1.08rem;
+  }
+
+  .nav-links a {
+    min-height: 36px;
+    padding-inline: 12px;
+    font-size: var(--fs-ui);
+  }
+}
+
+@media (max-width: 560px) {
+  :root {
+    --lh-lead: 1.58;
+    --lh-copy: 1.66;
+    --fs-lead: 1.24rem;
+    --fs-body: 1.12rem;
+    --fs-body-lg: 1.16rem;
+    --fs-serve-lead: 1.42rem;
+    --fs-ui: 1.02rem;
+    --fs-ui-small: 1.02rem;
+    --fs-ui-micro: 1rem;
+    --fs-ui-tiny: 1rem;
+    --fs-meta: 1.1rem;
+    --fs-copy-small: 1.12rem;
+    --fs-copy-fine: 1.08rem;
+    --fs-brand-mobile: 1.04rem;
+  }
+
+  .brand {
+    font-size: var(--fs-brand-mobile);
+  }
+
+  .pill,
+  .btn-donate {
+    min-height: 46px;
+    font-size: var(--fs-ui);
+  }
+
+  .donation-footnote,
+  .donation-legal,
+  .impact-line small {
+    font-size: var(--fs-ui-micro);
+  }
+}
