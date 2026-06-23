@@ -45,7 +45,7 @@ const { contact } = Astro.props;
       </ul>
     </div>
 
-    <form id="contactFormEl" aria-describedby="contact-form-note contact-form-status" data-reveal>
+    <form id="contactFormEl" aria-describedby="contact-form-note contact-form-status" data-reveal novalidate>
       <div class="hp" aria-hidden="true">
         <label>{contact.honeypotLabel}
           <input type="text" name="website" tabindex="-1" autocomplete="off" />
@@ -53,23 +53,36 @@ const { contact } = Astro.props;
       </div>
 
       <div class="form-row">
-        <label>{contact.nameLabel}
-          <input type="text" name="name" autocomplete="name" required />
-        </label>
-        <label>{contact.emailLabel}
-          <input type="email" name="email" autocomplete="email" required />
-        </label>
+        <div class="form-field">
+          <label>{contact.nameLabel}
+            <input type="text" name="name" autocomplete="name" required aria-describedby="name-error" />
+          </label>
+          <span class="field-error" id="name-error" role="alert" hidden></span>
+        </div>
+        <div class="form-field">
+          <label>{contact.emailLabel}
+            <input type="email" name="email" autocomplete="email" required aria-describedby="email-error" />
+          </label>
+          <span class="field-error" id="email-error" role="alert" hidden></span>
+        </div>
       </div>
 
-      <label>{contact.reasonLabel}
-        <select name="reason">
-          {contact.reasons.map((reason) => <option>{reason}</option>)}
-        </select>
-      </label>
+      <div class="form-field">
+        <label>{contact.reasonLabel}
+          <select name="reason" required aria-describedby="reason-error">
+            <option value="">Select a reason...</option>
+            {contact.reasons.map((reason) => <option>{reason}</option>)}
+          </select>
+        </label>
+        <span class="field-error" id="reason-error" role="alert" hidden></span>
+      </div>
 
-      <label>{contact.messageLabel}
-        <textarea name="message" required></textarea>
-      </label>
+      <div class="form-field">
+        <label>{contact.messageLabel}
+          <textarea name="message" required aria-describedby="message-error contact-form-note"></textarea>
+        </label>
+        <span class="field-error" id="message-error" role="alert" hidden></span>
+      </div>
 
       <p class="note" id="contact-form-note">{contact.note}</p>
       <p class="form-status" id="contact-form-status" role="status" aria-live="polite" hidden></p>

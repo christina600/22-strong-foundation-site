@@ -123,6 +123,56 @@ textarea {
   display: none;
 }
 
+.form-status.is-error {
+  border-color: rgba(220, 38, 38, .3);
+  background: rgba(220, 38, 38, .08);
+  color: #991b1b;
+}
+
+.form-status.is-success {
+  border-color: rgba(22, 163, 74, .3);
+  background: rgba(22, 163, 74, .08);
+  color: #166534;
+}
+
+/* Form field validation states */
+.form-field {
+  display: grid;
+  gap: 6px;
+}
+
+.field-error {
+  display: block;
+  font-size: var(--fs-copy-fine);
+  color: #dc2626;
+  line-height: 1.4;
+  padding-left: 2px;
+}
+
+.field-error[hidden] {
+  display: none;
+}
+
+input.is-invalid,
+select.is-invalid,
+textarea.is-invalid {
+  border-color: #dc2626;
+  background: rgba(220, 38, 38, .02);
+}
+
+input.is-invalid:focus,
+select.is-invalid:focus,
+textarea.is-invalid:focus {
+  outline-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, .1);
+}
+
+input:valid:not(:placeholder-shown),
+select:valid:not([value=""]),
+textarea:valid:not(:placeholder-shown) {
+  border-color: rgba(22, 163, 74, .4);
+}
+
 /* Honeypot: clipped instead of positioned offscreen so QA sees no overflow. */
 .hp {
   position: absolute;

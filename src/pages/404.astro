@@ -1,0 +1,132 @@
+---
+/**
+ * 404 Error Page — friendly, on-brand error page for broken links.
+ */
+
+import site from "../content/site.json";
+import "../styles/home-foundation-base.css";
+
+const pageTitle = `Page Not Found | ${site.orgName}`;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{pageTitle}</title>
+  <meta name="description" content="The page you're looking for doesn't exist. Return to the 22 Strong Foundation homepage." />
+  <meta name="robots" content="noindex" />
+  <link rel="canonical" href={site.siteUrl} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+</head>
+<body class="error-page">
+  <main class="error-container">
+    <div class="error-content">
+      <h1 class="error-code">404</h1>
+      <h2 class="error-title">Page not found</h2>
+      <p class="error-message">
+        The page you're looking for doesn't exist or has been moved.
+      </p>
+      <div class="error-actions">
+        <a href="/" class="pill primary">Return home</a>
+        <a href="/#contact" class="pill">Contact us</a>
+      </div>
+    </div>
+  </main>
+
+  <style>
+    .error-page {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .error-container {
+      width: min(100%, 520px);
+      text-align: center;
+    }
+
+    .error-content {
+      display: grid;
+      gap: 16px;
+    }
+
+    .error-code {
+      margin: 0;
+      font-family: var(--display-face);
+      font-stretch: condensed;
+      font-weight: 900;
+      font-size: clamp(6rem, 20vw, 10rem);
+      line-height: .9;
+      color: var(--orange-dark);
+      letter-spacing: -0.02em;
+    }
+
+    .error-title {
+      margin: 0;
+      font-family: var(--display-face);
+      font-stretch: condensed;
+      font-weight: 800;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      line-height: 1.1;
+      color: var(--ink);
+    }
+
+    .error-message {
+      margin: 0;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      color: var(--muted);
+      max-width: 36ch;
+      margin-inline: auto;
+    }
+
+    .error-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 24px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all .2s ease;
+    }
+
+    .pill.primary {
+      background: var(--orange);
+      color: #fff;
+      box-shadow: var(--action-shadow);
+    }
+
+    .pill.primary:hover {
+      background: var(--orange-dark);
+      box-shadow: var(--action-shadow-hover);
+    }
+
+    .pill:not(.primary) {
+      background: transparent;
+      color: var(--ink);
+      border: 2px solid var(--line);
+    }
+
+    .pill:not(.primary):hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+  </style>
+</body>
+</html>
