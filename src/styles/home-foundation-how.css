@@ -169,21 +169,6 @@
   letter-spacing: 0;
 }
 
-/* Terracotta dot between facts — shown only on wide screens (all four on one
-   line), so a wrapped row never trails a dangling separator. */
-.credibility-strip-item:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  right: calc(clamp(24px, 3vw, 44px) / -2);
-  top: 50%;
-  width: 6px;
-  height: 6px;
-  margin-top: -3px;
-  border-radius: 50%;
-  background: linear-gradient(180deg, #cf6a32, var(--mission-orange));
-  box-shadow: 0 0 0 4px rgba(185, 85, 36, .10);
-}
-
 /* "How 22 Strong works" — 3-step mechanism section. */
 .how-it-works {
   padding-top: var(--space-section-y);
