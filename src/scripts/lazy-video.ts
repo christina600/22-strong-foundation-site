@@ -14,7 +14,6 @@ const TRIGGER_SELECTOR = "[data-lazy-video-trigger]";
 const SHELL_SELECTOR = "[data-lazy-video]";
 const AUTOPLAY_SELECTOR = "[data-lazy-video-autoplay]";
 const TESTIMONIAL_REEL_SELECTOR = "[data-testimonial-reel]";
-const VIDEO_END_PROMPT_SELECTOR = "[data-video-end-prompt]";
 
 type BuildVideoOptions = {
   focus?: boolean;
@@ -56,8 +55,6 @@ function buildVideo(trigger: HTMLElement, options: BuildVideoOptions = {}) {
     if (!reel) return;
 
     reel.classList.add("is-video-complete");
-    const prompt = reel.querySelector<HTMLElement>(VIDEO_END_PROMPT_SELECTOR);
-    prompt?.removeAttribute("hidden");
     reel.dispatchEvent(new CustomEvent("testimonial-video-ended", { bubbles: true }));
   }, { once: true });
 

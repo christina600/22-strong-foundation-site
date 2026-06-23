@@ -8,18 +8,19 @@ interface Props {
 
 const { groups } = Astro.props;
 
-const testimonialCards = groups.flatMap((group) => [
-  ...(group.video ? [{
-    id: `${group.id}-video`,
-    type: "video" as const,
-    video: group.video
-  }] : []),
-  ...group.voices.map((voice, index) => ({
+const videoCards = groups.flatMap((group) =>
+  group.video ? [{ id: `${group.id}-video`, type: "video" as const, video: group.video }] : []
+);
+// Voices ordered athletes-first so Adam (with his photo) lands right after the
+// video; the sample veteran cards follow.
+const voiceCards = [...groups].reverse().flatMap((group) =>
+  group.voices.map((voice, index) => ({
     id: `${group.id}-voice-${index}`,
     type: "voice" as const,
     voice
   }))
-]);
+);
+const testimonialCards = [...videoCards, ...voiceCards];
 const testimonialGroups = groups.filter((group) => Boolean(group.video) || group.voices.length > 0);
 const testimonialReelId = testimonialGroups.find((group) => group.voicesId)?.voicesId ?? "testimonials";
 const testimonialAriaLabel = testimonialGroups.map((group) => group.voicesAriaLabel).join(" and ") || "Recovery testimonials";
@@ -61,10 +62,6 @@ const testimonialAriaLabel = testimonialGroups.map((group) => group.voicesAriaLa
             <span aria-hidden="true">&rarr;</span>
           </button>
         </div>
-
-        <p class="testimonial-reel-prompt" data-video-end-prompt aria-live="polite" hidden>
-          Video complete. Use the arrows or scroll for the next testimonial.
-        </p>
       </div>
     </div>
   </section>

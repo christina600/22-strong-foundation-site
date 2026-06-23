@@ -94,11 +94,9 @@ function initTestimonialReels() {
       if (prefersReducedMotion) return;
       stopAuto();
       autoTimer = window.setInterval(() => {
-        if (activeIndex >= slides.length - 1) {
-          stopAuto();
-          return;
-        }
-        goTo(activeIndex + 1);
+        // Loop continuously: after the last testimonial, wrap back to the start.
+        const nextIndex = activeIndex >= slides.length - 1 ? 0 : activeIndex + 1;
+        goTo(nextIndex);
       }, 6500);
     };
 
