@@ -42,16 +42,31 @@ const imageHeight = voice?.imageHeight ?? 800;
           data-video-poster={video.poster}
           aria-label={video.triggerLabel}
         >
-          <img
-            class="testimonial-video-poster"
-            src={video.poster}
-            alt={video.posterAlt ?? ""}
-            width="540"
-            height="960"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-          />
+          {(() => {
+            const posterAsset = getImageByPath(video.poster);
+            return posterAsset
+              ? <Image
+                  class="testimonial-video-poster"
+                  src={posterAsset}
+                  alt={video.posterAlt ?? ""}
+                  width={540}
+                  height={960}
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                  format="webp"
+                />
+              : <img
+                  class="testimonial-video-poster"
+                  src={video.poster}
+                  alt={video.posterAlt ?? ""}
+                  width="540"
+                  height="960"
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                />;
+          })()}
           <span class="testimonial-play-button" aria-hidden="true"></span>
         </button>
         <noscript>

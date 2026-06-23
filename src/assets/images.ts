@@ -9,6 +9,7 @@
 
 import adamFolkerUci from "./images/adam-folker-uci.webp";
 import drVas from "./images/dr-vas.webp";
+import heroBattleRopes from "./images/hero-battle-ropes.webp";
 import lukePoster from "./images/luke-poster.jpg";
 import tomBoscamp from "./images/tom-boscamp.jpg";
 import travisMayfield from "./images/travis-mayfield.jpg";
@@ -19,11 +20,15 @@ import type { ImageMetadata } from "astro";
 export const imageMap: Record<string, ImageMetadata> = {
   "/images/adam-folker-uci.webp": adamFolkerUci,
   "/images/dr-vas.webp": drVas,
+  "/images/hero-battle-ropes.webp": heroBattleRopes,
   "/images/luke-poster.jpg": lukePoster,
   "/images/tom-boscamp.jpg": tomBoscamp,
   "/images/travis-mayfield.jpg": travisMayfield,
   "/images/logo-usvm.jpg": logoUsvm,
 };
+
+/** Hero background image — exported for direct use in preload hints. */
+export { heroBattleRopes };
 
 export function getImageByPath(path: string): ImageMetadata | undefined {
   return imageMap[path];

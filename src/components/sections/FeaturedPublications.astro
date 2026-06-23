@@ -1,4 +1,7 @@
 ---
+import { Image } from "astro:assets";
+import { getImageByPath } from "../../assets/images";
+
 interface Publication {
   logo: string;
   logoAlt: string;
@@ -18,28 +21,44 @@ const { chapter, publications } = Astro.props;
   <div class="featured-inner" data-reveal>
     <h2 class="featured-title" id="featured-title">As Featured In</h2>
     <ul class="featured-publications" aria-label="Featured publications">
-      {publications.map((publication) => (
-        <li>
-          <a
-            class="featured-sheet"
-            href={publication.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={publication.ariaLabel}
-          >
-            <img
-              class="featured-logo-img"
-              src={publication.logo}
-              alt={publication.logoAlt}
-              width="760"
-              height="194"
-              loading="lazy"
-              decoding="async"
-              fetchpriority="low"
-            />
-          </a>
-        </li>
-      ))}
+      {publications.map((publication) => {
+        const asset = getImageByPath(publication.logo);
+        return (
+          <li>
+            <a
+              class="featured-sheet"
+              href={publication.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={publication.ariaLabel}
+            >
+              {asset
+                ? <Image
+                    class="featured-logo-img"
+                    src={asset}
+                    alt={publication.logoAlt}
+                    width={760}
+                    height={194}
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                    format="webp"
+                  />
+                : <img
+                    class="featured-logo-img"
+                    src={publication.logo}
+                    alt={publication.logoAlt}
+                    width="760"
+                    height="194"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                  />
+              }
+            </a>
+          </li>
+        );
+      })}
     </ul>
   </div>
 </section>

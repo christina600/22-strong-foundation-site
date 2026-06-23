@@ -16,11 +16,20 @@
  *   description  — meta description for search engines
  */
 
+import { getImage } from "astro:assets";
 import site from "../content/site.json";
 import Analytics from "../components/Analytics.astro";
 import strings from "../content/strings/en.json";
 import { isConfigured } from "../utils/config";
+import { heroBattleRopes } from "../assets/images";
 import "../styles/home.css";
+
+// Generate optimized hero image URL for preload
+const heroImage = await getImage({
+  src: heroBattleRopes,
+  format: "webp",
+  quality: 82,
+});
 
 // JSON-LD Organization structured data for rich search results.
 // Only emit fields that hold real values.
@@ -81,8 +90,9 @@ const metaDesc = description || site.descriptor;
   <meta name="apple-mobile-web-app-title" content="22 Strong" />
 
   <!-- Preload hero background image — CSS url() can't be natively lazy,
-       so this hint lets the browser start the fetch early with high priority. -->
-  <link rel="preload" as="image" href="/images/hero-battle-ropes.webp" fetchpriority="high" />
+       so this hint lets the browser start the fetch early with high priority.
+       Uses Astro-optimized WebP for better compression. -->
+  <link rel="preload" as="image" href={heroImage.src} fetchpriority="high" />
 
   <!-- Gate the scrollytelling start state on JS so non-JS users see all -->
   <script is:inline>document.documentElement.classList.add('js');</script>
