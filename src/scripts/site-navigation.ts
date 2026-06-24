@@ -75,6 +75,7 @@ function updateActiveLinks(hash: string) {
   });
 }
 
+
 function getScrollTopForTarget(target: HTMLElement) {
   if (target.id === "top") return 0;
   return Math.max(0, target.getBoundingClientRect().top + window.scrollY - getHeaderOffset());

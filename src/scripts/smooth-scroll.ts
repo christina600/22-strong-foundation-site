@@ -1,22 +1,14 @@
-import Lenis from 'lenis';
-
-// Initialize smooth scroll
-// Use documentElement as wrapper so Lenis does NOT restructure the DOM,
-// which would break `position: sticky` on the header and anchor jumps.
-const lenis = new Lenis({
-  wrapper: document.documentElement,
-  duration: 1.2,
-  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  touchMultiplier: 2,
-});
-
-// Animation frame loop
-function raf(time: number) {
-  lenis.raf(time);
-  requestAnimationFrame(raf);
-}
-
-requestAnimationFrame(raf);
+/**
+ * Smooth scroll + scroll-triggered animations.
+ *
+ * Uses native CSS `scroll-behavior: smooth` (set in home-base.css) instead of
+ * a transform-based smooth-scroll library. Transform wrappers (e.g. Lenis)
+ * create a new CSS containing block, which breaks `position: sticky` and
+ * `position: fixed` on the header and nav — they would scroll with the page
+ * instead of staying pinned.
+ *
+ * The IntersectionObservers below handle scroll reveal and stat counters.
+ */
 
 // Scroll reveal animations
 const observerOptions = {
@@ -78,5 +70,3 @@ document.querySelectorAll('[data-count]').forEach((el) => {
   statObserver.observe(el);
 });
 
-// Export lenis for external control if needed
-export { lenis };

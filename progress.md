@@ -1,36 +1,40 @@
 # Progress — 22 Strong Foundation
 
-## Latest: Fix nav bar jump after Lenis smooth-scroll install
+## Latest: Remove Lenis, fix nav bar positioning
 
 **Date:** June 23, 2026
 
 ### Problem
-After installing [Lenis](https://lenis.studiofreight.com/) for smooth scrolling and enabling scroll-triggered reveal animations (commit `fd9894d`), the sticky site header lost its `position: sticky` behavior and anchor-link jumps shifted to the wrong vertical offset.
+After installing [Lenis](https://lenis.studiofreight.com/) for smooth scrolling (commit `fd9894d`), the sticky site header lost its `position: sticky` behavior, the Donate/Contact buttons floated out of place, and a white gap appeared above the dark header.
 
 ### Root Cause
-Lenis' default config wraps page content in a new `<div>` and applies CSS `transform` to it. That creates a new stacking context, which **breaks `position: sticky`** on descendants (including the `<header>`) and changes the scroll container that `scroll-margin-top` is measured against.
+Lenis applies `transform: translate3d()` to the scroll container (`<html>` or `<body>`). This creates a **new CSS containing block**, which fundamentally breaks `position: sticky` and `position: fixed` on all descendants — the header scrolls with the page instead of staying pinned. No Lenis config option avoids this; the transform is core to how Lenis works.
+
+Additionally, the `.nav-toggle` hamburger button had no default `display: none`, so it was visible on desktop/tablet, pushing the nav-actions buttons out of their grid slot.
 
 ### Fix
-Two targeted changes restored the nav to its pre-Lenis behavior without losing smooth scrolling:
+Removed Lenis entirely and reverted to native CSS `scroll-behavior: smooth` (already configured in `home-base.css`).
 
-1. **`src/scripts/smooth-scroll.ts`** — Passed `wrapper: document.documentElement` to `new Lenis()` so Lenis attaches to `<html>` instead of wrapping the DOM tree.
-2. **`src/styles/home-base.css`** — Added Lenis' official CSS helpers:
-   - `html.lenis, html.lenis body { height: auto; }`
-   - `.lenis.lenis-smooth { scroll-behavior: auto !important; }` (prevents native smooth-scroll from fighting Lenis)
-   - `.lenis.lenis-stopped { overflow: hidden; }`
-   - `.lenis.lenis-scrolling { overflow: clip; }`
+1. **`src/scripts/smooth-scroll.ts`** — Removed Lenis import and initialization. Kept IntersectionObservers for scroll-reveal animations and stat counters (they work independently).
+2. **`src/scripts/site-navigation.ts`** — Removed all `lenis` imports. Reverted scroll functions to `window.scrollY` and `window.scrollTo()`. Reverted mobile nav to CSS-based `body.nav-open` scroll-lock.
+3. **`src/styles/home-base.css`** — Removed Lenis CSS helpers. Added `.nav-toggle { display: none }` default so the hamburger only appears on mobile (≤560px).
+4. **`package.json`** — Removed `lenis` dependency via `npm uninstall`.
 
 ### Files Changed
 | File | Change |
 | --- | --- |
-| `src/scripts/smooth-scroll.ts` | Added `wrapper: document.documentElement` option to the Lenis constructor |
-| `src/styles/home-base.css` | Added Lenis helper rules after the base `html` block |
+| `src/scripts/smooth-scroll.ts` | Removed Lenis; kept scroll-reveal and stat counter observers |
+| `src/scripts/site-navigation.ts` | Removed lenis imports; reverted to native `window.scrollY` / `window.scrollTo()` |
+| `src/styles/home-base.css` | Removed Lenis CSS helpers; added `.nav-toggle { display: none }` default |
+| `package.json` / `package-lock.json` | Removed `lenis` dependency |
 
 ### Result
-- Sticky header stays pinned correctly at the top of the viewport.
-- Anchor links scroll smoothly to the right offset (respects `scroll-margin-top`).
-- Scroll reveal animations (`data-scroll-reveal`) and stat counters (`data-count`) still fire normally.
-- Mobile nav (`initMobileNav`) unaffected.
+- Sticky header stays pinned at the top of the viewport.
+- Donate/Contact buttons properly aligned in the nav grid.
+- No white gap above the header.
+- Anchor links scroll smoothly (native CSS `scroll-behavior: smooth`).
+- Scroll-reveal animations and stat counters still work (IntersectionObserver-based).
+- Mobile menu still works (CSS `nav-open` class handles scroll-lock).
 
 ---
 
