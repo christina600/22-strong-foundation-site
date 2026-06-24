@@ -81,6 +81,25 @@ html {
   background: var(--paper);
 }
 
+/* Lenis smooth-scroll helpers — keeps position:sticky working on the header
+   and prevents native scroll-behavior from fighting Lenis transforms. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling {
+  overflow: clip;
+}
+
 /* Respect reduced motion for scroll */
 @media (prefers-reduced-motion: reduce) {
   html {

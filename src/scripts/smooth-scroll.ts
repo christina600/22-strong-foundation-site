@@ -1,7 +1,10 @@
 import Lenis from 'lenis';
 
 // Initialize smooth scroll
+// Use documentElement as wrapper so Lenis does NOT restructure the DOM,
+// which would break `position: sticky` on the header and anchor jumps.
 const lenis = new Lenis({
+  wrapper: document.documentElement,
   duration: 1.2,
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
   touchMultiplier: 2,
