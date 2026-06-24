@@ -17,6 +17,10 @@ const pageTitle = `Page Not Found | ${site.orgName}`;
   <title>{pageTitle}</title>
   <meta name="description" content="The page you're looking for doesn't exist. Return to the 22 Strong Foundation homepage." />
   <meta name="robots" content="noindex" />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content="The page you are looking for was not found at 22 Strong Foundation." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
   <link rel="canonical" href={site.siteUrl} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" href="/favicon.ico" />

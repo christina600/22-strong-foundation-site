@@ -19,11 +19,11 @@ const { people } = Astro.props;
 ---
 
 <section class="story-leadership" id="leadership">
-  <h2 data-reveal>Meet the team.</h2>
+  <h2 data-scroll-reveal>Meet the team.</h2>
 
   <div class="bios">
-    {people.map((person) => (
-      <article class="card" data-reveal>
+    {people.map((person, index) => (
+      <article class="card" data-scroll-reveal data-delay={(index + 1).toString()}>
         <div class="bio-head">
           {person.portrait
             ? (() => {

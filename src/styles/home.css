@@ -14,3 +14,5 @@
 @import "./home-premium-layout.css";
 /* Premium responsive overrides */
 @import "./home-premium-responsive.css";
+/* Scroll-triggered fade-in animations and stat counters */
+@import "./scroll-reveal.css";
