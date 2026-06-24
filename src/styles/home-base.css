@@ -1,7 +1,4 @@
-/* ============================================================
-   Homepage foundation styles. Imported first by home.css so later
-   motion and premium layers can refine the same page safely.
-   ============================================================ */
+/* Foundation styles — variables, resets, typography */
 
 :root {
   --ink: #252321;
@@ -10,11 +7,7 @@
   --line: rgba(37, 35, 33, .14);
   --orange: #c94f0f;
   --orange-dark: #9f3908;
-  /* Primary action fill — now flat (name kept; it feeds buttons, active
-     amount toggles, goal-fill bars, and small number badges). */
   --action-gradient: var(--orange);
-  /* Shared button shadow — layered neutral depth (tight contact + soft
-     ambient) plus a 1px top highlight for a crisp, physical edge. */
   --action-shadow:
     inset 0 1px 0 rgba(255, 255, 255, .20),
     0 1px 1px rgba(31, 20, 12, .22),
@@ -29,20 +22,16 @@
   --olive: #51523a;
   --brown: #2f231d;
   --brown-2: #4b2918;
-  /* Teal — the Strong Circle campaign color (pops against the warm palette). */
   --teal: #1c8c87;
   --teal-deep: #0e5a5c;
   --teal-ink: #093f43;
   --shadow: 0 24px 70px rgba(47, 35, 29, .12);
   --radius: 8px;
   --max: 1180px;
-  /* Brand/logo wordmark only — the condensed treatment that mimics the logo. */
   --logo-face: "DIN Condensed", "DIN Alternate", "Helvetica Neue Condensed Black",
     "HelveticaNeue-CondensedBold", "Arial Narrow", "Aptos Narrow", Impact,
     ui-sans-serif, system-ui, sans-serif;
-  /* Everything else — headings, eyebrows, numbers — uses the clean site font. */
   --display-face: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --number-face: var(--display-face);
   --space-page-x: 24px;
   --space-section-y: 104px;
   --space-section-y-tight: 72px;
