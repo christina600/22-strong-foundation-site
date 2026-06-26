@@ -149,35 +149,10 @@ body::before {
     box-shadow: 0 0 0 1px rgba(255, 253, 247, .38);
   }
 
-  .site::after {
-    background: linear-gradient(180deg, var(--mission-orange), rgba(185, 85, 36, .32));
-    transform-origin: top;
-    transform: scaleY(.16);
-    box-shadow:
-      0 0 0 1px rgba(185, 85, 36, .14),
-      0 12px 28px rgba(185, 85, 36, .16);
-  }
+  /* Removed: scroll progress bar (.site::after) on user request */
 }
 
-@supports (animation-timeline: scroll()) {
-  @media (prefers-reduced-motion: no-preference) and (min-width: 1180px) {
-    .site::after {
-      animation: recovery-path-progress linear both;
-      animation-timeline: scroll(root);
-      animation-range: 0% 100%;
-    }
-  }
-}
-
-@keyframes recovery-path-progress {
-  from {
-    transform: scaleY(.08);
-  }
-
-  to {
-    transform: scaleY(1);
-  }
-}
+/* Removed: scroll-timeline progress animation for .site::after */
 
 header {
   height: 82px;
@@ -481,8 +456,11 @@ p {
   position: relative;
   display: block;
   width: fit-content;
-  overflow: hidden;
+  /* overflow: visible to prevent descender clipping (g, y, p, q, j) */
+  overflow: visible;
   padding-right: .08em;
+  /* Add bottom padding to ensure descenders have room */
+  padding-bottom: .08em;
 }
 
 /* Kinetic entrance: the logo rises first, then each headline line slides up
