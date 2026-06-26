@@ -129,30 +129,7 @@ body::before {
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, .22), transparent 72%);
 }
 
-@media (min-width: 1180px) {
-  .site::before,
-  .site::after {
-    content: "";
-    position: fixed;
-    top: 112px;
-    bottom: 34px;
-    left: max(18px, calc(50vw - (var(--max) / 2) - 54px));
-    width: 2px;
-    pointer-events: none;
-    z-index: 38;
-  }
-
-  .site::before {
-    background:
-      linear-gradient(180deg, rgba(185, 85, 36, .42), rgba(70, 87, 70, .18), rgba(32, 35, 31, .08)),
-      rgba(255, 253, 247, .42);
-    box-shadow: 0 0 0 1px rgba(255, 253, 247, .38);
-  }
-
-  /* Removed: scroll progress bar (.site::after) on user request */
-}
-
-/* Removed: scroll-timeline progress animation for .site::after */
+/* Removed: vertical scroll progress rail (.site::before + .site::after) */
 
 header {
   height: 82px;
