@@ -49,7 +49,7 @@ interface AudienceConfig {
   proofClass?: string;
   voicesId?: string;
   voicesAriaLabel: string;
-  video?: VideoVoiceContent;
+  videos?: VideoVoiceContent[];
   voicesKey?: string;
   voices?: PersonVoiceContent[];
 }
@@ -72,7 +72,7 @@ export interface AudienceGroupContent {
   proofClass?: string;
   voicesId?: string;
   voicesAriaLabel: string;
-  video?: VideoVoiceContent;
+  videos?: VideoVoiceContent[];
   voices: PersonVoiceContent[];
 }
 
@@ -94,18 +94,19 @@ const resolveVoice = (
   };
 };
 
-const resolveVideo = (
-  video: VideoVoiceContent | undefined,
+const resolveVideos = (
+  videos: VideoVoiceContent[] | undefined,
   testimonials: Record<string, TestimonialContent>
-): VideoVoiceContent | undefined => {
-  if (!video) return undefined;
-  const testimonial = getTestimonial(testimonials, video.testimonialKey);
-
-  return {
-    ...video,
-    attribution: video.attribution ?? testimonial?.attribution ?? "",
-    story: video.story ?? testimonial?.story ?? ""
-  };
+): VideoVoiceContent[] => {
+  if (!videos) return [];
+  return videos.map<VideoVoiceContent>((video) => {
+    const testimonial = getTestimonial(testimonials, video.testimonialKey);
+    return {
+      ...video,
+      attribution: video.attribution ?? testimonial?.attribution ?? "",
+      story: video.story ?? testimonial?.story ?? ""
+    };
+  });
 };
 
 export function buildAudienceGroups(home: HomeStoryContent): AudienceGroupContent[] {
@@ -120,7 +121,7 @@ export function buildAudienceGroups(home: HomeStoryContent): AudienceGroupConten
     proofClass: group.proofClass,
     voicesId: group.voicesId,
     voicesAriaLabel: group.voicesAriaLabel,
-    video: resolveVideo(group.video, home.testimonials),
+    videos: resolveVideos(group.videos, home.testimonials),
     voices: group.voicesKey === "veteranVoices"
       ? home.veteranVoices
       : (group.voices ?? []).map((voice) => resolveVoice(voice, home.testimonials))

@@ -9,7 +9,11 @@ interface Props {
 const { groups } = Astro.props;
 
 const videoCards = groups.flatMap((group) =>
-  group.video ? [{ id: `${group.id}-video`, type: "video" as const, video: group.video }] : []
+  (group.videos ?? []).map((video, index) => ({
+    id: `${group.id}-video-${index}`,
+    type: "video" as const,
+    video
+  }))
 );
 // Voices ordered athletes-first so Adam (with his photo) lands right after the
 // video; the sample veteran cards follow.
@@ -21,7 +25,7 @@ const voiceCards = [...groups].reverse().flatMap((group) =>
   }))
 );
 const testimonialCards = [...videoCards, ...voiceCards];
-const testimonialGroups = groups.filter((group) => Boolean(group.video) || group.voices.length > 0);
+const testimonialGroups = groups.filter((group) => (group.videos && group.videos.length > 0) || group.voices.length > 0);
 const testimonialReelId = testimonialGroups.find((group) => group.voicesId)?.voicesId ?? "testimonials";
 const testimonialAriaLabel = testimonialGroups.map((group) => group.voicesAriaLabel).join(" and ") || "Recovery testimonials";
 ---
