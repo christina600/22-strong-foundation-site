@@ -127,9 +127,9 @@
 
   :root {
     --space-page-x: 20px;
-    --space-section-y: 70px;
-    --space-section-y-tight: 54px;
-    --space-section-y-roomy: 78px;
+    --space-section-y: 56px;
+    --space-section-y-tight: 44px;
+    --space-section-y-roomy: 62px;
     --space-card: 22px;
     --space-card-compact: 20px;
     --space-card-roomy: 26px;

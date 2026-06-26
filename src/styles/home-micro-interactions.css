@@ -1,0 +1,198 @@
+/* Micro-interactions for Phase 2 aesthetic upgrades.
+   All animations respect prefers-reduced-motion. */
+
+/* ── Ripple effect ─────────────────────────────────────────── */
+
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.35) 0%,
+    rgba(255, 255, 255, 0.12) 40%,
+    transparent 70%
+  );
+  animation: ripple-expand 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  transform: scale(0);
+  z-index: 1;
+}
+
+@keyframes ripple-expand {
+  0% {
+    transform: scale(0);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* Dark ripple for light buttons */
+.pill:not(.primary) .ripple-effect,
+.amount-button .ripple-effect,
+.testimonial-reel-button .ripple-effect {
+  background: radial-gradient(
+    circle,
+    rgba(32, 35, 31, 0.18) 0%,
+    rgba(32, 35, 31, 0.06) 40%,
+    transparent 70%
+  );
+}
+
+/* ── Shine gradient sweep on hover ─────────────────────────── */
+
+.card {
+  position: relative;
+  overflow: hidden;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.18) 45%,
+    rgba(255, 255, 255, 0.06) 50%,
+    transparent 55%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  z-index: 2;
+}
+
+.card:hover::after {
+  transform: translateX(100%);
+}
+
+/* ── CTA button enhanced hover state ────────────────────────── */
+
+.pill.primary,
+.btn-donate,
+.strong-circle-trigger {
+  will-change: transform;
+}
+
+.pill.primary:hover,
+.btn-donate:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 4px 12px rgba(31, 20, 12, 0.24),
+    0 12px 28px rgba(31, 20, 12, 0.18);
+}
+
+/* ── Image hover zoom container ────────────────────────────── */
+
+.bio-head .portrait,
+.hero-copy img,
+.donation-card-main img {
+  overflow: hidden;
+}
+
+.bio-head .portrait img {
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.bio-head:hover .portrait img {
+  transform: scale(1.05);
+}
+
+/* ── Stagger fade-in for evidence stats ────────────────────── */
+
+.about-evidence-stat {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-evidence-stat[data-stat-stagger].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Blur-to-sharp image loader ────────────────────────────── */
+
+img[data-blur-load] {
+  filter: blur(10px);
+  transition: filter 0.6s ease-out;
+}
+
+img[data-blur-load].loaded {
+  filter: none;
+}
+
+/* ── Progress ring ─────────────────────────────────────────── */
+
+[data-progress-ring] circle {
+  transition: stroke-dashoffset 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+/* ── Stat number pulse on count complete ───────────────────── */
+
+@keyframes stat-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+}
+
+[data-count].counted {
+  animation: stat-pulse 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ── Reduced motion: disable all micro-interactions ────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .ripple-effect {
+    display: none;
+  }
+
+  .card::after {
+    display: none;
+  }
+
+  .pill.primary,
+  .btn-donate,
+  .strong-circle-trigger,
+  .card {
+    will-change: auto;
+    transition: none;
+  }
+
+  .bio-head .portrait img {
+    transition: none;
+  }
+
+  .bio-head:hover .portrait img {
+    transform: none;
+  }
+
+  .about-evidence-stat {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  img[data-blur-load] {
+    filter: none;
+    transition: none;
+  }
+
+  [data-progress-ring] circle {
+    transition: none;
+  }
+
+  [data-count].counted {
+    animation: none;
+  }
+}

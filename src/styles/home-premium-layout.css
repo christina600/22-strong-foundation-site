@@ -68,10 +68,10 @@ main {
   content: "";
   position: absolute;
   left: 50%;
-  bottom: -42px;
+  bottom: -26px;
   width: 1px;
-  height: 84px;
-  background: linear-gradient(180deg, rgba(185, 85, 36, .58), rgba(185, 85, 36, 0));
+  height: 52px;
+  background: linear-gradient(180deg, rgba(185, 85, 36, .48), rgba(185, 85, 36, 0));
   transform: translateX(-50%);
 }
 
@@ -111,7 +111,7 @@ main {
 }
 
 .narrative-scene--about {
-  padding-block: clamp(72px, 8vw, 112px);
+  padding-block: clamp(56px, 6vw, 86px);
   background: var(--story-warm-band);
 }
 
@@ -194,18 +194,18 @@ main {
   padding-top: 0;
   border-top: 0;
   align-self: start;
-  padding-top: clamp(10px, 1vw, 16px);
+  padding-top: clamp(8px, 1vw, 12px);
   --about-number-col: clamp(178px, 14vw, 224px);
-  --about-proof-gap: clamp(30px, 4vw, 54px);
+  --about-proof-gap: clamp(24px, 3vw, 42px);
 }
 
 .narrative-scene--about .about-evidence-stat {
   display: grid;
   grid-template-columns: var(--about-number-col) minmax(0, 1fr);
   column-gap: var(--about-proof-gap);
-  row-gap: clamp(18px, 2vw, 24px);
+  row-gap: clamp(12px, 1.5vw, 18px);
   align-items: start;
-  padding: clamp(24px, 3vw, 34px) 0 clamp(28px, 3.4vw, 40px);
+  padding: clamp(16px, 2vw, 24px) 0 clamp(18px, 2.4vw, 28px);
   border-bottom: 1px solid var(--story-rule-soft);
 }
 
@@ -330,7 +330,7 @@ main {
   isolation: isolate;
   max-width: none;
   margin: 0;
-  padding: clamp(62px, 7vw, 94px) var(--space-page-x);
+  padding: clamp(48px, 5.5vw, 72px) var(--space-page-x);
   overflow: hidden;
   border-top: 1px solid rgba(32, 35, 31, .10);
   background:
@@ -539,7 +539,7 @@ main {
 }
 
 .audience-voices {
-  margin-top: clamp(52px, 7vw, 88px);
+  margin-top: clamp(40px, 5vw, 64px);
 }
 
 .audience-voices .veteran-voices {
@@ -760,7 +760,8 @@ html {
 
 .how-it-works {
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden removed - breaks sticky positioning for horizontal scroll */
+  overflow: visible;
 }
 
 @media (min-width: 921px) {

@@ -41,16 +41,18 @@ const splitNote = (note: string) => {
 };
 ---
 
-<section class="how-it-works story-path" id="how-it-works" data-chapter={chapter}>
+<section class="how-it-works story-path" id="how-it-works" data-chapter={chapter} data-bg-shift>
+  <!-- Geometric morph decoration -->
+  <div class="geo-morph geo-morph--how" aria-hidden="true"></div>
   <div class="how-story-copy" data-reveal>
     <div class="eyebrow">{content.eyebrow}</div>
     <h2>{content.heading.map((line, i) => <Fragment>{i > 0 && <br />}{line}</Fragment>)}</h2>
     <p class="story-kicker">{content.kicker}</p>
   </div>
 
-  <ol class="steps steps--path" aria-label={content.stepsAriaLabel}>
+  <ol class="steps--path" aria-label={content.stepsAriaLabel}>
     {content.steps.map((step) => (
-      <li class="step story-beat" data-reveal>
+      <li class="step" data-reveal>
         <span class="step-number" aria-hidden="true">{step.number}</span>
         <div class="step-body">
           <h3>{step.heading}</h3>

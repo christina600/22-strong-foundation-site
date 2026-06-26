@@ -9,8 +9,8 @@ const { stat } = Astro.props;
 ---
 
 <section class="stat-beat" aria-label="Recovery access statistic">
-  <div class="stat-beat-inner" data-scroll-reveal>
-    <p class="stat-beat-number">{stat.number}</p>
+  <div class="stat-beat-inner" data-reveal>
+    <p class="stat-beat-number" data-reveal="stat">{stat.number}</p>
     <div class="stat-beat-body">
       <p class="stat-beat-text">{stat.text}</p>
       {stat.source && (stat.url

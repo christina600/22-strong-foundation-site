@@ -38,11 +38,11 @@ const {
 } = Astro.props;
 ---
 
-<section class={`about-section narrative-scene narrative-scene--${id}`} id={id} data-chapter={chapter}>
+<section class={`about-section narrative-scene narrative-scene--${id}`} id={id} data-chapter={chapter} data-bg-shift>
   <div class="about-inner">
     <div class="about-intro" data-reveal>
       {eyebrow && <span class="eyebrow">{eyebrow}</span>}
-      {heading && <h2>{heading}</h2>}
+      {heading && <h2 data-reveal="headline" data-split-reveal>{heading}</h2>}
       {lead && <p class="lead">{lead}</p>}
     </div>
 
@@ -51,7 +51,7 @@ const {
         {impact.label && <span class="about-impact-label">{impact.label}</span>}
         <dl class="about-impact-figures">
           {impact.figures.map((figure) => (
-            <div class="about-impact-figure">
+            <div class="about-impact-figure" data-reveal="stat">
               <dt class="about-impact-number">{figure.number}</dt>
               <dd class="about-impact-text">{figure.label}</dd>
             </div>

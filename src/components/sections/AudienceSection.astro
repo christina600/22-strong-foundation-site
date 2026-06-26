@@ -15,9 +15,9 @@ const preparedGroups = groups.map((group) => ({
 }));
 ---
 
-<section class="story-serve-intro" id="serve" data-chapter={chapter}>
+<section class="story-serve-intro" id="serve" data-chapter={chapter} data-bg-shift>
   <div class="serve-intro">
-    <h2 data-reveal>{introTitle}</h2>
+    <h2 data-reveal="headline" data-split-reveal>{introTitle}</h2>
   </div>
 </section>
 
@@ -26,6 +26,7 @@ const preparedGroups = groups.map((group) => ({
     class={`audience-chapter story-audience-chapter${group.proofClass ? ` ${group.proofClass}` : ""}`}
     id={group.id}
     aria-label={group.detailAriaLabel}
+    data-bg-shift
   >
     <div class="audience-chapter-inner">
       <div class="audience-copy" data-reveal>
