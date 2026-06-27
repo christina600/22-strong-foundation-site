@@ -15,11 +15,49 @@ const isStacked = variant === "audience" && /\s/.test(stat.number.trim());
 const className = variant === "about"
   ? `about-evidence-stat${stat.light ? " is-light" : ""}`
   : `audience-stat${stat.light ? " is-light" : ""}${isStacked ? " is-stacked" : ""}`;
+
+// Extract numeric value for animation (handles "4.6 million", "38%", "$190", etc.)
+const extractNumericValue = (text: string): { value: number; prefix: string; suffix: string } => {
+  const cleaned = text.trim();
+  let prefix = "";
+  let suffix = "";
+  let value = 0;
+  
+  // Extract prefix ($, etc.)
+  if (/^[\$£€]/.test(cleaned)) {
+    prefix = cleaned[0];
+  }
+  
+  // Extract suffix (%, million, etc.)
+  const suffixMatch = cleaned.match(/\s*(%|million|thousand|billion|k|m|b)\s*$/i);
+  if (suffixMatch) {
+    suffix = suffixMatch[1];
+  }
+  
+  // Extract numeric part
+  const numMatch = cleaned.match(/[\$£€]?(\d+\.?\d*)/);
+  if (numMatch) {
+    value = parseFloat(numMatch[1]);
+  }
+  
+  return { value, prefix, suffix };
+};
+
+const { value: numericValue, prefix, suffix } = extractNumericValue(stat.number);
+const hasNumeric = numericValue > 0 && !/\s/.test(stat.number.replace(/[\$£€%]/g, "").trim());
 ---
 
 {variant === "about" ? (
   <aside class={className} role="listitem" {...revealAttrs}>
-    <div class="about-evidence-number">{stat.number}</div>
+    <div 
+      class="about-evidence-number" 
+      data-counter={hasNumeric ? "" : undefined}
+      data-counter-target={hasNumeric ? numericValue : undefined}
+      data-counter-prefix={hasNumeric ? prefix : undefined}
+      data-counter-suffix={hasNumeric ? suffix : undefined}
+    >
+      {stat.number}
+    </div>
     <div class="about-evidence-copy">
       <p>{stat.text}</p>
       <span class="about-evidence-source">
@@ -30,7 +68,15 @@ const className = variant === "about"
 ) : (
   <aside class={className} role="listitem" {...revealAttrs}>
     <div class="audience-stat-inner">
-      <div class="audience-stat-number">{stat.number}</div>
+      <div 
+        class="audience-stat-number"
+        data-counter={hasNumeric ? "" : undefined}
+        data-counter-target={hasNumeric ? numericValue : undefined}
+        data-counter-prefix={hasNumeric ? prefix : undefined}
+        data-counter-suffix={hasNumeric ? suffix : undefined}
+      >
+        {stat.number}
+      </div>
       <div class="audience-stat-text">
         <p>{stat.text}</p>
         <span class="audience-stat-source">

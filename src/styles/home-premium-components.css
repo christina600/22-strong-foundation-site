@@ -61,7 +61,10 @@ form {
 }
 
 .toggle-row button,
-.amount-button,
+.amount-button {
+  border-radius: 999px;
+}
+
 .other-amount-input,
 input,
 select,

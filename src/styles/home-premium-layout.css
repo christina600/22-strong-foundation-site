@@ -129,55 +129,72 @@ main {
   max-width: 62ch;
 }
 
-/* Impact band — the proof leads the section. */
+/* Impact band — dark cinematic reversal: proof set against a deep field. */
 .narrative-scene--about .about-impact {
+  position: relative;
   display: grid;
   gap: clamp(16px, 2vw, 22px);
-  padding: clamp(24px, 3vw, 34px) 0;
-  border-top: 1px solid var(--story-rule-soft, rgba(32, 35, 31, .14));
-  border-bottom: 1px solid var(--story-rule-soft, rgba(32, 35, 31, .14));
+  padding: clamp(28px, 3.5vw, 48px) clamp(22px, 3vw, 40px);
+  background:
+    linear-gradient(135deg, rgba(185, 85, 36, .13), transparent 40%),
+    linear-gradient(180deg, #181f17, #111610);
+  border: 1px solid rgba(255, 255, 255, .07);
+  border-top: 2px solid rgba(185, 85, 36, .65);
+  border-radius: var(--radius, 8px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .06) inset,
+    0 24px 64px rgba(0, 0, 0, .26);
 }
 
 .narrative-scene--about .about-impact-label {
   font-size: var(--fs-ui, .95rem);
   font-weight: 800;
-  letter-spacing: .1em;
+  letter-spacing: .12em;
   text-transform: uppercase;
-  color: rgba(32, 35, 31, .58);
+  color: rgba(255, 250, 240, .52);
 }
 
 .narrative-scene--about .about-impact-figures {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(20px, 4vw, 48px);
+  gap: 0;
   margin: 0;
 }
 
 .narrative-scene--about .about-impact-figure {
   display: grid;
-  gap: 6px;
+  gap: 8px;
+  padding: 0 clamp(16px, 2.5vw, 32px);
+  border-left: 1px solid rgba(255, 250, 240, .1);
+}
+
+.narrative-scene--about .about-impact-figure:first-child {
+  padding-left: 0;
+  border-left: 0;
 }
 
 .narrative-scene--about .about-impact-number {
-  color: var(--orange-dark);
+  color: #fffaf0;
   font-family: var(--number-face, var(--display-face));
   font-stretch: condensed;
   font-weight: 900;
-  font-size: clamp(3rem, 5.4vw, 4.6rem);
-  line-height: .9;
+  font-size: clamp(3.8rem, 7vw, 7.2rem);
+  line-height: .88;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, .28);
 }
 
 .narrative-scene--about .about-impact-text {
   margin: 0;
   font-size: var(--fs-copy-small, 1rem);
   line-height: 1.42;
-  color: rgba(32, 35, 31, .82);
+  color: rgba(255, 250, 240, .56);
 }
 
 .narrative-scene--about .about-intro h2 {
   max-width: none;
-  font-size: clamp(2.7rem, 3.7vw, 4rem);
-  line-height: 1.02;
+  font-size: clamp(3.4rem, 5.2vw, 5.8rem);
+  line-height: .96;
+  text-wrap: balance;
 }
 
 .narrative-scene--about .about-intro .lead {
@@ -247,37 +264,87 @@ main {
   line-height: 1.56;
 }
 
+/* Need pair — editorial tension/resolution cards.
+   Left = the barrier; right = the answer. Dark/light contrast locks the meaning. */
 .narrative-scene--about .about-need {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: clamp(28px, 4vw, 56px);
-  row-gap: 14px;
+  column-gap: clamp(14px, 2vw, 20px);
+  row-gap: 0;
+  align-items: stretch;
   max-width: none;
-  margin: clamp(20px, 2.5vw, 34px) 0 0;
-  padding: clamp(24px, 3vw, 32px) 0 0;
+  margin: 0;
+  padding: 0;
   border: 0;
-  border-top: 1px solid rgba(32, 35, 31, .12);
   background: transparent;
   box-shadow: none;
 }
 
 .narrative-scene--about .about-need p {
   position: relative;
-  max-width: 42ch;
-  padding-left: clamp(18px, 2vw, 24px);
-  font-size: clamp(1rem, 1.12vw, 1.07rem);
-  line-height: 1.64;
+  max-width: none;
+  padding: clamp(22px, 3vw, 32px) clamp(18px, 2.5vw, 28px) clamp(22px, 3vw, 32px);
+  font-size: clamp(1rem, 1.14vw, 1.1rem);
+  line-height: 1.66;
+  border-radius: var(--radius, 8px);
 }
 
+/* Top accent line */
 .narrative-scene--about .about-need p::before {
   content: "";
   position: absolute;
+  top: 0;
   left: 0;
-  top: .62em;
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-  background: rgba(185, 85, 36, .68);
+  right: 0;
+  height: 3px;
+  border-radius: var(--radius, 8px) var(--radius, 8px) 0 0;
+}
+
+/* The Barrier card — warm parchment */
+.narrative-scene--about .about-need p:first-child {
+  background: rgba(255, 248, 234, .90);
+  border: 1px solid rgba(185, 85, 36, .16);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .72) inset,
+    0 8px 28px rgba(185, 85, 36, .07),
+    0 2px 8px rgba(0, 0, 0, .05);
+}
+
+.narrative-scene--about .about-need p:first-child::before {
+  background: linear-gradient(90deg, rgba(185, 85, 36, .80), rgba(185, 85, 36, 0));
+}
+
+/* The Answer card — deep field */
+.narrative-scene--about .about-need p:last-child {
+  background:
+    linear-gradient(135deg, rgba(185, 85, 36, .12), transparent 42%),
+    linear-gradient(180deg, #181f17, #111610);
+  color: rgba(255, 250, 240, .84);
+  border: 1px solid rgba(255, 255, 255, .08);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .06) inset,
+    0 12px 38px rgba(0, 0, 0, .24),
+    0 2px 8px rgba(0, 0, 0, .14);
+}
+
+.narrative-scene--about .about-need p:last-child::before {
+  background: linear-gradient(90deg, rgba(89, 98, 73, .9), rgba(89, 98, 73, 0));
+}
+
+/* Origin story — clean editorial text, no photo */
+.narrative-scene--about .about-story {
+  max-width: 58ch;
+}
+
+.narrative-scene--about .about-story p {
+  font-size: clamp(1.18rem, 1.52vw, 1.36rem);
+  line-height: 1.74;
+  color: rgba(32, 35, 31, .80);
+}
+
+.narrative-scene--about .about-story p:first-child {
+  font-size: clamp(1.24rem, 1.64vw, 1.46rem);
+  color: var(--ink);
 }
 
 .story-serve-intro {
@@ -609,11 +676,10 @@ main {
     --about-number-col: clamp(150px, 25vw, 220px);
   }
 
+  /* Need cards — stack at tablet; remove old leftover width constraint */
   .narrative-scene--about .about-need {
-    width: min(100%, 74ch);
-    justify-self: start;
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: clamp(12px, 2vw, 16px);
   }
 
   .audience-copy .lead {
@@ -646,6 +712,32 @@ main {
     padding-block: clamp(72px, 16vw, 96px);
   }
 
+  /* Impact band — stack figures instead of 3-column on phones */
+  .narrative-scene--about .about-impact {
+    padding: clamp(22px, 5vw, 32px) clamp(18px, 5vw, 28px);
+  }
+
+  .narrative-scene--about .about-impact-figures {
+    grid-template-columns: 1fr;
+    gap: clamp(18px, 4vw, 26px);
+  }
+
+  .narrative-scene--about .about-impact-figure {
+    padding: 0;
+    border-left: 0;
+    padding-top: clamp(14px, 3vw, 20px);
+    border-top: 1px solid rgba(255, 250, 240, .1);
+  }
+
+  .narrative-scene--about .about-impact-figure:first-child {
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .narrative-scene--about .about-impact-number {
+    font-size: clamp(3.5rem, 18vw, 5rem);
+  }
+
   .audience-chapter {
     padding-block: 52px;
   }
@@ -654,8 +746,10 @@ main {
     background: linear-gradient(180deg, rgba(255, 253, 247, .68), rgba(255, 253, 247, .28));
   }
 
+  /* Need cards — stack on mobile */
   .narrative-scene--about .about-need {
-    padding: 24px 0 0;
+    grid-template-columns: 1fr;
+    gap: clamp(12px, 3vw, 16px);
   }
 
   .narrative-scene--about .about-evidence-stat {

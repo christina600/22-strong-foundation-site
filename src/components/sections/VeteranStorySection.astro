@@ -1,0 +1,60 @@
+---
+// Cinematic chapter break — Veteran Care Testimonial video
+// Full-width dark section; no carousel chrome, no ad wrapper.
+---
+
+<section class="veteran-chapter" aria-label="Veterans in their own words">
+  <div class="veteran-chapter-inner">
+
+    <p class="veteran-chapter-eyebrow">Veterans — in their own words</p>
+
+    <div class="veteran-chapter-video-wrap">
+      <video
+        id="veteran-story-video"
+        class="veteran-chapter-video"
+        src="/video/veteran-care-testimonial.mp4"
+        poster="/images/veteran-care-poster.webp"
+        preload="metadata"
+        playsinline
+        aria-label="Veteran shares their experience with 22 Strong care"
+      ></video>
+
+      <button
+        class="veteran-chapter-play"
+        aria-label="Play veteran story"
+        data-play-target="veteran-story-video"
+      >
+        <span class="veteran-chapter-play-icon" aria-hidden="true"></span>
+        <span class="veteran-chapter-play-label">Watch their story</span>
+      </button>
+    </div>
+
+    <p class="veteran-chapter-caption">
+      Real people. Real care. Real results — funded by donors like you.
+    </p>
+
+  </div>
+</section>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>("[data-play-target='veteran-story-video']");
+  const vid = document.getElementById("veteran-story-video") as HTMLVideoElement | null;
+
+  if (btn && vid) {
+    btn.addEventListener("click", () => {
+      vid.controls = true;
+      btn.hidden = true;
+      vid.play().catch(() => {});
+    });
+    vid.addEventListener("ended", () => {
+      vid.controls = false;
+      btn.hidden = false;
+    });
+    vid.addEventListener("pause", () => {
+      if (vid.currentTime > 0 && !vid.ended) {
+        // keep controls visible while paused mid-video
+        vid.controls = true;
+      }
+    });
+  }
+</script>

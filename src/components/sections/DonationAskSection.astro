@@ -22,6 +22,17 @@ interface Props {
 const { chapter, donate } = Astro.props;
 ---
 
+<!-- Inline GiveButter donation widget -->
+<script is:inline>
+  // Load GiveButter widget script
+  (function() {
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://widgets.givebutter.com/latest.umd.cjs?acct=n8kZx5v2K1qF9Qh7&p=other';
+    document.head.appendChild(script);
+  })();
+</script>
+
 <section class="donate-section story-ask" id="donate" data-chapter={chapter}>
   <div class="donate-wrap">
     <div>
@@ -42,7 +53,29 @@ const { chapter, donate } = Astro.props;
     </div>
 
     <div data-reveal>
-      <DonationModule />
+      <!-- Primary GiveButter inline widget -->
+      <div class="givebutter-widget-container">
+        <givebutter-widget id="22strong-donate"></givebutter-widget>
+        <style>
+          .givebutter-widget-container {
+            width: 100%;
+            min-height: 500px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: rgba(255, 253, 247, 0.98);
+            box-shadow: var(--shadow-panel);
+          }
+          givebutter-widget {
+            display: block;
+            width: 100%;
+            min-height: 500px;
+          }
+        </style>
+      </div>
+      <!-- Fallback to custom donation module if GiveButter doesn't load -->
+      <noscript>
+        <DonationModule />
+      </noscript>
     </div>
   </div>
 

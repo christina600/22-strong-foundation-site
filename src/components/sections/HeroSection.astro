@@ -27,6 +27,12 @@ const { hero } = Astro.props;
       <h1 class="hero-headline">
         {hero.headline.map((line) => <span class="hero-headline-line">{line}</span>)}
       </h1>
+      <div class="hero-actions">
+        <a class="pill primary hero-cta-primary" href="#donate">
+          {hero.ctaLabel} <span class="hero-cta-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="pill hero-cta-secondary" href="#about">Our mission</a>
+      </div>
     </div>
   </div>
 </section>

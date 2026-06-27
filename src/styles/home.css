@@ -20,3 +20,5 @@
 @import "./home-micro-interactions.css";
 /* Phase 3: Scroll-driven storytelling (horizontal scroll, text reveal, bg transitions) */
 @import "./home-scroll-story.css";
+/* RadiatingHope-inspired: animated buttons, counter polish, scroll pacing */
+@import "./home-radiatinghope-extras.css";

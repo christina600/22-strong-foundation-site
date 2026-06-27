@@ -275,13 +275,29 @@ function initMobileNav() {
   });
 }
 
+function updateScrollState() {
+  const header = document.querySelector<HTMLElement>("header");
+  if (!header) return;
+  header.classList.toggle("is-scrolled", window.scrollY > 60);
+}
+
+function updateReadingProgress() {
+  const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
+  if (scrollTotal <= 0) return;
+  const progress = Math.min(1, window.scrollY / scrollTotal);
+  document.documentElement.style.setProperty("--nav-progress", progress.toFixed(4));
+}
+
 function initNavigation() {
   if (navListenerAttached) return;
   navListenerAttached = true;
 
   document.addEventListener("click", handleAnchorClick);
   window.addEventListener("scroll", queueActiveUpdate, { passive: true });
+  window.addEventListener("scroll", updateScrollState, { passive: true });
+  window.addEventListener("scroll", updateReadingProgress, { passive: true });
   window.addEventListener("resize", queueActiveUpdate);
+  window.addEventListener("resize", updateReadingProgress);
   window.addEventListener("hashchange", () => syncHashNavigation("auto"));
   window.addEventListener("popstate", () => syncHashNavigation("auto"));
   window.addEventListener("load", () => syncHashNavigation("auto"), { once: true });
@@ -295,6 +311,10 @@ function initNavigation() {
     updateActiveLinks("#top");
   }
   queueActiveUpdate();
+
+  // Set initial scroll state and reading progress on load
+  updateScrollState();
+  updateReadingProgress();
 
   // Initialize mobile nav toggle
   initMobileNav();

@@ -22,6 +22,7 @@ import StatBeat from "../components/sections/StatBeat.astro";
 import SiteFooter from "../components/sections/SiteFooter.astro";
 import StrongCircleSection from "../components/sections/StrongCircleSection.astro";
 import TestimonialsSection from "../components/sections/TestimonialsSection.astro";
+import VeteranStorySection from "../components/sections/VeteranStorySection.astro";
 import home from "../content/home.json";
 import { buildAudienceGroups } from "../utils/home-story";
 
@@ -82,6 +83,7 @@ const [costStat, capStat, debtStat] = home.stats.others;
 
       <SectionCta text="Keep care going every month." label="Join the Strong Circle" href="#strong-circle" variant="teal" />
 
+      <VeteranStorySection />
       <TestimonialsSection groups={audienceGroups} />
 
       <SectionCta label="Help fund recovery" href="#donate" />

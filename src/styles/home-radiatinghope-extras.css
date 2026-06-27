@@ -1,0 +1,570 @@
+/**
+ * RadiatingHope-inspired enhancements
+ *
+ * 1. Animated button style — pill shape, fill-from-bottom on hover,
+ *    sliding arrow glyph, tier button lift
+ * 2. Animated stat counter polish — entrance scale + glow pulse
+ * 3. Scroll pacing — longer reveal transitions, stagger, animated
+ *    section-break dividers, scroll-snap hints
+ * 4. Section content stagger — eyebrow → h2 → lead cascade
+ * 5. Hero CTA layout + ghost secondary pill on the dark hero
+ * 6. GiveButter widget integration
+ * 7. Reduced motion
+ */
+
+/* ==========================================================================
+   1. BUTTON STYLE — fill-from-bottom hover, sliding arrow glyph
+   ========================================================================== */
+
+/* Ensure isolation/overflow on all interactive pills */
+.pill,
+.circle-tier,
+.btn-donate,
+.amount-button,
+.toggle-row button {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Arrow for primary pills — only those WITHOUT an inline .hero-cta-arrow span
+   so the hero CTA button (which has the inline arrow) doesn't render two. */
+.pill.primary:not(.hero-cta-primary)::after {
+  content: "→" / "";
+  display: inline-block;
+  margin-left: 0.5em;
+  transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+}
+
+.pill.primary:not(.hero-cta-primary):hover::after {
+  transform: translateX(6px);
+}
+
+/* Fill-from-bottom hover layer — shared base */
+.pill::before,
+.circle-tier::before,
+.btn-donate::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.14) 0%,
+    rgba(0, 0, 0, 0.28) 100%
+  );
+  transform: translateY(101%);
+  transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+}
+
+.pill:hover::before,
+.circle-tier:hover::before,
+.btn-donate:hover::before {
+  transform: translateY(0);
+}
+
+/* Primary pill — brighter fill (pushed from 18% → 26%) */
+.pill.primary::before {
+  background: rgba(255, 255, 255, 0.26);
+}
+
+.pill.primary:hover::before {
+  transform: translateY(0);
+}
+
+/* Tier buttons (Strong Circle monthly amounts) */
+.circle-tier {
+  position: relative;
+  transition:
+    transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1),
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.3s ease,
+    color 0.3s ease;
+}
+
+.circle-tier:hover {
+  transform: translateY(-3px);
+  border-color: var(--teal, #1c8c87);
+  box-shadow:
+    0 12px 32px rgba(14, 90, 92, 0.18),
+    0 1px 0 rgba(255, 255, 255, 0.72) inset;
+}
+
+.circle-tier::before {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* Arrow that reveals on tier hover */
+.circle-tier::after {
+  content: "→";
+  display: inline-block;
+  margin-left: 0.4em;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition:
+    opacity 0.3s ease 0.05s,
+    transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1) 0.05s;
+}
+
+.circle-tier:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Donate button */
+.btn-donate {
+  transition:
+    transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 0.3s ease,
+    background-color 0.25s ease;
+}
+
+.btn-donate:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 14px 36px rgba(31, 20, 12, 0.22),
+    0 1px 0 rgba(255, 255, 255, 0.2) inset;
+}
+
+/* Amount buttons */
+.amount-button {
+  transition:
+    transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1),
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.amount-button:hover {
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   2. ANIMATED STAT COUNTERS — entrance scale + glow pulse on completion
+   ========================================================================== */
+
+.about-evidence-number,
+.audience-stat-number,
+.stat-beat-number,
+.impact-figure {
+  will-change: transform, opacity;
+}
+
+[data-reveal] .about-evidence-number,
+[data-reveal] .audience-stat-number,
+[data-reveal] .stat-beat-number {
+  transform: translateY(16px) scale(0.96);
+  opacity: 0;
+  transition:
+    transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 0.6s ease;
+}
+
+[data-reveal].is-visible .about-evidence-number,
+[data-reveal].is-visible .audience-stat-number,
+[data-reveal].is-visible .stat-beat-number {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* Glow pulse fires once when a counter finishes counting */
+[data-counter].is-complete {
+  animation: counter-glow 0.6s ease-out;
+}
+
+@keyframes counter-glow {
+  0%   { text-shadow: 0 0 0 rgba(185, 85, 36, 0); }
+  50%  {
+    text-shadow:
+      0 0 24px rgba(185, 85, 36, 0.28),
+      0 0 48px rgba(185, 85, 36, 0.12);
+  }
+  100% { text-shadow: 0 0 0 rgba(185, 85, 36, 0); }
+}
+
+/* Stat beat — slightly longer entrance for the large solo number */
+.stat-beat-number {
+  transition-duration: 1s;
+}
+
+/* ==========================================================================
+   3. SCROLL PACING — reveal timing, section dividers, scroll-snap
+   ========================================================================== */
+
+/* Slightly longer base reveal for a more deliberate reading rhythm */
+[data-reveal] {
+  --reveal-duration: 0.7s;
+  transition-duration: var(--reveal-duration);
+}
+
+/* JS-set stagger delays propagate through the cascade */
+[style*="--stagger-delay"] {
+  transition-delay: var(--stagger-delay) !important;
+}
+
+/* ── Section breathing room ── */
+.narrative-scene--about,
+.audience-chapter,
+.story-path,
+.story-commitment,
+.story-ask {
+  position: relative;
+}
+
+/* Animated scroll-nudge dividers between major story sections */
+.narrative-scene--about::after,
+.audience-chapter::after,
+.story-path::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 2px;
+  height: 56px;
+  background: linear-gradient(
+    180deg,
+    rgba(185, 85, 36, 0.42) 0%,
+    transparent 100%
+  );
+  transform: translateX(-50%);
+  animation: scroll-nudge 2.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes scroll-nudge {
+  0%, 100% {
+    opacity: 0.30;
+    transform: translateX(-50%) scaleY(0.62);
+  }
+  55% {
+    opacity: 0.88;
+    transform: translateX(-50%) scaleY(1);
+  }
+}
+
+@media (max-width: 720px) {
+  .narrative-scene--about::after,
+  .audience-chapter::after,
+  .story-path::after {
+    height: 36px;
+  }
+}
+
+/* Smooth scroll-snap targets (desktop, non-reduced-motion only) */
+@media (min-width: 920px) and (prefers-reduced-motion: no-preference) {
+  .hero {
+    scroll-snap-align: start;
+  }
+
+  main {
+    scroll-snap-type: y proximity;
+  }
+
+  main > section {
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+  }
+}
+
+/* Hero parallax compositing hint */
+.hero-inner {
+  will-change: transform;
+}
+
+/* ==========================================================================
+   4. SECTION CONTENT STAGGER — eyebrow → h2 → lead → CTA cascade
+   ========================================================================== */
+
+[data-reveal].is-visible .eyebrow {
+  transition-delay: 0.08s;
+}
+
+[data-reveal].is-visible h2 {
+  transition-delay: 0.22s;
+}
+
+[data-reveal].is-visible .lead {
+  transition-delay: 0.38s;
+}
+
+[data-reveal].is-visible .section-cta-text {
+  transition-delay: 0.10s;
+}
+
+[data-reveal].is-visible .section-cta-btn {
+  transition-delay: 0.28s;
+}
+
+/* ==========================================================================
+   5. HERO CTA — layout, sizing, ghost secondary pill
+   ========================================================================== */
+
+/* Flex row on desktop, column on mobile */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-top: clamp(8px, 1.5vw, 18px);
+}
+
+/* Ghost "Our mission" pill — white-outline on the dark hero field */
+.hero-cta-secondary {
+  background: transparent !important;
+  color: rgba(255, 250, 240, .92) !important;
+  border: 1.5px solid rgba(255, 250, 240, .40) !important;
+  box-shadow: none !important;
+}
+
+.hero-cta-secondary:hover {
+  background: rgba(255, 250, 240, .10) !important;
+  border-color: rgba(255, 250, 240, .72) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Suppress the fill-from-bottom on the secondary ghost pill */
+.hero-cta-secondary::before {
+  display: none !important;
+}
+
+/* Inline arrow span — slides right on hover */
+.hero-cta-arrow {
+  display: inline-block;
+  margin-left: 0.36em;
+  transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+}
+
+.hero-cta-primary:hover .hero-cta-arrow {
+  transform: translateX(6px);
+}
+
+@media (max-width: 720px) {
+  .hero-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
+/* ==========================================================================
+   6. GIVEBUTTER WIDGET INTEGRATION
+   ========================================================================== */
+
+.givebutter-widget-container {
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.givebutter-widget-container:not([data-loaded]) {
+  opacity: 0.6;
+}
+
+.givebutter-widget-container[data-loaded] {
+  opacity: 1;
+}
+
+/* Ensure GiveButter widget clips to rounded corners on the dark donate section */
+.donate-section givebutter-widget {
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   8. VETERAN CHAPTER — cinematic full-width dark video section
+   ========================================================================== */
+
+.veteran-chapter {
+  position: relative;
+  max-width: none;
+  margin: 0;
+  padding: clamp(64px, 8vw, 112px) var(--space-page-x);
+  background:
+    linear-gradient(135deg, rgba(185, 85, 36, .10), transparent 42%),
+    linear-gradient(180deg, #181f17, #111610);
+  overflow: hidden;
+}
+
+/* Subtle canvas texture from the design system */
+.veteran-chapter::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: var(--field-canvas, repeating-linear-gradient(90deg, rgba(255, 250, 240, .04) 0 1px, transparent 1px 7px));
+  opacity: .55;
+}
+
+.veteran-chapter-inner {
+  position: relative;
+  z-index: 1;
+  width: min(860px, 100%);
+  margin-inline: auto;
+  display: grid;
+  gap: clamp(20px, 2.8vw, 36px);
+  justify-items: center;
+  text-align: center;
+}
+
+.veteran-chapter-eyebrow {
+  margin: 0;
+  color: rgba(185, 85, 36, .88);
+  font-family: var(--ui-face);
+  font-size: var(--fs-ui, 1rem);
+  font-weight: 900;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+/* 16:9 video frame */
+.veteran-chapter-video-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius, 8px);
+  overflow: hidden;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .08),
+    0 32px 80px rgba(0, 0, 0, .56);
+}
+
+.veteran-chapter-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Full-frame play overlay */
+.veteran-chapter-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 2vw, 18px);
+  background: rgba(17, 22, 16, .44);
+  border: 0;
+  cursor: pointer;
+  transition: background .28s ease;
+}
+
+.veteran-chapter-play:hover {
+  background: rgba(17, 22, 16, .24);
+}
+
+/* Circle play icon */
+.veteran-chapter-play-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(56px, 7vw, 88px);
+  height: clamp(56px, 7vw, 88px);
+  border-radius: 999px;
+  background: rgba(255, 250, 240, .12);
+  border: 2px solid rgba(255, 250, 240, .36);
+  backdrop-filter: blur(8px);
+  transition:
+    transform .26s cubic-bezier(.22, .61, .36, 1),
+    background .26s ease;
+}
+
+/* CSS triangle play arrow */
+.veteran-chapter-play-icon::before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  margin-left: 5px;
+  border-style: solid;
+  border-width: clamp(9px, 1.4vw, 14px) 0 clamp(9px, 1.4vw, 14px) clamp(16px, 2.4vw, 24px);
+  border-color: transparent transparent transparent rgba(255, 250, 240, .92);
+}
+
+.veteran-chapter-play:hover .veteran-chapter-play-icon {
+  transform: scale(1.10);
+  background: rgba(185, 85, 36, .32);
+  border-color: rgba(185, 85, 36, .72);
+}
+
+.veteran-chapter-play-label {
+  color: rgba(255, 250, 240, .72);
+  font-family: var(--ui-face);
+  font-size: var(--fs-ui-small, 1rem);
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+
+.veteran-chapter-caption {
+  max-width: 44ch;
+  margin: 0;
+  color: rgba(255, 250, 240, .44);
+  font-size: clamp(1.05rem, 1.3vw, 1.18rem);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .veteran-chapter {
+    padding: clamp(44px, 10vw, 72px) var(--space-page-x);
+  }
+}
+
+/* ==========================================================================
+   7. REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  /* Disable fill-from-bottom layer */
+  .pill::before,
+  .circle-tier::before,
+  .btn-donate::before {
+    transition: none;
+    transform: none;
+  }
+
+  /* Disable arrow animations */
+  .pill.primary:not(.hero-cta-primary)::after,
+  .hero-cta-arrow,
+  .circle-tier::after {
+    transition: none;
+  }
+
+  /* Disable stat counter entrance animation */
+  [data-reveal] .about-evidence-number,
+  [data-reveal] .audience-stat-number,
+  [data-reveal] .stat-beat-number {
+    transform: none;
+    opacity: 1;
+    transition: none;
+  }
+
+  /* Disable tier button lift */
+  .circle-tier:hover {
+    transform: none;
+  }
+
+  /* Stop scroll-nudge divider animation */
+  .narrative-scene--about::after,
+  .audience-chapter::after,
+  .story-path::after {
+    animation: none;
+    opacity: 0.45;
+    transform: translateX(-50%) scaleY(1);
+  }
+
+  /* Remove stagger delays — all content appears at once */
+  [data-reveal].is-visible .eyebrow,
+  [data-reveal].is-visible h2,
+  [data-reveal].is-visible .lead,
+  [data-reveal].is-visible .section-cta-text,
+  [data-reveal].is-visible .section-cta-btn {
+    transition-delay: 0s;
+  }
+}
