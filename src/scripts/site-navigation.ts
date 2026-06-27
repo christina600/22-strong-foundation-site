@@ -8,6 +8,13 @@
 
 import { getEventElement } from "./dom-target";
 import { getHeaderOffset } from "./layout-metrics";
+import type Lenis from "@studio-freight/lenis";
+
+// Access the Lenis instance initialised in lenis-scroll.ts (may be null on
+// reduced-motion or before the module executes).
+function getLenis(): Lenis | null {
+  return (window as Window & { lenisInstance?: Lenis | null }).lenisInstance ?? null;
+}
 
 const ACTIVE_CLASS = "is-active";
 const ANCHOR_SELECTOR = 'a[href^="#"]';
@@ -86,10 +93,23 @@ function scrollToHash(hash: string, behavior: ScrollBehavior = "smooth") {
   if (!target) return false;
 
   revealTargetArea(target);
-  window.scrollTo({
-    top: getScrollTopForTarget(target),
-    behavior
-  });
+
+  const lenis = getLenis();
+  if (lenis && behavior === "smooth") {
+    // Route through Lenis so anchor jumps inherit the same inertia feeling
+    // as ordinary wheel scroll — this is the radiatinghope.org experience.
+    if (target.id === "top") {
+      lenis.scrollTo(0);
+    } else {
+      lenis.scrollTo(target, { offset: -getHeaderOffset() });
+    }
+  } else {
+    window.scrollTo({
+      top: getScrollTopForTarget(target),
+      behavior,
+    });
+  }
+
   updateActiveLinks(hash);
   return true;
 }

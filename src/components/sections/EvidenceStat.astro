@@ -24,7 +24,7 @@ const extractNumericValue = (text: string): { value: number; prefix: string; suf
   let value = 0;
   
   // Extract prefix ($, etc.)
-  if (/^[\$£€]/.test(cleaned)) {
+  if (/^[$£€]/.test(cleaned)) {
     prefix = cleaned[0];
   }
   
@@ -35,7 +35,7 @@ const extractNumericValue = (text: string): { value: number; prefix: string; suf
   }
   
   // Extract numeric part
-  const numMatch = cleaned.match(/[\$£€]?(\d+\.?\d*)/);
+  const numMatch = cleaned.match(/[$£€]?(\d+\.?\d*)/);
   if (numMatch) {
     value = parseFloat(numMatch[1]);
   }
@@ -44,7 +44,7 @@ const extractNumericValue = (text: string): { value: number; prefix: string; suf
 };
 
 const { value: numericValue, prefix, suffix } = extractNumericValue(stat.number);
-const hasNumeric = numericValue > 0 && !/\s/.test(stat.number.replace(/[\$£€%]/g, "").trim());
+const hasNumeric = numericValue > 0 && !/\s/.test(stat.number.replace(/[$£€%]/g, "").trim());
 ---
 
 {variant === "about" ? (

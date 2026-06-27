@@ -76,6 +76,9 @@
 * { box-sizing: border-box; }
 
 html {
+  /* scroll-behavior is set to 'auto' by lenis-scroll.ts when Lenis is active
+     so it doesn't double-smooth anchor clicks. On reduced-motion or without JS,
+     native smooth scroll is preserved here as a fallback. */
   scroll-behavior: smooth;
   scroll-padding-top: 90px;
   background: var(--paper);

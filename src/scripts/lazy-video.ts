@@ -46,7 +46,9 @@ function buildVideo(trigger: HTMLElement, options: BuildVideoOptions = {}) {
 
   const fallback = document.createElement("a");
   fallback.href = src;
-  fallback.textContent = "Watch Luke's testimonial";
+  // Use the trigger's aria-label for the fallback text, stripping the leading "Play ".
+  const triggerLabel = trigger.getAttribute("aria-label") || "";
+  fallback.textContent = triggerLabel.replace(/^Play\s+/i, "Watch ") || "Watch testimonial";
   video.append(fallback);
 
   shell.replaceChildren(video);

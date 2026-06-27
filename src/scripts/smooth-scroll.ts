@@ -48,8 +48,7 @@ const animateCounter = (element: HTMLElement) => {
   const target = parseFloat(targetStr);
   const prefix = element.getAttribute('data-counter-prefix') || '';
   const suffix = element.getAttribute('data-counter-suffix') || '';
-  const originalText = element.textContent || '';
-  
+
   // If it's a simple number with no prefix/suffix, use legacy animation
   if (!prefix && !suffix && element.hasAttribute('data-count')) {
     animateLegacyCounter(element, parseInt(targetStr));

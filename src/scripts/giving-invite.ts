@@ -16,7 +16,7 @@ function initGivingInvite() {
   const invite = document.querySelector<HTMLElement>(INVITE_SELECTOR);
   if (!invite) return;
 
-  let seen = false;
+  let seen: boolean;
   try {
     seen = sessionStorage.getItem(STORAGE_KEY) === "1";
   } catch {
