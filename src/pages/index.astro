@@ -8,8 +8,8 @@
 
 import HomeBase from "../layouts/HomeBase.astro";
 import AudienceSection from "../components/sections/AudienceSection.astro";
+import BlankSection from "../components/sections/BlankSection.astro";
 import ContactSection from "../components/sections/ContactSection.astro";
-import CredibilityStrip from "../components/sections/CredibilityStrip.astro";
 import DonationAskSection from "../components/sections/DonationAskSection.astro";
 import GivingInvite from "../components/sections/GivingInvite.astro";
 import FeaturedPublications from "../components/sections/FeaturedPublications.astro";
@@ -18,7 +18,6 @@ import LeadershipSection from "../components/sections/LeadershipSection.astro";
 import NarrativeScene from "../components/sections/NarrativeScene.astro";
 import ServicePathSection from "../components/sections/ServicePathSection.astro";
 import SectionCta from "../components/sections/SectionCta.astro";
-import StatBeat from "../components/sections/StatBeat.astro";
 import SiteFooter from "../components/sections/SiteFooter.astro";
 import StrongCircleSection from "../components/sections/StrongCircleSection.astro";
 import TestimonialsSection from "../components/sections/TestimonialsSection.astro";
@@ -27,7 +26,7 @@ import home from "../content/home.json";
 import { buildAudienceGroups } from "../utils/home-story";
 
 const audienceGroups = buildAudienceGroups(home);
-const [costStat, capStat, debtStat] = home.stats.others;
+const [costStat, , debtStat] = home.stats.others;
 ---
 
 <HomeBase title="Fund recovery care when the system stops short.">
@@ -57,10 +56,33 @@ const [costStat, capStat, debtStat] = home.stats.others;
     </header>
 
     <main id="main">
-      <HeroSection hero={home.hero} />
-      <CredibilityStrip facts={home.credibility} lead={home.hero.lead} />
+      <HeroSection proofline={home.credibility} />
+      <BlankSection class="post-hero-section" id="post-hero-blank" padding="default" ariaHidden={false}>
+        <div class="post-hero-message">
+          <h1 class="hero-headline">
+            {home.hero.headline.map((line) => <span class="hero-headline-line">{line}</span>)}
+          </h1>
+        </div>
+      </BlankSection>
+      <section class="recovery-image-bridge" aria-hidden="true" data-parallax>
+        <div class="recovery-image-bridge__media" data-parallax-media style="--bg-image: url(/images/recovery-bridge.jpg)"></div>
+      </section>
+      <BlankSection padding="none" id="hero-lead" ariaHidden={false}>
+        <div class="hero-lead">
+          <h2 class="hero-lead-heading" data-reveal="eyebrow">Our mission</h2>
+          <p class="hero-lead-statement" data-reveal="headline">{home.heroLead}</p>
+        </div>
+      </BlankSection>
 
-      <StatBeat stat={capStat} />
+      <section class="stat-bridge" data-parallax aria-label="Recovery gap statistic">
+        <div class="stat-bridge__media" data-parallax-media style="--bg-image: url(/images/stat-bridge.jpg)"></div>
+        <div class="stat-bridge__content">
+          <p class="stat-bridge__number">20 visits</p>
+          <p class="stat-bridge__body">a year is a common insurance cap on physical therapy — often less than recovery actually takes.</p>
+          <p class="stat-bridge__source">CBS News</p>
+          <a class="pill primary stat-bridge__cta" href="#donate">{home.hero.ctaLabel}</a>
+        </div>
+      </section>
 
       <AudienceSection chapter="01" introTitle="Who we serve" groups={audienceGroups} />
 

@@ -84,7 +84,7 @@ const imageHeight = voice?.imageHeight ?? 800;
       <details class="video-transcript">
         <summary>View transcript</summary>
         <div class="transcript-content">
-          <p><em>Video transcript coming soon. Contact us for accessibility accommodations.</em></p>
+          <p><em>Transcript unavailable. Contact us for accessibility accommodations.</em></p>
         </div>
       </details>
     </div>
@@ -102,14 +102,14 @@ const imageHeight = voice?.imageHeight ?? 800;
                 ? <Image src={asset} alt={voice.photoAlt ?? voice.name} width={imageWidth} height={imageHeight} loading="lazy" decoding="async" sizes="(max-width: 560px) 80vw, (max-width: 920px) 40vw, 320px" widths={[320, 480, 800]} style={voice.imagePosition ? `object-position: ${voice.imagePosition};` : undefined} />
                 : <img src={voice.photo} alt={voice.photoAlt ?? voice.name} width={imageWidth} height={imageHeight} loading="lazy" decoding="async" style={voice.imagePosition ? `object-position: ${voice.imagePosition};` : undefined} />;
             })()
-          : <div class="vv-photo-ph"><span>{initials}</span><small>Photo coming soon</small></div>}
+          : <div class="vv-photo-ph"><span>{initials}</span><small>Photo unavailable</small></div>}
       </div>
     )}
     <div class="vv-body">
-      <span class="vv-card-eyebrow">{voice.sample ? "Sample testimonial" : "Testimonial"}</span>
+      <span class="vv-card-eyebrow">Testimonial</span>
       {voice.quote
         ? <blockquote class="vv-quote">{voice.quote}</blockquote>
-        : <p class="vv-soon">Testimonial coming soon</p>}
+        : <p class="vv-soon">Testimonial unavailable</p>}
       <div class="vv-name">{voice.name}</div>
       {titleParts.length > 0 && (
         <div class="vv-creds">

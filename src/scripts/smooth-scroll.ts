@@ -2,10 +2,9 @@
  * Smooth scroll + scroll-triggered animations.
  *
  * Uses native CSS `scroll-behavior: smooth` (set in home-base.css) instead of
- * a transform-based smooth-scroll library. Transform wrappers (e.g. Lenis)
- * create a new CSS containing block, which breaks `position: sticky` and
- * `position: fixed` on the header and nav — they would scroll with the page
- * instead of staying pinned.
+ * a transform-based smooth-scroll library. Transform wrappers create a new CSS
+ * containing block, which breaks `position: sticky` and `position: fixed` on the
+ * header and nav — they would scroll with the page instead of staying pinned.
  *
  * The IntersectionObservers below handle scroll reveal and stat counters.
  * Enhanced pacing uses CSS scroll-snap and staggered reveal timing to
@@ -184,4 +183,3 @@ if (document.readyState === 'loading') {
   initScrollPacing();
   initStaggeredReveals();
 }
-

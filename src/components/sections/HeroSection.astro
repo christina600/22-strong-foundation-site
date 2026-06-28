@@ -1,16 +1,9 @@
 ---
-interface HeroContent {
-  headline: string[];
-  lead: string;
-  ctaLabel: string;
-  taxline: string;
-}
-
 interface Props {
-  hero: HeroContent;
+  proofline?: string[];
 }
 
-const { hero } = Astro.props;
+const { proofline = [] } = Astro.props;
 ---
 
 <section class="hero" id="top">
@@ -24,15 +17,15 @@ const { hero } = Astro.props;
         <span class="hero-mark-rule" aria-hidden="true"></span>
         <span class="hero-mark-foundation">Foundation</span>
       </div>
-      <h1 class="hero-headline">
-        {hero.headline.map((line) => <span class="hero-headline-line">{line}</span>)}
-      </h1>
-      <div class="hero-actions">
-        <a class="pill primary hero-cta-primary" href="#donate">
-          {hero.ctaLabel} <span class="hero-cta-arrow" aria-hidden="true">→</span>
-        </a>
-        <a class="pill hero-cta-secondary" href="#about">Our mission</a>
-      </div>
     </div>
   </div>
+  {
+    proofline.length > 0 && (
+      <div class="hero-proofbar" aria-label="About 22 Strong Foundation">
+        <ul class="hero-proofbar-list">
+          {proofline.map((fact) => <li>{fact}</li>)}
+        </ul>
+      </div>
+    )
+  }
 </section>

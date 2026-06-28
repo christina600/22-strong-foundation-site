@@ -1,10 +1,10 @@
 {
   "hero": {
     "headline": ["Move better.", "Get stronger.", "Get back on your feet."],
-    "lead": "22 Strong Foundation helps veterans and low-income youth access hands-on recovery care when insurance, cost, or other barriers get in the way.",
     "ctaLabel": "Help fund recovery",
     "taxline": "Your gift is tax-deductible · 501(c)(3)"
   },
+  "heroLead": "22 Strong Foundation helps veterans and low-income youth access hands-on recovery care when insurance, cost, or other barriers get in the way.",
   "credibility": [
     "501(c)(3) nonprofit",
     "Orange County based",
@@ -189,33 +189,6 @@
       "photo": "/images/tom-boscamp.jpg",
       "photoAlt": "Tom Boscamp",
       "initials": "TB"
-    },
-    {
-      "name": "U.S. military veteran",
-      "title": "",
-      "quote": "Years of pain had limited what I could do. After treatment here, I got back mobility I thought was gone for good.",
-      "sample": true,
-      "photo": "",
-      "photoAlt": "Sample testimonial",
-      "initials": ""
-    },
-    {
-      "name": "U.S. military veteran",
-      "title": "",
-      "quote": "I came in skeptical, but the therapy worked. I have less pain now and I'm back to handling things on my own.",
-      "sample": true,
-      "photo": "",
-      "photoAlt": "Sample testimonial",
-      "initials": ""
-    },
-    {
-      "name": "U.S. military veteran",
-      "title": "",
-      "quote": "I could barely get around when I started. A few weeks in, I'm walking better and getting through a normal day again.",
-      "sample": true,
-      "photo": "",
-      "photoAlt": "Sample testimonial",
-      "initials": ""
     }
   ],
   "strongCircle": {

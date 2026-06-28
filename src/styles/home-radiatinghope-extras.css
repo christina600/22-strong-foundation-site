@@ -8,8 +8,7 @@
  *    section-break dividers, scroll-snap hints
  * 4. Section content stagger — eyebrow → h2 → lead cascade
  * 5. Hero CTA layout + ghost secondary pill on the dark hero
- * 6. GiveButter widget integration
- * 7. Reduced motion
+ * 6. Reduced motion
  */
 
 /* ==========================================================================
@@ -351,30 +350,6 @@
 }
 
 /* ==========================================================================
-   6. GIVEBUTTER WIDGET INTEGRATION
-   ========================================================================== */
-
-.givebutter-widget-container {
-  transition:
-    opacity 0.4s ease,
-    transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-
-.givebutter-widget-container:not([data-loaded]) {
-  opacity: 0.6;
-}
-
-.givebutter-widget-container[data-loaded] {
-  opacity: 1;
-}
-
-/* Ensure GiveButter widget clips to rounded corners on the dark donate section */
-.donate-section givebutter-widget {
-  border-radius: var(--radius);
-  overflow: hidden;
-}
-
-/* ==========================================================================
    8. VETERAN CHAPTER — cinematic full-width dark video section
    ========================================================================== */
 
@@ -413,7 +388,7 @@
 
 .veteran-chapter-eyebrow {
   margin: 0;
-  color: rgba(185, 85, 36, .88);
+  color: var(--olive);
   font-family: var(--ui-face);
   font-size: var(--fs-ui, 1rem);
   font-weight: 900;
@@ -567,4 +542,39 @@
   [data-reveal].is-visible .section-cta-btn {
     transition-delay: 0s;
   }
+}
+
+/* ==========================================================================
+   CONTENT TEXT SIZE — all body/content text matches the stat-bridge body
+   copy: the fluid --fs-min (1.25rem → 2rem, i.e. 20px floor up to 32px on
+   desktop). Imported last so this wins over the per-breakpoint token
+   definitions in home-premium-theme/responsive.
+   EXCLUDED: buttons/pills and nav links, which resolve to --fs-ui — that
+   token is deliberately left untouched. Content elements that also read
+   --fs-ui directly (eyebrows and citations) are sized below.
+   ========================================================================== */
+:root {
+  --fs-min: clamp(1.25rem, 2.8vw, 2rem); /* = stat-bridge body copy */
+  --fs-body: var(--fs-min);
+  --fs-body-lg: var(--fs-min);
+  --fs-lead: var(--fs-min);
+  --fs-copy-small: var(--fs-min);
+  --fs-copy-fine: var(--fs-min);
+  --fs-meta: var(--fs-min);
+  --fs-ui-micro: var(--fs-min);
+  --fs-ui-small: var(--fs-min);
+  --fs-ui-tiny: var(--fs-min);
+}
+
+/* Content text that reads --fs-ui directly (not buttons/nav) matches too. */
+.eyebrow,
+.about-evidence-source,
+.audience-stat-source,
+.stat-beat-source,
+.vv-card-eyebrow,
+.veteran-chapter-eyebrow,
+.veteran-chapter-caption,
+.veteran-chapter-play-label,
+.circle-tier-note {
+  font-size: var(--fs-min);
 }

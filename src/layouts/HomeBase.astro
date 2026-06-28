@@ -2,8 +2,8 @@
 /**
  * HomeBase layout — the HTML skeleton for the single-page site.
  *
- * Self-contained: provides the full SEO/head/fonts/JSON-LD/Analytics
- * setup and loads home.css. This is the site's only layout.
+ * Self-contained: provides the full SEO/head/JSON-LD setup and loads home.css.
+ * This is the site's only layout.
  *
  * Homepage scripts: donation.ts (giving widget), forms.ts (contact form),
  * site-navigation.ts (anchor handling), home-reveal.ts (scrollytelling),
@@ -18,7 +18,6 @@
 
 import { getImage } from "astro:assets";
 import site from "../content/site.json";
-import Analytics from "../components/Analytics.astro";
 import strings from "../content/strings/en.json";
 import { isConfigured } from "../utils/config";
 import { heroBattleRopes } from "../assets/images";
@@ -101,9 +100,6 @@ const metaDesc = description || site.descriptor;
 
   <!-- Organization structured data for rich search results -->
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd).replace(/</g, "\\u003c")} />
-
-  <!-- Analytics: only loads if configured in site.json -->
-  <Analytics />
 </head>
 <body>
   <a class="skip-link" href="#main">{strings.nav.skipToContent}</a>

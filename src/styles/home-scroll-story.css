@@ -133,8 +133,8 @@
 }
 
 .horiz-step-note a:hover {
-  color: var(--orange-dark);
-  text-decoration-color: rgba(134, 58, 26, .70);
+  color: var(--teal-deep);
+  text-decoration-color: rgba(14, 90, 92, .70);
 }
 
 /* Outcome step — visual distinction with teal accent */

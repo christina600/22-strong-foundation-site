@@ -30,7 +30,7 @@ label {
   gap: 8px;
   font-size: var(--fs-ui);
   color: var(--ink);
-  font-weight: 650;
+  font-weight: 700;
 }
 
 input, select, textarea {
@@ -71,7 +71,7 @@ textarea {
   height: 20px;
   margin-top: 2px;
   border-radius: 999px;
-  background: var(--orange-dark);
+  background: var(--ink);
 }
 
 .contact-path-check::after {

@@ -152,9 +152,70 @@ function initHeroParallax() {
   });
 }
 
+/* ── Section parallax ───────────────────────────────────────────
+   Bounded vertical parallax for full-width photo bands. The media
+   layer is over-scanned (15% taller than its frame in CSS), so the
+   transform below never exposes an edge. Pure transform keeps it on
+   the GPU; bails entirely under reduced-motion.
+   ──────────────────────────────────────────────────────────── */
+function initSectionParallax() {
+  if (prefersReducedMotion.matches) return;
+
+  const sections = Array.from(
+    document.querySelectorAll<HTMLElement>("[data-parallax]")
+  );
+  if (sections.length === 0) return;
+
+  // Travel as a fraction of section height. Must stay under the media
+  // over-scan (15%) so edges never show; 12% leaves a safe margin.
+  const TRAVEL = 0.12;
+  let ticking = false;
+
+  function update() {
+    ticking = false;
+    const viewportH = window.innerHeight;
+    sections.forEach((section) => {
+      const media = section.querySelector<HTMLElement>("[data-parallax-media]");
+      if (!media) return;
+      const rect = section.getBoundingClientRect();
+      // Skip work when the band is well outside the viewport.
+      if (rect.bottom < -200 || rect.top > viewportH + 200) return;
+      const sectionCenter = rect.top + rect.height / 2;
+      const range = viewportH / 2 + rect.height / 2;
+      const progress = Math.max(-1, Math.min(1, (sectionCenter - viewportH / 2) / range));
+      const offset = -progress * rect.height * TRAVEL;
+      media.style.setProperty("--parallax-y", `${offset.toFixed(1)}px`);
+    });
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  }
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll, { passive: true });
+  update();
+
+  prefersReducedMotion.addEventListener("change", (e) => {
+    if (e.matches) {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      sections.forEach((section) =>
+        section
+          .querySelector<HTMLElement>("[data-parallax-media]")
+          ?.style.removeProperty("--parallax-y")
+      );
+    }
+  });
+}
+
 function initHomePageMotion() {
   initHomeReveal();
   initHeroParallax();
+  initSectionParallax();
 }
 
 if (document.readyState === "loading") {

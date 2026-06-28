@@ -1,10 +1,10 @@
 /* Premium responsive refinements. */
 @media (max-width: 920px) {
   :root {
-    --space-page-x: 22px;
-    --space-section-y: 84px;
-    --space-section-y-tight: 64px;
-    --space-section-y-roomy: 92px;
+    --space-page-x: 24px;
+    --space-section-y: 96px;
+    --space-section-y-tight: 72px;
+    --space-section-y-roomy: 112px;
     --space-card: 28px;
     --space-card-compact: 22px;
     --space-card-roomy: 34px;
@@ -15,14 +15,15 @@
     --space-hero-bottom: 46px;
     --space-hero-gap: 44px;
     --lh-lead: 1.5;
-    --fs-hero: 4.4rem;
-    --fs-title: 3.35rem;
-    --fs-lead: 1.06rem;
-    --fs-body-lg: 1rem;
-    --fs-serve-title: 4.1rem;
-    --fs-serve-lead: 1.3rem;
-    --fs-stat-major: 4.8rem;
-    --fs-quote: 2.45rem;
+    /* Tablet floor — fluid clamp() still runs within these static bounds */
+    --fs-hero:        clamp(2.75rem, 5.5vw, 4.75rem);  /* 44 → 76px  */
+    --fs-title:       clamp(2.5rem,  4.5vw, 4rem);     /* 40 → 64px  */
+    --fs-lead:        clamp(1.2rem,  2vw,   1.75rem);  /* 19 → 28px  */
+    --fs-body-lg:     clamp(1.1rem,  1.6vw, 1.5rem);   /* 18 → 24px  */
+    --fs-serve-title: clamp(3rem,    6vw,   5.5rem);   /* 48 → 88px  */
+    --fs-serve-lead:  clamp(1.2rem,  2.2vw, 1.875rem); /* 19 → 30px  */
+    --fs-stat-major:  clamp(4rem,    7vw,   6.5rem);   /* 64 → 104px */
+    --fs-quote:       clamp(2rem,    3.5vw, 3.5rem);   /* 32 → 56px  */
   }
 
   header {

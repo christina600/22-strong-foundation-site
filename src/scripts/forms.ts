@@ -11,7 +11,7 @@ let formListenerAttached = false;
 
 const CONTACT_FORM_ID = "contactFormEl";
 const NOT_CONNECTED_MESSAGE =
-  "Thanks for checking in. This form is not connected yet, so your message was not sent.";
+  "Thanks for checking in. Message capture is disabled on this static site, so nothing was sent.";
 
 interface ValidationRule {
   test: (value: string) => boolean;
@@ -134,7 +134,7 @@ function initForms() {
       return;
     }
 
-    // Form is valid but not connected yet
+    // Form is valid; keep the static site local-only and do not submit data.
     setStatus(event.target, NOT_CONNECTED_MESSAGE);
   });
 

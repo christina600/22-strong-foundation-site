@@ -76,9 +76,6 @@
 * { box-sizing: border-box; }
 
 html {
-  /* scroll-behavior is set to 'auto' by lenis-scroll.ts when Lenis is active
-     so it doesn't double-smooth anchor clicks. On reduced-motion or without JS,
-     native smooth scroll is preserved here as a fallback. */
   scroll-behavior: smooth;
   scroll-padding-top: 90px;
   background: var(--paper);
@@ -107,7 +104,7 @@ a {
 }
 
 a:hover {
-  text-decoration-color: var(--orange);
+  text-decoration-color: var(--teal-deep);
 }
 
 /* Footer gradient separator */
@@ -116,7 +113,7 @@ footer {
   border-image: linear-gradient(
     90deg,
     var(--teal) 0%,
-    var(--orange) 50%,
+    var(--teal-deep) 50%,
     var(--teal) 100%
   ) 1;
 }
@@ -385,7 +382,7 @@ section[id] {
   content: "";
   width: 28px;
   height: 1px;
-  background: var(--orange);
+  background: rgba(32, 35, 31, .4);
 }
 
 h1, h2, h3, p { margin-top: 0; }
@@ -549,7 +546,7 @@ p {
   height: 64px;
   place-items: center;
   border-radius: 999px;
-  background: var(--action-gradient);
+  background: var(--ink);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, .28) inset,
     0 18px 44px rgba(0, 0, 0, .36);
@@ -567,7 +564,7 @@ p {
 }
 
 .testimonial-video-trigger:hover .testimonial-play-button {
-  background: var(--orange);
+  background: var(--teal-deep);
 }
 
 /* "Who we are" — foundation styling for the #about origin-story section. */
@@ -612,11 +609,11 @@ p {
   content: "";
   width: clamp(54px, 8vw, 92px);
   height: 2px;
-  background: linear-gradient(90deg, var(--orange), rgba(185, 85, 36, .08));
+  background: linear-gradient(90deg, rgba(32, 35, 31, .3), rgba(32, 35, 31, 0));
 }
 
 .about-evidence-number {
-  color: var(--orange-dark);
+  color: var(--ink);
   font-family: var(--number-face, var(--display-face));
   font-stretch: condensed;
   font-weight: 900;
@@ -659,20 +656,20 @@ p {
   width: 7px;
   height: 7px;
   border-radius: 999px;
-  background: rgba(185, 85, 36, .76);
+  background: rgba(32, 35, 31, .5);
 }
 
 .about-evidence-source a {
   color: inherit;
-  text-decoration-color: rgba(185, 85, 36, .48);
+  text-decoration-color: rgba(32, 35, 31, .34);
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
 }
 
 .about-evidence-source a:hover,
 .about-evidence-source a:focus-visible {
-  color: var(--orange-dark);
-  text-decoration-color: rgba(134, 58, 26, .70);
+  color: var(--teal-deep);
+  text-decoration-color: rgba(14, 90, 92, .7);
 }
 
 .about-need {
@@ -681,7 +678,7 @@ p {
   max-width: 68ch;
   margin-top: clamp(28px, 5vw, 48px);
   padding-left: clamp(18px, 3vw, 28px);
-  border-left: 2px solid rgba(185, 85, 36, .38);
+  border-left: 2px solid rgba(32, 35, 31, .22);
 }
 
 .about-need p {

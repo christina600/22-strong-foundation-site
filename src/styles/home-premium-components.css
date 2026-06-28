@@ -118,7 +118,7 @@ textarea {
   bottom: 18px;
   width: 3px;
   border-radius: 999px;
-  background: linear-gradient(180deg, var(--olive), var(--orange));
+  background: linear-gradient(180deg, var(--olive), rgba(32, 35, 31, .3));
 }
 
 .impact-line strong {
@@ -305,7 +305,7 @@ textarea {
   cursor: pointer;
   font-family: var(--ui-face, ui-sans-serif, system-ui, sans-serif);
   font-size: var(--fs-copy-small, 1rem);
-  font-weight: 650;
+  font-weight: 700;
   color: var(--mission-orange, #b95524);
   padding: 8px 12px;
   border-radius: 6px;
@@ -354,7 +354,7 @@ textarea {
   font-family: var(--ui-face, ui-sans-serif, system-ui, sans-serif);
   font-size: clamp(.9rem, 1vw, 1rem);
   font-stretch: normal;
-  font-weight: 850;
+  font-weight: 900;
   line-height: 1.2;
 }
 
@@ -457,7 +457,7 @@ textarea {
 .vv-quote {
   margin: 0 0 18px;
   font-family: var(--ui-face, ui-sans-serif, system-ui, sans-serif);
-  font-weight: 780;
+  font-weight: 800;
   max-width: 62ch;
   font-size: var(--fs-copy-small, 1rem);
   line-height: var(--lh-copy, 1.62);
@@ -501,7 +501,7 @@ textarea {
   font-family: var(--display-face);
   font-weight: 800;
   font-stretch: condensed;
-  font-size: clamp(1.4rem, 2vw, 1.7rem);
+  font-size: var(--fs-min);
   line-height: 1.05;
   color: var(--ink, #20231f);
 }
@@ -511,7 +511,7 @@ textarea {
   font-family: var(--ui-face);
   font-stretch: normal;
   max-width: 64ch;
-  font-size: var(--fs-ui, .82rem);
+  font-size: var(--fs-min);
   line-height: 1.58;
   letter-spacing: 0;
   text-transform: none;
@@ -697,7 +697,7 @@ textarea {
   color: rgba(32, 35, 31, .74);
   font-family: var(--ui-face, ui-sans-serif, system-ui, sans-serif);
   font-size: .92rem;
-  font-weight: 750;
+  font-weight: 800;
   line-height: 1.25;
   box-shadow: 0 16px 36px rgba(29, 33, 29, .10);
 }

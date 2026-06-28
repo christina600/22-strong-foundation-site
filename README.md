@@ -19,7 +19,13 @@ npm run build
 
 ```bash
 npm test
+npm run test:hygiene
+npm run test:launch
+npm run test:e2e
 ```
+
+Use `npm run check` for the full non-browser gate: lint, unit tests, content
+checks, hygiene checks, launch-content checks, and build.
 
 ## Deployment
 
@@ -31,6 +37,6 @@ Edit `src/content/home.json` for copy, `src/content/site.json` for config.
 
 ## Known Issues
 
-- Contact form needs email endpoint setup
-- Donation link pending Givebutter integration
-- Video transcript placeholder needs actual content
+- Contact form is static/local-only and does not send messages.
+- Donation flow routes through the local donation module until an approved processor is configured.
+- Video transcript content still needs to be supplied.
