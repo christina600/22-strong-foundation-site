@@ -1,4 +1,7 @@
 ---
+import site from "../../content/site.json";
+import { isConfigured } from "../../utils/config";
+
 interface StrongCircleContent {
   heading: string;
   lead: string;
@@ -15,6 +18,18 @@ interface Props {
 }
 
 const { chapter, strongCircle } = Astro.props;
+
+// Recurring giving routes to the Strong Circle Givebutter campaign once set;
+// until then it falls back to the contact section, matching DonationModule.
+const circleReady = isConfigured(site.strongCircleUrl);
+const circleHref = circleReady ? site.strongCircleUrl : "#contact";
+const tierHref = (amount: string) => {
+  if (!circleReady) return "#contact";
+  const value = amount.replace(/[^0-9.]/g, "");
+  return value
+    ? `${site.strongCircleUrl}?amount=${encodeURIComponent(value)}&frequency=monthly`
+    : site.strongCircleUrl;
+};
 ---
 
 <section class="strong-circle-section story-commitment" id="strong-circle" data-chapter={chapter}>
@@ -38,13 +53,13 @@ const { chapter, strongCircle } = Astro.props;
         <span class="circle-tiers-label">{strongCircle.tiersLabel}</span>
         <div class="circle-tiers" role="group" aria-label="Suggested monthly amounts">
           {strongCircle.tiers.map((tier) => (
-            <a class="circle-tier" href="#contact">
+            <a class="circle-tier" href={tierHref(tier.amount)}>
               <span class="circle-tier-amount">{tier.amount}<small>/mo</small></span>
               {tier.note && <span class="circle-tier-note">{tier.note}</span>}
             </a>
           ))}
         </div>
-        <a class="pill primary strong-circle-trigger" href="#contact">{strongCircle.joinLabel}</a>
+        <a class="pill secondary strong-circle-trigger" href={circleHref}>{strongCircle.joinLabel}</a>
         <p class="circle-footnote">{strongCircle.footnote}</p>
       </div>
     </div>

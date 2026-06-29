@@ -111,10 +111,13 @@ function applyDonationPreset(module: HTMLElement, detail: DonationPresetDetail) 
   if (detail.amount) {
     const grid = getActiveGrid(module);
     const amount = grid?.querySelector<HTMLElement>(`${AMOUNT_SELECTOR}[data-amount="${detail.amount}"]`);
+    const otherAmount = module.querySelector<HTMLInputElement>(".other-amount-input");
     if (grid && amount) {
       setActiveOption(grid, AMOUNT_SELECTOR, amount);
-      const otherAmount = module.querySelector<HTMLInputElement>(".other-amount-input");
       if (otherAmount) otherAmount.value = "";
+    } else if (otherAmount) {
+      clearActiveOptions(module, AMOUNT_SELECTOR);
+      otherAmount.value = detail.amount;
     }
   }
 
@@ -188,11 +191,19 @@ function updateGiftSummary(module: HTMLElement, pulse = true) {
 
   const donateBtn = module.querySelector<HTMLAnchorElement>(".btn-donate");
   if (donateBtn) {
-    const base = donateBtn.dataset.donateBase || donateBtn.getAttribute("href") || "";
+    // Monthly checks out to the Strong Circle campaign, one-time to Fund
+    // Recovery Care; fall back to the other base, then the rendered href.
+    const oneTimeBase = donateBtn.dataset.donateOnetime || "";
+    const monthlyBase = donateBtn.dataset.donateMonthly || "";
+    const base =
+      (activeFrequency === "monthly" ? monthlyBase || oneTimeBase : oneTimeBase)
+      || donateBtn.getAttribute("href") || "";
     if (/^https?:\/\//i.test(base)) {
       const sep = base.includes("?") ? "&" : "?";
+      // Givebutter's frequency param accepts once|monthly|quarterly|yearly.
+      const gbFrequency = activeFrequency === "monthly" ? "monthly" : "once";
       donateBtn.href =
-        `${base}${sep}amount=${encodeURIComponent(activeAmount)}&frequency=${encodeURIComponent(activeFrequency)}`;
+        `${base}${sep}amount=${encodeURIComponent(activeAmount)}&frequency=${gbFrequency}`;
     }
   }
 

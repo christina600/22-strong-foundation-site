@@ -40,10 +40,17 @@ const initTemplate =
   initMap[String(initAmount)] ?? initMap.default ?? "Your gift helps turn a stalled recovery plan into real appointments.";
 const initDetail = String(initTemplate).replace(/\{amount\}/g, fmt(initAmount)).replace(/\{annual\}/g, fmt(initAmount * 12));
 
-// Online giving platform pending: route to contact until donateUrl is set.
-const donateReady = isConfigured(site.donateUrl);
-const donateHref = donateReady ? site.donateUrl : "#contact";
-const donateLabel = donateReady ? strings.donation.continueToCheckout : "Send a giving note";
+// One-time gifts check out to the Fund Recovery Care campaign; monthly gifts
+// route to the dedicated 22 Strong Circle campaign so recurring members are
+// attributed there. Until a campaign URL is set, that frequency routes to
+// contact. donation.ts swaps the base by active frequency on toggle.
+const oneTimeReady = isConfigured(site.donateUrl);
+const monthlyReady = isConfigured(site.strongCircleUrl);
+const oneTimeUrl = oneTimeReady ? site.donateUrl : undefined;
+const monthlyUrl = monthlyReady ? site.strongCircleUrl : undefined;
+const initReady = isMonthly ? monthlyReady : oneTimeReady;
+const donateHref = (isMonthly ? monthlyUrl : oneTimeUrl) ?? "#contact";
+const donateLabel = initReady ? strings.donation.continueToCheckout : strings.donation.giveNow;
 ---
 
 <div
@@ -91,10 +98,10 @@ const donateLabel = donateReady ? strings.donation.continueToCheckout : "Send a 
       <span class="gift-detail">{initDetail}</span>
       <small>{isMonthly ? `Monthly gift. Annual commitment: $${fmt(initAmount * 12)}.` : "One-time gift."}</small>
     </div>
-    <a class="btn-donate" href={donateHref} data-donate-base={donateReady ? site.donateUrl : undefined} aria-label={donateLabel}>
+    <a class="btn-donate" href={donateHref} data-donate-onetime={oneTimeUrl} data-donate-monthly={monthlyUrl} aria-label={donateLabel}>
       {donateLabel} &rarr;
     </a>
-    {donateReady && <p class="donation-footnote">{strings.donation.footnote}</p>}
+    {(oneTimeReady || monthlyReady) && <p class="donation-footnote">{strings.donation.footnote}</p>}
     <p class="donation-legal">
       {site.orgName} &middot; {site.taxStatus} &middot; EIN {site.ein} &middot; Tax-deductible.
     </p>
