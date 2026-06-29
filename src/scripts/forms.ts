@@ -37,7 +37,7 @@ const VALIDATION_RULES: Record<string, ValidationRule[]> = {
 };
 
 function setFieldError(field: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement, message: string) {
-  const errorEl = field.parentElement?.querySelector<HTMLElement>(".field-error");
+  const errorEl = field.closest(".form-field")?.querySelector<HTMLElement>(".field-error");
   if (errorEl) {
     errorEl.textContent = message;
     errorEl.hidden = false;
@@ -47,7 +47,7 @@ function setFieldError(field: HTMLInputElement | HTMLTextAreaElement | HTMLSelec
 }
 
 function clearFieldError(field: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement) {
-  const errorEl = field.parentElement?.querySelector<HTMLElement>(".field-error");
+  const errorEl = field.closest(".form-field")?.querySelector<HTMLElement>(".field-error");
   if (errorEl) {
     errorEl.textContent = "";
     errorEl.hidden = true;

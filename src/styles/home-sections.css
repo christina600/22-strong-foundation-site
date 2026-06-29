@@ -7,8 +7,18 @@
 .post-hero-message {
   display: grid;
   justify-items: center;
-  gap: clamp(26px, 4vw, 44px);
+  gap: clamp(16px, 2.4vw, 26px);
   text-align: center;
+}
+
+.post-hero-message .hero-kicker {
+  margin: 0;
+  color: var(--olive);
+  font-family: var(--ui-face, ui-sans-serif, system-ui, sans-serif);
+  font-size: clamp(1.25rem, 1.6vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: .01em;
+  text-wrap: balance;
 }
 
 .post-hero-message .hero-headline {
@@ -34,7 +44,7 @@
   }
 
   .post-hero-message .hero-headline {
-    font-size: clamp(3.35rem, 18vw, 5.2rem);
+    font-size: clamp(2.7rem, 13.2vw, 5.2rem);
   }
 
   .post-hero-message .hero-headline-line {
@@ -52,26 +62,15 @@
   text-align: center;
 }
 
-.hero-lead-heading {
-  margin: 0 auto;
-  color: rgba(32, 35, 31, .86);
-  font-family: var(--display-face);
-  font-size: clamp(2.15rem, 1.25rem + 3vw, 3.9rem);
-  font-weight: 850;
-  line-height: 1;
-  letter-spacing: 0;
-  text-transform: none;
-}
-
 .hero-lead-statement {
   margin: 0 auto;
   width: 100%;
-  max-width: min(1120px, 100%);
+  max-width: min(780px, 100%);
   color: var(--ink);
   font-family: var(--body-face);
-  font-size: clamp(2.6rem, 1.65rem + 4vw, 4.35rem);
+  font-size: clamp(1.35rem, 1rem + 1.15vw, 2.15rem);
   font-weight: 400;
-  line-height: 1.1;
+  line-height: 1.34;
   letter-spacing: 0;
   text-wrap: pretty;
 }
@@ -89,8 +88,8 @@
 
   .hero-lead-statement {
     max-width: 100%;
-    font-size: clamp(1.95rem, 7.4vw, 2.55rem);
-    line-height: 1.14;
+    font-size: clamp(1.25rem, 4.8vw, 1.55rem);
+    line-height: 1.42;
   }
 }
 
@@ -287,7 +286,7 @@
 .section-cta--orange .section-cta-text {
   position: relative;
   z-index: 1;
-  max-width: 22ch;
+  max-width: none;
   color: #fffaf0;
   font-size: clamp(2.2rem, 4.2vw, 4rem);
   font-weight: 700;
@@ -317,10 +316,6 @@
 @media (max-width: 720px) {
   .section-cta--orange {
     padding: clamp(52px, 14vw, 80px) var(--space-page-x);
-  }
-
-  .section-cta--orange .section-cta-text {
-    max-width: 18ch;
   }
 
   .section-cta--orange .section-cta-btn.pill.primary {
@@ -370,7 +365,7 @@
   list-style: none;
   margin: 44px 0 0;
   padding: 0;
-  max-width: 760px;
+  max-width: none;
 }
 
 /* The spine. Sits behind the number nodes; the scrollytelling layer grows it
@@ -443,7 +438,7 @@
 
 .step-note {
   margin-top: 12px;
-  max-width: 52ch;
+  max-width: none;
   font-size: var(--fs-copy-fine);
   line-height: var(--lh-copy);
   color: var(--muted);
@@ -727,7 +722,7 @@
   width: 22%;
   height: 100%;
   border-radius: inherit;
-  background: var(--action-gradient);
+  background: var(--paper);
 }
 
 .outcomes {
@@ -848,7 +843,7 @@
 
 .circle-points strong {
   color: #fff;
-  font-size: var(--fs-min);
+  font-size: var(--fs-body-lg);
 }
 
 .circle-points span {
@@ -911,7 +906,7 @@
 }
 
 .circle-tier-amount small {
-  font-size: var(--fs-min);
+  font-size: var(--fs-ui-small);
   font-weight: 700;
   opacity: .72;
 }
@@ -1192,40 +1187,6 @@
   max-width: 760px;
 }
 
-/* Recovery bridge — a full-width photo pause between the promise and mission.
-   The media layer is over-scanned (taller than its frame) and translated on
-   scroll for a real parallax; the frame clips the overflow. See
-   initSectionParallax in home-reveal.ts. */
-.recovery-image-bridge {
-  position: relative;
-  height: clamp(260px, 41vw, 560px);
-  width: 100%;
-  max-width: none;
-  padding: 0;
-  overflow: hidden;
-}
-.recovery-image-bridge__media {
-  position: absolute;
-  /* Over-scan top & bottom so the parallax translate never reveals an edge. */
-  inset: -15% 0;
-  background-image: linear-gradient(rgba(20,24,21,0.5), rgba(20,24,21,0.5)), var(--bg-image);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  transform: translate3d(0, var(--parallax-y, 0), 0);
-  will-change: transform;
-}
-@media (max-width: 700px) {
-  .recovery-image-bridge {
-    height: clamp(260px, 82vw, 430px);
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .recovery-image-bridge__media {
-    transform: none;
-  }
-}
-
 /* Stat bridge — full-bleed photo with a single bold insurance-cap stat overlaid. */
 .stat-bridge {
   position: relative;
@@ -1283,7 +1244,7 @@
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  font-size: var(--fs-min);
+  font-size: var(--fs-ui-small);
   font-weight: 700;
   color: rgba(251, 247, 238, 0.78);
   margin: 0 0 clamp(28px, 3.5vw, 44px);

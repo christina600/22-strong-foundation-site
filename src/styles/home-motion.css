@@ -124,36 +124,6 @@
   width: 22%;
 }
 
-/* ── Reduced motion: reveal everything immediately ──────────── */
-@media (prefers-reduced-motion: reduce) {
-  .js [data-reveal],
-  .js [data-reveal="headline"],
-  .js [data-reveal="stat"],
-  .js [data-reveal="card"],
-  .js [data-reveal="image"],
-  .js [data-reveal].is-visible,
-  .js [data-reveal="headline"].is-visible,
-  .js [data-reveal="stat"].is-visible,
-  .js [data-reveal="card"].is-visible,
-  .js [data-reveal="image"].is-visible,
-  .js .hero-copy[data-reveal],
-  .js .how-story-copy[data-reveal],
-  .js .audience-copy[data-reveal],
-  .js .audience-stat[data-reveal] .audience-stat-number,
-  .js .audience-stat[data-reveal].is-visible .audience-stat-number {
-    opacity: 1 !important;
-    transform: none !important;
-    filter: none !important;
-    clip-path: none !important;
-    transition: none !important;
-  }
-
-  .js .goal-fill {
-    width: 22%;
-    transition: none !important;
-  }
-}
-
 /* ── Mobile: tighten distances so reveals feel snappier ─────── */
 @media (prefers-reduced-motion: no-preference) and (max-width: 720px) {
   .js [data-reveal],

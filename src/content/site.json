@@ -2,7 +2,7 @@
   "orgName": "22 Strong Foundation",
   "descriptor": "22 Strong Foundation helps donors fund recovery care for veterans and low-income youth when cost, coverage, timing, or access threatens the next appointment.",
   "phone": "",
-  "email": "",
+  "email": "team@22strongfoundation.com",
   "address": "4120 Birch St, Suite 106, Newport Beach, CA 92660",
   "taxStatus": "501(c)(3)",
   "ein": "99-1232582",
@@ -35,5 +35,5 @@
       "default": "Your one-time gift helps turn a stalled recovery plan into real appointments."
     }
   },
-  "siteUrl": "https://22strongfoundation.org"
+  "siteUrl": "https://22strongfoundation.com"
 }

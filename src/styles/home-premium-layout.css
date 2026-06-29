@@ -121,106 +121,33 @@ main {
   grid-template-columns: minmax(0, 1fr);
   row-gap: clamp(34px, 4.5vw, 56px);
   width: min(var(--max), 100%);
-  max-width: 980px;
+  max-width: var(--max);
 }
 
 .narrative-scene--about .about-intro {
   position: relative;
   top: auto;
-  max-width: 62ch;
+  max-width: none;
 }
 
-/* ── Asymmetric split grid — Radiating Hope / Gemini Session 2 prescription ──
-   Desktop only: 5-col left (sticky heading) + 7-col right (content stream).
-   The left column pins in place as the user scrolls through the right-column
-   content — the signature "luxury frame" move from elite agency sites.
-   Mobile/tablet fall through to the single-column layout above. */
+/* ── Single-column flow — heading + content stack vertically (no sidebar). ──
+   The mission/about intro was previously a 5fr/7fr sticky split-grid.
+   Now everything stacks in one column so it reads top-to-bottom, matching the
+   hero-lead and AudienceSection intro above it. Text stretches to the full
+   --max container width. */
 @media (min-width: 921px) {
   .narrative-scene--about .about-inner {
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-    column-gap: clamp(48px, 6vw, 96px);
+    grid-template-columns: minmax(0, 1fr);
     row-gap: clamp(32px, 3.5vw, 48px);
     max-width: var(--max);
     align-items: start;
   }
 
-  /* Left column: eyebrow + H2 + lead — occupies rows 1-4 and sticks */
   .narrative-scene--about .about-intro {
-    grid-column: 1;
-    grid-row: 1 / span 4;
-    position: sticky;
-    top: calc(var(--story-header-h, 82px) + 32px);
+    position: relative;
+    top: auto;
     max-width: none;
   }
-
-  /* Right column: all content blocks stack in column 2 */
-  .narrative-scene--about .about-impact,
-  .narrative-scene--about .about-evidence,
-  .narrative-scene--about .about-need,
-  .narrative-scene--about .about-story {
-    grid-column: 2;
-  }
-}
-
-/* Impact band — dark cinematic reversal: proof set against a deep field. */
-.narrative-scene--about .about-impact {
-  position: relative;
-  display: grid;
-  gap: clamp(16px, 2vw, 22px);
-  padding: clamp(28px, 3.5vw, 48px) clamp(22px, 3vw, 40px);
-  background:
-    linear-gradient(135deg, rgba(70, 87, 70, .16), transparent 40%),
-    linear-gradient(180deg, #181f17, #111610);
-  border: 1px solid rgba(255, 255, 255, .07);
-  border-top: 2px solid rgba(251, 247, 238, .22);
-  border-radius: var(--radius, 8px);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, .06) inset,
-    0 24px 64px rgba(0, 0, 0, .26);
-}
-
-.narrative-scene--about .about-impact-label {
-  font-size: var(--fs-min);
-  font-weight: 800;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: rgba(255, 250, 240, .52);
-}
-
-.narrative-scene--about .about-impact-figures {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0;
-  margin: 0;
-}
-
-.narrative-scene--about .about-impact-figure {
-  display: grid;
-  gap: 8px;
-  padding: 0 clamp(16px, 2.5vw, 32px);
-  border-left: 1px solid rgba(255, 250, 240, .1);
-}
-
-.narrative-scene--about .about-impact-figure:first-child {
-  padding-left: 0;
-  border-left: 0;
-}
-
-.narrative-scene--about .about-impact-number {
-  color: #fffaf0;
-  font-family: var(--number-face, var(--display-face));
-  font-stretch: condensed;
-  font-weight: 900;
-  font-size: clamp(3.8rem, 7vw, 7.2rem);
-  line-height: .88;
-  text-shadow: 0 2px 16px rgba(0, 0, 0, .28);
-}
-
-.narrative-scene--about .about-impact-text {
-  margin: 0;
-  font-size: var(--fs-copy-small, 1rem);
-  line-height: 1.42;
-  color: rgba(255, 250, 240, .56);
 }
 
 .narrative-scene--about .about-intro h2 {
@@ -231,9 +158,9 @@ main {
 }
 
 .narrative-scene--about .about-intro .lead {
-  max-width: 36ch;
+  max-width: none;
   margin-top: clamp(20px, 2.8vw, 30px);
-  font-size: var(--fs-min);
+  font-size: var(--fs-lead);
   line-height: 1.62;
 }
 
@@ -287,13 +214,13 @@ main {
 .narrative-scene--about .about-evidence-copy {
   grid-column: 2;
   align-self: start;
-  max-width: 31rem;
+  max-width: none;
   padding-top: .18rem;
 }
 
 .narrative-scene--about .about-evidence-copy p {
-  max-width: 34ch;
-  font-size: var(--fs-min);
+  max-width: none;
+  font-size: var(--fs-copy-small);
   line-height: 1.56;
 }
 
@@ -317,7 +244,7 @@ main {
   position: relative;
   max-width: none;
   padding: clamp(22px, 3vw, 32px) clamp(18px, 2.5vw, 28px) clamp(22px, 3vw, 32px);
-  font-size: var(--fs-min);
+  font-size: var(--fs-copy-small);
   line-height: 1.66;
   border-radius: var(--radius, 8px);
 }
@@ -366,17 +293,17 @@ main {
 
 /* Origin story — clean editorial text, no photo */
 .narrative-scene--about .about-story {
-  max-width: 58ch;
+  max-width: none;
 }
 
 .narrative-scene--about .about-story p {
-  font-size: var(--fs-min);
+  font-size: var(--fs-copy-small);
   line-height: 1.74;
   color: rgba(32, 35, 31, .80);
 }
 
 .narrative-scene--about .about-story p:first-child {
-  font-size: var(--fs-min);
+  font-size: var(--fs-body-lg);
   color: var(--ink);
 }
 
@@ -407,7 +334,7 @@ main {
   margin-bottom: 0;
   color: var(--mission-orange, #b95524);
   font-family: var(--ui-face, ui-sans-serif, system-ui, sans-serif);
-  font-size: var(--fs-min);
+  font-size: var(--fs-body-lg);
   font-stretch: normal;
   font-weight: 900;
   line-height: 1.1;
@@ -465,6 +392,43 @@ main {
     linear-gradient(180deg, rgba(255, 253, 247, .98), rgba(239, 232, 218, .82));
 }
 
+/* Veterans section — stack copy above stats (single column, not side-by-side) */
+.audience-chapter#serve-veterans .audience-chapter-inner {
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+.audience-chapter#serve-veterans .audience-copy,
+.audience-chapter#serve-veterans .audience-copy .lead,
+.audience-chapter#serve-veterans .audience-copy p:not(.lead) {
+  max-width: none;
+}
+
+.audience-chapter#serve-veterans .audience-stats {
+  max-width: none;
+}
+
+/* Force all veteran stats to stacked layout (number above, text full-width below) */
+.audience-chapter#serve-veterans .audience-stat-inner {
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: clamp(10px, 1.4vw, 16px);
+}
+
+.audience-chapter#serve-veterans .audience-stat-number {
+  grid-column: 1;
+  grid-row: auto;
+  text-align: left;
+}
+
+.audience-chapter#serve-veterans .audience-stat-text {
+  grid-column: 1;
+  max-width: none;
+}
+
+.audience-chapter#serve-veterans .audience-stat p {
+  max-width: none;
+}
+
 .audience-chapter#serve-athletes {
   --audience-image: url("/images/stock-student-athlete-section-21-9.webp");
   background:
@@ -476,6 +440,43 @@ main {
   background-position: right center;
   background-size: auto 100%;
   opacity: .08;
+}
+
+/* Low income youth section — stack copy above stats (single column, not side-by-side) */
+.audience-chapter#serve-athletes .audience-chapter-inner {
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+
+.audience-chapter#serve-athletes .audience-copy,
+.audience-chapter#serve-athletes .audience-copy .lead,
+.audience-chapter#serve-athletes .audience-copy p:not(.lead) {
+  max-width: none;
+}
+
+.audience-chapter#serve-athletes .audience-stats {
+  max-width: none;
+}
+
+/* Force all youth stats to stacked layout (number above, text full-width below) */
+.audience-chapter#serve-athletes .audience-stat-inner {
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: clamp(10px, 1.4vw, 16px);
+}
+
+.audience-chapter#serve-athletes .audience-stat-number {
+  grid-column: 1;
+  grid-row: auto;
+  text-align: left;
+}
+
+.audience-chapter#serve-athletes .audience-stat-text {
+  grid-column: 1;
+  max-width: none;
+}
+
+.audience-chapter#serve-athletes .audience-stat p {
+  max-width: none;
 }
 
 .audience-chapter-inner,
@@ -520,7 +521,7 @@ main {
   max-width: 40ch;
   margin: 0;
   color: rgba(32, 35, 31, .78);
-  font-size: var(--fs-min);
+  font-size: var(--fs-copy-small);
   line-height: 1.62;
 }
 
@@ -606,7 +607,7 @@ main {
 .audience-chapter .audience-stats .audience-stat p,
 .audience-chapter .audience-stats .audience-stat.is-light p {
   max-width: 44ch;
-  font-size: var(--fs-min);
+  font-size: var(--fs-copy-small);
   line-height: 1.56;
 }
 
@@ -617,7 +618,7 @@ main {
   width: fit-content;
   max-width: 100%;
   color: rgba(32, 35, 31, .66);
-  font-size: var(--fs-min);
+  font-size: var(--fs-ui-small);
   font-weight: 900;
   line-height: 1.28;
   overflow-wrap: anywhere;
@@ -690,26 +691,11 @@ main {
 }
 
 @media (max-width: 920px) {
-  .narrative-scene--about .about-inner {
-    grid-template-columns: 1fr;
-  }
-
   .audience-chapter-inner {
     grid-template-columns: 1fr;
   }
 
-  .narrative-scene--about .about-intro {
-    position: relative;
-    top: auto;
-  }
-
-  .narrative-scene--about .about-evidence {
-    margin-top: 0;
-    align-self: start;
-    --about-number-col: clamp(150px, 25vw, 220px);
-  }
-
-  /* Need cards — stack at tablet; remove old leftover width constraint */
+  /* Need cards — stack at tablet */
   .narrative-scene--about .about-need {
     grid-template-columns: 1fr;
     gap: clamp(12px, 2vw, 16px);
@@ -745,32 +731,6 @@ main {
     padding-block: clamp(72px, 16vw, 96px);
   }
 
-  /* Impact band — stack figures instead of 3-column on phones */
-  .narrative-scene--about .about-impact {
-    padding: clamp(22px, 5vw, 32px) clamp(18px, 5vw, 28px);
-  }
-
-  .narrative-scene--about .about-impact-figures {
-    grid-template-columns: 1fr;
-    gap: clamp(18px, 4vw, 26px);
-  }
-
-  .narrative-scene--about .about-impact-figure {
-    padding: 0;
-    border-left: 0;
-    padding-top: clamp(14px, 3vw, 20px);
-    border-top: 1px solid rgba(255, 250, 240, .1);
-  }
-
-  .narrative-scene--about .about-impact-figure:first-child {
-    padding-top: 0;
-    border-top: 0;
-  }
-
-  .narrative-scene--about .about-impact-number {
-    font-size: clamp(3.5rem, 18vw, 5rem);
-  }
-
   .audience-chapter {
     padding-block: 52px;
   }
@@ -802,7 +762,7 @@ main {
   }
 
   .narrative-scene--about .about-evidence-copy {
-    max-width: 38rem;
+    max-width: none;
     padding-top: 0;
   }
 
@@ -869,11 +829,11 @@ html {
 }
 
 .how-story-copy {
-  max-width: 760px;
+  max-width: none;
 }
 
 .story-kicker {
-  max-width: 43ch;
+  max-width: none;
   margin: 22px 0 0;
   color: rgba(32, 35, 31, .70);
   font-size: var(--fs-body-lg);

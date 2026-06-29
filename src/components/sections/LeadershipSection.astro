@@ -13,13 +13,15 @@ interface Leader {
 
 interface Props {
   people: Leader[];
+  headingLevel?: "h1" | "h2";
 }
 
-const { people } = Astro.props;
+const { people, headingLevel = "h2" } = Astro.props;
+const HeadingTag = headingLevel;
 ---
 
 <section class="story-leadership" id="leadership">
-  <h2 data-reveal="headline">Meet the team.</h2>
+  <HeadingTag data-reveal="headline">Meet the team.</HeadingTag>
 
   <div class="bios">
     {people.map((person, index) => (

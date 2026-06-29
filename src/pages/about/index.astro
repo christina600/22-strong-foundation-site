@@ -1,0 +1,27 @@
+---
+import HomeBase from "../../layouts/HomeBase.astro";
+import LeadershipSection from "../../components/sections/LeadershipSection.astro";
+import SectionCta from "../../components/sections/SectionCta.astro";
+import SiteFooter from "../../components/sections/SiteFooter.astro";
+import SiteHeader from "../../components/sections/SiteHeader.astro";
+import home from "../../content/home.json";
+
+const description = "Meet the founders and leadership behind 22 Strong Foundation.";
+---
+
+<HomeBase title="About 22 Strong Foundation." description={description}>
+  <div class="site">
+    <SiteHeader current="about" />
+
+    <main id="main" class="about-page">
+      <LeadershipSection people={home.leadership} headingLevel="h1" />
+      <SectionCta
+        text="Care shouldn't stop because the next visit isn't covered."
+        label="Fund recovery care"
+        href="/#donate"
+      />
+    </main>
+
+    <SiteFooter footer={home.footer} homeHrefPrefix="/" />
+  </div>
+</HomeBase>

@@ -242,65 +242,7 @@
     });
   }
 
-  // ─── 6. Grain Texture Overlay ───
-
-  function initGrainOverlay() {
-    if (prefersReducedMotion()) return;
-    if (window.innerWidth <= 560) return; // Skip on small screens
-
-    const existing = document.querySelector(".grain-overlay");
-    if (existing) return;
-
-    const overlay = document.createElement("div");
-    overlay.className = "grain-overlay";
-    overlay.setAttribute("aria-hidden", "true");
-    document.body.appendChild(overlay);
-  }
-
-  // ─── 7. Geometric Shape Morphs ───
-
-  const SHAPE_PATHS: Record<string, string> = {
-    // Diamond → rounded square → circle → back
-    diamond: "M50,5 L95,50 L50,95 L5,50 Z",
-    rounded: "M50,10 Q90,10 90,50 Q90,90 50,90 Q10,90 10,50 Q10,10 50,10 Z",
-    circle: "M50,5 Q95,5 95,50 Q95,95 50,95 Q5,95 5,50 Q5,5 50,5 Z",
-  };
-
-  function initGeoMorphs() {
-    if (prefersReducedMotion()) return;
-
-    const morphs = document.querySelectorAll<HTMLElement>(".geo-morph");
-
-    morphs.forEach((container) => {
-      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-      svg.setAttribute("viewBox", "0 0 100 100");
-      svg.setAttribute("aria-hidden", "true");
-
-      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-      path.setAttribute("d", SHAPE_PATHS.diamond);
-      svg.appendChild(path);
-
-      container.appendChild(svg);
-
-      let shapeIndex = 0;
-      const shapeKeys = Object.keys(SHAPE_PATHS);
-
-      const morphObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          container.classList.toggle("is-in-view", entry.isIntersecting);
-
-          if (entry.isIntersecting) {
-            shapeIndex = (shapeIndex + 1) % shapeKeys.length;
-            path.setAttribute("d", SHAPE_PATHS[shapeKeys[shapeIndex]]);
-          }
-        });
-      }, { threshold: 0.3 });
-
-      morphObserver.observe(container);
-    });
-  }
-
-  // ─── 8. Mobile Horizontal Scroll Observer ───
+  // ─── 6. Mobile Horizontal Scroll Observer ───
   // For tablets, sync dots with native scroll-snap
 
   function initMobileHorizScroll() {
@@ -362,8 +304,6 @@
     initTextGrow();
     initColorTransitions();
     initBackgroundShifts();
-    initGrainOverlay();
-    initGeoMorphs();
 
     // Horizontal scroll — desktop or mobile
     if (window.innerWidth > 920) {

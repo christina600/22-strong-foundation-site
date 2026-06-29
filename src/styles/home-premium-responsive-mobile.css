@@ -350,6 +350,10 @@
     padding: var(--space-card);
   }
 
+  .bios {
+    grid-template-columns: 1fr;
+  }
+
   .portrait,
   .initials {
     width: 118px;
@@ -361,6 +365,7 @@
   }
 
   .footer-inner {
+    grid-template-columns: 1fr;
     gap: 30px;
   }
 

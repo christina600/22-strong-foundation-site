@@ -1,0 +1,36 @@
+/* Final motion guardrails. Imported last so visual polish cannot hide content
+   for visitors who ask for reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal],
+  .js [data-reveal] :is(
+    .about-evidence-number,
+    .audience-stat-number,
+    .stat-beat-number,
+    .eyebrow,
+    h2,
+    .lead,
+    .section-cta-text,
+    .section-cta-btn
+  ) {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    filter: none !important;
+    clip-path: none !important;
+    animation: none !important;
+    transition: none !important;
+    transition-delay: 0s !important;
+  }
+
+  .js .goal-fill {
+    width: 22%;
+    transition: none !important;
+  }
+
+  .goal-fill::after,
+  .js .audience-stat[data-reveal],
+  .js .impact-section__figure[data-reveal],
+  .js .about-evidence.is-visible .about-evidence-stat {
+    animation: none !important;
+  }
+}

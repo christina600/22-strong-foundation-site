@@ -1,6 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import type { AudienceGroupContent } from "../../utils/home-story";
-import EvidenceStat from "./EvidenceStat.astro";
+import { getImageByPath } from "../../assets/images";
 
 interface Props {
   chapter?: string;
@@ -11,37 +12,67 @@ interface Props {
 const { chapter, introTitle, groups } = Astro.props;
 const preparedGroups = groups.map((group) => ({
   ...group,
-  hasStats: group.stats.length > 0
+  primaryStat: group.stats[0],
+  helpLine: group.body.includes("22 Strong keeps it moving")
+    ? group.body.slice(group.body.indexOf("22 Strong keeps it moving"))
+    : group.body
 }));
 ---
 
-<section class="story-serve-intro" id="serve" data-chapter={chapter} data-bg-shift>
+<section class="story-serve-intro audience-card-section" id="serve" data-chapter={chapter} data-bg-shift>
   <div class="serve-intro">
     <h2 data-reveal="headline" data-split-reveal>{introTitle}</h2>
   </div>
+
+  <div class="audience-card-grid" aria-label="Who 22 Strong serves">
+    {preparedGroups.map((group) => (
+      <article
+        class={`audience-card${group.proofClass ? ` ${group.proofClass}` : ""}`}
+        id={group.id}
+        aria-label={group.detailAriaLabel}
+        data-reveal="card"
+      >
+        {group.photo && (
+          <div class="audience-card-photo">
+            {(() => {
+              const asset = getImageByPath(group.photo);
+              return asset
+                ? <Image
+                    src={asset}
+                    alt={group.photoAlt ?? group.heading}
+                    width={900}
+                    height={560}
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                    sizes="(max-width: 760px) 92vw, 44vw"
+                    widths={[480, 720, 900, 1200]}
+                    style={group.imagePosition ? `object-position: ${group.imagePosition};` : undefined}
+                  />
+                : <img
+                    src={group.photo}
+                    alt={group.photoAlt ?? group.heading}
+                    width="900"
+                    height="560"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                    style={group.imagePosition ? `object-position: ${group.imagePosition};` : undefined}
+                  />;
+            })()}
+          </div>
+        )}
+        <span class="audience-card-name">{group.heading}</span>
+        <p class="audience-card-sentence">{group.lead}</p>
+        {group.primaryStat && (
+          <div class="audience-card-stat">
+            <strong>{group.primaryStat.number}</strong>
+            <span>{group.primaryStat.text}</span>
+            <a href={group.primaryStat.url} target="_blank" rel="noopener noreferrer">{group.primaryStat.source}</a>
+          </div>
+        )}
+        <p class="audience-card-help"><span>How we help</span>{group.helpLine}</p>
+      </article>
+    ))}
+  </div>
 </section>
-
-{preparedGroups.map((group) => (
-  <section
-    class={`audience-chapter story-audience-chapter${group.proofClass ? ` ${group.proofClass}` : ""}`}
-    id={group.id}
-    aria-label={group.detailAriaLabel}
-    data-bg-shift
-  >
-    <div class="audience-chapter-inner">
-      <div class="audience-copy" data-reveal>
-        <span class="audience-kicker">{group.heading}</span>
-        <div>
-          <p class="lead">{group.lead}</p>
-          <p>{group.body}</p>
-        </div>
-      </div>
-
-      {group.hasStats && (
-        <div class={`audience-stats${group.statsClass ? ` ${group.statsClass}` : ""}`} role="list">
-          {group.stats.map((stat) => <EvidenceStat stat={stat} variant="audience" reveal />)}
-        </div>
-      )}
-    </div>
-  </section>
-))}

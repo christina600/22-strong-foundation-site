@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Confirm the production domain before launch.
-Sitemap: https://22strongfoundation.org/sitemap-index.xml
+Sitemap: https://22strongfoundation.com/sitemap-index.xml

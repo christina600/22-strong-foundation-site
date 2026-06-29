@@ -1,64 +1,46 @@
 ---
+import { Image } from "astro:assets";
 import EvidenceStat, { type EvidenceStatContent } from "./EvidenceStat.astro";
+import { getImageByPath } from "../../assets/images";
 
-interface ImpactFigure {
-  number: string;
-  label: string;
-}
-
-interface ImpactBand {
-  label?: string;
-  figures: ImpactFigure[];
+interface SceneMedia {
+  src: string;
+  alt: string;
+  caption?: string;
+  imagePosition?: string;
 }
 
 interface Props {
   chapter?: string;
   id: string;
-  eyebrow?: string;
   heading?: string;
   lead?: string;
-  impact?: ImpactBand;
   paragraphs?: string[];
   evidenceStats?: EvidenceStatContent[];
   evidenceAriaLabel?: string;
   needParagraphs?: string[];
+  media?: SceneMedia;
 }
 
 const {
   chapter,
   id,
-  eyebrow,
   heading,
   lead,
-  impact,
   paragraphs = [],
   evidenceStats = [],
   evidenceAriaLabel = "Supporting evidence",
-  needParagraphs = []
+  needParagraphs = [],
+  media
 } = Astro.props;
 ---
 
 <section class={`about-section narrative-scene narrative-scene--${id}`} id={id} data-chapter={chapter} data-bg-shift>
   <div class="about-inner">
     <div class="about-intro" data-reveal>
-      {eyebrow && <span class="eyebrow">{eyebrow}</span>}
       {heading && <h2 data-reveal="headline" data-split-reveal>{heading}</h2>}
       {lead && <p class="lead">{lead}</p>}
     </div>
-
-    {impact && impact.figures.length > 0 && (
-      <div class="about-impact" data-reveal>
-        {impact.label && <span class="about-impact-label">{impact.label}</span>}
-        <dl class="about-impact-figures">
-          {impact.figures.map((figure) => (
-            <div class="about-impact-figure" data-reveal="stat">
-              <dt class="about-impact-number">{figure.number}</dt>
-              <dd class="about-impact-text">{figure.label}</dd>
-            </div>
-          ))}
-        </dl>
-      </div>
-    )}
 
     {evidenceStats.length > 0 && (
       <div class="about-evidence" role="list" aria-label={evidenceAriaLabel} data-reveal>
@@ -72,9 +54,45 @@ const {
       </div>
     )}
 
-    {paragraphs.length > 0 && (
-      <div class="about-story" data-reveal>
-        {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+    {(media || paragraphs.length > 0) && (
+      <div class="about-story-layout" data-reveal>
+        {media && (
+          <figure class="about-story-media">
+            {(() => {
+              const asset = getImageByPath(media.src);
+              return asset
+                ? <Image
+                    src={asset}
+                    alt={media.alt}
+                    width={1200}
+                    height={800}
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                    sizes="(max-width: 920px) 92vw, 42vw"
+                    widths={[640, 900, 1200, 1600]}
+                    style={media.imagePosition ? `object-position: ${media.imagePosition};` : undefined}
+                  />
+                : <img
+                    src={media.src}
+                    alt={media.alt}
+                    width="1200"
+                    height="800"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                    style={media.imagePosition ? `object-position: ${media.imagePosition};` : undefined}
+                  />;
+            })()}
+            {media.caption && <figcaption>{media.caption}</figcaption>}
+          </figure>
+        )}
+
+        {paragraphs.length > 0 && (
+          <div class="about-story">
+            {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+          </div>
+        )}
       </div>
     )}
   </div>

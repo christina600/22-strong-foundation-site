@@ -2,11 +2,8 @@
 /**
  * Donation Module — the interactive giving widget.
  *
- * One widget, two distinct asks. It defaults to one-time giving (the Donate
- * section's "act now" ask) with its own ladder; monthly giving (the Strong
- * Circle relationship) has its own ladder and is reached via the Strong Circle
- * modal, which presets this widget to monthly $22. Until the secure giving URL
- * is configured, the primary action routes donors to the contact section.
+ * The Donate section's one-time giving widget. Monthly membership now lives
+ * on the dedicated Strong Circle page so the two donor asks stay distinct.
  */
 
 import site from "../../content/site.json";
@@ -15,8 +12,9 @@ import { isConfigured } from "../../utils/config";
 
 interface Props {
   defaultFrequency?: "monthly" | "one-time";
+  showFrequencyToggle?: boolean;
 }
-const { defaultFrequency = "one-time" } = Astro.props;
+const { defaultFrequency = "one-time", showFrequencyToggle = false } = Astro.props;
 
 type DonationImpactMap = {
   monthly?: Record<string, string>;
@@ -28,22 +26,24 @@ const defaults = site.donationDefaults;
 const impact = site.donationImpact as DonationImpactMap;
 const fmt = (amount: number) => Number(amount).toLocaleString();
 
-const grids = [
-  { freq: "one-time" as const, amounts: sets.oneTime, def: defaults.oneTime },
-  { freq: "monthly" as const, amounts: sets.monthly, def: defaults.monthly },
-];
+const activeDefaultFrequency = showFrequencyToggle ? defaultFrequency : "one-time";
+const grids = showFrequencyToggle
+  ? [
+      { freq: "one-time" as const, amounts: sets.oneTime, def: defaults.oneTime },
+      { freq: "monthly" as const, amounts: sets.monthly, def: defaults.monthly },
+    ]
+  : [
+      { freq: "one-time" as const, amounts: sets.oneTime, def: defaults.oneTime },
+    ];
 
-const isMonthly = defaultFrequency === "monthly";
+const isMonthly = activeDefaultFrequency === "monthly";
 const initAmount = isMonthly ? defaults.monthly : defaults.oneTime;
 const initMap = (isMonthly ? impact.monthly : impact.oneTime) ?? {};
 const initTemplate =
   initMap[String(initAmount)] ?? initMap.default ?? "Your gift helps turn a stalled recovery plan into real appointments.";
 const initDetail = String(initTemplate).replace(/\{amount\}/g, fmt(initAmount)).replace(/\{annual\}/g, fmt(initAmount * 12));
 
-// One-time gifts check out to the Fund Recovery Care campaign; monthly gifts
-// route to the dedicated 22 Strong Circle campaign so recurring members are
-// attributed there. Until a campaign URL is set, that frequency routes to
-// contact. donation.ts swaps the base by active frequency on toggle.
+// One-time gifts check out to the Fund Recovery Care campaign.
 const oneTimeReady = isConfigured(site.donateUrl);
 const monthlyReady = isConfigured(site.strongCircleUrl);
 const oneTimeUrl = oneTimeReady ? site.donateUrl : undefined;
@@ -55,17 +55,19 @@ const donateLabel = initReady ? strings.donation.continueToCheckout : strings.do
 
 <div
   class="donation-module"
-  data-frequency={defaultFrequency}
+  data-frequency={activeDefaultFrequency}
   data-default-monthly={defaults.monthly}
   data-default-onetime={defaults.oneTime}
   data-impact-map={JSON.stringify(impact)}
 >
   <div class="card donation-card-main">
     <span class="eyebrow">{strings.donation.giveNow}</span>
-    <div class="toggle-row" role="group" aria-label={strings.donation.giftFrequency}>
-      <button type="button" class={defaultFrequency === "one-time" ? "active" : ""} data-frequency="one-time" aria-pressed={defaultFrequency === "one-time" ? "true" : "false"}>{strings.donation.oneTime}</button>
-      <button type="button" class={defaultFrequency === "monthly" ? "active" : ""} data-frequency="monthly" aria-pressed={defaultFrequency === "monthly" ? "true" : "false"}>{strings.donation.monthly}</button>
-    </div>
+    {showFrequencyToggle && (
+      <div class="toggle-row" role="group" aria-label={strings.donation.giftFrequency}>
+        <button type="button" class={activeDefaultFrequency === "one-time" ? "active" : ""} data-frequency-control data-frequency="one-time" aria-pressed={activeDefaultFrequency === "one-time" ? "true" : "false"}>{strings.donation.oneTime}</button>
+        <button type="button" class={activeDefaultFrequency === "monthly" ? "active" : ""} data-frequency-control data-frequency="monthly" aria-pressed={activeDefaultFrequency === "monthly" ? "true" : "false"}>{strings.donation.monthly}</button>
+      </div>
+    )}
     <span class="eyebrow amount-grid-label">Suggested gift amounts</span>
     {grids.map((g) => (
       <div class="amount-grid" data-grid={g.freq} role="group" aria-label={strings.donation.giftAmountOptions}>
@@ -98,7 +100,7 @@ const donateLabel = initReady ? strings.donation.continueToCheckout : strings.do
       <span class="gift-detail">{initDetail}</span>
       <small>{isMonthly ? `Monthly gift. Annual commitment: $${fmt(initAmount * 12)}.` : "One-time gift."}</small>
     </div>
-    <a class="btn-donate" href={donateHref} data-donate-onetime={oneTimeUrl} data-donate-monthly={monthlyUrl} aria-label={donateLabel}>
+    <a class="btn-donate" href={donateHref} data-donate-onetime={oneTimeUrl} data-donate-monthly={showFrequencyToggle ? monthlyUrl : undefined} aria-label={donateLabel}>
       {donateLabel} &rarr;
     </a>
     {(oneTimeReady || monthlyReady) && <p class="donation-footnote">{strings.donation.footnote}</p>}

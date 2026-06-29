@@ -1,0 +1,45 @@
+---
+interface Props {
+  current?: "home" | "about" | "strong-circle";
+}
+
+const { current = "home" } = Astro.props;
+const isHome = current === "home";
+const isAbout = current === "about";
+const isStrongCircle = current === "strong-circle";
+const homeHref = (hash: string) => isHome ? hash : `/${hash}`;
+---
+
+<header>
+  <nav class="nav" aria-label="Main navigation">
+    <a class="brand" href={isHome ? "#top" : "/"}>22 Strong Foundation</a>
+    <button
+      class="nav-toggle"
+      aria-expanded="false"
+      aria-controls="nav-menu"
+      aria-label="Toggle navigation menu"
+    >
+      <span class="nav-toggle-icon" aria-hidden="true"></span>
+    </button>
+    <div class="nav-links" id="nav-menu" aria-label="Section navigation">
+      <a
+        href="/about/"
+        class:list={{ "is-active": isAbout }}
+        aria-current={isAbout ? "page" : undefined}
+      >
+        About
+      </a>
+      <a
+        href="/strong-circle/"
+        class:list={{ "is-active": isStrongCircle }}
+        aria-current={isStrongCircle ? "page" : undefined}
+      >
+        Strong Circle
+      </a>
+      <a href={homeHref("#contact")}>Contact</a>
+    </div>
+    <div class="nav-actions">
+      <a class="pill primary" href={homeHref("#donate")}>Fund recovery care</a>
+    </div>
+  </nav>
+</header>

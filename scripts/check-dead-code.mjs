@@ -18,9 +18,26 @@ const reachable = new Set();
 const bareImports = new Set();
 const findings = [];
 
+function collectAstroPages(dir) {
+  if (!existsSync(dir)) return [];
+
+  const pages = [];
+  for (const entry of readdirSync(dir)) {
+    const full = join(dir, entry);
+    const stat = statSync(full);
+
+    if (stat.isDirectory()) {
+      pages.push(...collectAstroPages(full));
+    } else if (extname(full) === ".astro") {
+      pages.push(full);
+    }
+  }
+
+  return pages;
+}
+
 const entryFiles = [
-  join(srcDir, "pages", "index.astro"),
-  join(srcDir, "pages", "404.astro"),
+  ...collectAstroPages(join(srcDir, "pages")),
   join(rootDir, "astro.config.mjs"),
 ].filter(existsSync);
 

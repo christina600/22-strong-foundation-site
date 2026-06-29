@@ -11,6 +11,12 @@ import adamFolkerUci from "./images/adam-folker-uci.webp";
 import drVas from "./images/dr-vas.webp";
 import heroBattleRopes from "./images/hero-battle-ropes.webp";
 import lukePoster from "./images/luke-poster.jpg";
+import storyAdaptiveDeadlift from "./images/story-adaptive-deadlift.webp";
+import storyAnkleWrap from "./images/story-ankle-wrap.webp";
+import storyAssistedRehab from "./images/story-assisted-rehab.webp";
+import storyTreatmentRoom from "./images/story-treatment-room.webp";
+import storyVeteranConversation from "./images/story-veteran-conversation.webp";
+import storyYouthHuddle from "./images/story-youth-huddle.webp";
 import tomBoscamp from "./images/tom-boscamp.jpg";
 import travisMayfield from "./images/travis-mayfield.jpg";
 import logoUsvm from "./images/logo-usvm.jpg";
@@ -22,6 +28,12 @@ export const imageMap: Record<string, ImageMetadata> = {
   "/images/dr-vas.webp": drVas,
   "/images/hero-battle-ropes.webp": heroBattleRopes,
   "/images/luke-poster.jpg": lukePoster,
+  "/images/story-adaptive-deadlift.webp": storyAdaptiveDeadlift,
+  "/images/story-ankle-wrap.webp": storyAnkleWrap,
+  "/images/story-assisted-rehab.webp": storyAssistedRehab,
+  "/images/story-treatment-room.webp": storyTreatmentRoom,
+  "/images/story-veteran-conversation.webp": storyVeteranConversation,
+  "/images/story-youth-huddle.webp": storyYouthHuddle,
   "/images/tom-boscamp.jpg": tomBoscamp,
   "/images/travis-mayfield.jpg": travisMayfield,
   "/images/logo-usvm.jpg": logoUsvm,

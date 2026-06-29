@@ -4,17 +4,29 @@
  * A restrained, non-blocking corner card that invites monthly giving after the
  * visitor has met the mission — when the testimonial video ends, or when they
  * scroll past the testimonials. Shows once per session, respects reduced
- * motion, and never traps the screen. "Join" presets the donation widget to
- * monthly $22; "Give once" presets it to one-time.
+ * motion, and never traps the screen. "Join" opens the Strong Circle page;
+ * "Give once" presets the donation widget to one-time.
  */
+
+import { DONATION_PRESET_EVENT } from "./events";
 
 const INVITE_SELECTOR = "[data-giving-invite]";
 const STORAGE_KEY = "givingInviteSeen";
 const VISIBLE_CLASS = "is-visible";
+const DONATION_HASHES = new Set(["#donate"]);
+const STRONG_CIRCLE_PATH = "/strong-circle/";
+
+function isGivingFlowLocation() {
+  const pathname = window.location.pathname.endsWith("/")
+    ? window.location.pathname
+    : `${window.location.pathname}/`;
+  return DONATION_HASHES.has(window.location.hash) || pathname === STRONG_CIRCLE_PATH;
+}
 
 function initGivingInvite() {
   const invite = document.querySelector<HTMLElement>(INVITE_SELECTOR);
   if (!invite) return;
+  if (isGivingFlowLocation()) return;
 
   let seen: boolean;
   try {
@@ -30,6 +42,7 @@ function initGivingInvite() {
 
   const show = () => {
     if (shown) return;
+    if (isGivingFlowLocation()) return;
     shown = true;
     try {
       sessionStorage.setItem(STORAGE_KEY, "1");
@@ -70,7 +83,19 @@ function initGivingInvite() {
     el.addEventListener("click", hide);
   });
   invite.querySelectorAll<HTMLElement>("[data-giving-invite-join], [data-giving-invite-once]").forEach((el) => {
-    el.addEventListener("click", hide);
+    el.addEventListener("click", () => {
+      if (el.hasAttribute("data-giving-invite-join")) {
+        hide();
+        return;
+      }
+
+      const preset = { frequency: "one-time" };
+      document.dispatchEvent(new CustomEvent(DONATION_PRESET_EVENT, { detail: preset }));
+      hide();
+    });
+  });
+  window.addEventListener("hashchange", () => {
+    if (isGivingFlowLocation() && !invite.hidden) hide();
   });
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && !invite.hidden) hide();

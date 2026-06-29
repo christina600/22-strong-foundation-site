@@ -13,9 +13,11 @@ interface Props {
   footer: {
     sections: FooterSection[];
   };
+  homeHrefPrefix?: string;
 }
 
-const { footer } = Astro.props;
+const { footer, homeHrefPrefix = "" } = Astro.props;
+const hrefFor = (href: string) => href.startsWith("#") ? `${homeHrefPrefix}${href}` : href;
 ---
 
 <footer>
@@ -29,7 +31,7 @@ const { footer } = Astro.props;
       <div>
         <div class="footer-title">{section.title}</div>
         <div class="links">
-          {section.links.map((link) => <a href={link.href}>{link.label}</a>)}
+          {section.links.map((link) => <a href={hrefFor(link.href)}>{link.label}</a>)}
         </div>
       </div>
     ))}

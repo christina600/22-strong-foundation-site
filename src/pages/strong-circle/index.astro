@@ -1,0 +1,32 @@
+---
+import HomeBase from "../../layouts/HomeBase.astro";
+import SectionCta from "../../components/sections/SectionCta.astro";
+import SiteFooter from "../../components/sections/SiteFooter.astro";
+import SiteHeader from "../../components/sections/SiteHeader.astro";
+import StrongCircleSection from "../../components/sections/StrongCircleSection.astro";
+import home from "../../content/home.json";
+
+const description = home.strongCircle.lead;
+---
+
+<HomeBase title="Join the 22 Strong Circle." description={description}>
+  <div class="site">
+    <SiteHeader current="strong-circle" />
+
+    <main id="main" class="strong-circle-page">
+      <StrongCircleSection
+        chapter="Monthly giving"
+        strongCircle={home.strongCircle}
+        headingLevel="h1"
+        className="strong-circle-section--page"
+      />
+      <SectionCta
+        text="Prefer a one-time gift toward the next recovery appointment?"
+        label="Make a one-time gift"
+        href="/#donate"
+      />
+    </main>
+
+    <SiteFooter footer={home.footer} homeHrefPrefix="/" />
+  </div>
+</HomeBase>

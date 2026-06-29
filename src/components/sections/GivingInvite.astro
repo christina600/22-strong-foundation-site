@@ -11,12 +11,12 @@ const invite = home.givingInvite;
 <aside class="giving-invite" data-giving-invite aria-label={invite.ariaLabel} hidden>
   <div class="giving-invite-card">
     <button class="giving-invite-close" type="button" data-giving-invite-dismiss aria-label="Close">&times;</button>
-    <p class="giving-invite-heading">{invite.heading}</p>
-    <p class="giving-invite-body">{invite.body}</p>
-    <div class="giving-invite-actions">
-      <a class="pill primary" href="#strong-circle" data-giving-invite-join>{invite.joinLabel}</a>
-      <a class="pill" href="#donate" data-giving-invite-once>{invite.giveOnceLabel}</a>
-    </div>
+      <p class="giving-invite-heading">{invite.heading}</p>
+      <p class="giving-invite-body">{invite.body}</p>
+      <div class="giving-invite-actions">
+        <a class="pill primary" href="/strong-circle/" data-giving-invite-join>{invite.joinLabel}</a>
+        <a class="pill secondary" href="#donate" data-giving-invite-once>{invite.giveOnceLabel}</a>
+      </div>
     <button class="giving-invite-not-now" type="button" data-giving-invite-dismiss>{invite.dismissLabel}</button>
   </div>
 </aside>

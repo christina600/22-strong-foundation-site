@@ -44,6 +44,9 @@ interface AudienceConfig {
   detailAriaLabel: string;
   lead: string;
   body: string;
+  photo?: string;
+  photoAlt?: string;
+  imagePosition?: string;
   statsKey: string;
   statsClass?: string;
   proofClass?: string;
@@ -67,6 +70,9 @@ export interface AudienceGroupContent {
   detailAriaLabel: string;
   lead: string;
   body: string;
+  photo?: string;
+  photoAlt?: string;
+  imagePosition?: string;
   stats: EvidenceStatContent[];
   statsClass?: string;
   proofClass?: string;
@@ -116,6 +122,9 @@ export function buildAudienceGroups(home: HomeStoryContent): AudienceGroupConten
     detailAriaLabel: group.detailAriaLabel,
     lead: group.lead,
     body: group.body,
+    photo: group.photo,
+    photoAlt: group.photoAlt,
+    imagePosition: group.imagePosition,
     stats: home.stats[group.statsKey] ?? [],
     statsClass: group.statsClass,
     proofClass: group.proofClass,

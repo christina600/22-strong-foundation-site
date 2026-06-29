@@ -14,12 +14,12 @@ import DonationAskSection from "../components/sections/DonationAskSection.astro"
 import GivingInvite from "../components/sections/GivingInvite.astro";
 import FeaturedPublications from "../components/sections/FeaturedPublications.astro";
 import HeroSection from "../components/sections/HeroSection.astro";
-import LeadershipSection from "../components/sections/LeadershipSection.astro";
+import ImpactSection from "../components/sections/ImpactSection.astro";
 import NarrativeScene from "../components/sections/NarrativeScene.astro";
 import ServicePathSection from "../components/sections/ServicePathSection.astro";
 import SectionCta from "../components/sections/SectionCta.astro";
+import SiteHeader from "../components/sections/SiteHeader.astro";
 import SiteFooter from "../components/sections/SiteFooter.astro";
-import StrongCircleSection from "../components/sections/StrongCircleSection.astro";
 import TestimonialsSection from "../components/sections/TestimonialsSection.astro";
 import VeteranStorySection from "../components/sections/VeteranStorySection.astro";
 import home from "../content/home.json";
@@ -31,51 +31,26 @@ const [costStat, , debtStat] = home.stats.others;
 
 <HomeBase title="Fund recovery care when the system stops short.">
   <div class="site">
-    <header>
-      <nav class="nav" aria-label="Main navigation">
-        <a class="brand" href="#top">22 Strong Foundation</a>
-        <button 
-          class="nav-toggle" 
-          aria-expanded="false" 
-          aria-controls="nav-menu"
-          aria-label="Toggle navigation menu"
-        >
-          <span class="nav-toggle-icon" aria-hidden="true"></span>
-        </button>
-        <div class="nav-links" id="nav-menu" aria-label="Section navigation">
-          <a href="#about">About</a>
-          <a href="#serve">Who we serve</a>
-          <a href="#how-it-works">How it works</a>
-          <a href="#strong-circle">Strong Circle</a>
-        </div>
-        <div class="nav-actions">
-          <a class="pill primary" href="#donate">Donate</a>
-          <a class="pill" href="#contact">Contact</a>
-        </div>
-      </nav>
-    </header>
+    <SiteHeader current="home" />
 
     <main id="main">
       <HeroSection proofline={home.credibility} />
       <BlankSection class="post-hero-section" id="post-hero-blank" padding="default" ariaHidden={false}>
         <div class="post-hero-message">
+          {home.hero.kicker && <p class="hero-kicker">{home.hero.kicker}</p>}
           <h1 class="hero-headline">
             {home.hero.headline.map((line) => <span class="hero-headline-line">{line}</span>)}
           </h1>
         </div>
       </BlankSection>
-      <section class="recovery-image-bridge" aria-hidden="true" data-parallax>
-        <div class="recovery-image-bridge__media" data-parallax-media style="--bg-image: url(/images/recovery-bridge.jpg)"></div>
-      </section>
       <BlankSection padding="none" id="hero-lead" ariaHidden={false}>
         <div class="hero-lead">
-          <h2 class="hero-lead-heading" data-reveal="eyebrow">Our mission</h2>
           <p class="hero-lead-statement" data-reveal="headline">{home.heroLead}</p>
         </div>
       </BlankSection>
 
       <section class="stat-bridge" data-parallax aria-label="Recovery gap statistic">
-        <div class="stat-bridge__media" data-parallax-media style="--bg-image: url(/images/stat-bridge.jpg)"></div>
+        <div class="stat-bridge__media" data-parallax-media style="--bg-image: url(/images/story-assisted-rehab.webp)"></div>
         <div class="stat-bridge__content">
           <p class="stat-bridge__number">20 visits</p>
           <p class="stat-bridge__body">a year is a common insurance cap on physical therapy — often less than recovery actually takes.</p>
@@ -89,31 +64,34 @@ const [costStat, , debtStat] = home.stats.others;
       <NarrativeScene
         chapter="02"
         id="about"
-        eyebrow={home.mission.eyebrow}
         heading={home.mission.heading}
         lead={home.mission.lead}
-        impact={home.mission.impact}
         evidenceStats={[costStat, debtStat]}
         evidenceAriaLabel="Evidence of the recovery access gap"
         needParagraphs={home.mission.needParagraphs}
         paragraphs={home.story.paragraphs}
+        media={{
+          src: "/images/story-treatment-room.webp",
+          alt: "Hands providing shoulder mobility treatment during a rehab session",
+          caption: "The gap shows up where recovery actually happens: in the treatment room.",
+          imagePosition: "50% 50%"
+        }}
       />
 
-      <SectionCta text="Care shouldn't stop because the next visit isn't covered." label="Help fund recovery" href="#donate" />
+      <ImpactSection
+        heading="Our impact so far"
+        impact={home.mission.impact}
+      />
 
       <ServicePathSection chapter="03" content={home.howItWorks} />
-
-      <SectionCta text="Keep care going every month." label="Join the Strong Circle" href="#strong-circle" variant="teal" />
 
       <VeteranStorySection />
       <TestimonialsSection groups={audienceGroups} />
 
-      <SectionCta label="Help fund recovery" href="#donate" />
+      <SectionCta text="Care shouldn't stop because the next visit isn't covered." label="Fund recovery care" href="#donate" />
 
-      <LeadershipSection people={home.leadership} />
       <FeaturedPublications chapter="04" publications={home.press.publications} />
-      <StrongCircleSection chapter="05" strongCircle={home.strongCircle} />
-      <DonationAskSection chapter="06" donate={home.donate} />
+      <DonationAskSection chapter="05" donate={home.donate} />
       <ContactSection contact={home.contact} />
     </main>
 

@@ -33,10 +33,11 @@
     "HelveticaNeue-CondensedBold", "Arial Narrow", "Aptos Narrow", Impact,
     ui-sans-serif, system-ui, sans-serif;
   /* Custom web fonts — loaded in HomeBase.astro <head> via Google Fonts.
-     --display-face → Barlow Condensed: bold editorial headings & stats.
-     --body-face    → Barlow: all body copy, UI, and labels.
-     System-font fallbacks ensure text shows instantly before swap. */
-  --display-face: "Barlow Condensed", "DIN Condensed", "Arial Narrow", ui-sans-serif, sans-serif;
+     Single content typeface: Barlow (regular width) for headings, body, UI,
+     labels, AND stats — a flat, uniform voice. The only condensed type is the
+     brand mark, which is isolated on --logo-face. System-font fallbacks ensure
+     text shows instantly before swap. */
+  --display-face: "Barlow", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --body-face:    "Barlow", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --number-face: var(--display-face);
   --space-page-x: 32px;
@@ -759,7 +760,7 @@ h2 {
       so intro statements have editorial presence at all viewport sizes. */
 .lead {
   max-width: 680px;
-  font-size: var(--fs-min);
+  font-size: var(--fs-lead);
 }
 
 /* 3. Process/timeline steps — Gemini Session 2 explicitly calls for 1.65

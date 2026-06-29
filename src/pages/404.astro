@@ -61,8 +61,8 @@ const pageTitle = `Page Not Found | ${site.orgName}`;
 
     .error-code {
       margin: 0;
-      font-family: var(--display-face);
-      font-stretch: condensed;
+      font-family: var(--ui-face, var(--body-face, ui-sans-serif, system-ui, sans-serif));
+      font-stretch: normal;
       font-weight: 900;
       font-size: clamp(6rem, 20vw, 10rem);
       line-height: .9;
@@ -72,8 +72,8 @@ const pageTitle = `Page Not Found | ${site.orgName}`;
 
     .error-title {
       margin: 0;
-      font-family: var(--display-face);
-      font-stretch: condensed;
+      font-family: var(--ui-face, var(--body-face, ui-sans-serif, system-ui, sans-serif));
+      font-stretch: normal;
       font-weight: 800;
       font-size: clamp(1.5rem, 4vw, 2rem);
       line-height: 1.1;

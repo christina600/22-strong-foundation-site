@@ -1,7 +1,17 @@
 ---
+import { Image } from "astro:assets";
+import { getImageByPath } from "../../assets/images";
+
 interface ProviderLink {
   label: string;
   href: string;
+}
+
+interface ServiceVisual {
+  src: string;
+  alt: string;
+  label?: string;
+  imagePosition?: string;
 }
 
 interface ServiceStep {
@@ -10,6 +20,7 @@ interface ServiceStep {
   body: string;
   note?: string;
   provider?: ProviderLink;
+  visual?: ServiceVisual;
 }
 
 interface ServiceOutcome {
@@ -32,6 +43,8 @@ interface Props {
 }
 
 const { chapter, content } = Astro.props;
+const stepIconClasses = ["step-icon--referral", "step-icon--funding", "step-icon--care"];
+const visualSteps = content.steps.filter((step) => step.visual);
 
 // Split a step note on the "{provider}" token so the venue name renders as a
 // link inline within the sentence.
@@ -42,10 +55,7 @@ const splitNote = (note: string) => {
 ---
 
 <section class="how-it-works story-path" id="how-it-works" data-chapter={chapter} data-bg-shift>
-  <!-- Geometric morph decoration -->
-  <div class="geo-morph geo-morph--how" aria-hidden="true"></div>
   <div class="how-story-copy" data-reveal>
-    <div class="eyebrow">{content.eyebrow}</div>
     <h2>{content.heading.map((line, i) => <Fragment>{i > 0 && <br />}{line}</Fragment>)}</h2>
     <p class="story-kicker">{content.kicker}</p>
   </div>
@@ -53,6 +63,7 @@ const splitNote = (note: string) => {
   <ol class="steps--path" aria-label={content.stepsAriaLabel}>
     {content.steps.map((step) => (
       <li class="step" data-reveal>
+        <span class={`step-icon ${stepIconClasses[Number(step.number) - 1] ?? "step-icon--care"}`} aria-hidden="true"></span>
         <span class="step-number" aria-hidden="true">{step.number}</span>
         <div class="step-body">
           <h3>{step.heading}</h3>
@@ -70,6 +81,7 @@ const splitNote = (note: string) => {
 
     {content.outcome && (
       <li class="step step--outcome" data-reveal>
+        <span class="step-icon step-icon--recovery" aria-hidden="true"></span>
         <span class="step-number step-number--outcome" aria-hidden="true"></span>
         <div class="step-body">
           <h3>{content.outcome.heading}</h3>
@@ -78,4 +90,46 @@ const splitNote = (note: string) => {
       </li>
     )}
   </ol>
+
+  {visualSteps.length > 0 && (
+    <div class="path-photo-strip" aria-label="Recovery moments along the care path">
+      {visualSteps.map((step) => (
+        <figure class="path-photo" data-reveal>
+          {(() => {
+            const visual = step.visual!;
+            const asset = getImageByPath(visual.src);
+            return asset
+              ? <Image
+                  src={asset}
+                  alt={visual.alt}
+                  width={900}
+                  height={620}
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                  sizes="(max-width: 760px) 92vw, 44vw"
+                  widths={[480, 720, 900, 1200]}
+                  style={visual.imagePosition ? `object-position: ${visual.imagePosition};` : undefined}
+                />
+              : <img
+                  src={visual.src}
+                  alt={visual.alt}
+                  width="900"
+                  height="620"
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                  style={visual.imagePosition ? `object-position: ${visual.imagePosition};` : undefined}
+                />;
+          })()}
+          {step.visual?.label && (
+            <figcaption>
+              <span>{step.number}</span>
+              {step.visual.label}
+            </figcaption>
+          )}
+        </figure>
+      ))}
+    </div>
+  )}
 </section>

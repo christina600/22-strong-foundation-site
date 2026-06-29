@@ -12,20 +12,11 @@ const { video, voice } = Astro.props;
 const titleParts = voice?.title ? voice.title.split(" · ") : [];
 const hasPhoto = Boolean(voice?.photo);
 const hasQuote = Boolean(voice?.quote);
-const isPending = voice && !hasQuote;
-const showPhotoPanel = hasPhoto || isPending;
 const voiceCardClass = [
   "vv-card",
   hasPhoto ? "vv-card--with-photo" : "vv-card--text-only",
-  voice?.sample ? "is-sample" : "",
-  isPending ? "is-pending" : ""
+  voice?.sample ? "is-sample" : ""
 ].filter(Boolean).join(" ");
-const initials = voice?.initials ?? voice?.name
-  .split(/\s+/)
-  .filter(Boolean)
-  .slice(0, 2)
-  .map((part) => part[0])
-  .join("");
 const imageWidth = voice?.imageWidth ?? 800;
 const imageHeight = voice?.imageHeight ?? 800;
 ---
@@ -78,38 +69,26 @@ const imageHeight = voice?.imageHeight ?? 800;
       </div>
     </div>
     <div class="vv-body">
-      <span class="vv-card-eyebrow">Testimonial</span>
       {video.attribution && <div class="attribution">{video.attribution}</div>}
       {video.story && <p class="story">{video.story}</p>}
-      <details class="video-transcript">
-        <summary>View transcript</summary>
-        <div class="transcript-content">
-          <p><em>Transcript unavailable. Contact us for accessibility accommodations.</em></p>
-        </div>
-      </details>
     </div>
   </article>
 )}
 
-{voice && (
+{voice && hasQuote && (
   <article class={voiceCardClass} data-reveal>
-    {showPhotoPanel && (
+    {hasPhoto && (
       <div class="vv-photo">
-        {voice.photo
-          ? (() => {
-              const asset = getImageByPath(voice.photo);
-              return asset
-                ? <Image src={asset} alt={voice.photoAlt ?? voice.name} width={imageWidth} height={imageHeight} loading="lazy" decoding="async" sizes="(max-width: 560px) 80vw, (max-width: 920px) 40vw, 320px" widths={[320, 480, 800]} style={voice.imagePosition ? `object-position: ${voice.imagePosition};` : undefined} />
-                : <img src={voice.photo} alt={voice.photoAlt ?? voice.name} width={imageWidth} height={imageHeight} loading="lazy" decoding="async" style={voice.imagePosition ? `object-position: ${voice.imagePosition};` : undefined} />;
-            })()
-          : <div class="vv-photo-ph"><span>{initials}</span><small>Photo unavailable</small></div>}
+        {(() => {
+          const asset = getImageByPath(voice.photo!);
+          return asset
+            ? <Image src={asset} alt={voice.photoAlt ?? voice.name} width={imageWidth} height={imageHeight} loading="lazy" decoding="async" sizes="(max-width: 560px) 80vw, (max-width: 920px) 40vw, 320px" widths={[320, 480, 800]} style={voice.imagePosition ? `object-position: ${voice.imagePosition};` : undefined} />
+            : <img src={voice.photo} alt={voice.photoAlt ?? voice.name} width={imageWidth} height={imageHeight} loading="lazy" decoding="async" style={voice.imagePosition ? `object-position: ${voice.imagePosition};` : undefined} />;
+        })()}
       </div>
     )}
     <div class="vv-body">
-      <span class="vv-card-eyebrow">Testimonial</span>
-      {voice.quote
-        ? <blockquote class="vv-quote">{voice.quote}</blockquote>
-        : <p class="vv-soon">Testimonial unavailable</p>}
+      <blockquote class="vv-quote">{voice.quote}</blockquote>
       <div class="vv-name">{voice.name}</div>
       {titleParts.length > 0 && (
         <div class="vv-creds">

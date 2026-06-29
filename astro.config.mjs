@@ -4,7 +4,12 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  // Confirm the production domain before launch.
-  site: 'https://22strongfoundation.org',
+  site: 'https://22strongfoundation.com',
   integrations: [sitemap()],
+  // Allow external preview tunnels (e.g. cloudflared/localtunnel) to reach the dev server.
+  vite: {
+    server: {
+      allowedHosts: true,
+    },
+  },
 });

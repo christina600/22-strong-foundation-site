@@ -2,6 +2,10 @@
 dist/
 # generated types
 .astro/
+# local test output
+test-results/
+playwright-report/
+tmp/
 
 # dependencies
 node_modules/
@@ -28,6 +32,8 @@ review-exports/
 review-inbox/
 22-strong-*.html
 22-strong-*.pdf
+22 Strong*.html
+22 Strong*Snapshot.pdf
 BUILD-PLAN-*.md
 
 # local raw/demo assets kept out of site checkpoints

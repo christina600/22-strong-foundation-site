@@ -15,9 +15,12 @@ interface StrongCircleContent {
 interface Props {
   chapter?: string;
   strongCircle: StrongCircleContent;
+  headingLevel?: "h1" | "h2";
+  className?: string;
 }
 
-const { chapter, strongCircle } = Astro.props;
+const { chapter, strongCircle, headingLevel = "h2", className = "" } = Astro.props;
+const HeadingTag = headingLevel;
 
 // Recurring giving routes to the Strong Circle Givebutter campaign once set;
 // until then it falls back to the contact section, matching DonationModule.
@@ -32,11 +35,11 @@ const tierHref = (amount: string) => {
 };
 ---
 
-<section class="strong-circle-section story-commitment" id="strong-circle" data-chapter={chapter}>
+<section class:list={["strong-circle-section", "story-commitment", className]} id="strong-circle" data-chapter={chapter}>
   <div class="strong-circle-wrap" data-reveal>
     <div class="circle-panel">
       <div class="circle-intro">
-        <h2>{strongCircle.heading}</h2>
+        <HeadingTag>{strongCircle.heading}</HeadingTag>
         <p class="lead">{strongCircle.lead}</p>
 
         <ul class="circle-points" aria-label="What membership means">

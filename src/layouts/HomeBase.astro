@@ -69,13 +69,24 @@ const metaDesc = description || site.descriptor;
   <title>{pageTitle}</title>
   <meta name="description" content={metaDesc} />
 
-  <!-- Social sharing -->
+  <!-- Social sharing (Open Graph) -->
   <meta property="og:title" content={title} />
   <meta property="og:description" content={metaDesc} />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content={site.orgName} />
   <meta property="og:url" content={Astro.url.href} />
   <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content={new URL(heroImage.src, Astro.url).href} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="800" />
+  <meta property="og:image:alt" content="22 Strong Foundation — Fund recovery care" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={metaDesc} />
+  <meta name="twitter:image" content={new URL(heroImage.src, Astro.url).href} />
+  <meta name="twitter:image:alt" content="22 Strong Foundation — Fund recovery care" />
 
   <!-- Canonical URL -->
   <link rel="canonical" href={Astro.url.href} />

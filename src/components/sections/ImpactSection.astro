@@ -1,0 +1,208 @@
+---
+interface ImpactFigure {
+  number: string;
+  label: string;
+}
+
+interface ImpactBand {
+  label?: string;
+  figures: ImpactFigure[];
+}
+
+interface Props {
+  id?: string;
+  chapter?: string;
+  heading?: string;
+  impact?: ImpactBand;
+}
+
+const {
+  id = "impact",
+  chapter,
+  heading = "Our impact in numbers",
+  impact,
+} = Astro.props;
+
+if (!impact || impact.figures.length === 0) return;
+
+const formatLabel = (label: string) => `${label.charAt(0).toUpperCase()}${label.slice(1)}`;
+---
+
+<section class="impact-section" id={id} data-chapter={chapter} data-reveal>
+  <div class="impact-section__inner">
+    {heading && <p class="impact-section__heading">{heading}</p>}
+    {impact.label && <span class="impact-section__label">{impact.label}</span>}
+    <dl class="impact-section__figures">
+      {impact.figures.map((figure) => (
+        <div class="impact-section__figure" data-reveal="stat">
+          <dt class="impact-section__number">{figure.number}</dt>
+          <dd class="impact-section__text">{formatLabel(figure.label)}</dd>
+        </div>
+      ))}
+    </dl>
+    <p class="impact-section__note">Every number represents care that did not stop when coverage did.</p>
+  </div>
+</section>
+
+<style>
+  /* ── Impact section ──
+     Full-bleed, edge-to-edge section for the "So far in 2026" proof band.
+     Dark cinematic treatment: the background is the container. */
+
+  .impact-section {
+    position: relative;
+    width: 100vw;
+    max-width: none;
+    margin: 0 calc(50% - 50vw);
+    padding: clamp(54px, 7vw, 88px) var(--space-page-x, 32px);
+    background:
+      radial-gradient(ellipse 60% 90% at 8% 0%, rgba(70, 87, 70, .30), transparent 62%),
+      linear-gradient(90deg, rgba(255, 250, 240, .055) 1px, transparent 1px),
+      linear-gradient(180deg, #1a2118 0%, #0e130d 100%);
+    background-size: auto, 88px 88px, auto;
+    border-block: 1px solid rgba(251, 247, 238, .12);
+    color: #fffaf0;
+    overflow: hidden;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 250, 240, .08),
+      inset 0 -1px 0 rgba(0, 0, 0, .38);
+  }
+
+  .impact-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(90deg, transparent 0%, rgba(70, 87, 70, .16) 48%, transparent 100%),
+      radial-gradient(ellipse 45% 60% at 90% 86%, rgba(70, 87, 70, .24), transparent 72%);
+  }
+
+  .impact-section__inner {
+    position: relative;
+    z-index: 1;
+    width: min(var(--max, 1280px), 100%);
+    margin-inline: auto;
+    display: grid;
+    gap: clamp(20px, 3vw, 34px);
+  }
+
+  .impact-section__heading {
+    margin: 0;
+    color: rgba(255, 250, 240, .94);
+    font-family: var(--display-face, var(--body-face));
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  .impact-section__label {
+    font-size: var(--fs-min, 0.75rem);
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(255, 250, 240, .52);
+    margin: 0;
+  }
+
+  .impact-section__figures {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    margin: 0;
+    width: 100%;
+    padding-block: clamp(22px, 3.2vw, 38px);
+    border-block: 1px solid rgba(251, 247, 238, .18);
+  }
+
+  .impact-section__figure {
+    display: grid;
+    gap: clamp(8px, 1vw, 12px);
+    padding: 0 clamp(18px, 3vw, 42px);
+    border-left: 1px solid rgba(255, 250, 240, .14);
+  }
+
+  .impact-section__figure:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .impact-section__number {
+    color: #fffaf0;
+    font-family: var(--number-face, var(--display-face));
+    font-stretch: condensed;
+    font-weight: 900;
+    font-size: clamp(4.8rem, 9vw, 10rem);
+    line-height: .78;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, .30);
+  }
+
+  .impact-section__text {
+    margin: 0;
+    max-width: 12ch;
+    font-size: clamp(1.25rem, 1.7vw, 1.4rem);
+    font-weight: 850;
+    line-height: 1.14;
+    color: rgba(255, 250, 240, .78);
+  }
+
+  .impact-section__note {
+    width: min(760px, 100%);
+    justify-self: center;
+    max-width: 58ch;
+    margin: 0;
+    color: rgba(255, 250, 240, .76);
+    font-size: clamp(1.25rem, 1.5vw, 1.35rem);
+    font-weight: 650;
+    line-height: 1.45;
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  /* ── Tablet: 3 columns can tighten ── */
+  @media (max-width: 768px) {
+    .impact-section__figures {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .impact-section__number {
+      font-size: clamp(2.4rem, 9vw, 4rem);
+    }
+  }
+
+  /* ── Mobile: stack figures ── */
+  @media (max-width: 640px) {
+    .impact-section {
+      padding-block: clamp(52px, 12vw, 76px);
+    }
+
+    .impact-section__figures {
+      grid-template-columns: 1fr;
+      gap: clamp(18px, 4vw, 26px);
+      padding-block: 0;
+      border-block: 0;
+    }
+
+    .impact-section__figure {
+      padding: 0;
+      border-left: 0;
+      padding-block: clamp(16px, 4vw, 24px);
+      border-top: 1px solid rgba(255, 250, 240, .14);
+    }
+
+    .impact-section__figure:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .impact-section__number {
+      font-size: clamp(4.2rem, 18vw, 6.4rem);
+    }
+
+    .impact-section__text {
+      max-width: none;
+    }
+  }
+</style>

@@ -22,3 +22,7 @@
 @import "./home-scroll-story.css";
 /* RadiatingHope-inspired: animated buttons, counter polish, scroll pacing */
 @import "./home-radiatinghope-extras.css";
+/* Preview pass: Awwwards-level polish notes */
+@import "./home-awwwards-preview.css";
+/* Final reveal/reduced-motion guardrails */
+@import "./home-motion-safety.css";

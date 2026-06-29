@@ -1,10 +1,11 @@
 {
   "hero": {
-    "headline": ["Move better.", "Get stronger.", "Get back on your feet."],
-    "ctaLabel": "Help fund recovery",
+    "kicker": "Move better. Get stronger.",
+    "headline": ["Keep recovery going", "when coverage stops."],
+    "ctaLabel": "Fund recovery care",
     "taxline": "Your gift is tax-deductible · 501(c)(3)"
   },
-  "heroLead": "22 Strong Foundation helps veterans and low-income youth access hands-on recovery care when insurance, cost, or other barriers get in the way.",
+  "heroLead": "22 Strong funds hands-on recovery care for veterans and low-income youth when insurance and cost fall short.",
   "credibility": [
     "501(c)(3) nonprofit",
     "Orange County based",
@@ -13,10 +14,10 @@
   ],
   "mission": {
     "eyebrow": "",
-    "heading": "Specialized recovery care for people whose next appointment is at risk.",
-    "lead": "A veteran or young athlete can have a real injury, a referral, and a care plan, and still lose progress when the next appointment isn't covered, delayed, or out of reach. That's the gap 22 Strong exists to close.",
+    "heading": "Coverage runs out before recovery does.",
+    "lead": "A real injury. A referral. A care plan. And then the next visit isn't covered. That's the gap we close.",
     "impact": {
-      "label": "So far in 2026",
+      "label": "",
       "figures": [
         { "number": "200+", "label": "recovery sessions funded" },
         { "number": "45", "label": "people supported" },
@@ -24,8 +25,7 @@
       ]
     },
     "needParagraphs": [
-      "Referrals arrive at the same pressure point: progress has started, but cost, coverage limits, timing, or the lack of the right connection puts the next visit at risk.",
-      "22 Strong verifies the access gap and pays for recovery sessions directly, so care can continue before progress is lost. Referrals keep climbing — and current donor funding can't yet meet every request."
+      "We confirm the gap and fund the sessions directly, so recovery doesn't stall. Referrals are climbing faster than the funding."
     ]
   },
   "story": {
@@ -109,8 +109,11 @@
       "id": "serve-veterans",
       "heading": "Veterans",
       "detailAriaLabel": "Veteran recovery support",
-      "lead": "Care funding for veterans rebuilding strength, mobility, and function after service.",
-      "body": "Support that respects the long work of recovery and helps keep care moving when benefits, timing, or access are not enough.",
+      "lead": "Care funding for veterans rebuilding strength and mobility after service.",
+      "body": "We keep care moving when VA benefits or timing fall short.",
+      "photo": "/images/story-veteran-conversation.webp",
+      "photoAlt": "Two veterans talking together at home",
+      "imagePosition": "48% 42%",
       "statsKey": "veterans",
       "proofClass": "veteran-proof",
       "voicesId": "veteran-voices",
@@ -142,13 +145,16 @@
     },
     {
       "id": "serve-athletes",
-      "heading": "Low income youth",
-      "detailAriaLabel": "Low income youth recovery support",
-      "lead": "Recovery care for young people whose families can't cover what it takes to heal after an injury or setback.",
-      "body": "When insurance runs out or care costs more than a family can carry, a young person's recovery can stall. 22 Strong keeps it moving — for student-athletes and other young people who need hands-on care to get back.",
+      "heading": "Low-income youth",
+      "detailAriaLabel": "Low-income youth recovery support",
+      "lead": "Recovery care for young people whose families can't cover what it takes to heal after an injury.",
+      "body": "When insurance runs out or care costs more than a family can carry, recovery stalls. 22 Strong keeps it moving — for student-athletes and any young person who needs hands-on care.",
+      "photo": "/images/story-youth-huddle.webp",
+      "photoAlt": "Youth basketball team huddling in a gym",
+      "imagePosition": "50% 62%",
       "statsKey": "athletes",
       "statsClass": "one-up",
-      "voicesAriaLabel": "Low income youth testimonials",
+      "voicesAriaLabel": "Low-income youth testimonials",
       "voices": [
         {
           "name": "Adam Folker",
@@ -193,7 +199,7 @@
   ],
   "strongCircle": {
     "heading": "Join the 22 Strong Circle.",
-    "lead": "A monthly membership for people who want recovery to keep going — so 22 Strong can say yes to the next veteran or young person without waiting on the next fundraiser.",
+    "lead": "A monthly membership that lets 22 Strong say yes to the next veteran or young person without waiting on the next fundraiser.",
     "tiersLabel": "Become a monthly member",
     "tiers": [
       { "amount": "$22", "note": "" },
@@ -201,29 +207,35 @@
       { "amount": "$100", "note": "" },
       { "amount": "$190", "note": "one recovery session" }
     ],
-    "joinLabel": "Become a member",
+    "joinLabel": "Become a monthly member",
     "footnote": "Monthly · cancel anytime · every dollar funds recovery care.",
     "points": [
-      { "label": "Continuity", "text": "Care that keeps going after the first visit." },
-      { "label": "Reliability", "text": "A steady base we can plan real recovery around." },
-      { "label": "Community", "text": "Veterans and neighbors funding recovery together." }
+      { "label": "Care that continues", "text": "Funding that doesn't stop after the first visit." },
+      { "label": "Funding to plan on", "text": "A steady base, not the next fundraiser." },
+      { "label": "Veterans funding veterans", "text": "Neighbors keeping recovery going together." }
     ]
   },
   "howItWorks": {
-    "eyebrow": "How 22 Strong works",
+    "eyebrow": "",
     "heading": ["A recovery gap appears.", "22 Strong helps close it."],
-    "kicker": "The story is not complicated: someone has a real recovery plan, the next appointment becomes uncertain, and donor funding keeps the care moving.",
+    "kicker": "Someone has a recovery plan, the next appointment becomes uncertain, and donor funding keeps it moving.",
     "stepsAriaLabel": "22 Strong care funding path",
     "steps": [
       {
         "number": "1",
         "heading": "Referral or request",
-        "body": "Referrals come from the VA, veteran networks, coaches, school counselors, and local community organizations."
+        "body": "Referrals come from the VA, veteran networks, coaches, school counselors, and local community organizations.",
+        "visual": {
+          "src": "/images/story-ankle-wrap.webp",
+          "alt": "Athletic trainer wrapping an ankle after a sports injury",
+          "label": "A real injury becomes a request for help.",
+          "imagePosition": "50% 38%"
+        }
       },
       {
         "number": "2",
         "heading": "We evaluate the gap",
-        "body": "22 Strong reviews the situation. If coverage has run out, private care is out of reach, or the right connections aren’t there — we step in."
+        "body": "22 Strong reviews the situation. If coverage has run out or private care is out of reach, we step in."
       },
       {
         "number": "3",
@@ -265,10 +277,21 @@
   "donate": {
     "heading": "Donate today.",
     "lead": "A one-time gift goes straight to the next recovery appointment someone can't otherwise reach.",
-    "outcomes": "In 2026, 22 Strong has funded over 200 recovery sessions for 45 people across Orange County.",
-    "goalLabel": "Current goal",
+    "outcomes": "",
+    "goalLabel": "2026 Recovery Fund Goal",
     "goalAmount": "$22,000",
-    "goalCopy": "$22,000 funds around 100 recovery sessions — keeping care within reach for the people who need it most.",
+    "goalCopy": "$22,000 = approximately 100 recovery sessions.",
+    "givingCards": [
+      { "amount": "$50", "body": "helps offset care" },
+      { "amount": "$190", "body": "funds one session" },
+      { "amount": "$850", "body": "supports an average care plan" },
+      { "amount": "$22", "body": "helps keep the next appointment within reach" }
+    ],
+    "storyImage": {
+      "src": "/images/story-adaptive-deadlift.webp",
+      "alt": "Adaptive athlete deadlifting a loaded barbell",
+      "caption": "Recovery funding protects the long road from treatment to strength."
+    },
     "covers": {
       "eyebrow": "What your gift covers",
       "items": [
@@ -280,10 +303,10 @@
   },
   "givingInvite": {
     "ariaLabel": "Join the 22 Strong Circle",
-    "heading": "Keep care going every month.",
-    "body": "Become a monthly member of the 22 Strong Circle and help 22 Strong say yes before a recovery plan stops.",
-    "joinLabel": "Become a member",
-    "giveOnceLabel": "Give once instead",
+    "heading": "Keep care going monthly.",
+    "body": "Join the 22 Strong Circle so the next recovery plan doesn't have to wait.",
+    "joinLabel": "Join monthly",
+    "giveOnceLabel": "Give once",
     "dismissLabel": "Not now"
   },
   "contact": {
@@ -323,10 +346,10 @@
       {
         "title": "Explore",
         "links": [
-          { "label": "How it works", "href": "#how-it-works" },
-          { "label": "Strong Circle", "href": "#strong-circle" },
+          { "label": "About", "href": "/about/" },
           { "label": "Who we serve", "href": "#serve" },
-          { "label": "Veterans", "href": "#serve-veterans" }
+          { "label": "How it works", "href": "#how-it-works" },
+          { "label": "Strong Circle", "href": "/strong-circle/" }
         ]
       },
       {
