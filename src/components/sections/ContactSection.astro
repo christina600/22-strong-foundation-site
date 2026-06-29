@@ -1,4 +1,7 @@
 ---
+import site from "../../content/site.json";
+import { isConfigured } from "../../utils/config";
+
 interface ContactPath {
   heading: string;
   body: string;
@@ -24,6 +27,7 @@ interface Props {
 }
 
 const { contact } = Astro.props;
+const contactEmail = isConfigured(site.email) ? site.email : undefined;
 ---
 
 <section class="contact story-contact" id="contact">
@@ -45,7 +49,16 @@ const { contact } = Astro.props;
       </ul>
     </div>
 
-    <form id="contactFormEl" aria-describedby="contact-form-note contact-form-status" data-reveal novalidate>
+    <form
+      id="contactFormEl"
+      action={contactEmail ? `mailto:${contactEmail}` : undefined}
+      method={contactEmail ? "post" : undefined}
+      enctype={contactEmail ? "text/plain" : undefined}
+      aria-describedby="contact-form-note contact-form-status"
+      data-contact-email={contactEmail}
+      data-reveal
+      novalidate
+    >
       <div class="hp" aria-hidden="true">
         <label>{contact.honeypotLabel}
           <input type="text" name="website" tabindex="-1" autocomplete="off" />

@@ -22,8 +22,8 @@ interface Props {
 const { chapter, strongCircle, headingLevel = "h2", className = "" } = Astro.props;
 const HeadingTag = headingLevel;
 
-// Recurring giving routes to the Strong Circle Givebutter campaign once set;
-// until then it falls back to the contact section, matching DonationModule.
+// Recurring giving routes to the dedicated Strong Circle Givebutter campaign.
+// If the campaign URL is ever unset, links fall back to the contact section.
 const circleReady = isConfigured(site.strongCircleUrl);
 const circleHref = circleReady ? site.strongCircleUrl : "#contact";
 const tierHref = (amount: string) => {

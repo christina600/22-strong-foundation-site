@@ -39,6 +39,27 @@ test.describe("runtime hygiene", () => {
     await expect(page.locator(".donation-module")).toBeVisible();
   });
 
+  test("giving CTAs point to the right checkout campaigns", async ({ page, baseURL }) => {
+    await blockExternalRequests(page, baseURL);
+    await page.goto("/");
+
+    await expect(page.locator("#donate .btn-donate")).toHaveAttribute(
+      "href",
+      /https:\/\/givebutter\.com\/fund-recovery-care-gaf6gu\?amount=100&frequency=once/
+    );
+
+    await page.goto("/strong-circle/");
+
+    await expect(page.locator(".strong-circle-trigger")).toHaveAttribute(
+      "href",
+      "https://givebutter.com/22-strong-circle-bjf16z"
+    );
+    await expect(page.locator(".circle-tier").first()).toHaveAttribute(
+      "href",
+      /https:\/\/givebutter\.com\/22-strong-circle-bjf16z\?amount=22&frequency=monthly/
+    );
+  });
+
   test("same-page anchors point to existing targets in the rendered DOM", async ({ page, baseURL }) => {
     await blockExternalRequests(page, baseURL);
     await page.goto("/");

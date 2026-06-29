@@ -13,6 +13,12 @@ const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const rootDir = join(__dirname, "..");
 const findings = [];
 const phrasePattern = /\b(?:coming soon|not connected yet|sample testimonial)\b/i;
+const launchConfig = {
+  siteUrl: "https://22strongfoundation.com",
+  emailPattern: /^[^\s@]+@22strongfoundation\.com$/i,
+  donateUrlPattern: /^https:\/\/givebutter\.com\/fund-recovery-care-gaf6gu$/i,
+  strongCircleUrlPattern: /^https:\/\/givebutter\.com\/22-strong-circle-bjf16z$/i,
+};
 
 function walk(dir, visitor) {
   for (const entry of readdirSync(dir)) {
@@ -80,6 +86,34 @@ function scanTextFile(file) {
     findings.push(`${relative(rootDir, file)}:${lineFor(source, match.index ?? 0)} draft phrase "${match[0]}"`);
   }
 }
+
+function checkLaunchConfig() {
+  const siteFile = join(rootDir, "src", "content", "site.json");
+  const site = JSON.parse(readFileSync(siteFile, "utf8"));
+  const robots = readFileSync(join(rootDir, "public", "robots.txt"), "utf8");
+
+  if (site.siteUrl !== launchConfig.siteUrl) {
+    findings.push(`src/content/site.json siteUrl must be ${launchConfig.siteUrl}`);
+  }
+
+  if (!launchConfig.emailPattern.test(site.email ?? "")) {
+    findings.push("src/content/site.json email must be a configured @22strongfoundation.com address");
+  }
+
+  if (!launchConfig.donateUrlPattern.test(site.donateUrl ?? "")) {
+    findings.push("src/content/site.json donateUrl must point to the Fund Recovery Care Givebutter campaign");
+  }
+
+  if (!launchConfig.strongCircleUrlPattern.test(site.strongCircleUrl ?? "")) {
+    findings.push("src/content/site.json strongCircleUrl must point to the Strong Circle Givebutter campaign");
+  }
+
+  if (!robots.includes(`Sitemap: ${launchConfig.siteUrl}/sitemap-index.xml`)) {
+    findings.push("public/robots.txt sitemap must match the production siteUrl");
+  }
+}
+
+checkLaunchConfig();
 
 walk(join(rootDir, "src", "content"), (file) => {
   if (!file.endsWith(".json")) return;

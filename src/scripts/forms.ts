@@ -2,7 +2,7 @@
  * Contact form validation and submission handler.
  *
  * Provides client-side validation with inline error messages.
- * Until a live handler is configured, submissions show a pending message.
+ * Static-site submissions open a prepared email when a contact address exists.
  */
 
 import { getEventElement } from "./dom-target";
@@ -10,8 +10,8 @@ import { getEventElement } from "./dom-target";
 let formListenerAttached = false;
 
 const CONTACT_FORM_ID = "contactFormEl";
-const NOT_CONNECTED_MESSAGE =
-  "Thanks for checking in. Message capture is disabled on this static site, so nothing was sent.";
+const MAILTO_EVENT = "contact:mailto";
+const NOT_CONNECTED_MESSAGE = "Thanks for checking in. Please email the team directly.";
 
 interface ValidationRule {
   test: (value: string) => boolean;
@@ -113,6 +113,48 @@ function hideStatus(form: HTMLFormElement) {
   status.className = "form-status";
 }
 
+function fieldValue(form: HTMLFormElement, name: string) {
+  const field = form.elements.namedItem(name);
+  if (
+    field instanceof HTMLInputElement ||
+    field instanceof HTMLTextAreaElement ||
+    field instanceof HTMLSelectElement
+  ) {
+    return field.value.trim();
+  }
+
+  return "";
+}
+
+function buildMailtoHref(form: HTMLFormElement, email: string) {
+  const name = fieldValue(form, "name");
+  const replyTo = fieldValue(form, "email");
+  const reason = fieldValue(form, "reason") || "Website inquiry";
+  const message = fieldValue(form, "message");
+  const subject = `22 Strong contact: ${reason}`;
+  const body = [
+    `Name: ${name}`,
+    `Email: ${replyTo}`,
+    `Reason: ${reason}`,
+    "",
+    message,
+  ].join("\n");
+
+  return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+function openMailto(form: HTMLFormElement, href: string) {
+  const mailtoEvent = new CustomEvent<{ href: string }>(MAILTO_EVENT, {
+    bubbles: true,
+    cancelable: true,
+    detail: { href },
+  });
+
+  if (form.dispatchEvent(mailtoEvent)) {
+    window.location.href = href;
+  }
+}
+
 function initForms() {
   if (formListenerAttached) return;
   formListenerAttached = true;
@@ -134,8 +176,15 @@ function initForms() {
       return;
     }
 
-    // Form is valid; keep the static site local-only and do not submit data.
-    setStatus(event.target, NOT_CONNECTED_MESSAGE);
+    const contactEmail = event.target.dataset.contactEmail?.trim();
+    if (!contactEmail) {
+      setStatus(event.target, NOT_CONNECTED_MESSAGE, true);
+      return;
+    }
+
+    const mailtoHref = buildMailtoHref(event.target, contactEmail);
+    setStatus(event.target, `Opening your email app to send this to ${contactEmail}.`);
+    openMailto(event.target, mailtoHref);
   });
 
   // Real-time validation on blur
