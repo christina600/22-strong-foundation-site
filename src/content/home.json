@@ -358,8 +358,7 @@
         "links": [
           { "label": "How It Works", "href": "/how-it-works/" },
           { "label": "About", "href": "/about/" },
-          { "label": "Who we serve", "href": "#serve" },
-          { "label": "Strong Circle", "href": "/strong-circle/" }
+          { "label": "Who we serve", "href": "#serve" }
         ]
       },
       {

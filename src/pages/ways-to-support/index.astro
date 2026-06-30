@@ -2,6 +2,7 @@
 import HomeBase from "../../layouts/HomeBase.astro";
 import SiteFooter from "../../components/sections/SiteFooter.astro";
 import SiteHeader from "../../components/sections/SiteHeader.astro";
+import StrongCircleSection from "../../components/sections/StrongCircleSection.astro";
 import home from "../../content/home.json";
 import site from "../../content/site.json";
 import { isConfigured } from "../../utils/config";
@@ -34,6 +35,13 @@ const shareHref = isConfigured(site.siteUrl)
     <main id="main" class="about-page support-page">
       <h1>Support 22 Strong</h1>
       <p>Every gift funds recovery care for a veteran or young person whose coverage has run out. Here are the ways you can help.</p>
+
+      <StrongCircleSection
+        chapter="Monthly giving"
+        strongCircle={home.strongCircle}
+        headingLevel="h2"
+        className="strong-circle-section--support"
+      />
 
       <section class="support-section" aria-labelledby="give-now-title">
         <h2 id="give-now-title">Give now</h2>

@@ -26,7 +26,7 @@ test.describe("navigation", () => {
     await blockExternalRequests(page, baseURL);
     await page.goto("/");
 
-    await expect(page.locator("#nav-menu a")).toHaveText(["How It Works", "About", "Strong Circle", "Support", "Contact"]);
+    await expect(page.locator("#nav-menu a")).toHaveText(["How It Works", "About", "Support", "Contact"]);
     await expect(page.locator(".nav-actions .pill")).toHaveText(["Fund recovery care"]);
   });
 
@@ -55,14 +55,22 @@ test.describe("navigation", () => {
     await expect(page.locator("#donate")).toHaveCount(0);
   });
 
-  test("Strong Circle lives on its own page", async ({ page, baseURL }) => {
+  test("Strong Circle content lives on the Support page", async ({ page, baseURL }) => {
     await blockExternalRequests(page, baseURL);
     await page.goto("/");
 
-    await page.locator('#nav-menu a[href="/strong-circle/"]').click();
+    await page.locator('#nav-menu a[href="/ways-to-support/"]').click();
 
-    await expect(page).toHaveURL(/\/strong-circle\/$/);
-    await expect(page.locator("#strong-circle h1")).toContainText("Join the 22 Strong Circle.");
+    await expect(page).toHaveURL(/\/ways-to-support\/$/);
+    await expect(page.locator("#strong-circle h2")).toContainText("Join the 22 Strong Circle.");
     await expect(page.locator("#donate")).toHaveCount(0);
+  });
+
+  test("old Strong Circle route redirects to Support", async ({ page, baseURL }) => {
+    await blockExternalRequests(page, baseURL);
+    await page.goto("/strong-circle/");
+
+    await expect(page).toHaveURL(/\/ways-to-support\/$/);
+    await expect(page.locator("#strong-circle h2")).toContainText("Join the 22 Strong Circle.");
   });
 });
