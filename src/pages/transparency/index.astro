@@ -1,0 +1,40 @@
+---
+import HomeBase from "../../layouts/HomeBase.astro";
+import SiteFooter from "../../components/sections/SiteFooter.astro";
+import SiteHeader from "../../components/sections/SiteHeader.astro";
+import home from "../../content/home.json";
+
+const description = "Governance, tax status, and provider relationship disclosures for 22 Strong Foundation.";
+---
+
+<HomeBase title="Transparency" description={description}>
+  <div class="site site--about">
+    <SiteHeader current="transparency" />
+
+    <main id="main" class="about-page">
+      <h1>Transparency</h1>
+
+      <p>22 Strong Foundation is a 501(c)(3) nonprofit. EIN 99-1232582. Donations are tax-deductible.</p>
+
+      <h2>Tax filings</h2>
+      <p>IRS determination letter: [pending]</p>
+      <p>Candid profile: [pending]</p>
+
+      <h2>Board</h2>
+      <p>[Board member names and roles — pending]</p>
+
+      <h2>Provider relationship</h2>
+      <p>Care is provided through Next Level Fitness & Wellness Center in Newport Beach. Next Level is co-owned by 22 Strong founder Dr. Vasili Gatsinaris and co-founder Travis Mayfield.</p>
+      <p>22 Strong has a written conflict-of-interest policy. Transactions between 22 Strong and Next Level are reviewed and approved by independent board members. Sessions are funded at documented rates.</p>
+      <p>22 Strong plans to add additional provider partners as funding grows.</p>
+
+      <h2>Privacy</h2>
+      <p>[Privacy policy — pending]</p>
+
+      <h2>Records</h2>
+      <p>For questions about governance, filings, or records, use the contact form.</p>
+    </main>
+
+    <SiteFooter footer={home.footer} homeHrefPrefix="/" />
+  </div>
+</HomeBase>

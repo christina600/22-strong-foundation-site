@@ -1,0 +1,59 @@
+---
+import HomeBase from "../../layouts/HomeBase.astro";
+import SiteFooter from "../../components/sections/SiteFooter.astro";
+import SiteHeader from "../../components/sections/SiteHeader.astro";
+import home from "../../content/home.json";
+
+const description = "How 22 Strong closes the recovery gap — from referral to continued care.";
+---
+
+<HomeBase title="How It Works" description={description}>
+  <div class="site site--about">
+    <SiteHeader current="how-it-works" />
+
+    <main id="main" class="about-page">
+      <h1>How It Works</h1>
+
+      <h2>The gap</h2>
+      <p>A person has an injury and a recovery plan. The next appointment becomes uncertain because insurance runs out, VA timing falls short, or the cost is out of reach. Donor funding keeps care moving.</p>
+
+      <h2>Step 1 — Referral or request</h2>
+      <p>Referrals come from the VA, veteran networks, coaches, school counselors, and community organizations.</p>
+
+      <h2>Step 2 — Gap review</h2>
+      <p>22 Strong reviews the situation. If coverage has run out or private care is out of reach, we step in.</p>
+
+      <h2>Step 3 — Care funded</h2>
+      <p>Recovery sessions are provided directly, at no cost to the person receiving care.</p>
+
+      <h2>Step 4 — Care provided</h2>
+      <p>Care is currently provided through Next Level Fitness & Wellness Center in Newport Beach — high-level sports medicine, including Fascial Integrative Treatment (FIT) for rotator cuff, knee, neck, lower back, hip, ankle/foot, and wrist/elbow injuries.</p>
+      <p>Care is provided through Next Level Fitness & Wellness Center in Newport Beach, co-owned by 22 Strong's founders. <a href="/transparency">Read about how we handle this</a>.</p>
+
+      <h2>Step 5 — Follow-through</h2>
+      <p>The gap closes, and recovery keeps moving — visit after visit.</p>
+
+      <h2>What 22 Strong funds</h2>
+      <ul>
+        <li>Chiropractic care</li>
+        <li>Physical therapy</li>
+        <li>Massage therapy</li>
+        <li>Fascial Integrative Treatment (FIT)</li>
+        <li>Follow-through after the first visit</li>
+      </ul>
+
+      <h2>What 22 Strong does not provide</h2>
+      <ul>
+        <li>Emergency medical care</li>
+        <li>Medical diagnosis</li>
+        <li>Insurance advice</li>
+        <li>Direct cash payments to individuals</li>
+      </ul>
+
+      <h2>Refer someone</h2>
+      <p>If you know a veteran or young person whose recovery care is at risk, <a href="/contact">start a referral</a>.</p>
+    </main>
+
+    <SiteFooter footer={home.footer} homeHrefPrefix="/" />
+  </div>
+</HomeBase>

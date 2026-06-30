@@ -242,12 +242,21 @@
         "heading": "Care is provided",
         "body": "Recovery sessions are provided directly, at no cost to the person receiving care.",
         "note": "Care is currently provided through {provider} in Newport Beach — high-level sports medicine, including Fascial Integrative Treatment (FIT) for rotator cuff, knee, neck, lower back, hip, ankle/foot, and wrist/elbow injuries.",
-        "provider": { "label": "Next Level Fitness & Wellness Center", "href": "https://www.nextlevelwellnesscenter.com" }
+        "provider": { "label": "Next Level Fitness & Wellness Center", "href": "https://www.nextlevelwellnesscenter.com" },
+        "disclosure": {
+          "text": "Care is provided through Next Level Fitness & Wellness Center in Newport Beach, co-owned by 22 Strong's founders.",
+          "linkLabel": "Read about how we handle this",
+          "href": "/transparency"
+        }
       }
     ],
     "outcome": {
       "heading": "Care doesn’t stop.",
       "body": "The gap closes, and recovery keeps moving — visit after visit."
+    },
+    "learnMore": {
+      "label": "See How It Works",
+      "href": "/how-it-works"
     }
   },
   "leadership": [
@@ -347,9 +356,9 @@
       {
         "title": "Explore",
         "links": [
+          { "label": "How It Works", "href": "/how-it-works/" },
           { "label": "About", "href": "/about/" },
           { "label": "Who we serve", "href": "#serve" },
-          { "label": "How it works", "href": "#how-it-works" },
           { "label": "Strong Circle", "href": "/strong-circle/" }
         ]
       },
@@ -357,7 +366,8 @@
         "title": "Get involved",
         "links": [
           { "label": "Donate", "href": "#donate" },
-          { "label": "Get in touch", "href": "#contact" }
+          { "label": "Get in touch", "href": "#contact" },
+          { "label": "Transparency", "href": "/transparency/" }
         ]
       }
     ]
