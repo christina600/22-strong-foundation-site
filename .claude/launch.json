@@ -6,7 +6,7 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
       "port": 4322,
-      "cwd": "/Users/christinatalleda/Developer/Clients/22 Strong Foundation"
+      "cwd": "/Users/fiammabluworks/Documents/Developer/Clients/22 Strong Foundation"
     }
   ]
 }
