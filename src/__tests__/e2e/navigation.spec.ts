@@ -22,11 +22,11 @@ test.describe("navigation", () => {
     await expect(navLinks).not.toHaveClass(/is-open/);
   });
 
-  test("main nav shows About, Strong Circle, and Contact with one action button", async ({ page, baseURL }) => {
+  test("main nav shows core pages and Contact with one action button", async ({ page, baseURL }) => {
     await blockExternalRequests(page, baseURL);
     await page.goto("/");
 
-    await expect(page.locator("#nav-menu a")).toHaveText(["About", "Strong Circle", "Contact"]);
+    await expect(page.locator("#nav-menu a")).toHaveText(["How It Works", "About", "Strong Circle", "Support", "Contact"]);
     await expect(page.locator(".nav-actions .pill")).toHaveText(["Fund recovery care"]);
   });
 

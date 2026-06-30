@@ -13,9 +13,7 @@ const { chapter, introTitle, groups } = Astro.props;
 const preparedGroups = groups.map((group) => ({
   ...group,
   primaryStat: group.stats[0],
-  helpLine: group.body.includes("22 Strong keeps it moving")
-    ? group.body.slice(group.body.indexOf("22 Strong keeps it moving"))
-    : group.body
+  helpLine: group.body
 }));
 ---
 
@@ -71,7 +69,10 @@ const preparedGroups = groups.map((group) => ({
             <a href={group.primaryStat.url} target="_blank" rel="noopener noreferrer">{group.primaryStat.source}</a>
           </div>
         )}
-        <p class="audience-card-help"><span>How we help</span>{group.helpLine}</p>
+        <div class="audience-card-help">
+          <h3>How we help</h3>
+          <p>{group.helpLine}</p>
+        </div>
       </article>
     ))}
   </div>

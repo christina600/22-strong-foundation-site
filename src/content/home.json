@@ -1,7 +1,7 @@
 {
   "hero": {
     "kicker": "Move better. Get stronger.",
-    "headline": ["Keep recovery going", "when coverage stops."],
+    "headline": ["Keep recovery going when coverage stops."],
     "ctaLabel": "Fund recovery care",
     "taxline": "Your gift is tax-deductible · 501(c)(3)"
   },
@@ -148,7 +148,7 @@
       "heading": "Low-income youth",
       "detailAriaLabel": "Low-income youth recovery support",
       "lead": "Recovery care for young people whose families can't cover what it takes to heal after an injury.",
-      "body": "When insurance runs out or care costs more than a family can carry, recovery stalls. 22 Strong keeps it moving — for student-athletes and any young person who needs hands-on care.",
+      "body": "22 Strong keeps it moving for student-athletes and any young person who needs hands-on care.",
       "photo": "/images/story-youth-huddle.webp",
       "photoAlt": "Youth basketball team huddling in a gym",
       "imagePosition": "50% 62%",
@@ -217,7 +217,7 @@
   },
   "howItWorks": {
     "eyebrow": "",
-    "heading": ["A recovery gap appears.", "22 Strong helps close it."],
+    "heading": ["A recovery gap appears. 22 Strong helps close it."],
     "kicker": "Someone has a recovery plan, the next appointment becomes uncertain, and donor funding keeps it moving.",
     "stepsAriaLabel": "22 Strong care funding path",
     "steps": [
@@ -366,6 +366,7 @@
         "title": "Get involved",
         "links": [
           { "label": "Donate", "href": "#donate" },
+          { "label": "Support", "href": "/ways-to-support/" },
           { "label": "Get in touch", "href": "#contact" },
           { "label": "Transparency", "href": "/transparency/" }
         ]

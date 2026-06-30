@@ -1,6 +1,7 @@
 ---
 import HomeBase from "../../layouts/HomeBase.astro";
 import AboutIntroSection from "../../components/sections/AboutIntroSection.astro";
+import FeaturedPublications from "../../components/sections/FeaturedPublications.astro";
 import LeadershipSection from "../../components/sections/LeadershipSection.astro";
 import SectionCta from "../../components/sections/SectionCta.astro";
 import SiteFooter from "../../components/sections/SiteFooter.astro";
@@ -29,6 +30,7 @@ const intro = {
 
     <main id="main" class="about-page">
       <AboutIntroSection {...intro} />
+      <FeaturedPublications publications={home.press.publications} />
       <LeadershipSection people={home.leadership} headingLevel="h2" />
       <SectionCta
         text="Care shouldn't stop because the next visit isn't covered."

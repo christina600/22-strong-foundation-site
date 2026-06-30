@@ -12,7 +12,6 @@ import BlankSection from "../components/sections/BlankSection.astro";
 import ContactSection from "../components/sections/ContactSection.astro";
 import DonationAskSection from "../components/sections/DonationAskSection.astro";
 import GivingInvite from "../components/sections/GivingInvite.astro";
-import FeaturedPublications from "../components/sections/FeaturedPublications.astro";
 import HeroSection from "../components/sections/HeroSection.astro";
 import ImpactSection from "../components/sections/ImpactSection.astro";
 import NarrativeScene from "../components/sections/NarrativeScene.astro";
@@ -90,8 +89,7 @@ const [costStat, , debtStat] = home.stats.others;
 
       <SectionCta text="Care shouldn't stop because the next visit isn't covered." label="Fund recovery care" href="#donate" />
 
-      <FeaturedPublications chapter="04" publications={home.press.publications} />
-      <DonationAskSection chapter="05" donate={home.donate} />
+      <DonationAskSection chapter="04" donate={home.donate} />
       <ContactSection contact={home.contact} />
     </main>
 

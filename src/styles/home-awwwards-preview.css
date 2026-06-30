@@ -283,12 +283,17 @@
   line-height: 1.48;
 }
 
-.audience-card-help span {
+.audience-card-help h3 {
+  margin: 0;
   color: var(--preview-cta);
   font-size: var(--fs-ui-micro);
   font-weight: 900;
   line-height: 1.1;
   text-transform: uppercase;
+}
+
+.audience-card-help p {
+  margin: 0;
 }
 
 .narrative-scene--about .about-intro h2,

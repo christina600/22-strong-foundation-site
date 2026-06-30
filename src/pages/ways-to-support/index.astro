@@ -1,0 +1,100 @@
+---
+import HomeBase from "../../layouts/HomeBase.astro";
+import SiteFooter from "../../components/sections/SiteFooter.astro";
+import SiteHeader from "../../components/sections/SiteHeader.astro";
+import home from "../../content/home.json";
+import site from "../../content/site.json";
+import { isConfigured } from "../../utils/config";
+
+const description = "Every gift funds recovery care for a veteran or young person whose coverage has run out. Here are the ways you can help.";
+
+const withParams = (url: string, params: Record<string, string>) => {
+  const separator = url.includes("?") ? "&" : "?";
+  return `${url}${separator}${new URLSearchParams(params).toString()}`;
+};
+
+const monthlyHref = isConfigured(site.strongCircleUrl)
+  ? withParams(site.strongCircleUrl, { frequency: "monthly" })
+  : "/#contact";
+const sponsorHref = isConfigured(site.donateUrl)
+  ? withParams(site.donateUrl, { amount: "850", frequency: "once" })
+  : "/#donate";
+const giveOnceHref = isConfigured(site.donateUrl)
+  ? withParams(site.donateUrl, { frequency: "once" })
+  : "/#donate";
+const shareHref = isConfigured(site.siteUrl)
+  ? `${site.siteUrl}/ways-to-support/`
+  : "/";
+---
+
+<HomeBase title="Support 22 Strong" description={description}>
+  <div class="site site--about">
+    <SiteHeader current="ways-to-support" />
+
+    <main id="main" class="about-page support-page">
+      <h1>Support 22 Strong</h1>
+      <p>Every gift funds recovery care for a veteran or young person whose coverage has run out. Here are the ways you can help.</p>
+
+      <section class="support-section" aria-labelledby="give-now-title">
+        <h2 id="give-now-title">Give now</h2>
+        <div class="support-card-grid">
+          <article class="support-card">
+            <h3>Monthly membership — the Strong Circle  (most impactful)</h3>
+            <p>Recurring gifts are the strongest support you can offer. Predictable monthly funding allows us to commit to a person's full recovery rather than fund it one visit at a time. Membership is flexible, and you may adjust or cancel at any time.</p>
+            <a class="pill primary strong-circle-trigger" href={monthlyHref}>Become a monthly member</a>
+          </article>
+
+          <article class="support-card">
+            <h3>Sponsor a recovery plan</h3>
+            <p>A complete care plan averages $850 and carries someone from their first appointment through the follow-up that sustains recovery. You may sponsor a plan once or renew your support each year.</p>
+            <a class="pill primary" href={sponsorHref}>Sponsor a plan — $850</a>
+          </article>
+
+          <article class="support-card">
+            <h3>Make a one-time gift</h3>
+            <p>A single gift goes directly to care. $190 funds one recovery session, and contributions of any size are put to immediate use.</p>
+            <a class="pill primary" href={giveOnceHref}>Give once</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="support-section support-section--list" aria-labelledby="additional-ways-title">
+        <h2 id="additional-ways-title">Additional ways to give</h2>
+        <p>The options below take a brief conversation to arrange. Contact us and a member of our team will guide you through the details.</p>
+        <ul class="support-list">
+          <li>Workplace matching. Many employers match employee donations, often doubling your impact.</li>
+          <li>Donor-advised funds. Recommend a grant to 22 Strong through your fund.</li>
+          <li>Gifts of stock or securities. Frequently more tax-advantageous than a cash gift.</li>
+          <li>Cryptocurrency. We welcome gifts of digital currency.</li>
+          <li>Planned giving. Include 22 Strong in your estate plans and extend your support for years to come.</li>
+          <li>Fundraise on our behalf. Host an event, an athletic challenge, or a workplace drive.</li>
+          <li>Volunteer. Lend your time and skills to our events and community outreach.</li>
+        </ul>
+        <a class="pill secondary" href="/#contact">Contact our team</a>
+      </section>
+
+      <section class="support-section support-section--share" aria-labelledby="other-ways-title">
+        <h2 id="other-ways-title">Other ways to help</h2>
+        <p>Follow 22 Strong and share our mission with others who may wish to give or who need care. Your advocacy extends our reach.</p>
+        <a class="pill secondary" href={shareHref} data-support-share data-share-url={shareHref}>Follow &amp; share</a>
+      </section>
+    </main>
+
+    <SiteFooter footer={home.footer} homeHrefPrefix="/" />
+  </div>
+
+  <script>
+    const shareLink = document.querySelector<HTMLAnchorElement>("[data-support-share]");
+    shareLink?.addEventListener("click", async (event) => {
+      const url = shareLink.dataset.shareUrl || shareLink.href;
+      if (!navigator.share) return;
+
+      event.preventDefault();
+      try {
+        await navigator.share({ url });
+      } catch {
+        window.location.href = shareLink.href;
+      }
+    });
+  </script>
+</HomeBase>

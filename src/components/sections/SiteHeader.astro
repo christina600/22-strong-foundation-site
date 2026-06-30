@@ -1,6 +1,6 @@
 ---
 interface Props {
-  current?: "home" | "about" | "strong-circle" | "how-it-works" | "transparency";
+  current?: "home" | "about" | "strong-circle" | "how-it-works" | "transparency" | "ways-to-support";
 }
 
 const { current = "home" } = Astro.props;
@@ -8,6 +8,7 @@ const isHome = current === "home";
 const isAbout = current === "about";
 const isStrongCircle = current === "strong-circle";
 const isHowItWorks = current === "how-it-works";
+const isWaysToSupport = current === "ways-to-support";
 const homeHref = (hash: string) => isHome ? hash : `/${hash}`;
 ---
 
@@ -43,6 +44,13 @@ const homeHref = (hash: string) => isHome ? hash : `/${hash}`;
         aria-current={isStrongCircle ? "page" : undefined}
       >
         Strong Circle
+      </a>
+      <a
+        href="/ways-to-support/"
+        class:list={{ "is-active": isWaysToSupport }}
+        aria-current={isWaysToSupport ? "page" : undefined}
+      >
+        Support
       </a>
       <a href={homeHref("#contact")}>Contact</a>
     </div>
