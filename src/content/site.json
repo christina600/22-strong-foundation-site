@@ -9,14 +9,14 @@
   "serviceArea": "Orange County & Southern California",
   "donateUrl": "https://givebutter.com/fund-recovery-care-gaf6gu",
   "strongCircleUrl": "https://givebutter.com/22-strong-circle-bjf16z",
-  "donationAmounts": [50, 100, 250, 850],
+  "donationAmounts": [50, 190, 250, 850],
   "donationAmountSets": {
     "monthly": [22, 50, 100, 190],
-    "oneTime": [50, 100, 250, 850]
+    "oneTime": [50, 190, 250, 850]
   },
   "donationDefaults": {
     "monthly": 22,
-    "oneTime": 100
+    "oneTime": 190
   },
   "defaultAmountIndex": 1,
   "donationImpact": {
@@ -30,6 +30,7 @@
     "oneTime": {
       "50": "$50 helps move the next appointment within reach.",
       "100": "$100 helps offset a hands-on recovery session for someone whose plan is at risk.",
+      "190": "$190 funds one recovery session for someone who can't cover it.",
       "250": "$250 helps carry someone through several recovery touchpoints.",
       "850": "$850 can put an average care plan within reach.",
       "default": "Your one-time gift helps turn a stalled recovery plan into real appointments."

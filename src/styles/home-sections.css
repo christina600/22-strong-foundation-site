@@ -673,15 +673,49 @@
   max-width: var(--max);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 360px;
-  gap: 58px;
+  grid-template-columns: minmax(0, .92fr) minmax(360px, 480px);
+  grid-template-areas:
+    "intro action";
+  gap: clamp(46px, 7vw, 92px);
   align-items: center;
+}
+
+.donate-intro {
+  grid-area: intro;
+}
+
+.donate-action {
+  grid-area: action;
 }
 
 .donate-section h2,
 .donate-section p { color: #fff; }
 
 .donate-section p { color: rgba(255,255,255,.74); }
+
+.donate-goal-inline {
+  display: grid;
+  gap: 8px;
+  max-width: 46ch;
+  margin: clamp(24px, 3vw, 34px) 0 0;
+  padding-top: clamp(18px, 2vw, 24px);
+  border-top: 1px solid rgba(255, 250, 240, .16);
+}
+
+.donate-goal-inline span {
+  color: rgba(255, 250, 240, .62);
+  font-size: var(--fs-ui-small);
+  font-weight: 850;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.donate-goal-inline strong {
+  max-width: 28ch;
+  color: rgba(255, 250, 240, .92);
+  font-size: clamp(1.05rem, 1.5vw, 1.24rem);
+  line-height: 1.35;
+}
 
 .goal-panel {
   margin-top: 36px;

@@ -45,7 +45,7 @@ test.describe("runtime hygiene", () => {
 
     await expect(page.locator("#donate .btn-donate")).toHaveAttribute(
       "href",
-      /https:\/\/givebutter\.com\/fund-recovery-care-gaf6gu\?amount=100&frequency=once/
+      /https:\/\/givebutter\.com\/fund-recovery-care-gaf6gu\?amount=190&frequency=once/
     );
 
     await page.goto("/strong-circle/");

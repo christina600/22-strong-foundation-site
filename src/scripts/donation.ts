@@ -153,6 +153,7 @@ function getImpactTemplate(map: DonationImpactMap, frequency: string, amount: st
 function updateGiftSummary(module: HTMLElement, pulse = true) {
   const activeAmount = getGiftAmount(module);
   const activeFrequency = getActiveFrequency(module);
+  const formattedAmount = formatGiftAmount(activeAmount);
 
   const summary = module.querySelector(".gift-summary");
   const detail = module.querySelector(".gift-detail");
@@ -161,7 +162,6 @@ function updateGiftSummary(module: HTMLElement, pulse = true) {
   const card = module.querySelector(".donation-card-main");
 
   if (summary) {
-    const formattedAmount = formatGiftAmount(activeAmount);
     summary.textContent = activeFrequency === "monthly"
       ? `$${formattedAmount}/mo`
       : `$${formattedAmount}`;
@@ -204,6 +204,14 @@ function updateGiftSummary(module: HTMLElement, pulse = true) {
       const gbFrequency = activeFrequency === "monthly" ? "monthly" : "once";
       donateBtn.href =
         `${base}${sep}amount=${encodeURIComponent(activeAmount)}&frequency=${gbFrequency}`;
+      const labelTemplate = activeFrequency === "monthly"
+        ? donateBtn.dataset.labelMonthly
+        : donateBtn.dataset.labelOnetime;
+      if (labelTemplate) {
+        const label = labelTemplate.replace(/\{amount\}/g, `$${formattedAmount}`);
+        donateBtn.textContent = label;
+        donateBtn.setAttribute("aria-label", label);
+      }
     }
   }
 
