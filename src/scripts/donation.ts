@@ -150,7 +150,7 @@ function getImpactTemplate(map: DonationImpactMap, frequency: string, amount: st
   return freqMap[amount] ?? freqMap.default ?? "";
 }
 
-function updateGiftSummary(module: HTMLElement, pulse = true) {
+function updateGiftSummary(module: HTMLElement, pulse = false) {
   const activeAmount = getGiftAmount(module);
   const activeFrequency = getActiveFrequency(module);
   const formattedAmount = formatGiftAmount(activeAmount);

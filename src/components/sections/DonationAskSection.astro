@@ -1,13 +1,20 @@
 ---
+import { Image } from "astro:assets";
 import DonationModule from "./DonationModule.astro";
+import { getImageByPath } from "../../assets/images";
+
+interface DonateStoryImage {
+  src: string;
+  alt: string;
+  caption?: string;
+  imagePosition?: string;
+}
 
 interface DonateContent {
   heading: string;
   lead: string;
   outcomes: string;
-  goalLabel: string;
-  goalAmount: string;
-  goalCopy: string;
+  storyImage?: DonateStoryImage;
   covers: {
     eyebrow: string;
     items: Array<{ heading: string; body: string }>;
@@ -28,11 +35,39 @@ const { chapter, donate } = Astro.props;
       <h2 data-reveal>{donate.heading}</h2>
       <p class="lead" data-reveal>{donate.lead}</p>
       {donate.outcomes && <p class="outcomes" data-reveal>{donate.outcomes}</p>}
-      <p class="donate-goal-inline" data-reveal>
-        <span>{donate.goalLabel}</span>
-        <strong>{donate.goalCopy}</strong>
-      </p>
     </div>
+
+    {donate.storyImage && (
+      <figure class="donate-proof-photo donate-media" data-reveal>
+        {(() => {
+          const asset = getImageByPath(donate.storyImage.src);
+          return asset
+            ? <Image
+                src={asset}
+                alt={donate.storyImage.alt}
+                width={900}
+                height={560}
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+                sizes="(max-width: 920px) 92vw, 48vw"
+                widths={[560, 760, 900, 1200]}
+                style={donate.storyImage.imagePosition ? `object-position: ${donate.storyImage.imagePosition};` : undefined}
+              />
+            : <img
+                src={donate.storyImage.src}
+                alt={donate.storyImage.alt}
+                width="900"
+                height="560"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+                style={donate.storyImage.imagePosition ? `object-position: ${donate.storyImage.imagePosition};` : undefined}
+              />;
+        })()}
+        {donate.storyImage.caption && <figcaption>{donate.storyImage.caption}</figcaption>}
+      </figure>
+    )}
 
     <div class="donate-action" data-reveal>
       <DonationModule />

@@ -888,7 +888,6 @@ html {
     align-items: start;
   }
 
-  .donate-action,
   .contact .split > div:first-child {
     position: sticky;
     top: calc(var(--story-offset) + 26px);

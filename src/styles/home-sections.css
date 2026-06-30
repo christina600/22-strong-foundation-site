@@ -673,10 +673,10 @@
   max-width: var(--max);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(0, .92fr) minmax(360px, 480px);
+  grid-template-columns: minmax(300px, .86fr) minmax(280px, .68fr) minmax(360px, 480px);
   grid-template-areas:
-    "intro action";
-  gap: clamp(46px, 7vw, 92px);
+    "intro media action";
+  gap: clamp(28px, 4vw, 46px);
   align-items: center;
 }
 
@@ -686,6 +686,10 @@
 
 .donate-action {
   grid-area: action;
+}
+
+.donate-media {
+  grid-area: media;
 }
 
 .donate-section h2,

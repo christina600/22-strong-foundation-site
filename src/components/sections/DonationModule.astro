@@ -38,10 +38,6 @@ const grids = showFrequencyToggle
 
 const isMonthly = activeDefaultFrequency === "monthly";
 const initAmount = isMonthly ? defaults.monthly : defaults.oneTime;
-const initMap = (isMonthly ? impact.monthly : impact.oneTime) ?? {};
-const initTemplate =
-  initMap[String(initAmount)] ?? initMap.default ?? "Your gift helps turn a stalled recovery plan into real appointments.";
-const initDetail = String(initTemplate).replace(/\{amount\}/g, fmt(initAmount)).replace(/\{annual\}/g, fmt(initAmount * 12));
 const amountNotes: Record<"monthly" | "one-time", Record<number, string>> = {
   monthly: {
     22: "Strong Circle",
@@ -53,7 +49,7 @@ const amountNotes: Record<"monthly" | "one-time", Record<number, string>> = {
     50: "Move care closer",
     100: "Offset care",
     190: "Funds 1 session",
-    250: "Several touchpoints",
+    250: "Follow-up care",
     850: "Average care plan",
   },
 };
@@ -134,12 +130,6 @@ const donateLabel = initReady ? initLabelTemplate.replace("{amount}", `$${fmt(in
       {donateLabel}
     </a>
     {(oneTimeReady || monthlyReady) && <p class="donation-footnote">{strings.donation.footnote}</p>}
-    <div class="impact-line" role="status" aria-live="polite" aria-atomic="true">
-      <span class="eyebrow" data-label-monthly={strings.donation.yourImpact} data-label-onetime={strings.donation.yourImpactOneTime}>{isMonthly ? strings.donation.yourImpact : strings.donation.yourImpactOneTime}</span>
-      <strong class="gift-summary">{isMonthly ? `$${fmt(initAmount)}/mo` : `$${fmt(initAmount)}`}</strong>
-      <span class="gift-detail">{initDetail}</span>
-      <small>{isMonthly ? `Monthly gift. Annual commitment: $${fmt(initAmount * 12)}.` : "One-time gift."}</small>
-    </div>
     <p class="donation-legal">
       {site.orgName} &middot; {site.taxStatus} &middot; EIN {site.ein} &middot; Tax-deductible.
     </p>

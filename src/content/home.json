@@ -282,13 +282,10 @@
     "heading": "Fund the next recovery appointment.",
     "lead": "A one-time gift helps cover hands-on recovery care when cost, coverage, or timing threatens the next visit.",
     "outcomes": "",
-    "goalLabel": "Recovery Fund Goal",
-    "goalAmount": "$22,000",
-    "goalCopy": "$22,000 funds approximately 100 recovery sessions.",
     "givingCards": [
       { "amount": "$50", "body": "moves care within reach" },
       { "amount": "$190", "body": "funds one recovery session" },
-      { "amount": "$250", "body": "supports several touchpoints" },
+      { "amount": "$250", "body": "supports follow-up care" },
       { "amount": "$850", "body": "supports an average care plan" }
     ],
     "storyImage": {
