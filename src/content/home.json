@@ -256,6 +256,8 @@
       "role": "Founder",
       "portrait": "/images/dr-vas.webp",
       "portraitAlt": "Dr. Vasili “Dr. Vas” Gatsinaris",
+      "portraitPosition": "50% 18%",
+      "credentials": ["Doctor of Chiropractic", "25+ years in recovery care", "Co-owner, Next Level Wellness"],
       "paragraphs": [
         "Dr. Vas earned his Doctorate of Chiropractic from the Los Angeles College of Chiropractic in 2001 and has more than 25 years of experience helping people recover and rebuild.",
         "Over his career, he has worked with everyone from professional athletes to first responders, developing a hands-on, integrative approach focused on restoring mobility and getting people back to life stronger and faster.",
@@ -267,7 +269,9 @@
       "role": "Co-Founder & President",
       "portrait": "/images/travis-mayfield.jpg",
       "portraitAlt": "Travis Mayfield",
+      "portraitPosition": "50% 18%",
       "initials": "TM",
+      "credentials": ["Purple Heart recipient", "U.S. Army 101st Airborne", "Community care advocate"],
       "paragraphs": [
         "A Purple Heart recipient who served as a Sergeant with the U.S. Army’s 101st Airborne Division in Vietnam, Travis is Co-Owner and President of Next Level Fitness & Wellness Center. His own long road back from war is the inspiration behind 22 Strong’s model. He helped found the foundation and leads its mission to make recovery care accessible to those who served and to others rebuilding their lives.",
         "His service and community work have been recognized by the California State Senate and Assembly, the U.S. House of Representatives, and Orange County."

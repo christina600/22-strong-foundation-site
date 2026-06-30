@@ -24,5 +24,7 @@
 @import "./home-radiatinghope-extras.css";
 /* Preview pass: Awwwards-level polish notes */
 @import "./home-awwwards-preview.css";
+/* Dedicated About page composition and responsive polish */
+@import "./about-page.css";
 /* Final reveal/reduced-motion guardrails */
 @import "./home-motion-safety.css";

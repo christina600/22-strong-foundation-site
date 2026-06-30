@@ -1,5 +1,6 @@
 ---
 import HomeBase from "../../layouts/HomeBase.astro";
+import AboutIntroSection from "../../components/sections/AboutIntroSection.astro";
 import LeadershipSection from "../../components/sections/LeadershipSection.astro";
 import SectionCta from "../../components/sections/SectionCta.astro";
 import SiteFooter from "../../components/sections/SiteFooter.astro";
@@ -7,14 +8,28 @@ import SiteHeader from "../../components/sections/SiteHeader.astro";
 import home from "../../content/home.json";
 
 const description = "Meet the founders and leadership behind 22 Strong Foundation.";
+const intro = {
+  eyebrow: "About 22 Strong",
+  heading: home.story.heading,
+  lead: home.heroLead,
+  paragraphs: home.story.paragraphs,
+  proof: home.credibility,
+  image: {
+    src: "/images/story-treatment-room.webp",
+    alt: "A treatment room prepared for hands-on recovery care.",
+    caption: "Built inside real recovery care in Newport Beach.",
+    position: "50% 52%",
+  },
+};
 ---
 
 <HomeBase title="About 22 Strong Foundation." description={description}>
-  <div class="site">
+  <div class="site site--about">
     <SiteHeader current="about" />
 
     <main id="main" class="about-page">
-      <LeadershipSection people={home.leadership} headingLevel="h1" />
+      <AboutIntroSection {...intro} />
+      <LeadershipSection people={home.leadership} headingLevel="h2" />
       <SectionCta
         text="Care shouldn't stop because the next visit isn't covered."
         label="Fund recovery care"

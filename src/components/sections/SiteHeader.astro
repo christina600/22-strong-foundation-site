@@ -39,7 +39,9 @@ const homeHref = (hash: string) => isHome ? hash : `/${hash}`;
       <a href={homeHref("#contact")}>Contact</a>
     </div>
     <div class="nav-actions">
-      <a class="pill primary" href={homeHref("#donate")}>Fund recovery care</a>
+      <a class="pill primary" href={homeHref("#donate")} aria-label="Fund recovery care">
+        <span class="nav-action-label">Fund recovery care</span>
+      </a>
     </div>
   </nav>
 </header>

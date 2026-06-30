@@ -50,7 +50,8 @@ test.describe("navigation", () => {
     await page.locator('#nav-menu a[href="/about/"]').click();
 
     await expect(page).toHaveURL(/\/about\/$/);
-    await expect(page.locator("#leadership h1")).toContainText("Meet the team.");
+    await expect(page.locator("#about-title")).toContainText("The gap kept showing up in the treatment room.");
+    await expect(page.locator("#leadership h2")).toContainText("Meet the team.");
     await expect(page.locator("#donate")).toHaveCount(0);
   });
 

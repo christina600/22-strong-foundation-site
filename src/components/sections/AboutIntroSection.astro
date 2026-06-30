@@ -1,0 +1,63 @@
+---
+import { Image } from "astro:assets";
+import { getImageByPath } from "../../assets/images";
+
+interface AboutIntroImage {
+  src: string;
+  alt: string;
+  caption: string;
+  position?: string;
+}
+
+interface Props {
+  eyebrow: string;
+  heading: string;
+  lead: string;
+  paragraphs: string[];
+  proof: string[];
+  image: AboutIntroImage;
+}
+
+const { eyebrow, heading, lead, paragraphs, proof, image } = Astro.props;
+const imageAsset = getImageByPath(image.src);
+const mediaStyle = `--about-media-position: ${image.position ?? "center"};`;
+---
+
+<section class="about-hero" aria-labelledby="about-title">
+  <div class="about-hero__inner">
+    <div class="about-hero__copy" data-reveal="headline">
+      <span class="eyebrow">{eyebrow}</span>
+      <h1 id="about-title">{heading}</h1>
+      <p class="lead">{lead}</p>
+    </div>
+
+    <figure class="about-hero__media" style={mediaStyle} data-reveal="image">
+      {imageAsset ? (
+        <Image
+          src={imageAsset}
+          alt={image.alt}
+          width={960}
+          height={720}
+          widths={[480, 720, 960, 1280]}
+          sizes="(max-width: 760px) calc(100vw - 40px), 46vw"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+          quality={84}
+        />
+      ) : (
+        <img src={image.src} alt={image.alt} loading="eager" decoding="async" fetchpriority="high" />
+      )}
+      <figcaption>{image.caption}</figcaption>
+    </figure>
+
+    <div class="about-hero__details" data-reveal="card">
+      <div class="about-hero__body">
+        {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+      <ul class="about-proof-list" aria-label="22 Strong Foundation facts">
+        {proof.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+  </div>
+</section>
