@@ -19,6 +19,11 @@ interface ServiceStep {
   heading: string;
   body: string;
   note?: string;
+  disclosure?: {
+    text: string;
+    linkLabel: string;
+    href: string;
+  };
   provider?: ProviderLink;
   visual?: ServiceVisual;
 }
@@ -34,6 +39,10 @@ interface ServicePathContent {
   kicker: string;
   stepsAriaLabel: string;
   steps: ServiceStep[];
+  learnMore?: {
+    label: string;
+    href: string;
+  };
   outcome?: ServiceOutcome;
 }
 
@@ -73,6 +82,11 @@ const splitNote = (note: string) => {
               {step.provider
                 ? <Fragment>{splitNote(step.note).before}<a href={step.provider.href} target="_blank" rel="noopener noreferrer">{step.provider.label}</a>{splitNote(step.note).after}</Fragment>
                 : step.note}
+            </p>
+          )}
+          {step.disclosure && (
+            <p class="step-note">
+              {step.disclosure.text} <a href={step.disclosure.href}>{step.disclosure.linkLabel}</a>.
             </p>
           )}
         </div>
@@ -131,5 +145,9 @@ const splitNote = (note: string) => {
         </figure>
       ))}
     </div>
+  )}
+
+  {content.learnMore && (
+    <a class="pill secondary" href={content.learnMore.href}>{content.learnMore.label}</a>
   )}
 </section>

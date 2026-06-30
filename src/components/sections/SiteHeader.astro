@@ -1,12 +1,13 @@
 ---
 interface Props {
-  current?: "home" | "about" | "strong-circle";
+  current?: "home" | "about" | "strong-circle" | "how-it-works" | "transparency";
 }
 
 const { current = "home" } = Astro.props;
 const isHome = current === "home";
 const isAbout = current === "about";
 const isStrongCircle = current === "strong-circle";
+const isHowItWorks = current === "how-it-works";
 const homeHref = (hash: string) => isHome ? hash : `/${hash}`;
 ---
 
@@ -22,6 +23,13 @@ const homeHref = (hash: string) => isHome ? hash : `/${hash}`;
       <span class="nav-toggle-icon" aria-hidden="true"></span>
     </button>
     <div class="nav-links" id="nav-menu" aria-label="Section navigation">
+      <a
+        href="/how-it-works/"
+        class:list={{ "is-active": isHowItWorks }}
+        aria-current={isHowItWorks ? "page" : undefined}
+      >
+        How It Works
+      </a>
       <a
         href="/about/"
         class:list={{ "is-active": isAbout }}
