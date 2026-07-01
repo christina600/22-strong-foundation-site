@@ -73,7 +73,48 @@ const preparedGroups = groups.map((group) => ({
           <h3>How we help</h3>
           <p>{group.helpLine}</p>
         </div>
+        {group.videos && group.videos.length > 0 && (
+          <figure class="audience-voice">
+            <video class="audience-voice__video" controls preload="none" poster={group.videos[0].poster}>
+              <source src={group.videos[0].src} type="video/mp4" />
+            </video>
+            {group.videos[0].quote && <blockquote class="audience-voice__quote">{group.videos[0].quote}</blockquote>}
+            {group.videos[0].attribution && <figcaption class="audience-voice__cite">{group.videos[0].attribution}</figcaption>}
+          </figure>
+        )}
       </article>
     ))}
   </div>
 </section>
+
+<style>
+  .audience-voice {
+    margin: 18px 0 0;
+    display: grid;
+    gap: 12px;
+  }
+
+  .audience-voice__video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    background: #000;
+    object-fit: cover;
+  }
+
+  .audience-voice__quote {
+    margin: 0;
+    font-size: clamp(1.3rem, 1.7vw, 1.5rem);
+    font-weight: 600;
+    line-height: 1.34;
+  }
+
+  .audience-voice__quote::before { content: "\201C"; }
+  .audience-voice__quote::after { content: "\201D"; }
+
+  .audience-voice__cite {
+    font-size: 1.25rem;
+    font-weight: 700;
+    opacity: .78;
+  }
+</style>

@@ -35,6 +35,7 @@ export interface VideoVoiceContent {
   fallbackLabel: string;
   testimonialKey?: string;
   attribution?: string;
+  quote?: string;
   story?: string;
 }
 
@@ -110,6 +111,7 @@ const resolveVideos = (
     return {
       ...video,
       attribution: video.attribution ?? testimonial?.attribution ?? "",
+      quote: video.quote ?? testimonial?.quote,
       story: video.story ?? testimonial?.story ?? ""
     };
   });
