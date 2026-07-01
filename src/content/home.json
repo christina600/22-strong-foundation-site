@@ -348,7 +348,7 @@
       "I have a general question"
     ],
     "messageLabel": "Message",
-    "note": "Please don't include private medical details or urgent needs.",
+    "note": "If this is a medical emergency, call 911. Otherwise, tell us what you can — no private medical details needed — and we'll follow up.",
     "submitLabel": "Send message"
   },
   "footer": {
