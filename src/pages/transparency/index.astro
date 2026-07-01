@@ -4,21 +4,171 @@ import SiteFooter from "../../components/sections/SiteFooter.astro";
 import SiteHeader from "../../components/sections/SiteHeader.astro";
 import home from "../../content/home.json";
 
-const description = "Governance, tax status, and provider relationship disclosures for 22 Strong Foundation.";
+const description = "How 22 Strong Foundation handles money, care, trust, and its provider relationship.";
 ---
 
-<HomeBase title="Transparency" description={description}>
+<HomeBase title="How we handle money, care, and trust" description={description}>
   <div class="site site--about">
     <SiteHeader current="transparency" />
 
-    <main id="main" class="about-page">
-      <h1>Transparency</h1>
+    <main id="main" class="about-page transparency-page">
+      <section class="transparency-hero" aria-labelledby="transparency-title">
+        <div class="transparency-hero__inner">
+          <p class="eyebrow">Transparency</p>
+          <h1 id="transparency-title">How we handle money, care, and trust</h1>
+          <p class="lead">
+            22 Strong Foundation is a 501(c)(3) nonprofit. We fund recovery care for veterans
+            and low-income youth when their coverage runs out. Because of how this organization
+            started, we want to be straight with you about how it is built and how money moves.
+          </p>
+        </div>
+      </section>
 
-      <p>22 Strong Foundation is a 501(c)(3) nonprofit. EIN 99-1232582. Donations are tax-deductible.</p>
+      <div class="transparency-copy">
+        <section class="transparency-section" aria-labelledby="where-started">
+          <h2 id="where-started">Where we started, and why it matters</h2>
+          <p>
+            22 Strong grew out of Next Level Fitness & Wellness Center, a sports-medicine clinic
+            in Newport Beach. Two of the people who run our foundation, Dr. Vasili Gatsinaris and
+            Travis Mayfield, co-own that clinic. The recovery care we pay for is provided there.
+          </p>
+          <p>
+            So you should know up front: when you give to 22 Strong, your donation pays for care
+            at a clinic our founders have a financial stake in. A lot of nonprofits work with a
+            related provider this way. What keeps it clean is saying so out loud and putting rules
+            around it. Here are ours.
+          </p>
+        </section>
 
-      <p>22 Strong funds care at Next Level Fitness & Wellness Center in Newport Beach, a clinic co-owned by our founders, Dr. Vasili Gatsinaris and Travis Mayfield. The foundation grew out of that clinic, and we're upfront about the connection.</p>
+        <section class="transparency-section" aria-labelledby="funding-decision">
+          <h2 id="funding-decision">How a funding decision gets made</h2>
+          <p>
+            When someone is referred to us, we confirm that their coverage has run out or that
+            private care is out of reach before we agree to pay for sessions.
+          </p>
+          <p class="draft-row">
+            <span class="transparency-draft transparency-draft--block">[CONFIRM: who signs off on each funding decision. Name the role or the step, e.g. "The board reviews and approves funding above a set amount" or "An intake reviewer who is not one of the founders approves each case."]</span>
+          </p>
+        </section>
 
-      <p>As the foundation grows, we're building the board oversight and record-keeping to manage that relationship openly. If you have questions about how we govern the organization or spend donor money, get in touch.</p>
+        <section class="transparency-section" aria-labelledby="session-cost">
+          <h2 id="session-cost">What a session costs and why</h2>
+          <p>We fund recovery sessions at $190 each.</p>
+          <p class="draft-row">
+            <span class="transparency-draft transparency-draft--block">[CONFIRM: the basis for that number. Is it Next Level's standard published rate, a discounted rate, or set against comparable clinics in the area? One plain sentence.]</span>
+          </p>
+        </section>
+
+        <section class="transparency-section" aria-labelledby="conflict-policy">
+          <h2 id="conflict-policy">Our conflict-of-interest policy</h2>
+          <p>
+            Our board has adopted a written conflict-of-interest policy. In short: any director
+            or officer with a personal or financial interest in a decision has to say so, and they
+            step out of the vote on it. The Next Level relationship is treated as a standing
+            conflict. Dr. Gatsinaris and Mr. Mayfield do not vote to approve payments that flow
+            to the clinic. Those approvals are made by the directors who have no stake in it.
+            The full policy is below.
+          </p>
+        </section>
+
+        <section class="transparency-section" aria-labelledby="board">
+          <h2 id="board">Our board</h2>
+          <p>22 Strong is governed by a board of three directors.</p>
+          <ul class="transparency-list">
+            <li>Travis Mayfield, President and co-founder</li>
+            <li>Dr. Vasili Gatsinaris, co-founder</li>
+            <li><span class="transparency-draft">[THIRD DIRECTOR: name and role. CONFIRM whether this person is independent of Next Level, since this is the director who approves the related-party payments.]</span></li>
+          </ul>
+        </section>
+
+        <section class="transparency-section" aria-labelledby="clinic-agreement">
+          <h2 id="clinic-agreement">Our agreement with the clinic</h2>
+          <p class="draft-row">
+            <span class="transparency-draft transparency-draft--block">[CONFIRM: is there a written agreement between 22 Strong and Next Level covering what services are funded, the rate, and how sessions are verified? If yes, one sentence saying it exists and what it covers. If not yet, this section stays out until it does.]</span>
+          </p>
+        </section>
+
+        <section class="transparency-section" aria-labelledby="providers">
+          <h2 id="providers">Adding more providers</h2>
+          <p>
+            Right now all funded care runs through Next Level. As donations grow, we plan to bring
+            on additional clinics so that care is not tied to a single provider.
+          </p>
+          <p class="draft-row">
+            <span class="transparency-draft transparency-draft--block">[CONFIRM: keep this only if the founders agree it reflects a real intention.]</span>
+          </p>
+        </section>
+
+        <section class="transparency-section" aria-labelledby="records">
+          <h2 id="records">Records you can check</h2>
+          <ul class="transparency-list">
+            <li>IRS determination letter: <span class="transparency-draft">[CONFIRM: link]</span></li>
+            <li>Candid / GuideStar profile: <span class="transparency-draft">[CONFIRM: link if one exists]</span></li>
+            <li>California Registry of Charitable Trusts registration: <span class="transparency-draft">[CONFIRM: number]</span></li>
+            <li>Questions about any of this: <a href="/#contact">contact us</a></li>
+          </ul>
+          <p class="transparency-legal">22 Strong Foundation. 501(c)(3). EIN 99-1232582. Donations are tax-deductible.</p>
+        </section>
+      </div>
+
+      <section class="transparency-policy" aria-labelledby="policy-title">
+        <div class="transparency-policy__inner">
+          <p class="eyebrow">Policy</p>
+          <h2 id="policy-title">22 Strong Foundation Conflict-of-Interest Policy</h2>
+
+          <h3>Why we have this</h3>
+          <p>
+            22 Strong funds care at a clinic two of our founders own. That is a conflict of
+            interest, and we wrote this policy so that conflict is managed in the open instead of
+            ignored. The point is to make sure our decisions serve the people we fund, not the
+            people who run us.
+          </p>
+
+          <h3>Who it covers</h3>
+          <p>
+            Every director and officer of 22 Strong Foundation, and anyone else the board asks to
+            follow it.
+          </p>
+
+          <h3>What counts as a conflict</h3>
+          <p>
+            You have a conflict when a 22 Strong decision could benefit you, a family member, or a
+            business you have a stake in. The clearest example is our use of Next Level Fitness &
+            Wellness Center, which Dr. Gatsinaris and Mr. Mayfield co-own.
+          </p>
+
+          <h3>What you have to do</h3>
+          <p>
+            If you have a conflict on something the board is deciding, say so before the
+            discussion. You can answer questions about it, but you leave the room for the vote and
+            you do not vote. The minutes record that you stepped out.
+          </p>
+
+          <h3>How we handle the Next Level relationship</h3>
+          <p>
+            Payments from 22 Strong to Next Level are a standing conflict for the two founders.
+            They do not approve those payments. A director with no financial tie to the clinic
+            reviews and approves them, and we keep a record of what was approved and at what rate.
+          </p>
+          <p class="draft-row">
+            <span class="transparency-draft transparency-draft--block">[CONFIRM: this only works if at least one director is independent of Next Level. If the third director is also tied to the clinic, the board needs to add an independent member before this language is true.]</span>
+          </p>
+
+          <h3>Once a year</h3>
+          <p>
+            Every director and officer signs a short statement listing any conflicts they know
+            about. The board keeps these on file.
+          </p>
+
+          <h3>Reviewing this policy</h3>
+          <p>The board looks at this policy once a year and updates it as the organization grows.</p>
+
+          <p class="transparency-adopted">
+            Adopted by the Board of Directors of 22 Strong Foundation on
+            <span class="transparency-draft">[DATE]</span>.
+          </p>
+        </div>
+      </section>
     </main>
 
     <SiteFooter footer={home.footer} homeHrefPrefix="/" />
