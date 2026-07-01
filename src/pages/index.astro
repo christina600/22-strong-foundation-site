@@ -20,7 +20,6 @@ import SectionCta from "../components/sections/SectionCta.astro";
 import StrongCircleSection from "../components/sections/StrongCircleSection.astro";
 import SiteHeader from "../components/sections/SiteHeader.astro";
 import SiteFooter from "../components/sections/SiteFooter.astro";
-import TestimonialsSection from "../components/sections/TestimonialsSection.astro";
 import VeteranStorySection from "../components/sections/VeteranStorySection.astro";
 import home from "../content/home.json";
 import { buildAudienceGroups } from "../utils/home-story";
@@ -86,7 +85,6 @@ const [costStat, , debtStat] = home.stats.others;
       <ServicePathSection chapter="03" content={home.howItWorks} />
 
       <VeteranStorySection />
-      <TestimonialsSection groups={audienceGroups} />
 
       <StrongCircleSection strongCircle={home.strongCircle} />
 

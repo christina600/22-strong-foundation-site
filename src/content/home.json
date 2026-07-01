@@ -132,13 +132,6 @@
           "triggerLabel": "Play King Martin testimonial video",
           "fallbackLabel": "Watch King Martin's testimonial",
           "testimonialKey": "kingMartin"
-        },
-        {
-          "src": "/video/veteran-care-testimonial.mp4",
-          "poster": "/images/veteran-care-poster.webp",
-          "triggerLabel": "Play Veteran Care testimonial video",
-          "fallbackLabel": "Watch Veteran Care testimonial",
-          "testimonialKey": "veteranCare"
         }
       ],
       "voicesKey": "veteranVoices"
@@ -177,10 +170,6 @@
     "kingMartin": {
       "attribution": "King Martin · Veteran",
       "story": "King Martin shares his experience with 22 Strong Foundation's recovery care program."
-    },
-    "veteranCare": {
-      "attribution": "Veteran Care Testimonial",
-      "story": "A testimonial about veteran care and recovery support through 22 Strong Foundation."
     },
     "adam": {
       "quote": "During my sophomore year in college, I had hip surgery that was potentially season-ending and even career-ending. My coaches referred me to Dr. Vas, who was able to take care of me and eventually get me back to playing within a short few weeks. That season I ended up winning hustle player of the year award. Throughout my career, I saw Dr. Vas on various occasions for injuries that came up, along with maintenance and preventive care. I was able to play competitively at the top level.",
