@@ -10,11 +10,11 @@
       <video
         id="veteran-story-video"
         class="veteran-chapter-video"
-        src="/video/veteran-care-testimonial.mp4"
-        poster="/images/veteran-care-poster.webp"
+        src="/video/king-martin-testimonial.mp4"
+        poster="/images/king-martin-poster.webp"
         preload="metadata"
         playsinline
-        aria-label="Veteran shares their experience with 22 Strong care"
+        aria-label="King Martin shares his experience with 22 Strong care"
       ></video>
 
       <button
@@ -28,11 +28,22 @@
     </div>
 
     <p class="veteran-chapter-caption">
-      Real people. Real care. Real results — funded by donors like you.
+      “He's giving his talents away for free to veterans, just to help them get their life together. When you have someone like that around, you get a chance to be a blessing on a whole other level.”
     </p>
+    <p class="veteran-chapter-cite">King Martin · Veteran</p>
 
   </div>
 </section>
+
+<style>
+  .veteran-chapter-cite {
+    margin: 8px 0 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+    opacity: .8;
+  }
+</style>
 
 <script>
   const btn = document.querySelector<HTMLButtonElement>("[data-play-target='veteran-story-video']");
