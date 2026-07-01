@@ -292,10 +292,10 @@
     "lead": "A one-time gift helps cover hands-on recovery care when cost, coverage, or timing threatens the next visit.",
     "outcomes": "",
     "givingCards": [
-      { "amount": "$50", "body": "moves care within reach" },
-      { "amount": "$190", "body": "funds one recovery session" },
-      { "amount": "$250", "body": "supports follow-up care" },
-      { "amount": "$850", "body": "supports an average care plan" }
+      { "amount": "$50", "body": "helps offset care" },
+      { "amount": "$190", "body": "funds one session" },
+      { "amount": "$850", "body": "supports an average care plan" },
+      { "amount": "$22", "body": "helps keep the next appointment within reach" }
     ],
     "storyImage": {
       "src": "/images/story-adaptive-deadlift.webp",

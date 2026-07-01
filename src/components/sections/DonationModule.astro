@@ -46,11 +46,11 @@ const amountNotes: Record<"monthly" | "one-time", Record<number, string>> = {
     190: "Monthly session",
   },
   "one-time": {
-    50: "Move care closer",
+    22: "helps keep the next appointment within reach",
+    50: "helps offset care",
     100: "Offset care",
-    190: "Funds 1 session",
-    250: "Follow-up care",
-    850: "Average care plan",
+    190: "funds one session",
+    850: "supports an average care plan",
   },
 };
 const amountNote = (frequency: "monthly" | "one-time", amount: number) => amountNotes[frequency][amount] ?? "Recovery care";
