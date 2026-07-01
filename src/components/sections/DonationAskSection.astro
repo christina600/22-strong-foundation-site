@@ -10,10 +10,17 @@ interface DonateStoryImage {
   imagePosition?: string;
 }
 
+interface DonateTestimonial {
+  quote: string;
+  attribution: string;
+  photo?: string;
+}
+
 interface DonateContent {
   heading: string;
   lead: string;
   outcomes: string;
+  testimonial?: DonateTestimonial;
   storyImage?: DonateStoryImage;
   covers: {
     eyebrow: string;
@@ -70,6 +77,42 @@ const { chapter, donate } = Astro.props;
     )}
 
     <div class="donate-action" data-reveal>
+      {donate.testimonial && (
+        <figure class="donate-proof-quote">
+          {donate.testimonial.photo && (
+            <div class="donate-proof-quote-portrait">
+              {(() => {
+                const asset = getImageByPath(donate.testimonial.photo);
+                return asset
+                  ? <Image
+                      src={asset}
+                      alt={donate.testimonial.attribution}
+                      width={160}
+                      height={160}
+                      loading="lazy"
+                      decoding="async"
+                      fetchpriority="low"
+                      format="webp"
+                    />
+                  : <img
+                      src={donate.testimonial.photo}
+                      alt={donate.testimonial.attribution}
+                      width="160"
+                      height="160"
+                      loading="lazy"
+                      decoding="async"
+                    />;
+              })()}
+            </div>
+          )}
+          <div class="donate-proof-quote-text">
+            <blockquote>
+              <p>{donate.testimonial.quote}</p>
+            </blockquote>
+            <figcaption>— {donate.testimonial.attribution}</figcaption>
+          </div>
+        </figure>
+      )}
       <DonationModule />
     </div>
   </div>

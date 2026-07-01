@@ -30,8 +30,8 @@ const formatLabel = (label: string) => `${label.charAt(0).toUpperCase()}${label.
 
 <section class="impact-section" id={id} data-chapter={chapter} data-reveal>
   <div class="impact-section__inner">
+    {impact.label && <h2 class="impact-section__headline">{impact.label}</h2>}
     {heading && <p class="impact-section__heading">{heading}</p>}
-    {impact.label && <span class="impact-section__label">{impact.label}</span>}
     <dl class="impact-section__figures">
       {impact.figures.map((figure) => (
         <div class="impact-section__figure" data-reveal="stat">
@@ -40,7 +40,6 @@ const formatLabel = (label: string) => `${label.charAt(0).toUpperCase()}${label.
         </div>
       ))}
     </dl>
-    <p class="impact-section__note">Every number represents care that did not stop when coverage did.</p>
   </div>
 </section>
 
@@ -87,24 +86,26 @@ const formatLabel = (label: string) => `${label.charAt(0).toUpperCase()}${label.
     gap: clamp(20px, 3vw, 34px);
   }
 
-  .impact-section__heading {
+  .impact-section__headline {
     margin: 0;
-    color: rgba(255, 250, 240, .94);
+    color: #fffaf0;
     font-family: var(--display-face, var(--body-face));
-    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-size: clamp(2.4rem, 5vw, 4rem);
     font-weight: 800;
     line-height: 1.08;
     letter-spacing: -0.01em;
     text-wrap: balance;
+    max-width: 24ch;
   }
 
-  .impact-section__label {
-    font-size: var(--fs-min, 0.75rem);
+  .impact-section__heading {
+    margin: 0;
+    color: rgba(255, 250, 240, .64);
+    font-family: var(--display-face, var(--body-face));
+    font-size: var(--fs-min, 0.8rem);
     font-weight: 800;
     letter-spacing: .12em;
     text-transform: uppercase;
-    color: rgba(255, 250, 240, .52);
-    margin: 0;
   }
 
   .impact-section__figures {
@@ -146,19 +147,6 @@ const formatLabel = (label: string) => `${label.charAt(0).toUpperCase()}${label.
     font-weight: 850;
     line-height: 1.14;
     color: rgba(255, 250, 240, .78);
-  }
-
-  .impact-section__note {
-    width: min(760px, 100%);
-    justify-self: center;
-    max-width: 58ch;
-    margin: 0;
-    color: rgba(255, 250, 240, .76);
-    font-size: clamp(1.25rem, 1.5vw, 1.35rem);
-    font-weight: 650;
-    line-height: 1.45;
-    text-align: center;
-    text-wrap: balance;
   }
 
   /* ── Tablet: 3 columns can tighten ── */

@@ -17,7 +17,7 @@
     "heading": "Coverage runs out before recovery does.",
     "lead": "A real injury. A referral. A care plan. And then the next visit isn't covered. That's the gap we close.",
     "impact": {
-      "label": "As of June 2026",
+      "label": "Every number represents care that did not stop when coverage did.",
       "figures": [
         { "number": "200+", "label": "recovery sessions funded" },
         { "number": "45", "label": "people supported" },
@@ -118,27 +118,21 @@
       "proofClass": "veteran-proof",
       "voicesId": "veteran-voices",
       "voicesAriaLabel": "Veteran voices",
+      "featuredVoice": {
+        "quote": "I first came here as a referral through the VA for my lower back issues. My pain has gone away, my back is feeling better — I have more mobility now.",
+        "name": "Luke Hudson",
+        "label": "Veteran, VA referral",
+        "photo": "/images/luke-poster.jpg",
+        "videoPoster": "/images/luke-poster.jpg",
+        "videoSrc": "/video/luke-hudson-testimonial.mp4"
+      },
       "videos": [
-        {
-          "src": "/video/luke-hudson-testimonial.mp4",
-          "poster": "/images/luke-poster.jpg",
-          "triggerLabel": "Play Luke Hudson testimonial video",
-          "fallbackLabel": "Watch Luke's testimonial",
-          "testimonialKey": "luke"
-        },
         {
           "src": "/video/king-martin-testimonial.mp4",
           "poster": "/images/king-martin-poster.webp",
           "triggerLabel": "Play King Martin testimonial video",
           "fallbackLabel": "Watch King Martin's testimonial",
           "testimonialKey": "kingMartin"
-        },
-        {
-          "src": "/video/veteran-care-testimonial.mp4",
-          "poster": "/images/veteran-care-poster.webp",
-          "triggerLabel": "Play Veteran Care testimonial video",
-          "fallbackLabel": "Watch Veteran Care testimonial",
-          "testimonialKey": "veteranCare"
         }
       ],
       "voicesKey": "veteranVoices"
@@ -175,7 +169,7 @@
     },
     "kingMartin": {
       "attribution": "King Martin · Veteran",
-      "story": "King Martin shares his experience with 22 Strong Foundation's recovery care program."
+      "story": "Dr. Vas is giving his talents away for free to veterans — just to help them get their life together. When you have someone like that around, you get a chance to be a blessing on a whole other level."
     },
     "veteranCare": {
       "attribution": "Veteran Care Testimonial",
@@ -200,6 +194,11 @@
   "strongCircle": {
     "heading": "Join the 22 Strong Circle.",
     "lead": "A monthly membership that lets 22 Strong say yes to the next veteran or young person without waiting on the next fundraiser.",
+    "testimonial": {
+      "quote": "I've watched guys cycle through programs that disappear when the grant runs out. This one stayed. I lost 15 pounds. More importantly, I didn't lose the care.",
+      "attribution": "Tom Boscamp, U.S. Army Veteran, Veteran Services Coordinator",
+      "photo": "/images/tom-boscamp.jpg"
+    },
     "tiersLabel": "Become a monthly member",
     "tiers": [
       { "amount": "$22", "note": "" },
@@ -290,6 +289,11 @@
   "donate": {
     "heading": "Fund the next recovery appointment.",
     "lead": "A one-time gift helps cover hands-on recovery care when cost, coverage, or timing threatens the next visit.",
+    "testimonial": {
+      "quote": "They told me my hip was done and so was my career. I played another four years.",
+      "attribution": "Adam Folker, Pro Basketball, Hustle Player of the Year",
+      "photo": "/images/adam-folker-uci.webp"
+    },
     "outcomes": "",
     "givingCards": [
       { "amount": "$50", "body": "helps offset care" },

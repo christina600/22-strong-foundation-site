@@ -69,6 +69,92 @@ const preparedGroups = groups.map((group) => ({
             <a href={group.primaryStat.url} target="_blank" rel="noopener noreferrer">{group.primaryStat.source}</a>
           </div>
         )}
+        {group.featuredVoice && (
+          <figure class="audience-card-voice">
+            {group.featuredVoice.videoSrc && group.featuredVoice.videoPoster && (
+              <div class="audience-card-voice-media">
+                {(() => {
+                  const posterAsset = getImageByPath(group.featuredVoice.videoPoster);
+                  return posterAsset
+                    ? <Image
+                        src={posterAsset}
+                        alt={group.featuredVoice.photoAlt ?? group.featuredVoice.name}
+                        width={540}
+                        height={960}
+                        loading="lazy"
+                        decoding="async"
+                        fetchpriority="low"
+                        format="webp"
+                      />
+                    : <img
+                        src={group.featuredVoice.videoPoster}
+                        alt={group.featuredVoice.photoAlt ?? group.featuredVoice.name}
+                        width="540"
+                        height="960"
+                        loading="lazy"
+                        decoding="async"
+                      />;
+                })()}
+                <video
+                  class="audience-card-voice-video"
+                  src={group.featuredVoice.videoSrc}
+                  poster={group.featuredVoice.videoPoster}
+                  preload="metadata"
+                  playsinline
+                  controls
+                  aria-label={`${group.featuredVoice.name} testimonial video`}
+                ></video>
+              </div>
+            )}
+            <blockquote>
+              <p>{group.featuredVoice.quote}</p>
+            </blockquote>
+            <figcaption>— {group.featuredVoice.name}, {group.featuredVoice.label}</figcaption>
+          </figure>
+        )}
+        {group.videos && group.videos.length > 0 && group.videos.map((video, i) => (
+          <figure class="audience-card-voice">
+            <div class="audience-card-voice-media">
+              {(() => {
+                const posterAsset = getImageByPath(video.poster);
+                return posterAsset
+                  ? <Image
+                      src={posterAsset}
+                      alt={video.posterAlt ?? video.fallbackLabel}
+                      width={540}
+                      height={960}
+                      loading="lazy"
+                      decoding="async"
+                      fetchpriority="low"
+                      format="webp"
+                    />
+                  : <img
+                      src={video.poster}
+                      alt={video.posterAlt ?? video.fallbackLabel}
+                      width="540"
+                      height="960"
+                      loading="lazy"
+                      decoding="async"
+                    />;
+              })()}
+              <video
+                class="audience-card-voice-video"
+                src={video.src}
+                poster={video.poster}
+                preload="metadata"
+                playsinline
+                controls
+                aria-label={video.fallbackLabel}
+              ></video>
+            </div>
+            {video.story && (
+              <blockquote>
+                <p>{video.story}</p>
+              </blockquote>
+            )}
+            {video.attribution && <figcaption>— {video.attribution}</figcaption>}
+          </figure>
+        ))}
         <div class="audience-card-help">
           <h3>How we help</h3>
           <p>{group.helpLine}</p>

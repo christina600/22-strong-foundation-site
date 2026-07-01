@@ -38,6 +38,15 @@ export interface VideoVoiceContent {
   story?: string;
 }
 
+export interface FeaturedVoiceContent {
+  quote: string;
+  name: string;
+  label: string;
+  photo?: string;
+  videoPoster?: string;
+  videoSrc?: string;
+}
+
 interface AudienceConfig {
   id: string;
   heading: string;
@@ -52,6 +61,7 @@ interface AudienceConfig {
   proofClass?: string;
   voicesId?: string;
   voicesAriaLabel: string;
+  featuredVoice?: FeaturedVoiceContent;
   videos?: VideoVoiceContent[];
   voicesKey?: string;
   voices?: PersonVoiceContent[];
@@ -78,6 +88,7 @@ export interface AudienceGroupContent {
   proofClass?: string;
   voicesId?: string;
   voicesAriaLabel: string;
+  featuredVoice?: FeaturedVoiceContent;
   videos?: VideoVoiceContent[];
   voices: PersonVoiceContent[];
 }
@@ -130,6 +141,7 @@ export function buildAudienceGroups(home: HomeStoryContent): AudienceGroupConten
     proofClass: group.proofClass,
     voicesId: group.voicesId,
     voicesAriaLabel: group.voicesAriaLabel,
+    featuredVoice: group.featuredVoice,
     videos: resolveVideos(group.videos, home.testimonials),
     voices: group.voicesKey === "veteranVoices"
       ? home.veteranVoices

@@ -2,9 +2,16 @@
 import site from "../../content/site.json";
 import { isConfigured } from "../../utils/config";
 
+interface StrongCircleTestimonial {
+  quote: string;
+  attribution: string;
+  photo?: string;
+}
+
 interface StrongCircleContent {
   heading: string;
   lead: string;
+  testimonial?: StrongCircleTestimonial;
   tiersLabel: string;
   tiers: Array<{ amount: string; note: string }>;
   joinLabel: string;
@@ -51,6 +58,29 @@ const tierHref = (amount: string) => {
           ))}
         </ul>
       </div>
+
+      {strongCircle.testimonial && (
+        <figure class="circle-testimonial">
+          {strongCircle.testimonial.photo && (
+            <div class="circle-testimonial-portrait">
+              <img
+                src={strongCircle.testimonial.photo}
+                alt={strongCircle.testimonial.attribution}
+                width="100"
+                height="100"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          )}
+          <div class="circle-testimonial-text">
+            <blockquote>
+              <p>{strongCircle.testimonial.quote}</p>
+            </blockquote>
+            <figcaption>— {strongCircle.testimonial.attribution}</figcaption>
+          </div>
+        </figure>
+      )}
 
       <div class="circle-join">
         <span class="circle-tiers-label">{strongCircle.tiersLabel}</span>
