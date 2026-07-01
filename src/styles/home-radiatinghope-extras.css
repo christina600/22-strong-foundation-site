@@ -390,7 +390,9 @@
 .veteran-chapter-video-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  max-width: 380px;
+  margin-inline: auto;
+  aspect-ratio: 9 / 16;
   border-radius: var(--radius, 8px);
   overflow: hidden;
   box-shadow:
