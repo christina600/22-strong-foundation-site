@@ -214,7 +214,14 @@
       { "label": "Care that continues", "text": "Funding that doesn't stop after the first visit." },
       { "label": "Funding to plan on", "text": "A steady base, not the next fundraiser." },
       { "label": "Veterans funding veterans", "text": "Neighbors keeping recovery going together." }
-    ]
+    ],
+    "highlightedTestimonial": {
+      "quote": "The VA treatments are few and far between. Dr. Vas has filled that void, and his treatments have allowed me to continue being active. I've even lost 15 pounds.",
+      "name": "Tom Boscamp",
+      "title": "U.S. Army Veteran, Veteran Services Coordinator",
+      "photo": "/images/tom-boscamp.jpg",
+      "photoAlt": "Tom Boscamp"
+    }
   },
   "howItWorks": {
     "eyebrow": "",

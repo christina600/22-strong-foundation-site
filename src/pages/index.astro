@@ -17,6 +17,7 @@ import ImpactSection from "../components/sections/ImpactSection.astro";
 import NarrativeScene from "../components/sections/NarrativeScene.astro";
 import ServicePathSection from "../components/sections/ServicePathSection.astro";
 import SectionCta from "../components/sections/SectionCta.astro";
+import StrongCircleSection from "../components/sections/StrongCircleSection.astro";
 import SiteHeader from "../components/sections/SiteHeader.astro";
 import SiteFooter from "../components/sections/SiteFooter.astro";
 import TestimonialsSection from "../components/sections/TestimonialsSection.astro";
@@ -86,6 +87,8 @@ const [costStat, , debtStat] = home.stats.others;
 
       <VeteranStorySection />
       <TestimonialsSection groups={audienceGroups} />
+
+      <StrongCircleSection strongCircle={home.strongCircle} />
 
       <SectionCta text="Care shouldn't stop because the next visit isn't covered." label="Fund recovery care" href="#donate" />
 

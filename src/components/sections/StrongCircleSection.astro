@@ -10,6 +10,13 @@ interface StrongCircleContent {
   joinLabel: string;
   footnote: string;
   points: Array<{ label: string; text: string }>;
+  highlightedTestimonial?: {
+    quote: string;
+    name: string;
+    title?: string;
+    photo: string;
+    photoAlt?: string;
+  };
 }
 
 interface Props {
@@ -21,6 +28,7 @@ interface Props {
 
 const { chapter, strongCircle, headingLevel = "h2", className = "" } = Astro.props;
 const HeadingTag = headingLevel;
+const highlighted = strongCircle.highlightedTestimonial;
 
 // Recurring giving routes to the dedicated Strong Circle Givebutter campaign.
 // If the campaign URL is ever unset, links fall back to the contact section.
@@ -50,6 +58,16 @@ const tierHref = (amount: string) => {
             </li>
           ))}
         </ul>
+
+        {highlighted && (
+          <figure class="circle-voice">
+            <img class="circle-voice__photo" src={highlighted.photo} alt={highlighted.photoAlt ?? highlighted.name} width="72" height="72" loading="lazy" decoding="async" />
+            <div class="circle-voice__body">
+              <blockquote class="circle-voice__quote">{highlighted.quote}</blockquote>
+              <figcaption class="circle-voice__cite">{highlighted.name}{highlighted.title ? ` · ${highlighted.title}` : ""}</figcaption>
+            </div>
+          </figure>
+        )}
       </div>
 
       <div class="circle-join">
@@ -68,3 +86,38 @@ const tierHref = (amount: string) => {
     </div>
   </div>
 </section>
+
+<style>
+  .circle-voice {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin-top: 22px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(128, 128, 128, .28);
+  }
+
+  .circle-voice__photo {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex: none;
+  }
+
+  .circle-voice__quote {
+    margin: 0 0 6px;
+    font-size: clamp(1.3rem, 1.6vw, 1.45rem);
+    font-weight: 600;
+    line-height: 1.34;
+  }
+
+  .circle-voice__quote::before { content: "\201C"; }
+  .circle-voice__quote::after { content: "\201D"; }
+
+  .circle-voice__cite {
+    font-size: 1.25rem;
+    font-weight: 700;
+    opacity: .78;
+  }
+</style>
