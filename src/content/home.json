@@ -297,10 +297,12 @@
       { "amount": "$850", "body": "supports an average care plan" },
       { "amount": "$22", "body": "helps keep the next appointment within reach" }
     ],
-    "storyImage": {
-      "src": "/images/story-adaptive-deadlift.webp",
-      "alt": "Adaptive athlete deadlifting a loaded barbell",
-      "caption": "Recovery funding protects the long road from treatment to strength."
+    "featuredTestimonial": {
+      "quote": "I had hip surgery that was potentially season-ending and even career-ending. Dr. Vas got me back to playing within a few weeks — that season I won hustle player of the year.",
+      "name": "Adam Folker",
+      "title": "Collegiate & Professional Basketball Player",
+      "photo": "/images/adam-folker-uci.webp",
+      "photoAlt": "Adam Folker driving to the basket for UC Irvine"
     },
     "covers": {
       "eyebrow": "What your gift covers",

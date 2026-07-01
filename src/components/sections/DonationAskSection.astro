@@ -10,11 +10,20 @@ interface DonateStoryImage {
   imagePosition?: string;
 }
 
+interface DonateFeaturedTestimonial {
+  quote: string;
+  name: string;
+  title?: string;
+  photo: string;
+  photoAlt?: string;
+}
+
 interface DonateContent {
   heading: string;
   lead: string;
   outcomes: string;
   storyImage?: DonateStoryImage;
+  featuredTestimonial?: DonateFeaturedTestimonial;
   covers: {
     eyebrow: string;
     items: Array<{ heading: string; body: string }>;
@@ -27,6 +36,8 @@ interface Props {
 }
 
 const { chapter, donate } = Astro.props;
+const featured = donate.featuredTestimonial;
+const featuredAsset = featured ? getImageByPath(featured.photo) : undefined;
 ---
 
 <section class="donate-section story-ask" id="donate" data-chapter={chapter}>
@@ -37,39 +48,35 @@ const { chapter, donate } = Astro.props;
       {donate.outcomes && <p class="outcomes" data-reveal>{donate.outcomes}</p>}
     </div>
 
-    {donate.storyImage && (
-      <figure class="donate-proof-photo donate-media" data-reveal>
-        {(() => {
-          const asset = getImageByPath(donate.storyImage.src);
-          return asset
+    <div class="donate-action" data-reveal>
+      {featured && (
+        <figure class="donate-voice">
+          {featuredAsset
             ? <Image
-                src={asset}
-                alt={donate.storyImage.alt}
-                width={900}
-                height={560}
+                class="donate-voice__photo"
+                src={featuredAsset}
+                alt={featured.photoAlt ?? featured.name}
+                width={480}
+                height={320}
                 loading="lazy"
                 decoding="async"
                 fetchpriority="low"
-                sizes="(max-width: 920px) 92vw, 48vw"
-                widths={[560, 760, 900, 1200]}
-                style={donate.storyImage.imagePosition ? `object-position: ${donate.storyImage.imagePosition};` : undefined}
               />
             : <img
-                src={donate.storyImage.src}
-                alt={donate.storyImage.alt}
-                width="900"
-                height="560"
+                class="donate-voice__photo"
+                src={featured.photo}
+                alt={featured.photoAlt ?? featured.name}
+                width="480"
+                height="320"
                 loading="lazy"
                 decoding="async"
-                fetchpriority="low"
-                style={donate.storyImage.imagePosition ? `object-position: ${donate.storyImage.imagePosition};` : undefined}
-              />;
-        })()}
-        {donate.storyImage.caption && <figcaption>{donate.storyImage.caption}</figcaption>}
-      </figure>
-    )}
-
-    <div class="donate-action" data-reveal>
+              />}
+          <blockquote class="donate-voice__quote">{featured.quote}</blockquote>
+          <figcaption class="donate-voice__cite">
+            {featured.name}{featured.title ? ` · ${featured.title}` : ""}
+          </figcaption>
+        </figure>
+      )}
       <DonationModule />
     </div>
   </div>
@@ -85,3 +92,40 @@ const { chapter, donate } = Astro.props;
     </ul>
   </div>
 </section>
+
+<style>
+  .donate-voice {
+    display: grid;
+    gap: 14px;
+    margin: 0 0 26px;
+    padding: 0;
+    justify-items: start;
+    max-width: 420px;
+  }
+
+  .donate-voice__photo {
+    width: 100%;
+    max-width: 340px;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    object-position: 32% center;
+    border-radius: 14px;
+  }
+
+  .donate-voice__quote {
+    margin: 0;
+    font-size: clamp(1.35rem, 2vw, 1.7rem);
+    font-weight: 640;
+    line-height: 1.32;
+    text-wrap: balance;
+  }
+
+  .donate-voice__quote::before { content: "\201C"; }
+  .donate-voice__quote::after { content: "\201D"; }
+
+  .donate-voice__cite {
+    font-size: 1.25rem;
+    font-weight: 700;
+    opacity: .78;
+  }
+</style>
