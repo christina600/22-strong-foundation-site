@@ -17,6 +17,7 @@ import storyAssistedRehab from "./images/story-assisted-rehab.webp";
 import storyTreatmentRoom from "./images/story-treatment-room.webp";
 import storyVeteranConversation from "./images/story-veteran-conversation.webp";
 import storyYouthHuddle from "./images/story-youth-huddle.webp";
+import youthBasketballPlayer from "./images/youth-basketball-player.webp";
 import tomBoscamp from "./images/tom-boscamp.jpg";
 import travisMayfield from "./images/travis-mayfield.jpg";
 import logoUsvm from "./images/logo-usvm.jpg";
@@ -34,6 +35,7 @@ export const imageMap: Record<string, ImageMetadata> = {
   "/images/story-treatment-room.webp": storyTreatmentRoom,
   "/images/story-veteran-conversation.webp": storyVeteranConversation,
   "/images/story-youth-huddle.webp": storyYouthHuddle,
+  "/images/youth-basketball-player.webp": youthBasketballPlayer,
   "/images/tom-boscamp.jpg": tomBoscamp,
   "/images/travis-mayfield.jpg": travisMayfield,
   "/images/logo-usvm.jpg": logoUsvm,
