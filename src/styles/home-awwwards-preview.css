@@ -38,9 +38,28 @@
     0 22px 48px rgba(134, 58, 26, .32);
 }
 
-.pill.secondary,
-.strong-circle-trigger.pill.secondary,
-.giving-invite .pill.secondary {
+.pill.secondary {
+  background: rgba(255, 253, 247, .86);
+  border: 1px solid rgba(32, 35, 31, .18);
+  color: var(--preview-ink);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .52) inset,
+    0 12px 26px rgba(32, 35, 31, .10);
+}
+
+.strong-circle-trigger.pill.secondary {
+  min-height: 52px;
+}
+
+.pill.secondary:hover {
+  background: #fffdf7;
+  border-color: rgba(32, 35, 31, .28);
+  transform: translateY(-1px);
+}
+
+.circle-panel .pill.secondary,
+.giving-invite .pill.secondary,
+.hero-cta-secondary {
   background: rgba(255, 250, 240, .10);
   border: 1px solid rgba(255, 250, 240, .28);
   color: #fffaf0;
@@ -49,17 +68,11 @@
     0 12px 28px rgba(0, 0, 0, .12);
 }
 
-.strong-circle-trigger.pill.secondary,
-.giving-invite .pill.secondary {
-  min-height: 52px;
-}
-
-.pill.secondary:hover,
-.strong-circle-trigger.pill.secondary:hover,
-.giving-invite .pill.secondary:hover {
+.circle-panel .pill.secondary:hover,
+.giving-invite .pill.secondary:hover,
+.hero-cta-secondary:hover {
   background: rgba(255, 250, 240, .16);
   border-color: rgba(255, 250, 240, .42);
-  transform: translateY(-1px);
 }
 
 .giving-invite {
@@ -283,17 +296,12 @@
   line-height: 1.48;
 }
 
-.audience-card-help h3 {
-  margin: 0;
+.audience-card-help span {
   color: var(--preview-cta);
   font-size: var(--fs-ui-micro);
   font-weight: 900;
   line-height: 1.1;
   text-transform: uppercase;
-}
-
-.audience-card-help p {
-  margin: 0;
 }
 
 .narrative-scene--about .about-intro h2,
@@ -368,7 +376,7 @@
   padding: clamp(26px, 3.6vw, 44px) 0;
 }
 
-.narrative-scene--about .about-need p:first-child:not(:last-child) {
+.narrative-scene--about .about-need p:first-child {
   background: transparent;
 }
 

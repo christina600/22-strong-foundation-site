@@ -11,47 +11,140 @@ const description = "How 22 Strong closes the recovery gap — from referral to 
   <div class="site site--about">
     <SiteHeader current="how-it-works" />
 
-    <main id="main" class="about-page">
-      <h1>How It Works</h1>
+    <main id="main" class="about-page how-page">
+      <section class="how-page-hero" aria-labelledby="how-title">
+        <div class="how-page-hero__inner">
+          <p class="eyebrow">How it works</p>
+          <h1 id="how-title">
+            <span>A recovery gap appears.</span>
+            <span>22 Strong helps close it.</span>
+          </h1>
+          <p class="lead">
+            The model is deliberately simple: a referral comes in, the gap is reviewed,
+            donor dollars fund care, and treatment keeps moving.
+          </p>
+        </div>
+      </section>
 
-      <h2>The gap</h2>
-      <p>A person has an injury and a recovery plan. The next appointment becomes uncertain because insurance runs out, VA timing falls short, or the cost is out of reach. Donor funding keeps care moving.</p>
+      <div class="how-page-flow">
+        <section class="how-context" aria-labelledby="the-gap">
+          <p class="how-context__label">The gap</p>
+          <h2 id="the-gap">Coverage ends before recovery does.</h2>
+          <p>
+            A person has an injury and a recovery plan. The next appointment becomes
+            uncertain because insurance runs out, VA timing falls short, or the cost is
+            out of reach. Donor funding keeps care moving.
+          </p>
+        </section>
 
-      <h2>Step 1 — Referral or request</h2>
-      <p>Referrals come from the VA, veteran networks, coaches, school counselors, and community organizations.</p>
+        <ol class="how-process" aria-label="22 Strong care funding path">
+          <li class="how-step">
+            <div class="how-step__rail" aria-hidden="true">
+              <span class="how-step__dot">1</span>
+            </div>
+            <div class="how-step__body">
+              <p class="how-step__label">Step 1</p>
+              <h2>Referral or request</h2>
+              <p>
+                Referrals come from the VA, veteran networks, coaches, school counselors,
+                and community organizations.
+              </p>
+            </div>
+          </li>
 
-      <h2>Step 2 — Gap review</h2>
-      <p>22 Strong reviews the situation. If coverage has run out or private care is out of reach, we step in.</p>
+          <li class="how-step">
+            <div class="how-step__rail" aria-hidden="true">
+              <span class="how-step__dot">2</span>
+            </div>
+            <div class="how-step__body">
+              <p class="how-step__label">Step 2</p>
+              <h2>Gap review</h2>
+              <p>
+                22 Strong reviews the situation. If coverage has run out or private care is
+                out of reach, we step in.
+              </p>
+            </div>
+          </li>
 
-      <h2>Step 3 — Care funded</h2>
-      <p>Recovery sessions are provided directly, at no cost to the person receiving care.</p>
+          <li class="how-step">
+            <div class="how-step__rail" aria-hidden="true">
+              <span class="how-step__dot">3</span>
+            </div>
+            <div class="how-step__body">
+              <p class="how-step__label">Step 3</p>
+              <h2>Care funded</h2>
+              <p>Recovery sessions are provided directly, at no cost to the person receiving care.</p>
+            </div>
+          </li>
 
-      <h2>Step 4 — Care provided</h2>
-      <p>Care is currently provided through Next Level Fitness & Wellness Center in Newport Beach — high-level sports medicine, including Fascial Integrative Treatment (FIT) for rotator cuff, knee, neck, lower back, hip, ankle/foot, and wrist/elbow injuries.</p>
-      <p>Care is provided through Next Level Fitness & Wellness Center in Newport Beach, co-owned by 22 Strong's founders. <a href="/transparency">Read about how we handle this</a>.</p>
+          <li class="how-step how-step--care">
+            <div class="how-step__rail" aria-hidden="true">
+              <span class="how-step__dot">4</span>
+            </div>
+            <div class="how-step__body">
+              <p class="how-step__label">Step 4</p>
+              <h2>Care provided</h2>
+              <p>
+                Care is currently provided through Next Level Fitness & Wellness Center in
+                Newport Beach, the sports-medicine clinic co-owned by 22 Strong's founders;
+                funded sessions can include Fascial Integrative Treatment (FIT) and hands-on
+                care for rotator cuff, knee, neck, lower back, hip, ankle/foot, and
+                wrist/elbow injuries. <a href="/transparency/">Read how we manage that relationship</a>.
+              </p>
+              <figure class="how-step__media">
+                <img
+                  src="/images/story-treatment-room.webp"
+                  alt="Hands-on recovery care in a treatment room."
+                  loading="lazy"
+                />
+                <figcaption>Where the funding turns into care: hands-on recovery treatment.</figcaption>
+              </figure>
+            </div>
+          </li>
 
-      <h2>Step 5 — Follow-through</h2>
-      <p>The gap closes, and recovery keeps moving — visit after visit.</p>
+          <li class="how-step">
+            <div class="how-step__rail" aria-hidden="true">
+              <span class="how-step__dot">5</span>
+            </div>
+            <div class="how-step__body">
+              <p class="how-step__label">Step 5</p>
+              <h2>Follow-through</h2>
+              <p>The gap closes, and recovery keeps moving, visit after visit.</p>
+            </div>
+          </li>
+        </ol>
 
-      <h2>What 22 Strong funds</h2>
-      <ul>
-        <li>Chiropractic care</li>
-        <li>Physical therapy</li>
-        <li>Massage therapy</li>
-        <li>Fascial Integrative Treatment (FIT)</li>
-        <li>Follow-through after the first visit</li>
-      </ul>
+        <div class="how-boundaries" aria-label="Funding boundaries">
+          <section class="how-boundary" aria-labelledby="what-we-fund">
+            <p class="how-context__label">What we fund</p>
+            <h2 id="what-we-fund">Hands-on recovery care.</h2>
+            <ul>
+              <li>Chiropractic care</li>
+              <li>Physical therapy</li>
+              <li>Massage therapy</li>
+              <li>Fascial Integrative Treatment (FIT)</li>
+              <li>Follow-through after the first visit</li>
+            </ul>
+          </section>
 
-      <h2>What 22 Strong does not provide</h2>
-      <ul>
-        <li>Emergency medical care</li>
-        <li>Medical diagnosis</li>
-        <li>Insurance advice</li>
-        <li>Direct cash payments to individuals</li>
-      </ul>
+          <section class="how-boundary how-boundary--limits" aria-labelledby="what-we-dont">
+            <p class="how-context__label">What 22 Strong does not provide</p>
+            <h2 id="what-we-dont">Clear limits keep the promise honest.</h2>
+            <ul>
+              <li>Emergency medical care</li>
+              <li>Medical diagnosis</li>
+              <li>Insurance advice</li>
+              <li>Direct cash payments to individuals</li>
+            </ul>
+          </section>
+        </div>
 
-      <h2>Refer someone</h2>
-      <p>If you know a veteran or young person whose recovery care is at risk, <a href="/contact">start a referral</a>.</p>
+        <section class="how-referral" aria-labelledby="refer-someone">
+          <p class="how-context__label">Refer someone</p>
+          <h2 id="refer-someone">Know someone whose recovery care is at risk?</h2>
+          <a class="pill primary" href="/#contact">Start a referral</a>
+        </section>
+      </div>
     </main>
 
     <SiteFooter footer={home.footer} homeHrefPrefix="/" />

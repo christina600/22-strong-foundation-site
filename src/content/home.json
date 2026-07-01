@@ -1,7 +1,7 @@
 {
   "hero": {
     "kicker": "Move better. Get stronger.",
-    "headline": ["Keep recovery going when coverage stops."],
+    "headline": ["Keep recovery going", "when coverage stops."],
     "ctaLabel": "Fund recovery care",
     "taxline": "Your gift is tax-deductible · 501(c)(3)"
   },
@@ -17,7 +17,7 @@
     "heading": "Coverage runs out before recovery does.",
     "lead": "A real injury. A referral. A care plan. And then the next visit isn't covered. That's the gap we close.",
     "impact": {
-      "label": "As of June 2026",
+      "label": "",
       "figures": [
         { "number": "200+", "label": "recovery sessions funded" },
         { "number": "45", "label": "people supported" },
@@ -37,13 +37,16 @@
     ]
   },
   "press": {
+    "heading": "Press feature",
     "publications": [
       {
         "name": "U.S. Veterans Magazine",
         "logo": "/images/logo-usvm.jpg",
         "logoAlt": "U.S. Veterans Magazine",
         "url": "https://digital.usveteransmagazine.com/US-Veterans-Magazine-Winter-2022/0/",
-        "ariaLabel": "Read the U.S. Veterans Magazine feature"
+        "ariaLabel": "Read the U.S. Veterans Magazine feature",
+        "featureLine": "U.S. Veterans Magazine featured the veteran-led recovery story behind 22 Strong.",
+        "sourceLabel": "U.S. Veterans Magazine · Winter 2022"
       }
     ]
   },
@@ -132,6 +135,13 @@
           "triggerLabel": "Play King Martin testimonial video",
           "fallbackLabel": "Watch King Martin's testimonial",
           "testimonialKey": "kingMartin"
+        },
+        {
+          "src": "/video/veteran-care-testimonial.mp4",
+          "poster": "/images/veteran-care-poster.webp",
+          "triggerLabel": "Play Veteran Care testimonial video",
+          "fallbackLabel": "Watch Veteran Care testimonial",
+          "testimonialKey": "veteranCare"
         }
       ],
       "voicesKey": "veteranVoices"
@@ -141,10 +151,10 @@
       "heading": "Low-income youth",
       "detailAriaLabel": "Low-income youth recovery support",
       "lead": "Recovery care for young people whose families can't cover what it takes to heal after an injury.",
-      "body": "22 Strong keeps it moving for student-athletes and any young person who needs hands-on care.",
-      "photo": "/images/youth-basketball-player.webp",
-      "photoAlt": "A young basketball player driving to the basket during a game",
-      "imagePosition": "55% 6%",
+      "body": "When insurance runs out or care costs more than a family can carry, recovery stalls. 22 Strong keeps it moving — for student-athletes and any young person who needs hands-on care.",
+      "photo": "/images/story-youth-huddle.webp",
+      "photoAlt": "Youth basketball team huddling in a gym",
+      "imagePosition": "50% 62%",
       "statsKey": "athletes",
       "statsClass": "one-up",
       "voicesAriaLabel": "Low-income youth testimonials",
@@ -164,12 +174,15 @@
   "testimonials": {
     "luke": {
       "attribution": "Luke Hudson · Veteran, VA referral",
-      "quote": "I first came here as a referral through the VA for my lower back issues. My pain has gone away, my back is feeling better — I have more mobility now.",
       "story": "Luke shares why access to hands-on recovery care matters after service."
     },
     "kingMartin": {
       "attribution": "King Martin · Veteran",
       "story": "King Martin shares his experience with 22 Strong Foundation's recovery care program."
+    },
+    "veteranCare": {
+      "attribution": "Veteran Care Testimonial",
+      "story": "A testimonial about veteran care and recovery support through 22 Strong Foundation."
     },
     "adam": {
       "quote": "During my sophomore year in college, I had hip surgery that was potentially season-ending and even career-ending. My coaches referred me to Dr. Vas, who was able to take care of me and eventually get me back to playing within a short few weeks. That season I ended up winning hustle player of the year award. Throughout my career, I saw Dr. Vas on various occasions for injuries that came up, along with maintenance and preventive care. I was able to play competitively at the top level.",
@@ -180,7 +193,7 @@
   "veteranVoices": [
     {
       "name": "Tom Boscamp",
-      "title": "U.S. Army Veteran · Veteran Services Coordinator · OCVMFC Steering Committee · NAVPA Board Member",
+      "title": "U.S. Army Veteran · Veteran Services Coordinator",
       "quote": "I am a 65 year old Veteran who needs to be active since I am on the go taking care of Veterans in the Community. I have degenerative disk disease and Spinal Stenosis as well as radiculopathy. The VA treatments are far and few between as they do not have enough chiropractors, massage therapists, and Physical therapy specialists. Thankfully Dr. Vas has filled that void and with his treatments it has allowed me to continue being active. I have even lost 15 pounds! I can’t say enough how good Next Level Wellness is! Also their commitment to serving Veterans is “Next Level”!",
       "photo": "/images/tom-boscamp.jpg",
       "photoAlt": "Tom Boscamp",
@@ -188,33 +201,26 @@
     }
   ],
   "strongCircle": {
-    "heading": "Join the 22 Strong Circle.",
-    "lead": "A monthly membership that lets 22 Strong say yes to the next veteran or young person without waiting on the next fundraiser.",
-    "tiersLabel": "Become a monthly member",
+    "heading": "The 22 Strong Circle.",
+    "lead": "The 22 Strong Circle gives 22 Strong reliable monthly support to say yes to the next veteran or young person without waiting on the next fundraiser.",
+    "tiersLabel": "The 22 Strong Circle",
     "tiers": [
       { "amount": "$22", "note": "" },
       { "amount": "$50", "note": "" },
       { "amount": "$100", "note": "" },
       { "amount": "$190", "note": "one recovery session" }
     ],
-    "joinLabel": "Become a monthly member",
+    "joinLabel": "Join the 22 Strong Circle",
     "footnote": "Monthly · cancel anytime · every dollar funds recovery care.",
     "points": [
       { "label": "Care that continues", "text": "Funding that doesn't stop after the first visit." },
       { "label": "Funding to plan on", "text": "A steady base, not the next fundraiser." },
       { "label": "Veterans funding veterans", "text": "Neighbors keeping recovery going together." }
-    ],
-    "highlightedTestimonial": {
-      "quote": "The VA treatments are few and far between. Dr. Vas has filled that void, and his treatments have allowed me to continue being active. I've even lost 15 pounds.",
-      "name": "Tom Boscamp",
-      "title": "U.S. Army Veteran, Veteran Services Coordinator",
-      "photo": "/images/tom-boscamp.jpg",
-      "photoAlt": "Tom Boscamp"
-    }
+    ]
   },
   "howItWorks": {
     "eyebrow": "",
-    "heading": ["A recovery gap appears. 22 Strong helps close it."],
+    "heading": ["A recovery gap appears.", "22 Strong helps close it."],
     "kicker": "Someone has a recovery plan, the next appointment becomes uncertain, and donor funding keeps it moving.",
     "stepsAriaLabel": "22 Strong care funding path",
     "steps": [
@@ -238,12 +244,12 @@
         "number": "3",
         "heading": "Care is provided",
         "body": "Recovery sessions are provided directly, at no cost to the person receiving care.",
-        "note": "Care is currently provided through {provider} in Newport Beach — high-level sports medicine, including Fascial Integrative Treatment (FIT) for rotator cuff, knee, neck, lower back, hip, ankle/foot, and wrist/elbow injuries.",
+        "note": "Care is currently provided through {provider} in Newport Beach, the sports-medicine clinic co-owned by 22 Strong's founders. Funded sessions can include Fascial Integrative Treatment (FIT) and hands-on care for rotator cuff, knee, neck, lower back, hip, ankle/foot, and wrist/elbow injuries.",
         "provider": { "label": "Next Level Fitness & Wellness Center", "href": "https://www.nextlevelwellnesscenter.com" },
         "disclosure": {
-          "text": "Care is provided through Next Level Fitness & Wellness Center in Newport Beach, co-owned by 22 Strong's founders.",
-          "linkLabel": "Read about how we handle this",
-          "href": "/transparency"
+          "text": "We publish how that provider relationship is managed.",
+          "linkLabel": "Read the transparency page",
+          "href": "/transparency/"
         }
       }
     ],
@@ -284,22 +290,41 @@
       ]
     }
   ],
+  "governance": {
+    "eyebrow": "Institutional layer",
+    "heading": "The next layer belongs in public.",
+    "lead": "22 Strong began with two founders and a working treatment room. Testimonials prove the care matters; governance has to prove the organization can outlast its founders. As board and advisory roles are formalized, that roster belongs here.",
+    "commitments": [
+      {
+        "heading": "Board and advisory roster",
+        "body": "When board or advisory seats are formalized, 22 Strong will publish names, roles, and terms here so donors can see who shares oversight."
+      },
+      {
+        "heading": "Conflict standard",
+        "body": "The Next Level relationship is named, linked, and governed by a disclosure rule: a conflicted leader should not approve a benefit to themselves or their business.",
+        "linkLabel": "Read the transparency policy",
+        "href": "/transparency/"
+      },
+      {
+        "heading": "Continuity path",
+        "body": "The program is documenting referral review, funded-care records, and provider relationships so the model can keep operating as the organization grows."
+      }
+    ]
+  },
   "donate": {
     "heading": "Fund the next recovery appointment.",
     "lead": "A one-time gift helps cover hands-on recovery care when cost, coverage, or timing threatens the next visit.",
     "outcomes": "",
     "givingCards": [
-      { "amount": "$50", "body": "helps offset care" },
-      { "amount": "$190", "body": "funds one session" },
-      { "amount": "$850", "body": "supports an average care plan" },
-      { "amount": "$22", "body": "helps keep the next appointment within reach" }
+      { "amount": "$50", "body": "moves care within reach" },
+      { "amount": "$190", "body": "funds one recovery session" },
+      { "amount": "$250", "body": "supports follow-up care" },
+      { "amount": "$850", "body": "supports an average care plan" }
     ],
-    "featuredTestimonial": {
-      "quote": "I had hip surgery that was potentially season-ending and even career-ending. Dr. Vas got me back to playing within a few weeks — that season I won hustle player of the year.",
-      "name": "Adam Folker",
-      "title": "Collegiate & Professional Basketball Player",
-      "photo": "/images/adam-folker-uci.webp",
-      "photoAlt": "Adam Folker driving to the basket for UC Irvine"
+    "storyImage": {
+      "src": "/images/story-adaptive-deadlift.webp",
+      "alt": "Adaptive athlete deadlifting a loaded barbell",
+      "caption": "Recovery funding protects the long road from treatment to strength."
     },
     "covers": {
       "eyebrow": "What your gift covers",
@@ -314,7 +339,7 @@
     "ariaLabel": "Join the 22 Strong Circle",
     "heading": "Keep care going monthly.",
     "body": "Join the 22 Strong Circle so the next recovery plan doesn't have to wait.",
-    "joinLabel": "Join monthly",
+    "joinLabel": "Join the 22 Strong Circle",
     "giveOnceLabel": "Give once",
     "dismissLabel": "Not now"
   },
@@ -347,7 +372,7 @@
       "I have a general question"
     ],
     "messageLabel": "Message",
-    "note": "If this is a medical emergency, call 911. Otherwise, tell us what you can — no private medical details needed — and we'll follow up.",
+    "note": "Please don't include private medical details or urgent needs.",
     "submitLabel": "Send message"
   },
   "footer": {
@@ -357,14 +382,14 @@
         "links": [
           { "label": "How It Works", "href": "/how-it-works/" },
           { "label": "About", "href": "/about/" },
-          { "label": "Who we serve", "href": "#serve" }
+          { "label": "Who we serve", "href": "#serve" },
+          { "label": "Ways to Support", "href": "/ways-to-support/" }
         ]
       },
       {
         "title": "Get involved",
         "links": [
           { "label": "Donate", "href": "#donate" },
-          { "label": "Support", "href": "/ways-to-support/" },
           { "label": "Get in touch", "href": "#contact" },
           { "label": "Transparency", "href": "/transparency/" }
         ]

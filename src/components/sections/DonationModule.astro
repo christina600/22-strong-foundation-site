@@ -3,7 +3,7 @@
  * Donation Module — the interactive giving widget.
  *
  * The Donate section's one-time giving widget. Monthly membership now lives
- * on the Support page so the two donor asks stay distinct.
+ * on the dedicated ways-to-support page so the two donor asks stay distinct.
  */
 
 import site from "../../content/site.json";
@@ -40,17 +40,17 @@ const isMonthly = activeDefaultFrequency === "monthly";
 const initAmount = isMonthly ? defaults.monthly : defaults.oneTime;
 const amountNotes: Record<"monthly" | "one-time", Record<number, string>> = {
   monthly: {
-    22: "Strong Circle",
+    22: "22 Strong Circle",
     50: "Follow-through care",
     100: "Plans moving",
     190: "Monthly session",
   },
   "one-time": {
-    22: "helps keep the next appointment within reach",
-    50: "helps offset care",
+    50: "Move care closer",
     100: "Offset care",
-    190: "funds one session",
-    850: "supports an average care plan",
+    190: "Funds 1 session",
+    250: "Follow-up care",
+    850: "Average care plan",
   },
 };
 const amountNote = (frequency: "monthly" | "one-time", amount: number) => amountNotes[frequency][amount] ?? "Recovery care";

@@ -3,25 +3,44 @@ import { Image } from "astro:assets";
 import { getImageByPath } from "../../assets/images";
 
 interface Publication {
+  name: string;
   logo: string;
   logoAlt: string;
   url: string;
   ariaLabel: string;
+  featureLine?: string;
+  sourceLabel?: string;
 }
 
 interface Props {
   chapter?: string;
+  heading?: string;
   publications: Publication[];
 }
 
-const { chapter, publications } = Astro.props;
+const { chapter, heading = "As Featured In", publications } = Astro.props;
+const singleFeature = publications.length === 1 ? publications[0] : undefined;
 ---
 
 <section class="featured story-press" id="featured" aria-labelledby="featured-title" data-chapter={chapter}>
   <div class="featured-inner" data-reveal>
-    <h2 class="featured-title" id="featured-title" data-reveal="headline">As Featured In</h2>
-    <ul class="featured-publications" aria-label="Featured publications">
-      {publications.map((publication) => {
+    <h2 class="featured-title" id="featured-title" data-reveal="headline">{heading}</h2>
+    {singleFeature?.featureLine ? (
+      <a
+        class="featured-quote"
+        href={singleFeature.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={singleFeature.ariaLabel}
+        data-reveal="card"
+      >
+        <span class="featured-quote__eyebrow">Featured coverage</span>
+        <p>{singleFeature.featureLine}</p>
+        <span class="featured-quote__source">{singleFeature.sourceLabel ?? singleFeature.name}</span>
+      </a>
+    ) : (
+      <ul class="featured-publications" aria-label="Featured publications">
+        {publications.map((publication) => {
         const asset = getImageByPath(publication.logo);
         return (
           <li data-reveal="card">
@@ -58,7 +77,8 @@ const { chapter, publications } = Astro.props;
             </a>
           </li>
         );
-      })}
-    </ul>
+        })}
+      </ul>
+    )}
   </div>
 </section>

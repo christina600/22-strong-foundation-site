@@ -1,5 +1,5 @@
 /**
- * Strong Circle giving invite.
+ * 22 Strong Circle giving invite.
  *
  * A restrained, non-blocking corner card that invites monthly giving after the
  * visitor has met the mission — when the testimonial video ends, or when they
@@ -14,13 +14,13 @@ const INVITE_SELECTOR = "[data-giving-invite]";
 const STORAGE_KEY = "givingInviteSeen";
 const VISIBLE_CLASS = "is-visible";
 const DONATION_HASHES = new Set(["#donate"]);
-const SUPPORT_PATH = "/ways-to-support/";
+const SUPPORT_PATHS = new Set(["/ways-to-support/", "/strong-circle/"]);
 
 function isGivingFlowLocation() {
   const pathname = window.location.pathname.endsWith("/")
     ? window.location.pathname
     : `${window.location.pathname}/`;
-  return DONATION_HASHES.has(window.location.hash) || pathname === SUPPORT_PATH;
+  return DONATION_HASHES.has(window.location.hash) || SUPPORT_PATHS.has(pathname);
 }
 
 function initGivingInvite() {

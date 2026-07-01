@@ -22,11 +22,11 @@ test.describe("navigation", () => {
     await expect(navLinks).not.toHaveClass(/is-open/);
   });
 
-  test("main nav shows core pages and Contact with one action button", async ({ page, baseURL }) => {
+  test("main nav shows How It Works, About, Ways to Support, and Contact with one action button", async ({ page, baseURL }) => {
     await blockExternalRequests(page, baseURL);
     await page.goto("/");
 
-    await expect(page.locator("#nav-menu a")).toHaveText(["How It Works", "About", "Support", "Contact"]);
+    await expect(page.locator("#nav-menu a")).toHaveText(["How It Works", "About", "Ways to Support", "Contact"]);
     await expect(page.locator(".nav-actions .pill")).toHaveText(["Fund recovery care"]);
   });
 
@@ -55,22 +55,14 @@ test.describe("navigation", () => {
     await expect(page.locator("#donate")).toHaveCount(0);
   });
 
-  test("Strong Circle content lives on the Support page", async ({ page, baseURL }) => {
+  test("Ways to Support lives on its own page", async ({ page, baseURL }) => {
     await blockExternalRequests(page, baseURL);
     await page.goto("/");
 
     await page.locator('#nav-menu a[href="/ways-to-support/"]').click();
 
     await expect(page).toHaveURL(/\/ways-to-support\/$/);
-    await expect(page.locator("#strong-circle h2")).toContainText("Join the 22 Strong Circle.");
+    await expect(page.locator("#support-title")).toContainText("Every way to keep recovery care moving.");
     await expect(page.locator("#donate")).toHaveCount(0);
-  });
-
-  test("old Strong Circle route redirects to Support", async ({ page, baseURL }) => {
-    await blockExternalRequests(page, baseURL);
-    await page.goto("/strong-circle/");
-
-    await expect(page).toHaveURL(/\/ways-to-support\/$/);
-    await expect(page.locator("#strong-circle h2")).toContainText("Join the 22 Strong Circle.");
   });
 });
