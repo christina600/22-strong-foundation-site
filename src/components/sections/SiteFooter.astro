@@ -1,5 +1,6 @@
 ---
 import site from "../../content/site.json";
+import { isConfigured } from "../../utils/config";
 
 interface FooterSection {
   title: string;
@@ -18,13 +19,17 @@ interface Props {
 
 const { footer, homeHrefPrefix = "" } = Astro.props;
 const hrefFor = (href: string) => href.startsWith("#") ? `${homeHrefPrefix}${href}` : href;
+const orgMeta = [
+  isConfigured(site.taxStatus) ? site.taxStatus : "",
+  isConfigured(site.ein) ? `EIN ${site.ein}` : "",
+].filter(isConfigured);
 ---
 
 <footer>
   <div class="footer-inner">
     <div>
       <div class="footer-title">{site.orgName}</div>
-      <p>&copy; 2026 {site.orgName} &middot; {site.taxStatus} &middot; <span class="nowrap">EIN {site.ein}</span></p>
+      <p>&copy; 2026 {site.orgName}{orgMeta.length > 0 && <> &middot; {orgMeta.join(" · ")}</>}</p>
     </div>
 
     {footer.sections.map((section) => (

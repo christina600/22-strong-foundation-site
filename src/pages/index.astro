@@ -1,6 +1,6 @@
 ---
 /**
- * Homepage — the site as one continuous recovery story.
+ * Homepage: the site as one continuous recovery story.
  *
  * Each component below has a single editorial job:
  * conflict, proof, origin, audience stakes, care path, donor action.
@@ -25,7 +25,7 @@ import home from "../content/home.json";
 import { buildAudienceGroups } from "../utils/home-story";
 
 const audienceGroups = buildAudienceGroups(home);
-const [costStat, , debtStat] = home.stats.others;
+const [costStat, visitCapStat, debtStat] = home.stats.others;
 ---
 
 <HomeBase title="Fund recovery care when the system stops short.">
@@ -51,9 +51,9 @@ const [costStat, , debtStat] = home.stats.others;
       <section class="stat-bridge" data-parallax aria-label="Recovery gap statistic">
         <div class="stat-bridge__media" data-parallax-media style="--bg-image: url(/images/story-assisted-rehab.webp)"></div>
         <div class="stat-bridge__content">
-          <p class="stat-bridge__number">20 visits</p>
-          <p class="stat-bridge__body">a year is a common insurance cap on physical therapy — often less than recovery actually takes.</p>
-          <p class="stat-bridge__source">CBS News</p>
+          <p class="stat-bridge__number">{visitCapStat.number}</p>
+          <p class="stat-bridge__body">{visitCapStat.text}</p>
+          <a class="stat-bridge__source" href={visitCapStat.url} target="_blank" rel="noopener noreferrer">{visitCapStat.source}</a>
           <a class="pill primary stat-bridge__cta" href="#donate">{home.hero.ctaLabel}</a>
         </div>
       </section>
@@ -88,7 +88,7 @@ const [costStat, , debtStat] = home.stats.others;
 
       <StrongCircleSection strongCircle={home.strongCircle} />
 
-      <SectionCta text="Care shouldn't stop because the next visit isn't covered." label="Fund recovery care" href="#donate" />
+      <SectionCta text="Keep the next visit within reach." label="Fund recovery care" href="#donate" />
 
       <DonationAskSection chapter="04" donate={home.donate} />
       <ContactSection contact={home.contact} />

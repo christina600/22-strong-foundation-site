@@ -3,11 +3,10 @@
     "kicker": "Move better. Get stronger.",
     "headline": ["Keep recovery going", "when coverage stops."],
     "ctaLabel": "Fund recovery care",
-    "taxline": "Your gift is tax-deductible · 501(c)(3)"
+    "taxline": ""
   },
   "heroLead": "22 Strong funds hands-on recovery care for veterans and low-income youth when insurance and cost fall short.",
   "credibility": [
-    "501(c)(3) nonprofit",
     "Orange County based",
     "Veteran-founded",
     "Clinic-based recovery care"
@@ -18,11 +17,7 @@
     "lead": "A real injury. A referral. A care plan. And then the next visit isn't covered. That's the gap we close.",
     "impact": {
       "label": "",
-      "figures": [
-        { "number": "200+", "label": "recovery sessions funded" },
-        { "number": "45", "label": "people supported" },
-        { "number": "$850", "label": "average care plan" }
-      ]
+      "figures": []
     },
     "needParagraphs": [
       "We confirm the gap and fund the sessions directly, so recovery doesn't stall. Referrals are climbing faster than the funding."
@@ -32,8 +27,8 @@
     "eyebrow": "Story",
     "heading": "The gap kept showing up in the treatment room.",
     "paragraphs": [
-      "22 Strong began inside Next Level Wellness, a sports-medicine center in Newport Beach co-owned by Travis Mayfield — a Purple Heart veteran of the 101st Airborne — and Dr. Vasili “Dr. Vas” Gatsinaris.",
-      "In the treatment room they kept seeing the same problem: the care was working, but the next visit wasn't guaranteed. They built 22 Strong so high-level recovery wouldn't depend on whether someone could afford one more appointment."
+      "22 Strong began inside Next Level Wellness, a sports-medicine center in Newport Beach co-owned by Travis Mayfield, a Purple Heart veteran, and Dr. Vasili “Dr. Vas” Gatsinaris.",
+      "In the treatment room they kept seeing the same problem: the care was working, but the next visit wasn't guaranteed. They built 22 Strong so recovery would not depend on whether someone could afford one more appointment."
     ]
   },
   "press": {
@@ -55,22 +50,15 @@
       {
         "number": "1 in 3",
         "text": "veterans report chronic pain after service. When pain is part of daily life, recovery care should not be treated as optional.",
-        "source": "CDC — National Health Interview Survey",
+        "source": "CDC National Health Interview Survey",
         "url": "https://www.cdc.gov/mmwr/volumes/69/wr/mm6947a6.htm",
         "light": false
-      },
-      {
-        "number": "38%",
-        "text": "of post-9/11 veterans have not used VA health care since leaving the service.",
-        "source": "VA Office of Public Health",
-        "url": "https://www.publichealth.va.gov/epidemiology/reports/oefoifond/health-care-utilization/",
-        "light": true
       }
     ],
     "athletes": [
       {
-        "number": "4.6 million",
-        "text": "U.S. children were uninsured in 2024 — the highest rate in nearly a decade — and many more are underinsured, leaving families to cover recovery care on their own.",
+        "number": "6%",
+        "text": "of U.S. children were uninsured in 2024, the highest rate in nearly a decade. Families without coverage often have to carry recovery costs themselves.",
         "source": "Georgetown University Center for Children and Families",
         "url": "https://ccf.georgetown.edu/2025/09/12/progress-for-children-is-eroding-as-child-uninsured-rate-spikes-to-highest-level-in-decade/",
         "light": false
@@ -85,22 +73,22 @@
     ],
     "others": [
       {
-        "number": "$190",
-        "text": "is the typical cost of one outpatient physical-therapy session for someone paying without insurance.",
+        "number": "$192",
+        "text": "is the average cost of a physical therapy session for a privately insured patient to improve daily functioning.",
         "source": "CBS News / KFF Health News",
         "url": "https://www.cbsnews.com/news/physical-therapy-insurance-coverage-session-limits/",
         "light": false
       },
       {
         "number": "20 visits",
-        "text": "a year is a common insurance cap on physical therapy — often less than recovery actually takes.",
+        "text": "a year is the most common cap among ACA plans that limit annual physical therapy sessions.",
         "source": "CBS News / KFF Health News",
         "url": "https://www.cbsnews.com/news/physical-therapy-insurance-coverage-session-limits/",
         "light": true
       },
       {
         "number": "58%",
-        "text": "of parents carry health care debt — far more than non-parents — and most who do have put off needed care because of the cost.",
+        "text": "of parents of children under 18 report health care debt.",
         "source": "KFF Health Care Debt Survey",
         "url": "https://www.kff.org/health-costs/kff-health-care-debt-survey/",
         "light": true
@@ -151,7 +139,7 @@
       "heading": "Low-income youth",
       "detailAriaLabel": "Low-income youth recovery support",
       "lead": "Recovery care for young people whose families can't cover what it takes to heal after an injury.",
-      "body": "When insurance runs out or care costs more than a family can carry, recovery stalls. 22 Strong keeps it moving — for student-athletes and any young person who needs hands-on care.",
+      "body": "When insurance runs out or care costs more than a family can carry, recovery stalls. 22 Strong keeps it moving for student-athletes and any young person who needs hands-on care.",
       "photo": "/images/story-youth-huddle.webp",
       "photoAlt": "Youth basketball team huddling in a gym",
       "imagePosition": "50% 62%",
@@ -194,7 +182,7 @@
     {
       "name": "Tom Boscamp",
       "title": "U.S. Army Veteran · Veteran Services Coordinator",
-      "quote": "I am a 65 year old Veteran who needs to be active since I am on the go taking care of Veterans in the Community. I have degenerative disk disease and Spinal Stenosis as well as radiculopathy. The VA treatments are far and few between as they do not have enough chiropractors, massage therapists, and Physical therapy specialists. Thankfully Dr. Vas has filled that void and with his treatments it has allowed me to continue being active. I have even lost 15 pounds! I can’t say enough how good Next Level Wellness is! Also their commitment to serving Veterans is “Next Level”!",
+      "quote": "I need to stay active while serving veterans in the community. The VA treatments are far and few between. Thankfully Dr. Vas has filled that void and allowed me to continue being active.",
       "photo": "/images/tom-boscamp.jpg",
       "photoAlt": "Tom Boscamp",
       "initials": "TB"
@@ -202,20 +190,20 @@
   ],
   "strongCircle": {
     "heading": "The 22 Strong Circle.",
-    "lead": "The 22 Strong Circle gives 22 Strong reliable monthly support to say yes to the next veteran or young person without waiting on the next fundraiser.",
+    "lead": "The 22 Strong Circle gives 22 Strong monthly support it can plan around. That lets the foundation say yes when the next veteran or young person needs care.",
     "tiersLabel": "The 22 Strong Circle",
     "tiers": [
       { "amount": "$22", "note": "" },
       { "amount": "$50", "note": "" },
       { "amount": "$100", "note": "" },
-      { "amount": "$190", "note": "one recovery session" }
+      { "amount": "$190", "note": "session support" }
     ],
     "joinLabel": "Join the 22 Strong Circle",
-    "footnote": "Monthly · cancel anytime · every dollar funds recovery care.",
+    "footnote": "Monthly giving supports recovery care.",
     "points": [
-      { "label": "Care that continues", "text": "Funding that doesn't stop after the first visit." },
-      { "label": "Funding to plan on", "text": "A steady base, not the next fundraiser." },
-      { "label": "Veterans funding veterans", "text": "Neighbors keeping recovery going together." }
+      { "label": "", "text": "Monthly gifts help care continue after the first visit." },
+      { "label": "", "text": "The foundation can plan around recurring support when referrals come in." },
+      { "label": "", "text": "Veterans, neighbors, and families keep recovery moving together." }
     ]
   },
   "howItWorks": {
@@ -254,8 +242,8 @@
       }
     ],
     "outcome": {
-      "heading": "Care doesn’t stop.",
-      "body": "The gap closes, and recovery keeps moving — visit after visit."
+      "heading": "Care continues.",
+      "body": "The gap closes. Recovery keeps moving, visit after visit."
     },
     "learnMore": {
       "label": "See How It Works",
@@ -269,11 +257,11 @@
       "portrait": "/images/dr-vas.webp",
       "portraitAlt": "Dr. Vasili “Dr. Vas” Gatsinaris",
       "portraitPosition": "50% 18%",
-      "credentials": ["Doctor of Chiropractic", "25+ years in recovery care", "Co-owner, Next Level Wellness"],
+      "credentials": ["Doctor of Chiropractic", "Recovery-care clinician", "Co-owner, Next Level Wellness"],
       "paragraphs": [
-        "Dr. Vas earned his Doctorate of Chiropractic from the Los Angeles College of Chiropractic in 2001 and has more than 25 years of experience helping people recover and rebuild.",
+        "Dr. Vas earned his Doctorate of Chiropractic from the Los Angeles College of Chiropractic and has spent his career helping people recover and rebuild.",
         "Over his career, he has worked with everyone from professional athletes to first responders, developing a hands-on, integrative approach focused on restoring mobility and getting people back to life stronger and faster.",
-        "He is co-owner of Next Level Fitness & Wellness Center in Newport Beach — the same recovery care 22 Strong helps fund."
+        "He is co-owner of Next Level Fitness & Wellness Center in Newport Beach. It is the same recovery care 22 Strong helps fund."
       ]
     },
     {
@@ -283,9 +271,9 @@
       "portraitAlt": "Travis Mayfield",
       "portraitPosition": "50% 18%",
       "initials": "TM",
-      "credentials": ["Purple Heart recipient", "U.S. Army 101st Airborne", "Community care advocate"],
+      "credentials": ["Purple Heart recipient", "U.S. Army veteran", "Community care advocate"],
       "paragraphs": [
-        "A Purple Heart recipient who served as a Sergeant with the U.S. Army’s 101st Airborne Division in Vietnam, Travis is Co-Owner and President of Next Level Fitness & Wellness Center. His own long road back from war is the inspiration behind 22 Strong’s model. He helped found the foundation and leads its mission to make recovery care accessible to those who served and to others rebuilding their lives.",
+        "A Purple Heart recipient who served as a Sergeant in Vietnam, Travis is Co-Owner and President of Next Level Fitness & Wellness Center. His own long road back from war is the inspiration behind 22 Strong’s model. He helped found the foundation and leads its mission to make recovery care accessible to those who served and to others rebuilding their lives.",
         "His service and community work have been recognized by the California State Senate and Assembly, the U.S. House of Representatives, and Orange County."
       ]
     }
@@ -317,9 +305,9 @@
     "outcomes": "",
     "givingCards": [
       { "amount": "$50", "body": "moves care within reach" },
-      { "amount": "$190", "body": "funds one recovery session" },
+      { "amount": "$190", "body": "helps fund a recovery session" },
       { "amount": "$250", "body": "supports follow-up care" },
-      { "amount": "$850", "body": "supports an average care plan" }
+      { "amount": "$850", "body": "supports a care plan" }
     ],
     "storyImage": {
       "src": "/images/story-adaptive-deadlift.webp",

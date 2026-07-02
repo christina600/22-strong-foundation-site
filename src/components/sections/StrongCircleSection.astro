@@ -53,7 +53,7 @@ const tierHref = (amount: string) => {
         <ul class="circle-points" aria-label="What membership means">
           {strongCircle.points.map((point) => (
             <li>
-              <strong>{point.label}</strong>
+              {point.label && <strong>{point.label}</strong>}
               <span>{point.text}</span>
             </li>
           ))}
