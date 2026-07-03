@@ -1,0 +1,191 @@
+---
+import site from "../../content/site.json";
+import home from "../../content/home.json";
+import { isConfigured } from "../../utils/config";
+
+const description = home.strongCircle.lead;
+const tom = home.veteranVoices[0];
+
+const donateHref = (amount?: number) => {
+  if (!isConfigured(site.donateUrl)) return "/#contact";
+  if (!amount) return site.donateUrl;
+  return `${site.donateUrl}?amount=${encodeURIComponent(String(amount))}&frequency=once`;
+};
+
+const circleHref = (amount?: string) => {
+  if (!isConfigured(site.strongCircleUrl)) return "/#contact";
+  if (!amount) return site.strongCircleUrl;
+  const value = amount.replace(/[^0-9.]/g, "");
+  return value
+    ? `${site.strongCircleUrl}?amount=${encodeURIComponent(value)}&frequency=monthly`
+    : site.strongCircleUrl;
+};
+
+const comparisonCards = [
+  {
+    eyebrow: "Monthly",
+    title: "The 22 Strong Circle",
+    body: "A named monthly membership that creates reliable funding before a recovery plan stops.",
+    image: "/images/tom-boscamp.jpg",
+    alt: "Tom Boscamp, U.S. Army Veteran and Veteran Services Coordinator.",
+    imagePosition: "50% 28%",
+    cta: "Join the 22 Strong Circle",
+    href: circleHref(),
+  },
+  {
+    eyebrow: "Care plan",
+    title: "Put a plan within reach",
+    body: "$850 can put an average care plan within reach when insurance runs out before recovery is finished.",
+    image: "/images/story-treatment-room.webp",
+    alt: "Hands-on recovery care in a treatment room.",
+    imagePosition: "50% 50%",
+    cta: "Fund a care plan",
+    href: donateHref(850),
+  },
+  {
+    eyebrow: "One-time",
+    title: "Fund the next appointment",
+    body: "$190 funds one recovery session for someone whose care is at risk right now.",
+    image: "/images/story-assisted-rehab.webp",
+    alt: "Assisted recovery care during a rehab session.",
+    imagePosition: "50% 46%",
+    cta: "Give once",
+    href: donateHref(190),
+  },
+];
+
+const additionalWays = [
+  {
+    title: "Workplace matching",
+    body: "Ask your employer whether they match gifts to 501(c)(3) nonprofits. A matched gift can double the recovery care your donation funds.",
+    cta: "Ask about matching",
+  },
+  {
+    title: "Donor-advised funds",
+    body: "Recommend a grant to 22 Strong Foundation through your donor-advised fund using EIN 99-1232582.",
+    cta: "Use your DAF",
+  },
+  {
+    title: "Stock or crypto",
+    body: "For appreciated assets or crypto gifts, start with the team so the transfer can be handled cleanly and recorded correctly.",
+    cta: "Start the transfer",
+  },
+  {
+    title: "Planned giving",
+    body: "Include 22 Strong in a will, trust, or beneficiary plan to keep recovery care funded beyond a single campaign.",
+    cta: "Plan a legacy gift",
+  },
+];
+
+const helpWays = [
+  {
+    title: "Refer someone",
+    body: "Start a conversation for a veteran or young person whose recovery care may be at risk.",
+    cta: "Start a referral",
+  },
+  {
+    title: "Sponsor recovery care",
+    body: "Businesses, teams, and service groups can underwrite sessions or care plans for people in the recovery gap.",
+    cta: "Sponsor care",
+  },
+  {
+    title: "Partner with 22 Strong",
+    body: "Connect providers, veteran networks, schools, coaches, and community groups to the care pathway.",
+    cta: "Partner with us",
+  },
+];
+---
+
+<main id="main" class="support-page" aria-describedby="support-description">
+  <section class="support-hero" aria-labelledby="support-title">
+    <div class="support-hero__inner">
+      <p class="eyebrow">Ways to support</p>
+      <h1 id="support-title">Every way to keep recovery care moving.</h1>
+      <p class="lead" id="support-description">{description}</p>
+    </div>
+  </section>
+
+  <section class="support-circle" id="strong-circle" aria-labelledby="circle-title">
+    <div class="support-circle__media">
+      <img src={tom.photo} alt={tom.photoAlt} loading="lazy" />
+    </div>
+    <div class="support-circle__copy">
+      <p class="support-kicker">The 22 Strong Circle</p>
+      <h2 id="circle-title">Monthly support that keeps care going.</h2>
+      <p>
+        The 22 Strong Circle is the monthly membership that lets the foundation say yes before
+        a recovery plan stalls. It is the steady base under urgent, hands-on care.
+      </p>
+      <blockquote>
+        <p>{tom.quote}</p>
+        <cite>{tom.name}, {tom.title}</cite>
+      </blockquote>
+    </div>
+    <div class="support-circle__join" aria-label="Suggested monthly amounts">
+      {home.strongCircle.tiers.map((tier) => (
+        <a class="support-tier" href={circleHref(tier.amount)}>
+          <span>{tier.amount}<small>/mo</small></span>
+          {tier.note && <em>{tier.note}</em>}
+        </a>
+      ))}
+      <a class="pill primary support-circle__cta" href={circleHref()}>{home.strongCircle.joinLabel}</a>
+      <p>{home.strongCircle.footnote}</p>
+    </div>
+  </section>
+
+  <section class="support-compare" aria-labelledby="compare-title">
+    <div class="support-section-head">
+      <p class="support-kicker">Give now</p>
+      <h2 id="compare-title">Choose the giving path that fits.</h2>
+    </div>
+    <div class="support-card-grid">
+      {comparisonCards.map((card) => (
+        <article class="support-card">
+          <img src={card.image} alt={card.alt} loading="lazy" style={`object-position: ${card.imagePosition};`} />
+          <div class="support-card__body">
+            <p class="support-card__eyebrow">{card.eyebrow}</p>
+            <h3>{card.title}</h3>
+            <p>{card.body}</p>
+            <a class="pill primary support-card__cta" href={card.href}>{card.cta}</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="support-menu" aria-labelledby="additional-title">
+    <div class="support-section-head">
+      <p class="support-kicker">Additional ways to give</p>
+      <h2 id="additional-title">Tax-smart gifts can fund serious care.</h2>
+    </div>
+    <div class="support-menu__list">
+      {additionalWays.map((way) => (
+        <article class="support-menu__item">
+          <div>
+            <h3>{way.title}</h3>
+            <p>{way.body}</p>
+          </div>
+          <a class="pill secondary support-action" href="/#contact">{way.cta}</a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="support-menu support-menu--help" aria-labelledby="help-title">
+    <div class="support-section-head">
+      <p class="support-kicker">Other ways to help</p>
+      <h2 id="help-title">Money is not the only door into the work.</h2>
+    </div>
+    <div class="support-menu__list">
+      {helpWays.map((way) => (
+        <article class="support-menu__item">
+          <div>
+            <h3>{way.title}</h3>
+            <p>{way.body}</p>
+          </div>
+          <a class="pill secondary support-action" href="/#contact">{way.cta}</a>
+        </article>
+      ))}
+    </div>
+  </section>
+</main>

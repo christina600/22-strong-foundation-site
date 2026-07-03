@@ -3,7 +3,7 @@
  * Donation Module — the interactive giving widget.
  *
  * The Donate section's one-time giving widget. Monthly membership now lives
- * on the dedicated Strong Circle page so the two donor asks stay distinct.
+ * on the dedicated ways-to-support page so the two donor asks stay distinct.
  */
 
 import site from "../../content/site.json";
@@ -40,7 +40,7 @@ const isMonthly = activeDefaultFrequency === "monthly";
 const initAmount = isMonthly ? defaults.monthly : defaults.oneTime;
 const amountNotes: Record<"monthly" | "one-time", Record<number, string>> = {
   monthly: {
-    22: "Strong Circle",
+    22: "22 Strong Circle",
     50: "Follow-through care",
     100: "Plans moving",
     190: "Monthly session",

@@ -1,0 +1,41 @@
+---
+interface Commitment {
+  heading: string;
+  body: string;
+  linkLabel?: string;
+  href?: string;
+}
+
+interface Governance {
+  eyebrow: string;
+  heading: string;
+  lead: string;
+  commitments: Commitment[];
+}
+
+interface Props {
+  governance: Governance;
+}
+
+const { governance } = Astro.props;
+---
+
+<section class="institution-layer" id="institutional-layer" aria-labelledby="institution-title">
+  <div class="institution-layer__inner">
+    <div class="institution-layer__head" data-reveal="headline">
+      <p class="eyebrow">{governance.eyebrow}</p>
+      <h2 id="institution-title">{governance.heading}</h2>
+      <p>{governance.lead}</p>
+    </div>
+
+    <div class="institution-commitments" aria-label="Governance commitments">
+      {governance.commitments.map((item) => (
+        <article class="institution-commitment" data-reveal="card">
+          <h3>{item.heading}</h3>
+          <p>{item.body}</p>
+          {item.href && item.linkLabel && <a class="institution-link" href={item.href}>{item.linkLabel}</a>}
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

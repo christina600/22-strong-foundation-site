@@ -1,10 +1,10 @@
 /**
- * Strong Circle giving invite.
+ * 22 Strong Circle giving invite.
  *
  * A restrained, non-blocking corner card that invites monthly giving after the
  * visitor has met the mission — when the testimonial video ends, or when they
  * scroll past the testimonials. Shows once per session, respects reduced
- * motion, and never traps the screen. "Join" opens the Strong Circle page;
+ * motion, and never traps the screen. "Join" opens the support page;
  * "Give once" presets the donation widget to one-time.
  */
 
@@ -14,13 +14,13 @@ const INVITE_SELECTOR = "[data-giving-invite]";
 const STORAGE_KEY = "givingInviteSeen";
 const VISIBLE_CLASS = "is-visible";
 const DONATION_HASHES = new Set(["#donate"]);
-const STRONG_CIRCLE_PATH = "/strong-circle/";
+const SUPPORT_PATHS = new Set(["/ways-to-support/", "/strong-circle/"]);
 
 function isGivingFlowLocation() {
   const pathname = window.location.pathname.endsWith("/")
     ? window.location.pathname
     : `${window.location.pathname}/`;
-  return DONATION_HASHES.has(window.location.hash) || pathname === STRONG_CIRCLE_PATH;
+  return DONATION_HASHES.has(window.location.hash) || SUPPORT_PATHS.has(pathname);
 }
 
 function initGivingInvite() {

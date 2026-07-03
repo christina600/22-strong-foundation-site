@@ -5,7 +5,7 @@
     "ctaLabel": "Fund recovery care",
     "taxline": "Your gift is tax-deductible · 501(c)(3)"
   },
-  "heroLead": "22 Strong funds hands-on recovery care for veterans and low-income youth when insurance and cost fall short.",
+  "heroLead": "22 Strong funds hands-on recovery care for veterans and low-income youth when insurance runs out before recovery is finished.",
   "credibility": [
     "501(c)(3) nonprofit",
     "Orange County based",
@@ -25,25 +25,28 @@
       ]
     },
     "needParagraphs": [
-      "We confirm the gap and fund the sessions directly, so recovery doesn't stall. Referrals are climbing faster than the funding."
+      "We confirm the gap and fund the sessions directly, so recovery doesn't stall."
     ]
   },
   "story": {
     "eyebrow": "Story",
     "heading": "The gap kept showing up in the treatment room.",
     "paragraphs": [
-      "22 Strong began inside Next Level Wellness, a sports-medicine center in Newport Beach co-owned by Travis Mayfield — a Purple Heart veteran of the 101st Airborne — and Dr. Vasili “Dr. Vas” Gatsinaris.",
+      "22 Strong began inside Next Level Fitness & Wellness Center (Next Level), a sports-medicine center in Newport Beach co-owned by Travis Mayfield — a Purple Heart veteran of the 101st Airborne — and Dr. Vasili “Dr. Vas” Gatsinaris.",
       "In the treatment room they kept seeing the same problem: the care was working, but the next visit wasn't guaranteed. They built 22 Strong so high-level recovery wouldn't depend on whether someone could afford one more appointment."
     ]
   },
   "press": {
+    "heading": "Press feature",
     "publications": [
       {
         "name": "U.S. Veterans Magazine",
         "logo": "/images/logo-usvm.jpg",
         "logoAlt": "U.S. Veterans Magazine",
         "url": "https://digital.usveteransmagazine.com/US-Veterans-Magazine-Winter-2022/0/",
-        "ariaLabel": "Read the U.S. Veterans Magazine feature"
+        "ariaLabel": "Read the U.S. Veterans Magazine feature",
+        "featureLine": "U.S. Veterans Magazine featured the veteran-led recovery story behind 22 Strong.",
+        "sourceLabel": "U.S. Veterans Magazine · Winter 2022"
       }
     ]
   },
@@ -110,7 +113,7 @@
       "heading": "Veterans",
       "detailAriaLabel": "Veteran recovery support",
       "lead": "Care funding for veterans rebuilding strength and mobility after service.",
-      "body": "We keep care moving when VA benefits or timing fall short.",
+      "body": "When insurance runs out or care costs more than a family can carry, recovery stalls. 22 Strong keeps it moving — for student-athletes and any young person who needs hands-on care.",
       "photo": "/images/story-veteran-conversation.webp",
       "photoAlt": "Two veterans talking together at home",
       "imagePosition": "48% 42%",
@@ -148,7 +151,7 @@
       "heading": "Low-income youth",
       "detailAriaLabel": "Low-income youth recovery support",
       "lead": "Recovery care for young people whose families can't cover what it takes to heal after an injury.",
-      "body": "When insurance runs out or care costs more than a family can carry, recovery stalls. 22 Strong keeps it moving — for student-athletes and any young person who needs hands-on care.",
+      "body": "When insurance runs out before recovery is finished, care stalls. 22 Strong keeps it moving for student-athletes and any young person who needs hands-on care.",
       "photo": "/images/story-youth-huddle.webp",
       "photoAlt": "Youth basketball team huddling in a gym",
       "imagePosition": "50% 62%",
@@ -190,7 +193,7 @@
   "veteranVoices": [
     {
       "name": "Tom Boscamp",
-      "title": "U.S. Army Veteran · Veteran Services Coordinator · OCVMFC Steering Committee · NAVPA Board Member",
+      "title": "U.S. Army Veteran · Veteran Services Coordinator",
       "quote": "I am a 65 year old Veteran who needs to be active since I am on the go taking care of Veterans in the Community. I have degenerative disk disease and Spinal Stenosis as well as radiculopathy. The VA treatments are far and few between as they do not have enough chiropractors, massage therapists, and Physical therapy specialists. Thankfully Dr. Vas has filled that void and with his treatments it has allowed me to continue being active. I have even lost 15 pounds! I can’t say enough how good Next Level Wellness is! Also their commitment to serving Veterans is “Next Level”!",
       "photo": "/images/tom-boscamp.jpg",
       "photoAlt": "Tom Boscamp",
@@ -198,16 +201,16 @@
     }
   ],
   "strongCircle": {
-    "heading": "Join the 22 Strong Circle.",
+    "heading": "The 22 Strong Circle.",
     "lead": "A monthly membership that lets 22 Strong say yes to the next veteran or young person without waiting on the next fundraiser.",
-    "tiersLabel": "Become a monthly member",
+    "tiersLabel": "The 22 Strong Circle",
     "tiers": [
       { "amount": "$22", "note": "" },
       { "amount": "$50", "note": "" },
       { "amount": "$100", "note": "" },
       { "amount": "$190", "note": "one recovery session" }
     ],
-    "joinLabel": "Become a monthly member",
+    "joinLabel": "Join the 22 Strong Circle",
     "footnote": "Monthly · cancel anytime · every dollar funds recovery care.",
     "points": [
       { "label": "Care that continues", "text": "Funding that doesn't stop after the first visit." },
@@ -217,7 +220,7 @@
   },
   "howItWorks": {
     "eyebrow": "",
-    "heading": ["A recovery gap appears.", "22 Strong helps close it."],
+    "heading": ["A recovery gap appears.", "22 Strong closes it."],
     "kicker": "Someone has a recovery plan, the next appointment becomes uncertain, and donor funding keeps it moving.",
     "stepsAriaLabel": "22 Strong care funding path",
     "steps": [
@@ -239,14 +242,14 @@
       },
       {
         "number": "3",
-        "heading": "Care is provided",
-        "body": "Recovery sessions are provided directly, at no cost to the person receiving care.",
-        "note": "Care is currently provided through {provider} in Newport Beach — high-level sports medicine, including Fascial Integrative Treatment (FIT) for rotator cuff, knee, neck, lower back, hip, ankle/foot, and wrist/elbow injuries.",
+        "heading": "Care funded",
+        "body": "22 Strong pays for the approved session. The patient gets the care, not the bill.",
+        "note": "Care is currently provided through {provider} in Newport Beach, the sports-medicine clinic co-owned by 22 Strong's founders. Funded sessions can include Fascial Integrative Treatment (FIT) and hands-on care for rotator cuff, knee, neck, lower back, hip, ankle/foot, and wrist/elbow injuries.",
         "provider": { "label": "Next Level Fitness & Wellness Center", "href": "https://www.nextlevelwellnesscenter.com" },
         "disclosure": {
-          "text": "Care is provided through Next Level Fitness & Wellness Center in Newport Beach, co-owned by 22 Strong's founders.",
-          "linkLabel": "Read about how we handle this",
-          "href": "/transparency"
+          "text": "We publish how that provider relationship is managed.",
+          "linkLabel": "Read the transparency page",
+          "href": "/transparency/"
         }
       }
     ],
@@ -266,11 +269,11 @@
       "portrait": "/images/dr-vas.webp",
       "portraitAlt": "Dr. Vasili “Dr. Vas” Gatsinaris",
       "portraitPosition": "50% 18%",
-      "credentials": ["Doctor of Chiropractic", "25+ years in recovery care", "Co-owner, Next Level Wellness"],
+      "credentials": ["Doctor of Chiropractic (D.C.)", "25+ years in recovery care", "Co-owner, Next Level"],
       "paragraphs": [
-        "Dr. Vas earned his Doctorate of Chiropractic from the Los Angeles College of Chiropractic in 2001 and has more than 25 years of experience helping people recover and rebuild.",
+        "Dr. Vas earned his Doctor of Chiropractic from the Los Angeles College of Chiropractic in 2001 and has more than 25 years of experience helping people recover and rebuild.",
         "Over his career, he has worked with everyone from professional athletes to first responders, developing a hands-on, integrative approach focused on restoring mobility and getting people back to life stronger and faster.",
-        "He is co-owner of Next Level Fitness & Wellness Center in Newport Beach — the same recovery care 22 Strong helps fund."
+        "He is co-owner of Next Level in Newport Beach — the same recovery care 22 Strong funds."
       ]
     },
     {
@@ -287,6 +290,27 @@
       ]
     }
   ],
+  "governance": {
+    "eyebrow": "Institutional layer",
+    "heading": "The next layer belongs in public.",
+    "lead": "22 Strong began with two founders and a working treatment room. Testimonials prove the care matters; governance has to prove the organization can outlast its founders. As board and advisory roles are formalized, that roster belongs here.",
+    "commitments": [
+      {
+        "heading": "Board and advisory roster",
+        "body": "When board or advisory seats are formalized, 22 Strong will publish names, roles, and terms here so donors can see who shares oversight."
+      },
+      {
+        "heading": "Conflict standard",
+        "body": "The Next Level relationship is named, linked, and governed by a disclosure rule: a conflicted leader should not approve a benefit to themselves or their business.",
+        "linkLabel": "Read the transparency policy",
+        "href": "/transparency/"
+      },
+      {
+        "heading": "Continuity path",
+        "body": "The program is documenting referral review, funded-care records, and provider relationships so the model can keep operating as the organization grows."
+      }
+    ]
+  },
   "donate": {
     "heading": "Fund the next recovery appointment.",
     "lead": "A one-time gift helps cover hands-on recovery care when cost, coverage, or timing threatens the next visit.",
@@ -315,7 +339,7 @@
     "ariaLabel": "Join the 22 Strong Circle",
     "heading": "Keep care going monthly.",
     "body": "Join the 22 Strong Circle so the next recovery plan doesn't have to wait.",
-    "joinLabel": "Join monthly",
+    "joinLabel": "Join the 22 Strong Circle",
     "giveOnceLabel": "Give once",
     "dismissLabel": "Not now"
   },
@@ -359,7 +383,7 @@
           { "label": "How It Works", "href": "/how-it-works/" },
           { "label": "About", "href": "/about/" },
           { "label": "Who we serve", "href": "#serve" },
-          { "label": "Strong Circle", "href": "/strong-circle/" }
+          { "label": "Ways to Support", "href": "/ways-to-support/" }
         ]
       },
       {

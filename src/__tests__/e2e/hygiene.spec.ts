@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { blockExternalRequests, collectBrowserErrors, uniqueExternalRequests } from "./helpers";
 
-const CRITICAL_PATHS = ["/", "/about/", "/strong-circle/"] as const;
+const CRITICAL_PATHS = ["/", "/about/", "/ways-to-support/", "/strong-circle/"] as const;
 const VIEWPORTS = [
   { width: 1440, height: 1000 },
   { width: 390, height: 844 },
@@ -48,7 +48,7 @@ test.describe("runtime hygiene", () => {
       /https:\/\/givebutter\.com\/fund-recovery-care-gaf6gu\?amount=190&frequency=once/
     );
 
-    await page.goto("/strong-circle/");
+    await page.goto("/ways-to-support/");
 
     await expect(page.locator(".strong-circle-trigger")).toHaveAttribute(
       "href",
