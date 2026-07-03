@@ -101,6 +101,17 @@ places. Before committing, always confirm **which folder and which branch** you'
 in (step 1), and don't commit into a folder that has someone else's work in
 progress.
 
+### If `git checkout main` says "already checked out" somewhere else
+
+This means a stale worktree reference exists (the folder was deleted but git still
+thinks it's there). Fix it with:
+```bash
+git worktree prune
+```
+Then try `git checkout main` again. This happened in July 2026 when the
+`/private/tmp/22-strong-main-for-deploy` worktree was removed but the reference
+lingered, blocking all branch switches until `git worktree prune` cleaned it up.
+
 ---
 
 ## Deploy reality (why `main` has to be complete)
