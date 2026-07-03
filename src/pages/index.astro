@@ -1,100 +1,66 @@
 ---
-/**
- * Homepage: the site as one continuous recovery story.
- *
- * Each component below has a single editorial job:
- * conflict, proof, origin, audience stakes, care path, donor action.
- */
-
-import HomeBase from "../layouts/HomeBase.astro";
-import AudienceSection from "../components/sections/AudienceSection.astro";
-import BlankSection from "../components/sections/BlankSection.astro";
-import ContactSection from "../components/sections/ContactSection.astro";
-import DonationAskSection from "../components/sections/DonationAskSection.astro";
-import GivingInvite from "../components/sections/GivingInvite.astro";
-import HeroSection from "../components/sections/HeroSection.astro";
-import ImpactSection from "../components/sections/ImpactSection.astro";
-import NarrativeScene from "../components/sections/NarrativeScene.astro";
-import ServicePathSection from "../components/sections/ServicePathSection.astro";
-import SectionCta from "../components/sections/SectionCta.astro";
-import StrongCircleSection from "../components/sections/StrongCircleSection.astro";
-import SiteHeader from "../components/sections/SiteHeader.astro";
-import SiteFooter from "../components/sections/SiteFooter.astro";
-import VeteranStorySection from "../components/sections/VeteranStorySection.astro";
-import home from "../content/home.json";
-import { buildAudienceGroups } from "../utils/home-story";
-
-const audienceGroups = buildAudienceGroups(home);
-const [costStat, visitCapStat, debtStat] = home.stats.others;
+// Holding page — temporary "launching soon" page for the public domain.
+// The full site lives on the `main` branch and launches later.
 ---
-
-<HomeBase title="Fund recovery care when the system stops short.">
-  <div class="site">
-    <SiteHeader current="home" />
-
-    <main id="main">
-      <HeroSection proofline={home.credibility} />
-      <BlankSection class="post-hero-section" id="post-hero-blank" padding="default" ariaHidden={false}>
-        <div class="post-hero-message">
-          {home.hero.kicker && <p class="hero-kicker">{home.hero.kicker}</p>}
-          <h1 class="hero-headline">
-            {home.hero.headline.map((line) => <span class="hero-headline-line">{line}</span>)}
-          </h1>
-        </div>
-      </BlankSection>
-      <BlankSection padding="none" id="hero-lead" ariaHidden={false}>
-        <div class="hero-lead">
-          <p class="hero-lead-statement" data-reveal="headline">{home.heroLead}</p>
-        </div>
-      </BlankSection>
-
-      <section class="stat-bridge" data-parallax aria-label="Recovery gap statistic">
-        <div class="stat-bridge__media" data-parallax-media style="--bg-image: url(/images/story-assisted-rehab.webp)"></div>
-        <div class="stat-bridge__content">
-          <p class="stat-bridge__number">{visitCapStat.number}</p>
-          <p class="stat-bridge__body">{visitCapStat.text}</p>
-          <a class="stat-bridge__source" href={visitCapStat.url} target="_blank" rel="noopener noreferrer">{visitCapStat.source}</a>
-          <a class="pill primary stat-bridge__cta" href="#donate">{home.hero.ctaLabel}</a>
-        </div>
-      </section>
-
-      <AudienceSection chapter="01" introTitle="Who we serve" groups={audienceGroups} />
-
-      <NarrativeScene
-        chapter="02"
-        id="about"
-        heading={home.mission.heading}
-        lead={home.mission.lead}
-        evidenceStats={[costStat, debtStat]}
-        evidenceAriaLabel="Evidence of the recovery access gap"
-        needParagraphs={home.mission.needParagraphs}
-        paragraphs={home.story.paragraphs}
-        media={{
-          src: "/images/story-treatment-room.webp",
-          alt: "Hands providing shoulder mobility treatment during a rehab session",
-          caption: "The gap shows up where recovery actually happens: in the treatment room.",
-          imagePosition: "50% 50%"
-        }}
-      />
-
-      <ImpactSection
-        heading="Every number represents care that did not stop when coverage did."
-        impact={home.mission.impact}
-      />
-
-      <ServicePathSection chapter="03" content={home.howItWorks} />
-
-      <VeteranStorySection />
-
-      <StrongCircleSection strongCircle={home.strongCircle} />
-
-      <SectionCta text="Keep the next visit within reach." label="Fund recovery care" href="#donate" />
-
-      <DonationAskSection chapter="04" donate={home.donate} />
-      <ContactSection contact={home.contact} />
-    </main>
-
-    <SiteFooter footer={home.footer} />
-    <GivingInvite />
-  </div>
-</HomeBase>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>22 Strong Foundation — Launching soon</title>
+<meta name="description" content="22 Strong Foundation funds recovery care for veterans and low-income youth when coverage runs out. Our new site is launching soon.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f8f4eb; --cream:#f3eee2; --muted:rgba(243,238,226,.64);
+    --orange:#b95524; --orange-dark:#863a1a; --bg:#1b1f1b; --line:rgba(243,238,226,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:var(--bg); color:var(--cream);
+    font-family:"Barlow",system-ui,sans-serif;
+    min-height:100vh; display:flex; align-items:center; justify-content:center;
+    padding:3vh 24px; text-align:center; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:720px; display:flex; flex-direction:column; align-items:center}
+  .mark{display:flex; flex-direction:column; align-items:center; line-height:.84; margin-bottom:22px}
+  .mark .n22{font-family:"Barlow Condensed",sans-serif; font-weight:800; font-size:clamp(4.5rem,11vw,7rem); letter-spacing:.01em}
+  .mark .strong{font-family:"Barlow Condensed",sans-serif; font-weight:800; font-size:clamp(2.2rem,6vw,3.4rem); letter-spacing:.05em; margin-top:.04em}
+  .mark .bar{width:92px; height:7px; background:var(--orange); margin:12px 0 9px; border-radius:2px}
+  .mark .foundation{font-family:"Barlow Condensed",sans-serif; font-weight:600; font-size:clamp(1rem,3vw,1.35rem); letter-spacing:.46em; padding-left:.46em; color:var(--cream)}
+  .eyebrow{font-weight:600; font-size:1.2rem; letter-spacing:.26em; text-transform:uppercase; color:rgba(243,238,226,.52); margin-bottom:14px}
+  .tagline{font-weight:600; font-size:clamp(1.55rem,3.1vw,2.25rem); line-height:1.22; max-width:24ch; margin-bottom:32px}
+  .cta{display:inline-block; font-family:"Barlow",sans-serif; font-weight:600; font-size:1.2rem;
+    letter-spacing:.02em; color:var(--paper); background:var(--orange);
+    padding:17px 38px; border-radius:8px; text-decoration:none; transition:background .18s ease}
+  .cta:hover{background:var(--orange-dark)}
+  .meta{margin-top:26px; padding-top:20px; border-top:1px solid var(--line); width:100%; max-width:600px;
+    font-size:1.05rem; letter-spacing:.02em; color:var(--muted); line-height:1.85}
+  .meta a{color:var(--cream); text-decoration:none; border-bottom:1px solid var(--line)}
+  .meta .dot{opacity:.4; padding:0 10px}
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="mark">
+      <span class="n22">22</span>
+      <span class="strong">STRONG</span>
+      <span class="bar" aria-hidden="true"></span>
+      <span class="foundation">FOUNDATION</span>
+    </div>
+    <p class="eyebrow">Launching soon</p>
+    <h1 class="tagline">22 Strong funds hands-on recovery care for veterans and low-income youth when insurance and cost fall short.</h1>
+    <a class="cta" href="mailto:team@22strongfoundation.com">Get in touch</a>
+    <div class="meta">
+      <a href="mailto:team@22strongfoundation.com">team@22strongfoundation.com</a>
+      <span class="dot">·</span>Newport Beach, CA<span class="dot">·</span>Orange County &amp; Southern California
+      <br>501(c)(3) nonprofit · EIN 99-1232582
+    </div>
+  </main>
+</body>
+</html>

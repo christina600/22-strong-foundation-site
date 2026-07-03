@@ -4,8 +4,8 @@
   "phone": "",
   "email": "team@22strongfoundation.com",
   "address": "4120 Birch St, Suite 106, Newport Beach, CA 92660",
-  "taxStatus": "",
-  "ein": "",
+  "taxStatus": "501(c)(3)",
+  "ein": "99-1232582",
   "serviceArea": "Orange County & Southern California",
   "donateUrl": "https://givebutter.com/fund-recovery-care-gaf6gu",
   "strongCircleUrl": "https://givebutter.com/22-strong-circle-bjf16z",
@@ -22,17 +22,17 @@
   "donationImpact": {
     "monthly": {
       "22": "$22 a month anchors the 22 Strong Circle and helps 22 Strong say yes before a recovery plan stops.",
-      "50": "$50 a month helps with follow-through appointments when coverage or cash runs short.",
-      "100": "$100 a month helps keep recovery plans moving across the year.",
-      "190": "$190 a month helps fund recovery sessions for someone who can't cover care.",
+      "50": "$50 a month creates steady room for follow-through appointments when coverage or cash runs short.",
+      "100": "$100 a month helps keep multiple recovery plans moving across the year.",
+      "190": "$190 a month funds a full recovery session every month for someone who can't cover it.",
       "default": "Monthly gifts help the 22 Strong Circle keep care moving before a recovery gap turns into a stopped plan."
     },
     "oneTime": {
       "50": "$50 helps move the next appointment within reach.",
       "100": "$100 helps offset a hands-on recovery session for someone whose plan is at risk.",
-      "190": "$190 helps fund a recovery session for someone who can't cover care.",
+      "190": "$190 funds one recovery session for someone who can't cover it.",
       "250": "$250 helps keep follow-up recovery care moving.",
-      "850": "$850 helps support a care plan.",
+      "850": "$850 can put an average care plan within reach.",
       "default": "Your one-time gift helps turn a stalled recovery plan into real appointments."
     }
   },
