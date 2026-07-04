@@ -73,6 +73,38 @@ const preparedGroups = groups.map((group) => ({
           <h3>How we help</h3>
           <p>{group.helpLine}</p>
         </div>
+        {group.featurePhoto && (
+          <figure class="audience-voice">
+            {(() => {
+              const asset = getImageByPath(group.featurePhoto.src);
+              return asset
+                ? <Image
+                    class="audience-voice__photo"
+                    src={asset}
+                    alt={group.featurePhoto.alt}
+                    width={600}
+                    height={1067}
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                    sizes="(max-width: 760px) 92vw, 300px"
+                    widths={[300, 600, 900]}
+                    style={group.featurePhoto.imagePosition ? `object-position: ${group.featurePhoto.imagePosition};` : undefined}
+                  />
+                : <img
+                    class="audience-voice__photo"
+                    src={group.featurePhoto.src}
+                    alt={group.featurePhoto.alt}
+                    width="600"
+                    height="1067"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                    style={group.featurePhoto.imagePosition ? `object-position: ${group.featurePhoto.imagePosition};` : undefined}
+                  />;
+            })()}
+          </figure>
+        )}
         {group.videos && group.videos.length > 0 && (
           <figure class="audience-voice">
             <video class="audience-voice__video" controls preload="none" poster={group.videos[0].poster}>
@@ -100,6 +132,17 @@ const preparedGroups = groups.map((group) => ({
     aspect-ratio: 9 / 16;
     border-radius: 12px;
     background: #000;
+    object-fit: cover;
+  }
+
+  /* Matches the veterans card video footprint (Fix B) */
+  .audience-voice__photo {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    aspect-ratio: 9 / 16;
+    border-radius: 12px;
     object-fit: cover;
   }
 

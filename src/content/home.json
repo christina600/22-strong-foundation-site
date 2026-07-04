@@ -1,11 +1,11 @@
 {
   "hero": {
-    "kicker": "Move better. Get stronger.",
+    "kicker": "For the visits insurance won't cover.",
     "headline": ["Keep recovery going", "when coverage stops."],
     "ctaLabel": "Fund recovery care",
     "taxline": "Your gift is tax-deductible · 501(c)(3)"
   },
-  "heroLead": "22 Strong funds hands-on recovery care for veterans and low-income youth when insurance runs out before recovery is finished.",
+  "heroLead": "22 Strong pays for hands-on recovery care for veterans and low-income youth when insurance runs out before the recovery is done.",
   "credibility": [
     "501(c)(3) nonprofit",
     "Orange County based",
@@ -15,7 +15,7 @@
   "mission": {
     "eyebrow": "",
     "heading": "Coverage runs out before recovery does.",
-    "lead": "A real injury. A referral. A care plan. And then the next visit isn't covered. That's the gap we close.",
+    "lead": "The injury is real and the care plan is working. Then the next visit isn't covered. That gap is what we close.",
     "impact": {
       "label": "",
       "figures": [
@@ -25,15 +25,15 @@
       ]
     },
     "needParagraphs": [
-      "We confirm the gap and fund the sessions directly, so recovery doesn't stall."
+      "We confirm the gap, then pay the clinic for the sessions. Recovery keeps its schedule."
     ]
   },
   "story": {
     "eyebrow": "Story",
     "heading": "The gap kept showing up in the treatment room.",
     "paragraphs": [
-      "22 Strong began inside Next Level Fitness & Wellness Center (Next Level), a sports-medicine center in Newport Beach co-owned by Travis Mayfield — a Purple Heart veteran of the 101st Airborne — and Dr. Vasili “Dr. Vas” Gatsinaris.",
-      "In the treatment room they kept seeing the same problem: the care was working, but the next visit wasn't guaranteed. They built 22 Strong so high-level recovery wouldn't depend on whether someone could afford one more appointment."
+      "22 Strong started inside Next Level Fitness & Wellness Center, a sports-medicine clinic in Newport Beach co-owned by Travis Mayfield, a Purple Heart veteran of the 101st Airborne, and Dr. Vasili “Dr. Vas” Gatsinaris.",
+      "In the treatment room they kept seeing the same problem: the care was working, and the next visit wasn't guaranteed. They built 22 Strong so a recovery wouldn't depend on whether someone could afford one more appointment."
     ]
   },
   "press": {
@@ -54,7 +54,7 @@
     "veterans": [
       {
         "number": "1 in 3",
-        "text": "veterans report chronic pain after service. When pain is part of daily life, recovery care should not be treated as optional.",
+        "text": "veterans report chronic pain after service. When pain is part of daily life, recovery care is not optional.",
         "source": "CDC — National Health Interview Survey",
         "url": "https://www.cdc.gov/mmwr/volumes/69/wr/mm6947a6.htm",
         "light": false
@@ -70,7 +70,7 @@
     "athletes": [
       {
         "number": "4.6 million",
-        "text": "U.S. children were uninsured in 2024 — the highest rate in nearly a decade — and many more are underinsured, leaving families to cover recovery care on their own.",
+        "text": "U.S. children were uninsured in 2024, the highest rate in nearly a decade, and many more are underinsured. Families are left to cover recovery care on their own.",
         "source": "Georgetown University Center for Children and Families",
         "url": "https://ccf.georgetown.edu/2025/09/12/progress-for-children-is-eroding-as-child-uninsured-rate-spikes-to-highest-level-in-decade/",
         "light": false
@@ -93,14 +93,14 @@
       },
       {
         "number": "20 visits",
-        "text": "a year is a common insurance cap on physical therapy — often less than recovery actually takes.",
+        "text": "a year is a common insurance cap on physical therapy. Recovery often takes more.",
         "source": "CBS News / KFF Health News",
         "url": "https://www.cbsnews.com/news/physical-therapy-insurance-coverage-session-limits/",
         "light": true
       },
       {
         "number": "58%",
-        "text": "of parents carry health care debt — far more than non-parents — and most who do have put off needed care because of the cost.",
+        "text": "of parents carry health care debt, far more than non-parents, and most of them have put off needed care because of the cost.",
         "source": "KFF Health Care Debt Survey",
         "url": "https://www.kff.org/health-costs/kff-health-care-debt-survey/",
         "light": true
@@ -113,7 +113,7 @@
       "heading": "Veterans",
       "detailAriaLabel": "Veteran recovery support",
       "lead": "Care funding for veterans rebuilding strength and mobility after service.",
-      "body": "When insurance runs out or care costs more than a family can carry, recovery stalls. 22 Strong keeps it moving — for student-athletes and any young person who needs hands-on care.",
+      "body": "VA coverage and referrals get many veterans started. The plan often ends before the pain does. When that happens, 22 Strong pays for the sessions that finish the job.",
       "photo": "/images/story-veteran-conversation.webp",
       "photoAlt": "Two veterans talking together at home",
       "imagePosition": "48% 42%",
@@ -150,13 +150,17 @@
       "id": "serve-athletes",
       "heading": "Low-income youth",
       "detailAriaLabel": "Low-income youth recovery support",
-      "lead": "Recovery care for young people whose families can't cover what it takes to heal after an injury.",
-      "body": "When insurance runs out before recovery is finished, care stalls. 22 Strong keeps it moving for student-athletes and any young person who needs hands-on care.",
+      "lead": "Recovery care for young people whose families can't cover what it takes to heal.",
+      "body": "An injured knee doesn't wait for a family's budget to catch up. When the next visit is out of reach, 22 Strong pays for it. That goes for student-athletes and any young person who needs hands-on care.",
       "photo": "/images/story-youth-huddle.webp",
       "photoAlt": "Youth basketball team huddling in a gym",
       "imagePosition": "50% 62%",
       "statsKey": "athletes",
       "statsClass": "one-up",
+      "featurePhoto": {
+        "src": "/images/story-youth-dugout.jpg",
+        "alt": "Youth baseball players lined up along the dugout fence during a game"
+      },
       "voicesAriaLabel": "Low-income youth testimonials",
       "voices": [
         {
@@ -213,15 +217,15 @@
     "joinLabel": "Join the 22 Strong Circle",
     "footnote": "Monthly · cancel anytime · every dollar funds recovery care.",
     "points": [
-      { "label": "Care that continues", "text": "Funding that doesn't stop after the first visit." },
-      { "label": "Funding to plan on", "text": "A steady base, not the next fundraiser." },
-      { "label": "Veterans funding veterans", "text": "Neighbors keeping recovery going together." }
+      { "label": "Care that continues", "text": "Funding that keeps going after the first visit." },
+      { "label": "Money we can plan on", "text": "Monthly gifts let us commit to a full care plan up front." },
+      { "label": "Veterans funding veterans", "text": "Neighbors keeping a neighbor's recovery going." }
     ]
   },
   "howItWorks": {
     "eyebrow": "",
     "heading": ["A recovery gap appears.", "22 Strong closes it."],
-    "kicker": "Someone has a recovery plan, the next appointment becomes uncertain, and donor funding keeps it moving.",
+    "kicker": "Someone has a care plan and the next appointment is in doubt. Here is what happens next.",
     "stepsAriaLabel": "22 Strong care funding path",
     "steps": [
       {
@@ -237,13 +241,13 @@
       },
       {
         "number": "2",
-        "heading": "We evaluate the gap",
+        "heading": "We confirm the gap",
         "body": "22 Strong reviews the situation. If coverage has run out or private care is out of reach, we step in."
       },
       {
         "number": "3",
         "heading": "Care funded",
-        "body": "22 Strong pays for the approved session. The patient gets the care, not the bill.",
+        "body": "22 Strong pays the clinic directly. The patient never sees a bill.",
         "note": "Care is currently provided through {provider} in Newport Beach, the sports-medicine clinic co-owned by 22 Strong's founders. Funded sessions can include Fascial Integrative Treatment (FIT) and hands-on care for rotator cuff, knee, neck, lower back, hip, ankle/foot, and wrist/elbow injuries.",
         "provider": { "label": "Next Level Fitness & Wellness Center", "href": "https://www.nextlevelwellnesscenter.com" },
         "disclosure": {
@@ -255,7 +259,7 @@
     ],
     "outcome": {
       "heading": "Care doesn’t stop.",
-      "body": "The gap closes, and recovery keeps moving — visit after visit."
+      "body": "The gap closes and the plan continues, visit after visit."
     },
     "learnMore": {
       "label": "See How It Works",
@@ -313,7 +317,7 @@
   },
   "donate": {
     "heading": "Fund the next recovery appointment.",
-    "lead": "A one-time gift helps cover hands-on recovery care when cost, coverage, or timing threatens the next visit.",
+    "lead": "A one-time gift pays for hands-on care when the next visit is at risk.",
     "outcomes": "",
     "givingCards": [
       { "amount": "$50", "body": "moves care within reach" },
@@ -330,8 +334,8 @@
       "eyebrow": "What your gift covers",
       "items": [
         { "heading": "Hands-on recovery sessions", "body": "Chiropractic, physical therapy, and massage therapy." },
-        { "heading": "Follow-through after the first visit", "body": "Help staying with care long enough for recovery to keep moving." },
-        { "heading": "Provider and partner referrals", "body": "A path for veterans, families, and neighbors already trying to get well." }
+        { "heading": "Follow-through after the first visit", "body": "Funding that continues until the care plan is done." },
+        { "heading": "Provider and partner referrals", "body": "A way in for veterans and families who are already trying to get well." }
       ]
     }
   },

@@ -376,7 +376,10 @@
   padding: clamp(26px, 3.6vw, 44px) 0;
 }
 
-.narrative-scene--about .about-need p:first-child {
+/* Only strip the background when a barrier card sits beside an answer card.
+   A lone paragraph is both :first-child and :last-child, and it must keep the
+   dark answer-card background or its light text disappears on the cream band. */
+.narrative-scene--about .about-need p:first-child:not(:last-child) {
   background: transparent;
 }
 

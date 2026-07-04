@@ -39,6 +39,12 @@ export interface VideoVoiceContent {
   story?: string;
 }
 
+export interface FeaturePhotoContent {
+  src: string;
+  alt: string;
+  imagePosition?: string;
+}
+
 interface AudienceConfig {
   id: string;
   heading: string;
@@ -48,6 +54,7 @@ interface AudienceConfig {
   photo?: string;
   photoAlt?: string;
   imagePosition?: string;
+  featurePhoto?: FeaturePhotoContent;
   statsKey: string;
   statsClass?: string;
   proofClass?: string;
@@ -74,6 +81,7 @@ export interface AudienceGroupContent {
   photo?: string;
   photoAlt?: string;
   imagePosition?: string;
+  featurePhoto?: FeaturePhotoContent;
   stats: EvidenceStatContent[];
   statsClass?: string;
   proofClass?: string;
@@ -127,6 +135,7 @@ export function buildAudienceGroups(home: HomeStoryContent): AudienceGroupConten
     photo: group.photo,
     photoAlt: group.photoAlt,
     imagePosition: group.imagePosition,
+    featurePhoto: group.featurePhoto,
     stats: home.stats[group.statsKey] ?? [],
     statsClass: group.statsClass,
     proofClass: group.proofClass,

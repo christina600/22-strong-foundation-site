@@ -34,6 +34,9 @@ const [costStat, visitCapStat, debtStat] = home.stats.others;
 
     <main id="main">
       <HeroSection proofline={home.credibility} />
+      <div class="hero-care-link">
+        <a href="#contact">Need care, or referring someone? Get in touch.</a>
+      </div>
       <BlankSection class="post-hero-section" id="post-hero-blank" padding="default" ariaHidden={false}>
         <div class="post-hero-message">
           {home.hero.kicker && <p class="hero-kicker">{home.hero.kicker}</p>}
@@ -72,13 +75,13 @@ const [costStat, visitCapStat, debtStat] = home.stats.others;
         media={{
           src: "/images/story-treatment-room.webp",
           alt: "Hands providing shoulder mobility treatment during a rehab session",
-          caption: "The gap shows up where recovery actually happens: in the treatment room.",
+          caption: "The gap shows up where recovery happens: in the treatment room.",
           imagePosition: "50% 50%"
         }}
       />
 
       <ImpactSection
-        heading="Every number represents care that did not stop when coverage did."
+        heading="Every number here is care that kept going after coverage stopped."
         impact={home.mission.impact}
       />
 
