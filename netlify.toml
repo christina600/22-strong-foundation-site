@@ -4,8 +4,3 @@
 
 [build.environment]
   NODE_VERSION = "22"
-
-[[redirects]]
-  from = "/strong-circle/"
-  to = "/ways-to-support/"
-  status = 301

@@ -48,8 +48,7 @@ test.describe("runtime hygiene", () => {
       /https:\/\/givebutter\.com\/fund-recovery-care-gaf6gu\?amount=190&frequency=once/
     );
 
-    await page.goto("/ways-to-support/");
-
+    // The Strong Circle section lives on the homepage since the redesign.
     await expect(page.locator(".strong-circle-trigger")).toHaveAttribute(
       "href",
       "https://givebutter.com/22-strong-circle-bjf16z"
