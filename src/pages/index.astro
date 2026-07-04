@@ -7,8 +7,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>22 Strong Foundation — Launching soon</title>
-<meta name="description" content="22 Strong Foundation funds recovery care for veterans and low-income youth when coverage runs out. Our new site is launching soon.">
+<title>22 Strong Foundation — Launching This Summer</title>
+<meta name="description" content="22 Strong Foundation funds recovery care for veterans and low-income youth when coverage runs out. Our new site is launching this summer.">
 <meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,6 +43,21 @@
     font-size:1.05rem; letter-spacing:.02em; color:var(--muted); line-height:1.85}
   .meta a{color:var(--cream); text-decoration:none; border-bottom:1px solid var(--line)}
   .meta .dot{opacity:.4; padding:0 10px}
+
+  .hp{position:absolute; left:-9999px}
+  .sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0)}
+  .notify-label{font-weight:600; font-size:.95rem; letter-spacing:.16em; text-transform:uppercase;
+    color:rgba(243,238,226,.52); margin-bottom:14px}
+  .notify-form{display:flex; flex-wrap:wrap; justify-content:center; gap:12px}
+  .notify-form input[type="email"]{
+    font-family:"Barlow",sans-serif; font-size:1.1rem; color:var(--cream);
+    background:rgba(243,238,226,.06); border:1px solid rgba(243,238,226,.28);
+    border-radius:8px; padding:15px 20px; min-width:240px; outline:none;
+    transition:border-color .18s ease, background .18s ease;
+  }
+  .notify-form input[type="email"]::placeholder{color:rgba(243,238,226,.4)}
+  .notify-form input[type="email"]:focus{border-color:var(--orange); background:rgba(243,238,226,.1)}
+  .notify-success{font-weight:600; font-size:1.2rem; color:var(--cream); margin-bottom:0}
 </style>
 </head>
 <body>
@@ -53,14 +68,40 @@
       <span class="bar" aria-hidden="true"></span>
       <span class="foundation">FOUNDATION</span>
     </div>
-    <p class="eyebrow">Launching soon</p>
+    <p class="eyebrow">Launching this summer</p>
     <h1 class="tagline">22 Strong funds hands-on recovery care for veterans and low-income youth when insurance and cost fall short.</h1>
-    <a class="cta" href="mailto:team@22strongfoundation.com">Get in touch</a>
+    <p class="notify-label">Sign up to be notified</p>
+    <form name="notify" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="notify-form" id="notify-form">
+      <input type="hidden" name="form-name" value="notify" />
+      <p class="hp"><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
+      <label class="sr" for="notify-email">Email address</label>
+      <input type="email" id="notify-email" name="email" placeholder="you@email.com" autocomplete="email" required />
+      <button type="submit" class="cta">Notify me</button>
+    </form>
+    <p class="notify-success" id="notify-success" hidden>You're on the list — we'll be in touch when we launch.</p>
     <div class="meta">
       <a href="mailto:team@22strongfoundation.com">team@22strongfoundation.com</a>
       <span class="dot">·</span>Newport Beach, CA<span class="dot">·</span>Orange County &amp; Southern California
       <br>501(c)(3) nonprofit · EIN 99-1232582
     </div>
   </main>
+
+  <script>
+    var form = document.getElementById('notify-form');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var data = new FormData(form);
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString()
+      }).then(function () {
+        form.hidden = true;
+        document.getElementById('notify-success').hidden = false;
+      }).catch(function () {
+        form.submit();
+      });
+    });
+  </script>
 </body>
 </html>
