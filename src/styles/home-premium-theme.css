@@ -409,32 +409,13 @@ p {
   border-bottom: 1px solid rgba(255, 255, 255, .1);
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: min(56%, 860px);
-  background: url("/images/hero-battle-ropes.webp") center center / cover no-repeat;
-  /* Photo sits on the right, balancing the text; its left edge dissolves into
-     the dark field so the crop never reads as a hard cut-off. */
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, .5) 26%, #000 54%);
-  mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, .5) 26%, #000 54%);
-  filter: saturate(1.04) contrast(1.06);
-}
-
-/* Hero video: same footprint and edge-dissolve as the photo it replaces.
-   The photo (::before) stays underneath as the loading state and the
-   reduced-motion fallback. */
+/* Full-bleed video hero at every width: the mark sits directly on the
+   footage under a light scrim (the treatment Christina picked on mobile).
+   Before the video loads (and for reduced-motion visitors) the dark field
+   shows instead. */
 .hero-media {
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: min(56%, 860px);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, .5) 26%, #000 54%);
-  mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, .5) 26%, #000 54%);
+  inset: 0;
   filter: saturate(1.04) contrast(1.06);
 }
 
@@ -442,6 +423,14 @@ p {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20, 23, 19, .62) 0%, rgba(20, 23, 19, .22) 48%, rgba(20, 23, 19, .55) 100%);
+  pointer-events: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -456,12 +445,11 @@ p {
   inset: 0;
   height: auto;
   opacity: 1;
+  /* Light vignette only — the heavier photo-era treatment (sand/canvas blend
+     fields) washed the video footage milky. */
   background:
-    radial-gradient(ellipse 80% 60% at 18% 52%, transparent 28%, rgba(17, 22, 16, .68) 100%),
-    linear-gradient(180deg, rgba(17, 22, 16, .16) 0%, rgba(17, 22, 16, .06) 42%, rgba(17, 22, 16, .66) 100%),
-    var(--field-sand, transparent),
-    var(--field-canvas, transparent);
-  background-blend-mode: normal, normal, soft-light, overlay;
+    radial-gradient(ellipse 80% 60% at 18% 52%, transparent 34%, rgba(17, 22, 16, .42) 100%),
+    linear-gradient(180deg, rgba(17, 22, 16, .12) 0%, transparent 45%, rgba(17, 22, 16, .5) 100%);
   pointer-events: none;
 }
 
@@ -479,10 +467,10 @@ p {
   --hero-mark-width: min(clamp(300px, 36vw, 520px), calc(100vw - (var(--space-page-x) * 2)));
   display: grid;
   gap: clamp(12px, 2vh, 22px);
-  width: min(980px, 68%);
+  width: 100%;
   max-width: none;
   padding-top: clamp(6px, 2vh, 24px);
-  filter: drop-shadow(0 22px 52px rgba(0, 0, 0, .24));
+  filter: drop-shadow(0 6px 28px rgba(0, 0, 0, .6)) drop-shadow(0 1px 6px rgba(0, 0, 0, .5));
 }
 
 .hero-copy > * {
@@ -495,16 +483,9 @@ p {
   display: grid;
   align-content: center;
   justify-items: center;
+  justify-self: center;
   text-align: center;
   width: var(--hero-mark-width);
-  aspect-ratio: 1 / 1.18;
-  padding: clamp(24px, 2.9vw, 40px) clamp(20px, 2.3vw, 32px) clamp(22px, 2.5vw, 34px);
-  background: linear-gradient(160deg, #2f2e2b 0%, #232220 100%);
-  box-shadow:
-    0 30px 88px rgba(0, 0, 0, .52),
-    0 0 0 1px rgba(185, 85, 36, .34),
-    0 0 72px rgba(185, 85, 36, .16),
-    inset 0 1px 0 rgba(255, 250, 240, .07);
 }
 
 .hero-mark-22,
@@ -603,6 +584,28 @@ p {
   position: relative;
   flex: 0 1 auto;
   white-space: nowrap;
+}
+
+/* Quiet non-donor pathway directly under the hero proofbar */
+.hero-care-link {
+  padding: clamp(16px, 2vw, 24px) var(--space-page-x) 0;
+  text-align: center;
+}
+
+.hero-care-link a {
+  color: rgba(32, 35, 31, .74);
+  font-family: var(--body-face);
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(32, 35, 31, .34);
+  text-underline-offset: 4px;
+}
+
+.hero-care-link a:hover,
+.hero-care-link a:focus-visible {
+  color: var(--ink);
+  text-decoration-color: currentColor;
 }
 
 .hero-proofbar-list li:not(:last-child)::after {

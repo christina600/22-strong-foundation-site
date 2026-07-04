@@ -16,6 +16,7 @@ import storyAnkleWrap from "./images/story-ankle-wrap.webp";
 import storyAssistedRehab from "./images/story-assisted-rehab.webp";
 import storyTreatmentRoom from "./images/story-treatment-room.webp";
 import storyVeteranConversation from "./images/story-veteran-conversation.webp";
+import storyYouthDugout from "./images/story-youth-dugout.jpg";
 import storyYouthHuddle from "./images/story-youth-huddle.webp";
 import youthBasketballPlayer from "./images/youth-basketball-player.webp";
 import tomBoscamp from "./images/tom-boscamp.jpg";
@@ -27,13 +28,13 @@ import type { ImageMetadata } from "astro";
 export const imageMap: Record<string, ImageMetadata> = {
   "/images/adam-folker-uci.webp": adamFolkerUci,
   "/images/dr-vas.webp": drVas,
-  "/images/hero-battle-ropes.webp": heroBattleRopes,
   "/images/luke-poster.jpg": lukePoster,
   "/images/story-adaptive-deadlift.webp": storyAdaptiveDeadlift,
   "/images/story-ankle-wrap.webp": storyAnkleWrap,
   "/images/story-assisted-rehab.webp": storyAssistedRehab,
   "/images/story-treatment-room.webp": storyTreatmentRoom,
   "/images/story-veteran-conversation.webp": storyVeteranConversation,
+  "/images/story-youth-dugout.jpg": storyYouthDugout,
   "/images/story-youth-huddle.webp": storyYouthHuddle,
   "/images/youth-basketball-player.webp": youthBasketballPlayer,
   "/images/tom-boscamp.jpg": tomBoscamp,
@@ -41,7 +42,7 @@ export const imageMap: Record<string, ImageMetadata> = {
   "/images/logo-usvm.jpg": logoUsvm,
 };
 
-/** Hero background image — exported for direct use in preload hints. */
+/** Former hero photo — kept solely as the og:image social-share thumbnail. */
 export { heroBattleRopes };
 
 export function getImageByPath(path: string): ImageMetadata | undefined {

@@ -34,16 +34,6 @@
     min-height: auto;
   }
 
-  .hero::before {
-    inset: 0;
-    width: auto;
-    -webkit-mask-image: none;
-    mask-image: none;
-    background:
-      linear-gradient(180deg, rgba(20, 23, 19, .94) 0%, rgba(20, 23, 19, .78) 56%, rgba(20, 23, 19, .38) 100%),
-      url("/images/hero-battle-ropes.webp") center / cover no-repeat;
-  }
-
   /* Full-bleed video hero: the mark loses its opaque panel and sits directly
      on the footage, so the video stays visible. A light scrim plus the
      hero-copy drop shadow carry legibility. */
