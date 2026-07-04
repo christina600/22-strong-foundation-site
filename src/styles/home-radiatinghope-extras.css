@@ -524,3 +524,40 @@
 :root {
   --fs-min: clamp(1.25rem, 2.8vw, 2rem);
 }
+
+/* Mid-width nav fit: between the mobile menu (≤760px) and full desktop
+   (≥1101px) the pill strip overflowed and clipped "Ways to Support".
+   Tighten brand, link, and action sizing so all four labels render in
+   full; no items are removed. */
+@media (min-width: 761px) and (max-width: 1100px) {
+  .nav {
+    gap: 10px;
+  }
+
+  .nav .brand {
+    font-size: clamp(1rem, 1.7vw, 1.35rem);
+  }
+
+  .nav .nav-links {
+    gap: 2px;
+    padding: 3px;
+  }
+
+  .nav .nav-links a {
+    min-height: 34px;
+    padding-inline: clamp(7px, 1.1vw, 13px);
+    font-size: clamp(.76rem, 1.15vw, .9rem);
+    letter-spacing: .01em;
+    white-space: nowrap;
+  }
+
+  .nav .nav-actions .pill {
+    min-height: 42px;
+    padding-inline: clamp(12px, 1.8vw, 22px);
+  }
+
+  .nav .nav-actions .nav-action-label {
+    font-size: clamp(.72rem, 1.05vw, .85rem);
+    white-space: nowrap;
+  }
+}

@@ -23,15 +23,20 @@ const PAGES = ["/", "/about/", "/how-it-works/", "/ways-to-support/", "/transpar
 
 const MIN_CONTENT_PX = 19.5; // 20px with rounding headroom
 
-// Undersized text blocks that exist today, counted per page. Never raise
-// these numbers — only lower them as the type pass cleans pages up.
+// Undersized text blocks that exist today, counted per page. Only lower
+// these numbers as the type pass cleans pages up. Exceptions on record:
+// 2026-07-04 approved Ways to Support rebuild added mandated 501(c)(3)
+// trust lines and tier notes (23 → 24 on both routes that render it);
+// 2026-07-04 approved How It Works copy pass added the referral helper
+// line, "One session costs $190.", the "or fund recovery care" link,
+// and a second Step 4 paragraph (35 → 39).
 const TEXT_SIZE_BASELINE: Record<string, number> = {
   "/": 31,
   "/about/": 23,
-  "/how-it-works/": 35,
-  "/ways-to-support/": 23,
+  "/how-it-works/": 39,
+  "/ways-to-support/": 24,
   "/transparency/": 25,
-  "/strong-circle/": 23,
+  "/strong-circle/": 24,
 };
 
 // The rule excludes buttons and nav. Form controls follow button sizing,
