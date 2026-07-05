@@ -17,10 +17,10 @@ const intro = {
   paragraphs: home.story.paragraphs,
   proof: home.credibility,
   image: {
-    src: "/images/story-treatment-room.webp",
-    alt: "A treatment room prepared for hands-on recovery care.",
+    src: "/images/about-care.jpg",
+    alt: "Hands-on knee treatment during a recovery session.",
     caption: "Built inside real recovery care in Newport Beach.",
-    position: "50% 52%",
+    position: "50% 38%",
   },
 };
 ---
@@ -33,6 +33,12 @@ const intro = {
       <AboutIntroSection {...intro} />
       <FeaturedPublications publications={home.press.publications} heading={home.press.heading} />
       <LeadershipSection people={home.leadership} headingLevel="h2" />
+      <SectionCta
+        variant="teal"
+        text="Know someone whose recovery care is at risk?"
+        label="Start a referral"
+        href="/#contact"
+      />
       <InstitutionalLayerSection governance={home.governance} />
       <SectionCta
         text="Keep the next visit within reach."

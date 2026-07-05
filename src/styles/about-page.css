@@ -33,7 +33,10 @@
     "details media";
   column-gap: clamp(34px, 5vw, 72px);
   row-gap: clamp(22px, 3vw, 32px);
-  align-items: center;
+  /* Rows hug their content so the lead and the body paragraphs sit
+     together instead of drifting apart when the photo is taller. */
+  grid-template-rows: auto 1fr;
+  align-items: start;
   width: min(var(--max), 100%);
   margin: 0 auto;
 }
@@ -57,13 +60,15 @@
   max-width: 680px;
   color: rgba(32, 35, 31, .86);
   font-size: clamp(1.2rem, 1vw + .9rem, 1.48rem);
+  text-wrap: pretty;
 }
 
 .about-hero__body {
   display: grid;
   gap: 14px;
   max-width: 68ch;
-  margin-top: clamp(22px, 3vw, 34px);
+  /* Row gap on the hero grid already separates lead from body. */
+  margin-top: 0;
 }
 
 .about-hero__body p {
@@ -183,6 +188,16 @@
 .about-page .portrait {
   object-fit: cover;
   object-position: var(--portrait-position, center top);
+  background: #efe8dc;
+}
+
+/* Shared warm grade so the studio headshot and the casual shot read as
+   one set until real photography lands. !important because both the
+   reveal animation (filter: none on .is-visible) and the motion-safety
+   guardrail reset filter — this grade only tints, it never hides. */
+.about-page .portrait,
+.js .about-page .portrait.is-visible {
+  filter: saturate(.86) contrast(1.03) sepia(.07) !important;
 }
 
 .bio-credentials {
@@ -206,6 +221,8 @@
   font-size: var(--fs-ui-small);
   font-weight: 800;
   line-height: 1.15;
+  /* Credentials wrap as whole chips, never mid-credential. */
+  white-space: nowrap;
 }
 
 .about-page #leadership .card p {
@@ -242,7 +259,7 @@
 .featured-quote {
   position: relative;
   display: block;
-  width: min(860px, 100%);
+  width: 100%;
   padding: clamp(24px, 4vw, 38px);
   overflow: hidden;
   border: 1px solid rgba(32, 35, 31, .12);
@@ -1471,14 +1488,31 @@
     font-size: var(--fs-ui-micro);
   }
 
+  /* Keep the credibility items reading as tags on phones — the old
+     full-width rows looked like empty form fields. */
   .about-proof-list {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
   }
 
   .about-proof-list li {
-    justify-content: space-between;
-    border-radius: 7px;
+    justify-content: center;
+    min-height: 34px;
+    padding: 7px 12px;
+    border-radius: 999px;
+  }
+
+  .about-hero__media::after {
+    height: 56%;
+  }
+
+  .about-hero__media figcaption {
+    right: 14px;
+    bottom: 14px;
+    left: 14px;
+    font-size: var(--fs-ui-small);
+    line-height: 1.35;
   }
 
   .about-page .bio-head {
