@@ -9,8 +9,6 @@
     background:
       linear-gradient(135deg, rgba(28, 140, 135, .10), transparent 40%),
       linear-gradient(180deg, rgba(214, 234, 232, .96), rgba(196, 222, 220, .88));
-    border-top: 3px solid var(--teal);
-    border-bottom: 3px solid var(--teal);
   }
 
   .strong-circle-wrap .circle-panel {

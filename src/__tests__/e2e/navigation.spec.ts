@@ -27,7 +27,7 @@ test.describe("navigation", () => {
     await page.goto("/");
 
     await expect(page.locator("#nav-menu a")).toHaveText(["How It Works", "About", "Ways to Support", "Contact"]);
-    await expect(page.locator(".nav-actions .pill")).toHaveText(["Fund recovery care"]);
+    await expect(page.locator(".nav-actions .pill")).toHaveText(["Donate"]);
   });
 
   test("mobile menu closes after page navigation", async ({ page, baseURL }) => {

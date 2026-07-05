@@ -561,3 +561,31 @@
     white-space: nowrap;
   }
 }
+
+/* Home polish pass (2026-07-04 review feedback). */
+
+/* "See How It Works" sits centered under the photo strip with real
+   breathing room instead of hugging its bottom-left corner. */
+.how-it-works.story-path > a.pill {
+  display: flex;
+  width: fit-content;
+  margin: clamp(20px, 3vw, 32px) auto 0;
+}
+
+@media (max-width: 560px) {
+  /* The runway between the photo strip and the King Martin chapter read
+     as a dead cream band on phones. */
+  .how-it-works.story-path {
+    padding-bottom: 56px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Fit all four proof items on one line each — "Clinic-based recovery
+     care" was wrapping while its neighbors didn't. */
+  .hero-proofbar-list {
+    gap: 8px 10px;
+    font-size: .76rem;
+    letter-spacing: .01em;
+  }
+}

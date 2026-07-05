@@ -267,6 +267,8 @@
   font-weight: 900;
   line-height: .82;
   letter-spacing: 0;
+  /* A figure like "4.6 million" must never break mid-number. */
+  white-space: nowrap;
 }
 
 .audience-card-stat span {

@@ -29,11 +29,12 @@ const MIN_CONTENT_PX = 19.5; // 20px with rounding headroom
 // trust lines and tier notes (23 → 24 on both routes that render it);
 // 2026-07-04 approved How It Works copy pass added the referral helper
 // line, "One session costs $190.", the "or fund recovery care" link,
-// and a second Step 4 paragraph (35 → 39).
+// and a second Step 4 paragraph (35 → 39). Later that day the 20px
+// type-pass pilot on How It Works brought body copy up to size (39 → 21).
 const TEXT_SIZE_BASELINE: Record<string, number> = {
   "/": 31,
   "/about/": 23,
-  "/how-it-works/": 39,
+  "/how-it-works/": 21,
   "/ways-to-support/": 24,
   "/transparency/": 25,
   "/strong-circle/": 24,
