@@ -32,11 +32,12 @@ const MIN_CONTENT_PX = 19.5; // 20px with rounding headroom
 // and a second Step 4 paragraph (35 → 39). Later that day the 20px
 // type-pass pilot on How It Works brought body copy up to size (39 → 21).
 // 2026-07-05: Tom Boscamp testimonial added to the referral section per
-// Christina — his attribution line is fine print (21 → 22).
+// Christina — his attribution line is fine print (21 → 22); the Step 1
+// referral photo's caption adds one more (22 → 23).
 const TEXT_SIZE_BASELINE: Record<string, number> = {
   "/": 31,
   "/about/": 23,
-  "/how-it-works/": 22,
+  "/how-it-works/": 23,
   "/ways-to-support/": 24,
   "/transparency/": 25,
   "/strong-circle/": 24,
