@@ -1119,6 +1119,50 @@
   white-space: nowrap;
 }
 
+/* Tom Boscamp — the referral pathway in person. */
+.how-referral__voice {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: clamp(16px, 2.4vw, 24px);
+  align-items: start;
+  max-width: 760px;
+  margin: clamp(28px, 4vw, 40px) 0 0;
+  padding-top: clamp(20px, 3vw, 28px);
+  border-top: 1px solid rgba(32, 35, 31, .12);
+}
+
+.how-referral__voice img {
+  width: 96px;
+  aspect-ratio: 1;
+  height: auto;
+  object-fit: cover;
+  object-position: center top;
+  border: 1px solid rgba(32, 35, 31, .14);
+  border-radius: 50%;
+  filter: saturate(.86) contrast(1.03) sepia(.07);
+}
+
+.how-referral__voice blockquote {
+  margin: 0;
+}
+
+.how-referral__voice blockquote p {
+  margin: 0;
+  color: rgba(32, 35, 31, .82);
+  font-size: clamp(1.25rem, .4vw + 1.1rem, 1.5rem);
+  line-height: 1.55;
+}
+
+.how-referral__voice cite {
+  display: block;
+  margin-top: 10px;
+  color: rgba(32, 35, 31, .62);
+  font-family: var(--ui-face, ui-sans-serif, system-ui, sans-serif);
+  font-size: var(--fs-ui-small);
+  font-style: normal;
+  font-weight: 800;
+}
+
 .how-stat-note {
   /* Ink, not orange: accent color reads as a link and fails contrast at
      this size (2026-07-04 review; also the standing orange-is-CTA rule). */

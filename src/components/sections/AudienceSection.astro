@@ -73,7 +73,24 @@ const preparedGroups = groups.map((group) => ({
           <h3>How we help</h3>
           <p>{group.helpLine}</p>
         </div>
-        {group.featurePhoto && (
+        {!group.videos?.length && group.voices.length > 0 && group.voices[0].photo && (
+          <figure class="audience-voice audience-voice--person">
+            <img
+              class="audience-voice__photo audience-voice__photo--landscape"
+              src={group.voices[0].photo}
+              alt={group.voices[0].photoAlt ?? group.voices[0].name}
+              width={group.voices[0].imageWidth ?? 1200}
+              height={group.voices[0].imageHeight ?? 800}
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+              style={group.voices[0].imagePosition ? `object-position: ${group.voices[0].imagePosition};` : undefined}
+            />
+            {group.voices[0].quote && <blockquote class="audience-voice__quote">{group.voices[0].quote}</blockquote>}
+            <figcaption class="audience-voice__cite">{group.voices[0].name} · {group.voices[0].title}</figcaption>
+          </figure>
+        )}
+        {!group.voices.length && group.featurePhoto && (
           <figure class="audience-voice">
             {(() => {
               const asset = getImageByPath(group.featurePhoto.src);
@@ -144,6 +161,11 @@ const preparedGroups = groups.map((group) => ({
     aspect-ratio: 9 / 16;
     border-radius: 12px;
     object-fit: cover;
+  }
+
+  .audience-voice__photo--landscape {
+    max-width: none;
+    aspect-ratio: 3 / 2;
   }
 
   .audience-voice__quote {
