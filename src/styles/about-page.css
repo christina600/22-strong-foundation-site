@@ -1119,6 +1119,13 @@
   white-space: nowrap;
 }
 
+/* Portrait sources shown as landscape figures in the step flow. */
+.how-step__media--crop img {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: 50% 62%;
+}
+
 /* Tom Boscamp — the referral pathway in person. */
 .how-referral__voice {
   display: grid;
