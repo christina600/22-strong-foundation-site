@@ -95,6 +95,9 @@
   }
 
   .circle-panel {
+    /* Single column: the two-column layout squeezes the tier pills until the
+       amounts clip against their rounded edges at these widths. */
+    grid-template-columns: 1fr;
     min-height: 470px;
   }
 

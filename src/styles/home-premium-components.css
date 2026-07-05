@@ -188,6 +188,20 @@ textarea {
   appearance: none;
 }
 
+/* Legibility on the dark teal panel: supporting text stays subordinate to the
+   amounts but never drops below comfortable reading size for older eyes. */
+.circle-tier-note {
+  font-size: 1.125rem;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, .8);
+}
+
+.circle-footnote {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, .8);
+}
+
 .veteran-voices {
   padding-block: clamp(64px, 9vh, 112px);
   background: linear-gradient(180deg, rgba(255, 253, 247, .96), rgba(240, 234, 222, .90));

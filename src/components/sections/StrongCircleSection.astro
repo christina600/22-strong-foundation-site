@@ -5,7 +5,7 @@ import { isConfigured } from "../../utils/config";
 interface StrongCircleContent {
   heading: string;
   lead: string;
-  tiersLabel: string;
+  tiersLabel?: string;
   tiers: Array<{ amount: string; note: string }>;
   joinLabel: string;
   footnote: string;
@@ -71,7 +71,7 @@ const tierHref = (amount: string) => {
       </div>
 
       <div class="circle-join">
-        <span class="circle-tiers-label">{strongCircle.tiersLabel}</span>
+        {strongCircle.tiersLabel && <span class="circle-tiers-label">{strongCircle.tiersLabel}</span>}
         <div class="circle-tiers" role="group" aria-label="Suggested monthly amounts">
           {strongCircle.tiers.map((tier) => (
             <a class="circle-tier" href={tierHref(tier.amount)}>
@@ -80,7 +80,7 @@ const tierHref = (amount: string) => {
             </a>
           ))}
         </div>
-        <a class="pill secondary strong-circle-trigger" href={circleHref}>{strongCircle.joinLabel}</a>
+        <a class="pill primary strong-circle-trigger" href={circleHref}>{strongCircle.joinLabel}</a>
         <p class="circle-footnote">{strongCircle.footnote}</p>
       </div>
     </div>

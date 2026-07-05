@@ -207,13 +207,13 @@
   ],
   "strongCircle": {
     "heading": "The 22 Strong Circle.",
-    "lead": "A monthly membership that lets 22 Strong say yes to the next veteran or young person without waiting on the next fundraiser.",
-    "tiersLabel": "The 22 Strong Circle",
+    "lead": "A monthly membership that lets 22 Strong say yes to the next veteran or young person without waiting on the next fundraiser. Every nine members at $22 fund a recovery session, every month.",
+    "tiersLabel": "",
     "tiers": [
-      { "amount": "$22", "note": "" },
-      { "amount": "$50", "note": "" },
-      { "amount": "$100", "note": "" },
-      { "amount": "$190", "note": "one recovery session" }
+      { "amount": "$22", "note": "the number we're named for" },
+      { "amount": "$50", "note": "three funded sessions a year" },
+      { "amount": "$100", "note": "one session every other month" },
+      { "amount": "$190", "note": "a funded session every month" }
     ],
     "joinLabel": "Join the 22 Strong Circle",
     "footnote": "Monthly · cancel anytime · every dollar funds recovery care.",
