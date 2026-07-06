@@ -17,8 +17,7 @@
 .pill.primary,
 .btn-donate,
 .section-cta--teal .section-cta-btn.pill.primary,
-.donate-section .donation-card-main .btn-donate,
-.giving-invite .pill.primary {
+.donate-section .donation-card-main .btn-donate {
   background: linear-gradient(180deg, var(--preview-cta), var(--preview-cta-dark));
   border-color: transparent;
   color: #fffaf0;
@@ -29,13 +28,31 @@
 
 .pill.primary:hover,
 .btn-donate:hover,
-.section-cta--teal .section-cta-btn.pill.primary:hover,
-.giving-invite .pill.primary:hover {
+.section-cta--teal .section-cta-btn.pill.primary:hover {
   background: linear-gradient(180deg, #c8642e, var(--preview-cta-dark));
   transform: translateY(-2px);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, .28) inset,
     0 22px 48px rgba(134, 58, 26, .32);
+}
+
+/* The invite belongs to the Strong Circle campaign, so its Join button is
+   teal like the homepage panel's — not the global orange action color. */
+.giving-invite .pill.primary {
+  background: linear-gradient(180deg, var(--teal), var(--teal-deep));
+  border-color: transparent;
+  color: #fffaf0;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .18) inset,
+    0 14px 30px rgba(9, 63, 67, .30);
+}
+
+.giving-invite .pill.primary:hover {
+  background: var(--teal-deep);
+  transform: translateY(-2px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .24) inset,
+    0 18px 38px rgba(9, 63, 67, .36);
 }
 
 .pill.secondary {
@@ -75,25 +92,22 @@
   border-color: rgba(255, 250, 240, .42);
 }
 
-.giving-invite {
-  width: min(320px, calc(100vw - 32px));
-}
-
+/* Keep the circular shape defined in home-sections.css — this file loads
+   later, so it must not reintroduce a rectangular card here. */
 .giving-invite-card {
-  padding: clamp(18px, 2.2vw, 22px);
-  border-radius: 10px;
+  padding: 0;
+  border-radius: 50%;
 }
 
 .giving-invite-heading {
-  margin-bottom: 7px;
-  font-size: clamp(1.05rem, .98rem + .2vw, 1.16rem);
-  line-height: 1.12;
+  font-size: clamp(2rem, 1.8rem + .6vw, 2.3rem);
+  line-height: .98;
 }
 
 .giving-invite-body {
-  margin-bottom: 14px;
-  font-size: clamp(.9rem, .84rem + .16vw, .98rem);
-  line-height: 1.42;
+  margin-bottom: 4px;
+  font-size: 1.15rem;
+  line-height: 1.4;
 }
 
 .giving-invite-actions {
@@ -109,7 +123,7 @@
 
 .giving-invite-not-now {
   margin-top: 10px;
-  font-size: clamp(.76rem, .72rem + .1vw, .82rem);
+  font-size: 1rem;
 }
 
 /* Bigger titles and roomier editorial pacing. */
@@ -866,7 +880,7 @@ form,
 
 .step {
   position: relative;
-  grid-template-columns: auto auto minmax(0, 1fr);
+  grid-template-columns: 42px minmax(0, 1fr);
   gap: clamp(16px, 2vw, 28px);
   align-items: start;
   border-color: transparent;
@@ -875,76 +889,8 @@ form,
     0 1px 0 rgba(255, 255, 255, .78) inset;
 }
 
-.step-icon {
-  position: relative;
-  display: inline-grid;
-  place-items: center;
-  width: clamp(42px, 4.8vw, 58px);
-  aspect-ratio: 1;
-  border-radius: 999px;
-  background:
-    linear-gradient(180deg, rgba(185, 85, 36, .13), rgba(185, 85, 36, .04)),
-    #fffaf0;
-  box-shadow:
-    0 0 0 1px rgba(185, 85, 36, .16) inset,
-    0 12px 26px rgba(29, 33, 29, .08);
-}
-
-.step-icon::before,
-.step-icon::after {
-  content: "";
-  position: absolute;
-  display: block;
-}
-
-.step-icon--referral::before {
-  width: 19px;
-  height: 19px;
-  border-top: 3px solid var(--preview-cta);
-  border-right: 3px solid var(--preview-cta);
-  transform: translate(-2px, 2px) rotate(45deg);
-}
-
-.step-icon--referral::after {
-  width: 28px;
-  height: 3px;
-  border-radius: 999px;
-  background: var(--preview-cta);
-  transform: rotate(-45deg);
-}
-
-.step-icon--funding::before {
-  content: "$";
-  position: static;
-  color: var(--preview-cta);
-  font-family: var(--number-face);
-  font-size: 1.65rem;
-  font-weight: 900;
-  line-height: 1;
-}
-
-.step-icon--care::before,
-.step-icon--care::after {
-  width: 24px;
-  height: 4px;
-  border-radius: 999px;
-  background: var(--preview-cta);
-}
-
-.step-icon--care::after {
-  transform: rotate(90deg);
-}
-
-.step-icon--recovery::before {
-  width: 24px;
-  height: 14px;
-  border-left: 4px solid var(--preview-cta);
-  border-bottom: 4px solid var(--preview-cta);
-  transform: translateY(-2px) rotate(-45deg);
-}
-
 .step-number {
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 .path-photo-strip {
@@ -1349,15 +1295,11 @@ form,
   }
 
   .step {
-    grid-template-columns: auto minmax(0, 1fr);
-  }
-
-  .step-icon {
-    grid-column: 1;
+    grid-template-columns: 42px minmax(0, 1fr);
   }
 
   .step-number {
-    display: none;
+    grid-column: 1;
   }
 
   .step-body {

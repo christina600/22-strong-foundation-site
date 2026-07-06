@@ -164,6 +164,8 @@
 
 .about-page .bios {
   margin-top: 0;
+  /* Three board members stack full-width instead of an orphaned 2-col row. */
+  grid-template-columns: 1fr;
 }
 
 .about-page #leadership .card {
@@ -510,6 +512,27 @@
   color: rgba(255, 250, 240, .76);
 }
 
+/* Kicker row carries the Circle mark without adding card height. */
+.support-circle__brand {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.support-circle__mark {
+  flex: 0 0 auto;
+  margin-top: -6px;
+  color: rgba(255, 250, 240, .92);
+}
+
+@media (max-width: 560px) {
+  .support-circle__mark {
+    width: 64px;
+    height: 64px;
+  }
+}
+
 .support-circle h2 {
   max-width: 640px;
   margin-bottom: 16px;
@@ -532,6 +555,24 @@
   align-self: start;
   position: relative;
   z-index: 1;
+}
+
+.support-circle__copy .support-circle__why {
+  max-width: 58ch;
+  margin: clamp(16px, 2.4vw, 22px) 0 0;
+  padding-top: clamp(14px, 2vw, 18px);
+  border-top: 1px solid rgba(255, 250, 240, .22);
+  color: rgba(255, 250, 240, .92);
+  font-size: clamp(1.25rem, .3vw + 1.14rem, 1.4rem);
+  line-height: 1.5;
+}
+
+.support-circle__copy .support-circle__crisis {
+  max-width: 58ch;
+  margin: 10px 0 0;
+  color: rgba(255, 250, 240, .72);
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .support-circle blockquote {
@@ -636,6 +677,46 @@
 
 .support-circle .support-trust {
   color: rgba(255, 250, 240, .70);
+}
+
+/* Strong Circle member highlight — a real member, tied to the join CTA. */
+.circle-member {
+  display: grid;
+  grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
+  gap: clamp(22px, 3.4vw, 40px);
+  align-items: center;
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  padding: clamp(48px, 5.4vw, 72px) var(--space-page-x) 0;
+}
+
+img.circle-member__photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 5 / 6;
+  object-fit: cover;
+  object-position: center 22%;
+  border: 1px solid rgba(32, 35, 31, .14);
+  border-radius: var(--radius);
+  box-shadow: 0 18px 46px rgba(32, 35, 31, .12);
+}
+
+.circle-member__copy h2 {
+  max-width: 640px;
+  margin-bottom: 12px;
+  font-family: var(--ui-face, ui-sans-serif, system-ui, sans-serif);
+  font-size: clamp(1.3rem, .7vw + 1.08rem, 1.75rem);
+  font-weight: 850;
+  line-height: 1.2;
+}
+
+.circle-member__copy p:not(.support-kicker) {
+  max-width: 62ch;
+  margin: 0 0 18px;
+  color: rgba(32, 35, 31, .78);
+  font-size: clamp(1.25rem, .4vw + 1.1rem, 1.5rem);
+  line-height: 1.6;
 }
 
 .support-compare {
@@ -1418,6 +1499,10 @@
 
   .support-circle__quote {
     margin-top: 6px;
+  }
+
+  .circle-member {
+    grid-template-columns: 1fr;
   }
 
   .support-tier {

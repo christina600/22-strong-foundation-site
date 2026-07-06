@@ -3,6 +3,7 @@ import { existsSync } from "node:fs";
 import site from "../../content/site.json";
 import home from "../../content/home.json";
 import ImpactSection from "./ImpactSection.astro";
+import StrongCircleMark from "./StrongCircleMark.astro";
 import { isConfigured } from "../../utils/config";
 
 const description =
@@ -129,12 +130,23 @@ const faq = [
 
   <section class="support-circle" id="strong-circle" aria-labelledby="circle-title">
     <div class="support-circle__copy">
-      <p class="support-kicker">The Strong Circle</p>
+      <div class="support-circle__brand">
+        <p class="support-kicker">The Strong Circle</p>
+        <StrongCircleMark class="support-circle__mark" size={92} />
+      </div>
       <h2 id="circle-title">A membership that says yes before care stalls.</h2>
       <p class="support-circle__body">
         Circle members give monthly. That steady base is what lets 22 Strong approve a session
         the week it's needed instead of waiting on the next fundraiser. Every nine members at
         $22 a month funds a recovery session, every month, for as long as they stay.
+      </p>
+      <p class="support-circle__why">
+        Why 22? An estimated 22 veterans are lost to suicide every day. The name and the
+        $22 tier carry that number.
+      </p>
+      <p class="support-circle__crisis">
+        If you or a veteran you know is struggling, call 988 and press 1. The Veterans
+        Crisis Line answers 24/7.
       </p>
     </div>
     <blockquote class="support-circle__quote">
@@ -152,10 +164,35 @@ const faq = [
         </a>
       ))}
       <a class="pill primary support-circle__cta" href={circleHref()}>Join the Strong Circle</a>
-      <p class="support-circle__footnote">Monthly. Cancel anytime. Members hear what their giving funded.</p>
+      <p class="support-circle__footnote">
+        Monthly. Cancel anytime. You'll hear from Travis himself: updates, invites, and a
+        first look at what's next.
+      </p>
       <p class="support-trust">{trustLine}</p>
     </div>
   </section>
+
+  <aside class="circle-member" aria-labelledby="circle-member-title">
+    <img
+      class="circle-member__photo"
+      src="/images/ramon-rodriguez.jpg"
+      alt="CSM (R) Ramon Rodriguez in U.S. Army dress uniform."
+      width="900"
+      height="1037"
+      loading="lazy"
+      decoding="async"
+    />
+    <div class="circle-member__copy">
+      <p class="support-kicker">Strong Circle member highlight</p>
+      <h2 id="circle-member-title">CSM (R) Ramon Rodriguez, U.S. Army Special Forces (Ret.)</h2>
+      <p>
+        A Green Beret whose Vietnam service is the subject of a Congressional Medal of Honor
+        bill, H.R. 1596. Members like Ramon give monthly so the next veteran's visit is
+        already funded.
+      </p>
+      <a class="pill secondary support-action" href="#strong-circle">Join him in the Circle</a>
+    </div>
+  </aside>
 
   <ImpactSection id="support-impact" heading="" impact={home.mission.impact} />
 

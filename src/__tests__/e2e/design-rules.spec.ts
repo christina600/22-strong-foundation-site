@@ -34,14 +34,17 @@ const MIN_CONTENT_PX = 19.5; // 20px with rounding headroom
 // 2026-07-05: Tom Boscamp testimonial added to the referral section per
 // Christina — his attribution line is fine print (21 → 22); the Step 1
 // referral photo's caption adds one more (22 → 23), and the Step 5
-// follow-through photo's caption another (23 → 24).
+// follow-through photo's caption another (23 → 24). The "why 22" pass
+// added the Veterans Crisis Line note and the member-highlight kicker
+// (ways-to-support/strong-circle 24 → 26) and the clinic details
+// paragraph (transparency 25 → 26).
 const TEXT_SIZE_BASELINE: Record<string, number> = {
   "/": 31,
   "/about/": 23,
   "/how-it-works/": 24,
-  "/ways-to-support/": 24,
-  "/transparency/": 25,
-  "/strong-circle/": 24,
+  "/ways-to-support/": 26,
+  "/transparency/": 26,
+  "/strong-circle/": 26,
 };
 
 // The rule excludes buttons and nav. Form controls follow button sizing,

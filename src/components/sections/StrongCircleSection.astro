@@ -17,6 +17,15 @@ interface StrongCircleContent {
     photo: string;
     photoAlt?: string;
   };
+  /* Factual spotlight on a real member — rendered without quotation marks
+     because the text is about them, not something they said. */
+  memberHighlight?: {
+    text: string;
+    name: string;
+    title?: string;
+    photo: string;
+    photoAlt?: string;
+  };
 }
 
 interface Props {
@@ -29,6 +38,7 @@ interface Props {
 const { chapter, strongCircle, headingLevel = "h2", className = "" } = Astro.props;
 const HeadingTag = headingLevel;
 const highlighted = strongCircle.highlightedTestimonial;
+const member = strongCircle.memberHighlight;
 
 // Recurring giving routes to the dedicated Strong Circle Givebutter campaign.
 // If the campaign URL is ever unset, links fall back to the contact section.
@@ -65,6 +75,16 @@ const tierHref = (amount: string) => {
             <div class="circle-voice__body">
               <blockquote class="circle-voice__quote">{highlighted.quote}</blockquote>
               <figcaption class="circle-voice__cite">{highlighted.name}{highlighted.title ? ` · ${highlighted.title}` : ""}</figcaption>
+            </div>
+          </figure>
+        )}
+
+        {member && (
+          <figure class="circle-voice circle-voice--member">
+            <img class="circle-voice__photo" src={member.photo} alt={member.photoAlt ?? member.name} width="72" height="72" loading="lazy" decoding="async" />
+            <div class="circle-voice__body">
+              <p class="circle-voice__text">{member.text}</p>
+              <figcaption class="circle-voice__cite">{member.name}{member.title ? ` · ${member.title}` : ""}</figcaption>
             </div>
           </figure>
         )}
@@ -114,6 +134,13 @@ const tierHref = (amount: string) => {
 
   .circle-voice__quote::before { content: "\201C"; }
   .circle-voice__quote::after { content: "\201D"; }
+
+  .circle-voice__text {
+    margin: 0 0 6px;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, .85);
+  }
 
   .circle-voice__cite {
     font-size: 1.25rem;

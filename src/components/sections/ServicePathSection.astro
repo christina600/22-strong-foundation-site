@@ -52,7 +52,6 @@ interface Props {
 }
 
 const { chapter, content } = Astro.props;
-const stepIconClasses = ["step-icon--referral", "step-icon--funding", "step-icon--care"];
 const visualSteps = content.steps.filter((step) => step.visual);
 
 // Split a step note on the "{provider}" token so the venue name renders as a
@@ -72,7 +71,6 @@ const splitNote = (note: string) => {
   <ol class="steps--path" aria-label={content.stepsAriaLabel}>
     {content.steps.map((step) => (
       <li class="step" data-reveal>
-        <span class={`step-icon ${stepIconClasses[Number(step.number) - 1] ?? "step-icon--care"}`} aria-hidden="true"></span>
         <span class="step-number" aria-hidden="true">{step.number}</span>
         <div class="step-body">
           <h3>{step.heading}</h3>

@@ -92,8 +92,11 @@ html {
   color: var(--paper);
 }
 
-/* Cross-platform: refined link styling */
+/* Cross-platform: refined link styling. Links inherit the surrounding text
+   color (with a teal underline) so a bare <a> never falls back to UA blue;
+   components that need a different link color still override this. */
 a {
+  color: inherit;
   text-decoration: underline dotted;
   text-decoration-color: var(--teal);
   text-underline-offset: 3px;

@@ -65,8 +65,13 @@ function initGivingInvite() {
   // Trigger 1: the testimonial video finishes (best emotional timing).
   document.addEventListener("testimonial-video-ended", show, { once: true });
 
-  // Trigger 2: the visitor scrolls past the testimonials section.
-  const section = document.getElementById("veteran-voices");
+  // Trigger 2: the visitor scrolls past the point where they've met the
+  // mission. Preferred anchor is the testimonials section; fall back to the
+  // impact stats, then How It Works, so a section rename can't silently
+  // leave the invite with no trigger again.
+  const section = ["veteran-voices", "impact", "how-it-works"]
+    .map((id) => document.getElementById(id))
+    .find(Boolean);
   if (section && "IntersectionObserver" in window) {
     observer = new IntersectionObserver(
       (entries) => {

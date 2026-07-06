@@ -217,6 +217,13 @@
     ],
     "joinLabel": "Join the 22 Strong Circle",
     "footnote": "Monthly · cancel anytime · every dollar funds recovery care.",
+    "memberHighlight": {
+      "text": "A Green Beret whose Vietnam service is the subject of a Congressional Medal of Honor bill. Members like Ramon give monthly so the next veteran's visit is already funded.",
+      "name": "CSM (R) Ramon Rodriguez",
+      "title": "U.S. Army Special Forces (Ret.)",
+      "photo": "/images/ramon-rodriguez.jpg",
+      "photoAlt": "CSM (R) Ramon Rodriguez in U.S. Army dress uniform."
+    },
     "points": [
       { "label": "Care that continues", "text": "Funding that keeps going after the first visit." },
       { "label": "Money we can plan on", "text": "Monthly gifts let us commit to a full care plan up front." },
@@ -258,10 +265,6 @@
         }
       }
     ],
-    "outcome": {
-      "heading": "Care doesn’t stop.",
-      "body": "The gap closes and the plan continues, visit after visit."
-    },
     "learnMore": {
       "label": "See How It Works",
       "href": "/how-it-works"
@@ -269,8 +272,21 @@
   },
   "leadership": [
     {
+      "name": "Travis Mayfield",
+      "role": "President",
+      "portrait": "/images/travis-mayfield.jpg",
+      "portraitAlt": "Travis Mayfield",
+      "portraitPosition": "50% 18%",
+      "initials": "TM",
+      "credentials": ["Purple Heart recipient", "U.S. Army 101st Airborne", "Community care advocate"],
+      "paragraphs": [
+        "A Purple Heart recipient who served as a Sergeant with the U.S. Army’s 101st Airborne Division in Vietnam, Travis is Co-Owner and President of Next Level Fitness & Wellness Center. His own long road back from war is the inspiration behind 22 Strong’s model. He helped found the foundation and leads its mission to make recovery care accessible to those who served and to others rebuilding their lives.",
+        "His service and community work have been recognized by the California State Senate and Assembly, the U.S. House of Representatives, and Orange County."
+      ]
+    },
+    {
       "name": "Dr. Vasili “Dr. Vas” Gatsinaris, D.C.",
-      "role": "Founder",
+      "role": "Secretary",
       "portrait": "/images/dr-vas.webp",
       "portraitAlt": "Dr. Vasili “Dr. Vas” Gatsinaris",
       "portraitPosition": "50% 18%",
@@ -282,17 +298,10 @@
       ]
     },
     {
-      "name": "Travis Mayfield",
-      "role": "Co-Founder & President",
-      "portrait": "/images/travis-mayfield.jpg",
-      "portraitAlt": "Travis Mayfield",
-      "portraitPosition": "50% 18%",
-      "initials": "TM",
-      "credentials": ["Purple Heart recipient", "U.S. Army 101st Airborne", "Community care advocate"],
-      "paragraphs": [
-        "A Purple Heart recipient who served as a Sergeant with the U.S. Army’s 101st Airborne Division in Vietnam, Travis is Co-Owner and President of Next Level Fitness & Wellness Center. His own long road back from war is the inspiration behind 22 Strong’s model. He helped found the foundation and leads its mission to make recovery care accessible to those who served and to others rebuilding their lives.",
-        "His service and community work have been recognized by the California State Senate and Assembly, the U.S. House of Representatives, and Orange County."
-      ]
+      "name": "Tri Nguyen",
+      "role": "Director",
+      "initials": "TN",
+      "paragraphs": []
     }
   ],
   "governance": {
@@ -342,9 +351,9 @@
   },
   "givingInvite": {
     "ariaLabel": "Join the 22 Strong Circle",
-    "heading": "Keep care going monthly.",
-    "body": "Join the 22 Strong Circle so the next recovery plan doesn't have to wait.",
-    "joinLabel": "Join the 22 Strong Circle",
+    "heading": "Strong Circle",
+    "body": "Become a monthly member.",
+    "joinLabel": "Join the Circle",
     "giveOnceLabel": "Give once",
     "dismissLabel": "Not now"
   },
