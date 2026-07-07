@@ -241,8 +241,7 @@
     },
     "points": [
       { "label": "Care that continues", "text": "Funding that keeps going after the first visit." },
-      { "label": "Money we can plan on", "text": "Monthly gifts let us commit to a full care plan up front." },
-      { "label": "Veterans funding veterans", "text": "Neighbors keeping a neighbor's recovery going." }
+      { "label": "Money we can plan on", "text": "Monthly gifts let us commit to a full care plan up front." }
     ]
   },
   "howItWorks": {
@@ -300,16 +299,15 @@
       ]
     },
     {
-      "name": "Dr. Vasili “Dr. Vas” Gatsinaris, D.C.",
-      "role": "Secretary",
+      "name": "Dr. Vasili Gatsinaris, D.C.",
+      "role": "Co-founder and Secretary",
       "portrait": "/images/dr-vas.webp",
       "portraitAlt": "Dr. Vasili “Dr. Vas” Gatsinaris",
       "portraitPosition": "50% 18%",
       "credentials": ["Doctor of Chiropractic (D.C.)", "25+ years in recovery care", "Co-owner, Next Level"],
       "paragraphs": [
-        "Dr. Vas earned his Doctor of Chiropractic from the Los Angeles College of Chiropractic in 2001 and has more than 25 years of experience helping people recover and rebuild.",
-        "Over his career, he has worked with everyone from professional athletes to first responders, developing a hands-on, integrative approach focused on restoring mobility and getting people back to life stronger and faster.",
-        "He is co-owner of Next Level in Newport Beach — the same recovery care 22 Strong funds."
+        "Dr. Vasili Gatsinaris, known to his patients as Dr. Vas, has been treating injuries for 25 years. He opened Next Level Wellness Center in Newport Beach in 2001 and still does the hands-on work himself. His patient list has included professional athletes from every major sports league, but most days the treatment room holds regular people. A veteran rebuilding a shoulder gets the same care an NBA player does.",
+        "He developed Fascial Integrative Treatment (FIT), the hands-on method used in many of the sessions 22 Strong funds. He earned his biology degree at UC Irvine and his Doctor of Chiropractic at the Los Angeles College of Chiropractic. He has been licensed in California since 2002."
       ]
     },
     {
@@ -323,6 +321,10 @@
     "eyebrow": "Institutional layer",
     "heading": "The next layer belongs in public.",
     "lead": "22 Strong began with two founders and a working treatment room. Testimonials prove the care matters; governance has to prove the organization can outlast its founders. As board and advisory roles are formalized, that roster belongs here.",
+    "mission": {
+      "label": "Our mission",
+      "statement": "22 Strong supports veterans and low-income youth by funding sports medicine recovery care when insurance no longer covers the next visit."
+    },
     "commitments": [
       {
         "heading": "Board and advisory roster",

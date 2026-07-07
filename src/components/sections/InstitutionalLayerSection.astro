@@ -10,6 +10,7 @@ interface Governance {
   eyebrow: string;
   heading: string;
   lead: string;
+  mission?: { label: string; statement: string };
   commitments: Commitment[];
 }
 
@@ -27,6 +28,13 @@ const { governance } = Astro.props;
       <h2 id="institution-title">{governance.heading}</h2>
       <p>{governance.lead}</p>
     </div>
+
+    {governance.mission && (
+      <article class="institution-commitment institution-mission" data-reveal="card">
+        <h3>{governance.mission.label}</h3>
+        <p>{governance.mission.statement}</p>
+      </article>
+    )}
 
     <div class="institution-commitments" aria-label="Governance commitments">
       {governance.commitments.map((item) => (

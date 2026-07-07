@@ -387,6 +387,10 @@
   line-height: 1.6;
 }
 
+.institution-mission {
+  margin-bottom: 14px;
+}
+
 .institution-commitments {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
