@@ -47,6 +47,8 @@ const animateCounter = (element: HTMLElement) => {
   const target = parseFloat(targetStr);
   const prefix = element.getAttribute('data-counter-prefix') || '';
   const suffix = element.getAttribute('data-counter-suffix') || '';
+  // Word suffixes ("million") read better with a space; symbols ("%") should hug the number.
+  const suffixText = suffix ? (/^[a-z]{2,}$/i.test(suffix) ? ' ' + suffix : suffix) : '';
 
   // If it's a simple number with no prefix/suffix, use legacy animation
   if (!prefix && !suffix && element.hasAttribute('data-count')) {
@@ -78,16 +80,16 @@ const animateCounter = (element: HTMLElement) => {
     }
     
     // Combine prefix, value, suffix
-    element.textContent = `${prefix}${displayValue}${suffix ? ' ' + suffix : ''}`;
+    element.textContent = `${prefix}${displayValue}${suffixText}`;
     
     if (progress < 1) {
       requestAnimationFrame(update);
     } else {
       // Ensure final value is exact
       if (hasDecimal) {
-        element.textContent = `${prefix}${target.toFixed(decimalPlaces)}${suffix ? ' ' + suffix : ''}`;
+        element.textContent = `${prefix}${target.toFixed(decimalPlaces)}${suffixText}`;
       } else {
-        element.textContent = `${prefix}${target.toLocaleString()}${suffix ? ' ' + suffix : ''}`;
+        element.textContent = `${prefix}${target.toLocaleString()}${suffixText}`;
       }
     }
   };

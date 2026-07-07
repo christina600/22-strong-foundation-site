@@ -12,7 +12,8 @@ interface Props {
 const { chapter, introTitle, groups } = Astro.props;
 const preparedGroups = groups.map((group) => ({
   ...group,
-  primaryStat: group.stats[0],
+  // Most cards feature a single stat; opt-in stacking shows the full set.
+  cardStats: group.stackStats ? group.stats : group.stats.slice(0, 1),
   helpLine: group.body
 }));
 ---
@@ -62,13 +63,17 @@ const preparedGroups = groups.map((group) => ({
         )}
         <span class="audience-card-name">{group.heading}</span>
         <p class="audience-card-sentence">{group.lead}</p>
-        {group.primaryStat && (
+        {group.cardStats.map((stat) => (
           <div class="audience-card-stat">
-            <strong>{group.primaryStat.number}</strong>
-            <span>{group.primaryStat.text}</span>
-            <a href={group.primaryStat.url} target="_blank" rel="noopener noreferrer">{group.primaryStat.source}</a>
+            <strong>{stat.number}</strong>
+            <span>{stat.text}</span>
+            {stat.source && (
+              stat.url
+                ? <a href={stat.url} target="_blank" rel="noopener noreferrer">{stat.source}</a>
+                : <span class="audience-card-stat__source">{stat.source}</span>
+            )}
           </div>
-        )}
+        ))}
         <div class="audience-card-help">
           <h3>How we help</h3>
           <p>{group.helpLine}</p>

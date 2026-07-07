@@ -24,7 +24,7 @@ import home from "../content/home.json";
 import { buildAudienceGroups } from "../utils/home-story";
 
 const audienceGroups = buildAudienceGroups(home);
-const [costStat, visitCapStat, debtStat] = home.stats.others;
+const [costStat, visitCapStat, opioidStat] = home.stats.others;
 ---
 
 <HomeBase title="Fund recovery care when the system stops short.">
@@ -33,9 +33,6 @@ const [costStat, visitCapStat, debtStat] = home.stats.others;
 
     <main id="main">
       <HeroSection proofline={home.credibility} />
-      <div class="hero-care-link">
-        <a href="#contact">Need care, or referring someone? Get in touch.</a>
-      </div>
       <BlankSection class="post-hero-section" id="post-hero-blank" padding="default" ariaHidden={false}>
         <div class="post-hero-message">
           {home.hero.kicker && <p class="hero-kicker">{home.hero.kicker}</p>}
@@ -67,7 +64,7 @@ const [costStat, visitCapStat, debtStat] = home.stats.others;
         id="about"
         heading={home.mission.heading}
         lead={home.mission.lead}
-        evidenceStats={[costStat, debtStat]}
+        evidenceStats={[costStat, opioidStat]}
         evidenceAriaLabel="Evidence of the recovery access gap"
         needParagraphs={home.mission.needParagraphs}
         paragraphs={home.story.paragraphs}
@@ -88,7 +85,7 @@ const [costStat, visitCapStat, debtStat] = home.stats.others;
 
       <VeteranStorySection />
 
-      <SectionCta text="Keep the next visit within reach." label="Fund recovery care" href="#donate" />
+      <SectionCta text="Keep the next visit within reach." label="Support the next visit" href="#donate" />
 
       <DonationAskSection chapter="04" donate={home.donate} />
       <ContactSection contact={home.contact} />

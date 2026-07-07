@@ -60,9 +60,13 @@ const hasNumeric = numericValue > 0 && !/\s/.test(stat.number.replace(/[$£€%]
     </div>
     <div class="about-evidence-copy">
       <p>{stat.text}</p>
-      <span class="about-evidence-source">
-        <a href={stat.url} target="_blank" rel="noopener noreferrer">{stat.source}</a>
-      </span>
+      {stat.source && (
+        <span class="about-evidence-source">
+          {stat.url
+            ? <a href={stat.url} target="_blank" rel="noopener noreferrer">{stat.source}</a>
+            : stat.source}
+        </span>
+      )}
     </div>
   </aside>
 ) : (
@@ -79,9 +83,13 @@ const hasNumeric = numericValue > 0 && !/\s/.test(stat.number.replace(/[$£€%]
       </div>
       <div class="audience-stat-text">
         <p>{stat.text}</p>
-        <span class="audience-stat-source">
-          <a href={stat.url} target="_blank" rel="noopener noreferrer">{stat.source}</a>
-        </span>
+        {stat.source && (
+          <span class="audience-stat-source">
+            {stat.url
+              ? <a href={stat.url} target="_blank" rel="noopener noreferrer">{stat.source}</a>
+              : stat.source}
+          </span>
+        )}
       </div>
     </div>
   </aside>

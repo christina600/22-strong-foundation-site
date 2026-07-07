@@ -1,21 +1,20 @@
 {
   "hero": {
-    "kicker": "For the visits insurance won't cover.",
-    "headline": ["Keep recovery going", "when coverage stops."],
-    "ctaLabel": "Fund recovery care",
+    "kicker": "Recovery care funding for veterans and young people.",
+    "headline": ["Because recovery should not stop", "when coverage does."],
+    "ctaLabel": "Support the next visit",
     "taxline": "Your gift is tax-deductible · 501(c)(3)"
   },
-  "heroLead": "22 Strong pays for hands-on recovery care for veterans and low-income youth when insurance runs out before the recovery is done.",
+  "heroLead": "22 Strong helps pay for sports-medicine recovery care for veterans and young people when insurance no longer covers the next visit.",
   "credibility": [
     "501(c)(3) nonprofit",
-    "Orange County based",
-    "Veteran-founded",
-    "Clinic-based recovery care"
+    "Orange County",
+    "Veteran-founded"
   ],
   "mission": {
     "eyebrow": "",
-    "heading": "Coverage runs out before recovery does.",
-    "lead": "The injury is real and the care plan is working. Then the next visit isn't covered. That gap is what we close.",
+    "heading": "The next visit is often where recovery breaks down.",
+    "lead": "A care plan may be working, but the patient, family, or caregiver still has to get through approvals, scheduling, transportation, work or school conflicts, pain, paperwork, and the cost of repeated visits. When that next appointment is out of reach, progress can stall.",
     "impact": {
       "label": "",
       "figures": [
@@ -25,7 +24,8 @@
       ]
     },
     "needParagraphs": [
-      "We confirm the gap, then pay the clinic for the sessions. Recovery keeps its schedule."
+      "Timing matters. Hands-on rehabilitative care is timing- and continuity-sensitive, and when visits are delayed, recovery can become harder to regain.",
+      "Recovery care works best when it stays on schedule. When cost gets in the way, we help keep the next visit within reach."
     ]
   },
   "story": {
@@ -54,7 +54,7 @@
     "veterans": [
       {
         "number": "1 in 3",
-        "text": "veterans report chronic pain after service. When pain is part of daily life, recovery care is not optional.",
+        "text": "veterans report chronic pain after service.",
         "source": "CDC — National Health Interview Survey",
         "url": "https://www.cdc.gov/mmwr/volumes/69/wr/mm6947a6.htm",
         "light": false
@@ -81,6 +81,20 @@
         "source": "KFF / National Survey of Children's Health, 2024",
         "url": "https://www.kff.org/state-health-policy-data/state-indicator/percent-of-children-whose-families-had-trouble-paying-bills-for-childs-medical-or-health-care-bills-in-past-12-months/",
         "light": true
+      },
+      {
+        "number": "3.4x",
+        "text": "Publicly insured pediatric orthopedic patients were more likely to face delays getting physical therapy after treatment.",
+        "source": "",
+        "url": "",
+        "light": false
+      },
+      {
+        "number": "58%",
+        "text": "of parents carry health care debt, far more than non-parents, and most of them have put off needed care because of the cost.",
+        "source": "KFF Health Care Debt Survey",
+        "url": "https://www.kff.org/health-costs/kff-health-care-debt-survey/",
+        "light": true
       }
     ],
     "others": [
@@ -99,10 +113,10 @@
         "light": true
       },
       {
-        "number": "58%",
-        "text": "of parents carry health care debt, far more than non-parents, and most of them have put off needed care because of the cost.",
-        "source": "KFF Health Care Debt Survey",
-        "url": "https://www.kff.org/health-costs/kff-health-care-debt-survey/",
+        "number": "10%",
+        "text": "lower risk of long-term opioid use when physical therapy starts early for musculoskeletal pain.",
+        "source": "PubMed · National Library of Medicine",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30646297/",
         "light": true
       }
     ]
@@ -112,8 +126,8 @@
       "id": "serve-veterans",
       "heading": "Veterans",
       "detailAriaLabel": "Veteran recovery support",
-      "lead": "Care funding for veterans rebuilding strength and mobility after service.",
-      "body": "VA coverage and referrals get many veterans started. The plan often ends before the pain does. When that happens, 22 Strong pays for the sessions that finish the job.",
+      "lead": "Recovery care for veterans dealing with pain, injury, or limited mobility after service.",
+      "body": "For veterans living with pain after service, waiting can mean more than a missed appointment. It can mean lost mobility, pain that flares back up, missed work, and the feeling of starting over. 22 Strong was built by people who have seen that gap up close, both through service and in the treatment room. That is why we help cover the next sports-medicine recovery visit when care is still needed and the appointment is out of reach.",
       "photo": "/images/story-veteran-conversation.webp",
       "photoAlt": "Two veterans talking together at home",
       "imagePosition": "48% 42%",
@@ -150,13 +164,14 @@
       "id": "serve-athletes",
       "heading": "Low-income youth",
       "detailAriaLabel": "Low-income youth recovery support",
-      "lead": "Recovery care for young people whose families can't cover what it takes to heal.",
-      "body": "An injured knee doesn't wait for a family's budget to catch up. When the next visit is out of reach, 22 Strong pays for it. That goes for student-athletes and any young person who needs hands-on care.",
+      "lead": "Recovery care for young people whose families cannot cover the next visit.",
+      "body": "For young people recovering from injury, surgery, illness, or ongoing pain, the next appointment can be where progress gets interrupted. Families may be dealing with insurance approvals, long waits, transportation, missed work, school schedules, pain, or the cost of repeated visits. 22 Strong helps cover recovery care when the next visit is needed and the family cannot carry it alone.",
       "photo": "/images/story-youth-huddle.webp",
       "photoAlt": "Youth basketball team huddling in a gym",
       "imagePosition": "50% 62%",
       "statsKey": "athletes",
       "statsClass": "one-up",
+      "stackStats": true,
       "featurePhoto": {
         "src": "/images/story-youth-dugout.jpg",
         "alt": "Youth baseball players lined up along the dugout fence during a game"
@@ -178,7 +193,7 @@
   ],
   "testimonials": {
     "luke": {
-      "attribution": "Luke Hudson · Veteran, VA referral",
+      "attribution": "Luke Hudson · Veteran",
       "story": "Luke shares why access to hands-on recovery care matters after service."
     },
     "kingMartin": {
@@ -191,7 +206,7 @@
     },
     "adam": {
       "quote": "During my sophomore year in college, I had hip surgery that was potentially season-ending and even career-ending. My coaches referred me to Dr. Vas, who was able to take care of me and eventually get me back to playing within a short few weeks. That season I ended up winning hustle player of the year award. Throughout my career, I saw Dr. Vas on various occasions for injuries that came up, along with maintenance and preventive care. I was able to play competitively at the top level.",
-      "attribution": "Collegiate & Professional Basketball Player",
+      "attribution": "(more info on Adam's position, year, career)",
       "story": ""
     }
   },

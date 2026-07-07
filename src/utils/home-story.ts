@@ -57,6 +57,7 @@ interface AudienceConfig {
   featurePhoto?: FeaturePhotoContent;
   statsKey: string;
   statsClass?: string;
+  stackStats?: boolean;
   proofClass?: string;
   voicesId?: string;
   voicesAriaLabel: string;
@@ -84,6 +85,7 @@ export interface AudienceGroupContent {
   featurePhoto?: FeaturePhotoContent;
   stats: EvidenceStatContent[];
   statsClass?: string;
+  stackStats?: boolean;
   proofClass?: string;
   voicesId?: string;
   voicesAriaLabel: string;
@@ -138,6 +140,7 @@ export function buildAudienceGroups(home: HomeStoryContent): AudienceGroupConten
     featurePhoto: group.featurePhoto,
     stats: home.stats[group.statsKey] ?? [],
     statsClass: group.statsClass,
+    stackStats: group.stackStats,
     proofClass: group.proofClass,
     voicesId: group.voicesId,
     voicesAriaLabel: group.voicesAriaLabel,
