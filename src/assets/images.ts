@@ -7,6 +7,7 @@
  * it here and add it to the lookup map below.
  */
 
+import aboutRedLightTherapy from "./images/about-red-light-therapy.webp";
 import adamFolkerUci from "./images/adam-folker-uci.webp";
 import drVas from "./images/dr-vas.webp";
 import heroBattleRopes from "./images/hero-battle-ropes.webp";
@@ -15,7 +16,10 @@ import storyAdaptiveDeadlift from "./images/story-adaptive-deadlift.webp";
 import storyAnkleWrap from "./images/story-ankle-wrap.webp";
 import storyAssistedRehab from "./images/story-assisted-rehab.webp";
 import storyTreatmentRoom from "./images/story-treatment-room.webp";
+import storySmartMirrorCoaching from "./images/story-smart-mirror-coaching.webp";
+import storyTrxTraining from "./images/story-trx-training.webp";
 import storyVeteranConversation from "./images/story-veteran-conversation.webp";
+import storyVeteranLegTherapy from "./images/story-veteran-leg-therapy.webp";
 import storyYouthDugout from "./images/story-youth-dugout.jpg";
 import storyYouthHuddle from "./images/story-youth-huddle.webp";
 import youthBasketballPlayer from "./images/youth-basketball-player.webp";
@@ -26,7 +30,11 @@ import logoUsvm from "./images/logo-usvm.jpg";
 import type { ImageMetadata } from "astro";
 
 export const imageMap: Record<string, ImageMetadata> = {
+  "/images/about-red-light-therapy.webp": aboutRedLightTherapy,
   "/images/adam-folker-uci.webp": adamFolkerUci,
+  "/images/story-smart-mirror-coaching.webp": storySmartMirrorCoaching,
+  "/images/story-trx-training.webp": storyTrxTraining,
+  "/images/story-veteran-leg-therapy.webp": storyVeteranLegTherapy,
   "/images/dr-vas.webp": drVas,
   "/images/luke-poster.jpg": lukePoster,
   "/images/story-adaptive-deadlift.webp": storyAdaptiveDeadlift,

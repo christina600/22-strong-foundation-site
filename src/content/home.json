@@ -128,8 +128,8 @@
       "detailAriaLabel": "Veteran recovery support",
       "lead": "Recovery care for veterans dealing with pain, injury, or limited mobility after service.",
       "body": "For veterans living with pain after service, waiting can mean more than a missed appointment. It can mean lost mobility, pain that flares back up, missed work, and the feeling of starting over. 22STRONG was built by people who have seen that gap up close, both through service and in the treatment room. That is why we help cover the next sports-medicine recovery visit when care is still needed and the appointment is out of reach.",
-      "photo": "/images/story-veteran-conversation.webp",
-      "photoAlt": "Two veterans talking together at home",
+      "photo": "/images/story-smart-mirror-coaching.webp",
+      "photoAlt": "Dr. Vas guiding a client through a strength exercise at Next Level Wellness",
       "imagePosition": "48% 42%",
       "statsKey": "veterans",
       "proofClass": "veteran-proof",
@@ -255,10 +255,10 @@
         "heading": "Referral or request",
         "body": "Referrals come from the VA, veteran networks, coaches, school counselors, and local community organizations.",
         "visual": {
-          "src": "/images/story-ankle-wrap.webp",
-          "alt": "Athletic trainer wrapping an ankle after a sports injury",
+          "src": "/images/story-veteran-leg-therapy.webp",
+          "alt": "Dr. Chris treating a veteran's leg during a recovery session",
           "label": "A real injury becomes a request for help.",
-          "imagePosition": "50% 38%"
+          "imagePosition": "50% 18%"
         }
       },
       {
@@ -353,8 +353,8 @@
       { "amount": "$850", "body": "supports an average care plan" }
     ],
     "storyImage": {
-      "src": "/images/story-adaptive-deadlift.webp",
-      "alt": "Adaptive athlete deadlifting a loaded barbell",
+      "src": "/images/story-trx-training.webp",
+      "alt": "Dr. Vas coaching a veteran through TRX suspension training",
       "caption": "Recovery funding protects the long road from treatment to strength."
     },
     "covers": {
