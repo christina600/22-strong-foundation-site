@@ -191,7 +191,7 @@ function updateGiftSummary(module: HTMLElement, pulse = false) {
 
   const donateBtn = module.querySelector<HTMLAnchorElement>(".btn-donate");
   if (donateBtn) {
-    // Monthly checks out to the 22 Strong Circle campaign, one-time to Fund
+    // Monthly checks out to the 22Strong Circle campaign, one-time to Fund
     // Recovery Care; fall back to the other base, then the rendered href.
     const oneTimeBase = donateBtn.dataset.donateOnetime || "";
     const monthlyBase = donateBtn.dataset.donateMonthly || "";

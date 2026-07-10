@@ -5,7 +5,7 @@
     "ctaLabel": "Support the next visit",
     "taxline": "Your gift is tax-deductible · 501(c)(3)"
   },
-  "heroLead": "22 Strong helps pay for sports-medicine recovery care for veterans and young people when insurance no longer covers the next visit.",
+  "heroLead": "22Strong helps pay for sports-medicine recovery care for veterans and young people when insurance no longer covers the next visit.",
   "credibility": [
     "501(c)(3) nonprofit",
     "Orange County",
@@ -32,8 +32,8 @@
     "eyebrow": "Story",
     "heading": "The gap kept showing up in the treatment room.",
     "paragraphs": [
-      "22 Strong started inside Next Level Fitness & Wellness Center, a sports-medicine clinic in Newport Beach co-owned by Travis Mayfield, a Purple Heart veteran of the 101st Airborne, and Dr. Vasili “Dr. Vas” Gatsinaris.",
-      "In the treatment room they kept seeing the same problem: the care was working, and the next visit wasn't guaranteed. They built 22 Strong so a recovery wouldn't depend on whether someone could afford one more appointment."
+      "22Strong started inside Next Level Fitness & Wellness Center, a sports-medicine clinic in Newport Beach co-owned by Travis Mayfield, a Purple Heart veteran of the 101st Airborne, and Dr. Vasili “Dr. Vas” Gatsinaris.",
+      "In the treatment room they kept seeing the same problem: the care was working, and the next visit wasn't guaranteed. They built 22Strong so a recovery wouldn't depend on whether someone could afford one more appointment."
     ]
   },
   "press": {
@@ -45,7 +45,7 @@
         "logoAlt": "U.S. Veterans Magazine",
         "url": "https://digital.usveteransmagazine.com/US-Veterans-Magazine-Winter-2022/0/",
         "ariaLabel": "Read the U.S. Veterans Magazine feature",
-        "featureLine": "U.S. Veterans Magazine featured the veteran-led recovery story behind 22 Strong.",
+        "featureLine": "U.S. Veterans Magazine featured the veteran-led recovery story behind 22Strong.",
         "sourceLabel": "U.S. Veterans Magazine · Winter 2022"
       }
     ]
@@ -127,7 +127,7 @@
       "heading": "Veterans",
       "detailAriaLabel": "Veteran recovery support",
       "lead": "Recovery care for veterans dealing with pain, injury, or limited mobility after service.",
-      "body": "For veterans living with pain after service, waiting can mean more than a missed appointment. It can mean lost mobility, pain that flares back up, missed work, and the feeling of starting over. 22 Strong was built by people who have seen that gap up close, both through service and in the treatment room. That is why we help cover the next sports-medicine recovery visit when care is still needed and the appointment is out of reach.",
+      "body": "For veterans living with pain after service, waiting can mean more than a missed appointment. It can mean lost mobility, pain that flares back up, missed work, and the feeling of starting over. 22Strong was built by people who have seen that gap up close, both through service and in the treatment room. That is why we help cover the next sports-medicine recovery visit when care is still needed and the appointment is out of reach.",
       "photo": "/images/story-veteran-conversation.webp",
       "photoAlt": "Two veterans talking together at home",
       "imagePosition": "48% 42%",
@@ -165,7 +165,7 @@
       "heading": "Low-income youth",
       "detailAriaLabel": "Low-income youth recovery support",
       "lead": "Recovery care for young people whose families cannot cover the next visit.",
-      "body": "For young people recovering from injury, surgery, illness, or ongoing pain, the next appointment can be where progress gets interrupted. Families may be dealing with insurance approvals, long waits, transportation, missed work, school schedules, pain, or the cost of repeated visits. 22 Strong helps cover recovery care when the next visit is needed and the family cannot carry it alone.",
+      "body": "For young people recovering from injury, surgery, illness, or ongoing pain, the next appointment can be where progress gets interrupted. Families may be dealing with insurance approvals, long waits, transportation, missed work, school schedules, pain, or the cost of repeated visits. 22Strong helps cover recovery care when the next visit is needed and the family cannot carry it alone.",
       "photo": "/images/story-youth-huddle.webp",
       "photoAlt": "Youth basketball team huddling in a gym",
       "imagePosition": "50% 62%",
@@ -198,11 +198,11 @@
     },
     "kingMartin": {
       "attribution": "King Martin · Veteran",
-      "story": "King Martin shares his experience with 22 Strong Foundation's recovery care program."
+      "story": "King Martin shares his experience with 22Strong Foundation's recovery care program."
     },
     "veteranCare": {
       "attribution": "Veteran Care Testimonial",
-      "story": "A testimonial about veteran care and recovery support through 22 Strong Foundation."
+      "story": "A testimonial about veteran care and recovery support through 22Strong Foundation."
     },
     "adam": {
       "quote": "During my sophomore year in college, I had hip surgery that was potentially season-ending and even career-ending. My coaches referred me to Dr. Vas, who was able to take care of me and eventually get me back to playing within a short few weeks. That season I ended up winning hustle player of the year award. Throughout my career, I saw Dr. Vas on various occasions for injuries that came up, along with maintenance and preventive care. I was able to play competitively at the top level.",
@@ -221,8 +221,8 @@
     }
   ],
   "strongCircle": {
-    "heading": "The 22 Strong Circle.",
-    "lead": "A monthly membership that lets 22 Strong say yes to the next veteran or young person without waiting on the next fundraiser. Every nine members at $22 fund a recovery session, every month.",
+    "heading": "The 22Strong Circle.",
+    "lead": "A monthly membership that lets 22Strong say yes to the next veteran or young person without waiting on the next fundraiser. Every nine members at $22 fund a recovery session, every month.",
     "tiersLabel": "",
     "tiers": [
       { "amount": "$22", "note": "the number we're named for" },
@@ -230,7 +230,7 @@
       { "amount": "$100", "note": "one session every other month" },
       { "amount": "$190", "note": "a funded session every month" }
     ],
-    "joinLabel": "Join the 22 Strong Circle",
+    "joinLabel": "Join the 22Strong Circle",
     "footnote": "Monthly · cancel anytime · every dollar funds recovery care.",
     "memberHighlight": {
       "text": "A Green Beret whose Vietnam service is the subject of a Congressional Medal of Honor bill. Members like Ramon give monthly so the next veteran's visit is already funded.",
@@ -246,9 +246,9 @@
   },
   "howItWorks": {
     "eyebrow": "",
-    "heading": ["A recovery gap appears.", "22 Strong closes it."],
+    "heading": ["A recovery gap appears.", "22Strong closes it."],
     "kicker": "Someone has a care plan and the next appointment is in doubt. Here is what happens next.",
-    "stepsAriaLabel": "22 Strong care funding path",
+    "stepsAriaLabel": "22Strong care funding path",
     "steps": [
       {
         "number": "1",
@@ -264,13 +264,13 @@
       {
         "number": "2",
         "heading": "We confirm the gap",
-        "body": "22 Strong reviews the situation. If coverage has run out or private care is out of reach, we step in."
+        "body": "22Strong reviews the situation. If coverage has run out or private care is out of reach, we step in."
       },
       {
         "number": "3",
         "heading": "Care funded",
-        "body": "22 Strong pays the clinic directly. The patient never sees a bill.",
-        "note": "Care is currently provided through {provider} in Newport Beach, the sports-medicine clinic co-owned by 22 Strong's founders. Funded sessions can include Fascial Integrative Treatment (FIT) and hands-on care for rotator cuff, knee, neck, lower back, hip, ankle/foot, and wrist/elbow injuries.",
+        "body": "22Strong pays the clinic directly. The patient never sees a bill.",
+        "note": "Care is currently provided through {provider} in Newport Beach, the sports-medicine clinic co-owned by 22Strong's founders. Funded sessions can include Fascial Integrative Treatment (FIT) and hands-on care for rotator cuff, knee, neck, lower back, hip, ankle/foot, and wrist/elbow injuries.",
         "provider": { "label": "Next Level Fitness & Wellness Center", "href": "https://www.nextlevelwellnesscenter.com" },
         "disclosure": {
           "text": "We publish how that provider relationship is managed.",
@@ -294,7 +294,7 @@
       "initials": "TM",
       "credentials": ["Purple Heart recipient", "U.S. Army 101st Airborne", "Community care advocate"],
       "paragraphs": [
-        "A Purple Heart recipient who served as a Sergeant with the U.S. Army’s 101st Airborne Division in Vietnam, Travis is Co-Owner and President of Next Level Fitness & Wellness Center. His own long road back from war is the inspiration behind 22 Strong’s model. He helped found the foundation and leads its mission to make recovery care accessible to those who served and to others rebuilding their lives.",
+        "A Purple Heart recipient who served as a Sergeant with the U.S. Army’s 101st Airborne Division in Vietnam, Travis is Co-Owner and President of Next Level Fitness & Wellness Center. His own long road back from war is the inspiration behind 22Strong’s model. He helped found the foundation and leads its mission to make recovery care accessible to those who served and to others rebuilding their lives.",
         "His service and community work have been recognized by the California State Senate and Assembly, the U.S. House of Representatives, and Orange County."
       ]
     },
@@ -307,7 +307,7 @@
       "credentials": ["Doctor of Chiropractic (D.C.)", "25+ years in recovery care", "Co-owner, Next Level"],
       "paragraphs": [
         "Dr. Vasili Gatsinaris, known to his patients as Dr. Vas, has been treating injuries for 25 years. He opened Next Level Wellness Center in Newport Beach in 2001 and still does the hands-on work himself. His patient list has included professional athletes from every major sports league, but most days the treatment room holds regular people. A veteran rebuilding a shoulder gets the same care an NBA player does.",
-        "He developed Fascial Integrative Treatment (FIT), the hands-on method used in many of the sessions 22 Strong funds. He earned his biology degree at UC Irvine and his Doctor of Chiropractic at the Los Angeles College of Chiropractic. He has been licensed in California since 2002."
+        "He developed Fascial Integrative Treatment (FIT), the hands-on method used in many of the sessions 22Strong funds. He earned his biology degree at UC Irvine and his Doctor of Chiropractic at the Los Angeles College of Chiropractic. He has been licensed in California since 2002."
       ]
     },
     {
@@ -320,15 +320,15 @@
   "governance": {
     "eyebrow": "Institutional layer",
     "heading": "The next layer belongs in public.",
-    "lead": "22 Strong began with two founders and a working treatment room. Testimonials prove the care matters; governance has to prove the organization can outlast its founders. As board and advisory roles are formalized, that roster belongs here.",
+    "lead": "22Strong began with two founders and a working treatment room. Testimonials prove the care matters; governance has to prove the organization can outlast its founders. As board and advisory roles are formalized, that roster belongs here.",
     "mission": {
       "label": "Our mission",
-      "statement": "22 Strong supports veterans and low-income youth by funding sports medicine recovery care when insurance no longer covers the next visit."
+      "statement": "22Strong supports veterans and low-income youth by funding sports medicine recovery care when insurance no longer covers the next visit."
     },
     "commitments": [
       {
         "heading": "Board and advisory roster",
-        "body": "When board or advisory seats are formalized, 22 Strong will publish names, roles, and terms here so donors can see who shares oversight."
+        "body": "When board or advisory seats are formalized, 22Strong will publish names, roles, and terms here so donors can see who shares oversight."
       },
       {
         "heading": "Conflict standard",
@@ -367,7 +367,7 @@
     }
   },
   "givingInvite": {
-    "ariaLabel": "Join the 22 Strong Circle",
+    "ariaLabel": "Join the 22Strong Circle",
     "heading": "Strong Circle",
     "body": "Become a monthly member.",
     "joinLabel": "Join the Circle",
@@ -377,7 +377,7 @@
   "contact": {
     "heading": "Get in touch.",
     "body": "",
-    "pathsAriaLabel": "Ways to contact 22 Strong",
+    "pathsAriaLabel": "Ways to contact 22Strong",
     "paths": [
       {
         "heading": "Give or sponsor care",
@@ -399,7 +399,7 @@
     "reasons": [
       "I want to give or sponsor care",
       "I want to refer someone for care",
-      "I want to partner with 22 Strong",
+      "I want to partner with 22Strong",
       "I have a general question"
     ],
     "messageLabel": "Message",

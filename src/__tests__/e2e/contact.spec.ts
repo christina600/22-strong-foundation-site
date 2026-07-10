@@ -28,7 +28,7 @@ test.describe("contact form", () => {
     await page.locator('input[name="name"]').fill("Test Donor");
     await page.locator('input[name="email"]').fill("test@example.com");
     await page.locator('select[name="reason"]').selectOption({ label: "I have a general question" });
-    await page.locator('textarea[name="message"]').fill("I would like to learn more about 22 Strong Foundation.");
+    await page.locator('textarea[name="message"]').fill("I would like to learn more about 22Strong Foundation.");
 
     page.on("request", (request) => {
       if (request.method() !== "GET") submitRequests.push(`${request.method()} ${request.url()}`);
@@ -39,7 +39,7 @@ test.describe("contact form", () => {
     await expect(page.locator("#contact-form-status")).toContainText("Opening your email app");
     const mailtoHref = await page.evaluate(() => window.sessionStorage.getItem("contactMailtoHref"));
     expect(mailtoHref).toContain("mailto:team@22strongfoundation.com");
-    expect(mailtoHref).toContain("subject=22%20Strong%20contact%3A%20I%20have%20a%20general%20question");
+    expect(mailtoHref).toContain("subject=22Strong%20contact%3A%20I%20have%20a%20general%20question");
     expect(mailtoHref).toContain("Test%20Donor");
     expect(submitRequests).toEqual([]);
     expect(uniqueExternalRequests(blocked)).toEqual([]);

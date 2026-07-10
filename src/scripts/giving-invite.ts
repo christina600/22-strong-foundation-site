@@ -1,5 +1,5 @@
 /**
- * 22 Strong Circle giving invite.
+ * 22Strong Circle giving invite.
  *
  * A restrained, non-blocking corner card that invites monthly giving after the
  * visitor has met the mission — when the testimonial video ends, or when they
