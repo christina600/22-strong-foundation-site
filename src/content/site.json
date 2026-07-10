@@ -1,6 +1,6 @@
 {
-  "orgName": "22Strong Foundation",
-  "descriptor": "22Strong Foundation helps donors fund recovery care for veterans and low-income youth when cost, coverage, timing, or access threatens the next appointment.",
+  "orgName": "22STRONG Foundation",
+  "descriptor": "22STRONG Foundation helps donors fund recovery care for veterans and low-income youth when cost, coverage, timing, or access threatens the next appointment.",
   "phone": "",
   "email": "team@22strongfoundation.com",
   "address": "4120 Birch St, Suite 106, Newport Beach, CA 92660",
@@ -21,11 +21,11 @@
   "defaultAmountIndex": 1,
   "donationImpact": {
     "monthly": {
-      "22": "$22 a month anchors the 22Strong Circle and helps 22Strong say yes before a recovery plan stops.",
+      "22": "$22 a month anchors the 22STRONG Circle and helps 22STRONG say yes before a recovery plan stops.",
       "50": "$50 a month creates steady room for follow-through appointments when coverage or cash runs short.",
       "100": "$100 a month helps keep multiple recovery plans moving across the year.",
       "190": "$190 a month funds a full recovery session every month for someone who can't cover it.",
-      "default": "Monthly gifts help the 22Strong Circle keep care moving before a recovery gap turns into a stopped plan."
+      "default": "Monthly gifts help the 22STRONG Circle keep care moving before a recovery gap turns into a stopped plan."
     },
     "oneTime": {
       "50": "$50 helps move the next appointment within reach.",
