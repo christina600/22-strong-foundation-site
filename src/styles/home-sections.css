@@ -93,7 +93,7 @@
   }
 }
 
-/* Credibility strip (verified, non-numeric facts) and the "How 22 Strong
+/* Credibility strip (verified, non-numeric facts) and the "How 22Strong
    works" mechanism section. The strip carries no counts or dollar figures,
    so nothing in it can read as an unverified impact claim. */
 .credibility-strip {
@@ -352,7 +352,7 @@
   background: rgba(32, 35, 31, .28);
 }
 
-/* "How 22 Strong works" — 3-step mechanism section. */
+/* "How 22Strong works" — 3-step mechanism section. */
 .how-it-works {
   padding-top: var(--space-section-y);
   padding-bottom: var(--space-section-y);

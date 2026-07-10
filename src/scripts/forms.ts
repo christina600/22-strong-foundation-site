@@ -131,7 +131,7 @@ function buildMailtoHref(form: HTMLFormElement, email: string) {
   const replyTo = fieldValue(form, "email");
   const reason = fieldValue(form, "reason") || "Website inquiry";
   const message = fieldValue(form, "message");
-  const subject = `22 Strong contact: ${reason}`;
+  const subject = `22Strong contact: ${reason}`;
   const body = [
     `Name: ${name}`,
     `Email: ${replyTo}`,

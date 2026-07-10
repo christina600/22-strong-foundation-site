@@ -5,7 +5,7 @@
     "ctaLabel": "Fund recovery care",
     "taxline": "Your gift is tax-deductible · 501(c)(3)"
   },
-  "heroLead": "22 Strong funds hands-on recovery care for veterans and low-income youth when insurance and cost fall short.",
+  "heroLead": "22Strong funds hands-on recovery care for veterans and low-income youth when insurance and cost fall short.",
   "credibility": [
     "501(c)(3) nonprofit",
     "Orange County based",
@@ -32,8 +32,8 @@
     "eyebrow": "Story",
     "heading": "The gap kept showing up in the treatment room.",
     "paragraphs": [
-      "22 Strong began inside Next Level Wellness, a sports-medicine center in Newport Beach co-owned by Travis Mayfield — a Purple Heart veteran of the 101st Airborne — and Dr. Vasili “Dr. Vas” Gatsinaris.",
-      "In the treatment room they kept seeing the same problem: the care was working, but the next visit wasn't guaranteed. They built 22 Strong so high-level recovery wouldn't depend on whether someone could afford one more appointment."
+      "22Strong began inside Next Level Wellness, a sports-medicine center in Newport Beach co-owned by Travis Mayfield — a Purple Heart veteran of the 101st Airborne — and Dr. Vasili “Dr. Vas” Gatsinaris.",
+      "In the treatment room they kept seeing the same problem: the care was working, but the next visit wasn't guaranteed. They built 22Strong so high-level recovery wouldn't depend on whether someone could afford one more appointment."
     ]
   },
   "press": {
@@ -148,7 +148,7 @@
       "heading": "Low-income youth",
       "detailAriaLabel": "Low-income youth recovery support",
       "lead": "Recovery care for young people whose families can't cover what it takes to heal after an injury.",
-      "body": "When insurance runs out or care costs more than a family can carry, recovery stalls. 22 Strong keeps it moving — for student-athletes and any young person who needs hands-on care.",
+      "body": "When insurance runs out or care costs more than a family can carry, recovery stalls. 22Strong keeps it moving — for student-athletes and any young person who needs hands-on care.",
       "photo": "/images/story-youth-huddle.webp",
       "photoAlt": "Youth basketball team huddling in a gym",
       "imagePosition": "50% 62%",
@@ -175,11 +175,11 @@
     },
     "kingMartin": {
       "attribution": "King Martin · Veteran",
-      "story": "King Martin shares his experience with 22 Strong Foundation's recovery care program."
+      "story": "King Martin shares his experience with 22Strong Foundation's recovery care program."
     },
     "veteranCare": {
       "attribution": "Veteran Care Testimonial",
-      "story": "A testimonial about veteran care and recovery support through 22 Strong Foundation."
+      "story": "A testimonial about veteran care and recovery support through 22Strong Foundation."
     },
     "adam": {
       "quote": "During my sophomore year in college, I had hip surgery that was potentially season-ending and even career-ending. My coaches referred me to Dr. Vas, who was able to take care of me and eventually get me back to playing within a short few weeks. That season I ended up winning hustle player of the year award. Throughout my career, I saw Dr. Vas on various occasions for injuries that came up, along with maintenance and preventive care. I was able to play competitively at the top level.",
@@ -198,8 +198,8 @@
     }
   ],
   "strongCircle": {
-    "heading": "Join the 22 Strong Circle.",
-    "lead": "A monthly membership that lets 22 Strong say yes to the next veteran or young person without waiting on the next fundraiser.",
+    "heading": "Join the 22Strong Circle.",
+    "lead": "A monthly membership that lets 22Strong say yes to the next veteran or young person without waiting on the next fundraiser.",
     "tiersLabel": "Become a monthly member",
     "tiers": [
       { "amount": "$22", "note": "" },
@@ -217,9 +217,9 @@
   },
   "howItWorks": {
     "eyebrow": "",
-    "heading": ["A recovery gap appears.", "22 Strong helps close it."],
+    "heading": ["A recovery gap appears.", "22Strong helps close it."],
     "kicker": "Someone has a recovery plan, the next appointment becomes uncertain, and donor funding keeps it moving.",
-    "stepsAriaLabel": "22 Strong care funding path",
+    "stepsAriaLabel": "22Strong care funding path",
     "steps": [
       {
         "number": "1",
@@ -235,7 +235,7 @@
       {
         "number": "2",
         "heading": "We evaluate the gap",
-        "body": "22 Strong reviews the situation. If coverage has run out or private care is out of reach, we step in."
+        "body": "22Strong reviews the situation. If coverage has run out or private care is out of reach, we step in."
       },
       {
         "number": "3",
@@ -244,7 +244,7 @@
         "note": "Care is currently provided through {provider} in Newport Beach — high-level sports medicine, including Fascial Integrative Treatment (FIT) for rotator cuff, knee, neck, lower back, hip, ankle/foot, and wrist/elbow injuries.",
         "provider": { "label": "Next Level Fitness & Wellness Center", "href": "https://www.nextlevelwellnesscenter.com" },
         "disclosure": {
-          "text": "Care is provided through Next Level Fitness & Wellness Center in Newport Beach, co-owned by 22 Strong's founders.",
+          "text": "Care is provided through Next Level Fitness & Wellness Center in Newport Beach, co-owned by 22Strong's founders.",
           "linkLabel": "Read about how we handle this",
           "href": "/transparency"
         }
@@ -270,7 +270,7 @@
       "paragraphs": [
         "Dr. Vas earned his Doctorate of Chiropractic from the Los Angeles College of Chiropractic in 2001 and has more than 25 years of experience helping people recover and rebuild.",
         "Over his career, he has worked with everyone from professional athletes to first responders, developing a hands-on, integrative approach focused on restoring mobility and getting people back to life stronger and faster.",
-        "He is co-owner of Next Level Fitness & Wellness Center in Newport Beach — the same recovery care 22 Strong helps fund."
+        "He is co-owner of Next Level Fitness & Wellness Center in Newport Beach — the same recovery care 22Strong helps fund."
       ]
     },
     {
@@ -282,7 +282,7 @@
       "initials": "TM",
       "credentials": ["Purple Heart recipient", "U.S. Army 101st Airborne", "Community care advocate"],
       "paragraphs": [
-        "A Purple Heart recipient who served as a Sergeant with the U.S. Army’s 101st Airborne Division in Vietnam, Travis is Co-Owner and President of Next Level Fitness & Wellness Center. His own long road back from war is the inspiration behind 22 Strong’s model. He helped found the foundation and leads its mission to make recovery care accessible to those who served and to others rebuilding their lives.",
+        "A Purple Heart recipient who served as a Sergeant with the U.S. Army’s 101st Airborne Division in Vietnam, Travis is Co-Owner and President of Next Level Fitness & Wellness Center. His own long road back from war is the inspiration behind 22Strong’s model. He helped found the foundation and leads its mission to make recovery care accessible to those who served and to others rebuilding their lives.",
         "His service and community work have been recognized by the California State Senate and Assembly, the U.S. House of Representatives, and Orange County."
       ]
     }
@@ -312,9 +312,9 @@
     }
   },
   "givingInvite": {
-    "ariaLabel": "Join the 22 Strong Circle",
+    "ariaLabel": "Join the 22Strong Circle",
     "heading": "Keep care going monthly.",
-    "body": "Join the 22 Strong Circle so the next recovery plan doesn't have to wait.",
+    "body": "Join the 22Strong Circle so the next recovery plan doesn't have to wait.",
     "joinLabel": "Join monthly",
     "giveOnceLabel": "Give once",
     "dismissLabel": "Not now"
@@ -322,7 +322,7 @@
   "contact": {
     "heading": "Get in touch.",
     "body": "",
-    "pathsAriaLabel": "Ways to contact 22 Strong",
+    "pathsAriaLabel": "Ways to contact 22Strong",
     "paths": [
       {
         "heading": "Give or sponsor care",
@@ -344,7 +344,7 @@
     "reasons": [
       "I want to give or sponsor care",
       "I want to refer someone for care",
-      "I want to partner with 22 Strong",
+      "I want to partner with 22Strong",
       "I have a general question"
     ],
     "messageLabel": "Message",
