@@ -1,4 +1,4 @@
-# Progress — 22Strong Foundation
+# Progress — 22STRONG Foundation
 
 ## Latest: Revert Horizontal Scroll & Fix Hidden Evidence Stats
 

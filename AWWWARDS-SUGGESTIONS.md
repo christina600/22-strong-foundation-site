@@ -1,4 +1,4 @@
-# Awwwards CSS Review — 22Strong Foundation
+# Awwwards CSS Review — 22STRONG Foundation
 *Comprehensive design & CSS suggestions to reach award-worthy quality*
 
 ---
@@ -538,7 +538,7 @@ footer::before {
 }
 ```
 
-**Alternative:** Keep the light footer but add a full-bleed dark "mission statement" band above it with the 22Strong logo large and centered — a common Awwwards pattern for nonprofit/cause sites.
+**Alternative:** Keep the light footer but add a full-bleed dark "mission statement" band above it with the 22STRONG logo large and centered — a common Awwwards pattern for nonprofit/cause sites.
 
 ---
 

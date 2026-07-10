@@ -13,8 +13,8 @@ const { chapter, introTitle, groups } = Astro.props;
 const preparedGroups = groups.map((group) => ({
   ...group,
   primaryStat: group.stats[0],
-  helpLine: group.body.includes("22Strong keeps it moving")
-    ? group.body.slice(group.body.indexOf("22Strong keeps it moving"))
+  helpLine: group.body.includes("22STRONG keeps it moving")
+    ? group.body.slice(group.body.indexOf("22STRONG keeps it moving"))
     : group.body
 }));
 ---
@@ -24,7 +24,7 @@ const preparedGroups = groups.map((group) => ({
     <h2 data-reveal="headline" data-split-reveal>{introTitle}</h2>
   </div>
 
-  <div class="audience-card-grid" aria-label="Who 22Strong serves">
+  <div class="audience-card-grid" aria-label="Who 22STRONG serves">
     {preparedGroups.map((group) => (
       <article
         class={`audience-card${group.proofClass ? ` ${group.proofClass}` : ""}`}

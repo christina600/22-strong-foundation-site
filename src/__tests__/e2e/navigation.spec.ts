@@ -62,7 +62,7 @@ test.describe("navigation", () => {
     await page.locator('#nav-menu a[href="/strong-circle/"]').click();
 
     await expect(page).toHaveURL(/\/strong-circle\/$/);
-    await expect(page.locator("#strong-circle h1")).toContainText("Join the 22Strong Circle.");
+    await expect(page.locator("#strong-circle h1")).toContainText("Join the 22STRONG Circle.");
     await expect(page.locator("#donate")).toHaveCount(0);
   });
 });

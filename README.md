@@ -1,6 +1,6 @@
-# 22Strong Foundation
+# 22STRONG Foundation
 
-Astro site for the 22Strong Foundation nonprofit.
+Astro site for the 22STRONG Foundation nonprofit.
 
 ## Setup
 
