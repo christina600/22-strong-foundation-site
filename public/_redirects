@@ -1,3 +1,5 @@
-/favicon.svg   /favicon.svg        200
-/fonts/*       /fonts/:splat       200
-/*             /                   200!
+/favicon.svg   /favicon.svg          200
+/fonts/*       /fonts/:splat         200
+/privacy       /privacy/index.html   200
+/privacy/      /privacy/index.html   200
+/*             /                     200!

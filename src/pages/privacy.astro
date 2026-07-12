@@ -1,0 +1,67 @@
+---
+// Privacy note for the holding page's email signup form.
+// Styled to match src/pages/index.astro; goes away when the full site
+// (which has its own privacy page) launches.
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy — 22STRONG Foundation</title>
+<meta name="description" content="What happens to your email when you sign up to be notified.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+  @font-face{font-family:'Barlow';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/barlow-400.woff2') format('woff2')}
+  @font-face{font-family:'Barlow';font-style:normal;font-weight:600;font-display:swap;src:url('/fonts/barlow-600.woff2') format('woff2')}
+  @font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:800;font-display:swap;src:url('/fonts/barlow-condensed-800.woff2') format('woff2')}
+  :root{
+    --cream:#f3eee2; --muted:rgba(243,238,226,.64);
+    --bg:#1b1f1b; --line:rgba(243,238,226,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:var(--bg); color:var(--cream);
+    font-family:"Barlow",system-ui,sans-serif;
+    min-height:100vh; display:flex; align-items:center; justify-content:center;
+    padding:3vh 24px; -webkit-font-smoothing:antialiased;
+  }
+  /* Padding lives here, not on body: Astro rewrites the * reset above to an
+     attribute selector that outranks a bare `body` rule and zeroes it out. */
+  .wrap{max-width:560px; padding:6vh 24px}
+  .wordmark{font-family:"Barlow Condensed",sans-serif; font-weight:800; font-size:1.6rem; letter-spacing:.02em; margin-bottom:28px}
+  .wordmark a{color:var(--cream); text-decoration:none}
+  .wordmark .n22{color:#d35f28}
+  h1{font-weight:600; font-size:1.7rem; margin-bottom:18px}
+  p{font-size:1.15rem; line-height:1.65; color:var(--muted); margin-bottom:16px}
+  a{color:var(--cream)}
+  .back{display:inline-block; margin-top:14px; padding-top:18px; border-top:1px solid var(--line);
+    font-size:1.05rem; color:var(--cream); text-decoration:none; border-bottom:none}
+  .back:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="wordmark"><a href="/"><span class="n22">22</span>STRONG FOUNDATION</a></div>
+  <h1>Privacy</h1>
+  <p>
+    If you sign up to be notified, we use your email for one thing: telling
+    you when the site launches. We don't share it, sell it, or add you to
+    anything else.
+  </p>
+  <p>
+    The signup form runs on Netlify, our website host, so that's where your
+    email is stored. Nothing else on this page collects or tracks anything —
+    no cookies, no analytics.
+  </p>
+  <p>
+    Want your email removed? Write to
+    <a href="mailto:team@22strongfoundation.com">team@22strongfoundation.com</a>
+    and it's gone.
+  </p>
+  <a class="back" href="/">&larr; Back</a>
+</main>
+</body>
+</html>
