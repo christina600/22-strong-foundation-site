@@ -1,0 +1,68 @@
+---
+import HomeBase from "../../layouts/HomeBase.astro";
+import SiteFooter from "../../components/sections/SiteFooter.astro";
+import SiteHeader from "../../components/sections/SiteHeader.astro";
+import home from "../../content/home.json";
+import site from "../../content/site.json";
+
+const description = "This site does not use cookies, analytics, or tracking of any kind.";
+---
+
+<HomeBase title="Privacy Policy" description={description}>
+  <div class="site site--about">
+    <SiteHeader current="privacy" />
+
+    <main id="main" class="about-page transparency-page">
+      <section class="transparency-hero" aria-labelledby="privacy-title">
+        <div class="transparency-hero__inner">
+          <p class="eyebrow">Privacy</p>
+          <h1 id="privacy-title">Privacy Policy</h1>
+          <p class="lead">
+            The short version: this site does not track you.
+          </p>
+        </div>
+      </section>
+
+      <div class="transparency-copy">
+        <section class="transparency-section" aria-labelledby="what-we-collect">
+          <h2 id="what-we-collect">What we collect</h2>
+          <p>
+            Nothing. This site uses no cookies, no analytics, and no tracking
+            of any kind. We do not collect, store, or share information about
+            your visit. Like any web host, our hosting provider (Netlify) may
+            keep routine, short-lived server logs to run the service; we add
+            nothing on top of that.
+          </p>
+        </section>
+
+        <section class="transparency-section" aria-labelledby="contact-form">
+          <h2 id="contact-form">The contact form</h2>
+          <p>
+            The contact form does not send anything to a server. When you
+            submit it, it opens your own email app with your message filled
+            in. You decide whether to send it.
+          </p>
+        </section>
+
+        <section class="transparency-section" aria-labelledby="donations">
+          <h2 id="donations">Donations</h2>
+          <p>
+            Donations are processed by Givebutter, on Givebutter's own site.
+            Anything you enter there is handled under
+            <a href="https://givebutter.com/privacy" rel="noopener">Givebutter's
+            privacy policy</a>, not ours.
+          </p>
+        </section>
+
+        <section class="transparency-section" aria-labelledby="privacy-questions">
+          <h2 id="privacy-questions">Questions</h2>
+          <p>
+            Email us at <a href={`mailto:${site.email}`}>{site.email}</a>.
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <SiteFooter footer={home.footer} homeHrefPrefix="/" />
+  </div>
+</HomeBase>

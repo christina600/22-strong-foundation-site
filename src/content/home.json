@@ -422,7 +422,8 @@
         "links": [
           { "label": "Donate", "href": "#donate" },
           { "label": "Get in touch", "href": "#contact" },
-          { "label": "Transparency", "href": "/transparency/" }
+          { "label": "Transparency", "href": "/transparency/" },
+          { "label": "Privacy", "href": "/privacy/" }
         ]
       }
     ]
