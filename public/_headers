@@ -3,8 +3,11 @@
 
 /*
   # Only allow scripts/styles/fonts from your own domain.
-  # 'unsafe-inline' is needed because Astro inlines small scripts.
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+  # Inline scripts are pinned by SHA-256 hash instead of 'unsafe-inline':
+  # only the two exact snippets Astro emits (the "js" class toggle and the
+  # story-video player) may run, so anything injected is blocked.
+  # If a snippet changes, `npm run test:dist` fails and prints the new hash.
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-/x7W7R75k8Roq0WaVRQX9blP4OufE5xbAdzklGxsgpw=' 'sha256-QjH7AQm57AxEgQJ5JVbl7PmD9rdhOvvu398cAZgEnII='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; frame-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
 
   # Prevent browsers from guessing file types (MIME sniffing).
   X-Content-Type-Options: nosniff
