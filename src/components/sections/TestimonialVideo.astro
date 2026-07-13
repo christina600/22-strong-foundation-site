@@ -1,0 +1,108 @@
+---
+interface Props {
+  id?: string;
+  src: string;
+  poster: string;
+  playLabel: string;
+  attribution: string;
+  quote?: string;
+  story?: string;
+  transcript?: string;
+  captionsSrc?: string;
+  tone?: "light" | "dark";
+  layout?: "featured" | "inline";
+  motionBackdrop?: boolean;
+  class?: string;
+}
+
+const {
+  id,
+  src,
+  poster,
+  playLabel,
+  attribution,
+  quote,
+  story,
+  transcript,
+  captionsSrc,
+  tone = "light",
+  layout = "featured",
+  motionBackdrop = false,
+  class: className = ""
+} = Astro.props;
+
+const classes = [
+  "testimonial-video",
+  `testimonial-video--${tone}`,
+  `testimonial-video--${layout}`,
+  className
+].filter(Boolean).join(" ");
+
+const posterStyle = `--testimonial-poster: url("${poster.replaceAll('"', "%22")}")`;
+---
+
+<figure
+  class={classes}
+  id={id}
+  data-testimonial-video
+  data-motion-backdrop={motionBackdrop ? "true" : "false"}
+>
+  <div class="testimonial-video__stage" style={posterStyle}>
+    {motionBackdrop && (
+      <video
+        class="testimonial-video__backdrop"
+        muted
+        playsinline
+        preload="none"
+        tabindex="-1"
+        aria-hidden="true"
+        data-testimonial-backdrop
+      >
+        <source src={src} type="video/mp4" />
+      </video>
+    )}
+
+    <video
+      class="testimonial-video__foreground"
+      playsinline
+      preload="none"
+      poster={poster}
+      aria-label={playLabel}
+      data-testimonial-foreground
+    >
+      <source src={src} type="video/mp4" />
+      {captionsSrc && (
+        <track kind="captions" src={captionsSrc} srclang="en" label="English" />
+      )}
+      <a href={src}>{playLabel}</a>
+    </video>
+
+    <button
+      class="testimonial-video__play"
+      type="button"
+      aria-label={playLabel}
+      data-testimonial-play
+    >
+      <span class="testimonial-video__play-icon" aria-hidden="true"></span>
+      <span class="testimonial-video__play-label">Watch their story</span>
+    </button>
+
+    <noscript>
+      <a class="testimonial-video__fallback" href={src}>{playLabel}</a>
+    </noscript>
+  </div>
+
+  {(quote || attribution || story || transcript) && (
+    <figcaption class="testimonial-video__copy">
+      {quote && <blockquote><p>“{quote}”</p></blockquote>}
+      {attribution && <cite>{attribution}</cite>}
+      {story && <p class="testimonial-video__story">{story}</p>}
+      {transcript && (
+        <details class="testimonial-video__transcript">
+          <summary>Read transcript</summary>
+          <p>{transcript}</p>
+        </details>
+      )}
+    </figcaption>
+  )}
+</figure>

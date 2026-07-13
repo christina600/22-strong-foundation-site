@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import type { AudienceGroupContent } from "../../utils/home-story";
 import { getImageByPath } from "../../assets/images";
+import TestimonialVideo from "./TestimonialVideo.astro";
 
 interface Props {
   chapter?: string;
@@ -128,13 +129,18 @@ const preparedGroups = groups.map((group) => ({
           </figure>
         )}
         {group.videos && group.videos.length > 0 && (
-          <figure class="audience-voice">
-            <video class="audience-voice__video" controls preload="none" poster={group.videos[0].poster}>
-              <source src={group.videos[0].src} type="video/mp4" />
-            </video>
-            {group.videos[0].quote && <blockquote class="audience-voice__quote">{group.videos[0].quote}</blockquote>}
-            {group.videos[0].attribution && <figcaption class="audience-voice__cite">{group.videos[0].attribution}</figcaption>}
-          </figure>
+          <TestimonialVideo
+            class="audience-testimonial"
+            src={group.videos[0].src}
+            poster={group.videos[0].poster}
+            playLabel={group.videos[0].triggerLabel}
+            attribution={group.videos[0].attribution ?? ""}
+            quote={group.videos[0].quote}
+            story={group.videos[0].story}
+            tone="light"
+            layout="featured"
+            motionBackdrop
+          />
         )}
       </article>
     ))}
@@ -146,15 +152,6 @@ const preparedGroups = groups.map((group) => ({
     margin: 18px 0 0;
     display: grid;
     gap: 12px;
-  }
-
-  .audience-voice__video {
-    width: 100%;
-    max-width: 300px;
-    aspect-ratio: 9 / 16;
-    border-radius: 12px;
-    background: #000;
-    object-fit: cover;
   }
 
   /* Matches the veterans card video footprint (Fix B) */

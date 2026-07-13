@@ -7,7 +7,9 @@
  *
  * Homepage scripts: donation.ts (giving widget), forms.ts (contact form),
  * site-navigation.ts (anchor handling), home-reveal.ts (scrollytelling),
- * lazy-video.ts, and testimonial-reel.ts.
+ * testimonial-video.ts, plus the legacy lazy/reel helpers used by older content.
+ * Scroll-linked parallax and split-word animation are intentionally excluded so
+ * emotionally heavy content stays calm.
  * The `js` class is added inline before paint so the reveal start state
  * only applies when JS can finish the animation.
  *
@@ -121,6 +123,7 @@ const metaDesc = description || site.descriptor;
     import "../scripts/site-navigation.ts";
     import "../scripts/home-reveal.ts";
     import "../scripts/lazy-video.ts";
+    import "../scripts/testimonial-video.ts";
     import "../scripts/testimonial-reel.ts";
     import "../scripts/micro-interactions.ts";
     import "../scripts/scroll-story.ts";

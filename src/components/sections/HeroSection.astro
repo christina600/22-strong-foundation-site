@@ -1,4 +1,6 @@
 ---
+import { heroBattleRopes } from "../../assets/images";
+
 interface Props {
   proofline?: string[];
 }
@@ -8,7 +10,7 @@ const { proofline = [] } = Astro.props;
 
 <section class="hero" id="top">
   <div class="hero-media" aria-hidden="true">
-    <video autoplay muted loop playsinline preload="auto">
+    <video autoplay muted loop playsinline preload="metadata" poster={heroBattleRopes.src}>
       <source src="/video/hero-loop.mp4" type="video/mp4" />
     </video>
   </div>

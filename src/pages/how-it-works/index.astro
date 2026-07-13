@@ -2,6 +2,7 @@
 import HomeBase from "../../layouts/HomeBase.astro";
 import SiteFooter from "../../components/sections/SiteFooter.astro";
 import SiteHeader from "../../components/sections/SiteHeader.astro";
+import TestimonialVideo from "../../components/sections/TestimonialVideo.astro";
 import home from "../../content/home.json";
 
 const description = "How 22STRONG closes the recovery gap — from referral to continued care.";
@@ -142,22 +143,16 @@ const description = "How 22STRONG closes the recovery gap — from referral to c
                 sessions too, until coverage resumes or the plan is complete.
                 <span class="how-stat-note">So far that's 200+ funded sessions for 45 people.</span>
               </p>
-              <figure class="how-step__media how-step__media--video">
-                <video
-                  controls
-                  preload="none"
-                  playsinline
-                  poster="/images/billy-poster.webp"
-                  aria-label="Billy, a veteran, shares how his care continued while VA referrals lagged"
-                >
-                  <source src="/video/billy-testimonial.mp4" type="video/mp4" />
-                </video>
-                <figcaption>
-                  “Sometimes the VA kind of lags on services… I've been treated without referrals
-                  until the VA sends a referral… my health has improved significantly.”
-                  <span class="how-step__media-cite">Billy · Veteran</span>
-                </figcaption>
-              </figure>
+              <TestimonialVideo
+                class="how-testimonial how-testimonial--billy"
+                src="/video/billy-testimonial.mp4"
+                poster="/images/billy-poster.webp"
+                playLabel="Play Billy's veteran story"
+                attribution="Billy · Veteran"
+                quote="Sometimes the VA kind of lags on services… I've been treated without referrals until the VA sends a referral… my health has improved significantly."
+                tone="light"
+                layout="inline"
+              />
             </div>
           </li>
         </ol>
@@ -174,21 +169,6 @@ const description = "How 22STRONG closes the recovery gap — from referral to c
               <li>Follow-through after the first visit</li>
             </ul>
             <p class="how-fund-cost">One session costs $190.</p>
-            <figure class="how-boundary__media how-boundary__media--video">
-              <video
-                controls
-                preload="none"
-                playsinline
-                poster="/images/veteran-experience-poster.webp"
-                aria-label="A veteran shares his experience with hands-on recovery care at Next Level Wellness"
-              >
-                <source src="/video/veteran-experience-testimonial.mp4" type="video/mp4" />
-              </video>
-              <figcaption>
-                “The physical therapy mixed with the chiropractic sessions really is a game changer.”
-                <span class="how-step__media-cite">Veteran · Next Level Wellness</span>
-              </figcaption>
-            </figure>
           </section>
 
           <section class="how-boundary how-boundary--limits" aria-labelledby="what-we-dont">
@@ -202,6 +182,21 @@ const description = "How 22STRONG closes the recovery gap — from referral to c
             </ul>
           </section>
         </div>
+
+        <section class="how-care-voice" aria-labelledby="care-in-their-words">
+          <p class="how-context__label">Care in their words</p>
+          <h2 id="care-in-their-words">What continued care feels like.</h2>
+          <TestimonialVideo
+            class="how-testimonial how-testimonial--care"
+            src="/video/veteran-experience-testimonial.mp4"
+            poster="/images/veteran-experience-poster.webp"
+            playLabel="Play a veteran's recovery care experience"
+            attribution="Veteran · Next Level Wellness"
+            quote="The physical therapy mixed with the chiropractic sessions really is a game changer."
+            tone="light"
+            layout="inline"
+          />
+        </section>
 
         <section class="how-referral" aria-labelledby="refer-someone">
           <p class="how-context__label">Refer someone</p>

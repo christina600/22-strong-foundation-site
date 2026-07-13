@@ -28,3 +28,5 @@
 @import "./about-page.css";
 /* Final reveal/reduced-motion guardrails */
 @import "./home-motion-safety.css";
+/* Shared portrait-video stage and testimonial controls */
+@import "./home-testimonial-video.css";
