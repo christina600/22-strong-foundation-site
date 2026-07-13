@@ -16,7 +16,6 @@ main {
 
 .narrative-scene[data-chapter]::after,
 .story-path[data-chapter]::after,
-.story-press[data-chapter]::after,
 .story-commitment[data-chapter]::after,
 .story-ask[data-chapter]::after {
   content: attr(data-chapter);
@@ -45,14 +44,12 @@ main {
 }
 
 .story-path[data-chapter]::after,
-.story-press[data-chapter]::after,
 .story-commitment[data-chapter]::after,
 .story-ask[data-chapter]::after {
   -webkit-text-stroke-color: rgba(185, 85, 36, .16);
 }
 
 .story-commitment[data-chapter]::after,
-.story-press[data-chapter]::after,
 .story-ask[data-chapter]::after {
   top: clamp(22px, 4vw, 48px);
 }
@@ -669,7 +666,6 @@ main {
   text-wrap: balance;
 }
 
-.story-press,
 .story-leadership,
 .story-commitment,
 .story-ask,
@@ -677,7 +673,6 @@ main {
   position: relative;
 }
 
-.story-press::before,
 .story-leadership::before,
 .story-commitment::before,
 .story-ask::before,
@@ -717,7 +712,6 @@ main {
 
   .narrative-scene[data-chapter]::after,
   .story-path[data-chapter]::after,
-  .story-press[data-chapter]::after,
   .story-commitment[data-chapter]::after,
   .story-ask[data-chapter]::after {
     top: 18px;
@@ -804,7 +798,6 @@ main {
 
   .narrative-scene[data-chapter]::after,
   .story-path[data-chapter]::after,
-  .story-press[data-chapter]::after,
   .story-commitment[data-chapter]::after,
   .story-ask[data-chapter]::after {
     display: block;
@@ -1183,10 +1176,6 @@ footer p,
 .contact-paths span,
 .vv-creds {
   color: rgba(32, 35, 31, .78);
-}
-
-.give-taxline {
-  color: rgba(255, 250, 240, .88);
 }
 
 .circle-panel p {

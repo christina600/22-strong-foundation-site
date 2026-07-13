@@ -1,12 +1,6 @@
 {
   "hero": {
-    "kicker": "Recovery care funding for veterans and young people.",
-    "headline": [
-      "Because recovery should not stop",
-      "when coverage does."
-    ],
-    "ctaLabel": "Support the next visit",
-    "taxline": "Your gift is tax-deductible · 501(c)(3)"
+    "ctaLabel": "Support the next visit"
   },
   "heroLead": "22STRONG helps pay for sports-medicine recovery care for veterans and young people when insurance no longer covers the next visit.",
   "credibility": [
@@ -35,10 +29,7 @@
         }
       ]
     },
-    "needParagraphs": [
-      "Timing matters. Hands-on rehabilitative care is timing- and continuity-sensitive, and when visits are delayed, recovery can become harder to regain.",
-      "Recovery care works best when it stays on schedule. When cost gets in the way, we help keep the next visit within reach."
-    ]
+    "needParagraphs": []
   },
   "story": {
     "eyebrow": "Story",
@@ -46,20 +37,6 @@
     "paragraphs": [
       "22STRONG started inside Next Level Fitness & Wellness Center, a sports-medicine clinic in Newport Beach co-owned by Travis Mayfield, a Purple Heart veteran of the 101st Airborne, and Dr. Vasili “Dr. Vas” Gatsinaris.",
       "In the treatment room they kept seeing the same problem: the care was working, and the next visit wasn't guaranteed. They built 22STRONG so a recovery wouldn't depend on whether someone could afford one more appointment."
-    ]
-  },
-  "press": {
-    "heading": "Press feature",
-    "publications": [
-      {
-        "name": "U.S. Veterans Magazine",
-        "logo": "/images/logo-usvm.jpg",
-        "logoAlt": "U.S. Veterans Magazine",
-        "url": "https://digital.usveteransmagazine.com/US-Veterans-Magazine-Winter-2022/0/",
-        "ariaLabel": "Read the U.S. Veterans Magazine feature",
-        "featureLine": "U.S. Veterans Magazine featured the veteran-led recovery story behind 22STRONG.",
-        "sourceLabel": "U.S. Veterans Magazine · Winter 2022"
-      }
     ]
   },
   "stats": {
@@ -259,12 +236,6 @@
       "paragraphs": []
     }
   ],
-  "governance": {
-    "eyebrow": "Institutional layer",
-    "heading": "The next layer belongs in public.",
-    "lead": "22STRONG began with two founders and a working treatment room. Testimonials prove the care matters; governance has to prove the organization can outlast its founders. As board and advisory roles are formalized, that roster belongs here.",
-    "commitments": []
-  },
   "donate": {
     "heading": "Fund the next recovery appointment.",
     "lead": "A one-time gift pays for hands-on care when the next visit is at risk.",
@@ -292,14 +263,6 @@
       "alt": "Dr. Vas coaching a veteran through TRX suspension training",
       "caption": "Recovery funding protects the long road from treatment to strength."
     }
-  },
-  "givingInvite": {
-    "ariaLabel": "Join the Strong Circle",
-    "heading": "Strong Circle",
-    "body": "Become a monthly member.",
-    "joinLabel": "Join the Circle",
-    "giveOnceLabel": "Give once",
-    "dismissLabel": "Not now"
   },
   "contact": {
     "heading": "Get in touch.",

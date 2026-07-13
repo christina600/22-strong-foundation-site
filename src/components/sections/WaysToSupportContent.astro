@@ -1,13 +1,11 @@
 ---
 import { existsSync } from "node:fs";
 import site from "../../content/site.json";
-import home from "../../content/home.json";
-import ImpactSection from "./ImpactSection.astro";
 import StrongCircleMark from "./StrongCircleMark.astro";
 import { isConfigured } from "../../utils/config";
 
 const description =
-  "You can give monthly, give once, refer someone, or bring your business in. All of it ends in the same place: someone's next visit happens.";
+  "Give monthly or give once. Either way, the next visit happens.";
 
 const trustLine =
   "22STRONG Foundation is a 501(c)(3) nonprofit. EIN 99-1232582. Gifts are tax-deductible.";
@@ -55,47 +53,6 @@ const giveCards = [
     cta: "Fund a care plan",
     href: donateHref(850),
     image: supportImage("give-careplan.jpg"),
-  },
-];
-
-const additionalWays = [
-  {
-    title: "Workplace matching.",
-    body: "Many employers match gifts to 501(c)(3) nonprofits. One form can double what your gift funds.",
-    cta: "Ask about matching",
-  },
-  {
-    title: "Donor-advised funds.",
-    body: "Recommend a grant to 22STRONG Foundation, EIN 99-1232582.",
-    cta: "Use your DAF",
-  },
-  {
-    title: "Stock or crypto.",
-    body: "For appreciated assets, start with the team so the transfer is handled and recorded correctly.",
-    cta: "Start the transfer",
-  },
-  {
-    title: "Planned giving.",
-    body: "Include 22STRONG in a will, trust, or beneficiary plan.",
-    cta: "Plan a legacy gift",
-  },
-];
-
-const helpWays = [
-  {
-    title: "Refer someone.",
-    body: "Know a veteran or a young person whose recovery care is at risk? Start that conversation.",
-    cta: "Start a referral",
-  },
-  {
-    title: "Sponsor recovery care.",
-    body: "Businesses, teams, and service groups can underwrite sessions or full care plans.",
-    cta: "Sponsor care",
-  },
-  {
-    title: "Partner with 22STRONG.",
-    body: "Providers, veteran networks, schools, and community groups can connect people to the care pathway.",
-    cta: "Partner with us",
   },
 ];
 
@@ -172,39 +129,6 @@ const faq = [
     </div>
   </section>
 
-  <aside class="circle-member" aria-labelledby="circle-member-title">
-    <img
-      class="circle-member__photo"
-      src="/images/ramon-rodriguez.jpg"
-      alt="CSM (R) Ramon Rodriguez in U.S. Army dress uniform."
-      width="900"
-      height="1037"
-      loading="lazy"
-      decoding="async"
-    />
-    <div class="circle-member__copy">
-      <p class="support-kicker">Strong Circle member highlight</p>
-      <h2 id="circle-member-title">CSM (R) Ramon Rodriguez, U.S. Army Special Forces (Ret.)</h2>
-      <p>
-        A Green Beret whose Vietnam service is the subject of a Congressional Medal of Honor
-        bill, H.R. 1596. Members like Ramon give monthly so the next veteran's visit is
-        already funded.
-      </p>
-      <a class="pill secondary support-action" href="#strong-circle">Join him in the Circle</a>
-
-      <div class="photo-request photo-request--circle" role="note">
-        <p>
-          <strong>Member update excerpt coming</strong>
-          Requested from 22STRONG: a few lines from one of Travis's monthly Circle updates,
-          plus a running count of member-funded sessions — so future members can see what
-          membership actually looks like before they join.
-        </p>
-      </div>
-    </div>
-  </aside>
-
-  <ImpactSection id="support-impact" heading="" impact={home.mission.impact} />
-
   <section class="support-compare" aria-labelledby="compare-title">
     <div class="support-section-head">
       <p class="support-kicker">Give now</p>
@@ -227,42 +151,7 @@ const faq = [
         </article>
       ))}
     </div>
-    <p class="support-any">Any amount helps. Prefer monthly? That's the Strong Circle, above.</p>
-  </section>
-
-  <section class="support-menu" aria-labelledby="additional-title">
-    <div class="support-section-head">
-      <p class="support-kicker">Additional ways to give</p>
-      <h2 id="additional-title">Bigger gifts have better routes.</h2>
-    </div>
-    <div class="support-menu__list">
-      {additionalWays.map((way) => (
-        <article class="support-menu__item">
-          <div>
-            <h3>{way.title}</h3>
-            <p>{way.body}</p>
-          </div>
-          <a class="pill secondary support-action" href="/#contact">{way.cta}</a>
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <section class="support-menu support-menu--help" aria-labelledby="help-title">
-    <div class="support-section-head">
-      <h2 id="help-title">Other ways to support</h2>
-    </div>
-    <div class="support-menu__list">
-      {helpWays.map((way) => (
-        <article class="support-menu__item">
-          <div>
-            <h3>{way.title}</h3>
-            <p>{way.body}</p>
-          </div>
-          <a class="pill secondary support-action" href="/#contact">{way.cta}</a>
-        </article>
-      ))}
-    </div>
+    <p class="support-any">Prefer monthly? That's the Strong Circle, above.</p>
   </section>
 
   <section class="support-faq" aria-labelledby="faq-title">

@@ -36,25 +36,6 @@
     0 22px 48px rgba(134, 58, 26, .32);
 }
 
-/* The invite belongs to the Strong Circle campaign, so its Join button is
-   teal like the homepage panel's — not the global orange action color. */
-.giving-invite .pill.primary {
-  background: linear-gradient(180deg, var(--teal), var(--teal-deep));
-  border-color: transparent;
-  color: #fffaf0;
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, .18) inset,
-    0 14px 30px rgba(9, 63, 67, .30);
-}
-
-.giving-invite .pill.primary:hover {
-  background: var(--teal-deep);
-  transform: translateY(-2px);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, .24) inset,
-    0 18px 38px rgba(9, 63, 67, .36);
-}
-
 .pill.secondary {
   background: rgba(255, 253, 247, .86);
   border: 1px solid rgba(32, 35, 31, .18);
@@ -75,7 +56,6 @@
 }
 
 .circle-panel .pill.secondary,
-.giving-invite .pill.secondary,
 .hero-cta-secondary {
   background: rgba(255, 250, 240, .10);
   border: 1px solid rgba(255, 250, 240, .28);
@@ -86,48 +66,12 @@
 }
 
 .circle-panel .pill.secondary:hover,
-.giving-invite .pill.secondary:hover,
 .hero-cta-secondary:hover {
   background: rgba(255, 250, 240, .16);
   border-color: rgba(255, 250, 240, .42);
 }
 
-/* Keep the circular shape defined in home-sections.css — this file loads
-   later, so it must not reintroduce a rectangular card here. */
-.giving-invite-card {
-  padding: 0;
-  border-radius: 50%;
-}
-
-.giving-invite-heading {
-  font-size: clamp(2rem, 1.8rem + .6vw, 2.3rem);
-  line-height: .98;
-}
-
-.giving-invite-body {
-  margin-bottom: 4px;
-  font-size: 1.15rem;
-  line-height: 1.4;
-}
-
-.giving-invite-actions {
-  gap: 8px;
-}
-
-.giving-invite .pill.primary,
-.giving-invite .pill.secondary {
-  min-height: 44px;
-  padding-inline: 16px;
-  font-size: clamp(.78rem, .74rem + .12vw, .86rem);
-}
-
-.giving-invite-not-now {
-  margin-top: 10px;
-  font-size: 1rem;
-}
-
 /* Bigger titles and roomier editorial pacing. */
-.post-hero-section,
 .hero-lead,
 .stat-bridge,
 .story-serve-intro,

@@ -11,7 +11,6 @@ import AudienceSection from "../components/sections/AudienceSection.astro";
 import BlankSection from "../components/sections/BlankSection.astro";
 import ContactSection from "../components/sections/ContactSection.astro";
 import DonationAskSection from "../components/sections/DonationAskSection.astro";
-import GivingInvite from "../components/sections/GivingInvite.astro";
 import HeroSection from "../components/sections/HeroSection.astro";
 import ImpactSection from "../components/sections/ImpactSection.astro";
 import NarrativeScene from "../components/sections/NarrativeScene.astro";
@@ -32,14 +31,6 @@ const [costStat, visitCapStat, opioidStat] = home.stats.others;
 
     <main id="main">
       <HeroSection proofline={home.credibility} />
-      <BlankSection class="post-hero-section" id="post-hero-blank" padding="default" ariaHidden={false}>
-        <div class="post-hero-message">
-          {home.hero.kicker && <p class="hero-kicker">{home.hero.kicker}</p>}
-          <h1 class="hero-headline">
-            {home.hero.headline.map((line) => <span class="hero-headline-line">{line}</span>)}
-          </h1>
-        </div>
-      </BlankSection>
       <BlankSection padding="none" id="hero-lead" ariaHidden={false}>
         <div class="hero-lead">
           <p class="hero-lead-statement" data-reveal="headline">{home.heroLead}</p>
@@ -89,6 +80,5 @@ const [costStat, visitCapStat, opioidStat] = home.stats.others;
     </main>
 
     <SiteFooter footer={home.footer} />
-    <GivingInvite />
   </div>
 </HomeBase>

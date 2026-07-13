@@ -25,7 +25,6 @@ import storyYouthHuddle from "./images/story-youth-huddle.webp";
 import youthBasketballPlayer from "./images/youth-basketball-player.webp";
 import tomBoscamp from "./images/tom-boscamp.jpg";
 import travisMayfield from "./images/travis-mayfield.jpg";
-import logoUsvm from "./images/logo-usvm.jpg";
 
 import type { ImageMetadata } from "astro";
 
@@ -47,7 +46,6 @@ export const imageMap: Record<string, ImageMetadata> = {
   "/images/youth-basketball-player.webp": youthBasketballPlayer,
   "/images/tom-boscamp.jpg": tomBoscamp,
   "/images/travis-mayfield.jpg": travisMayfield,
-  "/images/logo-usvm.jpg": logoUsvm,
 };
 
 /** Former hero photo — kept solely as the og:image social-share thumbnail. */
