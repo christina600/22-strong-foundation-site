@@ -24,10 +24,6 @@ interface DonateContent {
   outcomes: string;
   storyImage?: DonateStoryImage;
   featuredTestimonial?: DonateFeaturedTestimonial;
-  covers: {
-    eyebrow: string;
-    items: Array<{ heading: string; body: string }>;
-  };
 }
 
 interface Props {
@@ -78,18 +74,10 @@ const featuredAsset = featured ? getImageByPath(featured.photo) : undefined;
         </figure>
       )}
       <DonationModule />
+      <p class="donate-circle-note">
+        Prefer monthly? That's the <a href="/ways-to-support/#strong-circle">Strong Circle</a>.
+      </p>
     </div>
-  </div>
-
-  <div class="donate-covers" data-reveal>
-    <ul class="donate-covers-grid">
-      {donate.covers.items.map((item) => (
-        <li>
-          <strong>{item.heading}</strong>
-          <span>{item.body}</span>
-        </li>
-      ))}
-    </ul>
   </div>
 </section>
 

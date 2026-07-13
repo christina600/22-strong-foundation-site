@@ -7,7 +7,7 @@ export default defineConfig({
   site: 'https://22strongfoundation.com',
   integrations: [sitemap()],
   redirects: {
-    '/strong-circle/': '/ways-to-support/',
+    '/strong-circle/': '/ways-to-support/#strong-circle',
   },
   // Allow external preview tunnels (e.g. cloudflared/localtunnel) to reach the dev server.
   vite: {

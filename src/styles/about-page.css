@@ -575,7 +575,7 @@
   max-width: 58ch;
   margin: 10px 0 0;
   color: rgba(255, 250, 240, .72);
-  font-size: 1rem;
+  font-size: 1.125rem;
   line-height: 1.5;
 }
 
@@ -596,7 +596,7 @@
   display: block;
   margin-top: 14px;
   color: rgba(255, 250, 240, .68);
-  font-size: var(--fs-ui-small);
+  font-size: 1rem;
   font-style: normal;
   font-weight: 800;
   line-height: 1.35;
@@ -618,22 +618,30 @@
   min-height: 86px;
   padding: 15px 16px;
   place-items: center;
-  border: 1px solid rgba(255, 250, 240, .26);
+  border: 1.5px solid rgba(255, 250, 240, .42);
   border-radius: var(--radius);
-  background: rgba(255, 250, 240, .08);
+  background: rgba(255, 250, 240, .10);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .18);
   color: #fffaf0;
   text-align: center;
   text-decoration: none;
   transition:
     border-color .2s ease,
     background .2s ease,
+    box-shadow .2s ease,
     transform .2s ease;
 }
 
 .support-tier:hover {
-  border-color: rgba(255, 250, 240, .48);
-  background: rgba(255, 250, 240, .14);
+  border-color: rgba(255, 250, 240, .68);
+  background: rgba(255, 250, 240, .16);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, .26);
   transform: translateY(-2px);
+}
+
+.support-tier:focus-visible {
+  outline: 3px solid rgba(255, 250, 240, .85);
+  outline-offset: 2px;
 }
 
 .support-tier span {
@@ -653,7 +661,7 @@
 .support-tier em {
   margin-top: 7px;
   color: rgba(255, 250, 240, .80);
-  font-size: .95rem;
+  font-size: 1.125rem;
   font-style: normal;
   font-weight: 800;
 }
@@ -668,14 +676,14 @@
   grid-column: 1 / -1;
   margin: 0;
   color: rgba(255, 250, 240, .76);
-  font-size: 1rem;
+  font-size: 1.125rem;
   line-height: 1.5;
   text-align: center;
 }
 
 .support-trust {
   color: rgba(32, 35, 31, .62);
-  font-size: var(--fs-ui-small);
+  font-size: 1.125rem;
   line-height: 1.5;
 }
 
@@ -1159,6 +1167,7 @@ img.circle-member__photo {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(22px, 3vw, 32px);
+  align-items: start;
   margin-top: clamp(42px, 6vw, 70px);
 }
 
@@ -1209,6 +1218,37 @@ img.circle-member__photo {
   aspect-ratio: 3 / 2;
   object-fit: cover;
   object-position: 50% 62%;
+}
+
+/* Vertical testimonial video in the step flow: caption sits below the
+   video (not overlaid) so playback controls stay usable. */
+.how-step__media--video {
+  max-width: 320px;
+}
+
+.how-step__media--video video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  background: #111610;
+}
+
+.how-step__media--video::after {
+  content: none;
+}
+
+.how-step__media--video figcaption {
+  position: static;
+  padding: 14px 16px 16px;
+  color: #fffaf0;
+  text-shadow: none;
+}
+
+.how-step__media-cite {
+  display: block;
+  margin-top: 8px;
+  opacity: .72;
 }
 
 /* Tom Boscamp — the referral pathway in person. */
@@ -1274,6 +1314,39 @@ img.circle-member__photo {
 .how-fund-cost {
   margin: 14px 0 0;
   font-weight: 700;
+}
+
+.how-boundary__media {
+  margin: clamp(22px, 3vw, 30px) 0 0;
+  overflow: hidden;
+  border: 1px solid rgba(32, 35, 31, .14);
+  border-radius: var(--radius);
+  background: #111610;
+  box-shadow: 0 18px 44px rgba(32, 35, 31, .14);
+}
+
+.how-boundary__media video {
+  display: block;
+  width: 100%;
+  background: #111610;
+}
+
+.how-boundary__media--video {
+  max-width: 280px;
+}
+
+.how-boundary__media--video video {
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+}
+
+.how-boundary__media figcaption {
+  padding: 13px 15px 15px;
+  color: #fffaf0;
+  font-family: var(--ui-face, ui-sans-serif, system-ui, sans-serif);
+  font-size: var(--fs-ui);
+  font-weight: 850;
+  line-height: 1.28;
 }
 
 .transparency-page {
@@ -1515,7 +1588,7 @@ img.circle-member__photo {
   }
 
   .support-tier em {
-    font-size: .82rem;
+    font-size: 1rem;
   }
 
   .support-card-grid {

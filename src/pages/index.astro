@@ -15,7 +15,6 @@ import GivingInvite from "../components/sections/GivingInvite.astro";
 import HeroSection from "../components/sections/HeroSection.astro";
 import ImpactSection from "../components/sections/ImpactSection.astro";
 import NarrativeScene from "../components/sections/NarrativeScene.astro";
-import ServicePathSection from "../components/sections/ServicePathSection.astro";
 import SectionCta from "../components/sections/SectionCta.astro";
 import SiteHeader from "../components/sections/SiteHeader.astro";
 import SiteFooter from "../components/sections/SiteFooter.astro";
@@ -81,13 +80,11 @@ const [costStat, visitCapStat, opioidStat] = home.stats.others;
         impact={home.mission.impact}
       />
 
-      <ServicePathSection chapter="03" content={home.howItWorks} />
-
       <VeteranStorySection />
 
       <SectionCta text="Keep the next visit within reach." label="Support the next visit" href="#donate" />
 
-      <DonationAskSection chapter="04" donate={home.donate} />
+      <DonationAskSection chapter="03" donate={home.donate} />
       <ContactSection contact={home.contact} />
     </main>
 

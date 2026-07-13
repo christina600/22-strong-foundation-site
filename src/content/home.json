@@ -1,7 +1,10 @@
 {
   "hero": {
     "kicker": "Recovery care funding for veterans and young people.",
-    "headline": ["Because recovery should not stop", "when coverage does."],
+    "headline": [
+      "Because recovery should not stop",
+      "when coverage does."
+    ],
     "ctaLabel": "Support the next visit",
     "taxline": "Your gift is tax-deductible · 501(c)(3)"
   },
@@ -18,9 +21,18 @@
     "impact": {
       "label": "",
       "figures": [
-        { "number": "200+", "label": "recovery sessions funded" },
-        { "number": "45", "label": "people supported" },
-        { "number": "$850", "label": "average care plan" }
+        {
+          "number": "200+",
+          "label": "recovery sessions funded"
+        },
+        {
+          "number": "45",
+          "label": "people supported"
+        },
+        {
+          "number": "$850",
+          "label": "average care plan"
+        }
       ]
     },
     "needParagraphs": [
@@ -142,20 +154,6 @@
           "triggerLabel": "Play Luke Hudson testimonial video",
           "fallbackLabel": "Watch Luke's testimonial",
           "testimonialKey": "luke"
-        },
-        {
-          "src": "/video/king-martin-testimonial.mp4",
-          "poster": "/images/king-martin-poster.webp",
-          "triggerLabel": "Play King Martin testimonial video",
-          "fallbackLabel": "Watch King Martin's testimonial",
-          "testimonialKey": "kingMartin"
-        },
-        {
-          "src": "/video/veteran-care-testimonial.mp4",
-          "poster": "/images/veteran-care-poster.webp",
-          "triggerLabel": "Play Veteran Care testimonial video",
-          "fallbackLabel": "Watch Veteran Care testimonial",
-          "testimonialKey": "veteranCare"
         }
       ],
       "voicesKey": "veteranVoices"
@@ -220,70 +218,6 @@
       "initials": "TB"
     }
   ],
-  "strongCircle": {
-    "heading": "The 22STRONG Circle.",
-    "lead": "A monthly membership that lets 22STRONG say yes to the next veteran or young person without waiting on the next fundraiser. Every nine members at $22 fund a recovery session, every month.",
-    "tiersLabel": "",
-    "tiers": [
-      { "amount": "$22", "note": "the number we're named for" },
-      { "amount": "$50", "note": "three funded sessions a year" },
-      { "amount": "$100", "note": "one session every other month" },
-      { "amount": "$190", "note": "a funded session every month" }
-    ],
-    "joinLabel": "Join the 22STRONG Circle",
-    "footnote": "Monthly · cancel anytime · every dollar funds recovery care.",
-    "memberHighlight": {
-      "text": "A Green Beret whose Vietnam service is the subject of a Congressional Medal of Honor bill. Members like Ramon give monthly so the next veteran's visit is already funded.",
-      "name": "CSM (R) Ramon Rodriguez",
-      "title": "U.S. Army Special Forces (Ret.)",
-      "photo": "/images/ramon-rodriguez.jpg",
-      "photoAlt": "CSM (R) Ramon Rodriguez in U.S. Army dress uniform."
-    },
-    "points": [
-      { "label": "Care that continues", "text": "Funding that keeps going after the first visit." },
-      { "label": "Money we can plan on", "text": "Monthly gifts let us commit to a full care plan up front." }
-    ]
-  },
-  "howItWorks": {
-    "eyebrow": "",
-    "heading": ["A recovery gap appears.", "22STRONG closes it."],
-    "kicker": "Someone has a care plan and the next appointment is in doubt. Here is what happens next.",
-    "stepsAriaLabel": "22STRONG care funding path",
-    "steps": [
-      {
-        "number": "1",
-        "heading": "Referral or request",
-        "body": "Referrals come from the VA, veteran networks, coaches, school counselors, and local community organizations.",
-        "visual": {
-          "src": "/images/story-veteran-leg-therapy.webp",
-          "alt": "Dr. Chris treating a veteran's leg during a recovery session",
-          "label": "A real injury becomes a request for help.",
-          "imagePosition": "50% 18%"
-        }
-      },
-      {
-        "number": "2",
-        "heading": "We confirm the gap",
-        "body": "22STRONG reviews the situation. If coverage has run out or private care is out of reach, we step in."
-      },
-      {
-        "number": "3",
-        "heading": "Care funded",
-        "body": "22STRONG pays the clinic directly. The patient never sees a bill.",
-        "note": "Care is currently provided through {provider} in Newport Beach, the sports-medicine clinic co-owned by 22STRONG's founders. Funded sessions can include Fascial Integrative Treatment (FIT) and hands-on care for rotator cuff, knee, neck, lower back, hip, ankle/foot, and wrist/elbow injuries.",
-        "provider": { "label": "Next Level Fitness & Wellness Center", "href": "https://www.nextlevelwellnesscenter.com" },
-        "disclosure": {
-          "text": "We publish how that provider relationship is managed.",
-          "linkLabel": "Read the transparency page",
-          "href": "/transparency/"
-        }
-      }
-    ],
-    "learnMore": {
-      "label": "See How It Works",
-      "href": "/how-it-works"
-    }
-  },
   "leadership": [
     {
       "name": "Travis Mayfield",
@@ -292,7 +226,11 @@
       "portraitAlt": "Travis Mayfield",
       "portraitPosition": "50% 18%",
       "initials": "TM",
-      "credentials": ["Purple Heart recipient", "U.S. Army 101st Airborne", "Community care advocate"],
+      "credentials": [
+        "Purple Heart recipient",
+        "U.S. Army 101st Airborne",
+        "Community care advocate"
+      ],
       "paragraphs": [
         "A Purple Heart recipient who served as a Sergeant with the U.S. Army’s 101st Airborne Division in Vietnam, Travis is Co-Owner and President of Next Level Fitness & Wellness Center. His own long road back from war is the inspiration behind 22STRONG’s model. He helped found the foundation and leads its mission to make recovery care accessible to those who served and to others rebuilding their lives.",
         "His service and community work have been recognized by the California State Senate and Assembly, the U.S. House of Representatives, and Orange County."
@@ -304,7 +242,11 @@
       "portrait": "/images/dr-vas.webp",
       "portraitAlt": "Dr. Vasili “Dr. Vas” Gatsinaris",
       "portraitPosition": "50% 18%",
-      "credentials": ["Doctor of Chiropractic (D.C.)", "25+ years in recovery care", "Co-owner, Next Level"],
+      "credentials": [
+        "Doctor of Chiropractic (D.C.)",
+        "25+ years in recovery care",
+        "Co-owner, Next Level"
+      ],
       "paragraphs": [
         "Dr. Vasili Gatsinaris, known to his patients as Dr. Vas, has been treating injuries for 25 years. He opened Next Level Wellness Center in Newport Beach in 2001 and still does the hands-on work himself. His patient list has included professional athletes from every major sports league, but most days the treatment room holds regular people. A veteran rebuilding a shoulder gets the same care an NBA player does.",
         "He developed Fascial Integrative Treatment (FIT), the hands-on method used in many of the sessions 22STRONG funds. He earned his biology degree at UC Irvine and his Doctor of Chiropractic at the Los Angeles College of Chiropractic. He has been licensed in California since 2002."
@@ -321,53 +263,38 @@
     "eyebrow": "Institutional layer",
     "heading": "The next layer belongs in public.",
     "lead": "22STRONG began with two founders and a working treatment room. Testimonials prove the care matters; governance has to prove the organization can outlast its founders. As board and advisory roles are formalized, that roster belongs here.",
-    "mission": {
-      "label": "Our mission",
-      "statement": "22STRONG supports veterans and low-income youth by funding sports medicine recovery care when insurance no longer covers the next visit."
-    },
-    "commitments": [
-      {
-        "heading": "Board and advisory roster",
-        "body": "When board or advisory seats are formalized, 22STRONG will publish names, roles, and terms here so donors can see who shares oversight."
-      },
-      {
-        "heading": "Conflict standard",
-        "body": "The Next Level relationship is named, linked, and governed by a disclosure rule: a conflicted leader should not approve a benefit to themselves or their business.",
-        "linkLabel": "Read the transparency policy",
-        "href": "/transparency/"
-      },
-      {
-        "heading": "Continuity path",
-        "body": "The program is documenting referral review, funded-care records, and provider relationships so the model can keep operating as the organization grows."
-      }
-    ]
+    "commitments": []
   },
   "donate": {
     "heading": "Fund the next recovery appointment.",
     "lead": "A one-time gift pays for hands-on care when the next visit is at risk.",
     "outcomes": "",
     "givingCards": [
-      { "amount": "$50", "body": "moves care within reach" },
-      { "amount": "$190", "body": "funds one recovery session" },
-      { "amount": "$250", "body": "supports follow-up care" },
-      { "amount": "$850", "body": "supports an average care plan" }
+      {
+        "amount": "$50",
+        "body": "moves care within reach"
+      },
+      {
+        "amount": "$190",
+        "body": "funds one recovery session"
+      },
+      {
+        "amount": "$250",
+        "body": "supports follow-up care"
+      },
+      {
+        "amount": "$850",
+        "body": "supports an average care plan"
+      }
     ],
     "storyImage": {
       "src": "/images/story-trx-training.webp",
       "alt": "Dr. Vas coaching a veteran through TRX suspension training",
       "caption": "Recovery funding protects the long road from treatment to strength."
-    },
-    "covers": {
-      "eyebrow": "What your gift covers",
-      "items": [
-        { "heading": "Hands-on recovery sessions", "body": "Chiropractic, physical therapy, and massage therapy." },
-        { "heading": "Follow-through after the first visit", "body": "Funding that continues until the care plan is done." },
-        { "heading": "Provider and partner referrals", "body": "A way in for veterans and families who are already trying to get well." }
-      ]
     }
   },
   "givingInvite": {
-    "ariaLabel": "Join the 22STRONG Circle",
+    "ariaLabel": "Join the Strong Circle",
     "heading": "Strong Circle",
     "body": "Become a monthly member.",
     "joinLabel": "Join the Circle",
@@ -411,18 +338,43 @@
       {
         "title": "Explore",
         "links": [
-          { "label": "How It Works", "href": "/how-it-works/" },
-          { "label": "About", "href": "/about/" },
-          { "label": "Who we serve", "href": "#serve" },
-          { "label": "Ways to Support", "href": "/ways-to-support/" }
+          {
+            "label": "How It Works",
+            "href": "/how-it-works/"
+          },
+          {
+            "label": "About",
+            "href": "/about/"
+          },
+          {
+            "label": "Who we serve",
+            "href": "#serve"
+          },
+          {
+            "label": "Ways to Support",
+            "href": "/ways-to-support/"
+          }
         ]
       },
       {
         "title": "Get involved",
         "links": [
-          { "label": "Donate", "href": "#donate" },
-          { "label": "Get in touch", "href": "#contact" },
-          { "label": "Transparency", "href": "/transparency/" }
+          {
+            "label": "Donate",
+            "href": "#donate"
+          },
+          {
+            "label": "Strong Circle",
+            "href": "/ways-to-support/#strong-circle"
+          },
+          {
+            "label": "Get in touch",
+            "href": "#contact"
+          },
+          {
+            "label": "Transparency",
+            "href": "/transparency/"
+          }
         ]
       }
     ]

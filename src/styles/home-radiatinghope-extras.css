@@ -623,3 +623,39 @@
   letter-spacing: .04em;
   text-transform: uppercase;
 }
+
+/* Pointer from the one-time donate module to the monthly program.
+   Color inherits: the donate section is dark, so the note stays light. */
+.donate-circle-note {
+  margin: 14px 0 0;
+  color: inherit;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.donate-circle-note a {
+  color: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Real photo in the contact section (replaced its photo-request block). */
+.contact-photo {
+  margin: clamp(18px, 2.5vw, 28px) 0 0;
+}
+
+.contact-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius, 8px);
+}
+
+.contact-photo figcaption {
+  margin-top: 8px;
+  color: rgba(32, 35, 31, .72);
+  font-size: 1.125rem;
+  line-height: 1.5;
+}

@@ -59,35 +59,12 @@ function validateAudiences() {
   }
 }
 
-function validateServicePath() {
-  const servicePath = home.howItWorks;
-  if (!servicePath) {
-    addError("Missing howItWorks content.");
-    return;
-  }
-
-  if (!Array.isArray(servicePath.heading) || servicePath.heading.length === 0) {
-    addError("howItWorks.heading must include at least one line.");
-  }
-
-  if (!Array.isArray(servicePath.steps) || servicePath.steps.length === 0) {
-    addError("howItWorks.steps must include at least one step.");
-  }
-
-  for (const [index, step] of (servicePath.steps ?? []).entries()) {
-    if (!step.number || !step.heading || !step.body) {
-      addError(`howItWorks.steps[${index}] must include number, heading, and body.`);
-    }
-  }
-
-}
-
 function validateDonateCovers() {
+  // "What your gift covers" was removed from the donate section per
+  // Christina's July 12, 2026 review pass. If covers are reinstated,
+  // they must be complete.
   const covers = home.donate?.covers;
-  if (!covers) {
-    addError("donate.covers is missing.");
-    return;
-  }
+  if (!covers) return;
 
   if (!Array.isArray(covers.items) || covers.items.length === 0) {
     addError("donate.covers.items must include at least one item.");
@@ -210,7 +187,6 @@ function validatePlaceholders(value, path = "home") {
 }
 
 validateAudiences();
-validateServicePath();
 validateDonateCovers();
 validateContact();
 validateFooter();
