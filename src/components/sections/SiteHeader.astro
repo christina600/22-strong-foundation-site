@@ -15,7 +15,7 @@ const isHowItWorks = current === "how-it-works";
 const homeHref = (hash: string) => isHome ? hash : `/${hash}`;
 ---
 
-<header>
+<header class:list={["site-header", { "site-header--home": isHome, "site-header--interior": !isHome }]}>
   <nav class="nav" aria-label="Main navigation">
     <a class="brand" href={isHome ? "#top" : "/"} aria-label="22STRONG Foundation home">
       <span class="brand-name">22STRONG</span>
@@ -37,11 +37,33 @@ const homeHref = (hash: string) => isHome ? hash : `/${hash}`;
           aria-current={isHowItWorks ? "page" : undefined}
         >
           <span>What We Do</span>
-          <span class="nav-group__chevron" aria-hidden="true"></span>
         </a>
-        <div class="nav-submenu" aria-label="What We Do">
-          <a href="/how-it-works/">How It Works</a>
-          <a href={homeHref("#serve")}>Who We Serve</a>
+        <button
+          class="nav-group__toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="nav-submenu-what-we-do"
+          aria-label="Show What We Do submenu"
+          data-nav-group-toggle
+          data-nav-group-label="What We Do"
+        >
+          <span class="nav-group__chevron" aria-hidden="true"></span>
+        </button>
+        <div class="nav-submenu" id="nav-submenu-what-we-do" aria-label="What We Do" data-nav-submenu>
+          <div class="nav-submenu__inner">
+            <div class="nav-mega__lead">
+              <p class="nav-mega__title">What We Do</p>
+              <p class="nav-mega__intro">How we fund recovery care when insurance stops short.</p>
+              <a class="nav-mega__cta" href="/how-it-works/">See how it works <span aria-hidden="true">&rarr;</span></a>
+            </div>
+            <div class="nav-mega__cols">
+              <div class="nav-mega__col">
+                <p class="nav-mega__col-title">Who we serve</p>
+                <a href={homeHref("#serve-veterans")}>Veterans</a>
+                <a href={homeHref("#serve-athletes")}>Young athletes</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -52,12 +74,34 @@ const homeHref = (hash: string) => isHome ? hash : `/${hash}`;
           aria-current={isAboutPage ? "page" : undefined}
         >
           <span>About Us</span>
-          <span class="nav-group__chevron" aria-hidden="true"></span>
         </a>
-        <div class="nav-submenu" aria-label="About Us">
-          <a href="/about/">Our Story</a>
-          <a href="/about/#leadership">The Team</a>
-          <a href="/transparency/">Transparency</a>
+        <button
+          class="nav-group__toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="nav-submenu-about-us"
+          aria-label="Show About Us submenu"
+          data-nav-group-toggle
+          data-nav-group-label="About Us"
+        >
+          <span class="nav-group__chevron" aria-hidden="true"></span>
+        </button>
+        <div class="nav-submenu" id="nav-submenu-about-us" aria-label="About Us" data-nav-submenu>
+          <div class="nav-submenu__inner">
+            <div class="nav-mega__lead">
+              <p class="nav-mega__title">About Us</p>
+              <p class="nav-mega__intro">Who runs 22STRONG, and where the money goes.</p>
+              <a class="nav-mega__cta" href="/about/">Read our story <span aria-hidden="true">&rarr;</span></a>
+            </div>
+            <div class="nav-mega__cols">
+              <div class="nav-mega__col">
+                <p class="nav-mega__col-title">The foundation</p>
+                <a href="/about/">Our Story</a>
+                <a href="/about/#leadership">The Team</a>
+                <a href="/transparency/">Transparency</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -68,14 +112,39 @@ const homeHref = (hash: string) => isHome ? hash : `/${hash}`;
           aria-current={isWaysToSupportPage ? "page" : undefined}
         >
           <span>How to Help</span>
-          <span class="nav-group__chevron" aria-hidden="true"></span>
         </a>
-        <div class="nav-submenu" aria-label="How to Help">
-          <a href="/ways-to-support/">Ways to Give</a>
-          <a href="/strong-circle/">Strong Circle</a>
-          <a href="/how-it-works/#refer-someone">Refer Someone</a>
-          <a href={homeHref("#contact")}>Partner With Us</a>
-          <a href={homeHref("#contact")}>Contact Us</a>
+        <button
+          class="nav-group__toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="nav-submenu-how-to-help"
+          aria-label="Show How to Help submenu"
+          data-nav-group-toggle
+          data-nav-group-label="How to Help"
+        >
+          <span class="nav-group__chevron" aria-hidden="true"></span>
+        </button>
+        <div class="nav-submenu" id="nav-submenu-how-to-help" aria-label="How to Help" data-nav-submenu>
+          <div class="nav-submenu__inner">
+            <div class="nav-mega__lead">
+              <p class="nav-mega__title">How to Help</p>
+              <p class="nav-mega__intro">Cover a recovery visit, or partner with us to reach more people.</p>
+              <a class="nav-mega__cta" href="/ways-to-support/">See all the ways to give <span aria-hidden="true">&rarr;</span></a>
+            </div>
+            <div class="nav-mega__cols">
+              <div class="nav-mega__col">
+                <p class="nav-mega__col-title">Give</p>
+                <a href="/ways-to-support/">Ways to Give</a>
+                <a href="/strong-circle/">Strong Circle</a>
+              </div>
+              <div class="nav-mega__col">
+                <p class="nav-mega__col-title">Get involved</p>
+                <a href="/how-it-works/#refer-someone">Refer Someone</a>
+                <a href={homeHref("#contact")}>Partner With Us</a>
+                <a href={homeHref("#contact")}>Contact Us</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

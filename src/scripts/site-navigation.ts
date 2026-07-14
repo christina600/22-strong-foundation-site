@@ -96,6 +96,41 @@ function scrollToHash(hash: string, behavior: ScrollBehavior = "smooth") {
   return true;
 }
 
+function setNavGroupOpen(group: HTMLElement, isOpen: boolean) {
+  const toggle = group.querySelector<HTMLButtonElement>("[data-nav-group-toggle]");
+  if (!toggle) return;
+
+  const label = toggle.dataset.navGroupLabel || "navigation";
+
+  group.classList.toggle("is-open", isOpen);
+  toggle.setAttribute("aria-expanded", String(isOpen));
+  toggle.setAttribute("aria-label", `${isOpen ? "Hide" : "Show"} ${label} submenu`);
+}
+
+function closeOpenNavGroups(container: ParentNode = document) {
+  container.querySelectorAll<HTMLElement>(".nav-group.is-open").forEach((group) => {
+    setNavGroupOpen(group, false);
+  });
+}
+
+/**
+ * Keep the header's solid ("open menu") treatment in sync with whatever is
+ * currently open: a hovered nav group, the donation menu, or the mobile sheet.
+ * Recomputing from live state avoids the classes fighting each other when more
+ * than one path (hover vs click) toggles the header.
+ */
+function syncHeaderOpenState() {
+  const header = document.querySelector<HTMLElement>(".site-header");
+  if (!header) return;
+
+  const isOpen =
+    !!document.querySelector(".nav-group:hover") ||
+    !!document.querySelector(".nav-donate-menu:not([hidden])") ||
+    !!document.querySelector(".nav-links.is-open");
+
+  header.classList.toggle("nav-has-open-menu", isOpen);
+}
+
 function queueActiveUpdate() {
   if (activeUpdateQueued) return;
   activeUpdateQueued = true;
@@ -171,6 +206,7 @@ function syncHashNavigation(behavior: ScrollBehavior = "auto") {
 function initMobileNav() {
   const toggle = document.querySelector<HTMLButtonElement>(".nav-toggle");
   const navLinks = document.querySelector<HTMLElement>(".nav-links");
+  const header = document.querySelector<HTMLElement>(".site-header");
   
   if (!toggle || !navLinks) return;
 
@@ -180,7 +216,11 @@ function initMobileNav() {
   const closeMenu = () => {
     toggle.setAttribute("aria-expanded", "false");
     navLinks.classList.remove("is-open");
+    if (!document.querySelector(".nav-donate-menu:not([hidden])")) {
+      header?.classList.remove("nav-has-open-menu");
+    }
     document.body.classList.remove("nav-open");
+    closeOpenNavGroups(navLinks);
     // Restore scroll position
     if (scrollPosition > 0) {
       window.scrollTo(0, scrollPosition);
@@ -193,13 +233,8 @@ function initMobileNav() {
     scrollPosition = window.scrollY;
     toggle.setAttribute("aria-expanded", "true");
     navLinks.classList.add("is-open");
+    header?.classList.add("nav-has-open-menu");
     document.body.classList.add("nav-open");
-    
-    // Focus first link after animation
-    setTimeout(() => {
-      const firstLink = navLinks.querySelector<HTMLAnchorElement>("a");
-      if (firstLink) firstLink.focus();
-    }, 100);
   };
 
   const toggleMenu = () => {
@@ -277,30 +312,110 @@ function initMobileNav() {
   });
 }
 
+function initNavGroupMenus() {
+  const toggles = document.querySelectorAll<HTMLButtonElement>("[data-nav-group-toggle]");
+  if (!toggles.length) return;
+
+  const closeAll = (except?: HTMLElement) => {
+    document.querySelectorAll<HTMLElement>(".nav-group.is-open").forEach((group) => {
+      if (group !== except) setNavGroupOpen(group, false);
+    });
+  };
+
+  const hoverMql = window.matchMedia("(hover: hover) and (min-width: 921px)");
+
+  toggles.forEach((toggle) => {
+    const group = toggle.closest<HTMLElement>(".nav-group");
+    if (!group) return;
+
+    toggle.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      const willOpen = toggle.getAttribute("aria-expanded") !== "true";
+      closeAll(group);
+      setNavGroupOpen(group, willOpen);
+    });
+
+    // On desktop the full-width panel opens on hover (CSS). Mirror the header's
+    // solid treatment so a light panel never sits under the dark hero bar.
+    group.addEventListener("mouseenter", () => {
+      if (hoverMql.matches) syncHeaderOpenState();
+    });
+    group.addEventListener("mouseleave", () => {
+      if (hoverMql.matches) window.setTimeout(syncHeaderOpenState, 60);
+    });
+
+    group.addEventListener("focusout", (event) => {
+      const nextTarget = event.relatedTarget;
+      if (nextTarget instanceof Node && group.contains(nextTarget)) return;
+      if (window.innerWidth > 560) setNavGroupOpen(group, false);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    const target = event.target as Element;
+    if (target.closest(".nav-group")) return;
+    closeAll();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+
+    const openToggle = document.querySelector<HTMLButtonElement>(".nav-group.is-open [data-nav-group-toggle]");
+    closeAll();
+    openToggle?.focus();
+  });
+}
+
 function initDonationMenu() {
   const toggle = document.querySelector<HTMLButtonElement>(".nav-donate-toggle");
   const menu = document.querySelector<HTMLElement>(".nav-donate-menu");
+  const actions = document.querySelector<HTMLElement>(".nav-actions");
 
   if (!toggle || !menu) return;
 
+  const hoverMql = window.matchMedia("(hover: hover) and (min-width: 921px)");
+  let closeTimer = 0;
+
   const closeMenu = (returnFocus = false) => {
+    window.clearTimeout(closeTimer);
     toggle.setAttribute("aria-expanded", "false");
     menu.hidden = true;
+    syncHeaderOpenState();
     if (returnFocus) toggle.focus();
   };
 
   const openMenu = () => {
+    window.clearTimeout(closeTimer);
     toggle.setAttribute("aria-expanded", "true");
     menu.hidden = false;
+    syncHeaderOpenState();
   };
 
   toggle.addEventListener("click", () => {
+    if (hoverMql.matches) {
+      openMenu();
+      return;
+    }
+
     if (toggle.getAttribute("aria-expanded") === "true") {
       closeMenu();
     } else {
       openMenu();
     }
   });
+
+  // Open the two giving options on hover (care.org style); a short close delay
+  // lets the pointer travel from the button down into the menu.
+  if (actions) {
+    actions.addEventListener("mouseenter", () => {
+      if (hoverMql.matches) openMenu();
+    });
+    actions.addEventListener("mouseleave", () => {
+      if (hoverMql.matches) closeTimer = window.setTimeout(() => closeMenu(), 140);
+    });
+  }
 
   menu.addEventListener("click", (event) => {
     if ((event.target as Element).closest("a")) closeMenu();
@@ -362,6 +477,7 @@ function initNavigation() {
 
   // Initialize mobile nav toggle
   initMobileNav();
+  initNavGroupMenus();
   initDonationMenu();
 }
 

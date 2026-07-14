@@ -5,7 +5,7 @@ test.describe("navigation", () => {
   test("mobile menu opens, traps state, and closes with Escape", async ({ page, baseURL }) => {
     await blockExternalRequests(page, baseURL);
     await page.setViewportSize({ width: 390, height: 844 });
-    await page.goto("/");
+    await page.goto("/", { waitUntil: "domcontentloaded" });
 
     const toggle = page.locator(".nav-toggle");
     const navLinks = page.locator("#nav-menu");
@@ -24,12 +24,22 @@ test.describe("navigation", () => {
 
   test("main nav groups related pages and keeps two donation paths", async ({ page, baseURL }) => {
     await blockExternalRequests(page, baseURL);
-    await page.goto("/");
+    await page.goto("/", { waitUntil: "domcontentloaded" });
 
     await expect(page.locator("#nav-menu .nav-group__label")).toHaveText(["What We Do", "About Us", "How to Help"]);
-    await expect(page.locator('.nav-submenu[aria-label="What We Do"] a')).toHaveText(["How It Works", "Who We Serve"]);
-    await expect(page.locator('.nav-submenu[aria-label="About Us"] a')).toHaveText(["Our Story", "The Team", "Transparency"]);
-    await expect(page.locator('.nav-submenu[aria-label="How to Help"] a')).toHaveText([
+    await expect(page.locator('.nav-submenu[aria-label="What We Do"] .nav-mega__cta')).toContainText("See how it works");
+    await expect(page.locator('.nav-submenu[aria-label="What We Do"] .nav-mega__col a')).toHaveText([
+      "Veterans",
+      "Young athletes",
+    ]);
+    await expect(page.locator('.nav-submenu[aria-label="About Us"] .nav-mega__cta')).toContainText("Read our story");
+    await expect(page.locator('.nav-submenu[aria-label="About Us"] .nav-mega__col a')).toHaveText([
+      "Our Story",
+      "The Team",
+      "Transparency",
+    ]);
+    await expect(page.locator('.nav-submenu[aria-label="How to Help"] .nav-mega__cta')).toContainText("See all the ways to give");
+    await expect(page.locator('.nav-submenu[aria-label="How to Help"] .nav-mega__col a')).toHaveText([
       "Ways to Give",
       "Strong Circle",
       "Refer Someone",
@@ -49,7 +59,7 @@ test.describe("navigation", () => {
   test("mobile menu closes after page navigation", async ({ page, baseURL }) => {
     await blockExternalRequests(page, baseURL);
     await page.setViewportSize({ width: 390, height: 844 });
-    await page.goto("/");
+    await page.goto("/", { waitUntil: "domcontentloaded" });
 
     await page.locator(".nav-toggle").click();
     await page.locator('#nav-menu .nav-group__label[href="/about/"]').click();
@@ -61,7 +71,7 @@ test.describe("navigation", () => {
 
   test("The team lives on the About page", async ({ page, baseURL }) => {
     await blockExternalRequests(page, baseURL);
-    await page.goto("/");
+    await page.goto("/", { waitUntil: "domcontentloaded" });
 
     await page.locator('#nav-menu .nav-group__label[href="/about/"]').click();
 
@@ -73,7 +83,7 @@ test.describe("navigation", () => {
 
   test("Ways to Support lives on its own page", async ({ page, baseURL }) => {
     await blockExternalRequests(page, baseURL);
-    await page.goto("/");
+    await page.goto("/", { waitUntil: "domcontentloaded" });
 
     await page.locator('#nav-menu .nav-group__label[href="/ways-to-support/"]').click();
 

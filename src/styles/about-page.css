@@ -1201,7 +1201,7 @@
   align-items: start;
   margin-bottom: clamp(42px, 6vw, 68px);
   padding: clamp(24px, 4vw, 38px);
-  border-left: 5px solid var(--brand-orange, #a85632);
+  border-left: 5px solid var(--teal-deep);
   color: #fffaf0;
   background:
     linear-gradient(125deg, rgba(28, 140, 135, .17), transparent 42%),
@@ -1219,7 +1219,7 @@
   padding: 6px 10px;
   border: 1px solid rgba(255, 250, 240, .25);
   color: #fffaf0;
-  background: var(--brand-orange, #a85632);
+  background: var(--teal-deep);
   font-family: var(--ui-face, ui-sans-serif, system-ui, sans-serif);
   font-size: .72rem;
   font-weight: 850;
@@ -1348,9 +1348,9 @@
 
 .transparency-confirmation {
   padding: 16px 18px;
-  border-left: 4px solid var(--brand-orange, #a85632);
+  border-left: 4px solid var(--teal-deep);
   color: rgba(32, 35, 31, .84);
-  background: rgba(168, 86, 50, .08);
+  background: rgba(14, 90, 92, .08);
   font-weight: 720;
 }
 
@@ -1391,9 +1391,9 @@
   min-width: 0;
   padding: clamp(22px, 3vw, 30px);
   border: 1px solid rgba(32, 35, 31, .14);
-  border-top: 4px solid var(--brand-orange, #a85632);
+  border-top: 4px solid var(--teal-deep);
   background:
-    linear-gradient(150deg, rgba(168, 86, 50, .045), transparent 42%),
+    linear-gradient(150deg, rgba(14, 90, 92, .045), transparent 42%),
     rgba(255, 253, 247, .88);
   box-shadow: 0 12px 32px rgba(37, 35, 33, .055);
 }
@@ -1416,9 +1416,9 @@
 }
 
 .transparency-status {
-  border-color: rgba(168, 86, 50, .26);
-  color: #7b3218;
-  background: rgba(168, 86, 50, .12);
+  border-color: rgba(14, 90, 92, .26);
+  color: var(--teal-deep);
+  background: rgba(14, 90, 92, .12);
 }
 
 .transparency-need-card h3 {
@@ -1433,7 +1433,7 @@
 .transparency-need-card > p {
   margin: 0 0 20px;
   color: var(--muted);
-  font-size: .98rem;
+  font-size: 1rem;
   line-height: 1.58;
 }
 
@@ -1455,12 +1455,12 @@
   margin: 0;
   padding-left: 1.12em;
   color: rgba(32, 35, 31, .84);
-  font-size: .94rem;
+  font-size: 1rem;
   line-height: 1.52;
 }
 
 .transparency-need-card li::marker {
-  color: var(--brand-orange, #a85632);
+  color: var(--teal-deep);
 }
 
 .transparency-handoff {
@@ -1502,7 +1502,7 @@
 .transparency-handoff__privacy {
   padding: 20px 22px;
   border: 1px solid rgba(255, 250, 240, .20);
-  border-left: 4px solid var(--brand-orange, #a85632);
+  border-left: 4px solid rgba(255, 250, 240, .58);
   background: rgba(255, 250, 240, .07);
 }
 

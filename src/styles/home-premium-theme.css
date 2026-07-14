@@ -539,12 +539,12 @@ p {
   align-items: center;
   padding: 0 var(--space-page-x);
   background:
-    linear-gradient(180deg, rgba(246, 243, 235, .96), rgba(225, 222, 214, .94)),
-    #e5e1d7;
+    linear-gradient(180deg, rgba(14, 90, 92, .98), rgba(9, 63, 67, .98)),
+    var(--teal-deep, #0e5a5c);
   box-shadow:
-    0 -12px 34px rgba(20, 22, 19, .12),
-    inset 0 1px 0 rgba(255, 255, 255, .66),
-    inset 0 -1px 0 rgba(32, 35, 31, .14);
+    0 -12px 34px rgba(20, 22, 19, .18),
+    inset 0 1px 0 rgba(255, 255, 255, .12),
+    inset 0 -1px 0 rgba(4, 34, 36, .42);
 }
 
 .hero-proofbar::before {
@@ -552,7 +552,7 @@ p {
   position: absolute;
   inset: -16px 0 auto;
   height: 32px;
-  background: radial-gradient(ellipse at center, rgba(32, 35, 31, .12), transparent 72%);
+  background: radial-gradient(ellipse at center, rgba(4, 34, 36, .30), transparent 72%);
   pointer-events: none;
 }
 
@@ -568,7 +568,7 @@ p {
   align-items: center;
   justify-content: space-between;
   gap: clamp(22px, 4.2vw, 72px);
-  color: rgba(32, 35, 31, .76);
+  color: rgba(251, 247, 238, .92);
   font-family: var(--body-face);
   font-size: clamp(.95rem, .82rem + .25vw, 1.08rem);
   font-weight: 760;
@@ -614,7 +614,7 @@ p {
   height: 5px;
   margin-top: -2.5px;
   border-radius: 999px;
-  background: rgba(32, 35, 31, .28);
+  background: rgba(251, 247, 238, .42);
   box-shadow: none;
 }
 

@@ -15,7 +15,7 @@ test.describe('Accessibility', () => {
   for (const path of PAGES) {
     test(`${path} should have no WCAG violations`, async ({ page, baseURL }) => {
       await blockExternalRequests(page, baseURL);
-      await page.goto(path);
+      await page.goto(path, { waitUntil: 'domcontentloaded' });
 
       const results = await new AxeBuilder({ page })
         .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
@@ -27,8 +27,8 @@ test.describe('Accessibility', () => {
 
   test('404 page should be accessible', async ({ page, baseURL }) => {
     await blockExternalRequests(page, baseURL);
-    await page.goto('/nonexistent-page');
-    await expect(page.locator('h1')).toContainText('404');
+    await page.goto('/nonexistent-page', { waitUntil: 'domcontentloaded' });
+    await expect(page.locator('h1.error-code')).toContainText('404');
 
     const results = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa'])

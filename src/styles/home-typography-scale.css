@@ -1,0 +1,124 @@
+/* ============================================================
+   Comfortable homepage typography
+
+   The hero owns the largest voice. Chapter and section headings step
+   down decisively, while the copy people actually need to read stays
+   large enough to feel calm on wide desktop displays.
+
+   This file is imported last so the homepage has one final hierarchy
+   after the older visual-exploration layers have resolved.
+   ============================================================ */
+
+:root {
+  /* Expressive upper tier for the three major narrative chapters. */
+  --home-type-chapter: clamp(3.2rem, 4.15vw, 4rem);
+  /* Intermediate tier for proof and conversion moments. */
+  --home-type-feature: clamp(2.7rem, 3.35vw, 3.35rem);
+  /* Standard tier for supporting and utility sections. */
+  --home-type-section: clamp(2.35rem, 2.8vw, 2.85rem);
+  /* Comfortable long-form copy: 18px minimum, 20px on wide screens. */
+  --home-type-reading: clamp(1.125rem, 1.02rem + .24vw, 1.25rem);
+  /* Compact copy inside transaction cards still stays above 16px. */
+  --home-type-compact-reading: clamp(1.0625rem, 1.01rem + .1vw, 1.125rem);
+}
+
+/* Primary homepage chapters: important, but no longer hero-sized. */
+.story-serve-intro h2,
+.narrative-scene--about .about-intro h2 {
+  font-size: var(--home-type-chapter);
+  line-height: .98;
+  letter-spacing: -.025em;
+  text-wrap: balance;
+}
+
+.story-serve-intro h2 {
+  max-width: 10ch;
+}
+
+.narrative-scene--about .about-intro h2 {
+  max-width: 18ch;
+}
+
+/* Proof and mid-journey calls carry more weight than utility headings,
+   but remain clearly below the main chapters. */
+#impact .impact-section__heading,
+.section-cta--orange .section-cta-text,
+.donate-section h2 {
+  font-size: var(--home-type-feature);
+  line-height: 1.04;
+  letter-spacing: -.018em;
+  text-wrap: balance;
+}
+
+#impact .impact-section__heading {
+  max-width: 24ch;
+}
+
+.section-cta--orange .section-cta-text {
+  max-width: 20ch;
+}
+
+.donate-section h2 {
+  max-width: 13ch;
+}
+
+/* Supporting sections should orient the reader without creating another
+   full-page visual peak. */
+.name-origin h2,
+.contact h2 {
+  font-size: var(--home-type-section);
+  line-height: 1.04;
+  letter-spacing: -.02em;
+  text-wrap: balance;
+}
+
+/* Card subheads should not rival the chapter heading immediately above. */
+.audience-card-help h3 {
+  font-size: clamp(2rem, 2.2vw, 2.4rem);
+  line-height: 1.08;
+  letter-spacing: -.015em;
+}
+
+.contact h2 {
+  max-width: 12ch;
+}
+
+/* Long explanatory copy is deliberately larger than benchmark-minimum body
+   text. The audience includes people reading about care, benefits, and giving,
+   so ease matters more than fitting the copy into the smallest footprint. */
+.narrative-scene--about .about-need p,
+.narrative-scene--about .about-story p,
+.narrative-scene--about .about-story p:first-child,
+.audience-card-help p,
+.name-origin__body,
+.contact-path-text span {
+  font-size: var(--home-type-reading);
+  line-height: 1.62;
+}
+
+.donate-section .donation-card-intro {
+  font-size: var(--home-type-compact-reading);
+}
+
+@media (max-width: 700px) {
+  :root {
+    --home-type-chapter: clamp(2.3rem, 9.5vw, 2.55rem);
+    --home-type-feature: clamp(2.05rem, 8.5vw, 2.3rem);
+    --home-type-section: clamp(1.85rem, 7.7vw, 2.1rem);
+    --home-type-reading: clamp(1.0625rem, 1rem + .24vw, 1.125rem);
+    --home-type-compact-reading: 1.0625rem;
+  }
+
+  .story-serve-intro h2,
+  .narrative-scene--about .about-intro h2 {
+    line-height: 1;
+  }
+
+  #impact .impact-section__heading,
+  .section-cta--orange .section-cta-text,
+  .donate-section h2,
+  .name-origin h2,
+  .contact h2 {
+    line-height: 1.06;
+  }
+}

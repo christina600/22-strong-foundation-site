@@ -1,0 +1,402 @@
+/* CARE-inspired primary navigation.
+   Keeps 22STRONG content and colors, while borrowing the calm overlay,
+   strong donate block, and mobile white-sheet menu pattern from care.org. */
+
+.site-header {
+  color: var(--ink);
+}
+
+.site-header--home {
+  position: fixed;
+  right: 0;
+  left: 0;
+}
+
+.site-header--home:not(.is-scrolled):not(.nav-has-open-menu) {
+  border-bottom-color: rgba(255, 255, 255, .10);
+  background:
+    linear-gradient(180deg, rgba(6, 7, 6, .74), rgba(6, 7, 6, .28) 68%, rgba(6, 7, 6, 0));
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.site-header--home:not(.is-scrolled):not(.nav-has-open-menu) .brand,
+.site-header--home:not(.is-scrolled):not(.nav-has-open-menu) .brand-foundation,
+.site-header--home:not(.is-scrolled):not(.nav-has-open-menu) .nav-group__label,
+.site-header--home:not(.is-scrolled):not(.nav-has-open-menu) .nav-group__toggle {
+  color: #fffaf0;
+}
+
+.site-header--home:not(.is-scrolled):not(.nav-has-open-menu) .nav-group__label:hover,
+.site-header--home:not(.is-scrolled):not(.nav-has-open-menu) .nav-group__label:focus-visible {
+  color: #fff;
+}
+
+.site-header.nav-has-open-menu {
+  background: rgba(255, 253, 248, .99);
+  box-shadow: 0 10px 28px rgba(32, 35, 31, .14);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+
+.nav-links {
+  align-self: stretch;
+  height: 100%;
+  overflow: visible;
+}
+
+.nav-group {
+  min-height: 100%;
+  align-items: stretch;
+  gap: 2px;
+}
+
+.nav-group__label {
+  align-self: stretch;
+  height: auto;
+  min-height: 100%;
+  padding-right: 6px;
+}
+
+.nav-group__toggle {
+  position: relative;
+  display: inline-flex;
+  align-self: stretch;
+  width: 22px;
+  min-width: 22px;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  color: rgba(32, 35, 31, .76);
+  background: transparent;
+  cursor: pointer;
+}
+
+.nav-group__toggle:hover,
+.nav-group__toggle:focus-visible {
+  color: var(--ink);
+}
+
+.nav-group__toggle:focus-visible {
+  outline: 2px solid var(--teal-deep);
+  outline-offset: -8px;
+}
+
+.site-header--home:not(.is-scrolled):not(.nav-has-open-menu) .nav-group__toggle:focus-visible {
+  outline-color: rgba(255, 250, 240, .72);
+}
+
+.nav-group.is-open .nav-submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-group.is-open .nav-group__chevron {
+  transform: translateY(2px) rotate(225deg);
+}
+
+.nav-submenu {
+  top: 100%;
+  border-radius: 0 0 4px 4px;
+}
+
+/* Mega-menu panels (care.org style): a promo lead on the left, a divider,
+   then grouped link columns. Drops full-width below the bar on desktop and
+   stacks in the mobile accordion. Copy lives in SiteHeader.astro. */
+.nav-mega__title {
+  margin: 0;
+  color: var(--ink);
+  font: 800 clamp(1.4rem, 2.2vw, 2rem) / 1.1 var(--body-face);
+  letter-spacing: -.01em;
+}
+
+.nav-mega__intro {
+  margin: 14px 0 0;
+  max-width: 24ch;
+  color: rgba(32, 35, 31, .72);
+  font: 500 clamp(1.02rem, 1.3vw, 1.2rem) / 1.4 var(--body-face);
+}
+
+.nav-mega__col-title {
+  margin: 0 0 4px;
+  color: var(--ink);
+  font: 800 1.02rem / 1.2 var(--body-face);
+}
+
+/* CTA link — kept teal (not orange) to honor the "orange = CTA buttons only"
+   rule; care.org uses orange here. */
+.nav-links .nav-submenu a.nav-mega__cta {
+  gap: 8px;
+  border-radius: 0;
+  color: var(--teal-deep, #1f5b57);
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  background: none;
+}
+
+.nav-links .nav-submenu a.nav-mega__cta:hover,
+.nav-links .nav-submenu a.nav-mega__cta:focus-visible {
+  color: var(--ink);
+  background: none;
+}
+
+.nav-mega__cta span {
+  transition: transform .2s ease;
+}
+
+.nav-links .nav-submenu a.nav-mega__cta:hover span,
+.nav-links .nav-submenu a.nav-mega__cta:focus-visible span {
+  transform: translateX(4px);
+}
+
+/* Full-width panel + two-region layout — desktop only. */
+@media (min-width: 921px) {
+  /* Resolve the panel against the header, not the individual group, so it
+     can stretch the full width of the bar. */
+  .nav-group {
+    position: static;
+  }
+
+  .nav-submenu {
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: auto;
+    min-width: 0;
+    display: block;
+    padding: 0;
+    border: 0;
+    border-top: 1px solid rgba(32, 35, 31, .10);
+    border-radius: 0;
+    background: #fffdf8;
+    box-shadow: 0 24px 44px rgba(32, 35, 31, .14);
+  }
+
+  .nav-submenu__inner {
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(36px, 5vw, 80px);
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: clamp(28px, 3.2vw, 44px) clamp(20px, 4vw, 52px);
+  }
+
+  .nav-mega__lead {
+    flex: 0 0 clamp(240px, 26vw, 340px);
+  }
+
+  .nav-mega__cols {
+    flex: 1 1 auto;
+    display: flex;
+    gap: clamp(32px, 5vw, 84px);
+    padding-left: clamp(32px, 5vw, 72px);
+    border-left: 1px solid rgba(32, 35, 31, .12);
+  }
+
+  .nav-mega__col {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .nav-links .nav-submenu a.nav-mega__cta {
+    margin-top: 20px;
+    min-height: 0;
+    padding: 0;
+    font-size: var(--fs-ui);
+  }
+
+  .nav-links .nav-submenu .nav-mega__col a {
+    min-height: 0;
+    padding: 8px 0;
+    border-radius: 0;
+    color: rgba(32, 35, 31, .78);
+    font-size: 1rem;
+    font-weight: 600;
+    background: none;
+  }
+
+  .nav-links .nav-submenu .nav-mega__col a:hover,
+  .nav-links .nav-submenu .nav-mega__col a:focus-visible,
+  .nav-links .nav-submenu .nav-mega__col a.is-active {
+    color: var(--ink);
+    background: none;
+  }
+}
+
+/* Mobile accordion: hide the promo lead text; keep the CTA and grouped
+   links as a simple stacked list with small column headings. */
+@media (max-width: 920px) {
+  .nav-mega__title,
+  .nav-mega__intro {
+    display: none;
+  }
+
+  .nav-mega__cols {
+    display: block;
+  }
+
+  .nav-mega__col-title {
+    margin-top: 10px;
+    color: rgba(32, 35, 31, .5);
+    font-size: .82rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+}
+
+@media (max-width: 560px) {
+  .site-header,
+  .site-header:not(.is-scrolled),
+  .site-header.is-scrolled {
+    height: 70px;
+  }
+
+  .site-header--home:not(.is-scrolled):not(.nav-has-open-menu) {
+    background:
+      linear-gradient(180deg, rgba(6, 7, 6, .70), rgba(6, 7, 6, .16) 82%, rgba(6, 7, 6, 0));
+  }
+
+  .nav {
+    grid-template-columns: minmax(0, 1fr) 112px 42px;
+    gap: 6px;
+    padding-inline: 18px 12px;
+  }
+
+  .brand {
+    grid-column: 1;
+  }
+
+  .nav-actions {
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+    height: 70px;
+  }
+
+  .nav-toggle {
+    grid-column: 3;
+    grid-row: 1;
+    width: 42px;
+    height: 42px;
+  }
+
+  .site-header--home:not(.is-scrolled):not(.nav-has-open-menu) .nav-toggle-icon,
+  .site-header--home:not(.is-scrolled):not(.nav-has-open-menu) .nav-toggle-icon::before,
+  .site-header--home:not(.is-scrolled):not(.nav-has-open-menu) .nav-toggle-icon::after {
+    background: #fffaf0;
+  }
+
+  .nav-links {
+    top: 70px;
+    gap: 0;
+    max-height: 0;
+    padding: 0 18px;
+    overflow-y: auto;
+    border-top: 1px solid rgba(32, 35, 31, .10);
+    background: rgba(255, 253, 248, .99);
+    box-shadow: 0 18px 38px rgba(32, 35, 31, .16);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .nav-links.is-open {
+    height: auto;
+    max-height: calc(100svh - 70px);
+    padding: 22px 18px 30px;
+  }
+
+  .nav-group {
+    grid-template-columns: minmax(0, 1fr) 44px;
+    gap: 0;
+    min-height: 58px;
+    border-bottom: 1px solid rgba(32, 35, 31, .10);
+  }
+
+  .nav-links .nav-group__label,
+  .nav-links .nav-group__label.is-active {
+    grid-column: 1;
+    height: 58px;
+    min-height: 58px;
+    justify-content: flex-start;
+    padding: 0;
+    color: var(--ink);
+    font-size: 1.02rem;
+    font-weight: 820;
+  }
+
+  .nav-links .nav-group__label::after {
+    display: none;
+  }
+
+  .nav-group__toggle {
+    grid-column: 2;
+    width: 44px;
+    min-width: 44px;
+    height: 58px;
+    min-height: 58px;
+    color: var(--donation-orange, var(--orange));
+  }
+
+  .nav-group__toggle::before,
+  .nav-group__toggle::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    border-radius: 999px;
+    background: currentColor;
+    transition: transform .2s ease, opacity .2s ease;
+  }
+
+  .nav-group__toggle::after {
+    transform: rotate(90deg);
+  }
+
+  .nav-group__chevron {
+    display: none;
+  }
+
+  .nav-group.is-open .nav-group__toggle::after {
+    opacity: 0;
+    transform: rotate(90deg) scaleX(.3);
+  }
+
+  .nav-submenu {
+    grid-column: 1 / -1;
+    display: none;
+    padding: 0 0 16px;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .nav-group.is-open .nav-submenu {
+    display: grid;
+  }
+
+  .nav-links .nav-submenu a {
+    min-height: 42px;
+    padding: 6px 0 6px 16px;
+    color: rgba(32, 35, 31, .72);
+    font-size: .94rem;
+    font-weight: 720;
+  }
+
+  .site .nav-donate-toggle {
+    height: 70px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header,
+  .nav-group__toggle::before,
+  .nav-group__toggle::after {
+    transition: none;
+  }
+}

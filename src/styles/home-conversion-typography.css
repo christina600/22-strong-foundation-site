@@ -152,7 +152,7 @@
   margin-top: 4px;
   font-size: var(--conversion-label);
   font-weight: 720;
-  color: rgba(32, 35, 31, .58);
+  color: rgba(32, 35, 31, .72);
 }
 
 .donate-section .amount-button {

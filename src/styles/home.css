@@ -42,3 +42,7 @@
 @import "./strong-circle-page.css";
 /* Final calm, non-tactile treatment for transaction controls */
 @import "./home-donation-controls.css";
+/* Final hierarchy informed by the 50-site nonprofit typography benchmark */
+@import "./home-typography-scale.css";
+/* CARE-inspired navigation treatment for the home overlay and mobile sheet */
+@import "./home-care-navigation.css";

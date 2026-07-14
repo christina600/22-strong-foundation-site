@@ -11,7 +11,7 @@ test.describe("runtime hygiene", () => {
   test("homepage makes no automatic external page-load requests", async ({ page, baseURL }) => {
     const blocked = await blockExternalRequests(page, baseURL);
 
-    await page.goto("/");
+    await page.goto("/", { waitUntil: "domcontentloaded" });
     await page.waitForLoadState("domcontentloaded");
     await page.waitForTimeout(500);
 
@@ -22,7 +22,7 @@ test.describe("runtime hygiene", () => {
     const blocked = await blockExternalRequests(page, baseURL);
     const errors = collectBrowserErrors(page);
 
-    await page.goto("/");
+    await page.goto("/", { waitUntil: "domcontentloaded" });
     await page.waitForLoadState("domcontentloaded");
     await page.waitForTimeout(500);
 
@@ -32,7 +32,7 @@ test.describe("runtime hygiene", () => {
 
   test("donation section uses a local no-external path", async ({ page, baseURL }) => {
     await blockExternalRequests(page, baseURL);
-    await page.goto("/");
+    await page.goto("/", { waitUntil: "domcontentloaded" });
 
     await expect(page.locator("#donate")).toBeVisible();
     await expect(page.locator("givebutter-widget")).toHaveCount(0);
@@ -41,14 +41,14 @@ test.describe("runtime hygiene", () => {
 
   test("giving CTAs point to the right checkout campaigns", async ({ page, baseURL }) => {
     await blockExternalRequests(page, baseURL);
-    await page.goto("/");
+    await page.goto("/", { waitUntil: "domcontentloaded" });
 
     await expect(page.locator("#donate .btn-donate")).toHaveAttribute(
       "href",
       /https:\/\/givebutter\.com\/fund-recovery-care-gaf6gu\?amount=190&frequency=once/
     );
 
-    await page.goto("/strong-circle/");
+    await page.goto("/strong-circle/", { waitUntil: "domcontentloaded" });
 
     // Recurring giving has a dedicated program page and a monthly-default form.
     await expect(page.locator(".circle-join__module .btn-donate")).toHaveAttribute(
@@ -59,7 +59,7 @@ test.describe("runtime hygiene", () => {
 
   test("same-page anchors point to existing targets in the rendered DOM", async ({ page, baseURL }) => {
     await blockExternalRequests(page, baseURL);
-    await page.goto("/");
+    await page.goto("/", { waitUntil: "domcontentloaded" });
 
     const missing = await page.locator('a[href^="#"]').evaluateAll((links) => (
       links
@@ -73,7 +73,7 @@ test.describe("runtime hygiene", () => {
 
   test("Adam Folker attribution separates the name from the credential", async ({ page, baseURL }) => {
     await blockExternalRequests(page, baseURL);
-    await page.goto("/");
+    await page.goto("/", { waitUntil: "domcontentloaded" });
 
     const attribution = page.locator(".audience-voice__cite");
     await expect(attribution.locator("cite")).toHaveText("Adam Folker");
@@ -87,8 +87,7 @@ test.describe("runtime hygiene", () => {
     for (const pathname of CRITICAL_PATHS) {
       for (const viewport of VIEWPORTS) {
         await page.setViewportSize(viewport);
-        await page.goto(pathname);
-        await page.waitForLoadState("domcontentloaded");
+        await page.goto(pathname, { waitUntil: "domcontentloaded" });
 
         await expect(page.locator("main")).toBeVisible();
         await expect(page.locator("h1").first()).toBeVisible();
@@ -106,7 +105,7 @@ test.describe("reduced motion", () => {
     await blockExternalRequests(page, baseURL);
 
     for (const pathname of CRITICAL_PATHS) {
-      await page.goto(pathname);
+      await page.goto(pathname, { waitUntil: "domcontentloaded" });
       await page.waitForTimeout(500);
 
       expect(await page.evaluate(() => window.matchMedia("(prefers-reduced-motion: reduce)").matches)).toBe(true);

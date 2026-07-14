@@ -10,48 +10,51 @@ import { blockExternalRequests } from "./helpers";
  *      so this is enforced strictly: any orange outside an interactive
  *      CTA fails.
  *
- *   2. No content text below 1.25rem (20px); buttons and nav are excluded
- *      by the rule itself. The sitewide type pass hasn't happened yet
- *      (160 text blocks are under 20px as of July 2026 — full list in
- *      review-inbox/text-size-audit.md), so this rule runs as a RATCHET:
- *      each page fails only if it gains undersized text beyond today's
- *      baseline. As the cleanup pass lands, lower the baselines until
- *      they reach zero.
+ *   2. Typography follows the role-based minimums established by the
+ *      July 2026 50-site nonprofit benchmark: 16px reading copy, 14px
+ *      controls, and 12px labels/metadata. This replaces the old 20px
+ *      page-count ratchet, which incorrectly treated normal 16–18px
+ *      body copy and 12–14px labels as design regressions.
  */
 
 const PAGES = ["/", "/about/", "/how-it-works/", "/ways-to-support/", "/transparency/", "/strong-circle/"];
 
-const MIN_CONTENT_PX = 19.5; // 20px with rounding headroom
+const MIN_READING_PX = 15.5; // 16px with rendering headroom
+const MIN_CONTROL_PX = 13.5; // 14px with rendering headroom
+const MIN_LABEL_PX = 11.5; // 12px with rendering headroom
 
-// Undersized text blocks that exist today, counted per page. Only lower
-// these numbers as the type pass cleans pages up. Exceptions on record:
-// 2026-07-04 approved Ways to Support rebuild added mandated 501(c)(3)
-// trust lines and tier notes (23 → 24 on both routes that render it);
-// 2026-07-04 approved How It Works copy pass added the referral helper
-// line, "One session costs $190.", the "or fund recovery care" link,
-// and a second Step 4 paragraph (35 → 39). Later that day the 20px
-// type-pass pilot on How It Works brought body copy up to size (39 → 21).
-// 2026-07-05: Tom Boscamp testimonial added to the referral section per
-// Christina — his attribution line is fine print (21 → 22); the Step 1
-// referral photo's caption adds one more (22 → 23), and the Step 5
-// follow-through photo's caption another (23 → 24). The "why 22" pass
-// added the Veterans Crisis Line note and the member-highlight kicker
-// (ways-to-support/strong-circle 24 → 26) and the clinic details
-// paragraph (transparency 25 → 26).
-const TEXT_SIZE_BASELINE: Record<string, number> = {
-  "/": 31,
-  "/about/": 23,
-  "/how-it-works/": 24,
-  "/ways-to-support/": 26,
-  "/transparency/": 26,
-  "/strong-circle/": 26,
-};
+const TEXT_SIZE_EXCLUDED = "sup, sub, .skip-link, .hero-mark, .hero-lockup";
 
-// The rule excludes buttons and nav. Form controls follow button sizing,
-// the skip link is a keyboard utility, and .circle-tier is a
-// button-styled donation amount control.
-const TEXT_SIZE_EXCLUDED =
-  "header, nav, button, [role='button'], .pill, .btn-donate, .amount-button, input, select, textarea, label, sup, sub, .skip-link, .circle-tier";
+const CONTROL_TEXT =
+  "a, button, [role='button'], .pill, .btn-donate, .amount-button, input, select, textarea, label, .circle-tier";
+
+const LABEL_TEXT = [
+  ".eyebrow",
+  "[class*='eyebrow']",
+  "[class*='kicker']",
+  "[class*='label']",
+  "[class*='meta']",
+  "[class*='source']",
+  "[class*='caption']",
+  "[class*='footnote']",
+  "[class*='legal']",
+  "[class*='note']",
+  "[class*='crisis']",
+  ".audience-card-name",
+  ".audience-voice__cite-role",
+  ".about-proof-list li",
+  ".bio-credentials li",
+  ".donation-type",
+  ".donation-secure",
+  ".footer-title",
+  ".transparency-status",
+  ".transparency-review-note > span",
+  ".transparency-need-card > strong",
+  "small",
+  "figcaption",
+  "cite",
+  "dt",
+].join(", ");
 
 // Orange is reserved for the brand mark and controls that enter a giving flow.
 const ORANGE_ALLOWED_INTERACTIVE =
@@ -59,7 +62,7 @@ const ORANGE_ALLOWED_INTERACTIVE =
 
 async function auditPage(page: import("@playwright/test").Page) {
   return page.evaluate(
-    ({ minPx, textExcluded, orangeAllowedInteractive }) => {
+    ({ minReadingPx, minControlPx, minLabelPx, textExcluded, controlText, labelText, orangeAllowedInteractive }) => {
       const ORANGE_TOKENS = [
         "rgb(201, 79, 15)",
         "rgb(159, 57, 8)",
@@ -96,8 +99,14 @@ async function auditPage(page: import("@playwright/test").Page) {
         );
         if (hasOwnText && !el.closest(textExcluded) && isRendered(el)) {
           const fontSize = parseFloat(getComputedStyle(el).fontSize);
-          if (fontSize < minPx) {
-            textViolations.push(`${describe(el)} — ${fontSize}px`);
+          const role = el.matches(labelText)
+            ? "label"
+            : el.closest(controlText)
+              ? "control"
+              : "reading";
+          const minimum = role === "label" ? minLabelPx : role === "control" ? minControlPx : minReadingPx;
+          if (fontSize < minimum) {
+            textViolations.push(`${describe(el)} — ${fontSize}px (${role}, minimum ${minimum}px)`);
           }
         }
 
@@ -120,13 +129,21 @@ async function auditPage(page: import("@playwright/test").Page) {
 
       return { textViolations, orangeViolations };
     },
-    { minPx: MIN_CONTENT_PX, textExcluded: TEXT_SIZE_EXCLUDED, orangeAllowedInteractive: ORANGE_ALLOWED_INTERACTIVE }
+    {
+      minReadingPx: MIN_READING_PX,
+      minControlPx: MIN_CONTROL_PX,
+      minLabelPx: MIN_LABEL_PX,
+      textExcluded: TEXT_SIZE_EXCLUDED,
+      controlText: CONTROL_TEXT,
+      labelText: LABEL_TEXT,
+      orangeAllowedInteractive: ORANGE_ALLOWED_INTERACTIVE,
+    }
   );
 }
 
 test.describe("locked design rules", () => {
   for (const path of PAGES) {
-    test(`${path} keeps orange on CTAs and doesn't add undersized text`, async ({ page, baseURL }) => {
+    test(`${path} keeps orange on CTAs and uses role-appropriate type sizes`, async ({ page, baseURL }) => {
       await blockExternalRequests(page, baseURL);
       await page.goto(path);
       await page.waitForLoadState("networkidle");
@@ -135,11 +152,7 @@ test.describe("locked design rules", () => {
 
       expect.soft(orangeViolations, `orange outside primary CTAs on ${path}`).toEqual([]);
 
-      const baseline = TEXT_SIZE_BASELINE[path] ?? 0;
-      expect(
-        textViolations.length,
-        `${path} has ${textViolations.length} text blocks below 20px (baseline ${baseline}) — new undersized text was added:\n${textViolations.join("\n")}`
-      ).toBeLessThanOrEqual(baseline);
+      expect(textViolations, `undersized text on ${path}`).toEqual([]);
     });
   }
 });
