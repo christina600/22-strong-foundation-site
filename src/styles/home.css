@@ -36,3 +36,9 @@
 @import "./home-navigation-groups.css";
 /* Mission-first hero, reference-faithful logo lockup, and name-origin disclosure */
 @import "./home-hero-mission.css";
+/* Final conversion hierarchy shared by the recovery-gap bridge and donation ask */
+@import "./home-conversion-typography.css";
+/* Dedicated monthly-giving journey and compact Ways to Give preview */
+@import "./strong-circle-page.css";
+/* Final calm, non-tactile treatment for transaction controls */
+@import "./home-donation-controls.css";

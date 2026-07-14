@@ -771,9 +771,8 @@ textarea {
   max-width: none;
   padding-block: var(--space-section-y-roomy);
   background:
-    linear-gradient(90deg, rgba(248, 244, 235, .99) 0%, rgba(248, 244, 235, .92) 47%, rgba(248, 244, 235, .70) 100%),
-    var(--map-contours, transparent),
-    url("/images/stock-hands-care.webp") center right / cover no-repeat;
+    linear-gradient(90deg, rgba(248, 244, 235, .99) 0%, rgba(248, 244, 235, .94) 52%, rgba(240, 235, 223, .90) 100%),
+    var(--map-contours, transparent);
   border-top: 1px solid rgba(32, 35, 31, .10);
   box-shadow: inset 0 1px 0 rgba(255, 250, 240, .72);
 }

@@ -8,6 +8,7 @@ export interface EvidenceStatContent {
 
 export interface TestimonialContent {
   attribution: string;
+  title?: string;
   quote?: string;
   story: string;
 }
@@ -111,7 +112,9 @@ const resolveVoice = (
 
   return {
     ...voice,
-    title: voice.title ?? testimonial?.attribution ?? "",
+    // Person cards render the name separately, so only resolve the person's
+    // credential here. Full attribution strings are reserved for video cards.
+    title: voice.title ?? testimonial?.title ?? "",
     quote: voice.quote ?? testimonial?.quote,
     story: voice.story ?? testimonial?.story
   };

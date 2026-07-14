@@ -1,5 +1,4 @@
 ---
-import { existsSync } from "node:fs";
 import site from "../../content/site.json";
 import StrongCircleMark from "./StrongCircleMark.astro";
 import { isConfigured } from "../../utils/config";
@@ -16,43 +15,20 @@ const donateHref = (amount?: number) => {
   return `${site.donateUrl}?amount=${encodeURIComponent(String(amount))}&frequency=once`;
 };
 
-const circleHref = (amount?: string) => {
-  if (!isConfigured(site.strongCircleUrl)) return "/#contact";
-  if (!amount) return site.strongCircleUrl;
-  const value = amount.replace(/[^0-9.]/g, "");
-  return value
-    ? `${site.strongCircleUrl}?amount=${encodeURIComponent(value)}&frequency=monthly`
-    : site.strongCircleUrl;
-};
-
-// Images live in /images/support/; when a file has not been dropped in yet
-// the card renders a neutral placeholder block instead.
-const supportImage = (file: string) => {
-  const path = "/images/support/" + file;
-  return existsSync("public" + path) ? path : null;
-};
-
-const circleTiers = [
-  { amount: "$22", note: "the number we're named for" },
-  { amount: "$50", note: "three funded sessions a year" },
-  { amount: "$100", note: "one session every other month" },
-  { amount: "$190", note: "a funded session every month" },
-];
-
 const giveCards = [
   {
     heading: "Fund a session.",
     body: "$190 pays for one hands-on recovery session for a veteran or young person whose coverage ran out.",
     cta: "Give $190",
     href: donateHref(190),
-    image: supportImage("give-session.jpg"),
+    image: "/images/story-leg-therapy-wide.jpg",
   },
   {
     heading: "Fund a care plan.",
     body: "$850 covers an average care plan from first visit to follow-through.",
     cta: "Fund a care plan",
     href: donateHref(850),
-    image: supportImage("give-careplan.jpg"),
+    image: "/images/story-smart-mirror-careplan.jpg",
   },
 ];
 
@@ -85,48 +61,19 @@ const faq = [
     </div>
   </section>
 
-  <section class="support-circle" id="strong-circle" aria-labelledby="circle-title">
-    <div class="support-circle__copy">
-      <div class="support-circle__brand">
-        <p class="support-kicker">The Strong Circle</p>
-        <StrongCircleMark class="support-circle__mark" size={92} />
+  <section class="support-circle-preview" id="strong-circle" aria-labelledby="circle-preview-title">
+    <div class="support-circle-preview__inner">
+      <StrongCircleMark class="support-circle-preview__mark" size={94} />
+      <div>
+        <p class="support-kicker">Strong Circle · Monthly giving</p>
+        <h2 id="circle-preview-title">A dependable base for the next recovery session.</h2>
+        <p>
+          Nine members at $22 a month provide enough to cover one $190 session. See how
+          the circle works, hear why follow-through matters, and choose a monthly amount.
+        </p>
+        <strong class="support-circle-preview__equation">9 members × $22/month → one $190 session</strong>
       </div>
-      <h2 id="circle-title">A membership that says yes before care stalls.</h2>
-      <p class="support-circle__body">
-        Circle members give monthly. That steady base is what lets 22STRONG approve a session
-        the week it's needed instead of waiting on the next fundraiser. Every nine members at
-        $22 a month funds a recovery session, every month, for as long as they stay.
-      </p>
-      <p class="support-circle__why">
-        Why 22? The name comes from the widely cited “22 veterans a day” statistic and honors
-        veterans lost to suicide. The $22 tier carries that symbolic number; 22STRONG itself
-        funds recovery care and is not a crisis-response provider.
-      </p>
-      <p class="support-circle__crisis">
-        If you or a veteran you know is struggling, call 988 and press 1. The Veterans
-        Crisis Line answers 24/7.
-      </p>
-    </div>
-    <blockquote class="support-circle__quote">
-      <p>
-        "The VA treatments are far and few between... Thankfully Dr. Vas has filled that void
-        and with his treatments it has allowed me to continue being active."
-      </p>
-      <cite>Tom Boscamp, U.S. Army veteran</cite>
-    </blockquote>
-    <div class="support-circle__join" aria-label="Suggested monthly amounts">
-      {circleTiers.map((tier) => (
-        <a class="support-tier" href={circleHref(tier.amount)}>
-          <span>{tier.amount}<small>/mo</small></span>
-          <em>{tier.note}</em>
-        </a>
-      ))}
-      <a class="pill primary support-circle__cta" href={circleHref()}>Join the Strong Circle</a>
-      <p class="support-circle__footnote">
-        Monthly. Cancel anytime. You'll hear from Travis himself: updates, invites, and a
-        first look at what's next.
-      </p>
-      <p class="support-trust">{trustLine}</p>
+      <a class="pill primary support-circle-preview__cta" href="/strong-circle/">Explore Strong Circle</a>
     </div>
   </section>
 
@@ -152,7 +99,7 @@ const faq = [
         </article>
       ))}
     </div>
-    <p class="support-any">Prefer monthly? That's the Strong Circle, above.</p>
+    <p class="support-any">Prefer monthly? <a href="/strong-circle/">Join the Strong Circle</a>.</p>
   </section>
 
   <section class="support-faq" aria-labelledby="faq-title">

@@ -336,10 +336,25 @@ header::after {
   line-height: 1.55;
 }
 
-.audience-card .audience-voice__cite {
+.audience-card .audience-voice .audience-voice__cite {
   grid-area: cite;
-  font-size: 1rem;
-  line-height: 1.45;
+  display: grid;
+  gap: 2px;
+  font-size: clamp(1rem, 1.1vw, 1.08rem);
+  line-height: 1.4;
+  opacity: 1;
+}
+
+.audience-card .audience-voice__cite-name {
+  color: rgba(32, 35, 31, .86);
+  font-style: normal;
+  font-weight: 760;
+}
+
+.audience-card .audience-voice__cite-role {
+  color: rgba(32, 35, 31, .62);
+  font-size: clamp(.875rem, .82rem + .12vw, .95rem);
+  font-weight: 560;
 }
 
 /* The second evidence band changes temperature from cost pressure to a

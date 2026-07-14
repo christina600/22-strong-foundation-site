@@ -48,16 +48,12 @@ test.describe("runtime hygiene", () => {
       /https:\/\/givebutter\.com\/fund-recovery-care-gaf6gu\?amount=190&frequency=once/
     );
 
-    await page.goto("/ways-to-support/");
+    await page.goto("/strong-circle/");
 
-    // Recurring giving lives on the dedicated Ways to Support page.
-    await expect(page.locator(".support-circle__cta")).toHaveAttribute(
+    // Recurring giving has a dedicated program page and a monthly-default form.
+    await expect(page.locator(".circle-join__module .btn-donate")).toHaveAttribute(
       "href",
-      "https://givebutter.com/22-strong-circle-bjf16z"
-    );
-    await expect(page.locator(".support-tier").first()).toHaveAttribute(
-      "href",
-      /https:\/\/givebutter\.com\/22-strong-circle-bjf16z\?amount=22&frequency=monthly/
+      /https:\/\/givebutter\.com\/22-strong-circle-bjf16z\?.*amount=22&frequency=monthly/
     );
   });
 
@@ -73,6 +69,16 @@ test.describe("runtime hygiene", () => {
     ));
 
     expect(missing).toEqual([]);
+  });
+
+  test("Adam Folker attribution separates the name from the credential", async ({ page, baseURL }) => {
+    await blockExternalRequests(page, baseURL);
+    await page.goto("/");
+
+    const attribution = page.locator(".audience-voice__cite");
+    await expect(attribution.locator("cite")).toHaveText("Adam Folker");
+    await expect(attribution.locator("span")).toHaveText("UC Irvine basketball alumnus");
+    await expect(attribution).not.toContainText("Adam Folker · Adam Folker");
   });
 
   test("critical pages avoid horizontal overflow on desktop and mobile", async ({ page, baseURL }) => {

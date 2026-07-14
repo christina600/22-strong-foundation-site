@@ -1,0 +1,209 @@
+---
+import DonationModule from "./DonationModule.astro";
+import StrongCircleMark from "./StrongCircleMark.astro";
+import site from "../../content/site.json";
+
+const reasons = [
+  {
+    number: "01",
+    title: "Care can move sooner.",
+    body: "A dependable monthly base helps 22STRONG approve a session before a recovery plan stalls.",
+  },
+  {
+    number: "02",
+    title: "Follow-through stays possible.",
+    body: "Recovery rarely ends after one appointment. Recurring support creates room for the visits that come next.",
+  },
+  {
+    number: "03",
+    title: "The commitment stays flexible.",
+    body: "Choose an amount that works for you. You can change or cancel your monthly gift at any time.",
+  },
+];
+
+const faq = [
+  {
+    q: "Is my monthly gift tax-deductible?",
+    a: `Yes. ${site.orgName} is a ${site.taxStatus} nonprofit. EIN ${site.ein}. You'll receive an email receipt for every gift.`,
+  },
+  {
+    q: "Where does Strong Circle money go?",
+    a: "Strong Circle gifts fund hands-on recovery sessions for veterans and young people when coverage, cost, timing, or access threatens the next appointment.",
+  },
+  {
+    q: "Can I change or cancel my monthly gift?",
+    a: "Yes. You can change or cancel at any time. Contact 22STRONG if you need help updating your gift.",
+  },
+  {
+    q: "What happens after I join?",
+    a: "You'll receive a donation receipt and updates showing how dependable support helps keep recovery care moving.",
+  },
+];
+---
+
+<main id="main" class="circle-page">
+  <section class="circle-hero" aria-labelledby="circle-page-title">
+    <div class="circle-hero__inner">
+      <div class="circle-hero__copy">
+        <p class="circle-eyebrow">Monthly giving · Strong Circle</p>
+        <h1 id="circle-page-title">Keep recovery moving, month after month.</h1>
+        <p class="circle-hero__lead">
+          Strong Circle is 22STRONG's monthly-giving community. Its dependable support
+          helps approve the next recovery session before an insurance gap becomes a stopped plan.
+        </p>
+        <div class="circle-hero__actions">
+          <a class="pill primary" href="#join">Join at $22/month</a>
+          <a class="circle-text-link" href="#how-it-works">See how the circle works</a>
+        </div>
+        <p class="circle-hero__assurance">Monthly. Change or cancel anytime.</p>
+      </div>
+
+      <figure class="circle-hero__visual" style="--circle-hero-image: url(/images/story-leg-therapy-wide.jpg);">
+        <img
+          src="/images/story-leg-therapy-wide.jpg"
+          alt="Dr. Chris providing hands-on leg treatment for a male veteran at Next Level Wellness Center."
+        />
+        <figcaption class="circle-hero__mark-card">
+          <StrongCircleMark class="circle-hero__mark" size={142} />
+          <span>Steady support.<br />The next session.</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="circle-equation" id="how-it-works" aria-labelledby="circle-equation-title">
+    <div class="circle-equation__inner">
+      <div class="circle-equation__intro">
+        <p class="circle-eyebrow">How the circle works</p>
+        <h2 id="circle-equation-title">Nine small commitments can cover one complete session.</h2>
+        <p>
+          The $22 tier carries the number in our name. When nine people join at that level,
+          their $198 in monthly support is enough to cover a $190 recovery session.
+        </p>
+      </div>
+
+      <div class="circle-equation__proof" aria-label="Nine members giving 22 dollars per month provide enough to cover one 190 dollar recovery session">
+        <div class="circle-equation__segments" aria-hidden="true">
+          {Array.from({ length: 9 }, (_, index) => <span style={`--segment-index: ${index}`}></span>)}
+        </div>
+        <div class="circle-equation__math">
+          <span><strong>9</strong> members</span>
+          <b aria-hidden="true">×</b>
+          <span><strong>$22</strong> / month</span>
+          <b aria-hidden="true">=</b>
+          <span class="circle-equation__result"><strong>1</strong> recovery session</span>
+        </div>
+        <p>$198 in recurring support covers a $190 session.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="circle-reasons" aria-labelledby="circle-reasons-title">
+    <div class="circle-reasons__inner">
+      <div class="circle-section-heading">
+        <p class="circle-eyebrow">Why monthly matters</p>
+        <h2 id="circle-reasons-title">Predictability changes how quickly care can happen.</h2>
+      </div>
+      <ol class="circle-reasons__grid">
+        {reasons.map((reason) => (
+          <li>
+            <span>{reason.number}</span>
+            <h3>{reason.title}</h3>
+            <p>{reason.body}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="circle-story" aria-labelledby="circle-story-title">
+    <div class="circle-story__inner">
+      <figure class="circle-story__portrait">
+        <img src="/images/tom-boscamp.jpg" alt="Tom Boscamp, a U.S. Army veteran." loading="lazy" />
+        <figcaption>Tom Boscamp · U.S. Army veteran</figcaption>
+      </figure>
+      <div class="circle-story__copy">
+        <p class="circle-eyebrow">Why follow-through matters</p>
+        <h2 id="circle-story-title">Care filled the space between VA appointments.</h2>
+        <blockquote>
+          <p>
+            “The VA treatments are far and few between. Thankfully Dr. Vas has filled that
+            void, and with his treatments it has allowed me to continue being active.”
+          </p>
+          <cite>Tom Boscamp</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="circle-join" id="join" aria-labelledby="circle-join-title">
+    <div class="circle-join__inner">
+      <div class="circle-join__copy">
+        <p class="circle-eyebrow">Join Strong Circle</p>
+        <h2 id="circle-join-title">Choose the monthly amount that works for you.</h2>
+        <p>
+          Start at $22 or choose a different amount. Every level helps create dependable
+          room for the next appointment and the follow-through after it.
+        </p>
+        <ul class="circle-join__checks">
+          <li>Monthly support for funded recovery care</li>
+          <li>Email receipt for every gift</li>
+          <li>Change or cancel anytime</li>
+        </ul>
+        <p class="circle-join__trust">
+          Secure checkout · Tax-deductible · EIN {site.ein}
+        </p>
+      </div>
+      <div class="circle-join__module">
+        <DonationModule
+          defaultFrequency="monthly"
+          cardLabel="Strong Circle monthly gift"
+          cardTitle="Choose a monthly amount"
+          cardIntro="$22 a month anchors the Strong Circle. Choose the amount that works for you."
+          amountGridLabel="Monthly amount"
+          checkoutMonthlyLabel="Join Strong Circle at {amount}/month"
+          source="strong-circle-page"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="circle-origin" aria-labelledby="circle-origin-title">
+    <div class="circle-origin__inner">
+      <StrongCircleMark class="circle-origin__mark" size={92} />
+      <div>
+        <p class="circle-eyebrow">Why 22</p>
+        <h2 id="circle-origin-title">The name honors veterans lost to suicide.</h2>
+        <p>
+          The name comes from the widely cited “22 veterans a day” statistic. 22STRONG funds
+          recovery care; it is not a suicide-crisis or emergency-response provider.
+        </p>
+        <p class="circle-origin__crisis">
+          If you or a veteran you know is struggling, call <a href="tel:988">988</a> and press 1.
+          The Veterans Crisis Line answers 24/7.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="circle-faq" aria-labelledby="circle-faq-title">
+    <div class="circle-faq__inner">
+      <div class="circle-section-heading">
+        <p class="circle-eyebrow">Before you join</p>
+        <h2 id="circle-faq-title">Monthly giving, without surprises.</h2>
+      </div>
+      <dl>
+        {faq.map((item) => (
+          <div>
+            <dt>{item.q}</dt>
+            <dd>{item.a}</dd>
+          </div>
+        ))}
+      </dl>
+      <p class="circle-faq__more">
+        See how 22STRONG handles money and provider relationships on the
+        <a href="/transparency/">transparency page</a>.
+      </p>
+    </div>
+  </section>
+</main>

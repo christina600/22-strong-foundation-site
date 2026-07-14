@@ -43,7 +43,7 @@ test.describe("navigation", () => {
     await donateToggle.click();
     await expect(donateToggle).toHaveAttribute("aria-expanded", "true");
     await expect(page.locator(".nav-donate-menu")).toBeVisible();
-    await expect(page.locator(".nav-donate-option")).toHaveText([/Give Once/, /Give Monthly/]);
+    await expect(page.locator(".nav-donate-option")).toHaveText([/Give Once/, /Join Strong Circle.*Give Monthly/]);
   });
 
   test("mobile menu closes after page navigation", async ({ page, baseURL }) => {

@@ -1,0 +1,174 @@
+/* Calm transaction controls.
+   The broader site can retain its tactile character, but donation decisions
+   should feel stable, clear, and trustworthy rather than game-like. */
+
+.site .donation-card-main {
+  gap: clamp(12px, 1.2vw, 16px);
+  border: 1px solid rgba(32, 35, 31, .12);
+  border-radius: 18px !important;
+  background: #fffdf8;
+  box-shadow: 0 24px 60px rgba(18, 31, 27, .14);
+}
+
+.site .donation-card-main.is-updating {
+  box-shadow:
+    0 0 0 3px rgba(14, 90, 92, .10),
+    0 24px 60px rgba(18, 31, 27, .14);
+}
+
+.site .donation-card-main .donation-type,
+.site .donation-card-main .donation-secure {
+  border-radius: 999px !important;
+  font-family: var(--ui-face, ui-sans-serif, system-ui, sans-serif);
+  font-weight: 700;
+  letter-spacing: .015em;
+  text-transform: none;
+}
+
+.site .donation-card-main .donation-type {
+  color: var(--teal-deep);
+  border: 1px solid rgba(14, 90, 92, .16);
+  background: rgba(14, 90, 92, .08);
+}
+
+.site .donation-card-main .donation-secure {
+  color: rgba(32, 35, 31, .62);
+  border: 1px solid rgba(32, 35, 31, .10);
+  background: rgba(255, 255, 255, .66);
+}
+
+.site .donation-card-main .toggle-row {
+  gap: 5px;
+  padding: 5px;
+  border: 1px solid rgba(32, 35, 31, .12);
+  border-radius: 12px !important;
+  background: #f2ede4;
+  box-shadow: none;
+}
+
+.site .donation-card-main .toggle-row button,
+.site .donation-card-main .amount-button {
+  --btn-fill: none;
+  --btn-sheen: none;
+  border: 1px solid rgba(32, 35, 31, .18);
+  border-radius: 11px !important;
+  color: var(--ink);
+  background: #fbf8f1;
+  background-image: none;
+  box-shadow: none;
+  filter: none;
+  font-family: var(--ui-face, ui-sans-serif, system-ui, sans-serif);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  transform: none;
+  transition:
+    border-color .18s ease,
+    background-color .18s ease,
+    color .18s ease,
+    box-shadow .18s ease;
+}
+
+.site .donation-card-main .amount-button {
+  min-height: 68px;
+  padding: 12px 14px;
+  place-items: center start;
+  gap: 5px;
+  text-align: left;
+}
+
+.site .donation-card-main .amount-button::before,
+.site .donation-card-main .toggle-row button::before {
+  content: none;
+}
+
+.site .donation-card-main .amount-button-value {
+  font-family: var(--ui-face, ui-sans-serif, system-ui, sans-serif);
+  font-size: clamp(1.18rem, 1vw + .94rem, 1.46rem);
+  font-weight: 800;
+  letter-spacing: -.025em;
+  line-height: 1;
+}
+
+.site .donation-card-main .amount-button small {
+  color: rgba(32, 35, 31, .62);
+  font-size: clamp(.76rem, .72rem + .1vw, .82rem);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.site .donation-card-main .toggle-row button:hover,
+.site .donation-card-main .amount-button:hover {
+  color: var(--ink);
+  border-color: rgba(14, 90, 92, .48);
+  background: rgba(14, 90, 92, .055);
+  box-shadow: 0 6px 18px rgba(14, 90, 92, .08);
+  filter: none;
+  transform: none;
+}
+
+.site .donation-card-main .toggle-row button.active,
+.site .donation-card-main .amount-button.active,
+.site .donation-card-main .amount-button[data-featured="true"].active {
+  color: #fffaf0;
+  border-color: var(--teal-deep);
+  background: var(--teal-deep);
+  background-image: none;
+  box-shadow: 0 0 0 3px rgba(14, 90, 92, .14);
+}
+
+.site .donation-card-main .amount-button.active small,
+.site .donation-card-main .amount-button[data-featured="true"].active small {
+  color: rgba(255, 250, 240, .80);
+}
+
+.site .donation-card-main .amount-button[data-featured="true"]:not(.active) {
+  border-color: rgba(14, 90, 92, .28);
+  box-shadow: none;
+}
+
+.site .donation-card-main .toggle-row button:active,
+.site .donation-card-main .amount-button:active {
+  transform: none;
+  box-shadow: 0 0 0 3px rgba(14, 90, 92, .12);
+}
+
+.site .donation-card-main .other-amount-input {
+  min-height: 52px;
+  padding-inline: 15px;
+  border: 1px solid rgba(32, 35, 31, .16);
+  border-radius: 11px !important;
+  background: #fff;
+  box-shadow: none;
+}
+
+.site .donation-card-main .other-amount-input:hover {
+  border-color: rgba(14, 90, 92, .34);
+}
+
+.site .donation-card-main .amount-button:focus-visible,
+.site .donation-card-main .toggle-row button:focus-visible,
+.site .donation-card-main .other-amount-input:focus-visible {
+  outline: 3px solid rgba(14, 90, 92, .25);
+  outline-offset: 2px;
+}
+
+.site .donation-card-main .btn-donate {
+  border-radius: 11px !important;
+  font-family: var(--ui-face, ui-sans-serif, system-ui, sans-serif);
+  font-weight: 750;
+  letter-spacing: .018em;
+  text-transform: none;
+}
+
+@media (max-width: 560px) {
+  .site .donation-card-main {
+    border-radius: 15px !important;
+  }
+
+  .site .donation-card-main .amount-button {
+    min-height: 64px;
+    padding: 11px 12px;
+  }
+}
+

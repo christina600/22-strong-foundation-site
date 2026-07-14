@@ -13,8 +13,23 @@ import { isConfigured } from "../../utils/config";
 interface Props {
   defaultFrequency?: "monthly" | "one-time";
   showFrequencyToggle?: boolean;
+  cardLabel?: string;
+  cardTitle?: string;
+  cardIntro?: string;
+  amountGridLabel?: string;
+  checkoutMonthlyLabel?: string;
+  source?: string;
 }
-const { defaultFrequency = "one-time", showFrequencyToggle = false } = Astro.props;
+const {
+  defaultFrequency = "one-time",
+  showFrequencyToggle = false,
+  cardLabel,
+  cardTitle,
+  cardIntro,
+  amountGridLabel,
+  checkoutMonthlyLabel,
+  source,
+} = Astro.props;
 
 type DonationImpactMap = {
   monthly?: Record<string, string>;
@@ -26,14 +41,16 @@ const defaults = site.donationDefaults;
 const impact = site.donationImpact as DonationImpactMap;
 const fmt = (amount: number) => Number(amount).toLocaleString();
 
-const activeDefaultFrequency = showFrequencyToggle ? defaultFrequency : "one-time";
+const activeDefaultFrequency = defaultFrequency;
 const grids = showFrequencyToggle
   ? [
       { freq: "one-time" as const, amounts: sets.oneTime, def: defaults.oneTime },
       { freq: "monthly" as const, amounts: sets.monthly, def: defaults.monthly },
     ]
   : [
-      { freq: "one-time" as const, amounts: sets.oneTime, def: defaults.oneTime },
+      activeDefaultFrequency === "monthly"
+        ? { freq: "monthly" as const, amounts: sets.monthly, def: defaults.monthly }
+        : { freq: "one-time" as const, amounts: sets.oneTime, def: defaults.oneTime },
     ];
 
 const isMonthly = activeDefaultFrequency === "monthly";
@@ -55,19 +72,36 @@ const amountNotes: Record<"monthly" | "one-time", Record<number, string>> = {
 };
 const amountNote = (frequency: "monthly" | "one-time", amount: number) => amountNotes[frequency][amount] ?? "Recovery care";
 
+const trackedUrl = (value: string | undefined, campaign: string) => {
+  if (!value || !source) return value;
+  const url = new URL(value);
+  url.searchParams.set("utm_source", "22strong-website");
+  url.searchParams.set("utm_medium", "website");
+  url.searchParams.set("utm_campaign", campaign);
+  url.searchParams.set("utm_content", source);
+  return url.toString();
+};
+
 // One-time gifts check out to the Fund Recovery Care campaign.
 const oneTimeReady = isConfigured(site.donateUrl);
 const monthlyReady = isConfigured(site.strongCircleUrl);
-const oneTimeUrl = oneTimeReady ? site.donateUrl : undefined;
-const monthlyUrl = monthlyReady ? site.strongCircleUrl : undefined;
+const oneTimeUrl = trackedUrl(oneTimeReady ? site.donateUrl : undefined, "fund-recovery-care");
+const monthlyUrl = trackedUrl(monthlyReady ? site.strongCircleUrl : undefined, "strong-circle");
 const initReady = isMonthly ? monthlyReady : oneTimeReady;
 const checkoutFrequency = isMonthly ? "monthly" : "once";
 const checkoutBase = isMonthly ? monthlyUrl : oneTimeUrl;
 const donateHref = checkoutBase
   ? `${checkoutBase}${checkoutBase.includes("?") ? "&" : "?"}amount=${encodeURIComponent(initAmount)}&frequency=${checkoutFrequency}`
   : "#contact";
-const initLabelTemplate = isMonthly ? strings.donation.checkoutMonthly : strings.donation.checkoutOneTime;
+const monthlyLabelTemplate = checkoutMonthlyLabel ?? strings.donation.checkoutMonthly;
+const initLabelTemplate = isMonthly ? monthlyLabelTemplate : strings.donation.checkoutOneTime;
 const donateLabel = initReady ? initLabelTemplate.replace("{amount}", `$${fmt(initAmount)}`) : strings.donation.giveNow;
+const renderedCardLabel = cardLabel ?? (isMonthly ? "Strong Circle monthly gift" : strings.donation.oneTimeGift);
+const renderedCardTitle = cardTitle ?? (isMonthly ? "Choose a monthly amount" : strings.donation.cardTitle);
+const renderedCardIntro = cardIntro ?? (isMonthly
+  ? "$22 a month anchors the Strong Circle. Choose the amount that works for you."
+  : strings.donation.cardIntro);
+const renderedAmountGridLabel = amountGridLabel ?? strings.donation.amountGridLabel;
 const legalParts = [
   site.orgName,
   isConfigured(site.taxStatus) ? site.taxStatus : "",
@@ -84,18 +118,18 @@ const legalParts = [
 >
   <div class="card donation-card-main">
     <div class="donation-card-header">
-      <span class="donation-type">{strings.donation.oneTimeGift}</span>
+      <span class="donation-type">{renderedCardLabel}</span>
       <span class="donation-secure">{strings.donation.secureCheckout}</span>
     </div>
-    <h3 class="donation-card-title">{strings.donation.cardTitle}</h3>
-    <p class="donation-card-intro">{strings.donation.cardIntro}</p>
+    <h3 class="donation-card-title">{renderedCardTitle}</h3>
+    <p class="donation-card-intro">{renderedCardIntro}</p>
     {showFrequencyToggle && (
       <div class="toggle-row" role="group" aria-label={strings.donation.giftFrequency}>
         <button type="button" class={activeDefaultFrequency === "one-time" ? "active" : ""} data-frequency-control data-frequency="one-time" aria-pressed={activeDefaultFrequency === "one-time" ? "true" : "false"}>{strings.donation.oneTime}</button>
         <button type="button" class={activeDefaultFrequency === "monthly" ? "active" : ""} data-frequency-control data-frequency="monthly" aria-pressed={activeDefaultFrequency === "monthly" ? "true" : "false"}>{strings.donation.monthly}</button>
       </div>
     )}
-    <span class="eyebrow amount-grid-label">{strings.donation.amountGridLabel}</span>
+    <span class="eyebrow amount-grid-label">{renderedAmountGridLabel}</span>
     {grids.map((g) => (
       <div class="amount-grid" data-grid={g.freq} role="group" aria-label={strings.donation.giftAmountOptions}>
         {g.amounts.map((amount) => (
@@ -127,9 +161,9 @@ const legalParts = [
       class="btn-donate"
       href={donateHref}
       data-donate-onetime={oneTimeUrl}
-      data-donate-monthly={showFrequencyToggle ? monthlyUrl : undefined}
+      data-donate-monthly={monthlyUrl}
       data-label-onetime={strings.donation.checkoutOneTime}
-      data-label-monthly={strings.donation.checkoutMonthly}
+      data-label-monthly={monthlyLabelTemplate}
       aria-label={donateLabel}
     >
       {donateLabel}

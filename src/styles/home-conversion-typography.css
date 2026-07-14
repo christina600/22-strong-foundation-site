@@ -1,0 +1,229 @@
+/* ============================================================
+   Conversion typography
+
+   One deliberate hierarchy for the homepage's two direct asks:
+   fact -> meaning -> action, then ask -> choice -> checkout.
+   This file is imported last so conversion type is not split across
+   the older visual-polish layers.
+   ============================================================ */
+
+/* Recovery-gap bridge: keep the evidence memorable without letting the
+   statistic overpower the explanation or the next action. */
+.stat-bridge__content {
+  max-width: min(690px, 88%);
+}
+
+.stat-bridge__number {
+  margin-bottom: clamp(18px, 2.4vw, 28px);
+  font-size: clamp(4rem, 7.5vw, 6.4rem);
+  line-height: .92;
+}
+
+.stat-bridge__number .stat-number-text {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: .16em;
+}
+
+.stat-bridge__number .stat-number-text__letters {
+  font-size: .48em;
+  font-weight: 720;
+  line-height: 1;
+}
+
+.stat-bridge__body {
+  max-width: 32ch;
+  margin-bottom: clamp(12px, 1.7vw, 18px);
+  font-size: clamp(1.18rem, 1rem + .65vw, 1.55rem);
+  font-weight: 540;
+  line-height: 1.48;
+  color: rgba(251, 247, 238, .94);
+}
+
+.stat-bridge__source {
+  margin-bottom: clamp(30px, 4vw, 48px);
+  font-size: clamp(.76rem, .72rem + .12vw, .86rem);
+  font-weight: 650;
+  color: rgba(251, 247, 238, .68);
+}
+
+.stat-bridge__cta {
+  font-size: clamp(.9rem, .86rem + .14vw, 1rem);
+}
+
+/* Donation section: the human ask is the section peak. The card then steps
+   down into a compact decision interface where amounts and checkout lead. */
+.donate-section {
+  --conversion-heading: clamp(2.85rem, 3.4vw + 1.65rem, 4.25rem);
+  --conversion-lead: clamp(1.16rem, 1.02rem + .42vw, 1.38rem);
+  --conversion-card-title: clamp(1.72rem, 1.48rem + .72vw, 2.08rem);
+  --conversion-amount: clamp(1.5rem, 1.28rem + .72vw, 1.82rem);
+  --conversion-copy: clamp(.94rem, .9rem + .12vw, 1rem);
+  --conversion-label: clamp(.78rem, .75rem + .1vw, .84rem);
+  --conversion-meta: clamp(.75rem, .72rem + .08vw, .8rem);
+}
+
+.donate-section h2 {
+  max-width: 10.8ch;
+  margin-bottom: clamp(18px, 2.1vw, 26px);
+  font-size: var(--conversion-heading);
+  line-height: 1.01;
+  letter-spacing: -.018em;
+}
+
+.donate-section .lead {
+  max-width: 33ch;
+  margin-bottom: 0;
+  font-size: var(--conversion-lead);
+  font-weight: 520;
+  line-height: 1.5;
+  color: rgba(255, 250, 240, .9);
+}
+
+.donate-section .outcomes {
+  max-width: 38ch;
+  font-size: clamp(.88rem, .83rem + .14vw, .96rem);
+  font-weight: 520;
+  line-height: 1.5;
+  color: rgba(255, 250, 240, .66);
+}
+
+.donate-section .donate-voice__quote {
+  font-size: clamp(1.15rem, 1rem + .48vw, 1.4rem);
+  font-weight: 610;
+  line-height: 1.42;
+}
+
+.donate-section .donate-voice__cite {
+  font-size: clamp(.82rem, .78rem + .14vw, .92rem);
+  font-weight: 650;
+  color: rgba(255, 250, 240, .64);
+}
+
+.donate-section .donation-card-main {
+  --donation-copy-size: var(--conversion-copy);
+  --donation-meta-size: var(--conversion-label);
+  --donation-ui-size: clamp(.88rem, .84rem + .12vw, .96rem);
+  gap: clamp(10px, .85vw, 13px);
+}
+
+.donation-card-header {
+  padding-bottom: 2px;
+}
+
+.donation-type,
+.donation-secure {
+  min-height: 24px;
+  padding: 4px 8px;
+  font-size: var(--conversion-meta);
+  font-weight: 720;
+  letter-spacing: .015em;
+}
+
+.donation-type {
+  color: #0b5658;
+  border: 1px solid rgba(14, 90, 92, .18);
+  background: rgba(14, 90, 92, .08);
+}
+
+.donation-secure {
+  color: rgba(32, 35, 31, .58);
+  border-color: rgba(32, 35, 31, .09);
+  background: transparent;
+}
+
+.donation-card-title {
+  font-size: var(--conversion-card-title);
+  font-weight: 820;
+  line-height: 1.02;
+  letter-spacing: -.012em;
+}
+
+.donate-section .donation-card-intro {
+  max-width: 42ch;
+  font-size: var(--conversion-copy);
+  font-weight: 560;
+  line-height: 1.42;
+  color: rgba(32, 35, 31, .68);
+}
+
+.donate-section .amount-grid-label {
+  margin-top: 4px;
+  font-size: var(--conversion-label);
+  font-weight: 720;
+  color: rgba(32, 35, 31, .58);
+}
+
+.donate-section .amount-button {
+  min-height: 58px;
+  gap: 4px;
+}
+
+.donate-section .amount-button-value {
+  font-size: var(--conversion-amount);
+  font-weight: 900;
+  line-height: .9;
+}
+
+.donate-section .amount-button small {
+  font-size: var(--conversion-meta);
+  font-weight: 640;
+  line-height: 1.22;
+}
+
+.donate-section .btn-donate {
+  font-size: clamp(.88rem, .83rem + .16vw, .98rem);
+  font-weight: 780;
+}
+
+.donate-section .donation-footnote,
+.donate-section .donation-legal {
+  font-size: var(--conversion-meta);
+  font-weight: 450;
+  line-height: 1.4;
+  color: rgba(32, 35, 31, .58);
+}
+
+.donate-circle-note {
+  margin-top: 16px;
+  font-size: clamp(.88rem, .84rem + .12vw, .96rem);
+  line-height: 1.45;
+  color: rgba(255, 255, 255, .66);
+}
+
+.donate-circle-note a {
+  font-weight: 650;
+}
+
+@media (max-width: 560px) {
+  .stat-bridge__number {
+    font-size: clamp(3.8rem, 16vw, 4.4rem);
+  }
+
+  .stat-bridge__body {
+    font-size: 1.12rem;
+    line-height: 1.5;
+  }
+
+  .donate-section h2 {
+    max-width: 11ch;
+  }
+
+  .donation-card-title {
+    font-size: var(--conversion-card-title);
+  }
+
+  .donate-section .donation-card-intro {
+    font-size: var(--conversion-copy);
+    line-height: 1.42;
+  }
+
+  .donate-section .amount-button {
+    min-height: 56px;
+  }
+
+  .donate-section .amount-button-value {
+    font-size: var(--conversion-amount);
+  }
+}

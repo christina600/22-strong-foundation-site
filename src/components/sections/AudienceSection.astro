@@ -117,7 +117,10 @@ const preparedGroups = groups.map((group) => ({
                 style={group.voices[0].imagePosition ? `object-position: ${group.voices[0].imagePosition};` : undefined}
               />
               {group.voices[0].quote && <blockquote class="audience-voice__quote">{group.voices[0].quote}</blockquote>}
-              <figcaption class="audience-voice__cite">{group.voices[0].name} · {group.voices[0].title}</figcaption>
+              <figcaption class="audience-voice__cite">
+                <cite class="audience-voice__cite-name">{group.voices[0].name}</cite>
+                {group.voices[0].title && <span class="audience-voice__cite-role">{group.voices[0].title}</span>}
+              </figcaption>
             </figure>
           )}
           {!group.voices.length && group.featurePhoto && (
@@ -205,9 +208,4 @@ const preparedGroups = groups.map((group) => ({
   .audience-voice__quote::before { content: "\201C"; }
   .audience-voice__quote::after { content: "\201D"; }
 
-  .audience-voice__cite {
-    font-size: 1.25rem;
-    font-weight: 700;
-    opacity: .78;
-  }
 </style>

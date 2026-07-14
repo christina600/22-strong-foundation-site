@@ -3,8 +3,69 @@ import HomeBase from "../../layouts/HomeBase.astro";
 import SiteFooter from "../../components/sections/SiteFooter.astro";
 import SiteHeader from "../../components/sections/SiteHeader.astro";
 import home from "../../content/home.json";
+import site from "../../content/site.json";
 
 const description = "22STRONG Foundation is a registered 501(c)(3) public charity. EIN: 99-1232582.";
+
+const clientNeeds = [
+  {
+    number: "01",
+    title: "IRS determination letter",
+    why: "This is the IRS letter confirming the foundation's tax-exempt status.",
+    requests: [
+      "Provide a clean PDF of the determination letter.",
+      "Confirm whether it may be posted for download or should remain available by request.",
+    ],
+  },
+  {
+    number: "02",
+    title: "Financial reporting",
+    why: "Donors should be able to see the most recent available financial record.",
+    requests: [
+      "Provide the latest Form 990, annual report, or board-approved financial summary.",
+      "If the first filing is not available yet, confirm the fiscal year and when reporting is expected.",
+    ],
+  },
+  {
+    number: "03",
+    title: "Board and governance",
+    why: "The public page should identify who is responsible for oversight.",
+    requests: [
+      "Confirm the current directors, officers, and their roles.",
+      "Provide the conflict-of-interest policy or confirm that it is available on request.",
+    ],
+  },
+  {
+    number: "04",
+    title: "Provider relationship and approvals",
+    why: "Next Level is affiliated with members of the foundation's board, so the approval process must be explained accurately.",
+    requests: [
+      "Confirm who reviews and approves payments to affiliated providers.",
+      "Explain when affiliated board members recuse themselves and how fair rates are documented.",
+      "Confirm whether 22STRONG currently funds care through any providers besides Next Level.",
+    ],
+  },
+  {
+    number: "05",
+    title: "Program eligibility and payment flow",
+    why: "Visitors need a simple explanation of how a person qualifies and how a donation becomes care.",
+    requests: [
+      "Confirm who may qualify, who can refer someone, and who approves support.",
+      "Confirm whether the foundation pays providers directly and whether recipients ever receive cash.",
+      "List the kinds of recovery care the foundation will and will not fund.",
+    ],
+  },
+  {
+    number: "06",
+    title: "Impact numbers and reporting date",
+    why: "Every public number needs a date and a clear definition.",
+    requests: [
+      "Confirm the 200+ sessions and 45 people supported totals, with an as-of date.",
+      "Confirm how the $190 session cost and $850 average care-plan cost were calculated.",
+      "Choose how often these figures will be reviewed and updated.",
+    ],
+  },
+];
 ---
 
 <HomeBase title="Our Commitment to Transparency" description={description}>
@@ -14,19 +75,66 @@ const description = "22STRONG Foundation is a registered 501(c)(3) public charit
     <main id="main" class="about-page transparency-page">
       <section class="transparency-hero" aria-labelledby="transparency-title">
         <div class="transparency-hero__inner">
-          <p class="eyebrow">Transparency</p>
+          <p class="eyebrow">Transparency · Client review draft</p>
           <h1 id="transparency-title">Our Commitment to Transparency</h1>
           <p class="lead">
-            22STRONG Foundation is a registered 501(c)(3) public charity.
-            EIN: 99-1232582. Contributions are tax-deductible to the extent
-            allowed by law.
+            This working page shows what is already known and what 22STRONG still
+            needs to provide or confirm before the public Transparency page is complete.
           </p>
         </div>
       </section>
 
       <div class="transparency-copy">
+        <aside class="transparency-review-note" aria-labelledby="client-review-title">
+          <span>Client review</span>
+          <div>
+            <h2 id="client-review-title">Please complete each item marked “Client input needed.”</h2>
+            <p>
+              The guidance is written in plain language so you can gather the right files and
+              decisions without drafting website copy. The final public page will replace these
+              notes with approved information and document links.
+            </p>
+          </div>
+        </aside>
+
+        <section class="transparency-section" aria-labelledby="current-facts">
+          <p class="transparency-kicker">Already entered on the website · Please confirm</p>
+          <h2 id="current-facts">Current organization facts</h2>
+          <dl class="transparency-facts">
+            <div>
+              <dt>Organization</dt>
+              <dd>{site.orgName}</dd>
+            </div>
+            <div>
+              <dt>Tax status</dt>
+              <dd>{site.taxStatus} public charity</dd>
+            </div>
+            <div>
+              <dt>EIN</dt>
+              <dd>{site.ein}</dd>
+            </div>
+            <div>
+              <dt>Address</dt>
+              <dd>{site.address}</dd>
+            </div>
+            <div>
+              <dt>Public email</dt>
+              <dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
+            </div>
+            <div>
+              <dt>Service area</dt>
+              <dd>{site.serviceArea}</dd>
+            </div>
+          </dl>
+          <p class="transparency-legal">
+            Current working tax statement: Contributions are tax-deductible to the extent
+            allowed by law. Please confirm the details above before public launch.
+          </p>
+        </section>
+
         <section class="transparency-section" aria-labelledby="how-care-delivered">
-          <h2 id="how-care-delivered">How care is delivered</h2>
+          <p class="transparency-kicker">Current working explanation · Please confirm</p>
+          <h2 id="how-care-delivered">How care is currently described</h2>
           <p>
             The foundation does not provide care directly. We fund treatment
             delivered by licensed providers, including Next Level Wellness Center
@@ -34,15 +142,55 @@ const description = "22STRONG Foundation is a registered 501(c)(3) public charit
             that facility, all payments to it are governed by our conflict of
             interest policy and approved at fair market rates.
           </p>
-        </section>
-
-        <section class="transparency-section" aria-labelledby="our-documents">
-          <h2 id="our-documents">Our documents</h2>
-          <p>
-            Our IRS determination letter and financial information are available
-            on request at <a href="mailto:team@22strongfoundation.com">team@22strongfoundation.com</a>.
+          <p class="transparency-confirmation">
+            Confirm that every sentence above is accurate. Item 04 below asks for the
+            details needed to explain this relationship responsibly.
           </p>
         </section>
+
+        <section class="transparency-needs" aria-labelledby="client-input-title">
+          <div class="transparency-needs__heading">
+            <p class="transparency-kicker">Completion checklist</p>
+            <h2 id="client-input-title">Information needed from 22STRONG</h2>
+            <p>
+              Send the documents or answers that already exist. If something has not been
+              created or decided yet, simply say so; the final page can describe its status honestly.
+            </p>
+          </div>
+
+          <ol class="transparency-need-grid">
+            {clientNeeds.map((item) => (
+              <li class="transparency-need-card">
+                <div class="transparency-need-card__header">
+                  <span class="transparency-need-card__number" aria-hidden="true">{item.number}</span>
+                  <span class="transparency-status">Client input needed</span>
+                </div>
+                <h3>{item.title}</h3>
+                <p>{item.why}</p>
+                <strong>Please provide or confirm:</strong>
+                <ul>
+                  {item.requests.map((request) => <li>{request}</li>)}
+                </ul>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <aside class="transparency-handoff" aria-labelledby="handoff-title">
+          <div>
+            <p class="transparency-kicker">How to respond</p>
+            <h2 id="handoff-title">Files and short answers are enough.</h2>
+            <p>
+              Email available documents and answers to
+              <a href={`mailto:${site.email}`}>{site.email}</a>. Label each response with the
+              matching number above so it can be placed correctly.
+            </p>
+          </div>
+          <p class="transparency-handoff__privacy">
+            <strong>Please do not send patient medical records or private health information.</strong>
+            This page only needs program-level policies, totals, and public documents.
+          </p>
+        </aside>
       </div>
     </main>
 

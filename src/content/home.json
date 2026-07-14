@@ -127,15 +127,9 @@
       "detailAriaLabel": "Veteran recovery support",
       "lead": "Recovery care for veterans dealing with pain, injury, or limited mobility after service.",
       "body": "For veterans living with pain after service, waiting can mean more than a missed appointment. It can mean lost mobility, pain that flares back up, missed work, and the feeling of starting over. 22STRONG was built by people who have seen that gap up close, both through service and in the treatment room. That is why we help cover the next sports-medicine recovery visit when care is still needed and the appointment is out of reach.",
-      "photo": "/images/story-smart-mirror-coaching.webp",
-      "photoAlt": "Dr. Vas guiding a client through a strength exercise at Next Level Wellness",
-      "imagePosition": "48% 42%",
-      "recoveryBeat": {
-        "src": "/images/stock-veteran-section-21-9.webp",
-        "alt": "A veteran resting between recovery exercises in a bright treatment room",
-        "imagePosition": "50% 50%",
-        "afterStat": 0
-      },
+      "photo": "/images/story-veteran-leg-therapy.webp",
+      "photoAlt": "Dr. Chris providing hands-on leg treatment for a male veteran at Next Level Wellness Center",
+      "imagePosition": "50% 50%",
       "statsKey": "veterans",
       "proofClass": "veteran-proof",
       "voicesId": "veteran-voices",
@@ -166,12 +160,6 @@
       "featurePhoto": {
         "src": "/images/story-youth-dugout.jpg",
         "alt": "Youth baseball players lined up along the dugout fence during a game"
-      },
-      "recoveryBeat": {
-        "src": "/images/stock-student-athlete-section-21-9.webp",
-        "alt": "A young athlete moving through a running drill on an open track",
-        "imagePosition": "50% 52%",
-        "afterStat": 1
       },
       "voicesAriaLabel": "Low-income youth testimonials",
       "voices": [
@@ -204,6 +192,7 @@
     "adam": {
       "quote": "During my sophomore year in college, I had hip surgery that was potentially season-ending and even career-ending. My coaches referred me to Dr. Vas, who was able to take care of me and eventually get me back to playing within a short few weeks. That season I ended up winning hustle player of the year award. Throughout my career, I saw Dr. Vas on various occasions for injuries that came up, along with maintenance and preventive care. I was able to play competitively at the top level.",
       "attribution": "Adam Folker · UC Irvine basketball alumnus",
+      "title": "UC Irvine basketball alumnus",
       "story": ""
     }
   },
@@ -352,7 +341,7 @@
           },
           {
             "label": "Strong Circle",
-            "href": "/ways-to-support/#strong-circle"
+            "href": "/strong-circle/"
           },
           {
             "label": "Get in touch",

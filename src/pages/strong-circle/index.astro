@@ -1,0 +1,20 @@
+---
+import HomeBase from "../../layouts/HomeBase.astro";
+import SiteFooter from "../../components/sections/SiteFooter.astro";
+import SiteHeader from "../../components/sections/SiteHeader.astro";
+import StrongCircleContent from "../../components/sections/StrongCircleContent.astro";
+import home from "../../content/home.json";
+
+const description =
+  "Join Strong Circle, 22STRONG Foundation's monthly-giving community, and help keep recovery care moving when coverage stops short.";
+---
+
+<HomeBase title="Strong Circle Monthly Giving" description={description}>
+  <div class="site site--circle">
+    <SiteHeader current="strong-circle" />
+
+    <StrongCircleContent />
+
+    <SiteFooter footer={home.footer} homeHrefPrefix="/" />
+  </div>
+</HomeBase>

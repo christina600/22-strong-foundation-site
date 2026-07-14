@@ -44,7 +44,7 @@ const showFontLab = import.meta.env.DEV && Astro.url.searchParams.has("fontlab")
       />
 
       <section class="stat-bridge" aria-label="Recovery gap statistic">
-        <div class="stat-bridge__media" style="--bg-image: url(/images/story-assisted-rehab.webp)"></div>
+        <div class="stat-bridge__media" style="--bg-image: url(/images/story-leg-therapy-wide.jpg)"></div>
         <div class="stat-bridge__content">
           <p class="stat-bridge__number"><StatNumber text={visitCapStat.number} /></p>
           <p class="stat-bridge__body">{visitCapStat.text}</p>
@@ -63,8 +63,8 @@ const showFontLab = import.meta.env.DEV && Astro.url.searchParams.has("fontlab")
         needParagraphs={home.mission.needParagraphs}
         paragraphs={home.story.paragraphs}
         media={{
-          src: "/images/story-treatment-room.webp",
-          alt: "Hands providing shoulder mobility treatment during a rehab session",
+          src: "/images/story-neck-treatment.jpg",
+          alt: "Dr. Vas providing hands-on neck mobility treatment at Next Level Wellness Center",
           caption: "The gap shows up where recovery happens: in the treatment room.",
           imagePosition: "50% 50%"
         }}
