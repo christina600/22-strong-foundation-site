@@ -1,0 +1,334 @@
+/* Mission-first hero. Imported last so this composition owns the final hero hierarchy. */
+.hero {
+  min-height: clamp(700px, calc(94svh - 82px), 900px);
+}
+
+.hero-media::after {
+  background:
+    linear-gradient(90deg, rgba(15, 18, 14, .72) 0%, rgba(15, 18, 14, .32) 34%, rgba(15, 18, 14, .52) 60%, rgba(15, 18, 14, .78) 100%),
+    linear-gradient(180deg, rgba(15, 18, 14, .54) 0%, rgba(15, 18, 14, .16) 34%, rgba(15, 18, 14, .76) 100%);
+}
+
+.hero::after {
+  background:
+    radial-gradient(ellipse 72% 78% at 16% 48%, transparent 30%, rgba(15, 18, 14, .36) 100%),
+    linear-gradient(180deg, rgba(15, 18, 14, .06), rgba(15, 18, 14, .24));
+}
+
+.hero-inner {
+  min-height: inherit;
+  padding-block: clamp(42px, 6.5vh, 74px) calc(clamp(64px, 9vh, 100px) + var(--hero-proofbar-height));
+}
+
+.hero-copy {
+  /* Lockup is taller than the old stack (~1.54:1) — width kept modest so
+     the mark supports the headline instead of overpowering it. */
+  --hero-mark-width: clamp(240px, 21vw, 340px);
+  width: min(1260px, 100%);
+  margin-inline: auto;
+  padding-top: 0;
+  display: grid;
+  grid-template-columns: minmax(260px, .7fr) minmax(390px, 1.3fr);
+  align-items: center;
+  gap: clamp(40px, 5vw, 88px);
+  filter: none;
+}
+
+.hero-mark {
+  display: grid;
+  justify-items: center;
+  justify-self: center;
+  text-align: center;
+  width: var(--hero-mark-width);
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, .4));
+}
+
+/* SVG lockup: sizes live on the SVG's own attributes so textLength keeps
+   every line flush to the same column — do not set font-size here. */
+.hero-lockup {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hero-lockup text {
+  fill: #fff;
+  font-family: var(--logo-face);
+  font-stretch: condensed;
+  font-weight: 800;
+}
+
+.hero-lockup rect {
+  fill: #d96f2d;
+}
+
+.hero-lockup text.hero-lockup-foundation {
+  font-weight: 600;
+  fill: rgba(255, 255, 255, .96);
+}
+
+.hero-mission {
+  max-width: 620px;
+  color: #fff;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, .42);
+}
+
+.hero-mission__eyebrow {
+  margin: 0 0 16px;
+  color: #f0773c;
+  font-family: var(--ui-face, ui-sans-serif, system-ui, sans-serif);
+  font-size: clamp(.78rem, .7rem + .18vw, .92rem);
+  font-weight: 820;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.hero .hero-mission__heading {
+  display: block;
+  margin: 0;
+  max-width: 13ch;
+  color: #fff;
+  font-family: var(--display-face);
+  font-size: clamp(2.65rem, 4.55vw, 4.6rem);
+  font-weight: 780;
+  line-height: .98;
+  letter-spacing: -.035em;
+  text-wrap: balance;
+}
+
+.hero-mission__lead {
+  margin: clamp(20px, 2.4vw, 30px) 0 0;
+  max-width: 55ch;
+  color: rgba(255, 255, 255, .9);
+  font-size: clamp(1.04rem, .94rem + .35vw, 1.28rem);
+  font-weight: 520;
+  line-height: 1.52;
+  text-wrap: pretty;
+}
+
+.hero-mission__actions {
+  margin-top: clamp(24px, 3vw, 38px);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 24px;
+}
+
+.hero-mission__secondary {
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  color: #fff;
+  font-family: var(--ui-face, ui-sans-serif, system-ui, sans-serif);
+  font-weight: 760;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, .5);
+  text-underline-offset: 5px;
+}
+
+.hero-mission__secondary:hover,
+.hero-mission__secondary:focus-visible {
+  color: #ffd7c3;
+  text-decoration-color: currentColor;
+}
+
+.name-origin {
+  padding: clamp(34px, 5vw, 64px) var(--space-page-x);
+  background: #252a24;
+  border-block: 1px solid rgba(255, 255, 255, .09);
+}
+
+.name-origin__inner {
+  width: min(980px, 100%);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: minmax(160px, .55fr) minmax(0, 1.45fr);
+  gap: 10px clamp(32px, 6vw, 84px);
+}
+
+.name-origin__eyebrow {
+  grid-row: 1 / span 3;
+  margin: 5px 0 0;
+  color: #f0773c;
+  font-family: var(--ui-face, ui-sans-serif, system-ui, sans-serif);
+  font-size: .78rem;
+  font-weight: 820;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.name-origin h2 {
+  margin: 0;
+  max-width: 21ch;
+  color: #fff;
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  line-height: 1.04;
+  letter-spacing: -.025em;
+  text-wrap: balance;
+}
+
+.name-origin__body {
+  margin: 14px 0 0;
+  max-width: 68ch;
+  color: rgba(255, 255, 255, .78);
+  font-size: clamp(1rem, .96rem + .2vw, 1.14rem);
+  line-height: 1.62;
+}
+
+.name-origin__crisis {
+  margin: 14px 0 0;
+  color: rgba(255, 255, 255, .58);
+  font-size: .9rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 920px) {
+  .hero {
+    min-height: auto;
+  }
+
+  .hero-inner {
+    min-height: 760px;
+    align-content: center;
+    padding-top: clamp(48px, 7vh, 72px);
+  }
+
+  .hero-copy {
+    --hero-mark-width: clamp(220px, 28vw, 300px);
+    grid-template-columns: minmax(200px, .68fr) minmax(320px, 1.32fr);
+    gap: clamp(24px, 4.2vw, 46px);
+  }
+
+  .hero-mark-22 {
+    font-size: clamp(11.3rem, 27vw, 15.6rem);
+  }
+
+  .hero-mark-strong {
+    font-size: clamp(3.8rem, 8.4vw, 5rem);
+  }
+
+  .hero-mark-foundation {
+    font-size: clamp(.98rem, 2.15vw, 1.26rem);
+  }
+}
+
+@media (max-width: 700px) {
+  .hero-media video {
+    object-position: 57% center;
+  }
+
+  .hero-media::after {
+    background: linear-gradient(180deg, rgba(15, 18, 14, .76), rgba(15, 18, 14, .47) 42%, rgba(15, 18, 14, .78));
+  }
+
+  .hero-inner {
+    min-height: min(830px, calc(100svh - 70px));
+    padding: 42px 20px calc(38px + var(--hero-proofbar-height));
+    align-content: center;
+  }
+
+  .hero-copy {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 28px;
+  }
+
+  .hero-mark {
+    --hero-mark-width: clamp(210px, 60vw, 280px);
+    justify-self: center;
+  }
+
+  .hero-mark-22 {
+    font-size: clamp(12.6rem, 52vw, 16.8rem);
+  }
+
+  .hero-mark-strong {
+    margin-top: .02em;
+    font-size: clamp(4rem, 15vw, 5.35rem);
+  }
+
+  .hero-mark-rule {
+    height: 13px;
+    margin-block: 15px 14px;
+  }
+
+  .hero-mark-foundation {
+    font-size: clamp(.94rem, 4vw, 1.16rem);
+    letter-spacing: .42em;
+    text-indent: .42em;
+  }
+
+  .hero-mission__eyebrow {
+    margin-bottom: 11px;
+  }
+
+  .hero .hero-mission__heading {
+    max-width: 12ch;
+    font-size: clamp(2.2rem, 10.7vw, 3.15rem);
+    line-height: .99;
+  }
+
+  .hero-mission__lead {
+    margin-top: 16px;
+    max-width: 34ch;
+    font-size: clamp(.96rem, 4vw, 1.08rem);
+    line-height: 1.45;
+  }
+
+  .hero-mission {
+    text-align: left;
+  }
+
+  .hero-mission__actions {
+    margin-top: 20px;
+  }
+
+  .hero-mission__actions .pill {
+    min-height: 48px;
+    padding-inline: 20px;
+  }
+
+  .name-origin__inner {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .name-origin__eyebrow {
+    grid-row: auto;
+    margin: 0 0 12px;
+  }
+}
+
+@media (max-height: 720px) and (max-width: 700px) {
+  .hero-inner {
+    min-height: 690px;
+    padding-top: 28px;
+  }
+
+  .hero-copy {
+    gap: 22px;
+  }
+
+  .hero-mark {
+    --hero-mark-width: 210px;
+  }
+
+  .hero-mark-22 {
+    font-size: 10.3rem;
+  }
+
+  .hero-mark-strong {
+    font-size: 3.35rem;
+  }
+
+  .hero-mark-foundation {
+    font-size: .86rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-mark,
+  .hero-mission {
+    animation: none !important;
+  }
+}

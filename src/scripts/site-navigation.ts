@@ -277,6 +277,48 @@ function initMobileNav() {
   });
 }
 
+function initDonationMenu() {
+  const toggle = document.querySelector<HTMLButtonElement>(".nav-donate-toggle");
+  const menu = document.querySelector<HTMLElement>(".nav-donate-menu");
+
+  if (!toggle || !menu) return;
+
+  const closeMenu = (returnFocus = false) => {
+    toggle.setAttribute("aria-expanded", "false");
+    menu.hidden = true;
+    if (returnFocus) toggle.focus();
+  };
+
+  const openMenu = () => {
+    toggle.setAttribute("aria-expanded", "true");
+    menu.hidden = false;
+  };
+
+  toggle.addEventListener("click", () => {
+    if (toggle.getAttribute("aria-expanded") === "true") {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  menu.addEventListener("click", (event) => {
+    if ((event.target as Element).closest("a")) closeMenu();
+  });
+
+  document.addEventListener("click", (event) => {
+    const target = event.target as Element;
+    if (toggle.contains(target) || menu.contains(target)) return;
+    closeMenu();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
+      closeMenu(true);
+    }
+  });
+}
+
 function updateScrollState() {
   const header = document.querySelector<HTMLElement>("header");
   if (!header) return;
@@ -320,6 +362,7 @@ function initNavigation() {
 
   // Initialize mobile nav toggle
   initMobileNav();
+  initDonationMenu();
 }
 
 if (document.readyState === "loading") {

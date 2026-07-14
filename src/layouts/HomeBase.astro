@@ -23,6 +23,11 @@ import site from "../content/site.json";
 import strings from "../content/strings/en.json";
 import { isConfigured } from "../utils/config";
 import { heroBattleRopes } from "../assets/images";
+import "@fontsource/barlow-condensed/latin-600.css";
+import "@fontsource/barlow-condensed/latin-800.css";
+import "@fontsource/barlow-condensed/latin-900.css";
+import "@fontsource-variable/source-serif-4/wght.css";
+import "@fontsource-variable/inter/wght.css";
 import "../styles/home.css";
 
 // Optimized hero image URL — no longer rendered on the page (the hero is a
@@ -98,8 +103,8 @@ const metaDesc = description || site.descriptor;
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" href="/favicon.ico" />
   
-  <!-- Apple Touch Icon (uses SVG as fallback) -->
-  <link rel="apple-touch-icon" href="/favicon.svg" />
+  <!-- Apple Touch Icon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <meta name="apple-mobile-web-app-title" content="22STRONG" />
 
   <!-- Gate the scrollytelling start state on JS so non-JS users see all -->
@@ -126,7 +131,6 @@ const metaDesc = description || site.descriptor;
     import "../scripts/testimonial-video.ts";
     import "../scripts/testimonial-reel.ts";
     import "../scripts/micro-interactions.ts";
-    import "../scripts/scroll-story.ts";
   </script>
 </body>
 </html>

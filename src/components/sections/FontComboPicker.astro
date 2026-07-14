@@ -1,0 +1,631 @@
+---
+const faces = [
+  {
+    id: "current",
+    label: "Barlow",
+    note: "original",
+    stack: "\"Barlow\", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+  },
+  {
+    id: "avenir",
+    label: "Avenir",
+    note: "clean",
+    stack: "\"Avenir Next\", Avenir, \"Helvetica Neue\", Arial, sans-serif",
+  },
+  {
+    id: "avenir-condensed",
+    label: "Avenir Cnd",
+    note: "narrow",
+    stack: "\"Avenir Next Condensed\", \"Avenir Next\", \"Helvetica Neue\", Arial, sans-serif",
+  },
+  {
+    id: "helvetica",
+    label: "Helvetica",
+    note: "neutral",
+    stack: "\"Helvetica Neue\", Arial, sans-serif",
+  },
+  {
+    id: "helvetica-condensed",
+    label: "Helvetica Cnd",
+    note: "loud",
+    stack: "\"Helvetica Neue Condensed Black\", \"HelveticaNeue-CondensedBold\", \"Arial Narrow\", Impact, sans-serif",
+  },
+  {
+    id: "din",
+    label: "DIN",
+    note: "numeric",
+    stack: "\"DIN Condensed\", \"DIN Alternate\", \"Avenir Next Condensed\", \"Arial Narrow\", Impact, sans-serif",
+  },
+  {
+    id: "optima",
+    label: "Optima",
+    note: "humanist",
+    stack: "Optima, \"Avenir Next\", \"Helvetica Neue\", Arial, sans-serif",
+  },
+  {
+    id: "seravek",
+    label: "Seravek",
+    note: "soft",
+    stack: "Seravek, \"Avenir Next\", \"Helvetica Neue\", Arial, sans-serif",
+  },
+  {
+    id: "new-york",
+    label: "New York",
+    note: "editorial",
+    stack: "\"New York\", Georgia, \"Times New Roman\", serif",
+  },
+  {
+    id: "charter",
+    label: "Charter",
+    note: "warm serif",
+    stack: "Charter, Georgia, \"Times New Roman\", serif",
+  },
+  {
+    id: "report-serif",
+    label: "Report Serif",
+    note: "locked",
+    stack: "\"Iowan Old Style\", Charter, Georgia, \"Times New Roman\", serif",
+  },
+  {
+    id: "iowan",
+    label: "Iowan",
+    note: "bookish",
+    stack: "\"Iowan Old Style\", Charter, Georgia, \"Times New Roman\", serif",
+  },
+  {
+    id: "georgia",
+    label: "Georgia",
+    note: "classic",
+    stack: "Georgia, \"Times New Roman\", serif",
+  },
+  {
+    id: "system",
+    label: "System",
+    note: "native",
+    stack: "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+  },
+  {
+    id: "sf-compact",
+    label: "SF Compact",
+    note: "sharp",
+    stack: "\"SF Compact Display\", \"SF Pro Display\", \"Avenir Next Condensed\", \"Arial Narrow\", sans-serif",
+  },
+  {
+    id: "aptos-narrow",
+    label: "Aptos N",
+    note: "utility",
+    stack: "\"Aptos Narrow\", \"Arial Narrow\", \"Avenir Next Condensed\", sans-serif",
+  },
+  {
+    id: "palatino",
+    label: "Palatino",
+    note: "sturdy",
+    stack: "Palatino, \"Palatino Linotype\", Georgia, serif",
+  },
+  {
+    id: "menlo",
+    label: "Menlo",
+    note: "tabular",
+    stack: "\"SFMono-Regular\", Menlo, Monaco, Consolas, \"Liberation Mono\", monospace",
+  },
+  {
+    id: "courier",
+    label: "Courier",
+    note: "ledger",
+    stack: "\"Courier New\", Courier, monospace",
+  },
+];
+
+const faceById = Object.fromEntries(faces.map((face) => [face.id, face]));
+
+const roles = [
+  {
+    id: "body",
+    label: "Body",
+    defaultFace: "avenir",
+    faceIds: ["current", "avenir", "helvetica", "optima", "seravek", "charter", "iowan", "georgia"],
+  },
+  {
+    id: "ui",
+    label: "Buttons",
+    defaultFace: "avenir",
+    faceIds: ["current", "avenir", "helvetica", "seravek", "optima"],
+  },
+  {
+    id: "number",
+    label: "Stats",
+    defaultFace: "menlo",
+    faceIds: [
+      "menlo",
+      "din",
+      "sf-compact",
+      "avenir-condensed",
+      "helvetica-condensed",
+      "aptos-narrow",
+      "current",
+      "system",
+      "avenir",
+      "helvetica",
+      "new-york",
+      "charter",
+      "iowan",
+      "georgia",
+      "palatino",
+      "courier",
+    ],
+  },
+].map((role) => ({
+  ...role,
+  faces: role.faceIds.map((faceId) => faceById[faceId]).filter(Boolean),
+}));
+
+const presets = [
+  {
+    id: "current",
+    name: "Avenir + Menlo",
+    note: "site default",
+    mix: { body: "avenir", ui: "avenir", number: "menlo" },
+  },
+  {
+    id: "field",
+    name: "Field Sans",
+    note: "modern",
+    mix: { body: "avenir", ui: "avenir", number: "din" },
+  },
+  {
+    id: "civic",
+    name: "Civic Condensed",
+    note: "bold",
+    mix: { body: "helvetica", ui: "helvetica", number: "helvetica-condensed" },
+  },
+  {
+    id: "clinic",
+    name: "Clinical Humanist",
+    note: "calm",
+    mix: { body: "avenir", ui: "avenir", number: "avenir-condensed" },
+  },
+  {
+    id: "editorial",
+    name: "Editorial Serif",
+    note: "warm",
+    mix: { body: "charter", ui: "avenir", number: "palatino" },
+  },
+  {
+    id: "report",
+    name: "Report Serif",
+    note: "formal",
+    mix: { body: "iowan", ui: "avenir", number: "menlo" },
+  },
+  {
+    id: "soft",
+    name: "Soft Modern",
+    note: "friendly",
+    mix: { body: "seravek", ui: "seravek", number: "sf-compact" },
+  },
+];
+---
+
+<aside class="font-lab" aria-label="Typeface mixer">
+  <div class="font-lab__head">
+    <p>Typeface Lab</p>
+    <button type="button" data-font-lab-reset>Reset</button>
+  </div>
+
+  <div class="font-lab__presets" role="group" aria-label="Preset typeface mixes">
+    {presets.map((preset) => {
+      const bodyFace = faceById[preset.mix.body];
+      const numberFace = faceById[preset.mix.number];
+
+      return (
+        <button
+          type="button"
+          class="font-lab__preset"
+          data-font-preset={preset.id}
+          data-body-face={preset.mix.body}
+          data-ui-face={preset.mix.ui}
+          data-number-face={preset.mix.number}
+          aria-pressed={preset.id === "current" ? "true" : "false"}
+          style={`--preset-body: ${bodyFace.stack}; --preset-number: ${numberFace.stack};`}
+        >
+          <span aria-hidden="true">
+            <strong>Aa</strong>
+            <em>22</em>
+          </span>
+          <span>
+            <b>{preset.name}</b>
+            <small>{preset.note}</small>
+          </span>
+        </button>
+      );
+    })}
+  </div>
+
+  <div class="font-lab__mix" aria-label="Mix typefaces by role">
+    {roles.map((role) => (
+      <fieldset class="font-lab__row" data-font-role-row={role.id}>
+        <legend>{role.label}</legend>
+        <div class="font-lab__choices">
+          {role.faces.map((face) => (
+            <button
+              type="button"
+              class="font-lab__choice"
+              data-font-role={role.id}
+              data-font-face={face.id}
+              data-font-stack={face.stack}
+              aria-pressed={face.id === role.defaultFace ? "true" : "false"}
+              style={`--choice-face: ${face.stack};`}
+            >
+              <span>{face.label}</span>
+              <small>{face.note}</small>
+            </button>
+          ))}
+        </div>
+      </fieldset>
+    ))}
+  </div>
+
+  <div class="font-lab__preview" aria-hidden="true">
+    <p class="font-lab__preview-display">Recovery care that keeps going.</p>
+    <p class="font-lab__preview-body">Treatment funded when coverage stops short.</p>
+    <p class="font-lab__preview-number">22</p>
+  </div>
+</aside>
+
+<script>
+  const root = document.documentElement;
+  const storageKey = "22strong-font-mix-v2";
+  const roles = ["body", "ui", "number"] as const;
+  const defaultMix = {
+    body: "avenir",
+    ui: "avenir",
+    number: "menlo",
+  };
+  const faceButtons = [...document.querySelectorAll<HTMLButtonElement>("[data-font-role][data-font-face]")];
+  const presetButtons = [...document.querySelectorAll<HTMLButtonElement>("[data-font-preset]")];
+  const reset = document.querySelector<HTMLButtonElement>("[data-font-lab-reset]");
+
+  type Role = typeof roles[number];
+  type FontMix = Record<Role, string>;
+
+  let activeMix: FontMix = { ...defaultMix };
+
+  const mixFromPreset = (button: HTMLButtonElement): FontMix => ({
+    body: button.dataset.bodyFace ?? defaultMix.body,
+    ui: button.dataset.uiFace ?? defaultMix.ui,
+    number: button.dataset.numberFace ?? defaultMix.number,
+  });
+
+  const getStack = (role: Role, faceId: string) => {
+    const button = faceButtons.find((item) => item.dataset.fontRole === role && item.dataset.fontFace === faceId);
+    const fallback = faceButtons.find((item) => item.dataset.fontRole === role && item.dataset.fontFace === defaultMix[role]);
+
+    return button?.dataset.fontStack ?? fallback?.dataset.fontStack ?? "";
+  };
+
+  const setPressedStates = () => {
+    faceButtons.forEach((button) => {
+      const role = button.dataset.fontRole as Role;
+      button.setAttribute("aria-pressed", String(activeMix[role] === button.dataset.fontFace));
+    });
+
+    presetButtons.forEach((button) => {
+      const presetMix = mixFromPreset(button);
+      const matches = roles.every((role) => activeMix[role] === presetMix[role]);
+      button.setAttribute("aria-pressed", String(matches));
+    });
+  };
+
+  const persistMix = () => {
+    try {
+      sessionStorage.setItem(storageKey, JSON.stringify(activeMix));
+    } catch {
+      // Storage is optional; the mixer still works without persistence.
+    }
+  };
+
+  const applyMix = (mix: Partial<FontMix>, persist = true) => {
+    activeMix = { ...defaultMix, ...activeMix, ...mix };
+
+    roles.forEach((role) => {
+      root.style.setProperty(`--${role}-face`, getStack(role, activeMix[role]));
+    });
+
+    root.dataset.fontMix = roles.map((role) => activeMix[role]).join("-");
+    setPressedStates();
+
+    if (persist) {
+      persistMix();
+    }
+  };
+
+  faceButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const role = button.dataset.fontRole as Role;
+      const face = button.dataset.fontFace ?? defaultMix[role];
+
+      applyMix({ [role]: face });
+    });
+  });
+
+  presetButtons.forEach((button) => {
+    button.addEventListener("click", () => applyMix(mixFromPreset(button)));
+  });
+
+  reset?.addEventListener("click", () => applyMix(defaultMix));
+
+  try {
+    const savedMix = JSON.parse(sessionStorage.getItem(storageKey) ?? "null") as Partial<FontMix> | null;
+    applyMix(savedMix ?? defaultMix, false);
+  } catch {
+    applyMix(defaultMix, false);
+  }
+</script>
+
+<style is:global>
+  html[data-font-mix] body {
+    font-family: var(--body-face);
+  }
+</style>
+
+<style>
+  .font-lab {
+    position: fixed;
+    right: clamp(14px, 2vw, 22px);
+    bottom: clamp(14px, 2vw, 22px);
+    z-index: 70;
+    width: min(360px, calc(100vw - 28px));
+    max-height: min(440px, calc(100svh - 28px));
+    overflow-y: auto;
+    padding: 12px;
+    border: 1px solid rgba(32, 35, 31, .16);
+    border-radius: var(--radius, 8px);
+    background: rgba(255, 253, 247, .94);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, .72) inset,
+      0 22px 52px rgba(29, 33, 29, .18);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+
+  .font-lab__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .font-lab__head p {
+    margin: 0;
+    color: var(--ink);
+    font-family: var(--ui-face, ui-sans-serif, system-ui, sans-serif);
+    font-size: .78rem;
+    font-weight: 900;
+    letter-spacing: .08em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .font-lab__head button {
+    min-height: 32px;
+    padding: 0 10px;
+    border: 1px solid rgba(32, 35, 31, .18);
+    border-radius: 999px;
+    background: rgba(255, 253, 247, .82);
+    color: rgba(32, 35, 31, .74);
+    cursor: pointer;
+    font: 800 .78rem/1 var(--ui-face, ui-sans-serif, system-ui, sans-serif);
+  }
+
+  .font-lab__presets {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .font-lab__preset,
+  .font-lab__choice {
+    border: 1px solid rgba(32, 35, 31, .12);
+    border-radius: 8px;
+    background: rgba(248, 244, 235, .70);
+    color: var(--ink);
+    cursor: pointer;
+    text-align: left;
+    transition:
+      border-color .18s ease,
+      background .18s ease,
+      box-shadow .18s ease,
+      transform .18s ease;
+  }
+
+  .font-lab__preset:hover,
+  .font-lab__preset:focus-visible,
+  .font-lab__choice:hover,
+  .font-lab__choice:focus-visible {
+    border-color: rgba(32, 35, 31, .28);
+    background: rgba(255, 253, 247, .96);
+    transform: translateY(-1px);
+  }
+
+  .font-lab__preset:focus-visible,
+  .font-lab__choice:focus-visible,
+  .font-lab__head button:focus-visible {
+    outline: 3px solid rgba(14, 90, 92, .36);
+    outline-offset: 2px;
+  }
+
+  .font-lab__preset[aria-pressed="true"],
+  .font-lab__choice[aria-pressed="true"] {
+    border-color: rgba(14, 90, 92, .58);
+    background: rgba(231, 236, 224, .92);
+    box-shadow: 0 0 0 2px rgba(14, 90, 92, .10);
+  }
+
+  .font-lab__preset {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 10px;
+    align-items: center;
+    min-height: 66px;
+    padding: 9px;
+  }
+
+  .font-lab__preset > span:first-child {
+    display: grid;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    border-radius: 6px;
+    background: rgba(32, 35, 31, .08);
+    color: var(--ink);
+  }
+
+  .font-lab__preset strong {
+    display: block;
+    margin-top: 2px;
+    font-family: var(--display-face);
+    font-size: 1.3rem;
+    font-weight: 900;
+    line-height: .8;
+  }
+
+  .font-lab__preset em {
+    display: block;
+    font-family: var(--preset-number);
+    font-size: .9rem;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 1;
+    opacity: .68;
+  }
+
+  .font-lab__preset > span:last-child {
+    display: grid;
+    gap: 3px;
+    min-width: 0;
+  }
+
+  .font-lab__preset b {
+    overflow: hidden;
+    color: var(--ink);
+    font-family: var(--display-face);
+    font-size: .96rem;
+    font-weight: 850;
+    line-height: 1.05;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .font-lab__preset small,
+  .font-lab__choice small {
+    color: rgba(32, 35, 31, .64);
+    font-family: var(--body-face, ui-sans-serif, system-ui, sans-serif);
+    font-size: .74rem;
+    font-weight: 750;
+    line-height: 1.1;
+  }
+
+  .font-lab__mix {
+    display: grid;
+    gap: 10px;
+  }
+
+  .font-lab__row {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .font-lab__row legend {
+    margin-bottom: 6px;
+    color: rgba(32, 35, 31, .72);
+    font-family: var(--ui-face, ui-sans-serif, system-ui, sans-serif);
+    font-size: .72rem;
+    font-weight: 900;
+    letter-spacing: .08em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .font-lab__choices {
+    display: flex;
+    gap: 7px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+
+  .font-lab__choice {
+    flex: 0 0 116px;
+    min-height: 52px;
+    padding: 8px;
+  }
+
+  .font-lab__choice span {
+    display: block;
+    overflow: hidden;
+    font-family: var(--choice-face);
+    font-size: .94rem;
+    font-weight: 850;
+    line-height: 1.05;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .font-lab__choice small {
+    display: block;
+    margin-top: 4px;
+  }
+
+  .font-lab__preview {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 4px 14px;
+    align-items: end;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(32, 35, 31, .12);
+  }
+
+  .font-lab__preview-display {
+    grid-column: 1;
+    margin: 0;
+    color: var(--ink);
+    font-family: var(--display-face);
+    font-size: clamp(1.2rem, 2.2vw, 1.75rem);
+    font-weight: 900;
+    line-height: .98;
+  }
+
+  .font-lab__preview-body {
+    grid-column: 1;
+    margin: 0;
+    color: rgba(32, 35, 31, .68);
+    font-family: var(--body-face);
+    font-size: .88rem;
+    font-weight: 650;
+    line-height: 1.25;
+  }
+
+  .font-lab__preview-number {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    margin: 0;
+    color: var(--ink);
+    font-family: var(--number-face);
+    font-size: 2.6rem;
+    font-weight: 950;
+    letter-spacing: 0;
+    line-height: .82;
+  }
+
+  @media (max-width: 700px) {
+    .font-lab {
+      right: 10px;
+      bottom: 10px;
+      width: min(340px, calc(100vw - 20px));
+      max-height: min(440px, calc(100svh - 20px));
+    }
+  }
+</style>

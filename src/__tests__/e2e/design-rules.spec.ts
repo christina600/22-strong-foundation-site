@@ -53,14 +53,21 @@ const TEXT_SIZE_BASELINE: Record<string, number> = {
 const TEXT_SIZE_EXCLUDED =
   "header, nav, button, [role='button'], .pill, .btn-donate, .amount-button, input, select, textarea, label, sup, sub, .skip-link, .circle-tier";
 
-// Orange is allowed on interactive CTA elements (buttons and button-styled
-// links, including the active states of the donation amount controls).
-const ORANGE_ALLOWED_INTERACTIVE = "a, button, [role='button']";
+// Orange is reserved for the brand mark and controls that enter a giving flow.
+const ORANGE_ALLOWED_INTERACTIVE =
+  ".hero-mark, .nav-donate-toggle, .nav-donate-option, .btn-donate, a[href*='#donate'], a[href*='givebutter.com']";
 
 async function auditPage(page: import("@playwright/test").Page) {
   return page.evaluate(
     ({ minPx, textExcluded, orangeAllowedInteractive }) => {
-      const ORANGE_TOKENS = ["rgb(201, 79, 15)", "rgb(159, 57, 8)"];
+      const ORANGE_TOKENS = [
+        "rgb(201, 79, 15)",
+        "rgb(159, 57, 8)",
+        "rgb(168, 86, 50)",
+        "rgb(132, 63, 36)",
+        "rgb(135, 59, 30)",
+        "rgb(104, 44, 21)",
+      ];
 
       function describe(el: Element) {
         const tag = el.tagName.toLowerCase();

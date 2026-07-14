@@ -48,12 +48,14 @@ test.describe("runtime hygiene", () => {
       /https:\/\/givebutter\.com\/fund-recovery-care-gaf6gu\?amount=190&frequency=once/
     );
 
-    // The Strong Circle section lives on the homepage since the redesign.
-    await expect(page.locator(".strong-circle-trigger")).toHaveAttribute(
+    await page.goto("/ways-to-support/");
+
+    // Recurring giving lives on the dedicated Ways to Support page.
+    await expect(page.locator(".support-circle__cta")).toHaveAttribute(
       "href",
       "https://givebutter.com/22-strong-circle-bjf16z"
     );
-    await expect(page.locator(".circle-tier").first()).toHaveAttribute(
+    await expect(page.locator(".support-tier").first()).toHaveAttribute(
       "href",
       /https:\/\/givebutter\.com\/22-strong-circle-bjf16z\?amount=22&frequency=monthly/
     );

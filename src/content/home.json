@@ -1,6 +1,10 @@
 {
   "hero": {
-    "ctaLabel": "Support the next visit"
+    "eyebrow": "Recovery care funding",
+    "heading": "Keep recovery going when insurance stops short.",
+    "lead": "22STRONG helps fund sports-medicine recovery visits for veterans and young people who cannot afford the next appointment.",
+    "ctaLabel": "Support the next visit",
+    "secondaryCtaLabel": "See how it works"
   },
   "heroLead": "22STRONG helps pay for sports-medicine recovery care for veterans and young people when insurance no longer covers the next visit.",
   "credibility": [
@@ -38,6 +42,12 @@
       "22STRONG started inside Next Level Fitness & Wellness Center, a sports-medicine clinic in Newport Beach co-owned by Travis Mayfield, a Purple Heart veteran of the 101st Airborne, and Dr. Vasili “Dr. Vas” Gatsinaris.",
       "In the treatment room they kept seeing the same problem: the care was working, and the next visit wasn't guaranteed. They built 22STRONG so a recovery wouldn't depend on whether someone could afford one more appointment."
     ]
+  },
+  "nameOrigin": {
+    "eyebrow": "Why 22STRONG?",
+    "heading": "The name honors veterans. The mission funds recovery.",
+    "body": "The name 22STRONG comes from the widely cited “22 veterans a day” statistic and honors veterans lost to suicide. The foundation itself is not a suicide-prevention or crisis-response provider; its program funds sports-medicine recovery care for veterans and young people.",
+    "crisis": "If you or a veteran you know is in crisis, call 988 and press 1 for the Veterans Crisis Line."
   },
   "stats": {
     "veterans": [
@@ -120,6 +130,12 @@
       "photo": "/images/story-smart-mirror-coaching.webp",
       "photoAlt": "Dr. Vas guiding a client through a strength exercise at Next Level Wellness",
       "imagePosition": "48% 42%",
+      "recoveryBeat": {
+        "src": "/images/stock-veteran-section-21-9.webp",
+        "alt": "A veteran resting between recovery exercises in a bright treatment room",
+        "imagePosition": "50% 50%",
+        "afterStat": 0
+      },
       "statsKey": "veterans",
       "proofClass": "veteran-proof",
       "voicesId": "veteran-voices",
@@ -151,6 +167,12 @@
         "src": "/images/story-youth-dugout.jpg",
         "alt": "Youth baseball players lined up along the dugout fence during a game"
       },
+      "recoveryBeat": {
+        "src": "/images/stock-student-athlete-section-21-9.webp",
+        "alt": "A young athlete moving through a running drill on an open track",
+        "imagePosition": "50% 52%",
+        "afterStat": 1
+      },
       "voicesAriaLabel": "Low-income youth testimonials",
       "voices": [
         {
@@ -181,7 +203,7 @@
     },
     "adam": {
       "quote": "During my sophomore year in college, I had hip surgery that was potentially season-ending and even career-ending. My coaches referred me to Dr. Vas, who was able to take care of me and eventually get me back to playing within a short few weeks. That season I ended up winning hustle player of the year award. Throughout my career, I saw Dr. Vas on various occasions for injuries that came up, along with maintenance and preventive care. I was able to play competitively at the top level.",
-      "attribution": "(more info on Adam's position, year, career)",
+      "attribution": "Adam Folker · UC Irvine basketball alumnus",
       "story": ""
     }
   },
@@ -232,8 +254,10 @@
     {
       "name": "Tri Nguyen",
       "role": "Director",
-      "initials": "TN",
-      "paragraphs": []
+      "initials": "needed",
+      "paragraphs": [
+        "needed"
+      ]
     }
   ],
   "donate": {

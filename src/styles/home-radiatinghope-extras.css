@@ -169,21 +169,6 @@
   opacity: 1;
 }
 
-/* Glow pulse fires once when a counter finishes counting */
-[data-counter].is-complete {
-  animation: counter-glow 0.6s ease-out;
-}
-
-@keyframes counter-glow {
-  0%   { text-shadow: 0 0 0 rgba(185, 85, 36, 0); }
-  50%  {
-    text-shadow:
-      0 0 24px rgba(185, 85, 36, 0.28),
-      0 0 48px rgba(185, 85, 36, 0.12);
-  }
-  100% { text-shadow: 0 0 0 rgba(185, 85, 36, 0); }
-}
-
 /* Stat beat — slightly longer entrance for the large solo number */
 .stat-beat-number {
   transition-duration: 1s;
@@ -225,7 +210,7 @@
   height: 56px;
   background: linear-gradient(
     180deg,
-    rgba(185, 85, 36, 0.42) 0%,
+    rgba(14, 90, 92, 0.42) 0%,
     transparent 100%
   );
   transform: translateX(-50%);
@@ -266,11 +251,6 @@
     scroll-snap-align: start;
     scroll-snap-stop: normal;
   }
-}
-
-/* Hero parallax compositing hint */
-.hero-inner {
-  will-change: transform;
 }
 
 /* ==========================================================================
@@ -359,7 +339,7 @@
   margin: 0;
   padding: clamp(64px, 8vw, 112px) var(--space-page-x);
   background:
-    linear-gradient(135deg, rgba(185, 85, 36, .10), transparent 42%),
+    linear-gradient(135deg, rgba(14, 90, 92, .10), transparent 42%),
     linear-gradient(180deg, #181f17, #111610);
   overflow: hidden;
 }
@@ -456,8 +436,8 @@
 
 .veteran-chapter-play:hover .veteran-chapter-play-icon {
   transform: scale(1.10);
-  background: rgba(185, 85, 36, .32);
-  border-color: rgba(185, 85, 36, .72);
+  background: rgba(14, 90, 92, .32);
+  border-color: rgba(14, 90, 92, .72);
 }
 
 .veteran-chapter-play-label {

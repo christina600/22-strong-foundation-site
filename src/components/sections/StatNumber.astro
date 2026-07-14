@@ -1,0 +1,49 @@
+---
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+const numericPattern = /[$£€]?\d[\d,]*(?:\.\d+)?(?:\/\d[\d,]*(?:\.\d+)?)?(?:[+%x])?/gi;
+const parts: Array<{ text: string; numeric: boolean }> = [];
+let lastIndex = 0;
+
+for (const match of text.matchAll(numericPattern)) {
+  const value = match[0];
+  const index = match.index ?? 0;
+
+  if (index > lastIndex) {
+    parts.push({ text: text.slice(lastIndex, index), numeric: false });
+  }
+
+  parts.push({ text: value, numeric: true });
+  lastIndex = index + value.length;
+}
+
+if (lastIndex < text.length) {
+  parts.push({ text: text.slice(lastIndex), numeric: false });
+}
+
+if (parts.length === 0) {
+  parts.push({ text, numeric: false });
+}
+---
+
+<span class="stat-number-text" role="img" aria-label={text}>{parts.map((part) => (
+  <span class={part.numeric ? "stat-number-text__digits" : "stat-number-text__letters"} aria-hidden="true">{part.text}</span>
+))}</span>
+
+<style is:global>
+  .stat-number-text {
+    font-family: var(--body-face, ui-sans-serif, system-ui, sans-serif);
+  }
+
+  .stat-number-text__digits {
+    font-family: var(--number-face, var(--display-face));
+  }
+
+  .stat-number-text__letters {
+    font-family: var(--body-face, ui-sans-serif, system-ui, sans-serif);
+    font-stretch: normal;
+  }
+</style>

@@ -46,7 +46,7 @@ main {
 .story-path[data-chapter]::after,
 .story-commitment[data-chapter]::after,
 .story-ask[data-chapter]::after {
-  -webkit-text-stroke-color: rgba(185, 85, 36, .16);
+  -webkit-text-stroke-color: rgba(14, 90, 92, .16);
 }
 
 .story-commitment[data-chapter]::after,
@@ -56,7 +56,7 @@ main {
 
 /* Chapter 03 watermark doubled so it reads at all */
 .story-path[data-chapter]::after {
-  -webkit-text-stroke-color: rgba(185, 85, 36, .32);
+  -webkit-text-stroke-color: rgba(14, 90, 92, .32);
 }
 
 .story-proofline {
@@ -74,7 +74,7 @@ main {
   bottom: -26px;
   width: 1px;
   height: 52px;
-  background: linear-gradient(180deg, rgba(185, 85, 36, .48), rgba(185, 85, 36, 0));
+  background: linear-gradient(180deg, rgba(14, 90, 92, .48), rgba(14, 90, 92, 0));
   transform: translateX(-50%);
 }
 
@@ -110,7 +110,7 @@ main {
   width: clamp(72px, 10vw, 128px);
   height: 2px;
   margin-top: clamp(22px, 3vw, 34px);
-  background: linear-gradient(90deg, var(--story-rule), rgba(185, 85, 36, 0));
+  background: linear-gradient(90deg, var(--story-rule), rgba(14, 90, 92, 0));
 }
 
 .narrative-scene--about {
@@ -334,7 +334,7 @@ main {
   gap: 12px;
   max-width: none;
   margin-bottom: 0;
-  color: var(--mission-orange, #b95524);
+  color: var(--mission-orange, #0e5a5c);
   font-family: var(--ui-face, ui-sans-serif, system-ui, sans-serif);
   font-size: var(--fs-body-lg);
   font-stretch: normal;
@@ -346,7 +346,7 @@ main {
   content: "";
   width: clamp(42px, 6vw, 78px);
   height: 2px;
-  background: linear-gradient(90deg, var(--story-rule), rgba(185, 85, 36, 0));
+  background: linear-gradient(90deg, var(--story-rule), rgba(14, 90, 92, 0));
 }
 
 .story-serve-intro[data-chapter]::after {
@@ -504,7 +504,7 @@ main {
 
 .audience-kicker {
   width: fit-content;
-  color: var(--mission-orange, #b95524);
+  color: var(--mission-orange, #0e5a5c);
   font-family: var(--ui-face, ui-sans-serif, system-ui, sans-serif);
   font-size: var(--fs-meta, 1rem);
   font-weight: 900;
@@ -555,7 +555,7 @@ main {
   left: 0;
   width: clamp(72px, 11vw, 128px);
   height: 2px;
-  background: linear-gradient(90deg, var(--story-rule), rgba(185, 85, 36, 0));
+  background: linear-gradient(90deg, var(--story-rule), rgba(14, 90, 92, 0));
 }
 
 .audience-chapter .audience-stats .audience-stat-inner {
@@ -683,7 +683,7 @@ main {
   left: max(var(--space-page-x), calc((100vw - var(--max)) / 2));
   width: clamp(74px, 9vw, 132px);
   height: 2px;
-  background: linear-gradient(90deg, var(--story-rule), rgba(185, 85, 36, 0));
+  background: linear-gradient(90deg, var(--story-rule), rgba(14, 90, 92, 0));
 }
 
 .story-ask {
@@ -803,7 +803,7 @@ main {
     display: block;
     top: 18px;
     right: var(--space-page-x);
-    color: rgba(185, 85, 36, .68);
+    color: rgba(14, 90, 92, .68);
     -webkit-text-stroke: 0;
     font-family: var(--ui-face, ui-sans-serif, system-ui, sans-serif);
     font-stretch: normal;
@@ -977,7 +977,7 @@ html {
   --mission-orange: #252321;
   --field-sand:
     radial-gradient(circle at 18% 22%, rgba(74, 61, 42, .14) 0 1px, transparent 1.6px),
-    radial-gradient(circle at 63% 48%, rgba(185, 85, 36, .08) 0 1px, transparent 1.7px),
+    radial-gradient(circle at 63% 48%, rgba(14, 90, 92, .08) 0 1px, transparent 1.7px),
     radial-gradient(circle at 36% 78%, rgba(255, 250, 240, .32) 0 1px, transparent 1.5px),
     linear-gradient(180deg, rgba(248, 244, 235, .72), rgba(221, 207, 181, .24));
   --field-canvas:
@@ -1007,7 +1007,7 @@ body {
   background:
     var(--field-paper-grain),
     linear-gradient(135deg, rgba(123, 132, 100, .11), transparent 34%),
-    linear-gradient(225deg, rgba(185, 85, 36, .045), transparent 38%),
+    linear-gradient(225deg, rgba(14, 90, 92, .045), transparent 38%),
     linear-gradient(180deg, #fbf7ee 0%, #efe4d3 52%, #f8f4eb 100%);
 }
 
@@ -1048,8 +1048,8 @@ form {
    (muted colour, line heights, body-face alignment). */
 :root {
   --muted: #464c45;
-  /* Use Barlow for all UI/form text — matches the display (Barlow Condensed) family */
-  --ui-face: "Barlow", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  /* Keep UI/form text aligned with the body voice. */
+  --ui-face: "Inter Variable", "Helvetica Neue", Arial, sans-serif;
   /* Slightly looser line heights for prose legibility at generous sizes */
   --lh-lead: 1.55;
   --lh-copy: 1.65;

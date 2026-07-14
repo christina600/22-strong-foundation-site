@@ -1,4 +1,5 @@
 ---
+import EvidenceStat from "../../components/sections/EvidenceStat.astro";
 import HomeBase from "../../layouts/HomeBase.astro";
 import SiteFooter from "../../components/sections/SiteFooter.astro";
 import SiteHeader from "../../components/sections/SiteHeader.astro";
@@ -6,16 +7,17 @@ import TestimonialVideo from "../../components/sections/TestimonialVideo.astro";
 import home from "../../content/home.json";
 
 const description = "How 22STRONG closes the recovery gap — from referral to continued care.";
+const [costStat, , opioidStat] = home.stats.others;
 ---
 
-<HomeBase title="How It Works" description={description}>
+<HomeBase title="What We Do" description={description}>
   <div class="site site--about">
     <SiteHeader current="how-it-works" />
 
     <main id="main" class="about-page how-page">
       <section class="how-page-hero" aria-labelledby="how-title">
         <div class="how-page-hero__inner">
-          <p class="eyebrow">How it works</p>
+          <p class="eyebrow">What we do</p>
           <h1 id="how-title">
             <span>A&nbsp;recovery&nbsp;gap appears.</span>
             <span>22STRONG closes it.</span>
@@ -36,6 +38,25 @@ const description = "How 22STRONG closes the recovery gap — from referral to c
             treatment plan is still good; the money behind it is gone. Donor funding pays
             for the visits in between.
           </p>
+        </section>
+
+        <section class="how-evidence" aria-labelledby="why-it-matters">
+          <p class="how-context__label">Why it matters</p>
+          <h2 id="why-it-matters">The numbers behind the gap.</h2>
+
+          <div class="how-evidence__group">
+            <h3 class="how-evidence__group-label">Veterans</h3>
+            <div class="about-evidence" role="list" aria-label="Veteran recovery evidence">
+              {home.stats.veterans.map((stat) => <EvidenceStat stat={stat} variant="about" />)}
+            </div>
+          </div>
+
+          <div class="how-evidence__group">
+            <h3 class="how-evidence__group-label">Young people and their families</h3>
+            <div class="about-evidence" role="list" aria-label="Youth and family recovery evidence">
+              {home.stats.athletes.map((stat) => <EvidenceStat stat={stat} variant="about" />)}
+            </div>
+          </div>
         </section>
 
         <ol class="how-process" aria-label="22STRONG care funding path">
@@ -72,12 +93,6 @@ const description = "How 22STRONG closes the recovery gap — from referral to c
                 22STRONG checks that there's a real treatment plan and that the money
                 behind it has actually run out. If it has, we fund the care.
               </p>
-              <figure class="how-photo-placeholder" aria-label="Photo needed for the gap review step">
-                <div class="how-photo-placeholder__frame">
-                  <span>Photo needed</span>
-                  <p>Referral or care-plan review, with no private patient details visible.</p>
-                </div>
-              </figure>
             </div>
           </li>
 
@@ -89,12 +104,6 @@ const description = "How 22STRONG closes the recovery gap — from referral to c
               <p class="how-step__label">Step 3</p>
               <h2>Care funded</h2>
               <p>22STRONG pays the clinic directly. The patient never sees a bill and never handles the money.</p>
-              <figure class="how-photo-placeholder" aria-label="Photo needed for the care funded step">
-                <div class="how-photo-placeholder__frame">
-                  <span>Photo needed</span>
-                  <p>Funding handoff, front desk moment, or care invoice approval without personal information.</p>
-                </div>
-              </figure>
             </div>
           </li>
 
@@ -168,7 +177,14 @@ const description = "How 22STRONG closes the recovery gap — from referral to c
               <li>Fascial Integrative Treatment (FIT)</li>
               <li>Follow-through after the first visit</li>
             </ul>
-            <p class="how-fund-cost">One session costs $190.</p>
+            <p class="how-fund-cost">
+              One session costs $190.
+              <a class="how-fund-source" href={costStat.url} target="_blank" rel="noopener noreferrer">{costStat.source}</a>
+            </p>
+            <p class="how-fund-note">
+              Starting this care early matters: {opioidStat.number} {opioidStat.text}
+              <a class="how-fund-source" href={opioidStat.url} target="_blank" rel="noopener noreferrer">{opioidStat.source}</a>
+            </p>
           </section>
 
           <section class="how-boundary how-boundary--limits" aria-labelledby="what-we-dont">

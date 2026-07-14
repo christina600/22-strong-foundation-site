@@ -35,10 +35,10 @@ const {
 } = Astro.props;
 ---
 
-<section class={`about-section narrative-scene narrative-scene--${id}`} id={id} data-chapter={chapter} data-bg-shift>
+<section class={`about-section narrative-scene narrative-scene--${id}`} id={id} data-chapter={chapter}>
   <div class="about-inner">
     <div class="about-intro" data-reveal>
-      {heading && <h2 data-reveal="headline" data-split-reveal>{heading}</h2>}
+      {heading && <h2 data-reveal="headline">{heading}</h2>}
       {lead && <p class="lead">{lead}</p>}
     </div>
 

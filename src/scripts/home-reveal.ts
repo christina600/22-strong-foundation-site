@@ -2,7 +2,7 @@
  * Homepage scrollytelling and reveal behavior.
  *
  * Self-contained for the homepage and respects reduced-motion preferences.
- * Also drives the hero parallax effect via a CSS custom property on .hero::before.
+ * Motion is intentionally limited to a short, single reveal per content block.
  */
 
 const REVEAL_SELECTOR = "[data-reveal]";
@@ -104,118 +104,30 @@ function initHomeReveal() {
 
 prefersReducedMotion.addEventListener?.("change", revealHidden);
 
-/* ── Hero parallax ──────────────────────────────────────────────
-   Moves the hero::before photo layer at 28% of scroll speed,
-   creating a depth separation between the text and the image.
-   Uses a CSS custom property so the transform stays in CSS and
-   the JS only updates a single number per frame.
+/* ── Hero video autoplay fallback ───────────────────────────────
+   Browsers in power-saving states (iPhone Low Power Mode, Chrome
+   Energy Saver) block muted autoplay and leave the hero on its
+   first frame. Retry on the first user gesture, which those
+   browsers accept. Skipped under reduced-motion so a blocked
+   autoplay stays still for users who asked for less movement.
    ──────────────────────────────────────────────────────────── */
-function initHeroParallax() {
+function initHeroVideoFallback() {
   if (prefersReducedMotion.matches) return;
 
-  const hero = document.querySelector<HTMLElement>(".hero");
-  if (!hero) return;
+  const video = document.querySelector<HTMLVideoElement>(".hero-media video");
+  if (!video) return;
 
-  // Only run while the hero is in the viewport — bail early once scrolled past.
-  let ticking = false;
+  const kick = () => {
+    if (video.paused) void video.play().catch(() => {});
+  };
 
-  function updateParallax() {
-    const scrollY = window.scrollY;
-    const heroBottom = hero!.offsetTop + hero!.offsetHeight;
-
-    if (scrollY > heroBottom) {
-      // Hero is fully scrolled past — stop updating.
-      return;
-    }
-
-    // 0.28 = 28% parallax factor. Negative so the image moves up (slower than scroll).
-    const offset = -(scrollY * 0.28);
-    hero!.style.setProperty("--hero-parallax-y", `${offset}px`);
-    ticking = false;
-  }
-
-  function onScroll() {
-    if (!ticking) {
-      window.requestAnimationFrame(updateParallax);
-      ticking = true;
-    }
-  }
-
-  window.addEventListener("scroll", onScroll, { passive: true });
-
-  // Clean up if reduced-motion preference changes mid-session.
-  prefersReducedMotion.addEventListener("change", (e) => {
-    if (e.matches) {
-      window.removeEventListener("scroll", onScroll);
-      hero!.style.removeProperty("--hero-parallax-y");
-    }
-  });
-}
-
-/* ── Section parallax ───────────────────────────────────────────
-   Bounded vertical parallax for full-width photo bands. The media
-   layer is over-scanned (15% taller than its frame in CSS), so the
-   transform below never exposes an edge. Pure transform keeps it on
-   the GPU; bails entirely under reduced-motion.
-   ──────────────────────────────────────────────────────────── */
-function initSectionParallax() {
-  if (prefersReducedMotion.matches) return;
-
-  const sections = Array.from(
-    document.querySelectorAll<HTMLElement>("[data-parallax]")
-  );
-  if (sections.length === 0) return;
-
-  // Travel as a fraction of section height. Must stay under the media
-  // over-scan (15%) so edges never show; 12% leaves a safe margin.
-  const TRAVEL = 0.12;
-  let ticking = false;
-
-  function update() {
-    ticking = false;
-    const viewportH = window.innerHeight;
-    sections.forEach((section) => {
-      const media = section.querySelector<HTMLElement>("[data-parallax-media]");
-      if (!media) return;
-      const rect = section.getBoundingClientRect();
-      // Skip work when the band is well outside the viewport.
-      if (rect.bottom < -200 || rect.top > viewportH + 200) return;
-      const sectionCenter = rect.top + rect.height / 2;
-      const range = viewportH / 2 + rect.height / 2;
-      const progress = Math.max(-1, Math.min(1, (sectionCenter - viewportH / 2) / range));
-      const offset = -progress * rect.height * TRAVEL;
-      media.style.setProperty("--parallax-y", `${offset.toFixed(1)}px`);
-    });
-  }
-
-  function onScroll() {
-    if (!ticking) {
-      window.requestAnimationFrame(update);
-      ticking = true;
-    }
-  }
-
-  window.addEventListener("scroll", onScroll, { passive: true });
-  window.addEventListener("resize", onScroll, { passive: true });
-  update();
-
-  prefersReducedMotion.addEventListener("change", (e) => {
-    if (e.matches) {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      sections.forEach((section) =>
-        section
-          .querySelector<HTMLElement>("[data-parallax-media]")
-          ?.style.removeProperty("--parallax-y")
-      );
-    }
-  });
+  window.addEventListener("pointerdown", kick, { once: true });
+  window.addEventListener("scroll", kick, { once: true, passive: true });
 }
 
 function initHomePageMotion() {
   initHomeReveal();
-  initHeroParallax();
-  initSectionParallax();
+  initHeroVideoFallback();
 }
 
 if (document.readyState === "loading") {

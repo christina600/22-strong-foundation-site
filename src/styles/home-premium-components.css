@@ -34,7 +34,7 @@ form {
   position: absolute;
   inset: 0 0 auto;
   height: 3px;
-  background: linear-gradient(90deg, var(--olive), rgba(185, 85, 36, .78), rgba(255, 253, 247, 0));
+  background: linear-gradient(90deg, var(--olive), rgba(14, 90, 92, .78), rgba(255, 253, 247, 0));
 }
 
 .donation-card-main .eyebrow {
@@ -94,7 +94,7 @@ textarea {
   position: relative;
   padding: var(--space-card-compact);
   background:
-    linear-gradient(180deg, rgba(70, 87, 70, .13), rgba(185, 85, 36, .08)),
+    linear-gradient(180deg, rgba(70, 87, 70, .13), rgba(14, 90, 92, .08)),
     var(--map-contours, transparent);
   border-color: rgba(32, 35, 31, .14);
   box-shadow: 0 1px 0 rgba(255, 255, 255, .68) inset;
@@ -273,7 +273,7 @@ textarea {
   min-height: 100%;
   padding: clamp(18px, 2.5vw, 28px);
   background:
-    linear-gradient(135deg, rgba(70, 87, 70, .18), rgba(185, 85, 36, .08)),
+    linear-gradient(135deg, rgba(70, 87, 70, .18), rgba(14, 90, 92, .08)),
     #171b17;
 }
 
@@ -285,7 +285,7 @@ textarea {
 
 .vv-card--video .attribution {
   margin-top: 0;
-  color: var(--mission-orange, #b95524);
+  color: var(--mission-orange, #0e5a5c);
 }
 
 .vv-card--video .story {
@@ -298,7 +298,7 @@ textarea {
   position: relative;
   overflow: hidden;
   background:
-    linear-gradient(135deg, rgba(70, 87, 70, .14), rgba(185, 85, 36, .09)),
+    linear-gradient(135deg, rgba(70, 87, 70, .14), rgba(14, 90, 92, .09)),
     #e8ddc8;
 }
 
@@ -331,7 +331,7 @@ textarea {
 
 .vv-card.is-sample {
   background:
-    linear-gradient(135deg, rgba(185, 85, 36, .08), transparent 38%),
+    linear-gradient(135deg, rgba(14, 90, 92, .08), transparent 38%),
     linear-gradient(180deg, rgba(255, 253, 247, .99), rgba(244, 238, 226, .92));
 }
 
@@ -354,7 +354,7 @@ textarea {
   font-weight: 700;
   font-size: 3.2rem;
   line-height: .4;
-  color: var(--mission-orange, #b95524);
+  color: var(--mission-orange, #0e5a5c);
 }
 
 .vv-story {
@@ -390,7 +390,7 @@ textarea {
 }
 
 .vv-dot {
-  color: var(--mission-orange, #b95524);
+  color: var(--mission-orange, #0e5a5c);
   font-weight: 700;
 }
 
@@ -411,7 +411,7 @@ textarea {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle at 12% 18%, rgba(185, 85, 36, .10), transparent 28%),
+    radial-gradient(circle at 12% 18%, rgba(14, 90, 92, .10), transparent 28%),
     linear-gradient(90deg, rgba(70, 87, 70, .08), transparent 46%);
   opacity: .75;
 }
@@ -520,7 +520,7 @@ textarea {
 
 .testimonial-reel-button:hover {
   transform: translateY(-1px);
-  border-color: rgba(185, 85, 36, .36);
+  border-color: rgba(14, 90, 92, .36);
   background: rgba(255, 253, 247, .96);
 }
 
@@ -548,7 +548,7 @@ textarea {
 
 .testimonial-reel-dot[aria-current] {
   width: 28px;
-  background: var(--mission-orange, #b95524);
+  background: var(--mission-orange, #0e5a5c);
 }
 
 .testimonial-reel-prompt {
@@ -558,7 +558,7 @@ textarea {
   max-width: 24ch;
   margin: 0;
   padding: 10px 14px;
-  border: 1px solid rgba(185, 85, 36, .18);
+  border: 1px solid rgba(14, 90, 92, .18);
   border-radius: 999px;
   background: rgba(255, 253, 247, .92);
   color: rgba(32, 35, 31, .74);
@@ -623,7 +623,7 @@ textarea {
   background:
     var(--map-contours, transparent),
     linear-gradient(180deg, rgba(255, 253, 247, .82), rgba(238, 231, 216, .78)),
-    linear-gradient(90deg, rgba(70, 87, 70, .08), transparent 34%, rgba(185, 85, 36, .08));
+    linear-gradient(90deg, rgba(70, 87, 70, .08), transparent 34%, rgba(14, 90, 92, .08));
   border-block: 1px solid rgba(32, 35, 31, .10);
 }
 
@@ -688,7 +688,7 @@ textarea {
   position: absolute;
   inset: 0 0 auto;
   height: 3px;
-  background: linear-gradient(90deg, var(--olive), rgba(185, 85, 36, .72), transparent);
+  background: linear-gradient(90deg, var(--olive), rgba(14, 90, 92, .72), transparent);
 }
 
 .donate-section {
@@ -710,7 +710,7 @@ textarea {
   background:
     var(--field-scuffs, transparent),
     var(--field-sand, transparent),
-    linear-gradient(115deg, rgba(185, 85, 36, .20), transparent 46%);
+    linear-gradient(115deg, rgba(14, 90, 92, .20), transparent 46%);
   background-size: auto, auto, auto, 148px 132px, 148px 132px, 148px 132px, auto, auto;
 }
 
@@ -762,7 +762,7 @@ textarea {
 
 .amount-button:hover,
 .toggle-row button:hover {
-  border-color: rgba(185, 85, 36, .34);
+  border-color: rgba(14, 90, 92, .34);
 }
 
 .contact {
@@ -865,16 +865,16 @@ textarea {
 input:focus,
 select:focus,
 textarea:focus {
-  border-color: rgba(185, 85, 36, .55);
+  border-color: rgba(14, 90, 92, .55);
   background: #fffdf7;
   box-shadow:
-    0 0 0 4px rgba(185, 85, 36, .12),
+    0 0 0 4px rgba(14, 90, 92, .12),
     0 1px 0 rgba(255, 255, 255, .90) inset;
 }
 
 /* Keyboard focus ring — shared by every interactive element, links
    included (footer + stat citations previously fell back to the faint
-   browser default). Solid --orange (#b95524) clears WCAG 2.4.11's 3:1
+   browser default). Solid --orange (#0e5a5c) clears WCAG 2.4.11's 3:1
    non-text contrast on light panels (~4.8:1) and the dark footer
    (~3.8:1); the previous .28-opacity orange was only ~1.25:1. */
 input:focus,
@@ -893,7 +893,7 @@ footer {
   position: relative;
   overflow: hidden;
   background:
-    linear-gradient(135deg, rgba(185, 85, 36, .13), transparent 38%),
+    linear-gradient(135deg, rgba(14, 90, 92, .13), transparent 38%),
     var(--camo-field, transparent),
     linear-gradient(180deg, #20251f, #141713);
   background-blend-mode: normal, soft-light, normal;

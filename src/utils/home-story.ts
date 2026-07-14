@@ -45,6 +45,10 @@ export interface FeaturePhotoContent {
   imagePosition?: string;
 }
 
+export interface RecoveryBeatContent extends FeaturePhotoContent {
+  afterStat: number;
+}
+
 interface AudienceConfig {
   id: string;
   heading: string;
@@ -55,6 +59,7 @@ interface AudienceConfig {
   photoAlt?: string;
   imagePosition?: string;
   featurePhoto?: FeaturePhotoContent;
+  recoveryBeat?: RecoveryBeatContent;
   statsKey: string;
   statsClass?: string;
   stackStats?: boolean;
@@ -83,6 +88,7 @@ export interface AudienceGroupContent {
   photoAlt?: string;
   imagePosition?: string;
   featurePhoto?: FeaturePhotoContent;
+  recoveryBeat?: RecoveryBeatContent;
   stats: EvidenceStatContent[];
   statsClass?: string;
   stackStats?: boolean;
@@ -138,6 +144,7 @@ export function buildAudienceGroups(home: HomeStoryContent): AudienceGroupConten
     photoAlt: group.photoAlt,
     imagePosition: group.imagePosition,
     featurePhoto: group.featurePhoto,
+    recoveryBeat: group.recoveryBeat,
     stats: home.stats[group.statsKey] ?? [],
     statsClass: group.statsClass,
     stackStats: group.stackStats,

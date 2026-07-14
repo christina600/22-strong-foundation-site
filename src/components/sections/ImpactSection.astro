@@ -1,4 +1,6 @@
 ---
+import StatNumber from "./StatNumber.astro";
+
 interface ImpactFigure {
   number: string;
   label: string;
@@ -35,7 +37,7 @@ const formatLabel = (label: string) => `${label.charAt(0).toUpperCase()}${label.
     <dl class="impact-section__figures">
       {impact.figures.map((figure) => (
         <div class="impact-section__figure" data-reveal="stat">
-          <dt class="impact-section__number">{figure.number}</dt>
+          <dt class="impact-section__number"><StatNumber text={figure.number} /></dt>
           <dd class="impact-section__text">{formatLabel(figure.label)}</dd>
         </div>
       ))}

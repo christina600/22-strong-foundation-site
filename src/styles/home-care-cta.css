@@ -1,0 +1,135 @@
+/* CARE-style CTA pass (requested 2026-07-12, modeled on care.org buttons):
+   full pill shape, flat brand orange, and a cream circle that blooms out
+   from the center on hover while the label flips to ink. The bloom is an
+   animated radial-gradient background layer (not a pseudo-element) so the
+   existing "→" ::after arrow keeps working.
+
+   Supersedes the tactile rubber-mat treatment for CTAs only — donation
+   amount/toggle controls keep the tactile pass. Imported after
+   home-tactile-buttons.css on purpose: later import wins the cascade. */
+
+:root {
+  --care-cta: var(--donation-orange, #a85632); /* orange is reserved for giving actions */
+  --care-cta-ink: #20231f;   /* label color once the bloom fills */
+  --care-cta-cream: #fffaf0; /* bloom fill + resting label color */
+}
+
+/* Shape + type for actions. */
+.site .pill,
+.site .btn-donate,
+.site .nav-donate-toggle,
+.site .nav-donate-option {
+  border-radius: 999px !important; /* tactile pass pins 6px with !important */
+  font-weight: 700;
+  letter-spacing: .06em;
+}
+
+/* Giving CTAs: flat orange, cream bloom on hover/focus. */
+.site a.pill[href*="#donate"],
+.site a.pill[href*="givebutter.com"],
+.site .btn-donate,
+.site .nav-donate-toggle,
+.site .nav-donate-option,
+.site .donate-section .donation-card-main .btn-donate {
+  border: 1px solid transparent;
+  color: var(--care-cta-cream);
+  background-color: var(--care-cta);
+  /* Soft-edged disc: the 46% → 50% fade is the visible "wave front" that
+     makes the fill read as radiating rather than swapping. */
+  background-image: radial-gradient(
+    circle,
+    var(--care-cta-cream) 0%,
+    var(--care-cta-cream) 46%,
+    rgba(255, 250, 240, 0) 50%
+  );
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 0px 0px;
+  box-shadow: 0 10px 26px rgba(134, 58, 26, .24);
+  /* Label flip trails the bloom by a beat so the sweep is seen passing
+     under the text before it settles to ink. */
+  transition:
+    background-size .45s cubic-bezier(.22, .8, .36, 1),
+    color .3s ease-out .06s,
+    transform .22s ease,
+    border-color .22s ease,
+    box-shadow .22s ease;
+}
+
+.site a.pill[href*="#donate"]:hover,
+.site a.pill[href*="#donate"]:focus-visible,
+.site a.pill[href*="givebutter.com"]:hover,
+.site a.pill[href*="givebutter.com"]:focus-visible,
+.site .btn-donate:hover,
+.site .btn-donate:focus-visible,
+.site .nav-donate-toggle:hover,
+.site .nav-donate-toggle:focus-visible,
+.site .nav-donate-option:hover,
+.site .nav-donate-option:focus-visible,
+.site .donate-section .donation-card-main .btn-donate:hover,
+.site .donate-section .donation-card-main .btn-donate:focus-visible {
+  /* Sized to fully flood the widest CTAs (full-width mobile buttons
+     included) — an undersized disc stalls before the corners and the
+     radiate reads as broken. */
+  background-size: 1200px 1200px;
+  color: var(--care-cta-ink);
+  border-color: rgba(32, 35, 31, .16);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(134, 58, 26, .28);
+  filter: none;
+}
+
+.site a.pill[href*="#donate"]:active,
+.site a.pill[href*="givebutter.com"]:active,
+.site .btn-donate:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 16px rgba(134, 58, 26, .22);
+}
+
+/* Competing hover-fill layers fight the bloom — retire them on CTAs:
+   - tactile pass: teal stripe wipe (::before, scaleX)
+   - radiatinghope pass: white fill-from-bottom (::before, translateY)
+   Both co-fire with the bloom and wash it out. Amount/toggle buttons are
+   not in these selectors and keep their tactile treatment. */
+.site a.pill[href*="#donate"]::before,
+.site a.pill[href*="givebutter.com"]::before,
+.site .btn-donate::before,
+.site a.pill[href*="#donate"]::before,
+.site .support-card__cta::before,
+.site .support-circle__cta::before {
+  content: none;
+}
+
+/* Reduced motion: no traveling disc — a quiet crossfade to the same end
+   state (cream fill, ink label) instead of a hard swap. */
+@media (prefers-reduced-motion: reduce) {
+  .site a.pill[href*="#donate"],
+  .site a.pill[href*="givebutter.com"],
+  .site .btn-donate,
+  .site .nav-donate-toggle,
+  .site .nav-donate-option,
+  .site .donate-section .donation-card-main .btn-donate {
+    transition:
+      background-color .25s ease,
+      color .25s ease,
+      border-color .25s ease,
+      box-shadow .25s ease;
+  }
+
+  .site a.pill[href*="#donate"]:hover,
+  .site a.pill[href*="#donate"]:focus-visible,
+  .site a.pill[href*="givebutter.com"]:hover,
+  .site a.pill[href*="givebutter.com"]:focus-visible,
+  .site .btn-donate:hover,
+  .site .btn-donate:focus-visible,
+  .site .nav-donate-toggle:hover,
+  .site .nav-donate-toggle:focus-visible,
+  .site .nav-donate-option:hover,
+  .site .nav-donate-option:focus-visible,
+  .site .donate-section .donation-card-main .btn-donate:hover,
+  .site .donate-section .donation-card-main .btn-donate:focus-visible {
+    background-color: var(--care-cta-cream);
+    background-size: 0px 0px;
+    transform: none;
+  }
+}

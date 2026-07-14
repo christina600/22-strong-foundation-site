@@ -3,9 +3,14 @@ import { heroBattleRopes } from "../../assets/images";
 
 interface Props {
   proofline?: string[];
+  eyebrow: string;
+  heading: string;
+  lead: string;
+  primaryCta: string;
+  secondaryCta: string;
 }
 
-const { proofline = [] } = Astro.props;
+const { proofline = [], eyebrow, heading, lead, primaryCta, secondaryCta } = Astro.props;
 ---
 
 <section class="hero" id="top">
@@ -16,11 +21,31 @@ const { proofline = [] } = Astro.props;
   </div>
   <div class="hero-inner">
     <div class="hero-copy">
-      <div class="hero-mark" aria-label="22STRONG Foundation">
-        <span class="hero-mark-22">22</span>
-        <span class="hero-mark-strong">Strong</span>
-        <span class="hero-mark-rule" aria-hidden="true"></span>
-        <span class="hero-mark-foundation">Foundation</span>
+      <div class="hero-mark" role="img" aria-label="22STRONG Foundation">
+        <!-- Logo lockup replicating the official mark (design-assets ref:
+             official logo, minus the charcoal panel). textLength pins every
+             line to the same 400-unit column; the vertical scale on the 22
+             matches the official near-square digit proportions. -->
+        <svg
+          class="hero-lockup"
+          viewBox="0 0 400 622"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <text x="0" y="306" font-size="432" textLength="400" lengthAdjust="spacingAndGlyphs" transform="scale(1 1.25)">22</text>
+          <text x="0" y="505" font-size="164" textLength="400" lengthAdjust="spacingAndGlyphs">STRONG</text>
+          <rect x="0" y="531" width="400" height="34"></rect>
+          <text class="hero-lockup-foundation" x="0" y="619" font-size="48" textLength="400" lengthAdjust="spacing">FOUNDATION</text>
+        </svg>
+      </div>
+      <div class="hero-mission">
+        <p class="hero-mission__eyebrow">{eyebrow}</p>
+        <h1 class="hero-mission__heading">{heading}</h1>
+        <p class="hero-mission__lead">{lead}</p>
+        <div class="hero-mission__actions">
+          <a class="pill primary" href="#donate">{primaryCta}</a>
+          <a class="hero-mission__secondary" href="/how-it-works/">{secondaryCta}</a>
+        </div>
       </div>
     </div>
   </div>

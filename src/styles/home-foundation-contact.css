@@ -111,9 +111,9 @@ textarea {
 .form-status {
   margin: 0;
   padding: 14px 16px;
-  border: 1px solid rgba(185, 85, 36, .24);
+  border: 1px solid rgba(14, 90, 92, .24);
   border-radius: 8px;
-  background: rgba(185, 85, 36, .08);
+  background: rgba(14, 90, 92, .08);
   color: var(--muted);
   font-size: var(--fs-copy-fine);
   line-height: var(--lh-lead);

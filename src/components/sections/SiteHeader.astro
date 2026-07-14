@@ -1,19 +1,26 @@
 ---
+import site from "../../content/site.json";
+
 interface Props {
   current?: "home" | "about" | "ways-to-support" | "strong-circle" | "how-it-works" | "transparency";
 }
 
 const { current = "home" } = Astro.props;
 const isHome = current === "home";
-const isAbout = current === "about";
-const isWaysToSupport = current === "ways-to-support" || current === "strong-circle";
+const isAboutPage = current === "about";
+const isAbout = isAboutPage || current === "transparency";
+const isWaysToSupportPage = current === "ways-to-support";
+const isWaysToSupport = isWaysToSupportPage || current === "strong-circle";
 const isHowItWorks = current === "how-it-works";
 const homeHref = (hash: string) => isHome ? hash : `/${hash}`;
 ---
 
 <header>
   <nav class="nav" aria-label="Main navigation">
-    <a class="brand" href={isHome ? "#top" : "/"}>22STRONG Foundation</a>
+    <a class="brand" href={isHome ? "#top" : "/"} aria-label="22STRONG Foundation home">
+      <span class="brand-name">22STRONG</span>
+      <span class="brand-foundation">Foundation</span>
+    </a>
     <button
       class="nav-toggle"
       aria-expanded="false"
@@ -23,33 +30,75 @@ const homeHref = (hash: string) => isHome ? hash : `/${hash}`;
       <span class="nav-toggle-icon" aria-hidden="true"></span>
     </button>
     <div class="nav-links" id="nav-menu" aria-label="Section navigation">
-      <a
-        href="/how-it-works/"
-        class:list={{ "is-active": isHowItWorks }}
-        aria-current={isHowItWorks ? "page" : undefined}
-      >
-        How It Works
-      </a>
-      <a
-        href="/about/"
-        class:list={{ "is-active": isAbout }}
-        aria-current={isAbout ? "page" : undefined}
-      >
-        About
-      </a>
-      <a
-        href="/ways-to-support/"
-        class:list={{ "is-active": isWaysToSupport }}
-        aria-current={isWaysToSupport ? "page" : undefined}
-      >
-        Ways to Support
-      </a>
-      <a href={homeHref("#contact")}>Contact</a>
+      <div class="nav-group">
+        <a
+          href="/how-it-works/"
+          class:list={["nav-group__label", { "is-active": isHowItWorks }]}
+          aria-current={isHowItWorks ? "page" : undefined}
+        >
+          <span>What We Do</span>
+          <span class="nav-group__chevron" aria-hidden="true"></span>
+        </a>
+        <div class="nav-submenu" aria-label="What We Do">
+          <a href="/how-it-works/">How It Works</a>
+          <a href={homeHref("#serve")}>Who We Serve</a>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <a
+          href="/about/"
+          class:list={["nav-group__label", { "is-active": isAbout }]}
+          aria-current={isAboutPage ? "page" : undefined}
+        >
+          <span>About Us</span>
+          <span class="nav-group__chevron" aria-hidden="true"></span>
+        </a>
+        <div class="nav-submenu" aria-label="About Us">
+          <a href="/about/">Our Story</a>
+          <a href="/about/#leadership">The Team</a>
+          <a href="/transparency/">Transparency</a>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <a
+          href="/ways-to-support/"
+          class:list={["nav-group__label", { "is-active": isWaysToSupport }]}
+          aria-current={isWaysToSupportPage ? "page" : undefined}
+        >
+          <span>How to Help</span>
+          <span class="nav-group__chevron" aria-hidden="true"></span>
+        </a>
+        <div class="nav-submenu" aria-label="How to Help">
+          <a href="/ways-to-support/">Ways to Give</a>
+          <a href="/strong-circle/">Strong Circle</a>
+          <a href="/how-it-works/#refer-someone">Refer Someone</a>
+          <a href={homeHref("#contact")}>Partner With Us</a>
+          <a href={homeHref("#contact")}>Contact Us</a>
+        </div>
+      </div>
     </div>
     <div class="nav-actions">
-      <a class="pill primary" href={homeHref("#donate")} aria-label="Donate">
-        <span class="nav-action-label">Donate</span>
-      </a>
+      <button
+        class="nav-donate-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="nav-donate-menu"
+      >
+        <span>Donate</span>
+        <span class="nav-donate-chevron" aria-hidden="true"></span>
+      </button>
+      <div class="nav-donate-menu" id="nav-donate-menu" hidden>
+        <a class="nav-donate-option" href={site.donateUrl} target="_blank" rel="noopener noreferrer">
+          <span>Give Once</span>
+          <span class="nav-donate-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="nav-donate-option" href={site.strongCircleUrl} target="_blank" rel="noopener noreferrer">
+          <span>Give Monthly</span>
+          <span class="nav-donate-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
     </div>
   </nav>
 </header>

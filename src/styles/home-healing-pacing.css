@@ -1,0 +1,1002 @@
+/* ============================================================
+   Healing pacing pass
+
+   Keeps the established typefaces and copy while lowering visual pressure.
+   The page now moves through tension, space, reassurance, and action instead
+   of presenting several emotionally heavy facts at the same time.
+   ============================================================ */
+
+:root {
+  --healing-paper: #f6f1e7;
+  --healing-paper-deep: #ede7da;
+  --healing-sage: #e3e9de;
+  --healing-sage-deep: #cdd8c8;
+  --healing-olive: #4d5d4b;
+  --healing-charcoal: #222821;
+  --healing-rust: #a85632;
+  --orange: var(--healing-rust);
+  --preview-cta: var(--healing-rust);
+}
+
+body {
+  color: var(--healing-charcoal);
+  background: linear-gradient(180deg, #faf7f0 0%, var(--healing-paper) 52%, #f3eee4 100%);
+}
+
+body::before {
+  display: none;
+}
+
+/* The navigation remains grounded and masculine, but loses the hard black
+   edge, animated progress rail, and deep floating shadow. */
+header,
+header:not(.is-scrolled),
+header.is-scrolled {
+  background: rgba(29, 36, 28, .95);
+  border-bottom-color: rgba(255, 250, 240, .10);
+  box-shadow: 0 6px 18px rgba(21, 27, 21, .14);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+header::after {
+  display: none;
+}
+
+/* Quieter motion: one short reveal rather than word-by-word or parallax
+   movement. */
+.js [data-reveal] {
+  transition-duration: .34s;
+  transition-delay: 0s;
+}
+
+/* Hero: keep the strength of the mark, soften the footage and glow. */
+.hero-media {
+  filter: saturate(.86) contrast(1.01);
+}
+
+.hero-media::after {
+  background: linear-gradient(180deg, rgba(24, 30, 23, .58) 0%, rgba(24, 30, 23, .22) 50%, rgba(24, 30, 23, .50) 100%);
+}
+
+.hero::after {
+  background:
+    radial-gradient(ellipse 86% 68% at 18% 52%, transparent 38%, rgba(25, 31, 24, .30) 100%),
+    linear-gradient(180deg, rgba(25, 31, 24, .08) 0%, transparent 48%, rgba(25, 31, 24, .38) 100%);
+}
+
+.hero-copy {
+  filter: drop-shadow(0 4px 18px rgba(0, 0, 0, .38));
+}
+
+.hero-mark-rule {
+  box-shadow: none;
+}
+
+.js .hero-mark,
+.js .hero-headline-line {
+  animation-duration: .46s;
+}
+
+/* The mission statement is followed by a real pause before the first hard
+   fact. The space is intentionally undecorated. */
+.hero-lead {
+  padding: clamp(58px, 7vw, 92px) 0 clamp(88px, 10vw, 132px);
+}
+
+.hero-lead-statement {
+  max-width: 34ch;
+  font-size: clamp(1.4rem, 1rem + 1vw, 2rem);
+  font-weight: 620;
+  line-height: 1.48;
+}
+
+/* One emotionally heavy statistic per frame. */
+.stat-bridge {
+  height: clamp(500px, 52vw, 620px);
+}
+
+.stat-bridge__media {
+  inset: 0;
+  transform: none;
+  will-change: auto;
+  background-image:
+    linear-gradient(rgba(24, 30, 23, .58), rgba(24, 30, 23, .58)),
+    var(--bg-image);
+  filter: saturate(.82) contrast(1.02);
+}
+
+.stat-bridge__content {
+  max-width: min(720px, 88%);
+}
+
+.stat-bridge__number {
+  margin-bottom: clamp(22px, 3vw, 32px);
+  font-size: clamp(4.8rem, 10vw, 7.5rem);
+  line-height: .92;
+  text-shadow: none;
+}
+
+.stat-bridge__body {
+  max-width: 34ch;
+  font-size: clamp(1.2rem, 2vw, 1.65rem);
+  line-height: 1.55;
+}
+
+.stat-bridge__source {
+  margin-bottom: clamp(44px, 5vw, 64px);
+}
+
+/* Audience chapters: replace the parallel, uneven cards with a single calm
+   reading lane. Each hard statistic receives its own vertical beat, and the
+   stock photography marks the transition back toward recovery. */
+.story-serve-intro {
+  padding: clamp(104px, 11vw, 148px) var(--space-page-x) clamp(92px, 10vw, 136px);
+  background: linear-gradient(180deg, #f7f3ea, var(--healing-sage));
+}
+
+.story-serve-intro h2 {
+  max-width: 9ch;
+  font-size: clamp(3.8rem, 7.3vw, 6.4rem);
+  line-height: .97;
+}
+
+.audience-card-section {
+  padding-bottom: clamp(128px, 13vw, 184px);
+}
+
+.audience-card-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  width: min(1120px, 100%);
+  margin-top: 0;
+}
+
+.audience-card {
+  display: block;
+  min-height: 0;
+  padding: 0;
+  overflow: visible;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.audience-card.veteran-proof {
+  background: transparent;
+}
+
+.audience-card::before,
+.audience-card::after {
+  display: none;
+}
+
+.audience-card + .audience-card {
+  margin-top: clamp(132px, 15vw, 204px);
+  padding-top: clamp(132px, 15vw, 204px);
+  border-top: 1px solid rgba(34, 40, 33, .14);
+}
+
+.audience-card-photo {
+  margin: 0;
+  aspect-ratio: 21 / 9;
+  border-radius: 10px;
+  background: var(--healing-olive);
+  box-shadow: 0 18px 52px rgba(32, 40, 31, .10);
+}
+
+.audience-card-photo img {
+  filter: saturate(.82) contrast(1.01);
+}
+
+.audience-card__content {
+  width: min(860px, calc(100% - 48px));
+  margin: clamp(56px, 7vw, 82px) auto 0;
+}
+
+.audience-card__intro {
+  display: grid;
+  gap: clamp(16px, 2vw, 24px);
+  max-width: 720px;
+}
+
+.audience-card-name {
+  color: var(--teal-deep);
+  letter-spacing: .08em;
+}
+
+.audience-card-sentence {
+  max-width: 30ch;
+  font-size: clamp(1.6rem, 2.5vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.28;
+}
+
+.audience-card__stats {
+  display: grid;
+  margin-top: clamp(88px, 10vw, 126px);
+}
+
+.audience-card__stat-beat + .audience-card__stat-beat {
+  margin-top: clamp(92px, 10vw, 132px);
+}
+
+.audience-card-stat {
+  display: grid;
+  gap: clamp(14px, 2vw, 20px);
+  padding: 0;
+  border: 0;
+}
+
+.audience-card-stat strong {
+  color: var(--healing-charcoal);
+  font-size: clamp(3.5rem, 6vw, 5rem);
+  line-height: .92;
+}
+
+.audience-card-stat > span {
+  max-width: 48ch;
+  color: rgba(34, 40, 33, .76);
+  font-size: clamp(1.08rem, 1.6vw, 1.3rem);
+  line-height: 1.65;
+}
+
+.audience-card-stat strong .stat-number-text,
+.audience-card-stat strong .stat-number-text__digits,
+.audience-card-stat strong .stat-number-text__letters {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.audience-card-stat a {
+  color: rgba(34, 40, 33, .58);
+}
+
+.audience-recovery-beat {
+  width: 100%;
+  margin: clamp(92px, 11vw, 138px) auto 0;
+  overflow: hidden;
+  aspect-ratio: 21 / 9;
+  border-radius: 10px;
+  background: var(--healing-sage-deep);
+  box-shadow: 0 16px 44px rgba(32, 40, 31, .09);
+}
+
+.audience-recovery-beat img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(.78) contrast(.98) brightness(1.03);
+}
+
+.audience-card-help {
+  display: grid;
+  gap: 14px;
+  max-width: 760px;
+  margin: clamp(104px, 12vw, 152px) 0 0;
+  padding: clamp(34px, 5vw, 52px);
+  border: 0;
+  border-radius: 8px;
+  color: rgba(34, 40, 33, .78);
+  background: var(--healing-sage);
+  box-shadow: none;
+}
+
+.audience-card-help h3 {
+  margin: 0;
+  color: var(--healing-charcoal);
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
+  line-height: 1.08;
+}
+
+.audience-card-help p {
+  margin: 0;
+  font-size: clamp(1.08rem, 1.5vw, 1.25rem);
+  line-height: 1.72;
+}
+
+.audience-card .audience-voice {
+  max-width: 900px;
+  margin: clamp(96px, 11vw, 142px) auto 0;
+  gap: 20px;
+}
+
+.audience-card .audience-voice__video {
+  width: min(340px, 100%);
+  max-width: none;
+  margin-inline: auto;
+  border-radius: 10px;
+  background: var(--healing-olive);
+  box-shadow: 0 18px 50px rgba(32, 40, 31, .11);
+}
+
+.audience-card .audience-voice--person {
+  grid-template-columns: minmax(260px, .88fr) minmax(0, 1.12fr);
+  grid-template-areas:
+    "photo quote"
+    "photo cite";
+  align-items: end;
+  column-gap: clamp(34px, 5vw, 64px);
+}
+
+.audience-card .audience-voice--person .audience-voice__photo {
+  grid-area: photo;
+  max-width: none;
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
+  filter: saturate(.82) contrast(1.01);
+}
+
+.audience-card .audience-voice__quote {
+  grid-area: quote;
+  font-size: clamp(1.25rem, 1.8vw, 1.55rem);
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+.audience-card .audience-voice__cite {
+  grid-area: cite;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+/* The second evidence band changes temperature from cost pressure to a
+   positive care outcome, creating a visual shift from threat to possibility. */
+.narrative-scene--about {
+  padding-block: clamp(118px, 12vw, 164px);
+  background: linear-gradient(180deg, var(--healing-paper), #f1ece2);
+}
+
+.narrative-scene--about .about-inner {
+  row-gap: clamp(74px, 8vw, 108px);
+}
+
+.narrative-scene--about .about-intro {
+  max-width: 1040px;
+}
+
+.narrative-scene--about .about-intro h2 {
+  max-width: 14ch;
+  font-size: clamp(3.35rem, 5.6vw, 5.25rem);
+  line-height: .99;
+}
+
+.narrative-scene--about .about-intro .lead {
+  max-width: 48ch;
+  margin-top: clamp(30px, 4vw, 44px);
+  font-size: clamp(1.22rem, 1.8vw, 1.62rem);
+  line-height: 1.72;
+}
+
+.narrative-scene--about .about-evidence {
+  width: min(980px, 100%);
+  margin-inline: auto;
+}
+
+.narrative-scene--about .about-evidence-stat {
+  grid-template-columns: clamp(150px, 17vw, 220px) minmax(0, 1fr);
+  gap: clamp(26px, 4vw, 56px);
+  align-items: center;
+  padding: clamp(46px, 6vw, 68px) clamp(24px, 4vw, 48px);
+  border: 0;
+}
+
+.narrative-scene--about .about-evidence-stat::before {
+  display: none;
+}
+
+.narrative-scene--about .about-evidence-stat + .about-evidence-stat {
+  margin-top: clamp(72px, 8vw, 108px);
+}
+
+.narrative-scene--about .about-evidence-stat.is-light {
+  border-radius: 8px;
+  background: var(--healing-sage);
+}
+
+.narrative-scene--about .about-evidence-number {
+  font-size: clamp(3.6rem, 6vw, 5rem);
+  line-height: .92;
+  text-align: left;
+}
+
+.narrative-scene--about .about-evidence-copy p {
+  font-size: clamp(1.08rem, 1.6vw, 1.28rem);
+  line-height: 1.67;
+}
+
+.narrative-scene--about .about-story-layout {
+  gap: clamp(42px, 6vw, 74px);
+  margin-top: clamp(26px, 4vw, 48px);
+  align-items: center;
+}
+
+.narrative-scene--about .about-story-media img {
+  aspect-ratio: 16 / 10;
+  filter: saturate(.80) contrast(.99) brightness(1.02);
+  box-shadow: 0 18px 50px rgba(32, 40, 31, .10);
+}
+
+.narrative-scene--about .about-story p {
+  line-height: 1.76;
+}
+
+/* Positive proof can be denser, so this section is lighter and more compact
+   than the distressing statistics above it. */
+#impact.impact-section {
+  padding-block: clamp(82px, 9vw, 118px);
+  border-block-color: rgba(34, 40, 33, .10);
+  color: var(--healing-charcoal);
+  background: linear-gradient(180deg, #dfe7dc, #d4ded0);
+  box-shadow: none;
+}
+
+#impact.impact-section::before {
+  display: none;
+}
+
+#impact .impact-section__heading,
+#impact .impact-section__number {
+  color: var(--healing-charcoal);
+  text-shadow: none;
+}
+
+#impact .impact-section__heading {
+  max-width: 22ch;
+  font-size: clamp(2.5rem, 5vw, 4.25rem);
+  line-height: 1.08;
+}
+
+#impact .impact-section__figures {
+  border-block-color: rgba(34, 40, 33, .14);
+}
+
+#impact .impact-section__figure {
+  border-left-color: rgba(34, 40, 33, .14);
+}
+
+#impact .impact-section__number {
+  font-size: clamp(4.2rem, 8vw, 8rem);
+}
+
+#impact .impact-section__text {
+  color: rgba(34, 40, 33, .72);
+}
+
+.veteran-chapter {
+  padding-block: clamp(82px, 9vw, 118px);
+  background: #263126;
+}
+
+.veteran-chapter::before {
+  opacity: .18;
+}
+
+.veteran-chapter-caption {
+  line-height: 1.68;
+}
+
+/* Give the human story a beat before the fundraising ask. */
+.section-cta--orange {
+  padding-block: clamp(90px, 11vw, 140px);
+  color: var(--healing-charcoal);
+  background: var(--healing-paper);
+}
+
+.section-cta--orange::before {
+  display: none;
+}
+
+.section-cta--orange .section-cta-text {
+  color: var(--healing-charcoal);
+}
+
+.donate-section {
+  background: linear-gradient(145deg, #263126, #394636);
+  background-color: #263126;
+}
+
+.donate-section::before {
+  opacity: .20;
+  background: none;
+}
+
+.donate-section h2 {
+  max-width: 10ch;
+  font-size: clamp(3.2rem, 4.8vw, 4.75rem);
+  line-height: 1.02;
+}
+
+.donate-section .donate-proof-photo,
+.donate-section .donation-card-main {
+  box-shadow: 0 18px 50px rgba(15, 20, 15, .18);
+}
+
+.contact {
+  background: linear-gradient(180deg, #f6f1e7, #eee8dc);
+}
+
+.contact h2 {
+  font-size: clamp(3.35rem, 6vw, 5.75rem);
+  line-height: 1;
+}
+
+@media (max-width: 920px) {
+  .audience-card__content {
+    width: min(760px, calc(100% - 32px));
+  }
+
+  .audience-card .audience-voice--person {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "photo"
+      "quote"
+      "cite";
+    align-items: start;
+  }
+
+  .audience-card .audience-voice--person .audience-voice__photo {
+    width: 100%;
+  }
+
+  .narrative-scene--about .about-story-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero-lead {
+    padding: 52px 0 82px;
+  }
+
+  .hero-lead-statement {
+    line-height: 1.55;
+  }
+
+  .stat-bridge {
+    height: 560px;
+  }
+
+  .story-serve-intro {
+    padding: 88px var(--space-page-x) 92px;
+  }
+
+  .story-serve-intro h2,
+  .narrative-scene--about .about-intro h2,
+  .contact h2 {
+    font-size: clamp(2.85rem, 13vw, 4.2rem);
+    line-height: 1;
+  }
+
+  .audience-card-section {
+    padding-bottom: 118px;
+  }
+
+  .audience-card + .audience-card {
+    margin-top: 112px;
+    padding-top: 112px;
+  }
+
+  .audience-card-photo,
+  .audience-recovery-beat {
+    aspect-ratio: 4 / 3;
+  }
+
+  .audience-card__content {
+    width: 100%;
+    margin-top: 48px;
+  }
+
+  .audience-card-sentence {
+    font-size: clamp(1.55rem, 7vw, 2rem);
+    line-height: 1.34;
+  }
+
+  .audience-card__stats {
+    margin-top: 76px;
+  }
+
+  .audience-card__stat-beat + .audience-card__stat-beat {
+    margin-top: 84px;
+  }
+
+  .audience-card-stat strong {
+    font-size: clamp(3.25rem, 16vw, 4.5rem);
+  }
+
+  .audience-card-stat > span,
+  .audience-card-help p {
+    font-size: 1.05rem;
+  }
+
+  .audience-recovery-beat {
+    margin-top: 84px;
+  }
+
+  .audience-card-help {
+    margin-top: 92px;
+    padding: 28px;
+  }
+
+  .audience-card .audience-voice {
+    margin-top: 88px;
+  }
+
+  .narrative-scene--about {
+    padding-block: 104px 118px;
+  }
+
+  .narrative-scene--about .about-inner {
+    row-gap: 68px;
+  }
+
+  .narrative-scene--about .about-intro .lead {
+    font-size: 1.15rem;
+    line-height: 1.7;
+  }
+
+  .narrative-scene--about .about-evidence-stat {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 36px 0;
+  }
+
+  .narrative-scene--about .about-evidence-stat.is-light {
+    padding-inline: 24px;
+  }
+
+  .narrative-scene--about .about-evidence-number {
+    font-size: clamp(3.25rem, 16vw, 4.5rem);
+  }
+
+  .narrative-scene--about .about-evidence-copy {
+    grid-column: 1;
+  }
+
+  #impact .impact-section__heading {
+    font-size: clamp(2.3rem, 10vw, 3.4rem);
+  }
+
+  .section-cta--orange {
+    padding-block: 88px;
+  }
+
+  .donate-section h2 {
+    font-size: clamp(2.8rem, 12vw, 3.9rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-media {
+    display: none;
+  }
+
+  .js .hero-mark,
+  .js .hero-headline-line,
+  .js [data-reveal] {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* ============================================================
+   Restrained accent + donation navigation
+
+   Orange now carries one meaning: the hero mark and giving.
+   General interface accents use the established teal instead.
+   ============================================================ */
+
+:root {
+  --brand-orange: #a85632;
+  --donation-orange: #873b1e;
+  --donation-orange-dark: #682c15;
+  --orange: var(--teal-deep);
+  --orange-dark: var(--teal-ink);
+  --action-gradient: var(--teal-deep);
+  --preview-cta: var(--teal-deep);
+  --preview-cta-dark: var(--teal-ink);
+}
+
+.site .pill.primary:not([href*="#donate"]):not([href*="givebutter.com"]) {
+  border-color: transparent;
+  color: #fffaf0;
+  background-color: var(--teal-deep);
+  background-image: none;
+  box-shadow: 0 10px 24px rgba(9, 63, 67, .18);
+}
+
+.site .pill.primary:not([href*="#donate"]):not([href*="givebutter.com"]):hover,
+.site .pill.primary:not([href*="#donate"]):not([href*="givebutter.com"]):focus-visible {
+  color: #fffaf0;
+  background-color: var(--teal-ink);
+  background-image: none;
+  box-shadow: 0 14px 30px rgba(9, 63, 67, .22);
+}
+
+header,
+header:not(.is-scrolled),
+header.is-scrolled {
+  height: 78px;
+  animation: none;
+  overflow: visible;
+  border-bottom: 1px solid rgba(32, 35, 31, .12);
+  background: rgba(255, 253, 248, .98);
+  box-shadow: 0 3px 14px rgba(32, 35, 31, .08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.nav {
+  max-width: 1440px;
+  padding: 0 0 0 clamp(20px, 4vw, 52px);
+  gap: clamp(16px, 2.5vw, 34px);
+}
+
+.nav::after,
+.brand::after {
+  display: none;
+}
+
+.brand {
+  display: inline-flex;
+  gap: .24em;
+  align-items: baseline;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.brand-foundation {
+  color: var(--ink);
+  /* Same cap height as 22STRONG — reads as one wordmark, not a caption. */
+  font-family: var(--logo-face);
+  font-stretch: condensed;
+  font-size: 1em;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  gap: clamp(4px, 1vw, 12px);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.nav-links a {
+  min-height: 44px;
+  padding-inline: clamp(8px, 1.2vw, 16px);
+  color: rgba(32, 35, 31, .82);
+  font-weight: 700;
+}
+
+.nav-links a:hover,
+.nav-links a.is-active {
+  color: var(--ink);
+  background: transparent;
+}
+
+.nav-links a::after {
+  right: 10px;
+  bottom: 3px;
+  left: 10px;
+  height: 2px;
+  background: var(--teal-deep);
+}
+
+.nav-actions {
+  position: relative;
+  align-self: stretch;
+  min-width: 146px;
+}
+
+.site .nav-donate-toggle {
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 24px;
+  border: 0;
+  border-radius: 0 !important;
+  color: #fffaf0;
+  background: var(--donation-orange);
+  box-shadow: none;
+  font: 800 var(--fs-ui) / 1 var(--body-face);
+  letter-spacing: .04em;
+  cursor: pointer;
+}
+
+.site .nav-donate-toggle:hover,
+.site .nav-donate-toggle:focus-visible {
+  color: #fffaf0;
+  background: var(--donation-orange-dark);
+  box-shadow: none;
+  transform: none;
+}
+
+.nav-donate-toggle:focus-visible {
+  outline: 3px solid var(--teal-deep);
+  outline-offset: -4px;
+}
+
+.nav-donate-chevron {
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform .2s ease;
+}
+
+.nav-donate-toggle[aria-expanded="true"] .nav-donate-chevron {
+  transform: translateY(2px) rotate(225deg);
+}
+
+.nav-donate-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 70;
+  grid-template-columns: minmax(0, 1fr);
+  width: min(320px, calc(100vw - 24px));
+  border: 1px solid rgba(32, 35, 31, .12);
+  border-top: 0;
+  background: #fffdf8;
+  box-shadow: 0 20px 44px rgba(32, 35, 31, .16);
+}
+
+.nav-donate-menu:not([hidden]) {
+  display: grid;
+}
+
+.site .nav-donate-option {
+  display: flex;
+  min-height: 88px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 28px;
+  border-radius: 0 !important;
+  color: #fffaf0;
+  background: var(--donation-orange);
+  background-image: none;
+  box-shadow: none;
+  font: 800 clamp(1rem, 1.4vw, 1.18rem) / 1.2 var(--body-face);
+  letter-spacing: 0;
+  text-decoration: none;
+}
+
+.site .nav-donate-option + .nav-donate-option {
+  border-top: 1px solid rgba(255, 250, 240, .28);
+}
+
+.site .nav-donate-option:hover,
+.site .nav-donate-option:focus-visible {
+  color: #fffaf0;
+  background: var(--donation-orange-dark);
+  background-image: none;
+  box-shadow: none;
+  transform: none;
+}
+
+.nav-donate-option:focus-visible {
+  outline: 3px solid var(--teal-deep);
+  outline-offset: -4px;
+}
+
+.nav-donate-arrow {
+  color: #fffaf0;
+  font-size: 1.7rem;
+  line-height: 1;
+  transition: transform .2s ease;
+}
+
+.nav-donate-option:hover .nav-donate-arrow,
+.nav-donate-option:focus-visible .nav-donate-arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 920px) {
+  header,
+  header:not(.is-scrolled),
+  header.is-scrolled {
+    height: 70px;
+  }
+
+  .nav {
+    padding-left: 20px;
+  }
+
+  .nav-actions {
+    min-width: 126px;
+  }
+
+  .site .nav-donate-toggle {
+    padding-inline: 18px;
+  }
+}
+
+@media (max-width: 560px) {
+  .nav {
+    grid-template-columns: minmax(0, 1fr) 48px 104px;
+    gap: 4px;
+    padding-left: 16px;
+  }
+
+  .brand-foundation {
+    display: none;
+  }
+
+  .brand {
+    min-width: 0;
+    font-size: 1.28rem;
+  }
+
+  .nav-toggle {
+    grid-column: 2;
+  }
+
+  .nav-toggle-icon,
+  .nav-toggle-icon::before,
+  .nav-toggle-icon::after {
+    background: var(--ink);
+  }
+
+  .nav-actions {
+    grid-column: 3;
+    min-width: 104px;
+  }
+
+  .site .nav-donate-toggle {
+    gap: 8px;
+    padding-inline: 12px;
+    font-size: .78rem;
+  }
+
+  .nav-links {
+    background: rgba(255, 253, 248, .99);
+    border-bottom-color: rgba(32, 35, 31, .12);
+    box-shadow: 0 14px 30px rgba(32, 35, 31, .14);
+  }
+
+  .nav-links a,
+  .nav-links a.is-active {
+    color: var(--ink);
+  }
+
+  .nav-links a:hover,
+  .nav-links a:active,
+  .nav-links a.is-active {
+    background: var(--healing-sage);
+    box-shadow: none;
+  }
+
+  .nav-donate-menu {
+    position: fixed;
+    top: 70px;
+    right: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  .site .nav-donate-option {
+    min-height: 78px;
+    padding: 20px;
+  }
+}
+
+/* Quotes use the same bundled sans face everywhere. This avoids the
+   platform-dependent Avenir fallback that changed between browsers. */
+.vv-quote,
+.audience-voice__quote,
+.donate-voice__quote,
+.support-circle blockquote p,
+.how-referral__voice blockquote p {
+  font-family: var(--body-face);
+}

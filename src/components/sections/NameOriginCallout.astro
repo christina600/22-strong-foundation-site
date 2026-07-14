@@ -1,0 +1,19 @@
+---
+interface Props {
+  eyebrow: string;
+  heading: string;
+  body: string;
+  crisis: string;
+}
+
+const { eyebrow, heading, body, crisis } = Astro.props;
+---
+
+<aside class="name-origin" aria-labelledby="name-origin-heading" data-reveal="card">
+  <div class="name-origin__inner">
+    <p class="name-origin__eyebrow">{eyebrow}</p>
+    <h2 id="name-origin-heading">{heading}</h2>
+    <p class="name-origin__body">{body}</p>
+    <p class="name-origin__crisis">{crisis}</p>
+  </div>
+</aside>

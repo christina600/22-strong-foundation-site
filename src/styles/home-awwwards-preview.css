@@ -2,8 +2,8 @@
    Keep this isolated so the direction can be judged as one visual pass. */
 
 :root {
-  --preview-cta: #b95524;
-  --preview-cta-dark: #863a1a;
+  --preview-cta: #0e5a5c;
+  --preview-cta-dark: #093f43;
   --preview-ink: #20231f;
   --preview-paper: #f8f4eb;
   --preview-sage: #e7ece0;
@@ -29,7 +29,7 @@
 .pill.primary:hover,
 .btn-donate:hover,
 .section-cta--teal .section-cta-btn.pill.primary:hover {
-  background: linear-gradient(180deg, #c8642e, var(--preview-cta-dark));
+  background: linear-gradient(180deg, #167f80, var(--preview-cta-dark));
   transform: translateY(-2px);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, .28) inset,
@@ -120,7 +120,7 @@
   display: block;
   width: clamp(92px, 14vw, 180px);
   margin-top: clamp(22px, 3vw, 34px);
-  background: linear-gradient(90deg, var(--preview-cta), rgba(185, 85, 36, 0));
+  background: linear-gradient(90deg, var(--preview-cta), rgba(14, 90, 92, 0));
 }
 
 .audience-card-grid {
@@ -155,7 +155,7 @@
   inset: 0 0 auto;
   z-index: 2;
   height: 4px;
-  background: linear-gradient(90deg, var(--preview-cta), rgba(185, 85, 36, 0));
+  background: linear-gradient(90deg, var(--preview-cta), rgba(14, 90, 92, 0));
 }
 
 .audience-card::after {
@@ -166,7 +166,7 @@
   width: clamp(110px, 13vw, 170px);
   aspect-ratio: 1;
   border-radius: 999px;
-  border: 1px solid rgba(185, 85, 36, .12);
+  border: 1px solid rgba(14, 90, 92, .12);
   opacity: .72;
   pointer-events: none;
 }
@@ -299,7 +299,7 @@
 
 .narrative-scene--about {
   background:
-    radial-gradient(circle at 12% 8%, rgba(185, 85, 36, .08), transparent 32%),
+    radial-gradient(circle at 12% 8%, rgba(14, 90, 92, .08), transparent 32%),
     linear-gradient(180deg, #f8f4eb, #eee8dc);
 }
 
@@ -315,7 +315,7 @@
 
 .strong-circle-section {
   background:
-    linear-gradient(135deg, rgba(185, 85, 36, .08), transparent 34%),
+    linear-gradient(135deg, rgba(14, 90, 92, .08), transparent 34%),
     linear-gradient(180deg, #e7ece0, #f8f4eb);
 }
 
@@ -579,7 +579,7 @@ form,
   overflow: hidden;
   padding-block: clamp(64px, 5vw, 96px) clamp(72px, 6vw, 104px);
   background:
-    radial-gradient(ellipse 66% 48% at 8% 6%, rgba(185, 85, 36, .32), transparent 62%),
+    radial-gradient(ellipse 66% 48% at 8% 6%, rgba(14, 90, 92, .32), transparent 62%),
     linear-gradient(135deg, rgba(10, 14, 10, .98), rgba(30, 39, 26, .96));
   background-color: #111610;
   background-blend-mode: normal, normal;
@@ -587,7 +587,7 @@ form,
 
 .donate-section::before {
   background:
-    linear-gradient(115deg, rgba(185, 85, 36, .16), transparent 42%),
+    linear-gradient(115deg, rgba(14, 90, 92, .16), transparent 42%),
     var(--field-scuffs, transparent),
     var(--field-sand, transparent);
   opacity: .78;
@@ -719,8 +719,8 @@ form,
 }
 
 .donate-section .amount-button[data-featured="true"] {
-  border-color: rgba(185, 85, 36, .48);
-  box-shadow: 0 10px 24px rgba(185, 85, 36, .10);
+  border-color: rgba(14, 90, 92, .48);
+  box-shadow: 0 10px 24px rgba(14, 90, 92, .10);
 }
 
 .donate-section .amount-button.active small {
@@ -924,7 +924,7 @@ form,
 .goal-fill {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(90deg, #fffaf0, rgba(185, 85, 36, .95));
+  background: linear-gradient(90deg, #fffaf0, rgba(14, 90, 92, .95));
 }
 
 /* Cinematic testimonial reel. */
@@ -934,7 +934,7 @@ form,
   margin-inline: calc(50% - 50vw);
   padding: clamp(92px, 12vw, 156px) var(--space-page-x) clamp(96px, 12vw, 164px);
   background:
-    radial-gradient(circle at 18% 20%, rgba(185, 85, 36, .18), transparent 30%),
+    radial-gradient(circle at 18% 20%, rgba(14, 90, 92, .18), transparent 30%),
     linear-gradient(135deg, rgba(70, 87, 70, .16), transparent 44%),
     linear-gradient(180deg, #151914, #0d100d 72%, #151914);
   color: #fffaf0;
@@ -989,7 +989,7 @@ form,
 .testimonial-reel .vv-photo,
 .testimonial-reel .vv-video-media {
   background:
-    linear-gradient(135deg, rgba(185, 85, 36, .18), rgba(17, 22, 16, .80)),
+    linear-gradient(135deg, rgba(14, 90, 92, .18), rgba(17, 22, 16, .80)),
     #111610;
 }
 
@@ -1034,8 +1034,8 @@ form,
 }
 
 .testimonial-reel-button:hover {
-  border-color: rgba(185, 85, 36, .62);
-  background: rgba(185, 85, 36, .18);
+  border-color: rgba(14, 90, 92, .62);
+  background: rgba(14, 90, 92, .18);
 }
 
 .testimonial-reel-dot {
@@ -1061,7 +1061,7 @@ form,
 @media (max-width: 920px) {
   .donate-section {
     background:
-      radial-gradient(ellipse 70% 44% at 6% 0%, rgba(185, 85, 36, .22), transparent 64%),
+      radial-gradient(ellipse 70% 44% at 6% 0%, rgba(14, 90, 92, .22), transparent 64%),
       linear-gradient(135deg, rgba(10, 14, 10, .98), rgba(30, 39, 26, .96));
     background-blend-mode: normal, normal;
   }
