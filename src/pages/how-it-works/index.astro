@@ -6,8 +6,8 @@ import SiteHeader from "../../components/sections/SiteHeader.astro";
 import TestimonialVideo from "../../components/sections/TestimonialVideo.astro";
 import home from "../../content/home.json";
 
-const description = "How 22STRONG closes the recovery gap — from referral to continued care.";
-const [costStat, , opioidStat] = home.stats.others;
+const description = "How 22STRONG pays for recovery care — from referral to continued care.";
+const [, opioidStat] = home.stats.others;
 ---
 
 <HomeBase title="What We Do" description={description}>
@@ -19,11 +19,11 @@ const [costStat, , opioidStat] = home.stats.others;
         <div class="how-page-hero__inner">
           <p class="eyebrow">What we do</p>
           <h1 id="how-title">
-            <span>A&nbsp;recovery&nbsp;gap appears.</span>
-            <span>22STRONG closes it.</span>
+            <span>When coverage runs&nbsp;out,</span>
+            <span>22STRONG keeps the care going.</span>
           </h1>
           <p class="lead">
-            A referral comes in. We check that the coverage gap is real. Donor money pays
+            A referral comes in. We check that the coverage really ran out. Donor money pays
             for the next session. That's the whole model.
           </p>
         </div>
@@ -31,7 +31,7 @@ const [costStat, , opioidStat] = home.stats.others;
 
       <div class="how-page-flow">
         <section class="how-context" aria-labelledby="the-gap">
-          <p class="how-context__label">The gap</p>
+          <p class="how-context__label">The problem</p>
           <h2 id="the-gap">Coverage ends before recovery does.</h2>
           <p>
             A person is mid-recovery when insurance runs out or VA approval stalls. The
@@ -42,7 +42,7 @@ const [costStat, , opioidStat] = home.stats.others;
 
         <section class="how-evidence" aria-labelledby="why-it-matters">
           <p class="how-context__label">Why it matters</p>
-          <h2 id="why-it-matters">The numbers behind the gap.</h2>
+          <h2 id="why-it-matters">The numbers behind the need.</h2>
 
           <div class="how-evidence__group">
             <h3 class="how-evidence__group-label">Veterans</h3>
@@ -88,10 +88,15 @@ const [costStat, , opioidStat] = home.stats.others;
             </div>
             <div class="how-step__body">
               <p class="how-step__label">Step 2</p>
-              <h2>Gap review</h2>
+              <h2>Coverage check</h2>
               <p>
                 22STRONG checks that there's a real treatment plan and that the money
                 behind it has actually run out. If it has, we fund the care.
+              </p>
+              <p>
+                We also confirm who qualifies. Veterans provide a DD214, whether or not
+                they came through the VA. Young people confirm they're students and
+                receiving some form of government assistance.
               </p>
             </div>
           </li>
@@ -177,9 +182,15 @@ const [costStat, , opioidStat] = home.stats.others;
               <li>Fascial Integrative Treatment (FIT)</li>
               <li>Follow-through after the first visit</li>
             </ul>
+            <p class="how-fund-note">
+              We treat musculoskeletal and sports-medicine conditions: back and neck pain,
+              joint and tendon injuries, sprains, sciatica, and the overuse injuries that
+              come with sports. An assessment confirms it's a fit before care starts.
+            </p>
             <p class="how-fund-cost">
-              One session costs $190.
-              <a class="how-fund-source" href={costStat.url} target="_blank" rel="noopener noreferrer">{costStat.source}</a>
+              Dr. Vas charges corporate and pro-athlete clients $350 to $400 a session.
+              Through 22STRONG, that same care is $140. Donors cover it, and the clinic
+              gives the rest.
             </p>
             <p class="how-fund-note">
               Starting this care early matters: {opioidStat.number} {opioidStat.text}

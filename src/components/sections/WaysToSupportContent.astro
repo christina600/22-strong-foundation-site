@@ -18,16 +18,16 @@ const donateHref = (amount?: number) => {
 const giveCards = [
   {
     heading: "Fund a session.",
-    body: "$190 pays for one hands-on recovery session for a veteran or young person whose coverage ran out.",
-    cta: "Give $190",
-    href: donateHref(190),
+    body: "$140 pays for one hands-on recovery session for a veteran or young person whose coverage ran out.",
+    cta: "Give $140",
+    href: donateHref(140),
     image: "/images/story-leg-therapy-wide.jpg",
   },
   {
-    heading: "Fund a care plan.",
-    body: "$850 covers an average care plan from first visit to follow-through.",
-    cta: "Fund a care plan",
-    href: donateHref(850),
+    heading: "Fund a recovery plan.",
+    body: "$980 sponsors a full recovery plan — all seven sessions, from first visit to follow-through.",
+    cta: "Fund a recovery plan",
+    href: donateHref(980),
     image: "/images/story-smart-mirror-careplan.jpg",
   },
 ];
@@ -68,10 +68,10 @@ const faq = [
         <p class="support-kicker">Strong Circle · Monthly giving</p>
         <h2 id="circle-preview-title">A dependable base for the next recovery session.</h2>
         <p>
-          Nine members at $22 a month provide enough to cover one $190 session. See how
+          Seven members at $22 a month provide enough to cover one $140 session. See how
           the circle works, hear why follow-through matters, and choose a monthly amount.
         </p>
-        <strong class="support-circle-preview__equation">9 members × $22/month → one $190 session</strong>
+        <strong class="support-circle-preview__equation">7 members × $22/month → one $140 session</strong>
       </div>
       <a class="pill primary support-circle-preview__cta" href="/strong-circle/">Explore Strong Circle</a>
     </div>
@@ -80,7 +80,7 @@ const faq = [
   <section class="support-compare" aria-labelledby="compare-title">
     <div class="support-section-head">
       <p class="support-kicker">Give now</p>
-      <h2 id="compare-title">One gift closes one gap.</h2>
+      <h2 id="compare-title">One gift covers one session.</h2>
     </div>
     <div class="support-card-grid">
       {giveCards.map((card) => (

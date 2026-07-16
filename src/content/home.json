@@ -28,8 +28,8 @@
           "label": "people supported"
         },
         {
-          "number": "$850",
-          "label": "average care plan"
+          "number": "$980",
+          "label": "recovery plan"
         }
       ]
     },
@@ -37,7 +37,7 @@
   },
   "story": {
     "eyebrow": "Story",
-    "heading": "The gap kept showing up in the treatment room.",
+    "heading": "The same problem kept showing up in the treatment room.",
     "paragraphs": [
       "22STRONG started inside Next Level Fitness & Wellness Center, a sports-medicine clinic in Newport Beach co-owned by Travis Mayfield, a Purple Heart veteran of the 101st Airborne, and Dr. Vasili “Dr. Vas” Gatsinaris.",
       "In the treatment room they kept seeing the same problem: the care was working, and the next visit wasn't guaranteed. They built 22STRONG so a recovery wouldn't depend on whether someone could afford one more appointment."
@@ -98,13 +98,6 @@
     ],
     "others": [
       {
-        "number": "$190",
-        "text": "is the typical cost of one outpatient physical-therapy session for someone paying without insurance.",
-        "source": "CBS News / KFF Health News",
-        "url": "https://www.cbsnews.com/news/physical-therapy-insurance-coverage-session-limits/",
-        "light": false
-      },
-      {
         "number": "20 visits",
         "text": "a year is a common insurance cap on physical therapy. Recovery often takes more.",
         "source": "CBS News / KFF Health News",
@@ -126,7 +119,7 @@
       "heading": "Veterans",
       "detailAriaLabel": "Veteran recovery support",
       "lead": "Recovery care for veterans dealing with pain, injury, or limited mobility after service.",
-      "body": "For veterans living with pain after service, waiting can mean more than a missed appointment. It can mean lost mobility, pain that flares back up, missed work, and the feeling of starting over. 22STRONG was built by people who have seen that gap up close, both through service and in the treatment room. That is why we help cover the next sports-medicine recovery visit when care is still needed and the appointment is out of reach.",
+      "body": "For veterans living with pain after service, waiting can mean more than a missed appointment. It can mean lost mobility, pain that flares back up, missed work, and the feeling of starting over. 22STRONG was built by people who have seen it up close, both through service and in the treatment room. That is why we help cover the next sports-medicine recovery visit when care is still needed and the appointment is out of reach.",
       "photo": "/images/story-veteran-leg-therapy.webp",
       "photoAlt": "Dr. Chris providing hands-on leg treatment for a male veteran at Next Level Wellness Center",
       "imagePosition": "50% 50%",
@@ -259,16 +252,16 @@
         "body": "moves care within reach"
       },
       {
-        "amount": "$190",
+        "amount": "$140",
         "body": "funds one recovery session"
       },
       {
-        "amount": "$250",
-        "body": "supports follow-up care"
+        "amount": "$420",
+        "body": "funds three recovery sessions"
       },
       {
-        "amount": "$850",
-        "body": "supports an average care plan"
+        "amount": "$980",
+        "body": "sponsors a full recovery plan"
       }
     ],
     "storyImage": {
