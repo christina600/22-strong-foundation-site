@@ -35,7 +35,8 @@ test.describe("navigation", () => {
     await expect(page.locator('.nav-submenu[aria-label="About Us"] .nav-mega__cta')).toContainText("Read our story");
     await expect(page.locator('.nav-submenu[aria-label="About Us"] .nav-mega__col a')).toHaveText([
       "Our Story",
-      "The Team",
+      "Board of Directors",
+      "Advisory Council",
       "Transparency",
     ]);
     await expect(page.locator('.nav-submenu[aria-label="How to Help"] .nav-mega__cta')).toContainText("See all the ways to give");
@@ -76,8 +77,9 @@ test.describe("navigation", () => {
     await page.locator('#nav-menu .nav-group__label[href="/about/"]').click();
 
     await expect(page).toHaveURL(/\/about\/$/);
-    await expect(page.locator("#about-title")).toContainText("The gap kept showing up in the treatment room.");
-    await expect(page.locator("#leadership h2")).toContainText("The Team");
+    await expect(page.locator("#about-title")).toContainText("The same problem kept showing up in the treatment room.");
+    await expect(page.locator("#leadership h2")).toContainText("Board of Directors");
+    await expect(page.locator("#advisory-council h2")).toContainText("Advisory Council");
     await expect(page.locator("#donate")).toHaveCount(0);
   });
 

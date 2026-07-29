@@ -3,14 +3,13 @@ import { heroBattleRopes } from "../../assets/images";
 
 interface Props {
   proofline?: string[];
-  eyebrow: string;
   heading: string;
   lead: string;
   primaryCta: string;
   secondaryCta: string;
 }
 
-const { proofline = [], eyebrow, heading, lead, primaryCta, secondaryCta } = Astro.props;
+const { proofline = [], heading, lead, primaryCta, secondaryCta } = Astro.props;
 ---
 
 <section class="hero" id="top">
@@ -39,7 +38,6 @@ const { proofline = [], eyebrow, heading, lead, primaryCta, secondaryCta } = Ast
         </svg>
       </div>
       <div class="hero-mission">
-        <p class="hero-mission__eyebrow">{eyebrow}</p>
         <h1 class="hero-mission__heading">{heading}</h1>
         <p class="hero-mission__lead">{lead}</p>
         <div class="hero-mission__actions">

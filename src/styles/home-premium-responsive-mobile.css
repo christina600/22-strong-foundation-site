@@ -344,7 +344,7 @@
     padding: var(--space-card);
   }
 
-  #leadership .card {
+  :is(#leadership, #advisory-council) .card {
     padding: var(--space-card);
   }
 

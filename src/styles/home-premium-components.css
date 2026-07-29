@@ -331,7 +331,6 @@ textarea {
 
 .vv-card.is-sample {
   background:
-    linear-gradient(135deg, rgba(14, 90, 92, .08), transparent 38%),
     linear-gradient(180deg, rgba(255, 253, 247, .99), rgba(244, 238, 226, .92));
 }
 
@@ -614,7 +613,7 @@ textarea {
 }
 
 /* Premium leadership, donation, contact, and footer refinements. */
-#leadership {
+:is(#leadership, #advisory-council) {
   position: relative;
   width: 100vw;
   max-width: none;
@@ -627,7 +626,7 @@ textarea {
   border-block: 1px solid rgba(32, 35, 31, .10);
 }
 
-#leadership > :is(h1, h2) {
+:is(#leadership, #advisory-council) > :is(h1, h2) {
   max-width: 780px;
   margin-inline: auto;
   margin-bottom: 46px;
@@ -663,27 +662,27 @@ textarea {
   color: #f2ecdf;
 }
 
-#leadership .card {
+:is(#leadership, #advisory-council) .card {
   position: relative;
   overflow: hidden;
   padding: 30px;
 }
 
-#leadership .card p {
+:is(#leadership, #advisory-council) .card p {
   max-width: 58ch;
   font-size: var(--fs-copy-small);
   line-height: 1.58;
 }
 
-#leadership .card p + p {
+:is(#leadership, #advisory-council) .card p + p {
   margin-top: 12px;
 }
 
-#leadership .card p:last-child {
+:is(#leadership, #advisory-council) .card p:last-child {
   margin-bottom: 0;
 }
 
-#leadership .card::before {
+:is(#leadership, #advisory-council) .card::before {
   content: "";
   position: absolute;
   inset: 0 0 auto;

@@ -1160,7 +1160,7 @@ label {
 .step p,
 .funding-covers span,
 .story,
-#leadership .card p,
+:is(#leadership, #advisory-council) .card p,
 .contact-paths span,
 .note,
 footer p,

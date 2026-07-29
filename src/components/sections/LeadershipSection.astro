@@ -16,14 +16,18 @@ interface Leader {
 interface Props {
   people: Leader[];
   headingLevel?: "h1" | "h2";
+  title?: string;
+  id?: string;
+  intro?: string;
 }
 
-const { people, headingLevel = "h2" } = Astro.props;
+const { people, headingLevel = "h2", title = "The Team", id = "leadership", intro } = Astro.props;
 const HeadingTag = headingLevel;
 ---
 
-<section class="story-leadership" id="leadership">
-  <HeadingTag data-reveal="headline">The Team</HeadingTag>
+<section class="story-leadership" id={id}>
+  <HeadingTag data-reveal="headline">{title}</HeadingTag>
+  {intro && <p class="section-intro" data-reveal="copy">{intro}</p>}
 
   <div class="bios">
     {people.map((person, index) => (
@@ -57,6 +61,11 @@ const HeadingTag = headingLevel;
 </section>
 
 <style>
+  .section-intro {
+    max-width: 58ch;
+    margin-top: .75rem;
+  }
+
   .initials--needed {
     font-size: 1.25rem;
     letter-spacing: .08em;

@@ -10,7 +10,6 @@ import home from "../../content/home.json";
 
 const description = "Meet the founders and leadership behind 22STRONG Foundation.";
 const intro = {
-  eyebrow: "About Us",
   heading: home.story.heading,
   lead: home.heroLead,
   paragraphs: home.story.paragraphs,
@@ -31,7 +30,15 @@ const intro = {
     <main id="main" class="about-page">
       <AboutIntroSection {...intro} />
       <NameOriginCallout {...home.nameOrigin} />
-      <LeadershipSection people={home.leadership} headingLevel="h2" />
+      <LeadershipSection people={home.leadership} headingLevel="h2" title="Board of Directors" />
+      {/* Advisory Council panel hidden until veteran bios/labels are confirmed. Restore this block (and the nav link in SiteHeader.astro) once the info is verified. */}
+      {/* <LeadershipSection
+        people={home.advisors}
+        headingLevel="h2"
+        title="Advisory Council"
+        id="advisory-council"
+        intro="Veterans who advise the board and keep the foundation close to the community it serves."
+      /> */}
       <SectionCta
         text="Keep the next visit within reach."
         label="Fund recovery care"

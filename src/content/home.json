@@ -1,12 +1,12 @@
 {
   "hero": {
     "eyebrow": "Recovery care funding",
-    "heading": "Keep recovery going when insurance stops short.",
-    "lead": "22STRONG helps fund sports-medicine recovery visits for veterans and young people who cannot afford the next appointment.",
+    "heading": "Keeping recovery going when insurance stops short.",
+    "lead": "22STRONG helps fund sports-medicine recovery for veterans and students who cannot afford their next appointment.",
     "ctaLabel": "Support the next visit",
     "secondaryCtaLabel": "See how it works"
   },
-  "heroLead": "22STRONG helps pay for sports-medicine recovery care for veterans and young people when insurance no longer covers the next visit.",
+  "heroLead": "22STRONG helps fund sports-medicine recovery for veterans and students who cannot afford their next appointment.",
   "credibility": [
     "501(c)(3) nonprofit",
     "Orange County",
@@ -45,8 +45,8 @@
   },
   "nameOrigin": {
     "eyebrow": "Why 22STRONG?",
-    "heading": "The name honors veterans. The mission funds recovery.",
-    "body": "The name 22STRONG comes from the widely cited “22 veterans a day” statistic and honors veterans lost to suicide. The foundation itself is not a suicide-prevention or crisis-response provider; its program funds sports-medicine recovery care for veterans and young people.",
+    "heading": "Where the name 22STRONG comes from.",
+    "body": "The name 22STRONG comes from the widely cited “22 veterans a day” statistic and honors veterans lost to suicide. The foundation itself is not a suicide-prevention or crisis-response provider; its program funds sports-medicine recovery care for veterans and students.",
     "crisis": "If you or a veteran you know is in crisis, call 988 and press 1 for the Veterans Crisis Line."
   },
   "stats": {
@@ -140,21 +140,21 @@
     },
     {
       "id": "serve-athletes",
-      "heading": "Low-income youth",
-      "detailAriaLabel": "Low-income youth recovery support",
-      "lead": "Recovery care for young people whose families cannot cover the next visit.",
-      "body": "For young people recovering from injury, surgery, illness, or ongoing pain, the next appointment can be where progress gets interrupted. Families may be dealing with insurance approvals, long waits, transportation, missed work, school schedules, pain, or the cost of repeated visits. 22STRONG helps cover recovery care when the next visit is needed and the family cannot carry it alone.",
+      "heading": "Students",
+      "detailAriaLabel": "Student recovery support",
+      "lead": "Recovery care for students who cannot afford their next appointment.",
+      "body": "For students recovering from injury, surgery, illness, or ongoing pain, the next appointment can be where progress gets interrupted. Students and their families may be dealing with insurance approvals, long waits, transportation, missed work, school schedules, pain, or the cost of repeated visits. 22STRONG helps cover recovery care when the next appointment is needed and the cost is out of reach.",
       "photo": "/images/story-youth-huddle.webp",
-      "photoAlt": "Youth basketball team huddling in a gym",
+      "photoAlt": "Student basketball team huddling in a gym",
       "imagePosition": "50% 62%",
       "statsKey": "athletes",
       "statsClass": "one-up",
       "stackStats": true,
       "featurePhoto": {
         "src": "/images/story-youth-dugout.jpg",
-        "alt": "Youth baseball players lined up along the dugout fence during a game"
+        "alt": "Student baseball players lined up along the dugout fence during a game"
       },
-      "voicesAriaLabel": "Low-income youth testimonials",
+      "voicesAriaLabel": "Student testimonials",
       "voices": [
         {
           "name": "Adam Folker",
@@ -236,14 +236,62 @@
     {
       "name": "Tri Nguyen",
       "role": "Director",
-      "initials": "needed",
+      "portrait": "/images/tri-nguyen.jpg",
+      "portraitAlt": "Tri Nguyen",
+      "portraitPosition": "50% 20%",
+      "initials": "TN",
+      "credentials": [
+        "Vistage Chair & executive coach",
+        "25+ years in HR & leadership",
+        "ICF Professional Certified Coach"
+      ],
       "paragraphs": [
-        "needed"
+        "Tri Nguyen is a Vistage Chair and executive coach. For the past decade she has worked with CEOs on running stronger companies — helping them make clearer decisions, align their teams, and follow through. She leads CEO peer advisory boards, coaches leaders through periods of growth, and runs executive offsites and strategic planning sessions.",
+        "Before coaching full time, Tri spent more than 25 years in HR and senior leadership across Fortune 100, privately held, and investor-backed companies, including as Executive Vice President at Bowermaster & Associates, where she built and led its HR consulting division. She holds an MA in Applied Psychology from the University of Santa Monica, a business degree from California Polytechnic University, and a Professional Certified Coach credential from the International Coach Federation."
+      ]
+    }
+  ],
+  "advisors": [
+    {
+      "name": "CSM (R) Ramon Rodriguez",
+      "role": "Advisor",
+      "initials": "RR",
+      "credentials": [
+        "3 Silver Stars",
+        "5 Purple Hearts",
+        "Ranger Hall of Fame inductee"
+      ],
+      "paragraphs": [
+        "One of the most decorated combat soldiers of the Vietnam War. Ramon served with the U.S. Army's 101st Airborne Division and Special Forces and retired a Command Sergeant Major after 23 years. A bill in Congress would award him the Medal of Honor. He has spent the years since working for veterans across Southern California."
+      ]
+    },
+    {
+      "name": "SGT Mark Miller",
+      "role": "Advisor",
+      "initials": "MM",
+      "credentials": [
+        "Bronze Star with \"V\"",
+        "U.S. Army Airborne Ranger"
+      ],
+      "paragraphs": [
+        "Mark ran long-range reconnaissance patrols in Vietnam with Company E, 20th Infantry (Airborne). He was awarded the Bronze Star with \"V\" for rescuing an injured team member while under fire."
+      ]
+    },
+    {
+      "name": "John Baca",
+      "role": "Advisor",
+      "initials": "JB",
+      "credentials": [
+        "Medal of Honor recipient",
+        "U.S. Army 1st Cavalry Division"
+      ],
+      "paragraphs": [
+        "John received the Medal of Honor for his actions in Vietnam in 1970, when he covered a grenade with his helmet and his own body, saving eight men. He has spent the decades since serving veterans in Southern California, where a Huntington Beach park carries his name."
       ]
     }
   ],
   "donate": {
-    "heading": "Fund the next recovery appointment.",
+    "heading": "Help fund the next appointment.",
     "lead": "A one-time gift pays for hands-on care when the next visit is at risk.",
     "outcomes": "",
     "givingCards": [
@@ -281,7 +329,7 @@
       },
       {
         "heading": "Refer someone",
-        "body": "Start a conversation for a veteran or a young person."
+        "body": "Start a conversation for a veteran or a student."
       },
       {
         "heading": "Partner with us",

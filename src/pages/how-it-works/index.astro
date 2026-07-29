@@ -17,7 +17,6 @@ const [, opioidStat] = home.stats.others;
     <main id="main" class="about-page how-page">
       <section class="how-page-hero" aria-labelledby="how-title">
         <div class="how-page-hero__inner">
-          <p class="eyebrow">What we do</p>
           <h1 id="how-title">
             <span>When coverage runs&nbsp;out,</span>
             <span>22STRONG keeps the care going.</span>
@@ -31,7 +30,6 @@ const [, opioidStat] = home.stats.others;
 
       <div class="how-page-flow">
         <section class="how-context" aria-labelledby="the-gap">
-          <p class="how-context__label">The problem</p>
           <h2 id="the-gap">Coverage ends before recovery does.</h2>
           <p>
             A person is mid-recovery when insurance runs out or VA approval stalls. The
@@ -41,7 +39,6 @@ const [, opioidStat] = home.stats.others;
         </section>
 
         <section class="how-evidence" aria-labelledby="why-it-matters">
-          <p class="how-context__label">Why it matters</p>
           <h2 id="why-it-matters">The numbers behind the need.</h2>
 
           <div class="how-evidence__group">
@@ -52,8 +49,8 @@ const [, opioidStat] = home.stats.others;
           </div>
 
           <div class="how-evidence__group">
-            <h3 class="how-evidence__group-label">Young people and their families</h3>
-            <div class="about-evidence" role="list" aria-label="Youth and family recovery evidence">
+            <h3 class="how-evidence__group-label">Students and their families</h3>
+            <div class="about-evidence" role="list" aria-label="Student and family recovery evidence">
               {home.stats.athletes.map((stat) => <EvidenceStat stat={stat} variant="about" />)}
             </div>
           </div>
@@ -95,8 +92,8 @@ const [, opioidStat] = home.stats.others;
               </p>
               <p>
                 We also confirm who qualifies. Veterans provide a DD214, whether or not
-                they came through the VA. Young people confirm they're students and
-                receiving some form of government assistance.
+                they came through the VA. Students confirm current enrollment and
+                that they receive some form of government assistance.
               </p>
             </div>
           </li>
@@ -173,7 +170,6 @@ const [, opioidStat] = home.stats.others;
 
         <div class="how-boundaries" aria-label="Funding boundaries">
           <section class="how-boundary" aria-labelledby="what-we-fund">
-            <p class="how-context__label">What we fund</p>
             <h2 id="what-we-fund">We fund hands-on recovery care. Nothing else.</h2>
             <ul>
               <li>Chiropractic care</li>
@@ -199,7 +195,6 @@ const [, opioidStat] = home.stats.others;
           </section>
 
           <section class="how-boundary how-boundary--limits" aria-labelledby="what-we-dont">
-            <p class="how-context__label">What 22STRONG does not provide</p>
             <h2 id="what-we-dont">That rules out:</h2>
             <ul>
               <li>Emergency medical care</li>
@@ -211,7 +206,6 @@ const [, opioidStat] = home.stats.others;
         </div>
 
         <section class="how-care-voice" aria-labelledby="care-in-their-words">
-          <p class="how-context__label">Care in their words</p>
           <h2 id="care-in-their-words">What continued care feels like.</h2>
           <TestimonialVideo
             class="how-testimonial how-testimonial--care"
@@ -226,7 +220,6 @@ const [, opioidStat] = home.stats.others;
         </section>
 
         <section class="how-referral" aria-labelledby="refer-someone">
-          <p class="how-context__label">Refer someone</p>
           <h2 id="refer-someone">Know someone whose recovery care is at risk?</h2>
           <p>Start a referral. It takes a few minutes and doesn't commit them to anything.</p>
           <a class="pill primary" href="/#contact">Start a referral</a>

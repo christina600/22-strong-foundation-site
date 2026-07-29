@@ -196,9 +196,7 @@
 
 .circle-equation {
   padding: clamp(76px, 9vw, 132px) var(--space-page-x);
-  background:
-    linear-gradient(115deg, rgba(14, 90, 92, .08), transparent 42%),
-    #f8f4eb;
+  background: #f8f4eb;
 }
 
 .circle-equation__inner {
@@ -505,9 +503,7 @@
 .circle-origin {
   padding: clamp(66px, 8vw, 110px) var(--space-page-x);
   border-bottom: 1px solid rgba(32, 35, 31, .10);
-  background:
-    linear-gradient(115deg, rgba(14, 90, 92, .10), transparent 45%),
-    #efe8dc;
+  background: #efe8dc;
 }
 
 .circle-origin__inner {
