@@ -47,6 +47,17 @@ test.describe("holding-page mature-eye typography", () => {
     expect(layout.top).toBeGreaterThanOrEqual(0);
   });
 
+  test("each location stays together instead of leaving a dangling city", async ({ page }) => {
+    await page.setViewportSize({ width: 768, height: 800 });
+    await page.goto("/");
+
+    const locationLineCounts = await page.locator(".meta .loc").evaluateAll((locations) =>
+      locations.map((location) => location.getClientRects().length),
+    );
+
+    expect(locationLineCounts).toEqual([1, 1]);
+  });
+
   test("wordmark stays neutral and supporting text keeps sufficient opacity", async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/");

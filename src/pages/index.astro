@@ -49,6 +49,9 @@
   .cta:hover{background:var(--paper); border-color:rgba(243,238,226,.72); transform:translateY(-1px)}
   .meta{margin-top:26px; padding-top:20px; border-top:1px solid var(--line); width:100%; max-width:600px;
     font-size:1.05rem; letter-spacing:.02em; color:var(--muted); line-height:1.85}
+  .meta-contact{display:grid; justify-items:center; gap:2px}
+  .meta-location{display:flex; flex-wrap:wrap; justify-content:center; align-items:baseline}
+  .meta .loc{white-space:nowrap}
   .meta a{color:var(--cream); text-decoration:none; border-bottom:1px solid var(--line)}
   .meta .dot{opacity:.4; padding:0 10px}
 
@@ -86,6 +89,7 @@
     .notify-form input[type="email"]{min-width:0; width:100%; text-align:center; font-size:1rem; padding:14px 18px}
     .notify-form .cta{width:auto; align-self:center; font-size:1rem; padding:13px 38px}
     .meta{font-size:1rem; line-height:1.7; letter-spacing:0}
+    .meta-location{display:grid; justify-items:center}
     .meta a, .meta .loc{display:block}
     .meta .dot{display:none}
     .meta .legal{display:block; margin-top:8px; font-size:1rem}
@@ -111,9 +115,13 @@
     </form>
     <p class="notify-success" id="notify-success" hidden>You're on the list — we'll be in touch when we launch.</p>
     <div class="meta">
-      <a href="mailto:team@22strongfoundation.com">team@22strongfoundation.com</a>
-      <span class="dot">·</span><span class="loc">Newport Beach, CA</span><span class="dot">·</span><span class="loc">Orange County &amp; Southern California</span>
-      <br><span class="legal">501(c)(3) nonprofit · EIN 99-1232582 · <a href="/privacy/">Privacy</a></span>
+      <div class="meta-contact">
+        <a href="mailto:team@22strongfoundation.com">team@22strongfoundation.com</a>
+        <div class="meta-location">
+          <span class="loc">Newport Beach, CA</span><span class="dot">·</span><span class="loc">Orange County &amp; Southern California</span>
+        </div>
+      </div>
+      <span class="legal">501(c)(3) nonprofit · EIN 99-1232582 · <a href="/privacy/">Privacy</a></span>
     </div>
   </main>
 
