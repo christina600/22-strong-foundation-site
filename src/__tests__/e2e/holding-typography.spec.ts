@@ -47,6 +47,18 @@ test.describe("holding-page mature-eye typography", () => {
     expect(layout.top).toBeGreaterThanOrEqual(0);
   });
 
+  test("the official logo remains fully visible in a short desktop viewport", async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 720 });
+    await page.goto("/");
+
+    const logoBox = await page.locator(".hero-lockup").boundingBox();
+    expect(logoBox).not.toBeNull();
+    expect(logoBox!.y).toBeGreaterThanOrEqual(0);
+    expect(logoBox!.y + logoBox!.height).toBeLessThanOrEqual(
+      await page.evaluate(() => document.documentElement.scrollHeight),
+    );
+  });
+
   test("each location stays together instead of leaving a dangling city", async ({ page }) => {
     await page.setViewportSize({ width: 768, height: 800 });
     await page.goto("/");
@@ -65,10 +77,12 @@ test.describe("holding-page mature-eye typography", () => {
     const colors = await page.evaluate(() => {
       const color = (selector: string, pseudo?: string) =>
         getComputedStyle(document.querySelector(selector)!, pseudo).color;
+      const fill = (selector: string) =>
+        getComputedStyle(document.querySelector(selector)!).fill;
 
       return {
-        number: color(".wordmark-22"),
-        strong: color(".wordmark-strong"),
+        number: fill(".hero-lockup-22"),
+        strong: fill(".hero-lockup-strong"),
         placeholder: color('.notify-form input[type="email"]', "::placeholder"),
       };
     });
