@@ -59,6 +59,21 @@ test.describe("holding-page mature-eye typography", () => {
     );
   });
 
+  test("desktop logo and message form one balanced row", async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto("/");
+
+    const logoBox = await page.locator(".mark").boundingBox();
+    const copyBox = await page.locator(".holding-copy").boundingBox();
+    expect(logoBox).not.toBeNull();
+    expect(copyBox).not.toBeNull();
+    expect(logoBox!.x + logoBox!.width).toBeLessThan(copyBox!.x);
+
+    const logoCenter = logoBox!.y + logoBox!.height / 2;
+    const copyCenter = copyBox!.y + copyBox!.height / 2;
+    expect(Math.abs(logoCenter - copyCenter)).toBeLessThanOrEqual(24);
+  });
+
   test("each location stays together instead of leaving a dangling city", async ({ page }) => {
     await page.setViewportSize({ width: 768, height: 800 });
     await page.goto("/");

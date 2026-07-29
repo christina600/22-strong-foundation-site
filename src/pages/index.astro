@@ -33,8 +33,11 @@
     min-height:100vh; display:flex; align-items:flex-start; justify-content:center;
     padding:3vh 24px; text-align:center; -webkit-font-smoothing:auto;
   }
-  .wrap{max-width:720px; display:flex; flex-direction:column; align-items:center}
-  .mark{width:clamp(150px,14vw,170px); margin-bottom:18px; filter:drop-shadow(0 12px 28px rgba(0,0,0,.22))}
+  .wrap{width:100%; max-width:1080px; margin-block:auto; display:flex; flex-direction:column; align-items:center}
+  .holding-hero{width:100%; display:grid; grid-template-columns:clamp(220px,22vw,280px) minmax(0,620px);
+    align-items:center; justify-content:center; gap:clamp(48px,6vw,84px)}
+  .holding-copy{text-align:left}
+  .mark{width:100%; filter:drop-shadow(0 12px 28px rgba(0,0,0,.22))}
   .hero-lockup{display:block; width:100%; height:auto}
   .hero-lockup text{fill:#fff; font-family:"Barlow Condensed",sans-serif; font-stretch:condensed; font-weight:800}
   .hero-lockup rect{fill:#d96f2d}
@@ -47,7 +50,7 @@
     padding:17px 38px; border-radius:8px; text-decoration:none; box-shadow:0 10px 26px rgba(0,0,0,.18);
     transition:background .18s ease, border-color .18s ease, transform .18s ease}
   .cta:hover{background:var(--paper); border-color:rgba(243,238,226,.72); transform:translateY(-1px)}
-  .meta{margin-top:26px; padding-top:20px; border-top:1px solid var(--line); width:100%; max-width:600px;
+  .meta{margin-top:32px; padding-top:20px; border-top:1px solid var(--line); width:100%; max-width:760px;
     font-size:1.05rem; letter-spacing:.02em; color:var(--muted); line-height:1.85}
   .meta-contact{display:grid; justify-items:center; gap:2px}
   .meta-location{display:flex; flex-wrap:wrap; justify-content:center; align-items:baseline}
@@ -59,7 +62,7 @@
   .sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0)}
   .notify-label{font-weight:600; font-size:1rem; letter-spacing:.13em; text-transform:uppercase;
     color:rgba(243,238,226,.82); margin-bottom:14px}
-  .notify-form{display:flex; flex-wrap:wrap; justify-content:center; gap:12px}
+  .notify-form{display:flex; flex-wrap:wrap; justify-content:flex-start; gap:12px}
   .notify-form[hidden]{display:none}
   .notify-form input[type="email"]{
     font-family:"Barlow",sans-serif; font-size:1.1rem; color:var(--cream);
@@ -70,6 +73,14 @@
   .notify-form input[type="email"]::placeholder{color:rgba(243,238,226,.68)}
   .notify-form input[type="email"]:focus{border-color:rgba(243,238,226,.82); background:rgba(243,238,226,.1)}
   .notify-success{font-weight:600; font-size:1.2rem; color:var(--cream); margin-bottom:0}
+
+  @media (max-width:820px){
+    .wrap{max-width:720px; margin-block:0}
+    .holding-hero{display:flex; flex-direction:column; gap:0}
+    .holding-copy{text-align:center}
+    .mark{width:clamp(160px,28vw,180px); margin-bottom:24px}
+    .notify-form{justify-content:center}
+  }
 
   /* Mobile: cinematic "trailer" hero. The 22STRONG Foundation mark dominates
      the screen, "Launching this summer" is the kicker, and the sentence + sign-up
@@ -95,31 +106,35 @@
 </head>
 <body>
   <main class="wrap">
-    <div class="mark">
-      <svg
-        class="hero-lockup"
-        viewBox="0 0 400 622"
-        role="img"
-        aria-label="22STRONG Foundation"
-        focusable="false"
-      >
-        <text class="hero-lockup-22" x="0" y="306" font-size="432" textLength="400" lengthAdjust="spacingAndGlyphs" transform="scale(1 1.25)">22</text>
-        <text class="hero-lockup-strong" x="0" y="505" font-size="164" textLength="400" lengthAdjust="spacingAndGlyphs">STRONG</text>
-        <rect x="0" y="531" width="400" height="34"></rect>
-        <text class="hero-lockup-foundation" x="0" y="619" font-size="48" textLength="400" lengthAdjust="spacing">FOUNDATION</text>
-      </svg>
+    <div class="holding-hero">
+      <div class="mark">
+        <svg
+          class="hero-lockup"
+          viewBox="0 0 400 622"
+          role="img"
+          aria-label="22STRONG Foundation"
+          focusable="false"
+        >
+          <text class="hero-lockup-22" x="0" y="306" font-size="432" textLength="400" lengthAdjust="spacingAndGlyphs" transform="scale(1 1.25)">22</text>
+          <text class="hero-lockup-strong" x="0" y="505" font-size="164" textLength="400" lengthAdjust="spacingAndGlyphs">STRONG</text>
+          <rect x="0" y="531" width="400" height="34"></rect>
+          <text class="hero-lockup-foundation" x="0" y="619" font-size="48" textLength="400" lengthAdjust="spacing">FOUNDATION</text>
+        </svg>
+      </div>
+      <div class="holding-copy">
+        <p class="eyebrow">Launching this summer</p>
+        <h1 class="tagline">22STRONG helps fund <span class="no-break">sports-medicine</span> recovery for veterans and students who cannot afford their next appointment.</h1>
+        <p class="notify-label">Sign up to be notified</p>
+        <form name="notify" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="notify-form" id="notify-form">
+          <input type="hidden" name="form-name" value="notify" />
+          <p class="hp"><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
+          <label class="sr" for="notify-email">Email address</label>
+          <input type="email" id="notify-email" name="email" placeholder="you@email.com" autocomplete="email" required />
+          <button type="submit" class="cta">Notify me</button>
+        </form>
+        <p class="notify-success" id="notify-success" hidden>You're on the list — we'll be in touch when we launch.</p>
+      </div>
     </div>
-    <p class="eyebrow">Launching this summer</p>
-    <h1 class="tagline">22STRONG helps fund <span class="no-break">sports-medicine</span> recovery for veterans and students who cannot afford their next appointment.</h1>
-    <p class="notify-label">Sign up to be notified</p>
-    <form name="notify" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="notify-form" id="notify-form">
-      <input type="hidden" name="form-name" value="notify" />
-      <p class="hp"><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
-      <label class="sr" for="notify-email">Email address</label>
-      <input type="email" id="notify-email" name="email" placeholder="you@email.com" autocomplete="email" required />
-      <button type="submit" class="cta">Notify me</button>
-    </form>
-    <p class="notify-success" id="notify-success" hidden>You're on the list — we'll be in touch when we launch.</p>
     <div class="meta">
       <div class="meta-contact">
         <a href="mailto:team@22strongfoundation.com">team@22strongfoundation.com</a>
