@@ -1,0 +1,149 @@
+/* ============================================================
+   Mature-eye readability policy
+
+   This file intentionally loads last. It is the enforceable floor for
+   meaningful text after the site's decorative and responsive layers have
+   resolved. Component styles may go larger, but should not go smaller.
+   ============================================================ */
+
+:root {
+  /* Reading copy starts at 18px. Controls and meaningful supporting text
+     start at 16px. Only short, non-essential captions may use the 15px tier. */
+  --fs-body: clamp(1.125rem, 1.075rem + .2vw, 1.25rem);
+  --fs-ui: clamp(1rem, .95rem + .2vw, 1.125rem);
+  --fs-ui-small: clamp(1rem, .975rem + .1vw, 1.0625rem);
+  --fs-ui-micro: clamp(.9375rem, .9rem + .15vw, 1rem);
+  --fs-ui-tiny: clamp(.9375rem, .9rem + .15vw, 1rem);
+  --fs-copy-small: clamp(1.125rem, 1.05rem + .3vw, 1.25rem);
+  --fs-copy-fine: clamp(1rem, .95rem + .2vw, 1.125rem);
+  --fs-meta: clamp(1rem, .95rem + .2vw, 1.0625rem);
+}
+
+/* Browser and operating-system defaults are more dependable than the
+   non-standard grayscale smoothing override, which can make macOS text thin. */
+html {
+  -webkit-font-smoothing: auto;
+}
+
+/* Navigation is an essential control, including its compact mobile state. */
+.site .nav-actions .pill.primary .nav-action-label,
+.site .nav-donate-toggle,
+.nav-mega__col-title {
+  font-size: 1rem !important;
+}
+
+/* Evidence and crisis information must remain readable, not decorative. */
+.stat-bridge__source {
+  font-size: 1rem;
+  color: rgba(251, 247, 238, .86);
+  line-height: 1.45;
+}
+
+.name-origin__crisis {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, .84);
+  line-height: 1.58;
+}
+
+.site .hero-mission__lead {
+  font-size: clamp(1.125rem, 1.05rem + .3vw, 1.25rem) !important;
+}
+
+/* Donation copy carries financial meaning and uses a full UI-sized floor. */
+.donate-section {
+  --conversion-copy: clamp(1rem, .96rem + .15vw, 1.0625rem);
+  --conversion-label: clamp(1rem, .96rem + .15vw, 1.0625rem);
+  --conversion-meta: clamp(1rem, .96rem + .15vw, 1.0625rem);
+}
+
+.site .donate-section .outcomes,
+.site .donate-section .donate-voice__cite,
+.site .donate-section .donation-type,
+.site .donate-section .donation-secure,
+.site .donate-section .amount-grid-label,
+.site .donation-card-main .amount-button small,
+.site .donate-section .btn-donate,
+.site .donate-section .donation-footnote,
+.site .donate-section .donation-legal,
+.donate-circle-note {
+  font-size: 1rem !important;
+}
+
+.site .donation-card-main .amount-button,
+.site .donation-card-main .other-amount-input,
+.site .donation-card-main .toggle-row button {
+  font-size: 1rem !important;
+}
+
+.site .donation-footnote,
+.site .donation-legal {
+  font-size: 1rem !important;
+  color: rgba(32, 35, 31, .78);
+}
+
+.donate-section .donation-card-intro,
+.donate-section .amount-grid-label,
+.donate-section .donation-footnote,
+.donate-section .donation-legal {
+  color: rgba(32, 35, 31, .78);
+}
+
+.donate-circle-note {
+  color: rgba(255, 255, 255, .84);
+}
+
+/* Credentials are part of the foundation's trust story, not fine print. */
+.about-page .bio-credentials,
+.about-page .bio-credentials li,
+.site .about-proof-list li,
+.site .hero-proofbar-list li,
+.about-hero__media figcaption {
+  font-size: 1rem !important;
+}
+
+.about-page .bio-credentials {
+  color: rgba(32, 35, 31, .78);
+}
+
+/* Transparency labels and status language must be as legible as their values. */
+.transparency-review-note > span,
+.transparency-status,
+.transparency-kicker,
+.transparency-facts dt,
+.transparency-need-card > strong,
+.transparency-handoff .transparency-kicker {
+  font-size: 1rem !important;
+  line-height: 1.35;
+}
+
+.transparency-handoff .transparency-kicker {
+  color: rgba(255, 250, 240, .86);
+}
+
+.transparency-review-note p,
+.transparency-facts dd,
+.transparency-handoff p,
+.transparency-handoff__privacy {
+  font-size: 1rem !important;
+}
+
+/* Keep descriptive media and process captions at a full reading size. */
+main figcaption,
+.how-step__dot,
+.support-tier small {
+  font-size: 1rem !important;
+}
+
+.site .testimonial-video__play,
+.site .testimonial-video__play-label {
+  font-family: var(--ui-face, var(--body-face));
+  font-size: 1rem !important;
+}
+
+/* Footer navigation is frequently used by readers who have already traversed
+   a long page, so it should not shrink below the main control floor. */
+footer,
+footer a,
+footer p {
+  font-size: 1rem;
+}

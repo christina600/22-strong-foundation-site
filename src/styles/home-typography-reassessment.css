@@ -1,0 +1,190 @@
+/* ============================================================
+   Display typography reassessment
+
+   The condensed brand face had spread from the logo into nearly every
+   heading. This final layer gives each kind of message its own voice:
+   open sans serif for action and orientation, serif for human stories,
+   and condensed type only where compact numerals genuinely benefit.
+   ============================================================ */
+
+/* A readable default for headings across every route. Individual homepage
+   moments below can then vary without falling back to the old condensed face. */
+.site h1,
+.site h2,
+.site h3 {
+  font-family: var(--body-face);
+  font-stretch: normal;
+  letter-spacing: -.025em;
+}
+
+/* Navigation wordmark: compact enough for the bar, but no longer squeezed or
+   extra-black. It reads as a name first and a mark second. */
+.site .brand {
+  font-family: var(--body-face);
+  font-stretch: normal;
+  font-size: clamp(1.35rem, 1.15rem + .45vw, 1.7rem);
+  font-weight: 600;
+  letter-spacing: -.025em;
+}
+
+.site .brand-name,
+.site .brand-foundation {
+  font-family: var(--body-face);
+  font-stretch: normal;
+}
+
+.site .brand-foundation {
+  font-size: .72em;
+  font-weight: 480;
+  letter-spacing: .02em;
+  text-transform: none;
+}
+
+/* Preserve the foundation's approved hero lockup and its original proportions.
+   It is a logo asset, not part of the broader heading system. */
+.site .hero-copy {
+  --hero-mark-width: clamp(240px, 21vw, 340px);
+  grid-template-columns: minmax(260px, .7fr) minmax(390px, 1.3fr);
+}
+
+.site .hero-mark {
+  width: var(--hero-mark-width);
+}
+
+/* The hero promise is a sentence, not another logo. A normal-width face and
+   moderate weight let it be larger without feeling aggressive. */
+.site .hero .hero-mission__heading {
+  max-width: 15ch;
+  font-family: var(--body-face);
+  font-stretch: normal;
+  font-size: clamp(3rem, 4.7vw, 5rem);
+  font-weight: 580;
+  line-height: 1.02;
+  letter-spacing: -.055em;
+}
+
+/* Credibility becomes the hero's quiet foundation instead of a competing teal
+   banner. Sentence case and open letterforms make the facts easier to scan. */
+.site .hero-proofbar {
+  background: rgba(24, 28, 25, .96);
+  border-top: 1px solid rgba(255, 255, 255, .12);
+  box-shadow: none;
+}
+
+.site .hero-proofbar-list {
+  color: rgba(255, 255, 255, .88);
+  font-family: var(--body-face);
+  font-size: clamp(1rem, .94rem + .18vw, 1.1rem);
+  font-weight: 520;
+  line-height: 1.35;
+  letter-spacing: -.01em;
+  text-transform: none;
+}
+
+.site .hero-proofbar-list li:not(:last-child)::after {
+  background: rgba(255, 255, 255, .32);
+}
+
+/* Orientation headings are direct and spacious. */
+.site .story-serve-intro h2 {
+  max-width: 12ch;
+  font-family: var(--body-face);
+  font-size: clamp(3.6rem, 6.3vw, 5.8rem);
+  font-weight: 620;
+  line-height: 1.02;
+  letter-spacing: -.055em;
+}
+
+/* Human stories use the editorial serif, creating relief from the interface
+   voice and matching the reflective nature of these sections. */
+.site .narrative-scene--about .about-intro h2,
+.site #impact .impact-section__heading,
+.site .audience-card-help h3 {
+  font-family: "Source Serif 4 Variable", Georgia, serif;
+  font-stretch: normal;
+  font-weight: 560;
+  letter-spacing: -.035em;
+}
+
+.site .narrative-scene--about .about-intro h2 {
+  max-width: 19ch;
+  font-size: clamp(3.25rem, 5vw, 4.8rem);
+  line-height: 1.04;
+}
+
+.site .audience-card-help h3 {
+  font-size: clamp(2.35rem, 3.1vw, 3.25rem);
+  line-height: 1.08;
+}
+
+.site #impact .impact-section__heading {
+  font-size: clamp(3rem, 4.25vw, 4.25rem);
+  line-height: 1.06;
+}
+
+/* Conversion and utility headings stay sans serif, but use different weights
+   and sizes according to their job rather than one repeated display recipe. */
+.site .name-origin h2 {
+  font-size: clamp(2.4rem, 3.2vw, 3.35rem);
+  font-weight: 580;
+  line-height: 1.08;
+}
+
+.site .section-cta--orange .section-cta-text {
+  font-family: var(--body-face);
+  font-weight: 580;
+  letter-spacing: -.04em;
+}
+
+.site .donate-section h2 {
+  font-size: clamp(3rem, 4.4vw, 4.45rem);
+  font-weight: 650;
+  line-height: 1.04;
+  letter-spacing: -.05em;
+}
+
+.site .contact h2 {
+  font-size: clamp(2.5rem, 3.1vw, 3.25rem);
+  font-weight: 600;
+  line-height: 1.08;
+}
+
+@media (max-width: 920px) {
+  .site .hero-copy {
+    --hero-mark-width: clamp(220px, 28vw, 300px);
+    grid-template-columns: minmax(200px, .68fr) minmax(320px, 1.32fr);
+    gap: clamp(24px, 4.2vw, 46px);
+  }
+}
+
+@media (max-width: 700px) {
+  .site .hero-copy {
+    --hero-mark-width: min(300px, 78vw);
+    grid-template-columns: 1fr;
+    gap: clamp(38px, 10vw, 54px);
+  }
+
+  .site .hero .hero-mission__heading {
+    max-width: 12ch;
+    font-size: clamp(2.7rem, 12.2vw, 3.65rem);
+    line-height: 1.02;
+  }
+
+  .site .story-serve-intro h2 {
+    font-size: clamp(3rem, 14vw, 4.2rem);
+  }
+
+  .site .narrative-scene--about .about-intro h2 {
+    font-size: clamp(2.7rem, 11vw, 3.45rem);
+  }
+
+  .site #impact .impact-section__heading,
+  .site .donate-section h2 {
+    font-size: clamp(2.5rem, 10vw, 3.15rem);
+  }
+
+  .site .hero-proofbar-list {
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+}
