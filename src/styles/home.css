@@ -46,3 +46,7 @@
 @import "./home-typography-scale.css";
 /* CARE-inspired navigation treatment for the home overlay and mobile sheet */
 @import "./home-care-navigation.css";
+/* Final accessibility policy: mature-eye type floors and cross-browser rendering */
+@import "./home-readability.css";
+/* Individual display-type roles and neutral credibility treatment */
+@import "./home-typography-reassessment.css";

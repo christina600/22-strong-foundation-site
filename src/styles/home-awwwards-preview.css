@@ -80,7 +80,7 @@
 .impact-section,
 .how-it-works,
 .audience-voices--combined,
-#leadership,
+:is(#leadership, #advisory-council),
 .strong-circle-section,
 .donate-section,
 .contact {
@@ -266,7 +266,7 @@
 
 .narrative-scene--about .about-intro h2,
 .how-story-copy h2,
-#leadership > :is(h1, h2),
+:is(#leadership, #advisory-council) > :is(h1, h2),
 .circle-panel h2,
 .donate-section h2,
 .contact h2,
@@ -278,7 +278,7 @@
 
 .narrative-scene--about,
 .how-it-works,
-#leadership,
+:is(#leadership, #advisory-council),
 .strong-circle-section,
 .contact {
   padding-block: clamp(104px, 12vw, 172px);
@@ -308,14 +308,13 @@
     linear-gradient(180deg, #e7ece0 0%, #f8f4eb 78%);
 }
 
-#leadership {
+:is(#leadership, #advisory-council) {
   background:
     linear-gradient(180deg, #f8f4eb, #efe2d4 62%, #f8f4eb);
 }
 
 .strong-circle-section {
   background:
-    linear-gradient(135deg, rgba(14, 90, 92, .08), transparent 34%),
     linear-gradient(180deg, #e7ece0, #f8f4eb);
 }
 
@@ -1230,7 +1229,7 @@ form,
 
   .narrative-scene--about .about-intro h2,
   .how-story-copy h2,
-  #leadership > :is(h1, h2),
+  :is(#leadership, #advisory-council) > :is(h1, h2),
   .circle-panel h2,
   .donate-section h2,
   .contact h2,

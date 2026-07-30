@@ -73,16 +73,6 @@
   text-shadow: 0 2px 18px rgba(0, 0, 0, .42);
 }
 
-.hero-mission__eyebrow {
-  margin: 0 0 16px;
-  color: #f0773c;
-  font-family: var(--ui-face, ui-sans-serif, system-ui, sans-serif);
-  font-size: clamp(.78rem, .7rem + .18vw, .92rem);
-  font-weight: 820;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-}
-
 .hero .hero-mission__heading {
   display: block;
   margin: 0;
@@ -142,19 +132,8 @@
   width: min(980px, 100%);
   margin-inline: auto;
   display: grid;
-  grid-template-columns: minmax(160px, .55fr) minmax(0, 1.45fr);
-  gap: 10px clamp(32px, 6vw, 84px);
-}
-
-.name-origin__eyebrow {
-  grid-row: 1 / span 3;
-  margin: 5px 0 0;
-  color: #f0773c;
-  font-family: var(--ui-face, ui-sans-serif, system-ui, sans-serif);
-  font-size: .78rem;
-  font-weight: 820;
-  letter-spacing: .16em;
-  text-transform: uppercase;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
 }
 
 .name-origin h2 {
@@ -258,10 +237,6 @@
     text-indent: .42em;
   }
 
-  .hero-mission__eyebrow {
-    margin-bottom: 11px;
-  }
-
   .hero .hero-mission__heading {
     max-width: 12ch;
     font-size: clamp(2.2rem, 10.7vw, 3.15rem);
@@ -291,11 +266,6 @@
   .name-origin__inner {
     grid-template-columns: 1fr;
     gap: 0;
-  }
-
-  .name-origin__eyebrow {
-    grid-row: auto;
-    margin: 0 0 12px;
   }
 }
 

@@ -60,14 +60,14 @@ const amountNotes: Record<"monthly" | "one-time", Record<number, string>> = {
     22: "Strong Circle",
     50: "Follow-through care",
     100: "Plans moving",
-    190: "Session support",
+    140: "Session support",
   },
   "one-time": {
     50: "Move care closer",
     100: "Offset care",
-    190: "Session support",
-    250: "Follow-up care",
-    850: "Care plan support",
+    140: "Session support",
+    420: "Three sessions",
+    980: "Recovery plan",
   },
 };
 const amountNote = (frequency: "monthly" | "one-time", amount: number) => amountNotes[frequency][amount] ?? "Recovery care";
@@ -137,7 +137,7 @@ const legalParts = [
             type="button"
             class={`amount-button ${amount === g.def ? "active" : ""}`}
             data-amount={amount}
-            data-featured={g.freq === "one-time" && amount === 190 ? "true" : undefined}
+            data-featured={g.freq === "one-time" && amount === 140 ? "true" : undefined}
             aria-pressed={amount === g.def ? "true" : "false"}
           >
             <span class="amount-button-value">${fmt(amount)}</span>

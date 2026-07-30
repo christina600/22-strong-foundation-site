@@ -5,22 +5,8 @@
   margin: 0 calc(50% - 50vw);
   padding: clamp(58px, 6vw, 88px) var(--space-page-x) clamp(48px, 5vw, 76px);
   overflow: hidden;
-  background:
-    linear-gradient(115deg, rgba(70, 87, 70, .10), transparent 38%),
-    linear-gradient(180deg, #f8f4eb 0%, #efe8dc 100%);
+  background: #f6f1e6;
   border-bottom: 1px solid rgba(32, 35, 31, .10);
-}
-
-.about-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(32, 35, 31, .035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(32, 35, 31, .022) 1px, transparent 1px);
-  background-size: 58px 58px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, .32), transparent 72%);
 }
 
 .about-hero__inner {
@@ -148,11 +134,11 @@
   text-shadow: 0 2px 18px rgba(0, 0, 0, .36);
 }
 
-.about-page #leadership {
+.about-page :is(#leadership, #advisory-council) {
   padding-block: clamp(66px, 8vw, 112px);
 }
 
-.about-page #leadership > :is(h1, h2) {
+.about-page :is(#leadership, #advisory-council) > :is(h1, h2) {
   width: min(var(--max), 100%);
   max-width: var(--max);
   margin-inline: auto;
@@ -168,7 +154,7 @@
   grid-template-columns: 1fr;
 }
 
-.about-page #leadership .card {
+.about-page :is(#leadership, #advisory-council) .card {
   padding: clamp(24px, 2.5vw, 34px);
 }
 
@@ -202,32 +188,28 @@
   filter: saturate(.86) contrast(1.03) sepia(.07) !important;
 }
 
+/* Editorial credit line rather than uniform badge-chips — reads like a
+   masthead bio credit, not a templated card. */
 .bio-credentials {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 16px 0 0;
+  margin: 12px 0 0;
   padding: 0;
   list-style: none;
+  color: rgba(32, 35, 31, .62);
+  font-size: var(--fs-ui-small);
+  font-weight: 600;
+  line-height: 1.55;
 }
 
 .bio-credentials li {
-  display: inline-flex;
-  align-items: center;
-  min-height: 30px;
-  padding: 6px 10px;
-  border: 1px solid rgba(32, 35, 31, .12);
-  border-radius: 999px;
-  background: rgba(70, 87, 70, .08);
-  color: rgba(32, 35, 31, .72);
-  font-size: var(--fs-ui-small);
-  font-weight: 800;
-  line-height: 1.15;
-  /* Credentials wrap as whole chips, never mid-credential. */
-  white-space: nowrap;
+  display: inline;
 }
 
-.about-page #leadership .card p {
+.bio-credentials li:not(:last-child)::after {
+  content: " · ";
+  color: rgba(32, 35, 31, .34);
+}
+
+.about-page :is(#leadership, #advisory-council) .card p {
   max-width: none;
 }
 
@@ -247,21 +229,7 @@
   padding: clamp(64px, 7vw, 104px) var(--space-page-x) clamp(48px, 6vw, 76px);
   overflow: hidden;
   border-bottom: 1px solid rgba(32, 35, 31, .10);
-  background:
-    linear-gradient(115deg, rgba(28, 140, 135, .10), transparent 44%),
-    linear-gradient(180deg, #f8f4eb 0%, #efe8dc 100%);
-}
-
-.support-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(32, 35, 31, .032) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(32, 35, 31, .022) 1px, transparent 1px);
-  background-size: 58px 58px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, .34), transparent 74%);
+  background: #f6f1e6;
 }
 
 .support-hero__inner {
@@ -662,21 +630,7 @@
   padding: clamp(64px, 7vw, 102px) var(--space-page-x) clamp(50px, 6vw, 78px);
   overflow: hidden;
   border-bottom: 1px solid rgba(32, 35, 31, .10);
-  background:
-    linear-gradient(115deg, rgba(14, 90, 92, .10), transparent 42%),
-    linear-gradient(180deg, #f8f4eb 0%, #efe8dc 100%);
-}
-
-.how-page-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(32, 35, 31, .032) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(32, 35, 31, .022) 1px, transparent 1px);
-  background-size: 58px 58px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, .34), transparent 74%);
+  background: #f6f1e6;
 }
 
 .how-page-hero__inner {
@@ -1153,21 +1107,7 @@
   padding: clamp(64px, 7vw, 104px) var(--space-page-x) clamp(52px, 6vw, 82px);
   overflow: hidden;
   border-bottom: 1px solid rgba(32, 35, 31, .10);
-  background:
-    linear-gradient(115deg, rgba(70, 87, 70, .12), transparent 42%),
-    linear-gradient(180deg, #f8f4eb 0%, #efe8dc 100%);
-}
-
-.transparency-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(32, 35, 31, .032) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(32, 35, 31, .022) 1px, transparent 1px);
-  background-size: 58px 58px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, .34), transparent 74%);
+  background: #f6f1e6;
 }
 
 .transparency-hero__inner {
@@ -1565,11 +1505,11 @@
     aspect-ratio: 16 / 10;
   }
 
-  .about-page #leadership {
+  .about-page :is(#leadership, #advisory-council) {
     padding-block: clamp(56px, 14vw, 82px);
   }
 
-  .about-page #leadership > :is(h1, h2) {
+  .about-page :is(#leadership, #advisory-council) > :is(h1, h2) {
     font-size: clamp(2.65rem, 12vw, 3.7rem);
   }
 

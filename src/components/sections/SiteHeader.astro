@@ -53,7 +53,7 @@ const homeHref = (hash: string) => isHome ? hash : `/${hash}`;
           <div class="nav-submenu__inner">
             <div class="nav-mega__lead">
               <p class="nav-mega__title">What We Do</p>
-              <p class="nav-mega__intro">How we fund recovery care when insurance stops short.</p>
+              <p class="nav-mega__intro">How we help keep recovery going when insurance stops short.</p>
               <a class="nav-mega__cta" href="/how-it-works/">See how it works <span aria-hidden="true">&rarr;</span></a>
             </div>
             <div class="nav-mega__cols">
@@ -97,7 +97,9 @@ const homeHref = (hash: string) => isHome ? hash : `/${hash}`;
               <div class="nav-mega__col">
                 <p class="nav-mega__col-title">The foundation</p>
                 <a href="/about/">Our Story</a>
-                <a href="/about/#leadership">The Team</a>
+                <a href="/about/#leadership">Board of Directors</a>
+                {/* Advisory Council hidden until veteran bios are confirmed — restore with the panel in about/index.astro */}
+                {/* <a href="/about/#advisory-council">Advisory Council</a> */}
                 <a href="/transparency/">Transparency</a>
               </div>
             </div>

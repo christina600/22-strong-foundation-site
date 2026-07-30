@@ -25,25 +25,24 @@ import { buildAudienceGroups } from "../utils/home-story";
 
 const audienceGroups = buildAudienceGroups(home);
 // Evidence stats moved to How It Works; the bridge stat is the one number that stays.
-const [, visitCapStat] = home.stats.others;
+const [visitCapStat] = home.stats.others;
 const showFontLab = import.meta.env.DEV && Astro.url.searchParams.has("fontlab");
 ---
 
-<HomeBase title="Fund recovery care when the system stops short.">
+<HomeBase title="Keeping recovery going when insurance stops short.">
   <div class="site">
     <SiteHeader current="home" />
 
     <main id="main">
       <HeroSection
         proofline={home.credibility}
-        eyebrow={home.hero.eyebrow}
         heading={home.hero.heading}
         lead={home.hero.lead}
         primaryCta={home.hero.ctaLabel}
         secondaryCta={home.hero.secondaryCtaLabel}
       />
 
-      <section class="stat-bridge" aria-label="Recovery gap statistic">
+      <section class="stat-bridge" aria-label="Insurance coverage statistic">
         <div class="stat-bridge__media" style="--bg-image: url(/images/story-adaptive-deadlift.webp)"></div>
         <div class="stat-bridge__content">
           <p class="stat-bridge__number"><StatNumber text={visitCapStat.number} /></p>
@@ -65,7 +64,7 @@ const showFontLab = import.meta.env.DEV && Astro.url.searchParams.has("fontlab")
         media={{
           src: "/images/story-neck-treatment.jpg",
           alt: "Dr. Vas providing hands-on neck mobility treatment at Next Level Wellness Center",
-          caption: "The gap shows up where recovery happens: in the treatment room.",
+          caption: "This is where recovery happens: in the treatment room.",
           imagePosition: "50% 50%"
         }}
       />

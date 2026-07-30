@@ -1,10 +1,10 @@
 ---
 /**
- * The Strong Circle mark: a ring of nine segments — nine members at $22
+ * The Strong Circle mark: a ring of seven segments — seven members at $22
  * fund one recovery session every month — around the 22. Draws in
  * currentColor so it prints cream on the teal card and deep teal on
  * light backgrounds. Print-ready versions live in
- * design-assets/strong-circle/.
+ * design-assets/strong-circle/ and need regenerating to match seven segments.
  */
 interface Props {
   size?: number;
@@ -13,9 +13,9 @@ interface Props {
 
 const { size = 96, class: className } = Astro.props;
 
-// r=82 → circumference ≈ 515.2; nine segments at an 80/20 duty cycle.
-const SEGMENT = 45.8;
-const GAP = 11.46;
+// r=82 → circumference ≈ 515.2; seven segments at an 80/20 duty cycle.
+const SEGMENT = 58.88;
+const GAP = 14.72;
 ---
 
 <svg
@@ -24,7 +24,7 @@ const GAP = 11.46;
   height={size}
   viewBox="0 0 200 200"
   role="img"
-  aria-label="The Strong Circle mark: nine segments around the number 22"
+  aria-label="The Strong Circle mark: seven segments around the number 22"
   fill="none"
 >
   <circle

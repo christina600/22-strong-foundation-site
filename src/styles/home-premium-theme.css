@@ -32,8 +32,11 @@
   --logo-face: "Barlow Condensed", "DIN Condensed", "DIN Alternate", "Helvetica Neue Condensed Black",
     "HelveticaNeue-CondensedBold", "Arial Narrow", "Aptos Narrow", Impact,
     ui-sans-serif, system-ui, sans-serif;
-  /* Bundled faces keep the editorial hierarchy consistent across browsers. */
-  --display-face: "Source Serif 4 Variable", Georgia, "Times New Roman", serif;
+  /* Display headings share the brand's condensed face (the 22STRONG mark),
+     replacing the default editorial serif for a distinctive, on-brand voice. */
+  --display-face: "Barlow Condensed", "DIN Condensed", "DIN Alternate",
+    "Helvetica Neue Condensed Black", "HelveticaNeue-CondensedBold",
+    "Arial Narrow", "Aptos Narrow", Impact, ui-sans-serif, system-ui, sans-serif;
   --body-face: "Inter Variable", "Helvetica Neue", Arial, sans-serif;
   --number-face: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
   --space-page-x: 32px;
@@ -538,22 +541,8 @@ p {
   display: flex;
   align-items: center;
   padding: 0 var(--space-page-x);
-  background:
-    linear-gradient(180deg, rgba(14, 90, 92, .98), rgba(9, 63, 67, .98)),
-    var(--teal-deep, #0e5a5c);
-  box-shadow:
-    0 -12px 34px rgba(20, 22, 19, .18),
-    inset 0 1px 0 rgba(255, 255, 255, .12),
-    inset 0 -1px 0 rgba(4, 34, 36, .42);
-}
-
-.hero-proofbar::before {
-  content: "";
-  position: absolute;
-  inset: -16px 0 auto;
-  height: 32px;
-  background: radial-gradient(ellipse at center, rgba(4, 34, 36, .30), transparent 72%);
-  pointer-events: none;
+  background: var(--teal-deep, #0e5a5c);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .10);
 }
 
 .hero-proofbar-list {
@@ -561,19 +550,20 @@ p {
   z-index: 1;
   width: min(var(--max), 100%);
   margin: 0 auto;
-  padding: 0 clamp(4px, 1.2vw, 18px);
+  padding: 0;
   list-style: none;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  justify-content: space-between;
-  gap: clamp(22px, 4.2vw, 72px);
-  color: rgba(251, 247, 238, .92);
-  font-family: var(--body-face);
-  font-size: clamp(.95rem, .82rem + .25vw, 1.08rem);
-  font-weight: 760;
+  justify-content: center;
+  gap: clamp(20px, 3vw, 44px);
+  color: rgba(251, 247, 238, .94);
+  font-family: var(--display-face);
+  font-size: clamp(.86rem, .78rem + .2vw, 1rem);
+  font-weight: 600;
   line-height: 1.14;
-  letter-spacing: 0;
+  letter-spacing: .11em;
+  text-transform: uppercase;
   text-shadow: none;
 }
 
@@ -609,12 +599,12 @@ p {
   content: "";
   position: absolute;
   top: 50%;
-  right: calc(clamp(22px, 4.2vw, 72px) / -2);
-  width: 5px;
-  height: 5px;
-  margin-top: -2.5px;
+  right: calc(clamp(20px, 3vw, 44px) / -2);
+  width: 4px;
+  height: 4px;
+  margin-top: -2px;
   border-radius: 999px;
-  background: rgba(251, 247, 238, .42);
+  background: rgba(251, 247, 238, .40);
   box-shadow: none;
 }
 
