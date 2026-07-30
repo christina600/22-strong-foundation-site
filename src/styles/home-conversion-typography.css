@@ -9,12 +9,16 @@
 
 /* Recovery-gap bridge: keep the evidence memorable without letting the
    statistic overpower the explanation or the next action. */
+.stat-bridge {
+  height: clamp(700px, 72svh, 840px);
+}
+
 .stat-bridge__content {
   max-width: min(690px, 88%);
 }
 
 .stat-bridge__number {
-  margin-bottom: clamp(18px, 2.4vw, 28px);
+  margin-bottom: clamp(34px, 4vw, 50px);
   font-size: clamp(4rem, 7.5vw, 6.4rem);
   line-height: .92;
 }
@@ -34,7 +38,7 @@
 
 .stat-bridge__body {
   max-width: 32ch;
-  margin-bottom: clamp(12px, 1.7vw, 18px);
+  margin-bottom: clamp(22px, 2.6vw, 32px);
   font-size: clamp(1.18rem, 1rem + .65vw, 1.55rem);
   font-weight: 540;
   line-height: 1.48;
@@ -42,7 +46,7 @@
 }
 
 .stat-bridge__source {
-  margin-bottom: clamp(30px, 4vw, 48px);
+  margin-bottom: clamp(54px, 6vw, 76px);
   font-size: clamp(.76rem, .72rem + .12vw, .86rem);
   font-weight: 650;
   color: rgba(251, 247, 238, .68);
@@ -197,13 +201,23 @@
 }
 
 @media (max-width: 560px) {
+  .stat-bridge {
+    height: 660px;
+  }
+
   .stat-bridge__number {
     font-size: clamp(3.8rem, 16vw, 4.4rem);
+    margin-bottom: 30px;
   }
 
   .stat-bridge__body {
     font-size: 1.12rem;
     line-height: 1.5;
+    margin-bottom: 22px;
+  }
+
+  .stat-bridge__source {
+    margin-bottom: 48px;
   }
 
   .donate-section h2 {

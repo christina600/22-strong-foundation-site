@@ -153,7 +153,7 @@
   .site .hero-copy {
     --hero-mark-width: clamp(220px, 28vw, 300px);
     grid-template-columns: minmax(200px, .68fr) minmax(320px, 1.32fr);
-    gap: clamp(24px, 4.2vw, 46px);
+    gap: clamp(42px, 5.2vw, 62px);
   }
 }
 
@@ -161,7 +161,7 @@
   .site .hero-copy {
     --hero-mark-width: min(300px, 78vw);
     grid-template-columns: 1fr;
-    gap: clamp(38px, 10vw, 54px);
+    gap: clamp(46px, 12vw, 64px);
   }
 
   .site .hero .hero-mission__heading {

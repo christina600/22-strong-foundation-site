@@ -1,6 +1,6 @@
 /* Mission-first hero. Imported last so this composition owns the final hero hierarchy. */
 .hero {
-  min-height: clamp(700px, calc(94svh - 82px), 900px);
+  min-height: clamp(840px, calc(108svh - 82px), 1040px);
 }
 
 .hero-media::after {
@@ -17,7 +17,7 @@
 
 .hero-inner {
   min-height: inherit;
-  padding-block: clamp(42px, 6.5vh, 74px) calc(clamp(64px, 9vh, 100px) + var(--hero-proofbar-height));
+  padding-block: clamp(70px, 9vh, 108px) calc(clamp(96px, 12vh, 144px) + var(--hero-proofbar-height));
 }
 
 .hero-copy {
@@ -30,7 +30,7 @@
   display: grid;
   grid-template-columns: minmax(260px, .7fr) minmax(390px, 1.3fr);
   align-items: center;
-  gap: clamp(40px, 5vw, 88px);
+  gap: clamp(68px, 7vw, 120px);
   filter: none;
 }
 
@@ -87,7 +87,7 @@
 }
 
 .hero-mission__lead {
-  margin: clamp(20px, 2.4vw, 30px) 0 0;
+  margin: clamp(30px, 3.2vw, 42px) 0 0;
   max-width: 55ch;
   color: rgba(255, 255, 255, .9);
   font-size: clamp(1.04rem, .94rem + .35vw, 1.28rem);
@@ -97,7 +97,7 @@
 }
 
 .hero-mission__actions {
-  margin-top: clamp(24px, 3vw, 38px);
+  margin-top: clamp(36px, 4vw, 52px);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -167,15 +167,15 @@
   }
 
   .hero-inner {
-    min-height: 760px;
+    min-height: 860px;
     align-content: center;
-    padding-top: clamp(48px, 7vh, 72px);
+    padding-top: clamp(64px, 8vh, 88px);
   }
 
   .hero-copy {
     --hero-mark-width: clamp(220px, 28vw, 300px);
     grid-template-columns: minmax(200px, .68fr) minmax(320px, 1.32fr);
-    gap: clamp(24px, 4.2vw, 46px);
+    gap: clamp(42px, 5.2vw, 62px);
   }
 
   .hero-mark-22 {
@@ -201,15 +201,15 @@
   }
 
   .hero-inner {
-    min-height: min(830px, calc(100svh - 70px));
-    padding: 42px 20px calc(38px + var(--hero-proofbar-height));
+    min-height: max(900px, calc(100svh - 70px));
+    padding: 56px 20px calc(52px + var(--hero-proofbar-height));
     align-content: center;
   }
 
   .hero-copy {
     grid-template-columns: 1fr;
     justify-items: center;
-    gap: 28px;
+    gap: 42px;
   }
 
   .hero-mark {
@@ -244,7 +244,7 @@
   }
 
   .hero-mission__lead {
-    margin-top: 16px;
+    margin-top: 24px;
     max-width: 34ch;
     font-size: clamp(.96rem, 4vw, 1.08rem);
     line-height: 1.45;
@@ -255,7 +255,7 @@
   }
 
   .hero-mission__actions {
-    margin-top: 20px;
+    margin-top: 30px;
   }
 
   .hero-mission__actions .pill {
