@@ -251,7 +251,18 @@
       ]
     }
   ],
-  "advisors": [],
+  "advisors": [
+    {
+      "name": "CSM (R) Ramon Rodriguez",
+      "role": "Advisor",
+      "portrait": "/images/ramon-rodriguez.jpg",
+      "portraitAlt": "CSM (Ret.) Ramon Rodriguez in U.S. Army dress uniform",
+      "portraitPosition": "50% 22%",
+      "paragraphs": [
+        "Biography coming soon."
+      ]
+    }
+  ],
   "donate": {
     "heading": "Help fund the next appointment.",
     "lead": "A one-time gift pays for hands-on care when the next visit is at risk.",

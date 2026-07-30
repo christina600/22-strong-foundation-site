@@ -31,14 +31,13 @@ const intro = {
       <AboutIntroSection {...intro} />
       <NameOriginCallout {...home.nameOrigin} />
       <LeadershipSection people={home.leadership} headingLevel="h2" title="Board of Directors" />
-      {/* Advisory Council panel hidden until veteran bios/labels are confirmed. Restore this block (and the nav link in SiteHeader.astro) once the info is verified. */}
-      {/* <LeadershipSection
+      <LeadershipSection
         people={home.advisors}
         headingLevel="h2"
-        title="Advisory Council"
-        id="advisory-council"
-        intro="Veterans who advise the board and keep the foundation close to the community it serves."
-      /> */}
+        title="Veteran Advisory Committee"
+        id="advisory-committee"
+        intro="Veterans who advise the foundation and keep it close to the community it serves."
+      />
       <SectionCta
         text="Keep the next visit within reach."
         label="Fund recovery care"
