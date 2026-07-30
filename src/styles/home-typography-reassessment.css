@@ -157,13 +157,14 @@
   }
 
   .site .stat-bridge__media {
-    background-position: center 30%;
+    background-position: right 30%;
+    background-size: 110% auto;
   }
 
   .site .stat-bridge__content {
-    width: min(570px, 35vw);
+    width: min(520px, 34vw);
     max-width: none;
-    margin-right: clamp(48px, 7vw, 144px);
+    margin-right: clamp(48px, 6vw, 112px);
     margin-left: auto;
     align-items: flex-start;
     text-align: left;
@@ -186,6 +187,7 @@
 
   .site .stat-bridge__media {
     background-position: right 30%;
+    background-size: 110% auto;
   }
 
   .site .stat-bridge__content {
