@@ -251,45 +251,7 @@
       ]
     }
   ],
-  "advisors": [
-    {
-      "name": "CSM (R) Ramon Rodriguez",
-      "role": "Advisor",
-      "initials": "RR",
-      "credentials": [
-        "3 Silver Stars",
-        "5 Purple Hearts",
-        "Ranger Hall of Fame inductee"
-      ],
-      "paragraphs": [
-        "One of the most decorated combat soldiers of the Vietnam War. Ramon served with the U.S. Army's 101st Airborne Division and Special Forces and retired a Command Sergeant Major after 23 years. A bill in Congress would award him the Medal of Honor. He has spent the years since working for veterans across Southern California."
-      ]
-    },
-    {
-      "name": "SGT Mark Miller",
-      "role": "Advisor",
-      "initials": "MM",
-      "credentials": [
-        "Bronze Star with \"V\"",
-        "U.S. Army Airborne Ranger"
-      ],
-      "paragraphs": [
-        "Mark ran long-range reconnaissance patrols in Vietnam with Company E, 20th Infantry (Airborne). He was awarded the Bronze Star with \"V\" for rescuing an injured team member while under fire."
-      ]
-    },
-    {
-      "name": "John Baca",
-      "role": "Advisor",
-      "initials": "JB",
-      "credentials": [
-        "Medal of Honor recipient",
-        "U.S. Army 1st Cavalry Division"
-      ],
-      "paragraphs": [
-        "John received the Medal of Honor for his actions in Vietnam in 1970, when he covered a grenade with his helmet and his own body, saving eight men. He has spent the decades since serving veterans in Southern California, where a Huntington Beach park carries his name."
-      ]
-    }
-  ],
+  "advisors": [],
   "donate": {
     "heading": "Help fund the next appointment.",
     "lead": "A one-time gift pays for hands-on care when the next visit is at risk.",
