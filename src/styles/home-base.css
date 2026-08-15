@@ -3,7 +3,7 @@
 :root {
   --ink: #252321;
   --muted: #696660;
-  --paper: #fbf7ee;
+  --paper: #ffffff;
   --line: rgba(37, 35, 33, .14);
   --orange: #c94f0f;
   --orange-dark: #9f3908;
@@ -126,7 +126,7 @@ body {
   background:
     linear-gradient(135deg, rgba(81, 82, 58, .10) 0%, transparent 32%),
     linear-gradient(225deg, rgba(201, 79, 15, .05) 0%, transparent 34%),
-    linear-gradient(180deg, #fbf7ee 0%, #f7f1e6 52%, #fbf7ee 100%);
+    linear-gradient(180deg, #ffffff 0%, #f0f0f0 52%, #ffffff 100%);
 }
 
 body::before {
