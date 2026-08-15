@@ -2,14 +2,13 @@
 import { heroBattleRopes } from "../../assets/images";
 
 interface Props {
-  proofline?: string[];
   heading: string;
   lead: string;
   primaryCta: string;
   secondaryCta: string;
 }
 
-const { proofline = [], heading, lead, primaryCta, secondaryCta } = Astro.props;
+const { heading, lead, primaryCta, secondaryCta } = Astro.props;
 ---
 
 <section class="hero" id="top">
@@ -47,13 +46,4 @@ const { proofline = [], heading, lead, primaryCta, secondaryCta } = Astro.props;
       </div>
     </div>
   </div>
-  {
-    proofline.length > 0 && (
-      <div class="hero-proofbar" aria-label="About 22STRONG Foundation">
-        <ul class="hero-proofbar-list">
-          {proofline.map((fact) => <li>{fact}</li>)}
-        </ul>
-      </div>
-    )
-  }
 </section>

@@ -9,23 +9,17 @@
 import HomeBase from "../layouts/HomeBase.astro";
 import AudienceSection from "../components/sections/AudienceSection.astro";
 import ContactSection from "../components/sections/ContactSection.astro";
-import DonationAskSection from "../components/sections/DonationAskSection.astro";
 import FontComboPicker from "../components/sections/FontComboPicker.astro";
 import HeroSection from "../components/sections/HeroSection.astro";
-import ImpactSection from "../components/sections/ImpactSection.astro";
 import NarrativeScene from "../components/sections/NarrativeScene.astro";
 import NameOriginCallout from "../components/sections/NameOriginCallout.astro";
-import SectionCta from "../components/sections/SectionCta.astro";
 import SiteHeader from "../components/sections/SiteHeader.astro";
 import SiteFooter from "../components/sections/SiteFooter.astro";
-import StatNumber from "../components/sections/StatNumber.astro";
 import VeteranStorySection from "../components/sections/VeteranStorySection.astro";
 import home from "../content/home.json";
 import { buildAudienceGroups } from "../utils/home-story";
 
 const audienceGroups = buildAudienceGroups(home);
-// Evidence stats moved to How It Works; the bridge stat is the one number that stays.
-const [visitCapStat] = home.stats.others;
 const showFontLab = import.meta.env.DEV && Astro.url.searchParams.has("fontlab");
 ---
 
@@ -35,22 +29,11 @@ const showFontLab = import.meta.env.DEV && Astro.url.searchParams.has("fontlab")
 
     <main id="main">
       <HeroSection
-        proofline={home.credibility}
         heading={home.hero.heading}
         lead={home.hero.lead}
         primaryCta={home.hero.ctaLabel}
         secondaryCta={home.hero.secondaryCtaLabel}
       />
-
-      <section class="stat-bridge" aria-label="Insurance coverage statistic">
-        <div class="stat-bridge__media" style="--bg-image: url(/images/story-adaptive-deadlift.webp)"></div>
-        <div class="stat-bridge__content">
-          <p class="stat-bridge__number"><StatNumber text={visitCapStat.number} /></p>
-          <p class="stat-bridge__body">{visitCapStat.text}</p>
-          <a class="stat-bridge__source" href={visitCapStat.url} target="_blank" rel="noopener noreferrer">{visitCapStat.source}</a>
-          <a class="pill primary stat-bridge__cta" href="#donate">{home.hero.ctaLabel}</a>
-        </div>
-      </section>
 
       <AudienceSection chapter="01" introTitle="Who we serve" groups={audienceGroups} />
 
@@ -71,16 +54,8 @@ const showFontLab = import.meta.env.DEV && Astro.url.searchParams.has("fontlab")
 
       <NameOriginCallout {...home.nameOrigin} />
 
-      <ImpactSection
-        heading="Every number here is care that kept going after coverage stopped."
-        impact={home.mission.impact}
-      />
-
       <VeteranStorySection />
 
-      <SectionCta text="Keep the next visit within reach." label="Support the next visit" href="#donate" />
-
-      <DonationAskSection chapter="03" donate={home.donate} />
       <ContactSection contact={home.contact} />
     </main>
 
