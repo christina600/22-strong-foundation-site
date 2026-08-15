@@ -1,0 +1,53 @@
+---
+interface Props {}
+---
+
+<section class="mission-statement" aria-labelledby="mission-heading">
+  <div class="mission-statement__inner">
+    <div class="mission-statement__copy" data-reveal="headline">
+      <h1 id="mission-heading">Veterans serving veterans.</h1>
+    </div>
+  </div>
+</section>
+
+<style>
+  .mission-statement {
+    background: #fff;
+    padding: calc(var(--space-section-y) * 2) var(--space-page-x);
+  }
+
+  .mission-statement__inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .mission-statement__copy {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  /* Reset all typography to browser defaults */
+  .mission-statement h1 {
+    all: initial;
+    display: block;
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    text-align: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+    font-stretch: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: bold;
+    margin: 0.5em 0;
+    line-height: 1.1;
+    white-space: nowrap;
+  }
+</style>

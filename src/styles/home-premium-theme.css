@@ -29,6 +29,7 @@
   --surface-line: rgba(32, 35, 31, .12);
   --radius: 8px;
   --max: 1280px;
+  --teal-rgb: 14, 90, 92;
   --logo-face: "Barlow Condensed", "DIN Condensed", "DIN Alternate", "Helvetica Neue Condensed Black",
     "HelveticaNeue-CondensedBold", "Arial Narrow", "Aptos Narrow", Impact,
     ui-sans-serif, system-ui, sans-serif;
@@ -100,8 +101,7 @@ html {
 body {
   font-family: var(--body-face);
   color: var(--ink);
-  background:
-    linear-gradient(180deg, #faf7f0 0%, #eee8dc 48%, #f8f4eb 100%);
+  background: #fff;
   text-rendering: optimizeLegibility;
 }
 
@@ -231,15 +231,16 @@ header::after {
 
 .nav {
   position: relative;
-  padding-inline: var(--space-page-x);
+  max-width: none;
+  padding-inline: 0;
 }
 
 .nav::after {
   content: "";
   position: absolute;
-  right: var(--space-page-x);
+  right: 0;
   bottom: 12px;
-  left: var(--space-page-x);
+  left: 0;
   height: 1px;
   pointer-events: none;
   background: linear-gradient(90deg, transparent, rgba(70, 87, 70, .26), rgba(14, 90, 92, .34), transparent);
@@ -338,6 +339,7 @@ header::after {
 }
 
 section {
+  max-width: none;
   padding-top: var(--space-section-y);
   padding-bottom: var(--space-section-y);
   padding-left: var(--space-page-x);
@@ -418,18 +420,16 @@ p {
   filter: saturate(1.04) contrast(1.06);
 }
 
-.hero-media video {
+.hero-media video,
+.hero-media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .hero-media::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(20, 23, 19, .62) 0%, rgba(20, 23, 19, .22) 48%, rgba(20, 23, 19, .55) 100%);
-  pointer-events: none;
+  content: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -439,17 +439,7 @@ p {
 }
 
 .hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  height: auto;
-  opacity: 1;
-  /* Light vignette only — the heavier photo-era treatment (sand/canvas blend
-     fields) washed the video footage milky. */
-  background:
-    radial-gradient(ellipse 80% 60% at 18% 52%, transparent 34%, rgba(17, 22, 16, .42) 100%),
-    linear-gradient(180deg, rgba(17, 22, 16, .12) 0%, transparent 45%, rgba(17, 22, 16, .5) 100%);
-  pointer-events: none;
+  content: none;
 }
 
 .hero-inner {
