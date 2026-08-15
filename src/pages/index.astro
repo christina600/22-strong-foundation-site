@@ -7,15 +7,11 @@
  */
 
 import HomeBase from "../layouts/HomeBase.astro";
-import AudienceSection from "../components/sections/AudienceSection.astro";
 import ContactSection from "../components/sections/ContactSection.astro";
 import FontComboPicker from "../components/sections/FontComboPicker.astro";
 import HeroSection from "../components/sections/HeroSection.astro";
-import NarrativeScene from "../components/sections/NarrativeScene.astro";
-import NameOriginCallout from "../components/sections/NameOriginCallout.astro";
 import SiteHeader from "../components/sections/SiteHeader.astro";
 import SiteFooter from "../components/sections/SiteFooter.astro";
-import VeteranStorySection from "../components/sections/VeteranStorySection.astro";
 import home from "../content/home.json";
 import { buildAudienceGroups } from "../utils/home-story";
 
@@ -34,27 +30,6 @@ const showFontLab = import.meta.env.DEV && Astro.url.searchParams.has("fontlab")
         primaryCta={home.hero.ctaLabel}
         secondaryCta={home.hero.secondaryCtaLabel}
       />
-
-      <AudienceSection chapter="01" introTitle="Who we serve" groups={audienceGroups} />
-
-      <NarrativeScene
-        chapter="02"
-        id="about"
-        heading={home.mission.heading}
-        lead={home.mission.lead}
-        needParagraphs={home.mission.needParagraphs}
-        paragraphs={home.story.paragraphs}
-        media={{
-          src: "/images/story-neck-treatment.jpg",
-          alt: "Dr. Vas providing hands-on neck mobility treatment at Next Level Wellness Center",
-          caption: "This is where recovery happens: in the treatment room.",
-          imagePosition: "50% 50%"
-        }}
-      />
-
-      <NameOriginCallout {...home.nameOrigin} />
-
-      <VeteranStorySection />
 
       <ContactSection contact={home.contact} />
     </main>
