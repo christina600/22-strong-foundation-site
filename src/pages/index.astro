@@ -19,7 +19,7 @@ const audienceGroups = buildAudienceGroups(home);
 const showFontLab = import.meta.env.DEV && Astro.url.searchParams.has("fontlab");
 ---
 
-<HomeBase title="Keeping recovery going when insurance stops short.">
+<HomeBase title="">
   <div class="site">
     <SiteHeader current="home" />
 
@@ -27,8 +27,6 @@ const showFontLab = import.meta.env.DEV && Astro.url.searchParams.has("fontlab")
       <HeroSection
         heading={home.hero.heading}
         lead={home.hero.lead}
-        primaryCta={home.hero.ctaLabel}
-        secondaryCta={home.hero.secondaryCtaLabel}
       />
 
       <ContactSection contact={home.contact} />

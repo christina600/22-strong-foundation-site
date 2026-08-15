@@ -1,14 +1,12 @@
----
+Z„´‹‹#ZEQA---
 import { heroBattleRopes } from "../../assets/images";
 
 interface Props {
   heading: string;
   lead: string;
-  primaryCta: string;
-  secondaryCta: string;
 }
 
-const { heading, lead, primaryCta, secondaryCta } = Astro.props;
+const { heading, lead } = Astro.props;
 ---
 
 <section class="hero" id="top">
@@ -39,10 +37,6 @@ const { heading, lead, primaryCta, secondaryCta } = Astro.props;
       <div class="hero-mission">
         <h1 class="hero-mission__heading">{heading}</h1>
         <p class="hero-mission__lead">{lead}</p>
-        <div class="hero-mission__actions">
-          <a class="pill primary" href="#donate">{primaryCta}</a>
-          <a class="hero-mission__secondary" href="#serve">{secondaryCta}</a>
-        </div>
       </div>
     </div>
   </div>
