@@ -19,6 +19,11 @@ import VeteranCareGap from "../components/sections/VeteranCareGap.astro";
 import VeteranLifeReturn from "../components/sections/VeteranLifeReturn.astro";
 import VeteranVoices from "../components/sections/VeteranVoices.astro";
 import Why22Strong from "../components/sections/Why22Strong.astro";
+import LeadershipVideo from "../components/sections/LeadershipVideo.astro";
+import ForVeterans from "../components/sections/ForVeterans.astro";
+import DonorCTA from "../components/sections/DonorCTA.astro";
+import StrongCircleBlock from "../components/sections/StrongCircleBlock.astro";
+import FinalCTA from "../components/sections/FinalCTA.astro";
 import home from "../content/home.json";
 import { buildAudienceGroups } from "../utils/home-story";
 
@@ -42,6 +47,11 @@ const showFontLab = import.meta.env.DEV && Astro.url.searchParams.has("fontlab")
       <VeteranLifeReturn />
       <VeteranVoices />
       <Why22Strong />
+      <LeadershipVideo />
+      <ForVeterans />
+      <DonorCTA />
+      <StrongCircleBlock />
+      <FinalCTA />
 
       <MissionStatement
         heading={home.mission.heading}

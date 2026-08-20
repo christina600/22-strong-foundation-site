@@ -1,0 +1,30 @@
+---
+import TestimonialVideo from "./TestimonialVideo.astro";
+---
+
+<section class="lv" aria-labelledby="lv-heading">
+  <div class="lv__inner">
+    <div class="lv__header">
+      <p class="eyebrow lv__eyebrow">Leadership perspective</p>
+      <h2 class="lv__heading" id="lv-heading">
+        The veteran who knows the system. The provider who sees what happens when it fails.
+      </h2>
+      <p class="lv__lead lead">
+        Veterans know what it feels like when care becomes another fight.<br />
+        Providers see what happens when treatment that is working gets interrupted.<br />
+        22STRONG brings those perspectives together to help veterans keep moving forward.
+      </p>
+    </div>
+
+    <TestimonialVideo
+      src="/video/veteran-experience-testimonial.mp4"
+      poster="/images/veteran-experience-poster.webp"
+      playLabel="Play Travis Mayfield and Dr. Vas conversation"
+      attribution="Travis Mayfield &amp; Dr. Vas · 22STRONG Foundation"
+      tone="dark"
+      layout="featured"
+      motionBackdrop
+      class="lv__player"
+    />
+  </div>
+</section>

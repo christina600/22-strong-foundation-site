@@ -1187,3 +1187,327 @@
     font-size: clamp(1.4rem, 7vw, 2rem);
   }
 }
+
+
+/* ── SECTION 8: LEADERSHIP VIDEO ── */
+
+.lv {
+  padding: var(--space-section-y) var(--space-page-x);
+  background: linear-gradient(180deg, #141b13, #1a2118);
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+
+.lv__inner {
+  width: min(var(--max), 100%);
+  margin: 0 auto;
+  display: grid;
+  gap: clamp(28px, 4vw, 48px);
+}
+
+.lv__header { text-align: center; }
+
+.lv__eyebrow {
+  color: rgba(14,90,92,.88);
+  margin-bottom: clamp(10px,1.4vw,18px);
+}
+
+.lv__eyebrow::before { background: linear-gradient(90deg,rgba(14,90,92,.7),transparent); }
+
+.lv__heading {
+  color: #fffaf0;
+  margin: 0 auto clamp(14px,2vw,20px);
+  max-width: 52ch;
+}
+
+.lv__lead {
+  color: rgba(251,247,238,.72);
+  margin: 0 auto;
+  max-width: 60ch;
+}
+
+.lv__player,
+.lv .testimonial-video { border-radius: 10px; overflow: hidden; }
+
+
+/* ── SECTION 9: FOR VETERANS ── */
+
+.fv {
+  padding: var(--space-section-y) var(--space-page-x);
+  background: linear-gradient(180deg, rgba(14,90,92,.08), rgba(14,90,92,.03));
+  border-top: 1px solid rgba(14,90,92,.14);
+  border-bottom: 1px solid rgba(14,90,92,.10);
+}
+
+.fv__inner {
+  width: min(var(--max), 100%);
+  margin: 0 auto;
+  text-align: center;
+  display: grid;
+  gap: clamp(16px,2vw,24px);
+  justify-items: center;
+}
+
+.fv__eyebrow { margin-bottom: 0; }
+
+.fv__heading {
+  margin: 0;
+  max-width: 30ch;
+}
+
+.fv__lead {
+  margin: 0;
+  max-width: 52ch;
+}
+
+.fv__cta {
+  min-width: 220px;
+  min-height: 56px;
+  font-size: 1.04rem;
+  margin-top: 4px;
+}
+
+.fv__disclaimer {
+  margin: 0;
+  font-size: var(--fs-ui-small);
+  color: var(--muted);
+}
+
+
+/* ── SECTION 10: DONOR CTA ── */
+
+.dcta {
+  padding: var(--space-section-y) var(--space-page-x);
+  background: #fff;
+  border-top: 1px solid var(--line);
+}
+
+.dcta__inner {
+  width: min(var(--max), 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr .72fr;
+  align-items: center;
+  gap: clamp(44px,7vw,96px);
+}
+
+.dcta__eyebrow { margin-bottom: 0; }
+
+.dcta__heading {
+  margin: 0;
+  max-width: 22ch;
+}
+
+.dcta__lead { margin: 0; }
+
+.dcta__outcomes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+  display: grid;
+}
+
+.dcta__outcome {
+  padding: clamp(12px,1.4vw,18px) 0 clamp(12px,1.4vw,18px) 16px;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  display: grid;
+  gap: 3px;
+}
+
+.dcta__outcome::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+
+.dcta__outcome-title {
+  font-family: var(--display-face);
+  font-stretch: condensed;
+  font-weight: 700;
+  font-size: clamp(1rem,1.3vw,1.3rem);
+  letter-spacing: -.01em;
+  color: var(--ink);
+}
+
+.dcta__outcome-desc {
+  font-size: var(--fs-copy-small);
+  color: var(--muted);
+}
+
+.dcta__cta {
+  min-width: 200px;
+  min-height: 54px;
+  margin-top: 4px;
+}
+
+.dcta__figure {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 1px 0 rgba(255,255,255,.64) inset, 0 20px 48px rgba(29,33,29,.14), 0 4px 10px rgba(29,33,29,.07);
+}
+
+.dcta__img {
+  display: block;
+  width: 100%;
+  height: clamp(320px,42vw,520px);
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 860px) {
+  .dcta__inner { grid-template-columns: 1fr; }
+  .dcta__figure { order: -1; }
+  .dcta__img { height: clamp(220px,50vw,320px); }
+  .dcta__heading { max-width: none; }
+}
+
+
+/* ── SECTION 11: STRONG CIRCLE BLOCK ── */
+
+.scb {
+  padding: var(--space-section-y) var(--space-page-x);
+  background: radial-gradient(ellipse 72% 58% at 50% 0%, rgba(14,90,92,.16) 0%, transparent 68%), #141b13;
+  border-top: 1px solid rgba(255,255,255,.07);
+  text-align: center;
+}
+
+.scb__inner {
+  width: min(640px, 100%);
+  margin: 0 auto;
+  display: grid;
+  gap: clamp(14px,2vw,20px);
+  justify-items: center;
+}
+
+.scb__eyebrow {
+  color: rgba(14,90,92,.88);
+  margin-bottom: 0;
+}
+
+.scb__eyebrow::before { background: linear-gradient(90deg,rgba(14,90,92,.7),transparent); }
+
+.scb__heading {
+  color: #fffaf0;
+  margin: 0;
+}
+
+.scb__amount {
+  margin: 0;
+  font-family: var(--display-face);
+  font-stretch: condensed;
+  font-weight: 900;
+  font-size: clamp(2.4rem,5vw,5rem);
+  letter-spacing: -.03em;
+  line-height: 1;
+  color: var(--teal, #0e5a5c);
+  text-transform: uppercase;
+}
+
+.scb__lead {
+  color: rgba(251,247,238,.78);
+  margin: -.4em 0 0;
+  font-size: clamp(1.05rem,1.5vw,1.35rem);
+}
+
+.scb__body {
+  color: rgba(251,247,238,.58);
+  margin: 0;
+  max-width: 46ch;
+  font-size: var(--fs-copy-small);
+}
+
+.scb__cta {
+  min-width: 240px;
+  min-height: 56px;
+  margin-top: 8px;
+}
+
+.scb__fine {
+  margin: 0;
+  font-size: var(--fs-ui-small);
+  color: rgba(251,247,238,.38);
+}
+
+
+/* ── SECTION 12: FINAL CTA ── */
+
+.fcta {
+  position: relative;
+  overflow: hidden;
+  min-height: clamp(380px, 56vw, 640px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-section-y) var(--space-page-x);
+}
+
+.fcta__backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.fcta__bg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+.fcta__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(12,18,11,.52) 0%, rgba(12,18,11,.72) 100%);
+}
+
+.fcta__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: grid;
+  gap: clamp(16px,2.4vw,28px);
+  justify-items: center;
+  max-width: 680px;
+}
+
+.fcta__heading {
+  color: #fffaf0;
+  margin: 0;
+  text-shadow: 0 2px 24px rgba(0,0,0,.4);
+}
+
+.fcta__lead {
+  color: rgba(251,247,238,.82);
+  margin: 0;
+  max-width: 48ch;
+}
+
+.fcta__cta {
+  min-width: 240px;
+  min-height: 56px;
+  font-size: 1.06rem;
+  box-shadow: 0 1px 0 rgba(255,255,255,.22) inset, 0 14px 38px rgba(0,0,0,.32);
+  margin-top: 4px;
+}
+
+.fcta__tagline {
+  margin: 0;
+  font-size: var(--fs-ui);
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: rgba(251,247,238,.46);
+}
+
+@media (max-width: 560px) {
+  .fcta__cta { min-width: 0; width: 100%; }
+}
