@@ -53,13 +53,6 @@ const showFontLab = import.meta.env.DEV && Astro.url.searchParams.has("fontlab")
       <StrongCircleBlock />
       <FinalCTA />
 
-      <MissionStatement
-        heading={home.mission.heading}
-        lead={home.mission.lead}
-        impact={home.mission.impact}
-        eyebrow="Mission Statement"
-      />
-
       <ContactSection contact={home.contact} />
     </main>
 
