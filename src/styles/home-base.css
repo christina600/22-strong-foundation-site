@@ -204,6 +204,15 @@ header {
   text-transform: uppercase;
 }
 
+.brand-name,
+.brand-foundation {
+  font-family: inherit;
+  font-weight: inherit;
+  font-stretch: inherit;
+  letter-spacing: inherit;
+  text-transform: uppercase;
+}
+
 .nav-links {
   justify-self: center;
   display: flex;
@@ -459,6 +468,12 @@ p {
 
 .hero-copy {
   padding-top: 24px;
+}
+
+.blank-section {
+  max-width: none;
+  background: #fff;
+  min-height: 120px;
 }
 
 /* Foundation testimonial styles. */

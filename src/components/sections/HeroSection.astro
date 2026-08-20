@@ -1,6 +1,4 @@
-Z„´‹‹#ZEQA---
-import { heroBattleRopes } from "../../assets/images";
-
+---
 interface Props {
   heading: string;
   lead: string;
@@ -11,9 +9,8 @@ const { heading, lead } = Astro.props;
 
 <section class="hero" id="top">
   <div class="hero-media" aria-hidden="true">
-    <video autoplay muted loop playsinline preload="metadata" poster={heroBattleRopes.src}>
-      <source src="/video/hero-loop.mp4" type="video/mp4" />
-    </video>
+    <!-- Replace hero-veteran-pullup.jpg with the pull-up photo once saved to public/images/ -->
+    <img src="/images/hero-veteran-pullup.jpg" alt="" onerror="this.src='/images/hero-veteran-flags.jpg'" />
   </div>
   <div class="hero-inner">
     <div class="hero-copy">

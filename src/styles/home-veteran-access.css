@@ -1,0 +1,526 @@
+/* ============================================================
+   Veteran Access Sections (home-veteran-access.css)
+   Three sequential sections that tell the veteran-care story:
+   1. .va-hero      — Split banner: headline + dual CTAs + photo
+   2. .vc-problem   — Problem narrative: text + photo + quote
+   3. .vc-gap       — Solution: heading + visual flow + CTA
+   ============================================================ */
+
+
+/* ──────────────────────────────────────────────────────────────
+   SECTION 1 — VA HERO
+   Left: eyebrow / headline / lead / CTA pair
+   Right: full-bleed photo with a soft corner radius
+   ────────────────────────────────────────────────────────────── */
+
+.va-hero {
+  padding: var(--space-section-y) var(--space-page-x);
+  background:
+    linear-gradient(180deg, rgba(255, 253, 247, .98), rgba(242, 236, 223, .60));
+  border-bottom: 1px solid var(--line);
+}
+
+.va-hero__inner {
+  width: min(var(--max), 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(40px, 6vw, 96px);
+}
+
+/* Copy column */
+.va-hero__eyebrow {
+  margin-bottom: clamp(10px, 1.4vw, 18px);
+}
+
+.va-hero__heading {
+  margin-top: 0;
+  margin-bottom: clamp(16px, 2vw, 24px);
+  max-width: 18ch;
+}
+
+.va-hero__lead {
+  margin: 0 0 clamp(24px, 3vw, 36px);
+  font-size: var(--fs-lead);
+  line-height: var(--lh-lead);
+  max-width: 46ch;
+  color: var(--muted);
+}
+
+.va-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+
+/* Ghost (outline) CTA variant */
+.va-hero__btn--ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid rgba(32, 35, 31, .38);
+}
+
+.va-hero__btn--ghost:hover {
+  background: rgba(32, 35, 31, .05);
+  border-color: var(--ink);
+}
+
+/* Photo column */
+.va-hero__figure {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .64) inset,
+    0 24px 58px rgba(29, 33, 29, .16),
+    0 4px 10px rgba(29, 33, 29, .08);
+}
+
+.va-hero__photo {
+  display: block;
+  width: 100%;
+  height: clamp(320px, 44vw, 560px);
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+/* Mobile */
+@media (max-width: 860px) {
+  .va-hero__inner {
+    grid-template-columns: 1fr;
+    gap: clamp(28px, 6vw, 44px);
+  }
+
+  .va-hero__heading {
+    max-width: none;
+  }
+
+  .va-hero__lead {
+    max-width: 100%;
+  }
+
+  .va-hero__photo {
+    height: clamp(240px, 56vw, 360px);
+    object-position: center 28%;
+  }
+}
+
+@media (max-width: 480px) {
+  .va-hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .va-hero__actions .pill {
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+
+/* ──────────────────────────────────────────────────────────────
+   SECTION 2 — VC PROBLEM
+   Light paper section. Split: copy (left) + photo (right).
+   Full-width quote band at the bottom.
+   ────────────────────────────────────────────────────────────── */
+
+.vc-problem {
+  padding: var(--space-section-y) var(--space-page-x) 0;
+  background: #fff;
+  border-top: 1px solid var(--line);
+}
+
+/* Split grid */
+.vc-problem__inner {
+  width: min(var(--max), 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  align-items: start;
+  gap: clamp(40px, 6vw, 96px);
+}
+
+.vc-problem__eyebrow {
+  margin-bottom: clamp(10px, 1.4vw, 18px);
+}
+
+.vc-problem__heading {
+  margin-top: 0;
+  margin-bottom: clamp(16px, 2vw, 22px);
+}
+
+.vc-problem__lead {
+  color: var(--ink);
+  font-weight: 600;
+  margin: 0 0 clamp(20px, 2.5vw, 30px);
+  max-width: 42ch;
+}
+
+/* Body paragraphs */
+.vc-problem__body {
+  display: grid;
+  gap: clamp(14px, 1.6vw, 20px);
+}
+
+.vc-problem__body p {
+  margin: 0;
+  font-size: var(--fs-copy-small);
+  line-height: var(--lh-copy);
+  color: var(--muted);
+}
+
+/* "Pain continues. Mobility suffers." — a beat of weight */
+.vc-problem__emphasis {
+  color: var(--ink) !important;
+  font-weight: 650;
+  font-style: italic;
+  padding-left: 16px;
+  border-left: 3px solid var(--orange);
+}
+
+/* Photo */
+.vc-problem__figure {
+  margin: 0;
+  position: sticky;
+  top: calc(82px + 24px); /* stick below nav */
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .64) inset,
+    0 24px 58px rgba(29, 33, 29, .16),
+    0 4px 10px rgba(29, 33, 29, .08);
+}
+
+.vc-problem__photo {
+  display: block;
+  width: 100%;
+  height: clamp(340px, 48vw, 580px);
+  object-fit: cover;
+  object-position: center 18%;
+}
+
+/* Quote band — full-width inset, sits flush at section bottom */
+.vc-problem__quote-wrap {
+  margin-top: clamp(48px, 6vw, 80px);
+  padding: clamp(36px, 5vw, 64px) var(--space-page-x);
+  background:
+    linear-gradient(180deg, rgba(14, 90, 92, .07), rgba(14, 90, 92, .02));
+  border-top: 1px solid rgba(14, 90, 92, .14);
+  border-bottom: 1px solid rgba(14, 90, 92, .10);
+}
+
+.vc-problem__quote {
+  width: min(var(--max), 100%);
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  gap: clamp(14px, 2vw, 22px);
+}
+
+/* Large pull-quote treatment */
+.vc-problem__quote-text {
+  margin: 0;
+  font-family: var(--display-face);
+  font-stretch: condensed;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 2.4vw, 2.6rem);
+  line-height: 1.2;
+  color: var(--ink);
+  letter-spacing: -.02em;
+  text-wrap: pretty;
+  max-width: 56ch;
+}
+
+/* Opening quotation mark as a design element */
+.vc-problem__quote-text::before {
+  content: "\201C";
+  display: block;
+  font-size: 4em;
+  line-height: .4;
+  margin-bottom: .18em;
+  color: var(--orange);
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+}
+
+.vc-problem__quote-footer {
+  margin: 0;
+}
+
+.vc-problem__quote-cite {
+  font-style: normal;
+  font-size: var(--fs-ui);
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Mobile stacking */
+@media (max-width: 900px) {
+  .vc-problem__inner {
+    grid-template-columns: 1fr;
+    gap: clamp(28px, 6vw, 44px);
+  }
+
+  .vc-problem__figure {
+    position: static;
+    order: -1; /* Photo above copy on mobile */
+  }
+
+  .vc-problem__photo {
+    height: clamp(220px, 50vw, 340px);
+    object-position: center 22%;
+  }
+
+  .vc-problem__lead {
+    max-width: 100%;
+  }
+}
+
+
+/* ──────────────────────────────────────────────────────────────
+   SECTION 3 — VC GAP
+   Dark cinematic background.
+   Top: eyebrow / heading / lead (centered)
+   Middle: vertical visual flow (5 steps + connectors)
+   Bottom: closing text + CTA
+   ────────────────────────────────────────────────────────────── */
+
+.vc-gap {
+  padding: var(--space-section-y-roomy) var(--space-page-x);
+  background:
+    radial-gradient(ellipse 70% 52% at 50% 0%, rgba(14, 90, 92, .22) 0%, transparent 64%),
+    linear-gradient(180deg, #141b13, #1c2419);
+  border-top: 1px solid rgba(255, 255, 255, .08);
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+.vc-gap__inner {
+  width: min(var(--max), 100%);
+  margin: 0 auto;
+  display: grid;
+  justify-items: center;
+  gap: clamp(40px, 6vw, 72px);
+}
+
+/* Heading block — centered */
+.vc-gap__header {
+  text-align: center;
+  max-width: 680px;
+}
+
+.vc-gap__eyebrow {
+  color: rgba(14, 90, 92, .9);
+  margin-bottom: clamp(10px, 1.4vw, 18px);
+}
+
+.vc-gap__eyebrow::before {
+  background: linear-gradient(90deg, rgba(14, 90, 92, .7), transparent);
+}
+
+.vc-gap__heading {
+  color: #fffaf0;
+  margin-top: 0;
+  margin-bottom: clamp(16px, 2vw, 22px);
+  text-shadow: 0 2px 18px rgba(0, 0, 0, .32);
+}
+
+.vc-gap__lead {
+  color: rgba(251, 247, 238, .76);
+  margin: 0;
+  max-width: 52ch;
+}
+
+
+/* ── Visual flow ── */
+
+.vc-gap__flow {
+  width: 100%;
+  max-width: 560px;
+}
+
+.vc-gap__flow-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  /* Tight gap: steps and connector rows together */
+  gap: 0;
+}
+
+/* Each real step: icon node + label */
+.vc-gap__flow-step {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: clamp(14px, 2vw, 20px) clamp(20px, 3vw, 32px);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .05);
+  border: 1px solid rgba(255, 255, 255, .10);
+  color: rgba(251, 247, 238, .88);
+  transition: background .22s ease, border-color .22s ease;
+}
+
+.vc-gap__flow-step:hover {
+  background: rgba(255, 255, 255, .09);
+  border-color: rgba(255, 255, 255, .18);
+}
+
+/* The 22STRONG step gets a teal highlight */
+.vc-gap__flow-step--highlight {
+  background: rgba(14, 90, 92, .28);
+  border-color: rgba(14, 90, 92, .52);
+  color: #fffaf0;
+}
+
+.vc-gap__flow-step--highlight:hover {
+  background: rgba(14, 90, 92, .36);
+  border-color: rgba(14, 90, 92, .68);
+}
+
+/* Final outcome step — bolder, lighter, authoritative */
+.vc-gap__flow-step--outcome {
+  background: rgba(255, 255, 255, .08);
+  border-color: rgba(255, 255, 255, .22);
+  color: #fffaf0;
+}
+
+/* Connector rows (arrows between steps) */
+.vc-gap__flow-step--connector {
+  background: transparent;
+  border: none;
+  justify-content: center;
+  padding: 0;
+  pointer-events: none;
+}
+
+.vc-gap__flow-step--connector:hover {
+  background: transparent;
+  border-color: transparent;
+}
+
+.vc-gap__flow-arrow {
+  font-size: 1.4rem;
+  color: rgba(251, 247, 238, .30);
+  line-height: 1;
+  display: block;
+  padding: 4px 0;
+}
+
+/* Icon nodes */
+.vc-gap__flow-icon {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .08);
+  color: rgba(251, 247, 238, .82);
+}
+
+.vc-gap__flow-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Alert icon — muted amber tint for "system falls short" */
+.vc-gap__flow-icon--alert {
+  color: rgba(255, 200, 100, .82);
+  background: rgba(255, 200, 100, .10);
+}
+
+/* Highlighted 22STRONG step icon */
+.vc-gap__flow-step--highlight .vc-gap__flow-icon {
+  background: rgba(14, 90, 92, .40);
+  color: rgba(200, 240, 238, .92);
+}
+
+/* Outcome step icon */
+.vc-gap__flow-step--outcome .vc-gap__flow-icon {
+  background: rgba(255, 255, 255, .12);
+  color: #fffaf0;
+}
+
+/* Label text */
+.vc-gap__flow-label {
+  font-family: var(--display-face);
+  font-stretch: condensed;
+  font-weight: 700;
+  font-size: clamp(1.1rem, 1.4vw, 1.45rem);
+  letter-spacing: -.01em;
+  line-height: 1.15;
+}
+
+
+/* ── Closing CTA ── */
+
+.vc-gap__cta {
+  text-align: center;
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  padding-top: clamp(8px, 1.5vw, 16px);
+}
+
+.vc-gap__cta-text {
+  margin: 0;
+  color: rgba(251, 247, 238, .68);
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-lead);
+}
+
+.vc-gap__cta-btn {
+  min-width: 240px;
+  min-height: 56px;
+  font-size: 1.06rem;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .22) inset,
+    0 14px 38px rgba(0, 0, 0, .28);
+}
+
+.vc-gap__cta-btn:hover {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .22) inset,
+    0 20px 52px rgba(0, 0, 0, .36);
+}
+
+
+/* ── Responsive tweaks ── */
+
+@media (max-width: 600px) {
+  .vc-gap__flow {
+    max-width: 100%;
+  }
+
+  .vc-gap__flow-step {
+    gap: 14px;
+    padding: 14px 16px;
+  }
+
+  .vc-gap__flow-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .vc-gap__flow-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .vc-gap__cta-btn {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vc-gap__flow-step,
+  .va-hero__figure img,
+  .vc-problem__figure img {
+    transition: none;
+  }
+}

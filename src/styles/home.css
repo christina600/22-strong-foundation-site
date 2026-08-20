@@ -50,3 +50,5 @@
 @import "./home-readability.css";
 /* Individual display-type roles and neutral credibility treatment */
 @import "./home-typography-reassessment.css";
+/* Veteran access story: Section 1 (split banner), Section 2 (problem + quote), Section 3 (visual flow + CTA) */
+@import "./home-veteran-access.css";
