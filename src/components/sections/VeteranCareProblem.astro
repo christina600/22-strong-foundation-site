@@ -9,7 +9,21 @@
 <section class="vc-problem" aria-labelledby="vc-problem-heading">
   <div class="vc-problem__inner">
 
-    <!-- Left: editorial copy -->
+    <!-- Left: photo (spec: Image left / copy right) -->
+    <figure class="vc-problem__figure" aria-hidden="true">
+      <img
+        src="/images/veteran-paperwork.jpg"
+        alt=""
+        class="vc-problem__photo"
+        loading="lazy"
+        decoding="async"
+        width="800"
+        height="534"
+        onerror="this.src='/images/about-care.jpg'"
+      />
+    </figure>
+
+    <!-- Right: editorial copy -->
     <div class="vc-problem__copy">
       <p class="eyebrow vc-problem__eyebrow">The access gap</p>
       <h2 class="vc-problem__heading" id="vc-problem-heading">
@@ -27,20 +41,6 @@
       </div>
     </div>
 
-    <!-- Right: photo -->
-    <figure class="vc-problem__figure" aria-hidden="true">
-      <!-- Replace veteran-paperwork.jpg with the paperwork photo once saved to public/images/ -->
-      <img
-        src="/images/veteran-paperwork.jpg"
-        alt=""
-        class="vc-problem__photo"
-        loading="lazy"
-        decoding="async"
-        width="800"
-        height="534"
-        onerror="this.src='/images/about-care.jpg'"
-      />
-    </figure>
 
   </div>
 

@@ -24,7 +24,7 @@
   width: min(var(--max), 100%);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 9fr 11fr;
   align-items: center;
   gap: clamp(40px, 6vw, 96px);
 }
@@ -265,9 +265,15 @@
     gap: clamp(28px, 6vw, 44px);
   }
 
+  /* Figure is first in DOM (image left on desktop).
+     On mobile, spec: headline → copy → image. Push copy before figure. */
   .vc-problem__figure {
     position: static;
-    order: -1; /* Photo above copy on mobile */
+    order: 1; /* image goes after copy on mobile */
+  }
+
+  .vc-problem__copy {
+    order: -1; /* copy comes first on mobile */
   }
 
   .vc-problem__photo {
