@@ -1,0 +1,94 @@
+---
+/**
+ * VeteranVoices — Section 6: "Hear it from the veterans who've lived it."
+ * Layout: Large video (left) / intro copy + primary quote (right)
+ * Optional second quote beneath the fold.
+ * Mobile: intro → video → primary quote → second quote
+ */
+import TestimonialVideo from "./TestimonialVideo.astro";
+---
+
+<section class="vv" aria-labelledby="vv-heading">
+  <div class="vv__inner">
+
+    <!-- Video column -->
+    <div class="vv__video-col">
+      <TestimonialVideo
+        src="/video/luke-hudson-testimonial.mp4"
+        poster="/images/luke-poster.jpg"
+        playLabel="Play Luke Hudson veteran testimonial"
+        attribution="Luke Hudson · Veteran"
+        tone="dark"
+        layout="featured"
+        motionBackdrop
+        class="vv__player"
+      />
+    </div>
+
+    <!-- Copy column -->
+    <div class="vv__copy-col">
+      <p class="eyebrow vv__eyebrow">Veteran voices</p>
+      <h2 class="vv__heading" id="vv-heading">
+        Hear it from the veterans who've lived it.
+      </h2>
+      <p class="vv__lead lead">
+        Every veteran's story is different. But many know what it feels like
+        to fight for care while they are already fighting to get better.
+      </p>
+
+      <!-- Primary quote — Tom Boscamp (real) -->
+      <blockquote class="vv__quote vv__quote--primary">
+        <p class="vv__quote-text">
+          "The VA treatments are far and few between — they do not have enough
+          chiropractors, massage therapists, and physical therapy specialists.
+          Dr. Vas has filled that void. With his treatments I have been able
+          to continue being active. I can't say enough how good Next Level
+          Wellness is. Their commitment to serving Veterans is next level."
+        </p>
+        <footer class="vv__quote-footer">
+          <img
+            src="/images/tom-boscamp.jpg"
+            alt="Tom Boscamp"
+            class="vv__quote-portrait"
+            loading="lazy"
+            decoding="async"
+            width="48"
+            height="48"
+          />
+          <div class="vv__quote-meta">
+            <strong class="vv__quote-name">Tom Boscamp</strong>
+            <span class="vv__quote-role">U.S. Army Veteran · Veteran Services Coordinator</span>
+          </div>
+        </footer>
+      </blockquote>
+    </div>
+
+  </div>
+
+  <!-- Optional second quote — King Martin (real, from existing data) -->
+  <div class="vv__second-quote-wrap">
+    <blockquote class="vv__quote vv__quote--secondary">
+      <p class="vv__quote-text">
+        "He's giving his talents away for free to veterans, just to help them
+        get their life together. When you have someone like that around, you get
+        a chance to be a blessing on a whole other level."
+      </p>
+      <footer class="vv__quote-footer">
+        <img
+          src="/images/king-martin-poster.webp"
+          alt="King Martin"
+          class="vv__quote-portrait"
+          loading="lazy"
+          decoding="async"
+          width="48"
+          height="48"
+        />
+        <div class="vv__quote-meta">
+          <strong class="vv__quote-name">King Martin</strong>
+          <span class="vv__quote-role">Veteran</span>
+        </div>
+      </footer>
+    </blockquote>
+  </div>
+
+</section>

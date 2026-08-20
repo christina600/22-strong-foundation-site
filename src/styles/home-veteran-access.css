@@ -720,3 +720,219 @@
     transition: none;
   }
 }
+
+
+/* ──────────────────────────────────────────────────────────────
+   SECTION 6 — VV (Veteran Voices)
+   "Hear it from the veterans who've lived it."
+   Dark section. Left: large video player. Right: intro + quote.
+   Below: optional second quote band.
+   Mobile: intro → video → quote → second quote.
+   ────────────────────────────────────────────────────────────── */
+
+.vv {
+  padding: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 50%, rgba(14, 90, 92, .18) 0%, transparent 60%),
+    linear-gradient(180deg, #111714, #191e16);
+  border-top: 1px solid rgba(255, 255, 255, .06);
+}
+
+/* ── Two-column inner layout ── */
+.vv__inner {
+  width: min(var(--max), 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: start;
+  gap: 0;
+}
+
+/* Video column — flush left edge, full height */
+.vv__video-col {
+  position: relative;
+  align-self: stretch;
+}
+
+/* Override TestimonialVideo internal layout so it fills the column */
+.vv__video-col .vv__player,
+.vv__video-col .testimonial-video {
+  height: 100%;
+  min-height: clamp(320px, 50vw, 640px);
+  border-radius: 0;
+}
+
+.vv__video-col .testimonial-video__stage {
+  height: 100%;
+  min-height: clamp(320px, 50vw, 640px);
+  border-radius: 0;
+}
+
+/* Copy column — padded, vertically centered */
+.vv__copy-col {
+  padding: clamp(40px, 5vw, 72px) clamp(28px, 4vw, 64px);
+  display: grid;
+  gap: clamp(20px, 2.5vw, 32px);
+  align-content: center;
+}
+
+.vv__eyebrow {
+  color: rgba(14, 90, 92, .88);
+  margin-bottom: 0;
+}
+
+.vv__eyebrow::before {
+  background: linear-gradient(90deg, rgba(14, 90, 92, .7), transparent);
+}
+
+.vv__heading {
+  color: #fffaf0;
+  margin: 0;
+  max-width: 22ch;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, .32);
+}
+
+.vv__lead {
+  color: rgba(251, 247, 238, .72);
+  margin: 0;
+  max-width: 44ch;
+}
+
+/* ── Primary quote block ── */
+.vv__quote {
+  margin: 0;
+  padding: 0;
+}
+
+.vv__quote--primary {
+  padding: clamp(18px, 2vw, 26px);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .10);
+}
+
+.vv__quote-text {
+  margin: 0 0 clamp(14px, 1.6vw, 20px);
+  font-family: var(--display-face);
+  font-stretch: condensed;
+  font-weight: 700;
+  font-size: clamp(1.05rem, 1.3vw, 1.35rem);
+  line-height: 1.3;
+  color: rgba(251, 247, 238, .9);
+  letter-spacing: -.01em;
+  text-wrap: pretty;
+}
+
+.vv__quote-footer {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.vv__quote-portrait {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  flex: 0 0 auto;
+  border: 2px solid rgba(255, 255, 255, .18);
+}
+
+.vv__quote-meta {
+  display: grid;
+  gap: 2px;
+}
+
+.vv__quote-name {
+  color: #fffaf0;
+  font-size: var(--fs-ui);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.vv__quote-role {
+  color: rgba(251, 247, 238, .52);
+  font-size: var(--fs-ui-small);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+/* ── Second quote band ── */
+.vv__second-quote-wrap {
+  border-top: 1px solid rgba(255, 255, 255, .08);
+  padding: clamp(28px, 3.5vw, 48px) var(--space-page-x);
+}
+
+.vv__quote--secondary {
+  width: min(var(--max), 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: clamp(24px, 4vw, 64px);
+}
+
+.vv__quote--secondary .vv__quote-text {
+  font-size: clamp(1.1rem, 1.5vw, 1.5rem);
+  color: rgba(251, 247, 238, .78);
+  font-style: italic;
+  margin: 0;
+}
+
+.vv__quote--secondary .vv__quote-footer {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 0 0 auto;
+  gap: 8px;
+}
+
+.vv__quote--secondary .vv__quote-portrait {
+  width: 64px;
+  height: 64px;
+}
+
+/* ── Mobile layout ── */
+@media (max-width: 860px) {
+  .vv__inner {
+    grid-template-columns: 1fr;
+  }
+
+  /* Mobile order: intro copy → video → quote */
+  .vv__copy-col {
+    order: -1;
+    padding-bottom: clamp(24px, 4vw, 40px);
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+  }
+
+  .vv__video-col .testimonial-video,
+  .vv__video-col .vv__player {
+    min-height: clamp(260px, 60vw, 420px);
+  }
+
+  .vv__video-col .testimonial-video__stage {
+    min-height: clamp(260px, 60vw, 420px);
+  }
+
+  .vv__quote--secondary {
+    grid-template-columns: 1fr;
+    gap: clamp(16px, 4vw, 28px);
+  }
+
+  .vv__quote--secondary .vv__quote-footer {
+    flex-direction: row;
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .vv__copy-col {
+    padding-inline: var(--space-page-x);
+    padding-top: clamp(28px, 6vw, 44px);
+  }
+
+  .vv__quote--primary {
+    padding: 16px;
+  }
+}
