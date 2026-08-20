@@ -18,6 +18,7 @@ import VeteranCareProblem from "../components/sections/VeteranCareProblem.astro"
 import VeteranCareGap from "../components/sections/VeteranCareGap.astro";
 import VeteranLifeReturn from "../components/sections/VeteranLifeReturn.astro";
 import VeteranVoices from "../components/sections/VeteranVoices.astro";
+import Why22Strong from "../components/sections/Why22Strong.astro";
 import home from "../content/home.json";
 import { buildAudienceGroups } from "../utils/home-story";
 
@@ -40,6 +41,7 @@ const showFontLab = import.meta.env.DEV && Astro.url.searchParams.has("fontlab")
       <VeteranCareGap />
       <VeteranLifeReturn />
       <VeteranVoices />
+      <Why22Strong />
 
       <MissionStatement
         heading={home.mission.heading}

@@ -1,0 +1,93 @@
+---
+/**
+ * Why22Strong — Section 7: "We know what it's like to fight for care because we've lived it."
+ * Layout: Large real photo (left) / copy (right)
+ * Mobile: headline → photo → copy
+ * Real veteran only. No stock. Travis Mayfield photo already in /public/images/.
+ */
+---
+
+<section class="w22s" aria-labelledby="w22s-heading">
+  <div class="w22s__inner">
+
+    <!-- Photo column — left on desktop, between headline and copy on mobile -->
+    <figure class="w22s__figure" aria-hidden="true">
+      <img
+        src="/images/travis-mayfield.jpg"
+        alt=""
+        class="w22s__photo"
+        loading="lazy"
+        decoding="async"
+      />
+      <!-- Optional secondary: service-era photo of Travis.
+           Uncomment and swap src when image is available.
+      <div class="w22s__service-era">
+        <img
+          src="/images/travis-mayfield-service.jpg"
+          alt=""
+          class="w22s__service-photo"
+          loading="lazy"
+          decoding="async"
+        />
+        <span class="w22s__service-caption">101st Airborne Division · Vietnam</span>
+      </div>
+      -->
+    </figure>
+
+    <!-- Copy column -->
+    <div class="w22s__copy">
+      <p class="eyebrow w22s__eyebrow">Why 22STRONG</p>
+
+      <h2 class="w22s__heading" id="w22s-heading">
+        We know what it's like to fight for care because we've lived it.
+      </h2>
+
+      <p class="w22s__lead lead">
+        22STRONG is led by veterans who understand the system from the inside.
+      </p>
+
+      <div class="w22s__body">
+        <p>
+          Our CEO, Travis Mayfield, is a three-time Purple Heart recipient who has spent
+          years navigating care for his own service-related injuries.
+        </p>
+
+        <ul class="w22s__beats" role="list">
+          <li>He knows what it means to wait.</li>
+          <li>To fight for additional treatment.</li>
+          <li>
+            To be offered another medication when what you really want is the chance
+            to get better.
+          </li>
+        </ul>
+
+        <p class="w22s__close">
+          That experience shapes everything we do.
+        </p>
+      </div>
+
+      <div class="w22s__signature">
+        <p class="w22s__motto">We take care of our own.</p>
+      </div>
+
+      <div class="w22s__attribution">
+        <img
+          src="/images/travis-mayfield.jpg"
+          alt="Travis Mayfield"
+          class="w22s__avatar"
+          loading="lazy"
+          decoding="async"
+          width="52"
+          height="52"
+        />
+        <div class="w22s__attr-meta">
+          <strong class="w22s__attr-name">Travis Mayfield</strong>
+          <span class="w22s__attr-role">
+            CEO, 22 Strong Foundation · U.S. Army, 101st Airborne Division
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

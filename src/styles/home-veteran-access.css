@@ -936,3 +936,254 @@
     padding: 16px;
   }
 }
+
+
+/* ──────────────────────────────────────────────────────────────
+   SECTION 7 — W22S (Why 22STRONG)
+   "We know what it's like to fight for care because we've lived it."
+   Light warm section. Large real photo left / copy right.
+   Mobile: headline → photo → copy
+   ────────────────────────────────────────────────────────────── */
+
+.w22s {
+  padding: var(--space-section-y) var(--space-page-x);
+  background:
+    linear-gradient(180deg, rgba(248, 244, 235, .64) 0%, #fff 100%);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.w22s__inner {
+  width: min(var(--max), 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  align-items: start;
+  gap: clamp(44px, 7vw, 104px);
+}
+
+/* ── Photo column ── */
+
+.w22s__figure {
+  margin: 0;
+  position: sticky;
+  top: calc(82px + 24px);
+  display: grid;
+  gap: clamp(10px, 1.2vw, 16px);
+}
+
+.w22s__photo {
+  display: block;
+  width: 100%;
+  height: clamp(380px, 52vw, 620px);
+  object-fit: cover;
+  object-position: center 15%;
+  border-radius: 10px;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, .64) inset,
+    0 24px 58px rgba(29, 33, 29, .16),
+    0 4px 10px rgba(29, 33, 29, .08);
+}
+
+/* Service-era secondary photo (uncomment in component when image available) */
+.w22s__service-era {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: rgba(29, 33, 29, .04);
+  border: 1px solid var(--line);
+}
+
+.w22s__service-photo {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex: 0 0 auto;
+}
+
+.w22s__service-caption {
+  font-size: var(--fs-ui-small);
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── Copy column ── */
+
+.w22s__copy {
+  display: grid;
+  gap: clamp(20px, 2.5vw, 32px);
+  align-content: start;
+  padding-top: clamp(8px, 1.5vw, 20px);
+}
+
+.w22s__eyebrow {
+  margin-bottom: 0;
+}
+
+.w22s__heading {
+  margin: 0;
+  max-width: 24ch;
+}
+
+.w22s__lead {
+  margin: 0;
+  max-width: 46ch;
+}
+
+/* Body prose + beats list */
+.w22s__body {
+  display: grid;
+  gap: clamp(14px, 1.8vw, 22px);
+}
+
+.w22s__body p {
+  margin: 0;
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-copy);
+  color: var(--muted);
+}
+
+/* Three sharp lines — each one a beat, no bullets */
+.w22s__beats {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.w22s__beats li {
+  padding: clamp(10px, 1.2vw, 14px) 0 clamp(10px, 1.2vw, 14px) 16px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--display-face);
+  font-stretch: condensed;
+  font-weight: 700;
+  font-size: clamp(1.1rem, 1.4vw, 1.45rem);
+  letter-spacing: -.01em;
+  color: var(--ink);
+  position: relative;
+}
+
+/* Left-edge amber dot accent */
+.w22s__beats li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--orange);
+}
+
+/* "That experience shapes everything we do." — statement weight */
+.w22s__close {
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  color: var(--ink);
+  font-weight: 650;
+  font-style: italic;
+}
+
+/* Closing motto — the emotional peak of the section */
+.w22s__signature {
+  padding: clamp(18px, 2.5vw, 28px) 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.w22s__motto {
+  margin: 0;
+  font-family: var(--display-face);
+  font-stretch: condensed;
+  font-weight: 900;
+  font-size: clamp(1.6rem, 2.6vw, 3rem);
+  letter-spacing: -.02em;
+  color: var(--ink);
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+/* Attribution row — Travis's face + name */
+.w22s__attribution {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.w22s__avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 10%;
+  flex: 0 0 auto;
+  border: 2px solid var(--line);
+}
+
+.w22s__attr-meta {
+  display: grid;
+  gap: 2px;
+}
+
+.w22s__attr-name {
+  font-size: var(--fs-ui);
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0;
+}
+
+.w22s__attr-role {
+  font-size: var(--fs-ui-small);
+  color: var(--muted);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+/* ── Mobile layout ──
+   Mobile order: heading + eyebrow → photo → rest of copy
+   We achieve headline → photo → copy using order.
+*/
+@media (max-width: 900px) {
+  .w22s__inner {
+    grid-template-columns: 1fr;
+    gap: clamp(24px, 5vw, 40px);
+  }
+
+  .w22s__figure {
+    position: static;
+    order: 1; /* appears between heading and body copy on mobile */
+  }
+
+  /* Move only the heading and eyebrow above the photo */
+  .w22s__eyebrow,
+  .w22s__heading {
+    order: 0;
+  }
+
+  .w22s__photo {
+    height: clamp(260px, 60vw, 380px);
+    object-position: center 18%;
+  }
+
+  .w22s__heading {
+    max-width: none;
+  }
+}
+
+/* On mobile, we need the copy column to be a proper ordered grid */
+@media (max-width: 900px) {
+  .w22s__copy {
+    /* eyebrow/heading first, then photo column (via grid order), then rest */
+  }
+}
+
+@media (max-width: 480px) {
+  .w22s__motto {
+    font-size: clamp(1.4rem, 7vw, 2rem);
+  }
+}
