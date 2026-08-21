@@ -121,7 +121,7 @@
 }
 
 .js .goal-panel.is-visible .goal-fill {
-  width: 22%;
+  width: var(--goal-progress, 22%);
 }
 
 /* ── Mobile: tighten distances so reveals feel snappier ─────── */

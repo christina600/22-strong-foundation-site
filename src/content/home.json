@@ -1,8 +1,8 @@
 {
   "hero": {
-    "eyebrow": "Recovery care funding",
-    "heading": "",
-    "lead": "",
+    "eyebrow": "",
+    "heading": "Veterans helping veterans get the care they need.",
+    "lead": "When care is interrupted, 22STRONG helps keep recovery moving.",
     "ctaLabel": "Support the next visit",
     "secondaryCtaLabel": "See who we serve"
   },
@@ -33,15 +33,22 @@
         }
       ]
     },
-    "needParagraphs": []
+    "needParagraphs": [
+      "A care plan may be working, but the patient, family, or caregiver still has to get through approvals, scheduling, transportation, work or school conflicts, pain, paperwork, and the cost of repeated visits.",
+      "When that next appointment is out of reach, progress can stall — and the work already put in can be lost."
+    ]
   },
   "story": {
-    "eyebrow": "Story",
+    "eyebrow": "",
     "heading": "The same problem kept showing up in the treatment room.",
-    "paragraphs": []
+    "paragraphs": [
+      "A veteran finishes a course of physical therapy. The treatment is working. Then the authorization runs out, the visits are capped, or the drive becomes too far.",
+      "The injury doesn't wait. Pain comes back. Mobility slips. The progress that took months to build can be lost in weeks.",
+      "22STRONG was built to fill that gap — to fund the next visit when the system stops short, so recovery keeps moving."
+    ]
   },
   "nameOrigin": {
-    "eyebrow": "Why 22STRONG?",
+    "eyebrow": "",
     "heading": "Where the name 22STRONG comes from.",
     "body": "The name 22STRONG comes from the widely cited “22 veterans a day” statistic and honors veterans lost to suicide. The foundation itself is not a suicide-prevention or crisis-response provider; its program funds sports-medicine recovery care for veterans.",
     "crisis": "If you or a veteran you know is in crisis, call 988 and press 1 for the Veterans Crisis Line."

@@ -28,6 +28,10 @@
   --surface-card-soft: rgba(248, 244, 235, .92);
   --surface-line: rgba(32, 35, 31, .12);
   --radius: 8px;
+  --radius-sm: 6px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-pill: 999px;
   --max: 1280px;
   --teal-rgb: 14, 90, 92;
   --logo-face: "Barlow Condensed", "DIN Condensed", "DIN Alternate", "Helvetica Neue Condensed Black",
@@ -548,7 +552,7 @@ p {
   justify-content: center;
   gap: clamp(20px, 3vw, 44px);
   color: rgba(251, 247, 238, .94);
-  font-family: var(--display-face);
+  font-family: var(--body-face);
   font-size: clamp(.86rem, .78rem + .2vw, 1rem);
   font-weight: 600;
   line-height: 1.14;

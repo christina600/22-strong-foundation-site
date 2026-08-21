@@ -135,3 +135,27 @@ if (document.readyState === "loading") {
 } else {
   window.requestAnimationFrame(initHomePageMotion);
 }
+
+// Hero parallax — subtle depth on the footage as the user scrolls.
+// Only runs on desktop with no reduced-motion preference.
+if (window.matchMedia("(prefers-reduced-motion: no-preference) and (min-width: 760px)").matches) {
+  const hero = document.querySelector(".hero");
+  const heroMedia = hero?.querySelector(".hero-media");
+  if (hero && heroMedia) {
+    let ticking = false;
+    const update = () => {
+      const scrollY = window.scrollY;
+      const heroBottom = hero.getBoundingClientRect().bottom + scrollY;
+      if (scrollY < heroBottom) {
+        (heroMedia as HTMLElement).style.setProperty("--hero-scroll-y", String(scrollY));
+      }
+      ticking = false;
+    };
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+}

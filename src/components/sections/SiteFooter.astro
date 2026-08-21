@@ -26,13 +26,15 @@ const orgMeta = [
 ---
 
 <footer>
+  <div class="footer-statement">
+    <div class="footer-wordmark">22STRONG</div>
+    <p class="footer-motto">We take care of our own.</p>
+  </div>
   <div class="footer-inner">
     <div>
       <div class="footer-title">{site.orgName}</div>
       <p class="footer-tagline">Veterans helping veterans.</p>
-      <p>&copy; 2026 {site.orgName}{orgMeta.length > 0 && <> &middot; {orgMeta.join(" · ")}</>}</p>
     </div>
-
     {footer.sections.map((section) => (
       <div>
         <div class="footer-title">{section.title}</div>
@@ -41,5 +43,8 @@ const orgMeta = [
         </div>
       </div>
     ))}
+  </div>
+  <div class="footer-legal">
+    <p>&copy; 2026 {site.orgName}{orgMeta.length > 0 && <> &middot; {orgMeta.join(" · ")}</>}</p>
   </div>
 </footer>

@@ -112,9 +112,8 @@ textarea {
 }
 
 .impact-line strong {
-  font-family: var(--display-face);
-  font-stretch: condensed;
-  font-weight: 900;
+  font-family: var(--body-face);
+  font-weight: 700;
   letter-spacing: 0;
 }
 
@@ -368,9 +367,8 @@ textarea {
 .vv-name {
   padding-top: 16px;
   border-top: 1px solid rgba(32, 35, 31, .12);
-  font-family: var(--display-face);
-  font-weight: 800;
-  font-stretch: condensed;
+  font-family: var(--body-face);
+  font-weight: 700;
   font-size: var(--fs-body-lg);
   line-height: 1.05;
   color: var(--ink, #20231f);
@@ -902,8 +900,8 @@ footer::before {
   content: "";
   position: absolute;
   inset: 0 0 auto;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 250, 240, .22), transparent);
+  height: 3px;
+  background: linear-gradient(90deg, var(--teal, #1c8c87), var(--orange, #0e5a5c), var(--teal, #1c8c87));
 }
 
 .footer-inner,
@@ -931,4 +929,43 @@ footer::before {
 .links a:hover {
   color: #fff7eb;
   border-color: rgba(255, 250, 240, .34);
+}
+
+/* Footer brand statement + legal bar */
+.footer-statement {
+  text-align: center;
+  padding: clamp(40px, 5vw, 64px) var(--space-page-x, 32px) clamp(28px, 3vw, 40px);
+  border-bottom: 1px solid rgba(255, 250, 240, .10);
+}
+
+.footer-wordmark {
+  font-family: var(--logo-face);
+  font-weight: 900;
+  font-stretch: condensed;
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
+  letter-spacing: 0;
+  color: #fffaf0;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.footer-motto {
+  margin: 12px 0 0;
+  font-family: var(--body-face);
+  font-weight: 600;
+  font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+  color: rgba(255, 250, 240, .72);
+  letter-spacing: .02em;
+}
+
+.footer-legal {
+  padding: clamp(20px, 2.5vw, 32px) var(--space-page-x, 32px);
+  border-top: 1px solid rgba(255, 250, 240, .08);
+  text-align: center;
+}
+
+.footer-legal p {
+  margin: 0;
+  font-size: var(--fs-ui-small, 1rem);
+  color: rgba(255, 250, 240, .48);
 }

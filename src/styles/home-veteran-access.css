@@ -121,19 +121,310 @@
 
 
 /* ──────────────────────────────────────────────────────────────
-   SECTION 2 — VC PROBLEM
-   Light paper section. Split: copy (left) + photo (right).
-   Full-width quote band at the bottom.
+   SECTION 2 — VC PROBLEM CINEMATIC
+   Cinematic scroll sequence: combat image → headline → transition to home/paperwork → white editorial copy
+   ────────────────────────────────────────────────────────────── */
+
+.vc-problem-cinematic {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0 !important;
+}
+
+/* Full bleed before GSAP creates its wrapper */
+.vc-problem-cinematic > .vc-cinematic {
+  position: relative;
+  left: 50%;
+  width: 100vw !important;
+  max-width: none !important;
+  margin-left: -50vw !important;
+  margin-right: -50vw !important;
+}
+
+/* Full bleed after ScrollTrigger creates its wrapper */
+.vc-problem-cinematic > .pin-spacer {
+  position: relative;
+  left: 50%;
+  width: 100vw !important;
+  max-width: none !important;
+  margin-left: -50vw !important;
+  margin-right: -50vw !important;
+}
+
+.vc-problem-cinematic > .pin-spacer > .vc-cinematic {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Cinematic scroll container - pinned during animation */
+.vc-cinematic {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Image layers */
+.vc-cinematic__image-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.vc-cinematic__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Combat image (Image A) - underlying layer */
+.vc-cinematic__image-layer--combat {
+  z-index: 1;
+}
+
+/* Home/paperwork image (Image B) - overlaying layer */
+.vc-cinematic__image-layer--home {
+  z-index: 2;
+}
+
+/* Overlay gradient for text readability */
+.vc-cinematic__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: linear-gradient(135deg, rgba(12, 18, 11, .80) 0%, rgba(12, 18, 11, .54) 48%, rgba(12, 18, 11, .42) 100%);
+}
+
+/* Headline wrapper */
+.vc-cinematic__headline-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-page-x);
+  text-align: center;
+}
+
+/* Headline */
+.vc-cinematic__headline {
+  margin: 0;
+  color: #fffaf0;
+  font-family: var(--display-face);
+  font-size: clamp(3.5rem, 6vw, 6.5rem);
+  font-weight: 900;
+  line-height: .95;
+  letter-spacing: -.03em;
+  max-width: 15ch;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, .32);
+  text-wrap: balance;
+}
+
+/* White editorial section (unpins after sequence) */
+.vc-editorial {
+  position: relative;
+  z-index: 2;
+  padding: var(--space-section-y-roomy) var(--space-page-x);
+  background: #fff;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.vc-editorial__inner {
+  width: min(var(--max), 100%);
+  margin: 0 auto;
+  display: grid;
+  gap: clamp(24px, 3vw, 36px);
+}
+
+.vc-editorial__lead {
+  margin: 0;
+  font-size: var(--fs-ui);
+  font-weight: 600;
+  line-height: var(--lh-lead);
+  color: var(--ink);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  max-width: 52ch;
+}
+
+.vc-editorial__body {
+  display: grid;
+  gap: clamp(14px, 1.6vw, 20px);
+}
+
+.vc-editorial__body p {
+  margin: 0;
+  font-size: var(--fs-body);
+  line-height: var(--lh-copy);
+  color: var(--muted);
+}
+
+/* "Pain continues. Mobility suffers." — emphasis treatment */
+.vc-editorial__emphasis {
+  color: var(--ink) !important;
+  font-weight: 700;
+  font-style: italic;
+  background-color: rgba(var(--teal-rgb), 0.1);
+  padding: 4px 12px;
+  border-left: 4px solid var(--orange);
+  border-radius: 2px;
+}
+
+/* Quote block */
+.vc-editorial__quote-wrap {
+  margin-top: clamp(48px, 6vw, 80px);
+  padding: clamp(36px, 5vw, 64px) var(--space-page-x);
+  background: linear-gradient(180deg, rgba(255, 253, 247, .06), rgba(255, 253, 247, .02));
+  border-top: 1px solid rgba(255, 255, 255, .10);
+  border-bottom: 1px solid rgba(255, 255, 255, .06);
+}
+
+.vc-editorial__quote {
+  width: min(var(--max), 100%);
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  gap: clamp(14px, 2vw, 22px);
+}
+
+/* Large pull-quote treatment */
+.vc-editorial__quote-text {
+  margin: 0;
+  font-family: var(--body-face);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 2.4vw, 2.6rem);
+  line-height: 1.2;
+  color: #fffaf0;
+  letter-spacing: -.02em;
+  text-wrap: pretty;
+  max-width: 56ch;
+}
+
+/* Opening quotation mark as a design element */
+.vc-editorial__quote-text::before {
+  content: "\201C";
+  display: block;
+  font-size: 4em;
+  line-height: .4;
+  margin-bottom: .18em;
+  color: var(--orange);
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+}
+
+.vc-editorial__quote-footer {
+  margin: 0;
+}
+
+.vc-editorial__quote-cite {
+  font-style: normal;
+  font-size: var(--fs-ui);
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: rgba(251, 247, 238, .58);
+}
+
+/* Mobile adaptations */
+@media (max-width: 900px) {
+  .vc-cinematic {
+    height: 100svh;
+    min-height: 100svh;
+    max-height: 100svh;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .vc-cinematic__headline {
+    font-size: clamp(1.8rem, 6vw, 3.2rem);
+    max-width: 24ch;
+  }
+  
+  .vc-editorial__lead {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .vc-cinematic__headline-wrap {
+    padding: 20px;
+  }
+  
+  .vc-cinematic__headline {
+    font-size: clamp(1.6rem, 7vw, 2.4rem);
+  }
+  
+  .vc-editorial {
+    padding: var(--space-section-y) var(--space-page-x);
+  }
+  
+  .vc-editorial__inner {
+    gap: clamp(18px, 3vw, 28px);
+  }
+}
+
+
+/* ──────────────────────────────────────────────────────────────
+   SECTION 2 — VC PROBLEM (Legacy)
+   Full-bleed urgency section: paperwork image + dark overlay.
+   Text reads white on dark. Photo column hidden (bg provides visual).
+   Quote band at bottom uses dark theme.
    ────────────────────────────────────────────────────────────── */
 
 .vc-problem {
-  padding: var(--space-section-y) var(--space-page-x) 0;
-  background: #fff;
-  border-top: 1px solid var(--line);
+  position: relative;
+  isolation: isolate;
+  padding: var(--space-section-y-roomy) var(--space-page-x) 0;
+  overflow: hidden;
+  min-height: clamp(480px, 56vw, 680px);
+  display: flex;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, .08);
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
 }
 
-/* Split grid */
+/* Background image — full-bleed, cinematic */
+.vc-problem::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: url("/images/veteran-paperwork.jpg") center 28% / cover no-repeat;
+  filter: saturate(.88) contrast(1.06);
+}
+
+/* Dark overlay for text contrast */
+.vc-problem::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(135deg, rgba(12, 18, 11, .80) 0%, rgba(12, 18, 11, .54) 48%, rgba(12, 18, 11, .42) 100%);
+}
+
+/* Bring content above overlay */
 .vc-problem__inner {
+  position: relative;
+  z-index: 2;
   width: min(var(--max), 100%);
   margin: 0 auto;
   display: grid;
@@ -142,23 +433,21 @@
   gap: clamp(40px, 6vw, 96px);
 }
 
-.vc-problem__eyebrow {
-  margin-bottom: clamp(10px, 1.4vw, 18px);
-}
-
 .vc-problem__heading {
   margin-top: 0;
   margin-bottom: clamp(16px, 2vw, 22px);
+  color: #fffaf0;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, .32);
 }
 
 .vc-problem__lead {
-  color: var(--ink);
+  color: rgba(251, 247, 238, .88);
   font-weight: 600;
   margin: 0 0 clamp(20px, 2.5vw, 30px);
   max-width: 42ch;
 }
 
-/* Body paragraphs */
+/* Body paragraphs — light on dark */
 .vc-problem__body {
   display: grid;
   gap: clamp(14px, 1.6vw, 20px);
@@ -168,47 +457,32 @@
   margin: 0;
   font-size: var(--fs-copy-small);
   line-height: var(--lh-copy);
-  color: var(--muted);
+  color: rgba(251, 247, 238, .74);
 }
 
 /* "Pain continues. Mobility suffers." — a beat of weight */
 .vc-problem__emphasis {
-  color: var(--ink) !important;
+  color: #fffaf0 !important;
   font-weight: 650;
   font-style: italic;
   padding-left: 16px;
   border-left: 3px solid var(--orange);
 }
 
-/* Photo */
+/* Hide photo — background image replaces it */
 .vc-problem__figure {
-  margin: 0;
-  position: sticky;
-  top: calc(82px + 24px); /* stick below nav */
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, .64) inset,
-    0 24px 58px rgba(29, 33, 29, .16),
-    0 4px 10px rgba(29, 33, 29, .08);
+  display: none;
 }
 
-.vc-problem__photo {
-  display: block;
-  width: 100%;
-  height: clamp(340px, 48vw, 580px);
-  object-fit: cover;
-  object-position: center 18%;
-}
-
-/* Quote band — full-width inset, sits flush at section bottom */
+/* Quote band — dark theme */
 .vc-problem__quote-wrap {
+  position: relative;
+  z-index: 2;
   margin-top: clamp(48px, 6vw, 80px);
   padding: clamp(36px, 5vw, 64px) var(--space-page-x);
-  background:
-    linear-gradient(180deg, rgba(14, 90, 92, .07), rgba(14, 90, 92, .02));
-  border-top: 1px solid rgba(14, 90, 92, .14);
-  border-bottom: 1px solid rgba(14, 90, 92, .10);
+  background: linear-gradient(180deg, rgba(255, 255, 247, .06), rgba(255, 255, 247, .02));
+  border-top: 1px solid rgba(255, 255, 255, .10);
+  border-bottom: 1px solid rgba(255, 255, 255, .06);
 }
 
 .vc-problem__quote {
@@ -222,12 +496,11 @@
 /* Large pull-quote treatment */
 .vc-problem__quote-text {
   margin: 0;
-  font-family: var(--display-face);
-  font-stretch: condensed;
-  font-weight: 700;
+  font-family: var(--body-face);
+  font-weight: 600;
   font-size: clamp(1.5rem, 2.4vw, 2.6rem);
   line-height: 1.2;
-  color: var(--ink);
+  color: #fffaf0;
   letter-spacing: -.02em;
   text-wrap: pretty;
   max-width: 56ch;
@@ -255,7 +528,7 @@
   font-weight: 700;
   letter-spacing: .06em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: rgba(251, 247, 238, .58);
 }
 
 /* Mobile stacking */
@@ -265,20 +538,8 @@
     gap: clamp(28px, 6vw, 44px);
   }
 
-  /* Figure is first in DOM (image left on desktop).
-     On mobile, spec: headline → copy → image. Push copy before figure. */
-  .vc-problem__figure {
-    position: static;
-    order: 1; /* image goes after copy on mobile */
-  }
-
   .vc-problem__copy {
-    order: -1; /* copy comes first on mobile */
-  }
-
-  .vc-problem__photo {
-    height: clamp(220px, 50vw, 340px);
-    object-position: center 22%;
+    order: -1;
   }
 
   .vc-problem__lead {
@@ -296,12 +557,24 @@
    ────────────────────────────────────────────────────────────── */
 
 .vc-gap {
+  position: relative;
+  isolation: isolate;
   padding: var(--space-section-y-roomy) var(--space-page-x);
-  background:
-    radial-gradient(ellipse 70% 52% at 50% 0%, rgba(14, 90, 92, .22) 0%, transparent 64%),
-    linear-gradient(180deg, #141b13, #1c2419);
   border-top: 1px solid rgba(255, 255, 255, .08);
   border-bottom: 1px solid rgba(255, 255, 255, .08);
+  overflow: hidden;
+}
+
+/* Full-bleed treatment background */
+.vc-gap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(12, 18, 11, .82), rgba(12, 18, 11, .62)),
+    url("/images/story-leg-therapy-wide.jpg") center 40% / cover no-repeat;
+  filter: saturate(.94) contrast(1.06);
 }
 
 .vc-gap__inner {
@@ -453,12 +726,11 @@
 
 /* Label text */
 .vc-gap__flow-label {
-  font-family: var(--display-face);
-  font-stretch: condensed;
-  font-weight: 700;
-  font-size: clamp(1.1rem, 1.4vw, 1.45rem);
-  letter-spacing: -.01em;
-  line-height: 1.15;
+  font-family: var(--body-face);
+  font-weight: 600;
+  font-size: clamp(1rem, 1.3vw, 1.25rem);
+  letter-spacing: .01em;
+  line-height: 1.35;
 }
 
 
@@ -590,9 +862,8 @@
 .vlr__item {
   padding: clamp(11px, 1.4vw, 16px) 0;
   border-bottom: 1px solid var(--line);
-  font-family: var(--display-face);
-  font-stretch: condensed;
-  font-weight: 700;
+  font-family: var(--body-face);
+  font-weight: 600;
   font-size: clamp(1.15rem, 1.5vw, 1.55rem);
   letter-spacing: -.01em;
   color: var(--ink);
@@ -819,9 +1090,8 @@
 
 .vv__quote-text {
   margin: 0 0 clamp(14px, 1.6vw, 20px);
-  font-family: var(--display-face);
-  font-stretch: condensed;
-  font-weight: 700;
+  font-family: var(--body-face);
+  font-weight: 600;
   font-size: clamp(1.05rem, 1.3vw, 1.35rem);
   line-height: 1.3;
   color: rgba(251, 247, 238, .9);
@@ -1065,9 +1335,8 @@
 .w22s__beats li {
   padding: clamp(10px, 1.2vw, 14px) 0 clamp(10px, 1.2vw, 14px) 16px;
   border-bottom: 1px solid var(--line);
-  font-family: var(--display-face);
-  font-stretch: condensed;
-  font-weight: 700;
+  font-family: var(--body-face);
+  font-weight: 600;
   font-size: clamp(1.1rem, 1.4vw, 1.45rem);
   letter-spacing: -.01em;
   color: var(--ink);
@@ -1104,13 +1373,11 @@
 
 .w22s__motto {
   margin: 0;
-  font-family: var(--display-face);
-  font-stretch: condensed;
-  font-weight: 900;
+  font-family: var(--body-face);
+  font-weight: 700;
   font-size: clamp(1.6rem, 2.6vw, 3rem);
   letter-spacing: -.02em;
   color: var(--ink);
-  text-transform: uppercase;
   line-height: 1;
 }
 
@@ -1333,9 +1600,8 @@
 }
 
 .dcta__outcome-title {
-  font-family: var(--display-face);
-  font-stretch: condensed;
-  font-weight: 700;
+  font-family: var(--body-face);
+  font-weight: 600;
   font-size: clamp(1rem,1.3vw,1.3rem);
   letter-spacing: -.01em;
   color: var(--ink);

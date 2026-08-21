@@ -1,59 +1,79 @@
----
-/**
- * VeteranCareProblem — Section 2
- * "Getting care shouldn't be another battle."
- * Problem narrative: text + image split, closing quote block.
- */
----
-
-<section class="vc-problem" aria-labelledby="vc-problem-heading">
-  <div class="vc-problem__inner">
-
-    <!-- Left: photo (spec: Image left / copy right) -->
-    <figure class="vc-problem__figure" aria-hidden="true">
+<section class="vc-problem-cinematic" aria-labelledby="vc-problem-heading" data-cinematic-section>
+  
+  <!-- Pinned scroll container -->
+  <div class="vc-cinematic" data-cinematic-pin>
+    
+    <!-- Image A: Combat / Brotherhood (underlying layer) -->
+    <div class="vc-cinematic__image-layer vc-cinematic__image-layer--combat" data-cinematic-image-a>
       <img
-        src="/images/veteran-paperwork.jpg"
+        src="/images/Injury.jpeg"
         alt=""
-        class="vc-problem__photo"
-        loading="lazy"
+        class="vc-cinematic__image"
+        loading="eager"
         decoding="async"
-        width="800"
-        height="534"
-        onerror="this.src='/images/about-care.jpg'"
       />
-    </figure>
-
-    <!-- Right: editorial copy -->
-    <div class="vc-problem__copy">
-      <p class="eyebrow vc-problem__eyebrow">The access gap</p>
-      <h2 class="vc-problem__heading" id="vc-problem-heading">
-        Getting care shouldn't be another battle.
-      </h2>
-
-      <p class="vc-problem__lead lead">
-        For many veterans, getting referred for treatment is only the beginning.
-      </p>
-
-      <div class="vc-problem__body">
-        <p>Appointments can take time. Authorizations can run out. Available care may be far from home or work. And treatment can be interrupted even when it is working.</p>
-        <p>Meanwhile, the injury doesn't wait.</p>
-        <p class="vc-problem__emphasis">Pain continues. Mobility suffers. Progress can be lost.</p>
-      </div>
     </div>
 
+    <!-- Image B: Paperwork / Home reality (overlaying layer) -->
+    <div class="vc-cinematic__image-layer vc-cinematic__image-layer--home" data-cinematic-image-b>
+      <img
+        src="/images/veteran meds.png"
+        alt=""
+        class="vc-cinematic__image"
+        loading="eager"
+        decoding="async"
+      />
+    </div>
 
+    <!-- Overlay gradient for text readability -->
+    <div class="vc-cinematic__overlay" data-cinematic-overlay></div>
+
+    <!-- Headline (appears after Image A settles) -->
+    <div class="vc-cinematic__headline-wrap" data-cinematic-headline>
+      <h2 class="vc-cinematic__headline" id="vc-problem-heading">
+        Getting care shouldn't be another battle.
+      </h2>
+    </div>
+  
+  </div>
+
+  <!-- White editorial section (unpins after sequence) -->
+  <div class="vc-editorial">
+    <div class="vc-editorial__inner">
+      <div class="vc-editorial__header">
+        <h2 class="vc-editorial__heading">
+          For many veterans, getting referred for treatment is only the beginning.
+        </h2>
+      </div>
+      
+      <div class="vc-editorial__body">
+        <p class="vc-editorial__lead">
+          Appointments can take time. Authorizations can run out. Available care may be far from home or work. And treatment can be interrupted even when it is working.
+        </p>
+        <p class="vc-editorial__divider">
+          Meanwhile, the injury doesn't wait.
+        </p>
+        <p class="vc-editorial__emphasis">
+          Pain continues. Mobility suffers. Progress can be lost.
+        </p>
+      </div>
+    </div>
   </div>
 
   <!-- Quote block -->
-  <div class="vc-problem__quote-wrap">
-    <blockquote class="vc-problem__quote">
-      <p class="vc-problem__quote-text">
-        "Real veteran quote about waiting, authorization, distance, or interrupted treatment."
+  <div class="vc-editorial__quote-wrap">
+    <blockquote class="vc-editorial__quote">
+      <p class="vc-editorial__quote-text">
+        "The VA treatments are far and few between — they do not have enough chiropractors, massage therapists, and physical therapy specialists. Dr. Vas has filled that void."
       </p>
-      <footer class="vc-problem__quote-footer">
-        <cite class="vc-problem__quote-cite">— Veteran, 22STRONG program</cite>
+      <footer class="vc-editorial__quote-footer">
+        <cite class="vc-editorial__quote-cite">— Veteran, 22STRONG program</cite>
       </footer>
     </blockquote>
   </div>
 
 </section>
+
+<script>
+  import "../../scripts/veteran-care-cinematic.ts";
+</script>

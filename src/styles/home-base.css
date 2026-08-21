@@ -375,8 +375,7 @@ section[id] {
 }
 
 .eyebrow {
-  font-family: var(--display-face);
-  font-stretch: condensed;
+  font-family: var(--body-face);
   display: inline-flex;
   gap: 8px;
   align-items: center;
@@ -480,9 +479,8 @@ p {
 
 .vv-quote {
   margin: 0;
-  font-family: var(--display-face);
-  font-stretch: condensed;
-  font-weight: 900;
+  font-family: var(--body-face);
+  font-weight: 700;
   font-size: var(--fs-quote);
   line-height: var(--lh-heading);
   letter-spacing: 0;
@@ -491,12 +489,11 @@ p {
 }
 
 .attribution {
-  font-family: var(--display-face);
-  font-stretch: condensed;
+  font-family: var(--body-face);
   margin-top: 24px;
   color: var(--muted);
   font-size: var(--fs-ui-small);
-  font-weight: 850;
+  font-weight: 600;
   letter-spacing: 0;
   text-transform: uppercase;
 }

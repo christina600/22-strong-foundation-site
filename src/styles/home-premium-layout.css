@@ -25,9 +25,8 @@ main {
   right: max(var(--space-page-x), calc((100vw - var(--max)) / 2));
   color: transparent;
   -webkit-text-stroke: 1px rgba(70, 87, 70, .36);
-  font-family: var(--display-face);
-  font-stretch: condensed;
-  font-weight: 900;
+  font-family: var(--body-face);
+  font-weight: 700;
   font-size: clamp(5.2rem, 10vw, 9.6rem);
   line-height: .78;
   letter-spacing: 0;
