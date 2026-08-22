@@ -1093,42 +1093,13 @@
   border-top: 1px solid rgba(255, 255, 255, .06);
 }
 
-/* ── Two-column inner layout ── */
+/* ── Inner layout (vertical stack) ── */
 .vv__inner {
   width: min(var(--max), 100%);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  align-items: start;
+  grid-template-columns: 1fr;
   gap: 0;
-}
-
-/* Video column — flush left edge, full height */
-.vv__video-col {
-  position: relative;
-  align-self: stretch;
-}
-
-/* Override TestimonialVideo internal layout so it fills the column */
-.vv__video-col .vv__player,
-.vv__video-col .testimonial-video {
-  height: 100%;
-  min-height: clamp(320px, 50vw, 640px);
-  border-radius: 0;
-}
-
-.vv__video-col .testimonial-video__stage {
-  height: 100%;
-  min-height: clamp(320px, 50vw, 640px);
-  border-radius: 0;
-}
-
-/* Copy column — padded, vertically centered */
-.vv__copy-col {
-  padding: clamp(40px, 5vw, 72px) clamp(28px, 4vw, 64px);
-  display: grid;
-  gap: clamp(20px, 2.5vw, 32px);
-  align-content: center;
 }
 
 .vv__eyebrow {
@@ -1143,14 +1114,19 @@
 .vv__heading {
   color: #fffaf0;
   margin: 0;
-  max-width: 22ch;
+  max-width: 11ch;
   text-shadow: 0 2px 18px rgba(0, 0, 0, .32);
 }
 
 .vv__lead {
   color: rgba(251, 247, 238, .72);
-  margin: 0;
-  max-width: 44ch;
+  margin-top: clamp(22px, 2.5vw, 34px);
+  max-width: 42ch;
+}
+
+.vv__player {
+  width: min(100%, 960px);
+  margin: clamp(56px, 7vw, 88px) auto 0;
 }
 
 /* ── Primary quote block ── */
@@ -1160,21 +1136,24 @@
 }
 
 .vv__quote--primary {
-  padding: clamp(18px, 2vw, 26px);
-  border-radius: 10px;
-  background: rgba(255, 255, 255, .06);
-  border: 1px solid rgba(255, 255, 255, .10);
+  width: min(100%, 960px);
+  margin: clamp(64px, 8vw, 104px) auto 0;
+  padding: clamp(38px, 5vw, 64px) 0;
+  background: transparent;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, .18);
 }
 
 .vv__quote-text {
   margin: 0 0 clamp(14px, 1.6vw, 20px);
   font-family: var(--body-face);
   font-weight: 600;
-  font-size: clamp(1.05rem, 1.3vw, 1.35rem);
+  font-size: clamp(1.55rem, 2.2vw, 2.25rem);
   line-height: 1.3;
   color: rgba(251, 247, 238, .9);
   letter-spacing: -.01em;
   text-wrap: pretty;
+  max-width: 36ch;
 }
 
 .vv__quote-footer {
@@ -1247,26 +1226,18 @@
   height: 64px;
 }
 
-/* ── Mobile layout ── */
-@media (max-width: 860px) {
+/* ── Mobile (<= 768px): same vertical order, no columns ── */
+@media (max-width: 768px) {
   .vv__inner {
     grid-template-columns: 1fr;
   }
 
-  /* Mobile order: intro copy → video → quote */
-  .vv__copy-col {
-    order: -1;
-    padding-bottom: clamp(24px, 4vw, 40px);
-    border-bottom: 1px solid rgba(255, 255, 255, .08);
+  .vv__player {
+    width: 100%;
   }
 
-  .vv__video-col .testimonial-video,
-  .vv__video-col .vv__player {
-    min-height: clamp(260px, 60vw, 420px);
-  }
-
-  .vv__video-col .testimonial-video__stage {
-    min-height: clamp(260px, 60vw, 420px);
+  .vv__quote--primary {
+    width: 100%;
   }
 
   .vv__quote--secondary {
@@ -1277,17 +1248,6 @@
   .vv__quote--secondary .vv__quote-footer {
     flex-direction: row;
     text-align: left;
-  }
-}
-
-@media (max-width: 480px) {
-  .vv__copy-col {
-    padding-inline: var(--space-page-x);
-    padding-top: clamp(28px, 6vw, 44px);
-  }
-
-  .vv__quote--primary {
-    padding: 16px;
   }
 }
 
