@@ -1,7 +1,7 @@
 ---
 /**
  * VeteranLifeReturn — "Getting better means getting life back."
- * Layout: copy (left) + staggered 3-image grid (right)
+ * Layout: text column, then 3-image strip below.
  * Mood shift: from treatment and obstacles → life returning.
  */
 ---
@@ -9,28 +9,40 @@
 <section class="vlr" aria-labelledby="vlr-heading">
   <div class="vlr__inner">
 
-    <!-- Left: copy -->
-    <div class="vlr__copy">
-      <h2 class="vlr__heading" id="vlr-heading">
-        Getting better means getting life back.
-      </h2>
-      <p class="vlr__lead lead">
-        Recovery is about more than hurting less.
-      </p>
+    <h2 class="vlr__heading" id="vlr-heading">
+      Getting better means getting life back.
+    </h2>
+    <p class="vlr__lead lead">
+      Recovery is about more than hurting less.
+    </p>
 
-      <ul class="vlr__list" role="list">
-        <li class="vlr__item">Getting back to work.</li>
-        <li class="vlr__item">Moving more freely.</li>
-        <li class="vlr__item">Exercising again.</li>
-        <li class="vlr__item">Working in the yard.</li>
-        <li class="vlr__item">Spending time with family.</li>
-        <li class="vlr__item vlr__item--closing">
-          Returning to the parts of life an injury has slowly taken away.
-        </li>
-      </ul>
+    <div class="vlr__groups">
+
+      <div class="vlr__group">
+        <h3 class="vlr__group-title">Getting back to</h3>
+        <ul class="vlr__list" role="list">
+          <li class="vlr__item">Work and training.</li>
+          <li class="vlr__item">Yard work and everyday routines.</li>
+          <li class="vlr__item">Time with family without sitting things out.</li>
+        </ul>
+      </div>
+
+      <div class="vlr__group">
+        <h3 class="vlr__group-title">And less of</h3>
+        <ul class="vlr__list" role="list">
+          <li class="vlr__item">Planning the day around pain.</li>
+          <li class="vlr__item">Losing progress when treatment gets interrupted.</li>
+          <li class="vlr__item">Having to rely on medication just to get through the day.</li>
+        </ul>
+      </div>
+
     </div>
 
-    <!-- Right: staggered 3-image grid -->
+    <p class="vlr__closing">
+      Returning to the parts of life an injury has slowly taken away.
+    </p>
+
+    <!-- 3-image strip — below all text content -->
     <div class="vlr__grid" aria-hidden="true">
 
       <!-- Large image — spans 2 rows -->

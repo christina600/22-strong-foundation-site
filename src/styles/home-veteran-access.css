@@ -243,6 +243,7 @@
   position: relative;
   z-index: 2;
   padding: var(--space-section-y-roomy) var(--space-page-x);
+  padding-bottom: clamp(72px, 7vw, 96px);
   background: #fff;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
@@ -255,18 +256,46 @@
   gap: clamp(24px, 3vw, 36px);
 }
 
+.vc-editorial__heading {
+  margin: 0 auto;
+  max-width: 17ch;
+  font-family: var(--body-face);
+  font-size: clamp(3.5rem, 6vw, 6.5rem);
+  font-weight: 900;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  text-align: center;
+  text-wrap: balance;
+}
+
+/* Headline title-card beat: generous centered area so the headline reads
+   as a standalone cinematic title card. */
+.vc-editorial__header {
+  min-height: clamp(520px, 65vh, 760px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .vc-editorial__lead {
   margin: 0;
-  font-size: var(--fs-ui);
-  font-weight: 600;
-  line-height: var(--lh-lead);
-  color: var(--ink);
-  letter-spacing: .04em;
-  text-transform: uppercase;
-  max-width: 52ch;
+  font-size: clamp(1.25rem, 1.7vw, 1.5rem) !important;
+  font-weight: 400;
+  line-height: 1.55 !important;
+  letter-spacing: normal;
+  color: var(--ink) !important;
+}
+
+.vc-editorial__divider {
+  margin-top: 2rem !important;
+  font-size: clamp(1.15rem, 1.4vw, 1.3rem) !important;
+  font-weight: 400;
 }
 
 .vc-editorial__body {
+  width: min(100%, 760px);
+  margin-left: auto;
+  margin-right: auto;
   display: grid;
   gap: clamp(14px, 1.6vw, 20px);
 }
@@ -278,28 +307,45 @@
   color: var(--muted);
 }
 
+/* Editorial body reveal — scoped to the dedicated observer in veteran-care-editorial.ts */
+.js .vc-editorial__body[data-editorial-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity 0.7s cubic-bezier(.22, .61, .36, 1),
+    transform 0.85s cubic-bezier(.19, .72, .2, 1);
+}
+
+.js .vc-editorial__body[data-editorial-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
 /* "Pain continues. Mobility suffers." — emphasis treatment */
 .vc-editorial__emphasis {
-  color: var(--ink) !important;
+  margin-top: 1.5rem !important;
+  font-size: clamp(1.3rem, 1.7vw, 1.55rem) !important;
   font-weight: 700;
   font-style: italic;
-  background-color: rgba(var(--teal-rgb), 0.1);
-  padding: 4px 12px;
-  border-left: 4px solid var(--orange);
-  border-radius: 2px;
+  line-height: 1.35 !important;
+  color: var(--ink) !important;
+  background: transparent;
+  padding-left: 16px;
+  max-width: 40ch;
+  border-left: 2px solid var(--teal);
+  border-radius: 0;
 }
 
 /* Quote block */
 .vc-editorial__quote-wrap {
-  margin-top: clamp(48px, 6vw, 80px);
-  padding: clamp(36px, 5vw, 64px) var(--space-page-x);
-  background: linear-gradient(180deg, rgba(255, 253, 247, .06), rgba(255, 253, 247, .02));
-  border-top: 1px solid rgba(255, 255, 255, .10);
-  border-bottom: 1px solid rgba(255, 255, 255, .06);
+  margin-top: 0;
+  padding: clamp(48px, 6vw, 72px) var(--space-page-x);
+  background: linear-gradient(180deg, #fcf9f2, #f8f1e8);
+  border-top: 1px solid var(--line);
 }
 
 .vc-editorial__quote {
-  width: min(var(--max), 100%);
+  width: min(100%, 760px);
   margin: 0 auto;
   padding: 0;
   display: grid;
@@ -311,12 +357,12 @@
   margin: 0;
   font-family: var(--body-face);
   font-weight: 600;
-  font-size: clamp(1.5rem, 2.4vw, 2.6rem);
-  line-height: 1.2;
-  color: #fffaf0;
+  font-size: clamp(1.6rem, 2.4vw, 2.4rem);
+  line-height: 1.25;
+  color: var(--ink);
   letter-spacing: -.02em;
   text-wrap: pretty;
-  max-width: 56ch;
+  max-width: none;
 }
 
 /* Opening quotation mark as a design element */
@@ -326,7 +372,7 @@
   font-size: 4em;
   line-height: .4;
   margin-bottom: .18em;
-  color: var(--orange);
+  color: var(--teal);
   font-family: Georgia, "Times New Roman", serif;
   font-weight: 400;
 }
@@ -341,7 +387,7 @@
   font-weight: 700;
   letter-spacing: .06em;
   text-transform: uppercase;
-  color: rgba(251, 247, 238, .58);
+  color: var(--muted);
 }
 
 /* Mobile adaptations */
@@ -767,6 +813,38 @@
 }
 
 
+/* ── Desktop enlargement ── */
+
+@media (min-width: 769px) {
+  .vc-gap__flow {
+    max-width: 760px;
+  }
+
+  /* Real flow cards only — exclude connector rows */
+  .vc-gap__flow-step:not(.vc-gap__flow-step--connector) {
+    padding: 24px 34px;
+    gap: 24px;
+    border-radius: 14px;
+  }
+
+  .vc-gap__flow-icon {
+    width: 58px;
+    height: 58px;
+    flex: 0 0 58px;
+  }
+
+  .vc-gap__flow-icon svg {
+    width: 27px;
+    height: 27px;
+  }
+
+  .vc-gap__flow-label {
+    font-size: clamp(1.15rem, 1.45vw, 1.4rem);
+    line-height: 1.25;
+  }
+}
+
+
 /* ── Responsive tweaks ── */
 
 @media (max-width: 600px) {
@@ -808,8 +886,7 @@
    SECTION 4 — VLR (Veteran Life Return)
    "Getting better means getting life back."
    Warm, light section — mood shifts from obstacles to life returning.
-   Layout: copy (left) + staggered 3-image grid (right)
-   Grid: 1 large image spans full height, 2 smaller images stacked right.
+   Layout: text column, then 3-image strip below.
    ────────────────────────────────────────────────────────────── */
 
 .vlr {
@@ -824,9 +901,8 @@
   width: min(var(--max), 100%);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1.18fr;
-  align-items: center;
-  gap: clamp(44px, 7vw, 108px);
+  grid-template-columns: 1fr;
+  gap: 0;
 }
 
 /* ── Copy column ── */
@@ -839,14 +915,45 @@
 .vlr__heading {
   margin-top: 0;
   margin-bottom: clamp(16px, 2vw, 24px);
-  max-width: 20ch;
+  max-width: 12ch;
 }
 
 .vlr__lead {
   color: var(--ink);
   font-weight: 600;
   margin: 0 0 clamp(24px, 3vw, 36px);
-  max-width: 36ch;
+  max-width: 34ch;
+}
+
+/* Groups container — wraps the two editorial outcome groups */
+.vlr__groups {
+  display: grid;
+  gap: clamp(28px, 3vw, 40px);
+}
+
+@media (min-width: 769px) {
+  .vlr__groups {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(48px, 6vw, 88px);
+    margin-top: clamp(38px, 5vw, 60px);
+  }
+}
+
+/* Group titles — uppercase editorial headers that colour-match their bullets */
+.vlr__group-title {
+  margin: 0 0 10px;
+  font-family: var(--body-face);
+  font-size: clamp(.82rem, .9vw, .95rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+
+.vlr__group:nth-child(2) .vlr__group-title {
+  color: var(--orange);
 }
 
 /* Life-items list — no bullets, each line reads as a standalone beat */
@@ -872,7 +979,7 @@
   position: relative;
 }
 
-/* Teal tick mark before each item */
+/* Tick mark before each item — size unchanged, colour overridden per group */
 .vlr__item::before {
   content: "";
   position: absolute;
@@ -885,54 +992,44 @@
   background: var(--orange);
 }
 
-/* Final "Returning to…" line — larger, heavier, emotional close */
-.vlr__item--closing {
-  padding-top: clamp(16px, 2vw, 24px);
-  padding-bottom: clamp(16px, 2vw, 24px);
-  font-size: clamp(1.25rem, 1.8vw, 1.85rem);
-  color: var(--ink);
-  line-height: 1.25;
-  border-bottom: none;
+/* Group-corresponding bullet colours — teal for "getting back to", orange for "less of" */
+.vlr__group:first-child .vlr__item::before {
+  background: var(--teal);
+}
+
+.vlr__group:nth-child(2) .vlr__item::before {
+  background: var(--orange);
+}
+
+/* Emotional closing line — standalone paragraph after the two groups */
+.vlr__closing {
+  margin: clamp(36px, 4vw, 52px) 0 0;
+  max-width: 34ch;
+  font-family: var(--body-face);
+  font-size: clamp(1.2rem, 1.55vw, 1.55rem);
+  font-weight: 700;
   font-style: italic;
+  line-height: 1.3;
+  letter-spacing: -.015em;
+  color: var(--ink);
 }
 
-.vlr__item--closing::before {
-  display: none;
-}
-
-/* ── 3-image staggered grid ── */
+/* ── 3-image horizontal strip ── */
 
 .vlr__grid {
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: clamp(10px, 1.2vw, 16px);
-  /* Let the grid fill a defined height so the large image spans both rows cleanly */
-  min-height: clamp(360px, 50vw, 580px);
-}
-
-/* Large image — spans both rows on the left */
-.vlr__fig--large {
-  grid-column: 1;
-  grid-row: 1 / 3;
-}
-
-/* Small images — stacked on the right */
-.vlr__fig--small:nth-of-type(2) {
-  grid-column: 2;
-  grid-row: 1;
-}
-
-.vlr__fig--small:nth-of-type(3) {
-  grid-column: 2;
-  grid-row: 2;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 1.5vw, 22px);
+  margin-top: clamp(48px, 6vw, 72px);
+  width: 100%;
 }
 
 /* All figures share the same frame treatment */
 .vlr__fig {
   margin: 0;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 12px;
+  aspect-ratio: 4 / 3;
   box-shadow:
     0 1px 0 rgba(255, 255, 255, .64) inset,
     0 18px 44px rgba(29, 33, 29, .12),
@@ -944,8 +1041,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Slightly warm-toned crop — life is bright, people are active */
-  object-position: center 30%;
   transition: transform .6s cubic-bezier(.22, .61, .36, 1);
 }
 
@@ -955,9 +1050,8 @@
 
 /* ── Responsive ── */
 
-@media (max-width: 960px) {
+@media (max-width: 768px) {
   .vlr__inner {
-    grid-template-columns: 1fr;
     gap: clamp(32px, 6vw, 52px);
   }
 
@@ -965,30 +1059,14 @@
     max-width: none;
   }
 
-  .vlr__grid {
-    min-height: clamp(280px, 60vw, 440px);
+  .vlr__groups {
+    grid-template-columns: 1fr;
+    gap: 28px;
   }
-}
 
-@media (max-width: 560px) {
-  /* On small phones, collapse to single column of images stacked */
   .vlr__grid {
     grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    min-height: auto;
-  }
-
-  .vlr__fig--large {
-    grid-column: 1;
-    grid-row: auto;
-    height: clamp(200px, 55vw, 300px);
-  }
-
-  .vlr__fig--small:nth-of-type(2),
-  .vlr__fig--small:nth-of-type(3) {
-    grid-column: 1;
-    grid-row: auto;
-    height: clamp(160px, 44vw, 240px);
+    gap: 14px;
   }
 }
 
